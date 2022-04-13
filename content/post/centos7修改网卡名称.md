@@ -1,7 +1,7 @@
 ---
 title: "Centos7修改网卡名称"
 date: 2022-04-13T13:58:45+08:00
-draft: true
+draft: false
 ---
 
 ### 前言
