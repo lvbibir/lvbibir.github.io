@@ -1,4 +1,4 @@
 baseURL = 'https://lvbibir.github.io/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'lvbibir blog'
 theme = 'hugo-PaperMod'
