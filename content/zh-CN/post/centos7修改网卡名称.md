@@ -1,8 +1,12 @@
----
-title: "Centos7修改网卡名称"
-date: 2022-04-13T13:58:45+08:00
-draft: false
----
++++
+author = "Hugo Authors"
+title = "centos7修改网卡名称"
+date = "2019-03-05"
+description = "Guide to emoji usage in Hugo"
+tags = [
+    "emoji",
+]
++++
 
 ### 前言
 
