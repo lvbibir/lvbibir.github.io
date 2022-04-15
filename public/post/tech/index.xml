@@ -1,32 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>技术 on lvbibir blog</title>
-    <link>https://lvbibir.github.io/post/tech/</link>
-    <description>Recent content in 技术 on lvbibir blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 13 Apr 2022 13:58:45 +0800</lastBuildDate><atom:link href="https://lvbibir.github.io/post/tech/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Centos7修改网卡名称</title>
-      <link>https://lvbibir.github.io/post/tech/centos7%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/</link>
-      <pubDate>Wed, 13 Apr 2022 13:58:45 +0800</pubDate>
-      
-      <guid>https://lvbibir.github.io/post/tech/centos7%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/</guid>
-      <description>前言 在使用kolla-ansible部署多节点openstack时，所有节点的外网网卡名称和管理网卡名称需要一样，其中两台是型号相同的物理机，网卡名无需变动，第三台是虚拟机，默认是ens*形式的网卡，需要改成enp*s*f*的格式
-修改配置文件 vim /etc/sysconfig/network-scripts/ifcfg-ens32 配置网络规则命名文件 vim /etc/udev/rules.d/70-persistent-ipoib.rules# 添加如下行，mac地址自行修改SUBSYSTEM==&amp;#34;net&amp;#34;, ACTION==&amp;#34;add&amp;#34;, DRIVERS==&amp;#34;?*&amp;#34;, ATTR{address}==&amp;#34;00:0c:29:bc:1e:01&amp;#34;, ATTR{type}==&amp;#34;1&amp;#34;, KERNEL==&amp;#34;eth*&amp;#34;, NAME=&amp;#34;enp11s0f0&amp;#34; 配置grub并重启 vim /etc/default/grub# 修改如下行GRUB_CMDLINE_LINUX=&amp;#34;crashkernel=auto rd.lvm.lv=centos/root net.ifnames=0 rd.lvm.lv=centos/swap rhgb quiet&amp;#34; grub2-mkconfig -o /boot/grub2/grub.cfg 之后直接reboot重启系统
-参考 https://www.xmodulo.com/change-network-interface-name-centos7.html</description>
-    </item>
-    
-    <item>
-      <title>First</title>
-      <link>https://lvbibir.github.io/post/tech/first/</link>
-      <pubDate>Wed, 13 Apr 2022 10:02:41 +0800</pubDate>
-      
-      <guid>https://lvbibir.github.io/post/tech/first/</guid>
-      <description>python方式 批量导出，运行后所有tar包都在当前目录下
-# encoding: utf-8  import re import os import subprocess  if __name__ == &amp;#34;__main__&amp;#34;:  p = subprocess.Popen(&amp;#39;docker images&amp;#39;, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)  for line in p.stdout.readlines():   # 此处的正则表达式是为了匹配镜像名以kolla为开头的镜像  # 实际使用中根据需要自行调整  m = re.match(r&amp;#39;(^kolla[^\s]*\s*)\s([^\s]*\s)&amp;#39;, line)   if not m:  continue   # 镜像名  iname = m.group(1).strip()  # tag  itag = m.group(2).strip()  # tar包的名字  if iname.find(&amp;#39;/&amp;#39;):  tarname = iname.</description>
-    </item>
-    
-  </channel>
-</rss>

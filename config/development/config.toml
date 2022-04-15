@@ -1,4 +1,4 @@
-BaseUrl = "http://localhost:1313/"
+BaseUrl = "https://lvbibir.github.io/"
 
 [minify]
   disableCSS = false
