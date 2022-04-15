@@ -1,2 +1,2 @@
 # Blog Contructing......
-for hugo
+lvbibir's blog(build for hugo)
