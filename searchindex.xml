@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>Centos7修改网卡名称</title><url>https://lvbibir.github.io/post/centos7%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/</url><categories/><tags/><content type="html"> 前言 在使用kolla-ansible部署多节点openstack时，所有节点的外网网卡名称和管理网卡名称需要一样，其中两台是型号相同的物理机，网卡名无需变动，第三台是虚拟机，默认是ens*形式的网卡，需要改成enp*s*f*的格式
-修改配置文件 vim /etc/sysconfig/network-scripts/ifcfg-ens32 配置网络规则命名文件 vim /etc/udev/rules.d/70-persistent-ipoib.rules # 添加如下行，mac地址自行修改 SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="00:0c:29:bc:1e:01", ATTR{type}=="1", KERNEL=="eth*", NAME="enp11s0f0" 配置grub并重启 vim /etc/default/grub # 修改如下行 GRUB_CMDLINE_LINUX="crashkernel=auto rd.lvm.lv=centos/root net.ifnames=0 rd.lvm.lv=centos/swap rhgb quiet" grub2-mkconfig -o /boot/grub2/grub.cfg 之后直接reboot重启系统
-参考 https://www.xmodulo.com/change-network-interface-name-centos7.html</content></entry><entry><title>Markdown语法手册</title><url>https://lvbibir.github.io/post/markdown-syntax/</url><categories><category>themes</category><category>syntax</category></categories><tags><tag>markdown</tag><tag>css</tag><tag>html</tag></tags><content type="html"> 本文提供了一个可以在 Hugo 内容文件中使用的基本Markdown语法示例，还展示了基本 HTML 元素在 Hugo 主题中是否使用 CSS 装饰。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><search><entry><title>Markdown语法手册</title><url>https://lvbibir.github.io/post/markdown-syntax/</url><categories><category>themes</category><category>syntax</category></categories><tags><tag>markdown</tag><tag>css</tag><tag>html</tag></tags><content type="html"> 本文提供了一个可以在 Hugo 内容文件中使用的基本Markdown语法示例，还展示了基本 HTML 元素在 Hugo 主题中是否使用 CSS 装饰。
 标题 下面的 HTML 代码&lt;h1>—&lt;h6> 元素表示六个级别的节标题。 &lt;h1>是最高的节级别，&lt;h6>是最低的节级别。
 H1 H2 H3 H4 H5 H6 段落 生活是什么？生活是柴米油盐的平淡；是行色匆匆早出晚归的奔波；生活是错的时间遇到对的人的遗憾；是爱的付出与回报；生活是看不同的风景，遇到不同的人；是行至水穷尽，坐看云起时的峰回路转；生活是灵魂经历伤痛后的微笑怒放；是挫折坎坷被晾晒后的坚强；生活是酸甜苦辣被岁月沉淀后的馨香；是经历风霜雪雨洗礼后的懂得；生活是走遍千山万水后，回眸一笑的洒脱。
 有些事，猝不及防，不管你在不在乎；有些人，并非所想，不管你明不明白；有些路，必须得走，不管你愿不愿意。不怕事，不惹事，不避事，做好自己，用真心面对一切；少埋怨，少指责，少发火，学会沉静，用微笑考量一切；多体察，多包容，多思索，尽心尽力，虽缺憾但无悔。像蒲公英一样美丽，虽轻盈，但并不卑微，它有自己的生命，也有自己的世界！
@@ -69,7 +67,9 @@ $$ \frac{n!}{k!(n-k)!} = {^n}C_k {n \choose k} $$
 矩阵 $$ \begin{pmatrix} a_{11} &amp; a_{12} &amp; a_{13}\ a_{21} &amp; a_{22} &amp; a_{23}\ a_{31} &amp; a_{32} &amp; a_{33} \end{pmatrix} \begin{bmatrix} 0 &amp; \cdots &amp; 0 \ \vdots &amp; \ddots &amp; \vdots \ 0 &amp; \cdots &amp; 0 \end{bmatrix} $$
 标点符号 $$ f(x) = \sqrt{1+x} \quad (x \ge -1) f(x) \sim x^2 \quad (x\to\infty) $$
 现在用标点符号:
-$$ f(x) = \sqrt{1+x}, \quad x \ge -1 f(x) \sim x^2, \quad x\to\infty $$</content></entry><entry><title>支持Emoji表情符号</title><url>https://lvbibir.github.io/post/emoji-support/</url><categories/><tags><tag>emoji</tag></tags><content type="html"> Emoji 表情符号可以通过多种方式在 Hugo 项目中启用。
+$$ f(x) = \sqrt{1+x}, \quad x \ge -1 f(x) \sim x^2, \quad x\to\infty $$</content></entry><entry><title>centos7修改网卡名称</title><url>https://lvbibir.github.io/post/centos7%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/</url><categories/><tags><tag>emoji</tag></tags><content type="html"> 前言 在使用kolla-ansible部署多节点openstack时，所有节点的外网网卡名称和管理网卡名称需要一样，其中两台是型号相同的物理机，网卡名无需变动，第三台是虚拟机，默认是ens*形式的网卡，需要改成enp*s*f*的格式
+修改配置文件 vim /etc/sysconfig/network-scripts/ifcfg-ens32 配置网络规则命名文件 vim /etc/udev/rules.d/70-persistent-ipoib.rules # 添加如下行，mac地址自行修改 SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="00:0c:29:bc:1e:01", ATTR{type}=="1", KERNEL=="eth*", NAME="enp11s0f0" 配置grub并重启 vim /etc/default/grub # 修改如下行 GRUB_CMDLINE_LINUX="crashkernel=auto rd.lvm.lv=centos/root net.ifnames=0 rd.lvm.lv=centos/swap rhgb quiet" grub2-mkconfig -o /boot/grub2/grub.cfg 之后直接reboot重启系统
+参考 https://www.xmodulo.com/change-network-interface-name-centos7.html</content></entry><entry><title>支持Emoji表情符号</title><url>https://lvbibir.github.io/post/emoji-support/</url><categories/><tags><tag>emoji</tag></tags><content type="html"> Emoji 表情符号可以通过多种方式在 Hugo 项目中启用。
 使用 Emoji 表情符号可以在模板中可以直接调用 emojify 函数或是通过 内联短代码 来实现。
 如果要全局启用 Emoji 表情符号，请在网站配置 文件中将 enableEmoji 参数值设置为 true，然后可以直接在内容文件中输入表情符号简写代码，参考如下：
 猴子表情 🙈 :see_no_evil: 🙉 :hear_no_evil: 🙊 :speak_no_evil: 数字符号 1️⃣ :one: 2️⃣ :two: 3️⃣ :three: 建筑物 🏡 :house_with_garden: 🏣 :post_office: 🏥 :hospital: 更多的 Emoji 表情符号代码可参考Emoji 配对目录 。
@@ -79,4 +79,157 @@ Hugo使用了多种开源项目，包括:
 https://github.com/yuin/goldmark https://github.com/alecthomas/chroma https://github.com/muesli/smartcrop https://github.com/spf13/cobra https://github.com/spf13/viper Hugo是博客、企业网站、创意作品集、在线杂志、单页应用程序甚至是数千页的网站的理想选择。
 Hugo适合那些想要手工编写自己的网站代码，而不用担心设置复杂的运行时、依赖关系和数据库的人。
 使用Hugo建立的网站非常快速、安全，可以部署在任何地方，包括AWS、GitHub Pages、Heroku、Netlify和任何其他托管提供商。
-更多信息请访问GitHub .</content></entry></search>
+更多信息请访问GitHub .</content></entry><entry><title/><url>https://lvbibir.github.io/post/centos7%E5%9F%BA%E7%BA%BF%E6%A3%80%E6%9F%A5%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2/</url><categories/><tags/><content type="html"> 介绍 项目地址 这个项目准备打造一个安全基线检查平台，期望能够以最简单的方式在需要进行检查的服务器上运行。能够达到这么一种效果：基线检查脚本(以后称之为agent)可以单独在目标服务器上运行，并展示出相应不符合基线的地方，并且可以将检查时搜集到的信息以json串的形式上传到后端处理服务器上，后端服务器可以进行统计并进行可视化展示。
+Agent用到的技术：
+Shell脚本 Powershell脚本 后端服务器用到的技术：
+python django bootstrap html 存储所用：
+sqlite3 前端页面部署 环境 系统 centos7.8(最小化安装) 前端：192.168.150.101 client端：192.168.150.102 安装python3.6 源码包下载地址 yum install gcc gcc-c++ zlib-devel sqlite-devel mariadb-server mariadb-devel openssl-devel tcl-devel tk-devel tree libffi-devel -y tar -xf Python-3.6.10.tgz ./configure --enable-optimizations make make install python3 -V 安装pip3+django 源码包下载地址 tar zxvf pip-21.0.1.tar.gz cd pip-21.0.1/ python3 setup.py build python3 setup.py install pip3 install django==2.2.15 git clone项目到本地 yum install -y git git clone https://github.com/chroblert/assetmanage.git 部署server端项目 cd assetManage # 使用python3安装依赖包 python3 -m pip install -r requirements.txt python3 manage.py makemigrations python3 manage.py migrate python3 manage.py runserver 0.0.0.0:8888 # 假定该服务器的IP未112.112.112.112 访问测试：http://192.168.150.101:8888/
+客户端进行检查 将项目目录中的Agent目录copy到需要进行基线检查的客户端 scp -r assetmanage/Agent/ 192.168.150.102:/root/ cd Agent/ chmod a+x ./*.sh 修改 linux_baseline_check.sh 文件的最后一行，配置前端django项目的ip和端口 运行脚本即可，终端会有检查结果的输出，前端页面相应也会有数据</content></entry><entry><title/><url>https://lvbibir.github.io/post/kubeadm%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4v1.22.3/</url><categories/><tags/><content type="html"> kubeadm是官方社区推出的一个用于快速部署kubernetes集群的工具。
+这个工具能通过两条指令完成一个kubernetes集群的部署：
+# 创建一个 Master 节点 $ kubeadm init # 将一个 Node 节点加入到当前集群中 $ kubeadm join &lt;Master节点的IP和端口 > 1. 安装要求 在开始之前，部署Kubernetes集群机器需要满足以下几个条件：
+一台或多台机器，操作系统 CentOS7.x-86_x64 硬件配置：2GB或更多RAM，2个CPU或更多CPU，硬盘30GB或更多 集群中所有机器之间网络互通 可以访问外网，需要拉取镜像 禁用swap分区 2. 准备环境 角色 IP k8s-master 192.168.150.101 k8s-node1 192.168.150.102 k8s-node2 192.168.150.103 关闭防火墙： $ systemctl stop firewalld $ systemctl disable firewalld 关闭selinux： $ sed -i 's/enforcing/disabled/' /etc/selinux/config # 永久 $ setenforce 0 # 临时 关闭swap： $ swapoff -a # 临时 $ vim /etc/fstab # 永久 注释掉swap分区相关行 设置主机名： $ hostnamectl set-hostname &lt;hostname> 在master添加hosts： $ cat >> /etc/hosts &lt;&lt; EOF 192.168.150.101 k8s-master 192.168.150.102 k8s-node1 192.168.150.103 k8s-node2 EOF 将桥接的IPv4流量传递到iptables的链： $ cat > /etc/sysctl.d/k8s.conf &lt;&lt; EOF net.bridge.bridge-nf-call-ip6tables = 1 net.bridge.bridge-nf-call-iptables = 1 EOF $ sysctl --system # 生效 时间同步： $ yum install ntpdate -y $ ntpdate time.windows.com 3. 安装 Docker/kubeadm/kubelet/kubectl (所有节点) Kubernetes默认CRI（容器运行时）为Docker，因此先安装Docker。
+3.1 安装Docker $ wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo $ yum -y install docker-ce $ systemctl enable docker &amp;&amp; systemctl start docker 3.2 配置镜像下载加速器，同时修改docker的cgroupdriver为systemd $ cat > /etc/docker/daemon.json &lt;&lt; EOF { "registry-mirrors": ["https://jc0srqak.mirror.aliyuncs.com"], "exec-opts": ["native.cgroupdriver=systemd"] } EOF $ systemctl restart docker $ docker info 3.3 添加阿里云YUM软件源 $ cat > /etc/yum.repos.d/kubernetes.repo &lt;&lt; EOF [kubernetes] name=Kubernetes baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64 enabled=1 gpgcheck=0 repo_gpgcheck=0 gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg EOF 3.4 安装kubeadm，kubelet和kubectl 由于版本更新频繁，这里指定版本号部署：
+$ yum install -y kubelet-1.22.3 kubeadm-1.22.3 kubectl-1.22.3 $ systemctl enable kubelet $ systemctl start kubelet 4. 部署Kubernetes Master https://kubernetes.io/zh/docs/reference/setup-tools/kubeadm/kubeadm-init/#config-file https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#initializing-your-control-plane-node 在192.168.150.101（Master）执行。
+$ kubeadm init \ --apiserver-advertise-address=192.168.150.101 \ --kubernetes-version v1.22.3 \ --service-cidr=10.96.0.0/12 \ --pod-network-cidr=10.244.0.0/16 \ --ignore-preflight-errors=all \ --image-repository registry.aliyuncs.com/google_containers &ndash;apiserver-advertise-address 集群通告地址 &ndash;kubernetes-version K8s版本，与上面安装的一致 &ndash;service-cidr 集群内部虚拟网络，Pod统一访问入口 &ndash;pod-network-cidr Pod网络，与下面部署的CNI网络组件yaml中保持一致 &ndash;ignore-preflight-errors=all，跳过一些错误 &ndash;image-repository 由于默认拉取镜像地址k8s.gcr.io国内无法访问，这里指定阿里云镜像仓库地址 或者使用配置文件引导：
+$ vi kubeadm.conf apiVersion: kubeadm.k8s.io/v1beta2 kind: ClusterConfiguration kubernetesVersion: v1.22.3 imageRepository: registry.aliyuncs.com/google_containers networking: podSubnet: 10.244.0.0/16 serviceSubnet: 10.96.0.0/12 $ kubeadm init --config kubeadm.conf --ignore-preflight-errors=all 拷贝kubectl使用的连接k8s认证文件到默认路径：
+mkdir -p $HOME/.kube sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config sudo chown $(id -u):$(id -g) $HOME/.kube/config $ kubectl get nodes NAME STATUS ROLES AGE VERSION k8s-master Ready master 2m v1.18.0 5. 加入Kubernetes Node 在192.168.150.102/103（Node）执行。
+向集群添加新节点，执行在kubeadm init输出的kubeadm join命令：
+$ kubeadm join 192.168.150.101:6443 --token esce21.q6hetwm8si29qxwn \ --discovery-token-ca-cert-hash sha256:00603a05805807501d7181c3d60b478788408cfe6cedefedb1f97569708be9c5 默认token有效期为24小时，当过期之后，该token就不可用了。这时就需要重新创建token，操作如下：
+$ kubeadm token create $ kubeadm token list $ openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //' 63bca849e0e01691ae14eab449570284f0c3ddeea590f8da988c07fe2729e924 $ kubeadm join 192.168.150.101:6443 --token nuja6n.o3jrhsffiqs9swnu --discovery-token-ca-cert-hash sha256:63bca849e0e01691ae14eab449570284f0c3ddeea590f8da988c07fe2729e924 或者直接命令快捷生成：kubeadm token create &ndash;print-join-command
+https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-join/ 6. 部署容器网络（CNI） https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network 注意：只需要部署下面其中一个，推荐Calico。
+Calico是一个纯三层的数据中心网络方案，Calico支持广泛的平台，包括Kubernetes、OpenStack等。
+Calico 在每一个计算节点利用 Linux Kernel 实现了一个高效的虚拟路由器（ vRouter） 来负责数据转发，而每个 vRouter 通过 BGP 协议负责把自己上运行的 workload 的路由信息向整个 Calico 网络内传播。
+此外，Calico 项目还实现了 Kubernetes 网络策略，提供ACL功能。
+https://docs.projectcalico.org/getting-started/kubernetes/quickstart $ wget https://docs.projectcalico.org/manifests/calico.yaml 下载完后还需要修改里面定义Pod网络（CALICO_IPV4POOL_CIDR），与前面kubeadm init指定的一样
+修改完后应用清单：
+$ kubectl apply -f calico.yaml $ kubectl get pods -n kube-system 7. 测试kubernetes集群 验证Pod工作 验证Pod网络通信 验证DNS解析 在Kubernetes集群中创建一个pod，验证是否正常运行：
+$ kubectl create deployment nginx --image=nginx $ kubectl expose deployment nginx --port=80 --type=NodePort $ kubectl get pod,svc 访问地址：http://NodeIP:Port
+8. 部署 Dashboard $ wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.4.0/aio/deploy/recommended.yaml 默认Dashboard只能集群内部访问，修改Service为NodePort类型，暴露到外部：
+$ vi recommended.yaml ... kind: Service apiVersion: v1 metadata: labels: k8s-app: kubernetes-dashboard name: kubernetes-dashboard namespace: kubernetes-dashboard spec: ports: - port: 443 targetPort: 8443 nodePort: 30001 selector: k8s-app: kubernetes-dashboard type: NodePort ... $ kubectl apply -f recommended.yaml $ kubectl get pods -n kubernetes-dashboard NAME READY STATUS RESTARTS AGE dashboard-metrics-scraper-6b4884c9d5-gl8nr 1/1 Running 0 13m kubernetes-dashboard-7f99b75bf4-89cds 1/1 Running 0 13m 访问地址：https://NodeIP:30001
+创建service account并绑定默认cluster-admin管理员集群角色：
+# 创建用户 $ kubectl create serviceaccount dashboard-admin -n kube-system # 用户授权 $ kubectl create clusterrolebinding dashboard-admin --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin # 获取用户Token $ kubectl describe secrets -n kube-system $(kubectl -n kube-system get secret | awk '/dashboard-admin/{print $1}') 使用输出的token登录Dashboard。</content></entry><entry><title/><url>https://lvbibir.github.io/post/openvpn%E9%83%A8%E7%BD%B2/</url><categories/><tags/><content type="html"> 一、实验环境 3台centos6.5，1台win10，openvpn-2.4.7，easy-rsa-3.0.5
+二、拓扑结构 Win10安装openvpn-gui，三台centos6.5为vmware虚拟机，分为client、vpnserver、proxy
+三台centos6.5的eth0网卡均为内网(lan区段)地址1.1.1.0/24网段，proxy额外添加一块eth1网卡设置nat模式模拟外网ip
+三、实验目的 win10访问proxy的外网ip对应端口连接到vpnserver，分配到内网ip后可以访问到client
+四、实验思路 proxy配置ipv4转发，将访问到本机eth1网卡相对应的端口上的流量转发给vpnserver的vpn服务端口
+vpnserver为win10分配ip实现访问内网
+五、实施步骤 1.初始化环境 虚拟机安装过程 略
+配置ip client： 1.1.1.1/24
+vpnserver：1.1.1.2/24
+proxy： 1.1.1.3/24 192.168.150.114/24
+win10： 192.168.150.1/24
+环境初始化（client和vpnserver关闭iptables和selinux，proxy仅关闭selinux） [root@vpnserver ~]# sed -i &lsquo;/SELINUX/s/enforcing/disabled/&rsquo; /etc/selinux/config [root@vpnserver ~]# setenforce 0
+2.安装vpnserver及easy-rsa vpnserver安装openvpn 由于centos6的所有官方源已失效，使用https://www.xiaofeng.org/article/2019/10/centos6buildinstallopenvpnrpm-17.html中的方法将源码编译成rpm包。
+openvpn版本：2.4.7
+下载easy-rsa 下载地址：https://github.com/OpenVPN/easy-rsa/tree/v3.0.5
+3.创建openvpn目录，配置vars变量 解压easy-rsa目录 [root@vpnserver ~]# mkdir openvpn [root@vpnserver ~]# unzip easy-rsa-3.0.5.zip [root@vpnserver ~]# mv easy-rsa-3.0.5 easy-rsa [root@vpnserver ~]# mkdir -p /etc/openvpn [root@vpnserver ~]# cp -a easy-rsa /etc/openvpn
+配置/etc/openvpn目录 [root@vpnserver ~]# cd /etc/openvpn/easy-rsa/easyrsa3/ [root@vpnserver easyrsa3]# cp vars.example vars [root@vpnserver easyrsa3]# vim vars 添加如下变量
+set_var EASYRSA_REQ_COUNTRY "CN" set_var EASYRSA_REQ_PROVINCE "Beijing" set_var EASYRSA_REQ_CITY "Beijing" set_var EASYRSA_REQ_ORG "lvbibir" set_var EASYRSA_REQ_EMAIL "lvbibir@163.com" set_var EASYRSA_REQ_OU "My OpenVPN" 4.创建服务端证书及key 创建服务端证书及key 初始化
+[root@vpnserver ~]# cd /etc/openvpn/easy-rsa/easyrsa3/ [root@vpnserver easyrsa3]# ./easyrsa init-pki
+创建根证书
+[root@vpnserver easyrsa3]# ./easyrsa build-ca
+注意：在上述部分需要输入PEM密码 PEM pass phrase，输入两次，此密码必须记住，不然以后不能为证书签名。还需要输入common name 通用名，这个你自己随便设置个独一无二的
+创建服务器端证书
+[root@vpnserver easyrsa3]# ./easyrsa gen-req server nopass
+该过程中需要输入common name，随意但是不要跟之前的根证书的一样
+签约服务端证书
+[root@vpnserver easyrsa3]# ./easyrsa sign server server
+需要手动输入yes去人，还需要提供创建ca证书时的密码
+创建Diffie-Hellman，确保key穿越不安全网络的命令
+[root@vpnserver easyrsa3]# ./easyrsa gen-dh
+5.创建客户端证书及key 创建客户端证书 初始化
+[root@vpnserver ~]# mkdir client [root@vpnserver ~]# cd client/easy-rsa/easyrsa3/ [root@vpnserver easyrsa3]# ./easyrsa init-pki
+需输入yes确认
+创建客户端key及生成证书
+[root@vpnserver easyrsa3]# ./easyrsa gen-req zhijie.liu
+名字自己自定义，该密码是用户使用该key登录时输入的密码，可以加nopass参数在客户端登录时无需输入密码
+导入req证书
+[root@vpnserver ~]# cd /etc/openvpn/easy-rsa/easyrsa3/ [root@vpnserver easyrsa3]# ./easyrsa import-req /root/client/easy-rsa/easyrsa3/pki/reqs/zhijie.liu.req zhijie.liu
+签约证书
+[root@vpnserver easyrsa3]# ./easyrsa sign client zhijie.liu
+这里生成client，名字要与之前导入名字一致
+签约证书期间需要输入yes确认，期间需要输入CA的密码
+6.归置服务器和客户端的证书 把服务器端必要文件放到/etc/openvpn下（ca证书、服务端证书、密钥） [root@vpnserver ~]# cp /etc/openvpn/easy-rsa/easyrsa3/pki/ca.crt /etc/openvpn/ [root@vpnserver ~]# cp /etc/openvpn/easy-rsa/easyrsa3/pki/private/server.key /etc/openvpn/ [root@vpnserver ~]# cp /etc/openvpn/easy-rsa/easyrsa3/pki/issued/server.crt /etc/openvpn/ [root@vpnserver ~]# cp /etc/openvpn/easy-rsa/easyrsa3/pki/dh.pem /etc/openvpn/
+把客户端必要文件放到/root/client目录下（客户端的证书、密钥） [root@vpnserver ~]# cp /etc/openvpn/easy-rsa/easyrsa3/pki/ca.crt /root/client [root@vpnserver ~]# cp /etc/openvpn/easy-rsa/easyrsa3/pki/issued/zhijie.liu.crt /root/client/ [root@vpnserver ~]# cp /root/client/easy-rsa/easyrsa3/pki/private/zhijie.liu.key /root/client
+7.vpn服务端server.conf配置文件修改 为服务器端编写配置文件 安装好配置文件后他会提供一个server配置的文件案例，将该文件放到/etc/openvpn下
+[root@vpnserver ~]# rpm -ql openvpn | grep server.conf
+[root@vpnserver ~]# cp /usr/share/doc/openvpn-2.4.7/sample/sample-config-files/server.conf /etc/openvpn/
+修改配置文件 [root@vpnserver ~]# vim /etc/openvpn/server.conf
+[root@vpnserver ~]# grep '^[^#|;]' /etc/openvpn/server.conf local 0.0.0.0 #监听地址 port 1194 #监听端口 proto tcp #监听协议 dev tun #采用路由隧道模式 ca /etc/openvpn/ca.crt #ca证书路径 cert /etc/openvpn/server.crt #服务器证书 key /etc/openvpn/server.key # This file should be kept secret 服务器秘钥 dh /etc/openvpn/dh.pem #密钥交换协议文件 server 10.8.0.0 255.255.255.0 #给客户端分配地址池，注意：不能和VPN服务器内网网段有相同 ifconfig-pool-persist ipp.txt push "route 1.1.1.0 255.255.255.0" #推送内网地址 client-to-client #客户端之间互相通信 keepalive 10 120 #存活时间，10秒ping一次,120 如未收到响应则视为断线 comp-lzo #传输数据压缩 max-clients 100 #最多允许 100 客户端连接 user openvpn #用户 group openvpn #用户组 persist-key persist-tun status /var/log/openvpn/openvpn-status.log log /var/log/openvpn/openvpn.log verb 3 8.后续设置（用户、iptables和路由转发） 后续设置 [root@vpnserver ~]# mkdir /var/log/openvpn/ [root@vpnserver ~]# useradd openvpn -s /sbin/nologin [root@vpnserver ~]# chown -R openvpn.openvpn /var/log/openvpn/ [root@vpnserver ~]# chown -R openvpn.openvpn /etc/openvpn/*
+iptables设置nat规则和打开路由转发 [root@vpnserver ~]# iptables -A INPUT -p tcp &ndash;dport 1194 -j ACCEPT [root@vpnserver ~]# iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE [root@vpnserver ~]# iptables -vnL -t nat
+Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes) pkts bytes target prot opt in out source destination Chain POSTROUTING (policy ACCEPT 0 packets, 0 bytes) pkts bytes target prot opt in out source destination 0 0 MASQUERADE all -- * * 10.8.0.0/24 0.0.0.0/0 Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes) pkts bytes target prot opt in out source destination [root@vpnserver ~]# vim /etc/sysctl.conf
+net.ipv4.ip_forward = 1 [root@vpnserver ~]# sysctl -p
+开启openvpn服务 [root@vpnserver ~]# openvpn &ndash;daemon &ndash;config /etc/openvpn/server.conf [root@vpnserver ~]# netstat -anput | grep 1194
+proxy开启端口转发/映射 [root@along ~]# vim /etc/sysctl.conf //打开路由转发
+net.ipv4.ip_forward = 1 [root@proxy ~]# sysctl -p
+[root@proxy ~]# iptables -t nat -A PREROUTING -d 192.168.150.114 -p tcp &ndash;dport 1194 -j DNAT &ndash;to-destination 1.1.1.2:1194 [root@proxy ~]# iptables -t nat -A POSTROUTING -d 1.1.1.2 -p tcp &ndash;dport 1194 -j SNAT &ndash;to 1.1.1.3 [root@proxy ~]# iptables -A FORWARD -o eth0 -d 1.1.1.2 -p tcp &ndash;dport 1194 -j ACCEPT [root@proxy ~]# iptables -A FORWARD -i eth0 -s 1.1.1.2 -p tcp &ndash;sport 1194 -j ACCEPT
+[root@proxy ~]# iptables -A INPUT -p tcp &ndash;dport 1194 -j ACCEPT
+[root@proxy ~]# service iptables save [root@proxy ~]# service iptables reload [root@proxy ~]# iptables -L -n
+六、客户段连接测试 下载openvpn客户端 略
+1.配置client端配置文件 [root@vpnserver ~]# rpm -ql openvpn | grep client.ovpn
+/usr/share/doc/openvpn-2.4.7/sample/sample-plugins/keying-material-exporter-demo/client.ovpn
+[root@vpnserver ~]# cp /usr/share/doc/openvpn-2.4.7/sample/sample-plugins/keying-material-exporter-demo/client.ovpn /root/client [root@vpnserver ~]# vim /root/client/client.ovpn
+client dev tun proto tcp remote 192.168.150.114 1194 resolv-retry infinite nobind persist-key persist-tun ca ca.crt cert client.crt key client.key comp-lzo verb 3
+2.拷贝客户端证书及配置文件 vpnserver没装vmtools所以先将所有文件放到proxy上然后通过远程工具下载
+[root@vpnserver openvpn]# scp /root/client/ca.crt root@1.1.1.3 :/root/ [root@vpnserver openvpn]# scp /root/client/zhijie.liu.crt root@1.1.1.3 :/root/ [root@vpnserver openvpn]# scp /root/client/zhijie.liu.key root@1.1.1.3 :/root/ [root@vpnserver openvpn]# scp /root/client/client.ovpn root@1.1.1.3 :/root/
+将这四个文件放到win10的C:\Users\lvbibir\OpenVPN\config目录下
+3.ping测试 ping client的内网ip1.1.1.1
+参考：
+centos6源码编译openvpn并打包成rpm
+https://www.xiaofeng.org/article/2019/10/centos6buildinstallopenvpnrpm-17.html openvpn源码下载地址
+https://openvpn.net/community-downloads/ centos6搭建openvpn
+http://www.likecs.com/show-6021.html centos6做端口映射/端口转发
+https://blog.csdn.net/weixin_30872499/article/details/96654741?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_baidulandingword-0&spm=1001.2101.3001.4242</content></entry><entry><title/><url>https://lvbibir.github.io/post/typora+picgo+%E4%B8%83%E7%89%9B%E4%BA%91%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/</url><categories/><tags/><content type="html"> 七牛云配置 1、注册七牛云，新建存储空间 这里就不介绍七牛云的注册和新建空间了
+七牛云新用户有10G的免费空间，作为个人博客来说基本足够了
+2、为存储空间配置加速域名 这里使用http就可，https还需要证书，有点麻烦
+3、配置域名解析 到域名厂商配置cname记录，我的域名是阿里的
+在控制台首页进入dns配置
+配置cname
+PicGo配置 下载安装 下载链接：https://github.com/Molunerfinn/PicGo/releases/
+建议下载稳定版
+配置七牛云图床 主流图床都有支持
+配置七牛图床
+ak和sk在七牛云→个人中心→密钥管理中查看
+typora测试图片上传 下载地址：https://www.typora.io/
+在文件→偏好设置→图像中配置图片上传，选择安装好的PicGo的应用程序
+点击验证图片上传
+到七牛云存储空间看是否有这两个文件
+typora可以实现自动的图片上传，并将本地连接自动转换为外链地址</content></entry><entry><title/><url>https://lvbibir.github.io/post/typora+picgo+%E4%B8%83%E7%89%9B%E4%BA%91%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E6%8A%A5%E9%94%99-failed-to-fetch-/</url><categories/><tags/><content type="html"> Picgo配置完七牛云图床，使用typora测试图片上传 报错：failed to fetch 看日志 日志路径：C:\Users\lvbibir\AppData\Roaming\picgo
+问题在于端口冲突，如果你打开了多个picgo程序，就会端口冲突，picgo自动帮你把36677端口改为366771端口，导致错误。log文件里也写得很清楚。
+解决 修改picgo的监听端口
+重新验证</content></entry><entry><title/><url>https://lvbibir.github.io/post/typora+picgo+%E4%B8%83%E7%89%9B%E4%BA%91%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E6%8A%A5%E9%94%99-successfalse/</url><categories/><tags/><content type="html"> 上传图片报错：
+看日志：
+日志路径：C:\Users\lvbibir\AppData\Roaming\picgo</content></entry><entry><title/><url>https://lvbibir.github.io/post/wordpress%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87%E5%A4%B1%E8%B4%A5/</url><categories/><tags/><content type="html"> 现象 博客加载不出来我在七牛云的图片资源 使用浏览器直接访问图片url却是可以成功的 我将之前csdn的博客迁移到了wordpress，图片外链地址就是csdn的，都可以正常加载。 使用浏览器直接访问图片url却是可以成功的
+我将之前csdn的博客迁移到了wordpress，图片外链地址就是csdn的，都可以正常加载。
+排查 1、由于浏览器直接访问七牛云图床的url地址是可以访问的，证明地址并没错，有没有可能是referer防盗链的配置问题
+查看防盗链配置，并没有开
+2、wordpress可以加载出来csdn的外链图片，期间也试了其他图床都是没问题的。
+3、看看七牛的图片外链和csdn的有何区别
+注意到七牛的图片外链是http，当时嫌麻烦并没有配置http，看来问题是出在这了
+因为我的网站配置了ssl证书，可能由于安全问题浏览器不予加载http项目，用http访问站点测试下图片是否可以加载
+访问成功了！
+解决 给七牛云的域名配置ssl证书</content></entry><entry><title/><url>https://lvbibir.github.io/post/wordpress%E6%96%87%E7%AB%A0%E7%BC%96%E8%BE%91%E9%A1%B5%E5%92%8C%E5%8F%91%E4%B8%8D%E5%87%BA%E6%9D%A5%E5%86%85%E5%AE%B9%E4%B8%8D%E4%B8%80%E6%A0%B7http%E5%8F%98%E6%88%90%E4%BA%86https/</url><categories/><tags/><content type="html"> 文章编辑界面和预览界面都是没问题的，发布出来后文章内容的http变成了https，而且仅有本博客域名lvbibir.cn出现这种情况，其他都正常
+发布后：
+初步判断是由于在wordpress的伪静态文件中配置了http强制跳转导致的</content></entry><entry><title/><url>https://lvbibir.github.io/post/wordpress%E6%B7%BB%E5%8A%A0icp%E5%A4%87%E6%A1%88%E5%8F%B7/</url><categories/><tags/><content type="html"> 默认主题下在后台设置里修改即可
+自定义主题或者其他主题需要修改footer.php文件
+在&lt;footer>&lt;/footer>中添加如下代码
+&lt;div style="text-align:center"> &lt;a href="http://beian.miit.gov.cn/" rel="external nofollow" target="_blank"> &lt;?php echo get_option( 'zh_cn_l10n_icp_num' ); ?> &lt;/a> &lt;/div> dux主题修改方式：在后台管理→dux主题编辑器→网站底部信息中添加
+&lt;a href="http://beian.miit.gov.cn/" rel="external nofollow" target="_blank">京ICP备2021023168号-1&lt;/a></content></entry><entry><title/><url>https://lvbibir.github.io/post/wordpress%E9%85%8D%E7%BD%AEhttps%E5%BC%BA%E5%88%B6%E8%B7%B3%E8%BD%AC/</url><categories/><tags/><content type="html"> 本文介绍如何在阿里轻量服务器wordpress站点配置http强制跳转到https
+配置强制跳转前需要站点已经安装了ssl证书，可以通过https正常访问
+[阿里云wordpress配置免费ssl证书 ]
+一般站点需要在httpd.conf中的&lt;VirtualHost *:80> &lt;/VirtualHost>中配置重定向
+与一般站点不同，wordpress需要在伪静态文件（.htaccess）中配置重定向，无需在httpd.conf中配置
+修改伪静态文件（.htaccess） 伪静态文件一般在网页根目录，是一个隐藏文件
+在#END Wordpress前添加如下重定向代码，记得把域名修改成自己的
+RewriteEngine On RewriteCond %{HTTPS} !on RewriteRule ^(.*)$ https://lvbibir.cn/%{REQUEST_URI} [L,R=301] 图中两段重定向代码略有不同
+第一段代码重定向触发器：当访问的端口不是443时进行重定向重定向规则：重定向到：https://{原域名}/{原url资源} 第二段代码重定向触发器：当访问的协议不是 TLS/SLL（https）时进行重定向重定向规则：重定向到：https://lvbibir.cn/{原url资源} 第一段代码使用端口判断，第二段代码通过访问方式判断，建议使用访问方式判断，这样服务改了端口也可以正常跳转 第一段代码重定向的原先的域名，第二段代码可以把ip地址重定向到指定域名 测试 curl -I http://lvbibir.cn 使用http访问站点的80端口成功通过301跳转到了https
+参考 https://help.aliyun.com/document_detail/98727.html?spm=5176.smartservice_service_chat.0.0.1508709aJMmZwg https://blog.csdn.net/weixin_39037804/article/details/102801202</content></entry><entry><title/><url>https://lvbibir.github.io/post/%E4%B8%83%E7%89%9B%E4%BA%91%E9%85%8D%E7%BD%AE%E5%85%8D%E8%B4%B9ssl%E8%AF%81%E4%B9%A6/</url><categories/><tags/><content type="html"> 1、购买免费证书 2、补全域名信息 3、域名验证 根据在域名提供商处新建解析
+dns配置好之后等待CA机构审核后颁发证书就可以了
+4、 为域名开启https 5、修改PicGo的配置</content></entry><entry><title/><url>https://lvbibir.github.io/post/%E9%98%BF%E9%87%8C%E4%BA%91wordpress%E9%85%8D%E7%BD%AE%E5%85%8D%E8%B4%B9ssl%E8%AF%81%E4%B9%A6/</url><categories/><tags/><content type="html"> 1、登录阿里云，选择产品中的ssl证书
+如果域名是阿里的他会自动创建dns解析，如果是其他厂商需要按照图片配置，等待几分钟进行验证
+点击审核，等待签发
+签发后根据需求下载所需证书
+我的wordpress是直接买的阿里轻量应用服务器，打开轻量应用服务器的控制台配置域名
+选择刚申请好的ssl证书
+在wordpress后台修改地址
+大功告成</content></entry></search>
