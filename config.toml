@@ -1,4 +1,4 @@
 baseURL = 'https://lvbibir.github.io/'
 languageCode = 'en-us'
 title = 'lvbibir blog'
-theme = 'PaperMod'
+theme = 'next'
