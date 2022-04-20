@@ -1,0 +1,432 @@
+<script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="{{ .Site.BaseURL }}js/search.js"></script>
+<script type="text/javascript" src="{{ .Site.BaseURL }}js/affix.js"></script>
+<script type="text/javascript" src="{{ .Site.BaseURL }}js/scrollspy.js"></script> 
+
+<script type="text/javascript">
+
+  function detectIE() {
+    var ua = window.navigator.userAgent;
+
+    var msie = ua.indexOf('MSIE ');
+    var trident = ua.indexOf('Trident/');
+    var edge = ua.indexOf('Edge/');
+
+    if (msie>0 || trident>0 || edge>0) {
+      return -1;
+    }
+
+    return 1;
+  }
+
+
+  function getCntViewHeight() {
+    var docHeight = $('#content').height(),
+        winHeight = $(window).height(),
+        cntViewHeight = (docHeight > winHeight) ? (docHeight - winHeight) : ($(document).height() - winHeight);
+    return cntViewHeight;
+  }
+
+  function getScrollbarWidth() {
+    var $div = $('<div />').addClass('scrollbar-measure').prependTo('body');
+    var div = $div[0];
+    var scrollbarWidth = div.offsetWidth - div.clientWidth;
+
+    $div.remove();
+
+    return scrollbarWidth;
+  }
+
+  function registerBackTop() {
+    var THRESHOLD = 50;
+    var $top = $('.back-to-top');
+
+    $(window).on('scroll', function () {
+      $top.toggleClass('back-to-top-on', window.pageYOffset > THRESHOLD);
+
+      var scrollTop = $(window).scrollTop();
+      var cntViewHeight = getCntViewHeight();
+      var scrollPercent = (scrollTop) / (cntViewHeight);
+      var scrollPercentRounded = Math.round(scrollPercent*100);
+      var scrollPercentMaxed = (scrollPercentRounded > 100) ? 100 : scrollPercentRounded;
+      $('#scrollpercent>span').html(scrollPercentMaxed);
+    });
+
+    $top.on('click', function () {
+      $("html,body").animate({
+                 scrollTop: 0,
+                 screenLeft: 0,
+                 }, 800);
+    });
+  }
+
+  function initScrollSpy () {
+    var tocSelector = '.post-toc';
+    var $tocElement = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocElement
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+      })
+      .on('clear.bs.scrollspy', removeCurrentActiveClass);
+
+    $('body').scrollspy({ target: tocSelector });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+  }
+
+  function initAffix () {
+    var headerHeight = $('.header-inner').height();
+    var footerOffset = parseInt($('.main').css('padding-bottom'), 10);
+    var sidebarTop = headerHeight + 10;
+
+    $('.sidebar-inner').affix({
+      offset: {
+        top: sidebarTop,
+        bottom: footerOffset
+      }
+    });
+
+    $(document)
+      .on('affixed.bs.affix', function () {
+        updateTOCHeight(document.body.clientHeight - 100);
+      });
+  }
+
+  function initTOCDimension () {
+    var updateTOCHeightTimer;
+
+    $(window).on('resize', function () {
+      updateTOCHeightTimer && clearTimeout(updateTOCHeightTimer);
+
+      updateTOCHeightTimer = setTimeout(function () {
+        var tocWrapperHeight = document.body.clientHeight - 100;
+
+        updateTOCHeight(tocWrapperHeight);
+      }, 0);
+    });
+
+    // Initialize TOC Height.
+    updateTOCHeight(document.body.clientHeight - 100);
+
+    // Initialize TOC Width.
+    var scrollbarWidth = getScrollbarWidth();
+    $('.post-toc').css('width', 'calc(100% + ' + scrollbarWidth + 'px)');
+  }
+
+  function updateTOCHeight (height) {
+    height = height || 'auto';
+    $('.post-toc').css('max-height', height);
+  }
+
+$(function() {
+
+  var sidebarTop = $('.header-inner').height() + 10;
+  $('#sidebar').css({ 'margin-top': sidebarTop }).show(); 
+
+  // Seems no good for fixed the scroll bar issues
+  var sidebarMt = parseInt($('#sidebar').css('margin-top'));
+  var sidebarInHeight = parseInt($('.sidebar-inner').css('height'));
+  var sideHeight = sidebarMt + sidebarInHeight;
+  var contentHeight = $('.content-wrap').height();
+
+  if (contentHeight < sideHeight) {
+    $('.content-wrap').css('min-height', sideHeight);
+  }
+  
+  
+  $('.site-nav-toggle').on('click', function () {
+    var $siteNav = $('.site-nav');
+    var $toggleLine = $('.toggle');
+    var ON_CLASS_NAME = 'site-nav-on';
+    var CLOSE_CLASS_NAME = 'toggle-close';
+    var isSiteNavOn = $siteNav.hasClass(ON_CLASS_NAME);
+    var animateAction = isSiteNavOn ? 'slideUp' : 'slideDown';
+    var animateCallback = isSiteNavOn ? 'removeClass' : 'addClass';
+
+    $siteNav.stop()[animateAction]('normal', function () {
+      $siteNav[animateCallback](ON_CLASS_NAME);
+      $toggleLine[animateCallback](CLOSE_CLASS_NAME);
+    });
+
+  });
+
+  registerBackTop();
+  initScrollSpy();
+  initAffix();
+  initTOCDimension();
+
+  $('.sidebar-nav-toc').click(function(){
+    $(this).addClass('sidebar-nav-active');
+    $(this).next().removeClass('sidebar-nav-active');      
+    $('.'+$(this).next().attr('data-target')).toggle(500);
+    $('.'+$(this).attr('data-target')).toggle(500);
+  });
+
+  $('.sidebar-nav-overview').click(function(){
+    $(this).addClass('sidebar-nav-active');
+    $(this).prev().removeClass('sidebar-nav-active');      
+    $('.'+$(this).prev().attr('data-target')).toggle(500);
+    $('.'+$(this).attr('data-target')).toggle(500);
+  });
+});  
+
+</script>
+
+{{ if .IsPage }}
+<!-- Is Page -->
+
+<!-- Image Viewer -->
+<script src="//cdn.bootcdn.net/ajax/libs/imageviewer/0.1.0/viewer.min.js"></script>
+<script type="text/javascript">
+$(function() {
+  $('.post-body').viewer(); 
+});
+</script>
+<!-- Image Viewer -->
+
+{{ if and (.Site.Params.Comment.Enable) (eq .Site.Params.Comment.Module "Valine") }}
+<!-- Valine -->
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script type="text/javascript">
+  new Valine({
+      el: '#vcomments',
+      appId: '{{ .Site.Params.LeanCloud.AppId }}',
+      appKey: '{{ .Site.Params.LeanCloud.AppKey }}',
+      visitor: true,
+      placeholder: ' {{ i18n "CommentPh" }} ',
+      requiredFields: ['nick', 'mail'],
+      lang: "{{ .Page.Lang }}"
+  });
+</script>
+<!-- Addthis Share -->
+{{end }}
+
+{{ if and (.Site.Params.Comment.Enable) (eq .Site.Params.Comment.Module "Waline") }}
+<!-- Waline -->
+<script type="text/javascript">
+  const locale = {
+    placeholder: '{{ i18n "CommentPh" | safeHTML }}'
+  };
+  $(function(){
+    if (detectIE()>0) {
+      $.getScript(document.location.protocol+'//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js', function(){
+         new Waline({
+          el: '#wcomments', 
+          visitor: true,
+          emoji: [
+            'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq',
+            'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/alus',
+            'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili'
+          ], 
+          wordLimit: '200', 
+          uploadImage: false,
+          locale, 
+          requiredMeta: ['nick', 'mail'], 
+          serverURL: "{{ .Site.Params.Comment.WalineSerURL }}", 
+          lang: "{{ .Page.Lang }}"
+        });
+      });      
+    } else {
+      $('#wcomments').html('{{ i18n "UnComment" }}');
+    }
+  });
+</script>
+<!-- Waline -->
+{{end }}
+
+{{ if and (.Site.Params.Comment.Enable) (or (eq .Site.Params.Comment.Module "LiveRe") (eq .Site.Params.Comment.Module "Utterances")) }}
+<!-- LeanCloud JS lib -->
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.6.1/dist/av-min.js"></script>
+<script type="text/javascript">
+  function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  var entries = [];
+  var $visitors = $(".leancloud_visitors");
+ 
+  $visitors.each(function () {
+    entries.push( $(this).attr("id").trim() );
+  });
+
+  query.containedIn('url', entries);
+  query.find()
+    .then((results) => {
+      var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+      if (results.length == 0) {
+        $visitors.find(COUNT_CONTAINER_REF).text(0);
+        return;
+      }
+
+      for (var i = 0; i < results.length; i++) {
+        var item = results[i];
+        var url = item.get('url');
+        var time = item.get('time');
+        var element = document.getElementById(url);
+
+        $(element).find(COUNT_CONTAINER_REF).text(time);
+      }
+      for(var i = 0; i < entries.length; i++) {
+        var url = entries[i];
+        var element = document.getElementById(url);
+        var countSpan = $(element).find(COUNT_CONTAINER_REF);
+        if( countSpan.text() == '') {
+          countSpan.text(0);
+        }
+      }
+    }, (error) => {
+      console.log('Query vistors failed: '+error);
+    });
+}
+
+function addCount(Counter) {
+  var $visitors = $(".leancloud_visitors");
+  var url = $visitors.attr('id').trim();
+  var title = $visitors.attr('data-flag-title').trim();
+  var query = new AV.Query('Counter');
+  query.equalTo("url", url);
+  query.find().then((results) => {
+    if (results.length > 0) {
+      var counter = results[0];
+      counter.increment('time', 1);
+      counter.save(null, {
+        query: new AV.Query('Counter').equalTo('url', url),
+        fetchWhenSave: true
+      }).then((counter) => {
+        var $element = $(document.getElementById(url));
+        $element.find('.leancloud-visitors-count').text(counter.get('time'));        
+      }, (error) => {
+        console.log('Update vistor failed: '+error);
+      });
+    } else {      
+      var acl = new AV.ACL();
+      acl.setPublicReadAccess(true);
+      acl.setPublicWriteAccess(true);
+     
+      var newCounter = new Counter();
+      newCounter.set("title", title);
+      newCounter.set("url", url);
+      newCounter.set("time", 1);
+
+      newCounter.setACL(acl);
+      newCounter.save().then((counter) => {
+        
+      var $element = $(document.getElementById(url));
+      $element.find('.leancloud-visitors-count').text(newCounter.get('time'));
+    }, (error) => {
+      console.log("Save new vistor failed: "+error);
+    });
+  }}); 
+}
+
+$(function() {
+
+  AV.init({
+    appId: "{{ .Site.Params.LeanCloud.AppId }}",
+    appKey: "{{ .Site.Params.LeanCloud.AppKey }}",
+    serverURL: "{{ .Site.Params.LeanCloud.ServerURL }}"
+  });  
+
+  const Counter = AV.Object.extend("Counter");
+
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+});
+</script>
+{{ end }}
+
+{{ if and (.Site.Params.Comment.Enable) (eq .Site.Params.Comment.Module "LiveRe") }}
+<!-- LiveRe -->
+<script type="text/javascript">
+(function(d, s) {
+     var j, e = d.getElementsByTagName(s)[0];
+     if (typeof LivereTower === 'function') { return; }
+     j = d.createElement(s);
+     j.src = '//cdn-city.livere.com/js/embed.dist.js';
+     j.async = true;
+     e.parentNode.insertBefore(j, e);
+ })(document, 'script');
+</script>
+<!-- LiveRe -->
+{{ end }}
+
+{{ if and (.Site.Params.Comment.Enable) (eq .Site.Params.Comment.Module "Utterances") }}
+<!-- utterances -->
+<script type="text/javascript">
+  (function() {
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term',"{{ .Site.Params.Comment.UtterancesTitle }}")
+      utterances.setAttribute('theme',"{{ .Site.Params.Comment.UtterancesTheme }}")
+      utterances.setAttribute('repo',"{{ .Site.Params.Comment.UtterancesRepo }}")
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      document.getElementById('ucomments').appendChild(utterances);
+  })();
+</script>
+<!-- utterances -->
+{{ end }}
+
+{{if and .Params.math (ne .Params.math false) }}
+<!-- MathJax support Math -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<!-- MathJax support Math -->
+{{ end }}
+
+{{ if and (.Site.Params.Share.Enable) (isset .Site.Params.Share "addthisid") }}
+<!-- Addthis Share -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid={{ .Site.Params.Share.AddthisId }}"></script>
+<!-- Addthis Share -->
+{{ end }}
+
+<!-- Is Page -->
+{{ end }}
+
+<!-- Baidu Link Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- Baidu Link Push -->
+
+{{ if and (.Site.Params.OnlineIM.Enable) (isset .Site.Params.OnlineIM "daovoiceid") }}
+<!-- DaoVoice OnlineIM -->
+<script type="text/javascript">
+  $(function(){
+    if (document.body.clientWidth > 900) {
+      var oHead = document.getElementsByTagName('HEAD').item(0); 
+      var oScript= document.createElement("script"); 
+      oScript.type = "text/javascript"; 
+      oScript.innerHTML="(function(i,s,o,g,r,a,m){i[\"DaoVoiceObject\"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset=\"utf-8\";m.parentNode.insertBefore(a,m)})(window,document,\"script\",('https:' == document.location.protocol ? 'https:' : 'http:') + \"//widget.daovoice.io/widget/{{ .Site.Params.OnlineIM.DaoVoiceId }}.js\",\"daovoice\")"; 
+      oHead.appendChild(oScript);
+
+      daovoice('init', {
+        app_id: "{{ .Site.Params.OnlineIM.DaoVoiceId }}"
+      });
+      daovoice('update');
+    }
+  });
+</script>
+<!-- DaoVoice OnlineIM -->
+{{ end }}

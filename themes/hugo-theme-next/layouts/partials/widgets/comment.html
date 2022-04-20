@@ -1,0 +1,19 @@
+{{ if .Site.Params.Comment.Enable }}
+
+{{ if eq .Site.Params.Comment.Module "Valine" }}
+<div id="vcomments"></div>
+{{ end }}
+
+{{ if eq .Site.Params.Comment.Module "Waline" }}
+<div id="wcomments"></div>
+{{ end }}
+
+{{ if eq .Site.Params.Comment.Module "LiveRe" }}
+<div id="lv-container" data-id="city" data-uid="{{ .Site.Params.Comment.LiveReId }}">
+{{ end }}
+
+{{ if eq .Site.Params.Comment.Module "Utterances" }}
+<div id="ucomments"></div>
+{{ end }}
+
+{{ end }}

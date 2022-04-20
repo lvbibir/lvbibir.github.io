@@ -1,0 +1,30 @@
+<div class="copyright" >
+  <span class="copyright-year">  
+    &copy; 2010 - {{ now.Year }}
+  </span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="copyright-author">{{ .Site.Title }}</span>
+</div>
+<div class="powered-info">
+  <span class="powered-by">
+    Powered by - <a class="powered-link" href="//gohugo.io" target="_blank" title="hugo" >Hugo v{{ hugo.Version }}</a>
+  </span>
+  <span class="separator-line">/</span>
+  <span class="theme-info">
+    Theme by - <a class="powered-link" href="//github.com/elkan1788/hugo-theme-next" target="_blank"> NexT
+    </a>
+  </span>
+</div>
+<div class="vistor-info">
+{{ partial "widgets/statis.html" .}}
+</div>
+<div class="license-info">
+  <span class="storage-info">
+    Storage by 
+    <a href="{{ .Site.Params.Footer.StorageLink }}" style="font-weight:700" target="_blank">{{ .Site.Params.Footer.StorageName }}</a>
+  </span>
+  <span class="separator-line">/</span>
+  <span class="license-num"> 
+    <a href="{{ .Site.Params.Footer.ICPLink }}" target="_blank">{{ .Site.Params.Footer.ICPNo }}</a>
+  </span>
+</div>

@@ -1,0 +1,16 @@
+<div class="reward-qr-info">
+  <div>{{ i18n "RewardTips" }}</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>{{ i18n "RewardBtnText" }}</span>
+  </button>
+  <div id="QR" style="display: none;">   
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/img/wechat-pay.png" alt="WeChat Pay"/>
+        <p>{{ i18n "RewardWxPay" }}</p>
+      </div>
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/img/ali-pay.png" alt="Alipay"/>
+        <p>{{ i18n "RewardAliPay" }}</p>
+      </div>
+  </div>
+</div>

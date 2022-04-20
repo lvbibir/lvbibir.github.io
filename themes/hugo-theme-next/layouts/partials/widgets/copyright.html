@@ -1,0 +1,23 @@
+<div class="post-nav">
+<div class="article-copyright">
+    <div class="article-copyright-img">
+        <img src="/img/qq_qrcode.png" width="129px" height="129px"/>
+        <div style="text-align:center;">{{ i18n "ScanQQCode" }}</div>
+    </div>
+    <div class="article-copyright-info">
+        <p> 
+            <span>{{ i18n "ArticleDeclaration" }}：</span>{{ .Page.Title }}
+        </p>
+        <p> 
+            <span>{{ i18n "ArticleLink" }}：</span>{{ .Page.Permalink }}
+        </p>
+        <p> 
+            <span>{{ i18n "ArticleAuthor" }}：</span>{{ .Site.Params.AuthorName }}
+        </p>
+        <p> 
+            <span>{{ i18n "ArticleDeclaration" }}： </span>{{ .Site.Params.ArticleDecContent | safeHTML }}
+        </p>
+    </div>
+</div>
+<div class="clear"></div>
+</div>

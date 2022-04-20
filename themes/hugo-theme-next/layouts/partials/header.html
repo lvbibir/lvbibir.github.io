@@ -1,0 +1,70 @@
+<div class="site-brand-container">
+<div class="site-nav-toggle">
+  <div class="toggle" role="button" style="opacity: 1; top: 0px;">
+      <span class="toggle-line"></span>
+      <span class="toggle-line"></span>
+      <span class="toggle-line"></span>
+  </div>
+</div>
+<div class="site-meta {{ if .Site.Params.Imglogo }} custom-logo {{ end }}">
+  {{ $langs := len .Site.Languages }}
+  {{ $pages := len .Page.AllTranslations }}
+  {{ if and (gt $langs 1) (gt $pages 1)  }}
+  <div class="multi-lang-switch"> 
+    <i class="fa fa-fw fa-language" style="margin-right: 5px;"></i>
+    {{ $siteLanguages := .Site.Languages }}
+    {{ $pageLang := .Page.Lang }}
+    {{ range .Page.AllTranslations }}
+        {{ $translation := .}}
+        {{ range $index, $lang := $siteLanguages }}
+            {{ if eq $translation.Lang $lang.Lang }}              
+              {{ if eq $pageLang $lang.Lang}}
+                 <a class="lang-link" id="{{ $translation.Language }}" href="#">{{ $lang.LanguageName }}</a>
+              {{ else }}
+                <a class="lang-link" id="{{ $translation.Language }}" href="{{ $translation.Permalink }}">{{ $lang.LanguageName }}</a>
+              {{ end }}
+              {{ if and (ne (add $index 1) $pages) (ne $index $pages)}} 
+              <span class="lang-line"> / </span> 
+              {{ end }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+  </div>
+  {{ end }}
+  <div class="custom-logo-site-title">
+    <a href="{{ "/" | relLangURL }}"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">{{ .Site.Title }}</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">{{ with .Site.Params.Subtitle }}{{ . }}{{ end }}</p>
+</div>
+
+<div class="site-nav-right">
+    <div class="toggle popup-trigger" style="opacity: 1; top: 0px;">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      {{ $curPage := . }}
+      {{ range .Site.Menus.main }}
+      {{ $active := or ($curPage.IsMenuCurrent "main" .) ($curPage.HasMenuCurrent "main" .) }}
+      {{ $active = or $active (eq .Name $curPage.Title) }}
+        <li class="menu-item {{ if $active }}menu-item-active{{ end }}">
+          <a href="{{ .URL | relLangURL }}" rel="section" {{ if eq .URL "/404.html" }}target="_blank"{{ end }}>
+              <i class="menu-item-icon fa fa-fw fa-{{ .Pre }}"></i> <br />{{ .Name }}
+          </a>
+        </li>
+      {{ end }}
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> {{ i18n "Search" }}</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      {{ partial "widgets/search.html" .}}
+    </div>
+</nav>
