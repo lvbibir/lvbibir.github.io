@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>openvpn on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/openvpn/</link>
+    <description>Recent content in openvpn on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 01 Jul 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/openvpn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>openvpn部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos6_deploy_openvpn/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos6_deploy_openvpn/</guid>
+      <description>一、实验环境 3台centos6.5，1台win10，openvpn-2.4.7，easy-rsa-3.0.5 二、拓扑结构 Win10安装ope</description>
+    </item>
+    
+  </channel>
+</rss>

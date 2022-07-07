@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>openstack on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/openstack/</link>
+    <description>Recent content in openstack on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 01 Jun 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/openstack/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>kolla-ansible部署多节点openstack（Train版）</title>
+      <link>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_multinode_train/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_multinode_train/</guid>
+      <description>添加节点 管理防火墙及selinux 安装docker-ce 提前下载docker镜像 修改网卡名称 修改主机名 配置ssh免密 kolla-ansible -i ./multinode bootstrap-servers --limit node135 kolla-ansible -i ./multinode prechecks --limit node135</description>
+    </item>
+    
+    <item>
+      <title>cloud-init自动将ssh配置文件的PasswordAuthentication参数值修改为no</title>
+      <link>https://www.lvbibir.cn/posts/tech/cloud-init_change_ssh_config/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/cloud-init_change_ssh_config/</guid>
+      <description>前言 在openEuler20.03 (LTS-SP1)系统上进行一些测试，发现某个东西会自动修改ssh配置文件导致系统无法通过密码登录，最后排</description>
+    </item>
+    
+    <item>
+      <title>kolla-ansible部署Train版openstack（all-in-one）</title>
+      <link>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_allinone_train/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_allinone_train/</guid>
+      <description>kolla ansible简介 kolla 的使命是为 openstack 云平台提供生产级别的、开箱即用的交付能力。kolla 的基本思想是一切皆容器，将所有服务基于 Docker 运行，并且保证</description>
+    </item>
+    
+  </channel>
+</rss>

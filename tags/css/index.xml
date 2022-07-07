@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>css on 热爱生活与梦想</title><link>https://lvbibir.github.io/tags/css/</link><description>Recent content in css on 热爱生活与梦想</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://lvbibir.github.io/tags/css/index.xml" rel="self" type="application/rss+xml"/><item><title>Markdown语法手册</title><link>https://lvbibir.github.io/post/markdown-syntax/</link><pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/post/markdown-syntax/</guid><description>&lt;p>本文提供了一个可以在 &lt;code>Hugo&lt;/code> 内容文件中使用的基本Markdown语法示例，还展示了基本 HTML 元素在 &lt;code>Hugo&lt;/code> 主题中是否使用 &lt;code>CSS&lt;/code> 装饰。&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>css on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/css/</link>
+    <description>Recent content in css on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 07 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>修改hugo的图片布局，使多张图片可以并排显示</title>
+      <link>https://www.lvbibir.cn/posts/blog/hugo_image_layout/</link>
+      <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/hugo_image_layout/</guid>
+      <description>前言 仅是对前端一窍不通的我的一次尝试，如果有更好的实现方法可以评论或者发邮件告诉我~ md文件中图片并排显示 先贴结论，并排显示图片只需要一段简</description>
+    </item>
+    
+  </channel>
+</rss>

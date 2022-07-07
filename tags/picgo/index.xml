@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>picgo on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/picgo/</link>
+    <description>Recent content in picgo on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 01 Jul 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/picgo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>typora&#43;picgo&#43;七牛云上传图片</title>
+      <link>https://www.lvbibir.cn/posts/blog/typora_picgo_qiniu_upload_image/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/typora_picgo_qiniu_upload_image/</guid>
+      <description>七牛云配置 1、注册七牛云，新建存储空间 这里就不介绍七牛云的注册和新建空间了 七牛云新用户有10G的免费空间，作为个人博客来说基本足够了 2、为存</description>
+    </item>
+    
+  </channel>
+</rss>

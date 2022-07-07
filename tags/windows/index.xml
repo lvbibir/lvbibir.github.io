@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>windows on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/windows/</link>
+    <description>Recent content in windows on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 01 Jun 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>windows双网卡时设置网络优先级</title>
+      <link>https://www.lvbibir.cn/posts/tech/windows_network_priority/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/windows_network_priority/</guid>
+      <description>前言 仅在win10测试可用 在工作中需要连接公司内网（有线，不可联网），访问外网时需要连接无线 同时接入这两个网络时，内网访问正常，外网无法访问</description>
+    </item>
+    
+  </channel>
+</rss>

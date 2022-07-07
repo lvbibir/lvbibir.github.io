@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>rpm on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/rpm/</link>
+    <description>Recent content in rpm on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 01 Mar 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/rpm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>httpd源码构建rpm</title>
+      <link>https://www.lvbibir.cn/posts/tech/httpd_src_build_rpm/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/httpd_src_build_rpm/</guid>
+      <description>系统版本：isoft-serveros-v4.2（centos7） 源码下载链接： https://dlcdn.apache.org//apr/apr-1.7.0.tar.bz2 https://dlcdn.apache.org//apr/apr-util-1.6.1.tar.bz2 https://dlcdn.apache.org//httpd/httpd-2.4.52.tar.bz2 安装依赖 yum install -y wget gcc rpm-build yum install -y autoconf zlib-devel libselinux-devel libuuid-devel apr-devel apr-util-devel pcre-devel openldap-devel lua-devel libxml2-devel openssl-devel yum install -y</description>
+    </item>
+    
+    <item>
+      <title>openssl源码构建rpm</title>
+      <link>https://www.lvbibir.cn/posts/tech/openssl_src_build_rpm/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/openssl_src_build_rpm/</guid>
+      <description>环境 iSoftserver-v4.2(Centos-7) openssl version：1.0.2k 编译 从github上看到的编译脚本，本地修改后： #!/bin/bash set -e set -v mkdir ~/openssl &amp;amp;&amp;amp; cd ~/openssl yum -y install \ curl \ which \ make \ gcc \ perl \ perl-WWW-Curl \ rpm-build #</description>
+    </item>
+    
+    <item>
+      <title>通过rpm反编译修改rpm包内的文件</title>
+      <link>https://www.lvbibir.cn/posts/tech/change_file_in_rpm_pkg/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/change_file_in_rpm_pkg/</guid>
+      <description>前言 要修改rpm包中的文件，对于自己编译的rpm包，只需要在源码中修改好然后重新编译即可。而对于并不是自己编译的rpm包，且不熟悉编译环境的</description>
+    </item>
+    
+    <item>
+      <title>openssh源码打包编译成rpm包（8.7p1）</title>
+      <link>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm_8.7p1/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm_8.7p1/</guid>
+      <description>编译环境 编译平台： vmware workstation 系统版本： 普华服务器操作系统v4.0 系统内核： 3.10.0-327.el7.isoft.x86_64 软件版本： openssh-8.7p1.tar.gz x11-ssh-askpass-1.2.4.1.tar.gz 编译步骤 yum安装依赖工具 yum install gdb imake libXt-devel gtk2-devel rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel libX11-devel</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,3 +1,454 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home on 热爱生活与梦想</title><link>https://lvbibir.github.io/</link><description>Recent content in Home on 热爱生活与梦想</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 25 Apr 2022 17:05:59 +0800</lastBuildDate><atom:link href="https://lvbibir.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>测试</title><link>https://lvbibir.github.io/2022/04/04/.html</link><pubDate>Mon, 25 Apr 2022 17:05:59 +0800</pubDate><guid>https://lvbibir.github.io/2022/04/04/.html</guid><description>用于测试</description></item><item><title>Markdown语法手册</title><link>https://lvbibir.github.io/post/markdown-syntax/</link><pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/post/markdown-syntax/</guid><description>&lt;p>本文提供了一个可以在 &lt;code>Hugo&lt;/code> 内容文件中使用的基本Markdown语法示例，还展示了基本 HTML 元素在 &lt;code>Hugo&lt;/code> 主题中是否使用 &lt;code>CSS&lt;/code> 装饰。&lt;/p></description></item><item><title>富文本内容测试</title><link>https://lvbibir.github.io/post/rich-content/</link><pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/post/rich-content/</guid><description>&lt;p>Hugo 上有几个&lt;a href="https://gohugo.io/content-management/shortcodes/#use-hugos" target="_blank" rel="noopener">&lt;strong>内置短码&lt;/strong>&lt;/a>
-，用于丰富内容，以及&lt;a href="https://gohugo.io/about/hugo-and-gdpr/" target="_blank" rel="noopener">&lt;strong>隐私配置&lt;/strong>&lt;/a>
-还有一组简单的短代码，支持各种社交媒体嵌入的静态和非 JS 版本。&lt;/p></description></item><item><title>图像占位符显示</title><link>https://lvbibir.github.io/post/placeholder-text/</link><pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/post/placeholder-text/</guid><description>&lt;p>范德格拉夫原理（Van de Graaf Canon）重构了曾经用于书籍设计中将页面划分为舒适比例的方法。这一原理也被称为“秘密原理”，用于许多中世纪的手稿和古板书中。在范德格拉夫原理中，文本区域和页面的长款具有相同的比例，并且文本区域的高度等于页面宽度，通过划分页面得到九分之一的订口边距和九分之二的切口边距，以及与页面长宽相同的比例的文本区域。&lt;/p></description></item><item><title>数据公式设置显示</title><link>https://lvbibir.github.io/post/math-typesetting/</link><pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/post/math-typesetting/</guid><description>&lt;p>Hugo 项目中的数学表示法可以通过使用第三方 JavaScript 库来实现。&lt;/p></description></item><item><title>centos7修改网卡名称</title><link>https://lvbibir.github.io/post/centos7%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/</link><pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/post/centos7%E4%BF%AE%E6%94%B9%E7%BD%91%E5%8D%A1%E5%90%8D%E7%A7%B0/</guid><description>前言 在使用kolla-ansible部署多节点openstack时，所有节点的外网网卡名称和管理网卡名称需要一样，其中两台是型号相同的物理机</description></item><item><title>支持Emoji表情符号</title><link>https://lvbibir.github.io/post/emoji-support/</link><pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/post/emoji-support/</guid><description>&lt;p>&lt;code>Emoji&lt;/code> 表情符号可以通过多种方式在 &lt;code>Hugo&lt;/code> 项目中启用。&lt;/p></description></item><item><title>关于我</title><link>https://lvbibir.github.io/about.html</link><pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/about.html</guid><description>Hugo是用Go编写的一个开放源代码静态站点生成器，可在Apache许可证2.0 下使用。 Hugo支持TOML, YAML和JSON数据文件类型</description></item><item><title/><link>https://lvbibir.github.io/post/%E4%B8%83%E7%89%9B%E4%BA%91%E9%85%8D%E7%BD%AE%E5%85%8D%E8%B4%B9ssl%E8%AF%81%E4%B9%A6/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/post/%E4%B8%83%E7%89%9B%E4%BA%91%E9%85%8D%E7%BD%AE%E5%85%8D%E8%B4%B9ssl%E8%AF%81%E4%B9%A6/</guid><description>1、购买免费证书 2、补全域名信息 3、域名验证 根据在域名提供商处新建解析 dns配置好之后等待CA机构审核后颁发证书就可以了 4、 为域名开启htt</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/</link>
+    <description>Recent content on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 07 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>跑渣的跑步日常</title>
+      <link>https://www.lvbibir.cn/posts/life/running/</link>
+      <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/life/running/</guid>
+      <description>记录一个跑渣的跑步日常，每次都单独记录未免有些繁琐，除了比较有纪念意义的，就以周和月为单位来记录吧，一点一滴见证自己成长~</description>
+    </item>
+    
+    <item>
+      <title>【置顶】Hello,hugo!</title>
+      <link>https://www.lvbibir.cn/posts/blog/hello_hugo/</link>
+      <pubDate>Wed, 06 Jul 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/hello_hugo/</guid>
+      <description>记录wordpress迁移至hugo的过程，大多参考sulv大佬的博客，很详尽就只贴链接了</description>
+    </item>
+    
+    <item>
+      <title>修改hugo的图片布局，使多张图片可以并排显示</title>
+      <link>https://www.lvbibir.cn/posts/blog/hugo_image_layout/</link>
+      <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/hugo_image_layout/</guid>
+      <description>前言 仅是对前端一窍不通的我的一次尝试，如果有更好的实现方法可以评论或者发邮件告诉我~ md文件中图片并排显示 先贴结论，并排显示图片只需要一段简</description>
+    </item>
+    
+    <item>
+      <title>git设置代理</title>
+      <link>https://www.lvbibir.cn/posts/tech/git_set_proxy/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/git_set_proxy/</guid>
+      <description># 设置全局代理 # http git config --global https.proxy http://127.0.0.1:1080 # https git config --global https.proxy https://127.0.0.1:1080 # 使用socks5代理的 例如ss，ssr 1080是windows下ss的默认代理端口,mac下不同</description>
+    </item>
+    
+    <item>
+      <title>kolla-ansible部署多节点openstack（Train版）</title>
+      <link>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_multinode_train/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_multinode_train/</guid>
+      <description>添加节点 管理防火墙及selinux 安装docker-ce 提前下载docker镜像 修改网卡名称 修改主机名 配置ssh免密 kolla-ansible -i ./multinode bootstrap-servers --limit node135 kolla-ansible -i ./multinode prechecks --limit node135</description>
+    </item>
+    
+    <item>
+      <title>shell脚本不同执行方式的区别</title>
+      <link>https://www.lvbibir.cn/posts/tech/shell_different_execution_mode/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/shell_different_execution_mode/</guid>
+      <description>shell 脚本通常有 sh filename、bash filename、./filename、source filename 这四种执行方式 source filename 可以使用 . filename 代替，在当前的 bash</description>
+    </item>
+    
+    <item>
+      <title>shell脚本开启debug模式</title>
+      <link>https://www.lvbibir.cn/posts/tech/shell_enable_debug_mode/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/shell_enable_debug_mode/</guid>
+      <description>前言 bash脚本是没有debug模式的，不过可以通过 set 指令实现简单的debug功能 bash 脚本中默认每条指令都会从上到下依次执行，但是当某行指令报</description>
+    </item>
+    
+    <item>
+      <title>windows双网卡时设置网络优先级</title>
+      <link>https://www.lvbibir.cn/posts/tech/windows_network_priority/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/windows_network_priority/</guid>
+      <description>前言 仅在win10测试可用 在工作中需要连接公司内网（有线，不可联网），访问外网时需要连接无线 同时接入这两个网络时，内网访问正常，外网无法访问</description>
+    </item>
+    
+    <item>
+      <title>httpd源码构建rpm</title>
+      <link>https://www.lvbibir.cn/posts/tech/httpd_src_build_rpm/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/httpd_src_build_rpm/</guid>
+      <description>系统版本：isoft-serveros-v4.2（centos7） 源码下载链接： https://dlcdn.apache.org//apr/apr-1.7.0.tar.bz2 https://dlcdn.apache.org//apr/apr-util-1.6.1.tar.bz2 https://dlcdn.apache.org//httpd/httpd-2.4.52.tar.bz2 安装依赖 yum install -y wget gcc rpm-build yum install -y autoconf zlib-devel libselinux-devel libuuid-devel apr-devel apr-util-devel pcre-devel openldap-devel lua-devel libxml2-devel openssl-devel yum install -y</description>
+    </item>
+    
+    <item>
+      <title>openssl源码构建rpm</title>
+      <link>https://www.lvbibir.cn/posts/tech/openssl_src_build_rpm/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/openssl_src_build_rpm/</guid>
+      <description>环境 iSoftserver-v4.2(Centos-7) openssl version：1.0.2k 编译 从github上看到的编译脚本，本地修改后： #!/bin/bash set -e set -v mkdir ~/openssl &amp;amp;&amp;amp; cd ~/openssl yum -y install \ curl \ which \ make \ gcc \ perl \ perl-WWW-Curl \ rpm-build #</description>
+    </item>
+    
+    <item>
+      <title>centos7修改网卡名称</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7_change_network_card_name/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7_change_network_card_name/</guid>
+      <description>前言 在使用kolla-ansible部署多节点openstack时，所有节点的外网网卡名称和管理网卡名称需要一样，其中两台是型号相同的物理机</description>
+    </item>
+    
+    <item>
+      <title>ceph创建pool时pg_num的配置</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph_pg_num_config_create_pool/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/ceph_pg_num_config_create_pool/</guid>
+      <description>pg_num 用此命令创建存储池时： ceph osd pool create {pool-name} pg_num 确定pg_num取值是强制性的，因为不能自动计算。常用的较为通用的取值： 少于5个osd，pg_num设置</description>
+    </item>
+    
+    <item>
+      <title>批量导出&amp;导入docker镜像</title>
+      <link>https://www.lvbibir.cn/posts/tech/import_export_docker_image/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/import_export_docker_image/</guid>
+      <description>python方式 批量导出，运行后所有tar包都在当前目录下 # encoding: utf-8 import re import os import subprocess if __name__ == &amp;#34;__main__&amp;#34;: p = subprocess.Popen(&amp;#39;docker images&amp;#39;, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) for line in p.stdout.readlines(): # 此处的正则表达式是为了匹配镜像名</description>
+    </item>
+    
+    <item>
+      <title>Centos7.5升级内核至5.10</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7_update_kernel_to_5.10/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7_update_kernel_to_5.10/</guid>
+      <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm的缩写 长期维护版 ml m</description>
+    </item>
+    
+    <item>
+      <title>CentOS密码尝试次数过多</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos_too_many_password_attempts/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos_too_many_password_attempts/</guid>
+      <description>pam模块 pam：Pluggable Authentication Modules 可插拔的认证模块，linux 中的认证方式，“可插拔的“说明可以按需对认证内容进行变更。与nsswit</description>
+    </item>
+    
+    <item>
+      <title>关闭X服务本地监听的6000端口</title>
+      <link>https://www.lvbibir.cn/posts/tech/close_6000_port/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/close_6000_port/</guid>
+      <description>前言 基于CVE-1999-0526漏洞的披露，对系统X服务的6000端口进行关闭 有三种方式： 修改系统/usr/bin/X内容，增加nolis</description>
+    </item>
+    
+    <item>
+      <title>centos7部署ceph&#43;dashboard（nautilus）</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7_deploy_ceph_dashboard_nautilus/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7_deploy_ceph_dashboard_nautilus/</guid>
+      <description>前言 ceph测试环境的搭建 基本环境 物理环境：Vmware Workstaion 系统版本：Centos-7.9-Minimal 两个osd节点添加一块虚拟磁盘，建议</description>
+    </item>
+    
+    <item>
+      <title>cloud-init自动将ssh配置文件的PasswordAuthentication参数值修改为no</title>
+      <link>https://www.lvbibir.cn/posts/tech/cloud-init_change_ssh_config/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/cloud-init_change_ssh_config/</guid>
+      <description>前言 在openEuler20.03 (LTS-SP1)系统上进行一些测试，发现某个东西会自动修改ssh配置文件导致系统无法通过密码登录，最后排</description>
+    </item>
+    
+    <item>
+      <title>python3修改pip源</title>
+      <link>https://www.lvbibir.cn/posts/tech/python3_change_pip_repo/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/python3_change_pip_repo/</guid>
+      <description>中国科学技术大学 : https://pypi.mirrors.ustc.edu.cn/simple 清华：https://pypi.tuna.tsinghua.edu.cn/simple 豆瓣：http://pypi.do</description>
+    </item>
+    
+    <item>
+      <title>通过rpm反编译修改rpm包内的文件</title>
+      <link>https://www.lvbibir.cn/posts/tech/change_file_in_rpm_pkg/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/change_file_in_rpm_pkg/</guid>
+      <description>前言 要修改rpm包中的文件，对于自己编译的rpm包，只需要在源码中修改好然后重新编译即可。而对于并不是自己编译的rpm包，且不熟悉编译环境的</description>
+    </item>
+    
+    <item>
+      <title>部署Ambari 2.7.5 &#43; HDP3.1.5</title>
+      <link>https://www.lvbibir.cn/posts/tech/deploy_ambari_2.7.5_and_hdp_3.1.5/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/deploy_ambari_2.7.5_and_hdp_3.1.5/</guid>
+      <description>前期准备 1. 安装包准备 Ambari2.7.5. HDP3.1.5. libtirpc-devel: 链接：https://pan.baidu.com/s/1eteZ2jGkSq4Pz5YFfHyJgQ 提取码：6hq</description>
+    </item>
+    
+    <item>
+      <title>🤝友链</title>
+      <link>https://www.lvbibir.cn/links/</link>
+      <pubDate>Sat, 06 Nov 2021 15:15:53 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/links/</guid>
+      <description>Sulv&amp;#39;s Blog 一个记录技术、阅读、生活的博客 lvbibir’s Blog life is a fucking movie 👉友链格式 名称： lvbibir’s Blog 网址： https://www.lvbibir.cn 图标： https://image.lvbibir.cn/lvbibir.jpg 描述： life is a fucking movie 👉友链申</description>
+    </item>
+    
+    <item>
+      <title>🙋🏻‍♂️关于</title>
+      <link>https://www.lvbibir.cn/about/</link>
+      <pubDate>Sat, 06 Nov 2021 14:57:28 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/about/</guid>
+      <description>英文名: Alphonse 职业: 运维工程师 运动: 跑步、steam 博客变更记录 2022年7月6日 将所有文章的名字改为英文，博客内所有url地址应该全都是英文+</description>
+    </item>
+    
+    <item>
+      <title>kolla-ansible部署Train版openstack（all-in-one）</title>
+      <link>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_allinone_train/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_allinone_train/</guid>
+      <description>kolla ansible简介 kolla 的使命是为 openstack 云平台提供生产级别的、开箱即用的交付能力。kolla 的基本思想是一切皆容器，将所有服务基于 Docker 运行，并且保证</description>
+    </item>
+    
+    <item>
+      <title>kubeadm 搭建 k8s 集群 [离线版] v1.18.6</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.18.6_offline/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.18.6_offline/</guid>
+      <description>kubeadm 搭建 k8s 集群 [离线版] v1.18.6 参考：https://www.cnblogs.com/hukey/p/13773927.html Kubernetes 概述 kubernetes 是什么 kubernetes 是 Google</description>
+    </item>
+    
+    <item>
+      <title>kubeadm快速搭建K8s集群v1.22.3</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.22.3/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.22.3/</guid>
+      <description>kubeadm是官方社区推出的一个用于快速部署kubernetes集群的工具。 这个工具能通过两条指令完成一个kubernetes集群的部署：</description>
+    </item>
+    
+    <item>
+      <title>openssh源码打包编译成rpm包（8.7p1）</title>
+      <link>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm_8.7p1/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm_8.7p1/</guid>
+      <description>编译环境 编译平台： vmware workstation 系统版本： 普华服务器操作系统v4.0 系统内核： 3.10.0-327.el7.isoft.x86_64 软件版本： openssh-8.7p1.tar.gz x11-ssh-askpass-1.2.4.1.tar.gz 编译步骤 yum安装依赖工具 yum install gdb imake libXt-devel gtk2-devel rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel libX11-devel</description>
+    </item>
+    
+    <item>
+      <title>redhat服务器升级内核</title>
+      <link>https://www.lvbibir.cn/posts/tech/redhat_update_kernel/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/redhat_update_kernel/</guid>
+      <description>前言 按指定要求安装升级内核，保证grub2启动时为默认项目 第一步 确认当前操作系统的内核版本 [root@server0 ~]# uname -r 3.10.0-123.el7.x86_64 第二步 下载准备升级的内核文件，比如说内核</description>
+    </item>
+    
+    <item>
+      <title>服务器巡检脚本</title>
+      <link>https://www.lvbibir.cn/posts/tech/shell_server_inspection/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/shell_server_inspection/</guid>
+      <description>#!/bin/bash #参数定义 date=`date +&amp;#34;%Y-%m-%d-%H:%M:%S&amp;#34;` centosVersion=$(awk &amp;#39;{print $(NF-1)}&amp;#39; /etc/redhat-release) VERSION=`date +%F` #日志相关 LOGPATH=&amp;#34;/tmp/awr&amp;#34; [ -e $LOGPATH ] || mkdir -p $LOGPATH RESULTFILE=&amp;#34;$LOGPATH/HostCheck-`hostname`-`date +%Y%m%d`.txt&amp;#34; #调用函数库 [ -f /etc/init.d/functions ] &amp;amp;&amp;amp; source /etc/init.d/functions export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin source /etc/profile #root用户执行脚本 [ $(id -u) -gt 0 ] &amp;amp;&amp;amp; echo &amp;#34</description>
+    </item>
+    
+    <item>
+      <title>记一次程序测试</title>
+      <link>https://www.lvbibir.cn/posts/tech/record_of_program_test/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/record_of_program_test/</guid>
+      <description>前言 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向</description>
+    </item>
+    
+    <item>
+      <title>centos7开启bbr算法</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7_open_bbr/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7_open_bbr/</guid>
+      <description>介绍在CentOS7上部署BBR的详细过程 BBR简介：（Bottleneck Bandwidth and RTT）是一种新的拥塞控制算法，由Google开发。有了BB</description>
+    </item>
+    
+    <item>
+      <title>centos中free命令详解</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos_free/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos_free/</guid>
+      <description>CentOS6及以前 在CentOS6及以前的版本中，free命令输出是这样的： [root@wordpress ~]# free -m total used free shared buffers cached Mem: 1002 769 233 0 62 421 -/+ buffers/cache: 286 716 Swap: 1153 0 1153 第一行： ​ 系</description>
+    </item>
+    
+    <item>
+      <title>H3C服务器装完系统无法引导</title>
+      <link>https://www.lvbibir.cn/posts/tech/h3c_server_can_not_boot_system/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/h3c_server_can_not_boot_system/</guid>
+      <description>前端时间在国家信息中心的一个项目上需要在 H3C 服务器上安装操作系统然后配置一套 spring boot 项目，结果在装操作系统过程中就遇到了问题：安装完操作系统后无法</description>
+    </item>
+    
+    <item>
+      <title>H3C服务器配置raid</title>
+      <link>https://www.lvbibir.cn/posts/tech/h3c_server_config_raid/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/h3c_server_config_raid/</guid>
+      <description>1、进入bios修改启动模式，将 UEFI 改为 Legacy bios 2、 重启服务器，ctrl + r 进入 lsi 阵列卡管理 3、选择对应阵列卡 4、配置逻辑盘 5、配置完逻辑盘后可以</description>
+    </item>
+    
+    <item>
+      <title>pxe安装aarch64架构的操作系统</title>
+      <link>https://www.lvbibir.cn/posts/tech/pxe_install_aarch64_system/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/pxe_install_aarch64_system/</guid>
+      <description>pxe环境 dhcp+tftp+http pxe-server：isoft-serveros-v4.2（3.10.0-957.el7.isoft.x86_64） 引导的is</description>
+    </item>
+    
+    <item>
+      <title>wordpress迁移到docker</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_to_docker/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_to_docker/</guid>
+      <description>前言 前段时间着手开始搭建自己的wordpress博客，刚开始图方便直接买了阿里云的轻量应用服务器，它是一套预先搭建好的lamp架构，并已经做</description>
+    </item>
+    
+    <item>
+      <title>记一次服务器被入侵全过程</title>
+      <link>https://www.lvbibir.cn/posts/tech/record_of_server_attacked/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/record_of_server_attacked/</guid>
+      <description>周一早上刚到办公室，就听到同事说有一台服务器登陆不上了，我也没放在心上，继续边吃早点，边看币价是不是又跌了。不一会运维的同事也到了，气喘吁吁</description>
+    </item>
+    
+    <item>
+      <title>centos7基线检查平台部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7_deploy_benchmark/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7_deploy_benchmark/</guid>
+      <description>介绍 项目地址 这个项目准备打造一个安全基线检查平台，期望能够以最简单的方式在需要进行检查的服务器上运行。能够达到这么一种效果：基线检查脚本(以</description>
+    </item>
+    
+    <item>
+      <title>hwaddr和macaddr的区别</title>
+      <link>https://www.lvbibir.cn/posts/tech/hwaddr_macaddr_different/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/hwaddr_macaddr_different/</guid>
+      <description>环境：centos7.8 在centos中可以在如下文件中查看一个NIC的配置 ： /etc/sysconfig/network-scripts/ifcfg-N HWADDR=, 其中 以AA:BB:CC:DD:EE:FF形式的以太网设备的</description>
+    </item>
+    
+    <item>
+      <title>openvpn部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos6_deploy_openvpn/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos6_deploy_openvpn/</guid>
+      <description>一、实验环境 3台centos6.5，1台win10，openvpn-2.4.7，easy-rsa-3.0.5 二、拓扑结构 Win10安装ope</description>
+    </item>
+    
+    <item>
+      <title>shell脚本之检索某url中所有文件的内容</title>
+      <link>https://www.lvbibir.cn/posts/tech/shell_search_url_files/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/shell_search_url_files/</guid>
+      <description>前言 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的，可以通过检索 kernel.org 中所有内核版本的 ChangeLog 文件中是否包含该 commit 来判断漏洞影</description>
+    </item>
+    
+    <item>
+      <title>typora&#43;picgo&#43;七牛云上传图片</title>
+      <link>https://www.lvbibir.cn/posts/blog/typora_picgo_qiniu_upload_image/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/typora_picgo_qiniu_upload_image/</guid>
+      <description>七牛云配置 1、注册七牛云，新建存储空间 这里就不介绍七牛云的注册和新建空间了 七牛云新用户有10G的免费空间，作为个人博客来说基本足够了 2、为存</description>
+    </item>
+    
+    <item>
+      <title>wordpress加载图片失败</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_load_image_failed/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_load_image_failed/</guid>
+      <description>现象 博客加载不出来我在七牛云的图片资源 使用浏览器直接访问图片url却是可以成功的 我将之前csdn的博客迁移到了wordpress，图片外链地</description>
+    </item>
+    
+    <item>
+      <title>wordpress文章编辑页和发不出来内容不一样（http变成了https）</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_editpage_different_post/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_editpage_different_post/</guid>
+      <description>文章编辑界面和预览界面都是没问题的，发布出来后文章内容的http变成了https，而且仅有本博客域名lvbibir.cn出现这种情况，其他都</description>
+    </item>
+    
+    <item>
+      <title>wordpress添加icp备案号</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_add_icp/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_add_icp/</guid>
+      <description>默认主题下在后台设置里修改即可 自定义主题或者其他主题需要修改footer.php文件 在&amp;lt;footer&amp;gt;&amp;lt;/footer&amp;g</description>
+    </item>
+    
+    <item>
+      <title>wordpress配置https强制跳转</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_https/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_https/</guid>
+      <description>本文介绍如何在阿里轻量服务器wordpress站点配置http强制跳转到https 配置强制跳转前需要站点已经安装了ssl证书，可以通过htt</description>
+    </item>
+    
+    <item>
+      <title>七牛云配置免费ssl证书</title>
+      <link>https://www.lvbibir.cn/posts/blog/qiniu_ssl/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/qiniu_ssl/</guid>
+      <description>1、购买免费证书 2、补全域名信息 3、域名验证 根据在域名提供商处新建解析 dns配置好之后等待CA机构审核后颁发证书就可以了 4、 为域名开启htt</description>
+    </item>
+    
+    <item>
+      <title>阿里云wordpress配置免费ssl证书</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_ssl/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_ssl/</guid>
+      <description>1、登录阿里云，选择产品中的ssl证书 如果域名是阿里的他会自动创建dns解析，如果是其他厂商需要按照图片配置，等待几分钟进行验证 点击审核，等</description>
+    </item>
+    
+    <item>
+      <title>Read</title>
+      <link>https://www.lvbibir.cn/posts/read/read/</link>
+      <pubDate>Wed, 01 Jan 2020 00:18:06 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/read/read/</guid>
+      <description></description>
+    </item>
+    
+    
+    
+  </channel>
+</rss>

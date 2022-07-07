@@ -1,1 +1,56 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>linux on 热爱生活与梦想</title><link>https://lvbibir.github.io/tags/linux/</link><description>Recent content in linux on 热爱生活与梦想</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 25 Apr 2022 17:05:59 +0800</lastBuildDate><atom:link href="https://lvbibir.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>测试</title><link>https://lvbibir.github.io/2022/04/04/.html</link><pubDate>Mon, 25 Apr 2022 17:05:59 +0800</pubDate><guid>https://lvbibir.github.io/2022/04/04/.html</guid><description>用于测试</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>linux on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/linux/</link>
+    <description>Recent content in linux on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 01 Jan 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关闭X服务本地监听的6000端口</title>
+      <link>https://www.lvbibir.cn/posts/tech/close_6000_port/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/close_6000_port/</guid>
+      <description>前言 基于CVE-1999-0526漏洞的披露，对系统X服务的6000端口进行关闭 有三种方式： 修改系统/usr/bin/X内容，增加nolis</description>
+    </item>
+    
+    <item>
+      <title>服务器巡检脚本</title>
+      <link>https://www.lvbibir.cn/posts/tech/shell_server_inspection/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/shell_server_inspection/</guid>
+      <description>#!/bin/bash #参数定义 date=`date +&amp;#34;%Y-%m-%d-%H:%M:%S&amp;#34;` centosVersion=$(awk &amp;#39;{print $(NF-1)}&amp;#39; /etc/redhat-release) VERSION=`date +%F` #日志相关 LOGPATH=&amp;#34;/tmp/awr&amp;#34; [ -e $LOGPATH ] || mkdir -p $LOGPATH RESULTFILE=&amp;#34;$LOGPATH/HostCheck-`hostname`-`date +%Y%m%d`.txt&amp;#34; #调用函数库 [ -f /etc/init.d/functions ] &amp;amp;&amp;amp; source /etc/init.d/functions export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin source /etc/profile #root用户执行脚本 [ $(id -u) -gt 0 ] &amp;amp;&amp;amp; echo &amp;#34</description>
+    </item>
+    
+    <item>
+      <title>H3C服务器装完系统无法引导</title>
+      <link>https://www.lvbibir.cn/posts/tech/h3c_server_can_not_boot_system/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/h3c_server_can_not_boot_system/</guid>
+      <description>前端时间在国家信息中心的一个项目上需要在 H3C 服务器上安装操作系统然后配置一套 spring boot 项目，结果在装操作系统过程中就遇到了问题：安装完操作系统后无法</description>
+    </item>
+    
+    <item>
+      <title>记一次服务器被入侵全过程</title>
+      <link>https://www.lvbibir.cn/posts/tech/record_of_server_attacked/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/record_of_server_attacked/</guid>
+      <description>周一早上刚到办公室，就听到同事说有一台服务器登陆不上了，我也没放在心上，继续边吃早点，边看币价是不是又跌了。不一会运维的同事也到了，气喘吁吁</description>
+    </item>
+    
+    <item>
+      <title>hwaddr和macaddr的区别</title>
+      <link>https://www.lvbibir.cn/posts/tech/hwaddr_macaddr_different/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/hwaddr_macaddr_different/</guid>
+      <description>环境：centos7.8 在centos中可以在如下文件中查看一个NIC的配置 ： /etc/sysconfig/network-scripts/ifcfg-N HWADDR=, 其中 以AA:BB:CC:DD:EE:FF形式的以太网设备的</description>
+    </item>
+    
+  </channel>
+</rss>

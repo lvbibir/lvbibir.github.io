@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>wordpress on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/wordpress/</link>
+    <description>Recent content in wordpress on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>wordpress迁移到docker</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_to_docker/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_to_docker/</guid>
+      <description>前言 前段时间着手开始搭建自己的wordpress博客，刚开始图方便直接买了阿里云的轻量应用服务器，它是一套预先搭建好的lamp架构，并已经做</description>
+    </item>
+    
+    <item>
+      <title>wordpress加载图片失败</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_load_image_failed/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_load_image_failed/</guid>
+      <description>现象 博客加载不出来我在七牛云的图片资源 使用浏览器直接访问图片url却是可以成功的 我将之前csdn的博客迁移到了wordpress，图片外链地</description>
+    </item>
+    
+    <item>
+      <title>wordpress文章编辑页和发不出来内容不一样（http变成了https）</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_editpage_different_post/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_editpage_different_post/</guid>
+      <description>文章编辑界面和预览界面都是没问题的，发布出来后文章内容的http变成了https，而且仅有本博客域名lvbibir.cn出现这种情况，其他都</description>
+    </item>
+    
+    <item>
+      <title>wordpress添加icp备案号</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_add_icp/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_add_icp/</guid>
+      <description>默认主题下在后台设置里修改即可 自定义主题或者其他主题需要修改footer.php文件 在&amp;lt;footer&amp;gt;&amp;lt;/footer&amp;g</description>
+    </item>
+    
+    <item>
+      <title>wordpress配置https强制跳转</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_https/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_https/</guid>
+      <description>本文介绍如何在阿里轻量服务器wordpress站点配置http强制跳转到https 配置强制跳转前需要站点已经安装了ssl证书，可以通过htt</description>
+    </item>
+    
+    <item>
+      <title>阿里云wordpress配置免费ssl证书</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_ssl/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_ssl/</guid>
+      <description>1、登录阿里云，选择产品中的ssl证书 如果域名是阿里的他会自动创建dns解析，如果是其他厂商需要按照图片配置，等待几分钟进行验证 点击审核，等</description>
+    </item>
+    
+  </channel>
+</rss>

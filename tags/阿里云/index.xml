@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>阿里云 on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/%E9%98%BF%E9%87%8C%E4%BA%91/</link>
+    <description>Recent content in 阿里云 on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 01 Jul 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/%E9%98%BF%E9%87%8C%E4%BA%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>阿里云wordpress配置免费ssl证书</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_ssl/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_ssl/</guid>
+      <description>1、登录阿里云，选择产品中的ssl证书 如果域名是阿里的他会自动创建dns解析，如果是其他厂商需要按照图片配置，等待几分钟进行验证 点击审核，等</description>
+    </item>
+    
+  </channel>
+</rss>

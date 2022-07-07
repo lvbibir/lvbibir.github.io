@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>🧱 建站 on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/posts/blog/</link>
+    <description>Recent content in 🧱 建站 on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 07 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【置顶】Hello,hugo!</title>
+      <link>https://www.lvbibir.cn/posts/blog/hello_hugo/</link>
+      <pubDate>Wed, 06 Jul 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/hello_hugo/</guid>
+      <description>记录wordpress迁移至hugo的过程，大多参考sulv大佬的博客，很详尽就只贴链接了</description>
+    </item>
+    
+    <item>
+      <title>修改hugo的图片布局，使多张图片可以并排显示</title>
+      <link>https://www.lvbibir.cn/posts/blog/hugo_image_layout/</link>
+      <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/hugo_image_layout/</guid>
+      <description>前言 仅是对前端一窍不通的我的一次尝试，如果有更好的实现方法可以评论或者发邮件告诉我~ md文件中图片并排显示 先贴结论，并排显示图片只需要一段简</description>
+    </item>
+    
+    <item>
+      <title>wordpress迁移到docker</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_to_docker/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_to_docker/</guid>
+      <description>前言 前段时间着手开始搭建自己的wordpress博客，刚开始图方便直接买了阿里云的轻量应用服务器，它是一套预先搭建好的lamp架构，并已经做</description>
+    </item>
+    
+    <item>
+      <title>typora&#43;picgo&#43;七牛云上传图片</title>
+      <link>https://www.lvbibir.cn/posts/blog/typora_picgo_qiniu_upload_image/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/typora_picgo_qiniu_upload_image/</guid>
+      <description>七牛云配置 1、注册七牛云，新建存储空间 这里就不介绍七牛云的注册和新建空间了 七牛云新用户有10G的免费空间，作为个人博客来说基本足够了 2、为存</description>
+    </item>
+    
+    <item>
+      <title>wordpress加载图片失败</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_load_image_failed/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_load_image_failed/</guid>
+      <description>现象 博客加载不出来我在七牛云的图片资源 使用浏览器直接访问图片url却是可以成功的 我将之前csdn的博客迁移到了wordpress，图片外链地</description>
+    </item>
+    
+    <item>
+      <title>wordpress文章编辑页和发不出来内容不一样（http变成了https）</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_editpage_different_post/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_editpage_different_post/</guid>
+      <description>文章编辑界面和预览界面都是没问题的，发布出来后文章内容的http变成了https，而且仅有本博客域名lvbibir.cn出现这种情况，其他都</description>
+    </item>
+    
+    <item>
+      <title>wordpress添加icp备案号</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_add_icp/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_add_icp/</guid>
+      <description>默认主题下在后台设置里修改即可 自定义主题或者其他主题需要修改footer.php文件 在&amp;lt;footer&amp;gt;&amp;lt;/footer&amp;g</description>
+    </item>
+    
+    <item>
+      <title>wordpress配置https强制跳转</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_https/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_https/</guid>
+      <description>本文介绍如何在阿里轻量服务器wordpress站点配置http强制跳转到https 配置强制跳转前需要站点已经安装了ssl证书，可以通过htt</description>
+    </item>
+    
+    <item>
+      <title>七牛云配置免费ssl证书</title>
+      <link>https://www.lvbibir.cn/posts/blog/qiniu_ssl/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/qiniu_ssl/</guid>
+      <description>1、购买免费证书 2、补全域名信息 3、域名验证 根据在域名提供商处新建解析 dns配置好之后等待CA机构审核后颁发证书就可以了 4、 为域名开启htt</description>
+    </item>
+    
+    <item>
+      <title>阿里云wordpress配置免费ssl证书</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress_ssl/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress_ssl/</guid>
+      <description>1、登录阿里云，选择产品中的ssl证书 如果域名是阿里的他会自动创建dns解析，如果是其他厂商需要按照图片配置，等待几分钟进行验证 点击审核，等</description>
+    </item>
+    
+  </channel>
+</rss>

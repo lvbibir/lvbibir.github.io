@@ -1,1 +1,434 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags on 热爱生活与梦想</title><link>https://lvbibir.github.io/tags/</link><description>Recent content in Tags on 热爱生活与梦想</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 25 Apr 2022 17:05:59 +0800</lastBuildDate><atom:link href="https://lvbibir.github.io/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>centos</title><link>https://lvbibir.github.io/tags/centos/</link><pubDate>Mon, 25 Apr 2022 17:05:59 +0800</pubDate><guid>https://lvbibir.github.io/tags/centos/</guid><description/></item><item><title>linux</title><link>https://lvbibir.github.io/tags/linux/</link><pubDate>Mon, 25 Apr 2022 17:05:59 +0800</pubDate><guid>https://lvbibir.github.io/tags/linux/</guid><description/></item><item><title>css</title><link>https://lvbibir.github.io/tags/css/</link><pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/tags/css/</guid><description/></item><item><title>html</title><link>https://lvbibir.github.io/tags/html/</link><pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/tags/html/</guid><description/></item><item><title>markdown</title><link>https://lvbibir.github.io/tags/markdown/</link><pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/tags/markdown/</guid><description/></item><item><title>privacy</title><link>https://lvbibir.github.io/tags/privacy/</link><pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/tags/privacy/</guid><description/></item><item><title>shortcodes</title><link>https://lvbibir.github.io/tags/shortcodes/</link><pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/tags/shortcodes/</guid><description/></item><item><title>text</title><link>https://lvbibir.github.io/tags/text/</link><pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/tags/text/</guid><description/></item><item><title>emoji</title><link>https://lvbibir.github.io/tags/emoji/</link><pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate><guid>https://lvbibir.github.io/tags/emoji/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/</link>
+    <description>Recent content in Tags on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 07 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>css</title>
+      <link>https://www.lvbibir.cn/tags/css/</link>
+      <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/css/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>html</title>
+      <link>https://www.lvbibir.cn/tags/html/</link>
+      <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/html/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://www.lvbibir.cn/tags/hugo/</link>
+      <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>paper</title>
+      <link>https://www.lvbibir.cn/tags/paper/</link>
+      <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>papermod</title>
+      <link>https://www.lvbibir.cn/tags/papermod/</link>
+      <pubDate>Wed, 06 Jul 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/papermod/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://www.lvbibir.cn/tags/git/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openstack</title>
+      <link>https://www.lvbibir.cn/tags/openstack/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/openstack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shell</title>
+      <link>https://www.lvbibir.cn/tags/shell/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>https://www.lvbibir.cn/tags/windows/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>httpd</title>
+      <link>https://www.lvbibir.cn/tags/httpd/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/httpd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openssl</title>
+      <link>https://www.lvbibir.cn/tags/openssl/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/openssl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rpm</title>
+      <link>https://www.lvbibir.cn/tags/rpm/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/rpm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>centos</title>
+      <link>https://www.lvbibir.cn/tags/centos/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/centos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ceph</title>
+      <link>https://www.lvbibir.cn/tags/ceph/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/ceph/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://www.lvbibir.cn/tags/docker/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://www.lvbibir.cn/tags/python/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kernel</title>
+      <link>https://www.lvbibir.cn/tags/kernel/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/kernel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://www.lvbibir.cn/tags/linux/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pam</title>
+      <link>https://www.lvbibir.cn/tags/pam/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/pam/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>X</title>
+      <link>https://www.lvbibir.cn/tags/x/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/x/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ambari</title>
+      <link>https://www.lvbibir.cn/tags/ambari/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/ambari/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hadoop</title>
+      <link>https://www.lvbibir.cn/tags/hadoop/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/hadoop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HDP</title>
+      <link>https://www.lvbibir.cn/tags/hdp/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/hdp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pip</title>
+      <link>https://www.lvbibir.cn/tags/pip/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/pip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssh</title>
+      <link>https://www.lvbibir.cn/tags/ssh/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>k8s</title>
+      <link>https://www.lvbibir.cn/tags/k8s/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/k8s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>glibc</title>
+      <link>https://www.lvbibir.cn/tags/glibc/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/glibc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openeuler</title>
+      <link>https://www.lvbibir.cn/tags/openeuler/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/openeuler/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openssh</title>
+      <link>https://www.lvbibir.cn/tags/openssh/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/openssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redhat</title>
+      <link>https://www.lvbibir.cn/tags/redhat/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/redhat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>巡检</title>
+      <link>https://www.lvbibir.cn/tags/%E5%B7%A1%E6%A3%80/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/%E5%B7%A1%E6%A3%80/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aarch64</title>
+      <link>https://www.lvbibir.cn/tags/aarch64/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/aarch64/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bbr</title>
+      <link>https://www.lvbibir.cn/tags/bbr/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/bbr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>H3C</title>
+      <link>https://www.lvbibir.cn/tags/h3c/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/h3c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pxe</title>
+      <link>https://www.lvbibir.cn/tags/pxe/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/pxe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>raid</title>
+      <link>https://www.lvbibir.cn/tags/raid/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/raid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wordpress</title>
+      <link>https://www.lvbibir.cn/tags/wordpress/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/wordpress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>http</title>
+      <link>https://www.lvbibir.cn/tags/http/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/http/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>https</title>
+      <link>https://www.lvbibir.cn/tags/https/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/https/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>icp</title>
+      <link>https://www.lvbibir.cn/tags/icp/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/icp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openvpn</title>
+      <link>https://www.lvbibir.cn/tags/openvpn/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/openvpn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>picgo</title>
+      <link>https://www.lvbibir.cn/tags/picgo/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/picgo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssl</title>
+      <link>https://www.lvbibir.cn/tags/ssl/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/ssl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>typora</title>
+      <link>https://www.lvbibir.cn/tags/typora/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/typora/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>七牛云</title>
+      <link>https://www.lvbibir.cn/tags/%E4%B8%83%E7%89%9B%E4%BA%91/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/%E4%B8%83%E7%89%9B%E4%BA%91/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>基线检查</title>
+      <link>https://www.lvbibir.cn/tags/%E5%9F%BA%E7%BA%BF%E6%A3%80%E6%9F%A5/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/%E5%9F%BA%E7%BA%BF%E6%A3%80%E6%9F%A5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>阿里云</title>
+      <link>https://www.lvbibir.cn/tags/%E9%98%BF%E9%87%8C%E4%BA%91/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/%E9%98%BF%E9%87%8C%E4%BA%91/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ceph on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/ceph/</link>
+    <description>Recent content in ceph on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/ceph/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ceph创建pool时pg_num的配置</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph_pg_num_config_create_pool/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/ceph_pg_num_config_create_pool/</guid>
+      <description>pg_num 用此命令创建存储池时： ceph osd pool create {pool-name} pg_num 确定pg_num取值是强制性的，因为不能自动计算。常用的较为通用的取值： 少于5个osd，pg_num设置</description>
+    </item>
+    
+    <item>
+      <title>centos7部署ceph&#43;dashboard（nautilus）</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7_deploy_ceph_dashboard_nautilus/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7_deploy_ceph_dashboard_nautilus/</guid>
+      <description>前言 ceph测试环境的搭建 基本环境 物理环境：Vmware Workstaion 系统版本：Centos-7.9-Minimal 两个osd节点添加一块虚拟磁盘，建议</description>
+    </item>
+    
+  </channel>
+</rss>
