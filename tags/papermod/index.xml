@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>papermod on lvbibir&#39;s Blog</title>
-    <link>https://www.lvbibir.cn/tags/papermod/</link>
+    <link>https://lvbibir.github.io/tags/papermod/</link>
     <description>Recent content in papermod on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 06 Jul 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/papermod/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Jul 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://lvbibir.github.io/tags/papermod/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello,hugo!</title>
-      <link>https://www.lvbibir.cn/posts/blog/hello_hugo/</link>
+      <link>https://lvbibir.github.io/posts/blog/hello_hugo/</link>
       <pubDate>Wed, 06 Jul 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/hello_hugo/</guid>
+      <guid>https://lvbibir.github.io/posts/blog/hello_hugo/</guid>
       <description>记录wordpress迁移至hugo的过程，大多参考sulv大佬的博客，很详尽就只贴链接了</description>
     </item>
     

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>bbr on lvbibir&#39;s Blog</title>
-    <link>https://www.lvbibir.cn/tags/bbr/</link>
+    <link>https://lvbibir.github.io/tags/bbr/</link>
     <description>Recent content in bbr on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/bbr/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://lvbibir.github.io/tags/bbr/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>centos7开启bbr算法</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos7_open_bbr/</link>
+      <link>https://lvbibir.github.io/posts/tech/centos7_open_bbr/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/centos7_open_bbr/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/centos7_open_bbr/</guid>
       <description>介绍在CentOS7上部署BBR的详细过程 BBR简介：（Bottleneck Bandwidth and RTT）是一种新的拥塞控制算法，由Google开发。有了BB</description>
     </item>
     

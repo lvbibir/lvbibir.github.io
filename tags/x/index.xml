@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>X on lvbibir&#39;s Blog</title>
-    <link>https://www.lvbibir.cn/tags/x/</link>
+    <link>https://lvbibir.github.io/tags/x/</link>
     <description>Recent content in X on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 01 Jan 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/x/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 Jan 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://lvbibir.github.io/tags/x/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关闭X服务本地监听的6000端口</title>
-      <link>https://www.lvbibir.cn/posts/tech/close_6000_port/</link>
+      <link>https://lvbibir.github.io/posts/tech/close_6000_port/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/close_6000_port/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/close_6000_port/</guid>
       <description>前言 基于CVE-1999-0526漏洞的披露，对系统X服务的6000端口进行关闭 有三种方式： 修改系统/usr/bin/X内容，增加nolis</description>
     </item>
     

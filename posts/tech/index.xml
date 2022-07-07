@@ -2,323 +2,323 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>👨🏻‍💻 技术 on lvbibir&#39;s Blog</title>
-    <link>https://www.lvbibir.cn/posts/tech/</link>
+    <link>https://lvbibir.github.io/posts/tech/</link>
     <description>Recent content in 👨🏻‍💻 技术 on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Jun 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Jun 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://lvbibir.github.io/posts/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>git设置代理</title>
-      <link>https://www.lvbibir.cn/posts/tech/git_set_proxy/</link>
+      <link>https://lvbibir.github.io/posts/tech/git_set_proxy/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/git_set_proxy/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/git_set_proxy/</guid>
       <description># 设置全局代理 # http git config --global https.proxy http://127.0.0.1:1080 # https git config --global https.proxy https://127.0.0.1:1080 # 使用socks5代理的 例如ss，ssr 1080是windows下ss的默认代理端口,mac下不同</description>
     </item>
     
     <item>
       <title>kolla-ansible部署多节点openstack（Train版）</title>
-      <link>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_multinode_train/</link>
+      <link>https://lvbibir.github.io/posts/tech/kolla-ansible_deploy_multinode_train/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_multinode_train/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/kolla-ansible_deploy_multinode_train/</guid>
       <description>添加节点 管理防火墙及selinux 安装docker-ce 提前下载docker镜像 修改网卡名称 修改主机名 配置ssh免密 kolla-ansible -i ./multinode bootstrap-servers --limit node135 kolla-ansible -i ./multinode prechecks --limit node135</description>
     </item>
     
     <item>
       <title>shell脚本不同执行方式的区别</title>
-      <link>https://www.lvbibir.cn/posts/tech/shell_different_execution_mode/</link>
+      <link>https://lvbibir.github.io/posts/tech/shell_different_execution_mode/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/shell_different_execution_mode/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/shell_different_execution_mode/</guid>
       <description>shell 脚本通常有 sh filename、bash filename、./filename、source filename 这四种执行方式 source filename 可以使用 . filename 代替，在当前的 bash</description>
     </item>
     
     <item>
       <title>shell脚本开启debug模式</title>
-      <link>https://www.lvbibir.cn/posts/tech/shell_enable_debug_mode/</link>
+      <link>https://lvbibir.github.io/posts/tech/shell_enable_debug_mode/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/shell_enable_debug_mode/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/shell_enable_debug_mode/</guid>
       <description>前言 bash脚本是没有debug模式的，不过可以通过 set 指令实现简单的debug功能 bash 脚本中默认每条指令都会从上到下依次执行，但是当某行指令报</description>
     </item>
     
     <item>
       <title>windows双网卡时设置网络优先级</title>
-      <link>https://www.lvbibir.cn/posts/tech/windows_network_priority/</link>
+      <link>https://lvbibir.github.io/posts/tech/windows_network_priority/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/windows_network_priority/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/windows_network_priority/</guid>
       <description>前言 仅在win10测试可用 在工作中需要连接公司内网（有线，不可联网），访问外网时需要连接无线 同时接入这两个网络时，内网访问正常，外网无法访问</description>
     </item>
     
     <item>
       <title>httpd源码构建rpm</title>
-      <link>https://www.lvbibir.cn/posts/tech/httpd_src_build_rpm/</link>
+      <link>https://lvbibir.github.io/posts/tech/httpd_src_build_rpm/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/httpd_src_build_rpm/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/httpd_src_build_rpm/</guid>
       <description>系统版本：isoft-serveros-v4.2（centos7） 源码下载链接： https://dlcdn.apache.org//apr/apr-1.7.0.tar.bz2 https://dlcdn.apache.org//apr/apr-util-1.6.1.tar.bz2 https://dlcdn.apache.org//httpd/httpd-2.4.52.tar.bz2 安装依赖 yum install -y wget gcc rpm-build yum install -y autoconf zlib-devel libselinux-devel libuuid-devel apr-devel apr-util-devel pcre-devel openldap-devel lua-devel libxml2-devel openssl-devel yum install -y</description>
     </item>
     
     <item>
       <title>openssl源码构建rpm</title>
-      <link>https://www.lvbibir.cn/posts/tech/openssl_src_build_rpm/</link>
+      <link>https://lvbibir.github.io/posts/tech/openssl_src_build_rpm/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/openssl_src_build_rpm/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/openssl_src_build_rpm/</guid>
       <description>环境 iSoftserver-v4.2(Centos-7) openssl version：1.0.2k 编译 从github上看到的编译脚本，本地修改后： #!/bin/bash set -e set -v mkdir ~/openssl &amp;amp;&amp;amp; cd ~/openssl yum -y install \ curl \ which \ make \ gcc \ perl \ perl-WWW-Curl \ rpm-build #</description>
     </item>
     
     <item>
       <title>centos7修改网卡名称</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos7_change_network_card_name/</link>
+      <link>https://lvbibir.github.io/posts/tech/centos7_change_network_card_name/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/centos7_change_network_card_name/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/centos7_change_network_card_name/</guid>
       <description>前言 在使用kolla-ansible部署多节点openstack时，所有节点的外网网卡名称和管理网卡名称需要一样，其中两台是型号相同的物理机</description>
     </item>
     
     <item>
       <title>ceph创建pool时pg_num的配置</title>
-      <link>https://www.lvbibir.cn/posts/tech/ceph_pg_num_config_create_pool/</link>
+      <link>https://lvbibir.github.io/posts/tech/ceph_pg_num_config_create_pool/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/ceph_pg_num_config_create_pool/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/ceph_pg_num_config_create_pool/</guid>
       <description>pg_num 用此命令创建存储池时： ceph osd pool create {pool-name} pg_num 确定pg_num取值是强制性的，因为不能自动计算。常用的较为通用的取值： 少于5个osd，pg_num设置</description>
     </item>
     
     <item>
       <title>批量导出&amp;导入docker镜像</title>
-      <link>https://www.lvbibir.cn/posts/tech/import_export_docker_image/</link>
+      <link>https://lvbibir.github.io/posts/tech/import_export_docker_image/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/import_export_docker_image/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/import_export_docker_image/</guid>
       <description>python方式 批量导出，运行后所有tar包都在当前目录下 # encoding: utf-8 import re import os import subprocess if __name__ == &amp;#34;__main__&amp;#34;: p = subprocess.Popen(&amp;#39;docker images&amp;#39;, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) for line in p.stdout.readlines(): # 此处的正则表达式是为了匹配镜像名</description>
     </item>
     
     <item>
       <title>Centos7.5升级内核至5.10</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos7_update_kernel_to_5.10/</link>
+      <link>https://lvbibir.github.io/posts/tech/centos7_update_kernel_to_5.10/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/centos7_update_kernel_to_5.10/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/centos7_update_kernel_to_5.10/</guid>
       <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm的缩写 长期维护版 ml m</description>
     </item>
     
     <item>
       <title>CentOS密码尝试次数过多</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos_too_many_password_attempts/</link>
+      <link>https://lvbibir.github.io/posts/tech/centos_too_many_password_attempts/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/centos_too_many_password_attempts/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/centos_too_many_password_attempts/</guid>
       <description>pam模块 pam：Pluggable Authentication Modules 可插拔的认证模块，linux 中的认证方式，“可插拔的“说明可以按需对认证内容进行变更。与nsswit</description>
     </item>
     
     <item>
       <title>关闭X服务本地监听的6000端口</title>
-      <link>https://www.lvbibir.cn/posts/tech/close_6000_port/</link>
+      <link>https://lvbibir.github.io/posts/tech/close_6000_port/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/close_6000_port/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/close_6000_port/</guid>
       <description>前言 基于CVE-1999-0526漏洞的披露，对系统X服务的6000端口进行关闭 有三种方式： 修改系统/usr/bin/X内容，增加nolis</description>
     </item>
     
     <item>
       <title>centos7部署ceph&#43;dashboard（nautilus）</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos7_deploy_ceph_dashboard_nautilus/</link>
+      <link>https://lvbibir.github.io/posts/tech/centos7_deploy_ceph_dashboard_nautilus/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/centos7_deploy_ceph_dashboard_nautilus/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/centos7_deploy_ceph_dashboard_nautilus/</guid>
       <description>前言 ceph测试环境的搭建 基本环境 物理环境：Vmware Workstaion 系统版本：Centos-7.9-Minimal 两个osd节点添加一块虚拟磁盘，建议</description>
     </item>
     
     <item>
       <title>cloud-init自动将ssh配置文件的PasswordAuthentication参数值修改为no</title>
-      <link>https://www.lvbibir.cn/posts/tech/cloud-init_change_ssh_config/</link>
+      <link>https://lvbibir.github.io/posts/tech/cloud-init_change_ssh_config/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/cloud-init_change_ssh_config/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/cloud-init_change_ssh_config/</guid>
       <description>前言 在openEuler20.03 (LTS-SP1)系统上进行一些测试，发现某个东西会自动修改ssh配置文件导致系统无法通过密码登录，最后排</description>
     </item>
     
     <item>
       <title>python3修改pip源</title>
-      <link>https://www.lvbibir.cn/posts/tech/python3_change_pip_repo/</link>
+      <link>https://lvbibir.github.io/posts/tech/python3_change_pip_repo/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/python3_change_pip_repo/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/python3_change_pip_repo/</guid>
       <description>中国科学技术大学 : https://pypi.mirrors.ustc.edu.cn/simple 清华：https://pypi.tuna.tsinghua.edu.cn/simple 豆瓣：http://pypi.do</description>
     </item>
     
     <item>
       <title>通过rpm反编译修改rpm包内的文件</title>
-      <link>https://www.lvbibir.cn/posts/tech/change_file_in_rpm_pkg/</link>
+      <link>https://lvbibir.github.io/posts/tech/change_file_in_rpm_pkg/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/change_file_in_rpm_pkg/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/change_file_in_rpm_pkg/</guid>
       <description>前言 要修改rpm包中的文件，对于自己编译的rpm包，只需要在源码中修改好然后重新编译即可。而对于并不是自己编译的rpm包，且不熟悉编译环境的</description>
     </item>
     
     <item>
       <title>部署Ambari 2.7.5 &#43; HDP3.1.5</title>
-      <link>https://www.lvbibir.cn/posts/tech/deploy_ambari_2.7.5_and_hdp_3.1.5/</link>
+      <link>https://lvbibir.github.io/posts/tech/deploy_ambari_2.7.5_and_hdp_3.1.5/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/deploy_ambari_2.7.5_and_hdp_3.1.5/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/deploy_ambari_2.7.5_and_hdp_3.1.5/</guid>
       <description>前期准备 1. 安装包准备 Ambari2.7.5. HDP3.1.5. libtirpc-devel: 链接：https://pan.baidu.com/s/1eteZ2jGkSq4Pz5YFfHyJgQ 提取码：6hq</description>
     </item>
     
     <item>
       <title>kolla-ansible部署Train版openstack（all-in-one）</title>
-      <link>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_allinone_train/</link>
+      <link>https://lvbibir.github.io/posts/tech/kolla-ansible_deploy_allinone_train/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_allinone_train/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/kolla-ansible_deploy_allinone_train/</guid>
       <description>kolla ansible简介 kolla 的使命是为 openstack 云平台提供生产级别的、开箱即用的交付能力。kolla 的基本思想是一切皆容器，将所有服务基于 Docker 运行，并且保证</description>
     </item>
     
     <item>
       <title>kubeadm 搭建 k8s 集群 [离线版] v1.18.6</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.18.6_offline/</link>
+      <link>https://lvbibir.github.io/posts/tech/kubeadm_deploy_k8s_v1.18.6_offline/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.18.6_offline/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/kubeadm_deploy_k8s_v1.18.6_offline/</guid>
       <description>kubeadm 搭建 k8s 集群 [离线版] v1.18.6 参考：https://www.cnblogs.com/hukey/p/13773927.html Kubernetes 概述 kubernetes 是什么 kubernetes 是 Google</description>
     </item>
     
     <item>
       <title>kubeadm快速搭建K8s集群v1.22.3</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.22.3/</link>
+      <link>https://lvbibir.github.io/posts/tech/kubeadm_deploy_k8s_v1.22.3/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.22.3/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/kubeadm_deploy_k8s_v1.22.3/</guid>
       <description>kubeadm是官方社区推出的一个用于快速部署kubernetes集群的工具。 这个工具能通过两条指令完成一个kubernetes集群的部署：</description>
     </item>
     
     <item>
       <title>openssh源码打包编译成rpm包（8.7p1）</title>
-      <link>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm_8.7p1/</link>
+      <link>https://lvbibir.github.io/posts/tech/openssh_src_build_rpm_8.7p1/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm_8.7p1/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/openssh_src_build_rpm_8.7p1/</guid>
       <description>编译环境 编译平台： vmware workstation 系统版本： 普华服务器操作系统v4.0 系统内核： 3.10.0-327.el7.isoft.x86_64 软件版本： openssh-8.7p1.tar.gz x11-ssh-askpass-1.2.4.1.tar.gz 编译步骤 yum安装依赖工具 yum install gdb imake libXt-devel gtk2-devel rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel libX11-devel</description>
     </item>
     
     <item>
       <title>redhat服务器升级内核</title>
-      <link>https://www.lvbibir.cn/posts/tech/redhat_update_kernel/</link>
+      <link>https://lvbibir.github.io/posts/tech/redhat_update_kernel/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/redhat_update_kernel/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/redhat_update_kernel/</guid>
       <description>前言 按指定要求安装升级内核，保证grub2启动时为默认项目 第一步 确认当前操作系统的内核版本 [root@server0 ~]# uname -r 3.10.0-123.el7.x86_64 第二步 下载准备升级的内核文件，比如说内核</description>
     </item>
     
     <item>
       <title>服务器巡检脚本</title>
-      <link>https://www.lvbibir.cn/posts/tech/shell_server_inspection/</link>
+      <link>https://lvbibir.github.io/posts/tech/shell_server_inspection/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/shell_server_inspection/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/shell_server_inspection/</guid>
       <description>#!/bin/bash #参数定义 date=`date +&amp;#34;%Y-%m-%d-%H:%M:%S&amp;#34;` centosVersion=$(awk &amp;#39;{print $(NF-1)}&amp;#39; /etc/redhat-release) VERSION=`date +%F` #日志相关 LOGPATH=&amp;#34;/tmp/awr&amp;#34; [ -e $LOGPATH ] || mkdir -p $LOGPATH RESULTFILE=&amp;#34;$LOGPATH/HostCheck-`hostname`-`date +%Y%m%d`.txt&amp;#34; #调用函数库 [ -f /etc/init.d/functions ] &amp;amp;&amp;amp; source /etc/init.d/functions export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin source /etc/profile #root用户执行脚本 [ $(id -u) -gt 0 ] &amp;amp;&amp;amp; echo &amp;#34</description>
     </item>
     
     <item>
       <title>记一次程序测试</title>
-      <link>https://www.lvbibir.cn/posts/tech/record_of_program_test/</link>
+      <link>https://lvbibir.github.io/posts/tech/record_of_program_test/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/record_of_program_test/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/record_of_program_test/</guid>
       <description>前言 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向</description>
     </item>
     
     <item>
       <title>centos7开启bbr算法</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos7_open_bbr/</link>
+      <link>https://lvbibir.github.io/posts/tech/centos7_open_bbr/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/centos7_open_bbr/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/centos7_open_bbr/</guid>
       <description>介绍在CentOS7上部署BBR的详细过程 BBR简介：（Bottleneck Bandwidth and RTT）是一种新的拥塞控制算法，由Google开发。有了BB</description>
     </item>
     
     <item>
       <title>centos中free命令详解</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos_free/</link>
+      <link>https://lvbibir.github.io/posts/tech/centos_free/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/centos_free/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/centos_free/</guid>
       <description>CentOS6及以前 在CentOS6及以前的版本中，free命令输出是这样的： [root@wordpress ~]# free -m total used free shared buffers cached Mem: 1002 769 233 0 62 421 -/+ buffers/cache: 286 716 Swap: 1153 0 1153 第一行： ​ 系</description>
     </item>
     
     <item>
       <title>H3C服务器装完系统无法引导</title>
-      <link>https://www.lvbibir.cn/posts/tech/h3c_server_can_not_boot_system/</link>
+      <link>https://lvbibir.github.io/posts/tech/h3c_server_can_not_boot_system/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/h3c_server_can_not_boot_system/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/h3c_server_can_not_boot_system/</guid>
       <description>前端时间在国家信息中心的一个项目上需要在 H3C 服务器上安装操作系统然后配置一套 spring boot 项目，结果在装操作系统过程中就遇到了问题：安装完操作系统后无法</description>
     </item>
     
     <item>
       <title>H3C服务器配置raid</title>
-      <link>https://www.lvbibir.cn/posts/tech/h3c_server_config_raid/</link>
+      <link>https://lvbibir.github.io/posts/tech/h3c_server_config_raid/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/h3c_server_config_raid/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/h3c_server_config_raid/</guid>
       <description>1、进入bios修改启动模式，将 UEFI 改为 Legacy bios 2、 重启服务器，ctrl + r 进入 lsi 阵列卡管理 3、选择对应阵列卡 4、配置逻辑盘 5、配置完逻辑盘后可以</description>
     </item>
     
     <item>
       <title>pxe安装aarch64架构的操作系统</title>
-      <link>https://www.lvbibir.cn/posts/tech/pxe_install_aarch64_system/</link>
+      <link>https://lvbibir.github.io/posts/tech/pxe_install_aarch64_system/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/pxe_install_aarch64_system/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/pxe_install_aarch64_system/</guid>
       <description>pxe环境 dhcp+tftp+http pxe-server：isoft-serveros-v4.2（3.10.0-957.el7.isoft.x86_64） 引导的is</description>
     </item>
     
     <item>
       <title>记一次服务器被入侵全过程</title>
-      <link>https://www.lvbibir.cn/posts/tech/record_of_server_attacked/</link>
+      <link>https://lvbibir.github.io/posts/tech/record_of_server_attacked/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/record_of_server_attacked/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/record_of_server_attacked/</guid>
       <description>周一早上刚到办公室，就听到同事说有一台服务器登陆不上了，我也没放在心上，继续边吃早点，边看币价是不是又跌了。不一会运维的同事也到了，气喘吁吁</description>
     </item>
     
     <item>
       <title>centos7基线检查平台部署</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos7_deploy_benchmark/</link>
+      <link>https://lvbibir.github.io/posts/tech/centos7_deploy_benchmark/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/centos7_deploy_benchmark/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/centos7_deploy_benchmark/</guid>
       <description>介绍 项目地址 这个项目准备打造一个安全基线检查平台，期望能够以最简单的方式在需要进行检查的服务器上运行。能够达到这么一种效果：基线检查脚本(以</description>
     </item>
     
     <item>
       <title>hwaddr和macaddr的区别</title>
-      <link>https://www.lvbibir.cn/posts/tech/hwaddr_macaddr_different/</link>
+      <link>https://lvbibir.github.io/posts/tech/hwaddr_macaddr_different/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/hwaddr_macaddr_different/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/hwaddr_macaddr_different/</guid>
       <description>环境：centos7.8 在centos中可以在如下文件中查看一个NIC的配置 ： /etc/sysconfig/network-scripts/ifcfg-N HWADDR=, 其中 以AA:BB:CC:DD:EE:FF形式的以太网设备的</description>
     </item>
     
     <item>
       <title>openvpn部署</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos6_deploy_openvpn/</link>
+      <link>https://lvbibir.github.io/posts/tech/centos6_deploy_openvpn/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/centos6_deploy_openvpn/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/centos6_deploy_openvpn/</guid>
       <description>一、实验环境 3台centos6.5，1台win10，openvpn-2.4.7，easy-rsa-3.0.5 二、拓扑结构 Win10安装ope</description>
     </item>
     
     <item>
       <title>shell脚本之检索某url中所有文件的内容</title>
-      <link>https://www.lvbibir.cn/posts/tech/shell_search_url_files/</link>
+      <link>https://lvbibir.github.io/posts/tech/shell_search_url_files/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/shell_search_url_files/</guid>
+      <guid>https://lvbibir.github.io/posts/tech/shell_search_url_files/</guid>
       <description>前言 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的，可以通过检索 kernel.org 中所有内核版本的 ChangeLog 文件中是否包含该 commit 来判断漏洞影</description>
     </item>
     

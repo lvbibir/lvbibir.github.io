@@ -2,321 +2,321 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.lvbibir.cn/posts/life/running/</loc>
+    <loc>https://lvbibir.github.io/posts/life/running/</loc>
     <lastmod>2022-07-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/hello_hugo/</loc>
+    <loc>https://lvbibir.github.io/posts/blog/hello_hugo/</loc>
     <lastmod>2022-07-06T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/</loc>
+    <loc>https://lvbibir.github.io/posts/</loc>
     <lastmod>2022-07-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/css/</loc>
+    <loc>https://lvbibir.github.io/tags/css/</loc>
     <lastmod>2022-07-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/html/</loc>
+    <loc>https://lvbibir.github.io/tags/html/</loc>
     <lastmod>2022-07-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/hugo/</loc>
+    <loc>https://lvbibir.github.io/tags/hugo/</loc>
     <lastmod>2022-07-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/</loc>
+    <loc>https://lvbibir.github.io/</loc>
     <lastmod>2022-07-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/paper/</loc>
+    <loc>https://lvbibir.github.io/tags/paper/</loc>
     <lastmod>2022-07-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/</loc>
+    <loc>https://lvbibir.github.io/tags/</loc>
     <lastmod>2022-07-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/hugo_image_layout/</loc>
+    <loc>https://lvbibir.github.io/posts/blog/hugo_image_layout/</loc>
     <lastmod>2022-07-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/life/</loc>
+    <loc>https://lvbibir.github.io/posts/life/</loc>
     <lastmod>2022-07-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/</loc>
+    <loc>https://lvbibir.github.io/posts/blog/</loc>
     <lastmod>2022-07-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/papermod/</loc>
+    <loc>https://lvbibir.github.io/tags/papermod/</loc>
     <lastmod>2022-07-06T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/</loc>
     <lastmod>2022-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/git/</loc>
+    <loc>https://lvbibir.github.io/tags/git/</loc>
     <lastmod>2022-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/git_set_proxy/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/git_set_proxy/</loc>
     <lastmod>2022-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_multinode_train/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/kolla-ansible_deploy_multinode_train/</loc>
     <lastmod>2022-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/openstack/</loc>
+    <loc>https://lvbibir.github.io/tags/openstack/</loc>
     <lastmod>2022-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/shell/</loc>
+    <loc>https://lvbibir.github.io/tags/shell/</loc>
     <lastmod>2022-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/shell_different_execution_mode/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/shell_different_execution_mode/</loc>
     <lastmod>2022-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/shell_enable_debug_mode/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/shell_enable_debug_mode/</loc>
     <lastmod>2022-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/windows/</loc>
+    <loc>https://lvbibir.github.io/tags/windows/</loc>
     <lastmod>2022-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/windows_network_priority/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/windows_network_priority/</loc>
     <lastmod>2022-06-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/httpd/</loc>
+    <loc>https://lvbibir.github.io/tags/httpd/</loc>
     <lastmod>2022-03-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/httpd_src_build_rpm/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/httpd_src_build_rpm/</loc>
     <lastmod>2022-03-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/openssl/</loc>
+    <loc>https://lvbibir.github.io/tags/openssl/</loc>
     <lastmod>2022-03-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/openssl_src_build_rpm/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/openssl_src_build_rpm/</loc>
     <lastmod>2022-03-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/rpm/</loc>
+    <loc>https://lvbibir.github.io/tags/rpm/</loc>
     <lastmod>2022-03-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/centos/</loc>
+    <loc>https://lvbibir.github.io/tags/centos/</loc>
     <lastmod>2022-02-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/centos7_change_network_card_name/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/centos7_change_network_card_name/</loc>
     <lastmod>2022-02-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/ceph/</loc>
+    <loc>https://lvbibir.github.io/tags/ceph/</loc>
     <lastmod>2022-02-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/ceph_pg_num_config_create_pool/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/ceph_pg_num_config_create_pool/</loc>
     <lastmod>2022-02-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/docker/</loc>
+    <loc>https://lvbibir.github.io/tags/docker/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/python/</loc>
+    <loc>https://lvbibir.github.io/tags/python/</loc>
     <lastmod>2021-12-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/import_export_docker_image/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/import_export_docker_image/</loc>
     <lastmod>2021-02-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/centos7_update_kernel_to_5.10/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/centos7_update_kernel_to_5.10/</loc>
     <lastmod>2022-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/centos_too_many_password_attempts/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/centos_too_many_password_attempts/</loc>
     <lastmod>2022-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/kernel/</loc>
+    <loc>https://lvbibir.github.io/tags/kernel/</loc>
     <lastmod>2022-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/linux/</loc>
+    <loc>https://lvbibir.github.io/tags/linux/</loc>
     <lastmod>2022-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/pam/</loc>
+    <loc>https://lvbibir.github.io/tags/pam/</loc>
     <lastmod>2022-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/x/</loc>
+    <loc>https://lvbibir.github.io/tags/x/</loc>
     <lastmod>2022-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/close_6000_port/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/close_6000_port/</loc>
     <lastmod>2022-01-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/ambari/</loc>
+    <loc>https://lvbibir.github.io/tags/ambari/</loc>
     <lastmod>2021-12-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/centos7_deploy_ceph_dashboard_nautilus/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/centos7_deploy_ceph_dashboard_nautilus/</loc>
     <lastmod>2021-12-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/cloud-init_change_ssh_config/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/cloud-init_change_ssh_config/</loc>
     <lastmod>2021-12-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/hadoop/</loc>
+    <loc>https://lvbibir.github.io/tags/hadoop/</loc>
     <lastmod>2021-12-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/hdp/</loc>
+    <loc>https://lvbibir.github.io/tags/hdp/</loc>
     <lastmod>2021-12-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/pip/</loc>
+    <loc>https://lvbibir.github.io/tags/pip/</loc>
     <lastmod>2021-12-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/python3_change_pip_repo/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/python3_change_pip_repo/</loc>
     <lastmod>2021-12-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/ssh/</loc>
+    <loc>https://lvbibir.github.io/tags/ssh/</loc>
     <lastmod>2021-12-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/change_file_in_rpm_pkg/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/change_file_in_rpm_pkg/</loc>
     <lastmod>2021-12-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/deploy_ambari_2.7.5_and_hdp_3.1.5/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/deploy_ambari_2.7.5_and_hdp_3.1.5/</loc>
     <lastmod>2021-12-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/links/</loc>
+    <loc>https://lvbibir.github.io/links/</loc>
     <lastmod>2021-11-06T15:15:53+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/about/</loc>
+    <loc>https://lvbibir.github.io/about/</loc>
     <lastmod>2021-11-06T14:57:28+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/k8s/</loc>
+    <loc>https://lvbibir.github.io/tags/k8s/</loc>
     <lastmod>2021-10-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_allinone_train/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/kolla-ansible_deploy_allinone_train/</loc>
     <lastmod>2021-10-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.18.6_offline/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/kubeadm_deploy_k8s_v1.18.6_offline/</loc>
     <lastmod>2021-10-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.22.3/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/kubeadm_deploy_k8s_v1.22.3/</loc>
     <lastmod>2021-10-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/glibc/</loc>
+    <loc>https://lvbibir.github.io/tags/glibc/</loc>
     <lastmod>2021-09-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/openeuler/</loc>
+    <loc>https://lvbibir.github.io/tags/openeuler/</loc>
     <lastmod>2021-09-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/openssh/</loc>
+    <loc>https://lvbibir.github.io/tags/openssh/</loc>
     <lastmod>2021-09-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm_8.7p1/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/openssh_src_build_rpm_8.7p1/</loc>
     <lastmod>2021-09-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/redhat/</loc>
+    <loc>https://lvbibir.github.io/tags/redhat/</loc>
     <lastmod>2021-09-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/redhat_update_kernel/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/redhat_update_kernel/</loc>
     <lastmod>2021-09-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/%E5%B7%A1%E6%A3%80/</loc>
+    <loc>https://lvbibir.github.io/tags/%E5%B7%A1%E6%A3%80/</loc>
     <lastmod>2021-09-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/shell_server_inspection/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/shell_server_inspection/</loc>
     <lastmod>2021-09-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/record_of_program_test/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/record_of_program_test/</loc>
     <lastmod>2021-09-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/aarch64/</loc>
+    <loc>https://lvbibir.github.io/tags/aarch64/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/bbr/</loc>
+    <loc>https://lvbibir.github.io/tags/bbr/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/centos7_open_bbr/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/centos7_open_bbr/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/centos_free/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/centos_free/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/h3c/</loc>
+    <loc>https://lvbibir.github.io/tags/h3c/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/h3c_server_can_not_boot_system/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/h3c_server_can_not_boot_system/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/h3c_server_config_raid/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/h3c_server_config_raid/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/pxe/</loc>
+    <loc>https://lvbibir.github.io/tags/pxe/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/pxe_install_aarch64_system/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/pxe_install_aarch64_system/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/raid/</loc>
+    <loc>https://lvbibir.github.io/tags/raid/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/wordpress/</loc>
+    <loc>https://lvbibir.github.io/tags/wordpress/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/wordpress_to_docker/</loc>
+    <loc>https://lvbibir.github.io/posts/blog/wordpress_to_docker/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/record_of_server_attacked/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/record_of_server_attacked/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/centos7_deploy_benchmark/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/centos7_deploy_benchmark/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/http/</loc>
+    <loc>https://lvbibir.github.io/tags/http/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/https/</loc>
+    <loc>https://lvbibir.github.io/tags/https/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/hwaddr_macaddr_different/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/hwaddr_macaddr_different/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/icp/</loc>
+    <loc>https://lvbibir.github.io/tags/icp/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/openvpn/</loc>
+    <loc>https://lvbibir.github.io/tags/openvpn/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/centos6_deploy_openvpn/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/centos6_deploy_openvpn/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/picgo/</loc>
+    <loc>https://lvbibir.github.io/tags/picgo/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/shell_search_url_files/</loc>
+    <loc>https://lvbibir.github.io/posts/tech/shell_search_url_files/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/ssl/</loc>
+    <loc>https://lvbibir.github.io/tags/ssl/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/typora/</loc>
+    <loc>https://lvbibir.github.io/tags/typora/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/typora_picgo_qiniu_upload_image/</loc>
+    <loc>https://lvbibir.github.io/posts/blog/typora_picgo_qiniu_upload_image/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/wordpress_load_image_failed/</loc>
+    <loc>https://lvbibir.github.io/posts/blog/wordpress_load_image_failed/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/wordpress_editpage_different_post/</loc>
+    <loc>https://lvbibir.github.io/posts/blog/wordpress_editpage_different_post/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/wordpress_add_icp/</loc>
+    <loc>https://lvbibir.github.io/posts/blog/wordpress_add_icp/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/wordpress_https/</loc>
+    <loc>https://lvbibir.github.io/posts/blog/wordpress_https/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/%E4%B8%83%E7%89%9B%E4%BA%91/</loc>
+    <loc>https://lvbibir.github.io/tags/%E4%B8%83%E7%89%9B%E4%BA%91/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/qiniu_ssl/</loc>
+    <loc>https://lvbibir.github.io/posts/blog/qiniu_ssl/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/%E5%9F%BA%E7%BA%BF%E6%A3%80%E6%9F%A5/</loc>
+    <loc>https://lvbibir.github.io/tags/%E5%9F%BA%E7%BA%BF%E6%A3%80%E6%9F%A5/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/%E9%98%BF%E9%87%8C%E4%BA%91/</loc>
+    <loc>https://lvbibir.github.io/tags/%E9%98%BF%E9%87%8C%E4%BA%91/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/wordpress_ssl/</loc>
+    <loc>https://lvbibir.github.io/posts/blog/wordpress_ssl/</loc>
     <lastmod>2021-07-01T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/read/</loc>
+    <loc>https://lvbibir.github.io/posts/read/</loc>
     <lastmod>2020-01-01T00:18:06+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/read/read/</loc>
+    <loc>https://lvbibir.github.io/posts/read/read/</loc>
     <lastmod>2020-01-01T00:18:06+08:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/archives/</loc>
+    <loc>https://lvbibir.github.io/archives/</loc>
   </url><url>
-    <loc>https://www.lvbibir.cn/search/</loc>
+    <loc>https://lvbibir.github.io/search/</loc>
   </url><url>
-    <loc>https://www.lvbibir.cn/categories/</loc>
+    <loc>https://lvbibir.github.io/categories/</loc>
   </url><url>
-    <loc>https://www.lvbibir.cn/series/</loc>
+    <loc>https://lvbibir.github.io/series/</loc>
   </url>
 </urlset>
