@@ -1,4 +1,0 @@
-baseURL = 'https://www.lvbibir.cn/'
-languageCode = 'en-us'
-title = 'lvbibir blog'
-theme = 'hugo-theme-next'
