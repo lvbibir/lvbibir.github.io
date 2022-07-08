@@ -6,14 +6,14 @@
     <description>Recent content in papermod on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 06 Jul 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/papermod/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/papermod/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello,hugo!</title>
       <link>https://www.lvbibir.cn/posts/blog/hello_hugo/</link>
-      <pubDate>Wed, 06 Jul 2022 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/blog/hello_hugo/</guid>
-      <description>记录wordpress迁移至hugo的过程，大多参考sulv大佬的博客，很详尽就只贴链接了</description>
+      <description>记录wordpress迁移至hugo的过程，大多参考sulv大佬的博客，本文更偏向于个人备忘，并不是一篇很合格的教程</description>
     </item>
     
   </channel>
