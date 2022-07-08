@@ -34,7 +34,7 @@ showbreadcrumbs: false
 |        |                                      |
 | ------ | ------------------------------------ |
 | 名称： | lvbibir’s Blog                       |
-| 网址： | https://lvbibir.github.io               |
+| 网址： | https://www.lvbibir.cn              |
 | 图标： | https://image.lvbibir.cn/lvbibir.jpg |
 | 描述： | life is a fucking movie              |
 
