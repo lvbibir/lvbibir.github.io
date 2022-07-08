@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>openeuler on lvbibir&#39;s Blog</title>
-    <link>https://lvbibir.github.io/tags/openeuler/</link>
+    <link>https://www.lvbibir.cn/tags/openeuler/</link>
     <description>Recent content in openeuler on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Sep 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://lvbibir.github.io/tags/openeuler/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Sep 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/openeuler/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>记一次程序测试</title>
-      <link>https://lvbibir.github.io/posts/tech/record_of_program_test/</link>
+      <link>https://www.lvbibir.cn/posts/tech/record_of_program_test/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://lvbibir.github.io/posts/tech/record_of_program_test/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/record_of_program_test/</guid>
       <description>前言 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向</description>
     </item>
     

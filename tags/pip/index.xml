@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>pip on lvbibir&#39;s Blog</title>
-    <link>https://lvbibir.github.io/tags/pip/</link>
+    <link>https://www.lvbibir.cn/tags/pip/</link>
     <description>Recent content in pip on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://lvbibir.github.io/tags/pip/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/pip/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>python3修改pip源</title>
-      <link>https://lvbibir.github.io/posts/tech/python3_change_pip_repo/</link>
+      <link>https://www.lvbibir.cn/posts/tech/python3_change_pip_repo/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://lvbibir.github.io/posts/tech/python3_change_pip_repo/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/python3_change_pip_repo/</guid>
       <description>中国科学技术大学 : https://pypi.mirrors.ustc.edu.cn/simple 清华：https://pypi.tuna.tsinghua.edu.cn/simple 豆瓣：http://pypi.do</description>
     </item>
     

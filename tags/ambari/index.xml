@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>ambari on lvbibir&#39;s Blog</title>
-    <link>https://lvbibir.github.io/tags/ambari/</link>
+    <link>https://www.lvbibir.cn/tags/ambari/</link>
     <description>Recent content in ambari on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://lvbibir.github.io/tags/ambari/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/ambari/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>部署Ambari 2.7.5 &#43; HDP3.1.5</title>
-      <link>https://lvbibir.github.io/posts/tech/deploy_ambari_2.7.5_and_hdp_3.1.5/</link>
+      <link>https://www.lvbibir.cn/posts/tech/deploy_ambari_2.7.5_and_hdp_3.1.5/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
       
-      <guid>https://lvbibir.github.io/posts/tech/deploy_ambari_2.7.5_and_hdp_3.1.5/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/deploy_ambari_2.7.5_and_hdp_3.1.5/</guid>
       <description>前期准备 1. 安装包准备 Ambari2.7.5. HDP3.1.5. libtirpc-devel: 链接：https://pan.baidu.com/s/1eteZ2jGkSq4Pz5YFfHyJgQ 提取码：6hq</description>
     </item>
     
