@@ -97,6 +97,24 @@ cover:
 
 到这里问题基本就解决了，先是尝试找请求的这个css文件，发现在 hugo 编译时生成的 public 下，没什么意义，通过 vscode 的全局查找，找到了 ` assets\css\core\reset.css`  文件，注释掉 `display: block`  后，图片就可以正常并排显示了。
 
+### 引发了友链页面某个问题
+
+修改了上述css文件后发现友链界面的图片变成了下面这样
+
+![image-20220708152642148](https://image.lvbibir.cn/blog/image-20220708152642148.png)
+
+多出来两个奇怪的东西，按照之前的方法再次尝试
+
+![image-20220708152816463](https://image.lvbibir.cn/blog/image-20220708152816463.png)
+
+去掉该属性后
+
+![image-20220708152859231](https://image.lvbibir.cn/blog/image-20220708152859231.png)
+
+最终修改的文件是`assets\css\extended\friend-link.css`  注释掉 `overflow: auto;` 之后恢复正常
+
+目前尚不清楚还会不会有其他影响
+
 
 
 
