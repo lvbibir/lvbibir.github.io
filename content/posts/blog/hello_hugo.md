@@ -28,11 +28,10 @@ cover:
 
 # 博客流水线
 
-1. 修改文章原文
-2. 修改posts下文章内容
-3. `hugo -F --cleanDestinationDir`
-4. `rsync -avuz --progress --delete Desktop/lvbibir/2-hugo-blog/public/ root@101.201.150.47:/root/wordpress-blog/hugo-public/`
-5. 确认后git push到github做归档
+1. 修改posts下文章内容
+2. `hugo -F --cleanDestinationDir`
+3. `rsync -avuz --progress --delete Desktop/lvbibir/2-www.lvbibir.cn/public/ root@101.201.150.47:/root/wordpress-blog/hugo-public/`
+4. 确认后git push到github做归档
 
 
 # seo优化
