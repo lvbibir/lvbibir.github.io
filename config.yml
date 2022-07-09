@@ -41,8 +41,8 @@ languages:
         # subtitle: "🧨学而时习之，不亦说乎？有朋自远方来，不亦乐乎？<br/>👇联系方式"
         imageUrl: "img/avatar.png"
         imageTitle: 
-        imageWidth: 150
-        imageHeight: 150
+        imageWidth: 200
+        imageHeight: 200
         buttons:
           - name: 🧱 建站
             url: posts/blog
