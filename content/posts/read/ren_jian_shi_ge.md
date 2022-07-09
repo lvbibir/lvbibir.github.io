@@ -1,21 +1,17 @@
 ---
-title: "Read"
-date: 2020-01-01T00:18:06+08:00
-lastmod: 2020-01-01T00:18:06+08:00
+title: "《人间失格》"
+date: 2022-07-09
+lastmod: 2022-07-09
 author: ["lvbibir"]
-keywords: 
-- 
-categories: 
-- 
 tags: 
-- 
+- read
 description: ""
-weight:
+weight: 
 slug: ""
 draft: false # 是否为草稿
 comments: true
 reward: true # 打赏
-mermaid: true #是否开启mermaid
+mermaid: false #是否开启mermaid
 showToc: true # 显示目录
 TocOpen: true # 自动展开目录
 hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
@@ -28,6 +24,5 @@ cover:
     relative: false
 ---
 
-
-
+人是不可能一边笑还一边紧紧攥着拳头的，只有猴子才会这样
 
