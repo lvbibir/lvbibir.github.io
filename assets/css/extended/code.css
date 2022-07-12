@@ -2,8 +2,8 @@
 .post-content code {
     font-size: 0.8em;
     line-height: 1.4!important;
-    font-family: monospace!important;
-    /*font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;*/
+    /* font-family: monospace!important; */
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }
 
 .post-content .highlight pre {
