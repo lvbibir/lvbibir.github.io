@@ -2,14 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.lvbibir.cn/posts/tech/</loc>
+    <lastmod>2022-07-12T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.lvbibir.cn/posts/life/running/</loc>
     <lastmod>2022-07-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/blog/hello_hugo/</loc>
     <lastmod>2022-07-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/</loc>
-    <lastmod>2022-07-12T00:00:00+00:00</lastmod>
+    <loc>https://www.lvbibir.cn/posts/blog/</loc>
+    <lastmod>2022-07-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/read/</loc>
+    <lastmod>2022-07-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/life/</loc>
+    <lastmod>2022-07-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/</loc>
     <lastmod>2022-07-12T00:00:00+00:00</lastmod>
@@ -29,9 +38,6 @@
     <loc>https://www.lvbibir.cn/posts/read/ren_jian_shi_ge/</loc>
     <lastmod>2022-07-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/read/</loc>
-    <lastmod>2022-07-09T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/tags/read/</loc>
     <lastmod>2022-07-09T00:00:00+00:00</lastmod>
   </url><url>
@@ -49,12 +55,6 @@
   </url><url>
     <loc>https://www.lvbibir.cn/posts/blog/hugo_image_layout/</loc>
     <lastmod>2022-07-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/posts/life/</loc>
-    <lastmod>2022-07-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/</loc>
-    <lastmod>2022-07-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/papermod/</loc>
     <lastmod>2022-07-08T00:00:00+00:00</lastmod>
