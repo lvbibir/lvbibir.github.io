@@ -6,7 +6,16 @@
     <description>Recent content in Tags on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 09 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pxe</title>
+      <link>https://www.lvbibir.cn/tags/pxe/</link>
+      <pubDate>Tue, 12 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/pxe/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>read</title>
       <link>https://www.lvbibir.cn/tags/read/</link>
@@ -319,15 +328,6 @@
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
       
       <guid>https://www.lvbibir.cn/tags/h3c/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pxe</title>
-      <link>https://www.lvbibir.cn/tags/pxe/</link>
-      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
-      
-      <guid>https://www.lvbibir.cn/tags/pxe/</guid>
       <description></description>
     </item>
     

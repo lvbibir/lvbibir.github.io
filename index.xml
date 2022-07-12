@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 09 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>跑渣的跑步日常</title>
       <link>https://www.lvbibir.cn/posts/life/running/</link>
@@ -23,6 +23,15 @@
       
       <guid>https://www.lvbibir.cn/posts/blog/hello_hugo/</guid>
       <description>记录wordpress迁移至hugo的过程，大多参考sulv大佬的博客，本文更偏向于个人备忘，并不是一篇很合格的教程</description>
+    </item>
+    
+    <item>
+      <title>pxe安装isoft6.0及icloud1.0（Centos8）</title>
+      <link>https://www.lvbibir.cn/posts/tech/pxe_install_isoft6.0_centos8/</link>
+      <pubDate>Tue, 12 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/pxe_install_isoft6.0_centos8/</guid>
+      <description>环境 vmware workstation V16.1.2 服务端配置 系统安装 系统安装过程略，系统版本：iSoft-ServerOS-V6.0-rc1 网卡选择nat模式，注意关闭一下 workstation 自带的</description>
     </item>
     
     <item>

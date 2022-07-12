@@ -8,22 +8,31 @@
     <loc>https://www.lvbibir.cn/posts/blog/hello_hugo/</loc>
     <lastmod>2022-07-08T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/</loc>
+    <lastmod>2022-07-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/</loc>
+    <lastmod>2022-07-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/</loc>
+    <lastmod>2022-07-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/pxe/</loc>
+    <lastmod>2022-07-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/pxe_install_isoft6.0_centos8/</loc>
+    <lastmod>2022-07-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/</loc>
+    <lastmod>2022-07-12T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.lvbibir.cn/posts/read/ren_jian_shi_ge/</loc>
     <lastmod>2022-07-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/read/</loc>
     <lastmod>2022-07-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/</loc>
-    <lastmod>2022-07-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/</loc>
-    <lastmod>2022-07-09T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/tags/read/</loc>
-    <lastmod>2022-07-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/</loc>
     <lastmod>2022-07-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/css/</loc>
@@ -49,9 +58,6 @@
   </url><url>
     <loc>https://www.lvbibir.cn/tags/papermod/</loc>
     <lastmod>2022-07-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/</loc>
-    <lastmod>2022-06-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/git/</loc>
     <lastmod>2022-06-01T00:00:00+08:00</lastmod>
@@ -231,9 +237,6 @@
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/h3c_server_config_raid/</loc>
-    <lastmod>2021-08-01T00:00:00+08:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/pxe/</loc>
     <lastmod>2021-08-01T00:00:00+08:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/pxe_install_aarch64_system/</loc>
