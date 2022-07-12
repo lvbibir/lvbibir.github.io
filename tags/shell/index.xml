@@ -6,7 +6,16 @@
     <description>Recent content in shell on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Jun 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Jul 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>shell脚本之检索某url中所有文件的内容</title>
+      <link>https://www.lvbibir.cn/posts/tech/shell_search_url_files/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/shell_search_url_files/</guid>
+      <description>前言 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的，可以通过检索 kernel.org 中所有内核版本的 ChangeLog 文件中是否包含该 commit 来判断漏洞影</description>
+    </item>
+    
     <item>
       <title>shell脚本不同执行方式的区别</title>
       <link>https://www.lvbibir.cn/posts/tech/shell_different_execution_mode/</link>
@@ -32,15 +41,6 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/import_export_docker_image/</guid>
       <description>python方式 批量导出，运行后所有tar包都在当前目录下 # encoding: utf-8 import re import os import subprocess if __name__ == &amp;#34;__main__&amp;#34;: p = subprocess.Popen(&amp;#39;docker images&amp;#39;, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) for line in p.stdout.readlines(): # 此处的正则表达式是为了匹配镜像名</description>
-    </item>
-    
-    <item>
-      <title>shell脚本之检索某url中所有文件的内容</title>
-      <link>https://www.lvbibir.cn/posts/tech/shell_search_url_files/</link>
-      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/shell_search_url_files/</guid>
-      <description>前言 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的，可以通过检索 kernel.org 中所有内核版本的 ChangeLog 文件中是否包含该 commit 来判断漏洞影</description>
     </item>
     
   </channel>

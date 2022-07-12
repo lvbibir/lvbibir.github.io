@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>shell脚本之检索某url中所有文件的内容</title>
+      <link>https://www.lvbibir.cn/posts/tech/shell_search_url_files/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0800</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/shell_search_url_files/</guid>
+      <description>前言 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的，可以通过检索 kernel.org 中所有内核版本的 ChangeLog 文件中是否包含该 commit 来判断漏洞影</description>
+    </item>
+    
+    <item>
       <title>git设置代理</title>
       <link>https://www.lvbibir.cn/posts/tech/git_set_proxy/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
@@ -320,15 +329,6 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/centos6_deploy_openvpn/</guid>
       <description>一、实验环境 3台centos6.5，1台win10，openvpn-2.4.7，easy-rsa-3.0.5 二、拓扑结构 Win10安装ope</description>
-    </item>
-    
-    <item>
-      <title>shell脚本之检索某url中所有文件的内容</title>
-      <link>https://www.lvbibir.cn/posts/tech/shell_search_url_files/</link>
-      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/shell_search_url_files/</guid>
-      <description>前言 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的，可以通过检索 kernel.org 中所有内核版本的 ChangeLog 文件中是否包含该 commit 来判断漏洞影</description>
     </item>
     
   </channel>
