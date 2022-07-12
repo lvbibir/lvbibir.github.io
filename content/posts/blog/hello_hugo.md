@@ -406,6 +406,7 @@ https://gohugo.io/content-management/urls/
 - [x] 必应seo优化
 - [ ] 尝试再次优化nginx的配置，之前的配置对于wordpress可能更适用
 - [ ] 图床备份
+- [ ] 将所有文章进行内容整理，剔除一些没什么营养的文章
 
 
 

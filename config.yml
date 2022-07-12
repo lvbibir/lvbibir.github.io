@@ -44,10 +44,10 @@ languages:
         imageWidth: 200
         imageHeight: 200
         buttons:
-          - name: 🧱 建站
-            url: posts/blog
           - name: 👨🏻‍💻 技术
             url: posts/tech
+          - name: 🧱 建站
+            url: posts/blog
           - name: 📕 阅读
             url: posts/read
           - name: 🏖 生活
