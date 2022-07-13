@@ -72,7 +72,7 @@ sed -i '/SELINUX/s/enforcing/disabled/' /etc/sysconfig/selinux
 cenots8安装syslinux时需要加 --nonlinux后缀，centos7则不需要
 
 ```
- dnf install dhcp-server tftp-server httpd syslinux-nonlinux
+ dnf install -y dhcp-server tftp-server httpd syslinux-nonlinux
 ```
 
 ![image-20220712141810455](https://image.lvbibir.cn/blog/image-20220712141810455.png)
@@ -120,7 +120,7 @@ subnet 1.1.1.0 netmask 255.255.255.0 {
 
 ```
 systemctl start dhcpd
-systemctl enabled dhcpd
+systemctl enable dhcpd
 ```
 
 ### isoft_6.0_x86
@@ -132,10 +132,12 @@ systemctl enabled dhcpd
 ```
 # 创建目录
 mkdir -p /var/www/html/isoft_6.0/isos/x86_64/
+
 # 上传镜像文件
 cp -rf  /mnt/* /var/www/html/isoft_6.0/isos/x86_64/
+
 # 上传ks.cfg应答文件
-cp anaconda-ks.cfg /var/www/html/isoft_6.0/isos/x86_64/ks.cfg
+vim /var/www/html/isoft_6.0/isos/x86_64/ks.cfg
 chmod 644 /var/www/html/isoft_6.0/isos/x86_64/ks.cfg
 ```
 
@@ -210,7 +212,7 @@ vim /var/lib/tftpboot/pxelinux.cfg/default
 
 ```
 default vesamenu.c32
-timeout 60
+timeout 30
 
 menu title iSoft-Taiji Server OS 6.0
 
@@ -218,14 +220,107 @@ label linux
   menu label ^Install iSoft-Taiji Server OS 6.0
   menu default
   kernel vmlinuz
-  append initrd=initrd.img ks=http://1.1.1.21/isoft_6.0/isos/x86_64/ks.cfg repo=http://1.1.1.21/isoft_6.0/isos/x86_64
+  append initrd=initrd.img ks=http://1.1.1.21/isoft_6.0/isos/x86_64/ks.cfg
 ```
 
+#### 测试
+
+注意测试虚拟机内存需要4G左右，否则会报错  `no space left`
 
 
 
+### icoud_1.0_x86
 
+#### http服务配置
 
+创建目录
+
+```
+# 创建目录
+mkdir -p /var/www/html/icloud_1.0/isos/x86_64/
+
+# 上传镜像文件
+mkdir /icloud_os
+mount -o loop /root/i-CloudOS-1.0-x86_64-202108131137.iso /icloud_os/
+cp -rf  /icloud_os/* /var/www/html/icloud_1.0/isos/x86_64/
+
+# 上传ks.cfg应答文件
+vim /var/www/html/icloud_1.0/isos/x86_64/ks.cfg
+chmod 644 /var/www/html/icloud_1.0/isos/x86_64/ks.cfg
+```
+
+ks.cfg文件内容
+
+```
+#version=RHEL8
+ignoredisk --only-use=sda
+autopart --type=lvm
+# Partition clearing information
+clearpart --all --initlabel --drives=sda
+# Use graphical install
+graphical
+# Use CDROM installation media
+install
+url --url=http://1.1.1.21/icloud_1.0/isos/x86_64/
+# Keyboard layouts
+keyboard --vckeymap=us --xlayouts=''
+# System language
+lang zh_CN.UTF-8
+
+# Root password
+rootpw --iscrypted 123.com
+# Run the Setup Agent on first boot
+firstboot --enable
+# Do not configure the X Window System
+skipx
+# System services
+services --enabled="chronyd"
+# System timezone
+timezone Asia/Shanghai --isUtc
+
+%packages
+@^vmserver-compute-node
+%end
+
+%anaconda
+pwpolicy root --minlen=6 --minquality=1 --notstrict --nochanges --notempty
+pwpolicy user --minlen=6 --minquality=1 --notstrict --nochanges --emptyok
+pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
+%end
+```
+
+#### tftp服务配置
+
+```
+# 拷贝内核启动文件
+cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/vmlinuz /var/lib/tftpboot/
+cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/initrd.img /var/lib/tftpboot/
+cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/vesamenu.c32 /var/lib/tftpboot/
+
+# 拷贝菜单配置文件
+cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/isolinux.cfg /var/lib/tftpboot/pxelinux.cfg/default
+
+# 下面这三个文件centos7可以不要，centos8对于这三个文件有一定依赖性
+cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/ldlinux.c32 /var/lib/tftpboot/
+cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/libutil.c32 /var/lib/tftpboot/
+cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/libcom32.c32 /var/lib/tftpboot/
+```
+
+vim /var/lib/tftpboot/pxelinux.cfg/default
+
+```
+default vesamenu.c32
+timeout 30
+menu title i-CloudOS 1.0
+
+label linux
+  menu label ^Install i-CloudOS 1.0
+  menu default
+  kernel vmlinuz
+  append initrd=initrd.img ks=http://1.1.1.21/icloud_1.0/isos/x86_64/ks.cfg
+```
+
+#### 测试
 
 
 
