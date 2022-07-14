@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 12 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>跑渣的跑步日常</title>
       <link>https://www.lvbibir.cn/posts/life/running/</link>
@@ -23,6 +23,15 @@
       
       <guid>https://www.lvbibir.cn/posts/blog/hello_hugo/</guid>
       <description>记录wordpress迁移至hugo的过程，大多参考sulv大佬的博客，本文更偏向于个人备忘，并不是一篇很合格的教程</description>
+    </item>
+    
+    <item>
+      <title>glibc误升级后修复</title>
+      <link>https://www.lvbibir.cn/posts/glibc_wu_sheng_ji/</link>
+      <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/glibc_wu_sheng_ji/</guid>
+      <description>前言 记录一下在 OpenEuler 20.03 LTS aarch64 系统上误操作升级了 glibc 后紧急修复的步骤 起因 在使用 cephadm 安装 ceph v16.2 时升级了 python，系统默认版本是 3.7.4 ，升级后版本是 3.8.5</description>
     </item>
     
     <item>
