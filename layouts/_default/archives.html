@@ -1,7 +1,12 @@
 {{- define "main" }}
 
+{{ $postss := (where .Site.RegularPages "Section" "==" "posts") }}
+{{ $postCount := len $postss }}
+
 <header class="page-header">
-  <h1>{{ .Title }}</h1>
+  <h1>
+    {{ .Title }} <sup class="archive-count-title" style="font-size: 20px; color: var(--secondary);">&nbsp;&nbsp; 文章总数 {{ $postCount }} </sup>
+  </h1>
   {{- if .Description }}
   <div class="post-description">
     {{ .Description }}
@@ -19,7 +24,7 @@
 {{- if ne .Key "0001" }}
 <div class="archive-year">
   <h2 class="archive-year-header">
-    {{- replace .Key "0001" "" }} 年<sup class="archive-count">&nbsp;&nbsp;{{ len .Pages }}</sup>
+    {{- replace .Key "0001" "" }} 年<sup class="archive-count">&nbsp;&nbsp; 年度文章数 {{ len .Pages }}</sup>
   </h2>
   {{- range .Pages.GroupByDate "January" }}
   <div class="archive-month">
