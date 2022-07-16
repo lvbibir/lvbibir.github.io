@@ -6,29 +6,20 @@
     <description>Recent content in pxe on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 14 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/pxe/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>glibc误升级后修复</title>
-      <link>https://www.lvbibir.cn/posts/glibc_wu_sheng_ji/</link>
-      <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/glibc_wu_sheng_ji/</guid>
-      <description>前言 记录一下在 OpenEuler 20.03 LTS aarch64 系统上误操作升级了 glibc 后紧急修复的步骤 起因 在使用 cephadm 安装 ceph v16.2 时升级了 python，系统默认版本是 3.7.4 ，升级后版本是 3.8.5</description>
-    </item>
-    
+    <lastBuildDate>Tue, 12 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/pxe/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>pxe安装isoft6.0及icloud1.0（Centos8）</title>
       <link>https://www.lvbibir.cn/posts/tech/pxe_install_isoft6.0_centos8/</link>
       <pubDate>Tue, 12 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/pxe_install_isoft6.0_centos8/</guid>
-      <description>环境 vmware workstation V16.1.2 服务端配置 系统安装 系统安装过程略，系统版本：iSoft-ServerOS-V6.0-rc1 网卡选择nat模式，注意关闭一下 workstation 自带的</description>
+      <description>前言 测试环境：vmware workstation V16.1.2 服务端配置 系统安装 系统安装过程略，系统版本：iSoft-ServerOS-V6.0-rc1 网卡选择nat模式，</description>
     </item>
     
     <item>
       <title>pxe安装aarch64架构的操作系统</title>
       <link>https://www.lvbibir.cn/posts/tech/pxe_install_aarch64_system/</link>
-      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/pxe_install_aarch64_system/</guid>
       <description>pxe环境 dhcp+tftp+http pxe-server：isoft-serveros-v4.2（3.10.0-957.el7.isoft.x86_64） 引导的is</description>

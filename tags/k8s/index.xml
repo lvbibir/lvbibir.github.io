@@ -6,23 +6,23 @@
     <description>Recent content in k8s on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 01 Oct 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>kubeadm 搭建 k8s 集群 [离线版] v1.18.6</title>
       <link>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.18.6_offline/</link>
-      <pubDate>Fri, 01 Oct 2021 00:00:00 +0800</pubDate>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.18.6_offline/</guid>
-      <description>kubeadm 搭建 k8s 集群 [离线版] v1.18.6 参考：https://www.cnblogs.com/hukey/p/13773927.html Kubernetes 概述 kubernetes 是什么 kubernetes 是 Google</description>
+      <description>Kubernetes 概述 kubernetes 是什么 kubernetes 是 Google 在 2014年开源的一个容器集群管理平台，kubernetes简称 k8s k8s用于容器化应用程序的部署，扩展和管理。 k8s提供</description>
     </item>
     
     <item>
       <title>kubeadm快速搭建K8s集群v1.22.3</title>
       <link>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.22.3/</link>
-      <pubDate>Fri, 01 Oct 2021 00:00:00 +0800</pubDate>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.22.3/</guid>
-      <description>kubeadm是官方社区推出的一个用于快速部署kubernetes集群的工具。 这个工具能通过两条指令完成一个kubernetes集群的部署：</description>
+      <description>前言 kubeadm是官方社区推出的一个用于快速部署kubernetes集群的工具。 这个工具能通过两条指令完成一个kubernetes集群的部</description>
     </item>
     
   </channel>

@@ -6,11 +6,11 @@
     <description>Recent content in redhat on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Sep 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/redhat/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/redhat/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>redhat服务器升级内核</title>
       <link>https://www.lvbibir.cn/posts/tech/redhat_update_kernel/</link>
-      <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/redhat_update_kernel/</guid>
       <description>前言 按指定要求安装升级内核，保证grub2启动时为默认项目 第一步 确认当前操作系统的内核版本 [root@server0 ~]# uname -r 3.10.0-123.el7.x86_64 第二步 下载准备升级的内核文件，比如说内核</description>

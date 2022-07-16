@@ -6,11 +6,11 @@
     <description>Recent content in docker on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>批量导出&amp;导入docker镜像</title>
       <link>https://www.lvbibir.cn/posts/tech/import_export_docker_image/</link>
-      <pubDate>Tue, 01 Feb 2022 00:00:00 +0800</pubDate>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/import_export_docker_image/</guid>
       <description>python方式 批量导出，运行后所有tar包都在当前目录下 # encoding: utf-8 import re import os import subprocess if __name__ == &amp;#34;__main__&amp;#34;: p = subprocess.Popen(&amp;#39;docker images&amp;#39;, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) for line in p.stdout.readlines(): # 此处的正则表达式是为了匹配镜像名</description>
@@ -19,10 +19,91 @@
     <item>
       <title>wordpress迁移到docker</title>
       <link>https://www.lvbibir.cn/posts/blog/wordpress_to_docker/</link>
-      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/blog/wordpress_to_docker/</guid>
       <description>前言 前段时间着手开始搭建自己的wordpress博客，刚开始图方便直接买了阿里云的轻量应用服务器，它是一套预先搭建好的lamp架构，并已经做</description>
+    </item>
+    
+    <item>
+      <title>docker三剑客之machine</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker_machine/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker_machine/</guid>
+      <description>Docker Machine简介 Docker Machine 是 Docker 官方编排（Orchestration）项目之一，负责在多种平台上快速安装 Docker环境。 Docker Machine支持在</description>
+    </item>
+    
+    <item>
+      <title>docker三剑客之swarm</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker_swarm/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker_swarm/</guid>
+      <description>docker swarm 概述 https://blog.csdn.net/anumbrella/article/details/80369913 docker swarm 使用 环境搭建 准备3台Ubuntu系统主机(即用于搭建集群的3个Docker机器)，每台机器上都需要安装Docker并且可以连接</description>
+    </item>
+    
+    <item>
+      <title>docker命令</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker_command/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker_command/</guid>
+      <description>docker info&amp;mdash;&amp;ndash;查看docker的各项信息 查看docke的各项操作，包括docker版本、容器数量、镜像数量、仓库地址</description>
+    </item>
+    
+    <item>
+      <title>docker容器跨主机连接</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker_rong_qi_kua_zhu_ji_lian_jie/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker_rong_qi_kua_zhu_ji_lian_jie/</guid>
+      <description>实现跨主机的docker容器之间的通讯： 使用网桥实现跨主机的连接 docker原生的网络：overlay、macvlan 第三方网络：flaan</description>
+    </item>
+    
+    <item>
+      <title>docker数据卷（data volume）</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker_data_volume/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker_data_volume/</guid>
+      <description>什么是数据卷 docker的理念之一就是将应用与其运行的环境打包。通常docker容器的生命周期都是与在容器中运行的程序相一致的，我们对于数据</description>
+    </item>
+    
+    <item>
+      <title>docker简介以及基础概念</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker_jian_jie/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker_jian_jie/</guid>
+      <description>docker简介 Docker 是一个开源项目，诞生于 2013 年初，最初是 dotCloud 公司内部的一个业余项目。它基于 Google 公司推出的 Go 语言实现。 项目后来加入了 Linux 基金会，遵从了</description>
+    </item>
+    
+    <item>
+      <title>docker网络</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker_network/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker_network/</guid>
+      <description>概述 独立容器网络：none host none网络最为安全，只有localback接口 host网络只和物理机相连，保证跟物理机相连的网络效率 跟物理机完</description>
+    </item>
+    
+    <item>
+      <title>docker远程访问</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker_yuan_cheng_fang_wen/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker_yuan_cheng_fang_wen/</guid>
+      <description>前言 实现docker客户端与另一台主机上的docker守护进程进行通信 环境准备 主机版本为Centos7.4，docker版本为docker-</description>
+    </item>
+    
+    <item>
+      <title>使用 docker 部署静态网站（nginx）</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker_run_nginx/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker_run_nginx/</guid>
+      <description>创建映射80端口的交互式容器 [root@localhost ~]# docker run -it -p 80 --name web centos /bin/bash 安装nginx 安装wget、vim、make以及一些所需要的库文件和语言环境 [root@ca453e479d0c /]# yum -y install wget gcc</description>
     </item>
     
   </channel>

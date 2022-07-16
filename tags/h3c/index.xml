@@ -6,11 +6,11 @@
     <description>Recent content in H3C on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/h3c/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/h3c/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>H3C服务器装完系统无法引导</title>
       <link>https://www.lvbibir.cn/posts/tech/h3c_server_can_not_boot_system/</link>
-      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/h3c_server_can_not_boot_system/</guid>
       <description>前端时间在国家信息中心的一个项目上需要在 H3C 服务器上安装操作系统然后配置一套 spring boot 项目，结果在装操作系统过程中就遇到了问题：安装完操作系统后无法</description>
@@ -19,7 +19,7 @@
     <item>
       <title>H3C服务器配置raid</title>
       <link>https://www.lvbibir.cn/posts/tech/h3c_server_config_raid/</link>
-      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/h3c_server_config_raid/</guid>
       <description>1、进入bios修改启动模式，将 UEFI 改为 Legacy bios 2、 重启服务器，ctrl + r 进入 lsi 阵列卡管理 3、选择对应阵列卡 4、配置逻辑盘 5、配置完逻辑盘后可以</description>

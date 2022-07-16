@@ -6,14 +6,14 @@
     <description>Recent content in git on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Jun 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>git设置代理</title>
       <link>https://www.lvbibir.cn/posts/tech/git_set_proxy/</link>
-      <pubDate>Wed, 01 Jun 2022 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/git_set_proxy/</guid>
-      <description># 设置全局代理 # http git config --global https.proxy http://127.0.0.1:1080 # https git config --global https.proxy https://127.0.0.1:1080 # 使用socks5代理的 例如ss，ssr 1080是windows下ss的默认代理端口,mac下不同</description>
+      <description># 设置全局代理 git config --global https.proxy http://127.0.0.1:1080 git config --global https.proxy https://127.0.0.1:1080 # 使用socks5代理的 例如ss，ssr 1080是windows下ss的默认代理端口,mac下不同，或者有</description>
     </item>
     
   </channel>

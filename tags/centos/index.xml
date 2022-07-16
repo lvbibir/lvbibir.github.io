@@ -6,11 +6,11 @@
     <description>Recent content in centos on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/centos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>centos7修改网卡名称</title>
       <link>https://www.lvbibir.cn/posts/tech/centos7_change_network_card_name/</link>
-      <pubDate>Tue, 01 Feb 2022 00:00:00 +0800</pubDate>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos7_change_network_card_name/</guid>
       <description>前言 在使用kolla-ansible部署多节点openstack时，所有节点的外网网卡名称和管理网卡名称需要一样，其中两台是型号相同的物理机</description>
@@ -19,7 +19,7 @@
     <item>
       <title>Centos7.5升级内核至5.10</title>
       <link>https://www.lvbibir.cn/posts/tech/centos7_update_kernel_to_5.10/</link>
-      <pubDate>Sat, 01 Jan 2022 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos7_update_kernel_to_5.10/</guid>
       <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm的缩写 长期维护版 ml m</description>
@@ -28,7 +28,7 @@
     <item>
       <title>CentOS密码尝试次数过多</title>
       <link>https://www.lvbibir.cn/posts/tech/centos_too_many_password_attempts/</link>
-      <pubDate>Sat, 01 Jan 2022 00:00:00 +0800</pubDate>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos_too_many_password_attempts/</guid>
       <description>pam模块 pam：Pluggable Authentication Modules 可插拔的认证模块，linux 中的认证方式，“可插拔的“说明可以按需对认证内容进行变更。与nsswit</description>
@@ -37,7 +37,7 @@
     <item>
       <title>centos7部署ceph&#43;dashboard（nautilus）</title>
       <link>https://www.lvbibir.cn/posts/tech/centos7_deploy_ceph_dashboard_nautilus/</link>
-      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos7_deploy_ceph_dashboard_nautilus/</guid>
       <description>前言 ceph测试环境的搭建 基本环境 物理环境：Vmware Workstaion 系统版本：Centos-7.9-Minimal 两个osd节点添加一块虚拟磁盘，建议</description>
@@ -46,7 +46,7 @@
     <item>
       <title>服务器巡检脚本</title>
       <link>https://www.lvbibir.cn/posts/tech/shell_server_inspection/</link>
-      <pubDate>Wed, 01 Sep 2021 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/shell_server_inspection/</guid>
       <description>#!/bin/bash #参数定义 date=`date +&amp;#34;%Y-%m-%d-%H:%M:%S&amp;#34;` centosVersion=$(awk &amp;#39;{print $(NF-1)}&amp;#39; /etc/redhat-release) VERSION=`date +%F` #日志相关 LOGPATH=&amp;#34;/tmp/awr&amp;#34; [ -e $LOGPATH ] || mkdir -p $LOGPATH RESULTFILE=&amp;#34;$LOGPATH/HostCheck-`hostname`-`date +%Y%m%d`.txt&amp;#34; #调用函数库 [ -f /etc/init.d/functions ] &amp;amp;&amp;amp; source /etc/init.d/functions export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin source /etc/profile #root用户执行脚本 [ $(id -u) -gt 0 ] &amp;amp;&amp;amp; echo &amp;#34</description>
@@ -55,16 +55,16 @@
     <item>
       <title>centos7开启bbr算法</title>
       <link>https://www.lvbibir.cn/posts/tech/centos7_open_bbr/</link>
-      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos7_open_bbr/</guid>
-      <description>介绍在CentOS7上部署BBR的详细过程 BBR简介：（Bottleneck Bandwidth and RTT）是一种新的拥塞控制算法，由Google开发。有了BB</description>
+      <description>前言 介绍在CentOS7上部署BBR的详细过程 BBR简介：（Bottleneck Bandwidth and RTT）是一种新的拥塞控制算法，由Google开发。有了</description>
     </item>
     
     <item>
       <title>centos中free命令详解</title>
       <link>https://www.lvbibir.cn/posts/tech/centos_free/</link>
-      <pubDate>Sun, 01 Aug 2021 00:00:00 +0800</pubDate>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos_free/</guid>
       <description>CentOS6及以前 在CentOS6及以前的版本中，free命令输出是这样的： [root@wordpress ~]# free -m total used free shared buffers cached Mem: 1002 769 233 0 62 421 -/+ buffers/cache: 286 716 Swap: 1153 0 1153 第一行： ​ 系</description>
@@ -73,7 +73,7 @@
     <item>
       <title>centos7基线检查平台部署</title>
       <link>https://www.lvbibir.cn/posts/tech/centos7_deploy_benchmark/</link>
-      <pubDate>Thu, 01 Jul 2021 00:00:00 +0800</pubDate>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos7_deploy_benchmark/</guid>
       <description>介绍 项目地址 这个项目准备打造一个安全基线检查平台，期望能够以最简单的方式在需要进行检查的服务器上运行。能够达到这么一种效果：基线检查脚本(以</description>
