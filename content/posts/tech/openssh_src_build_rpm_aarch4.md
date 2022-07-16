@@ -1,0 +1,189 @@
+---
+title: "openssh源码编译打包成rpm（openssh-8.6p1，aarch64，4.19内核）" 
+date: 2019-08-01
+lastmod: 2019-08-01
+author: ["lvbibir"] 
+categories: 
+- 
+tags: 
+- openssh
+- ssh
+- rpm
+description: "" 
+weight: 
+slug: ""
+draft: false # 是否为草稿
+comments: true #是否展示评论
+showToc: true # 显示目录
+TocOpen: true # 自动展开目录
+hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
+disableShare: true # 底部不显示分享栏
+showbreadcrumbs: true #顶部显示当前路径
+cover:
+    image: "" #图片路径：posts/tech/文章1/picture.png
+    caption: "" #图片底部描述
+    alt: ""
+    relative: false
+---
+
+# 环境
+系统版本：
+普华服务器操作系统openeuler版
+系统内核：
+4.19.90-2003.4.0.0036.oe1.aarch64
+软件版本：
+openssh-8.6p1.tar.gz
+x11-ssh-askpass-1.2.4.1.tar.gz
+# 编译步骤
+## dnf安装依赖工具
+
+```
+dnf install gdb imake libXt-devel gtk2-devel  rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel  libX11-devel  initscripts -y
+```
+
+## 创建编译目录
+
+```
+mkdir -p /root/rpmbuild/{SOURCES,SPECS}
+```
+
+## 下载openssh编译包和x11-ssh-askpass依赖包并解压修改配置
+
+```
+cd /root/rpmbuild/SOURCES
+wget https://openbsd.hk/pub/OpenBSD/OpenSSH/portable/openssh-8.6p1.tar.gz
+wget https://src.fedoraproject.org/repo/pkgs/openssh/x11-ssh-askpass-1.2.4.1.tar.gz/8f2e41f3f7eaa8543a2440454637f3c3/x11-ssh-askpass-1.2.4.1.tar.gz
+
+tar -zxvf openssh-8.6p1.tar.gz  
+
+cp openssh-8.6p1/contrib/redhat/openssh.spec  /root/rpmbuild/SPECS/
+sed -i -e "s/%define no_x11_askpass 0/%define no_x11_askpass 1/g" /root/rpmbuild/SPECS/openssh.spec
+sed -i -e "s/%define no_gnome_askpass 0/%define no_gnome_askpass 1/g" /root/rpmbuild/SPECS/openssh.spec
+```
+
+## 准备编译
+
+```
+vim /root/rpmbuild/SPECS/openssh.spec 注释掉 BuildRequires: openssl-devel < 1.1 这一行
+修改下面两行 
+%attr(4711,root,root) %{_libexecdir}/openssh/ssh-sk-helper
+%attr(0644,root,root) %{_mandir}/man8/ssh-sk-helper.8.gz
+```
+
+## 开始编译
+
+```
+rpmbuild -ba /root/rpmbuild/SPECS/openssh.spec 
+```
+
+## 操作验证
+
+```
+cd /root/rpmbuild/RPMS/aarch64
+vim run.sh 
+```
+```
+#!/bin/bash
+cp /etc/pam.d/sshd   /etc/pam.d/sshd_bak
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config_bak
+rpm -Uvh ./*.rpm
+cp -r  /etc/pam.d/sshd_bak /etc/pam.d/
+cp /etc/ssh/sshd_config_bak /etc/ssh/sshd_config
+rm -rf /etc/ssh/ssh*key
+systemctl daemon-reload
+systemctl restart sshd
+```
+```
+chmod 755 run.sh
+./run.sh
+ssh -V 
+OpenSSH_8.6p1, OpenSSL 1.1.1d  10 Sep 2019
+```
+从版本看，ssh已经升级成功。但是每次重启服务都会提示sshd的unit文件发生改变，需要执行systemctl daemon-reload。执行完reload后重启sshd依旧报错Warning: The unit file, source configuration file or drop-ins of sshd.service changed on disk. Run 'systemctl daemon-reload' to reload units.
+![在这里插入图片描述](https://image.lvbibir.cn/blog/20210701164624435.png)
+先不管这个问题，测试下sshd服务是否正常。
+用终端连接试试
+![在这里插入图片描述](https://image.lvbibir.cn/blog/20210701165555515.png)
+一切正常，如果出现PAM unable to dlopen(/usr/lib64/security/pam_stack.so): /usr/lib64/security/pam_stack.so: cannot open shared object file: No such file or directory类似报错，需要还原原先的/etc/pam.d/sshd文件
+
+继续看之前那个报错，一般这种错误为服务的配置文件或者unit文件发生改变，需要执行daemon-reload重新加载一下，逐个排查
+
+查看配置文件
+![在这里插入图片描述](https://image.lvbibir.cn/blog/20210701170122697.png)
+
+查看unit文件
+![在这里插入图片描述](https://image.lvbibir.cn/blog/2021070117022510.png)
+没有找到sshd.service的unit文件，find查找一下
+![在这里插入图片描述](https://image.lvbibir.cn/blog/20210701170414796.png)
+第一个文件是老版本ssh的残留的自启的unit链接文件，已经失效了。第三个和第四个文件都是第二个文件的链接文件。	
+不知为何我们自己编译的ssh安装后unit文件会放到这个位置，后续再研究，尝试自己写一份unit文件，试试能不能恢复sshd。
+
+备份unit文件
+
+```
+[root@localhost ~]# cp /run/systemd/generator.late/sshd.service /root/sshd.service-20210702
+```
+查看unit文件中的控制参数和pid文件位置等
+![在这里插入图片描述](https://image.lvbibir.cn/blog/20210702092434815.png)
+自建一个unit文件，放到/usr/lib/systemd/system目录
+
+```
+[root@localhost ~]# vim /usr/lib/systemd/system/sshd.service
+
+[UNIT]
+Description=OpenSSH server daemon
+After=network.target sshd-keygen.target
+Wants=sshd-keygen.target
+
+[Service]
+Type=forking
+ExecStart=/etc/rc.d/init.d/sshd start
+ExecReload=/etc/rc.d/init.d/sshd restart
+ExecStop=/etc/rc.d/init.d/sshd stop
+PrivateTmp=True
+
+[Install]
+WantedBy=multi-user.target
+
+[root@localhost ~]# systemctl daemon-reload
+[root@localhost ~]# systemctl restart sshd
+[root@localhost ~]# systemctl status sshd
+[root@localhost ~]# ssh -V
+OpenSSH_8.6p1, OpenSSL 1.1.1d  10 Sep 2019
+```
+![在这里插入图片描述](https://image.lvbibir.cn/blog/20210702094722872.png)
+# 打包归档
+
+```
+[root@localhost ~]# cp  /usr/lib/systemd/system/sshd.service  /root/rpmbuild/RPMS/aarch64/
+[root@localhost ~]# cd /root/rpmbuild/RPMS/aarch64/
+[root@localhost aarch64]# ls
+
+openssh-8.6p1-1.isoft.isoft.aarch64.rpm                openssh-debugsource-8.6p1-1.isoft.isoft.aarch64.rpm
+openssh-askpass-8.6p1-1.isoft.isoft.aarch64.rpm        openssh-server-8.6p1-1.isoft.isoft.aarch64.rpm
+openssh-askpass-gnome-8.6p1-1.isoft.isoft.aarch64.rpm  run.sh
+openssh-clients-8.6p1-1.isoft.isoft.aarch64.rpm        sshd.service
+openssh-debuginfo-8.6p1-1.isoft.isoft.aarch64.rpm
+
+[root@localhost aarch64]# vim run.sh
+
+#!/bin/bash
+cp /etc/pam.d/sshd   /etc/pam.d/sshd_bak
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config_bak
+rpm -Uvh ./*.rpm
+cp /etc/pam.d/sshd_bak /etc/pam.d/
+cp /etc/ssh/sshd_config_bak /etc/ssh/sshd_config
+cp ./sshd.service  /usr/lib/systemd/system/sshd.service
+rm -rf /etc/ssh/ssh*key
+systemctl daemon-reload
+systemctl restart sshd
+systemctl enable sshd
+
+[root@localhost aarch64]# tar zcvf openssh-8.6p1-rpm-aarch64.tar.gz ./*
+[root@localhost aarch64]# mv openssh-8.6p1-rpm-aarch64.tar.gz /root
+```
+
+# 其他
+[systemd和sysv的服务管理](https://blog.csdn.net/weixin_30412577/article/details/97964940?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control)
+
+[systemd-sysv-generator 中文手册](https://www.wenjiangs.com/doc/systemd-systemd-sysv-generator)

@@ -7,8 +7,8 @@ categories:
 - 
 tags: 
 - pxe
-description: "" #描述
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+description: "" 
+weight: 
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论
@@ -24,13 +24,13 @@ cover:
     relative: false
 ---
 
-### 环境
+# 前言
 
-vmware workstation V16.1.2
+测试环境：vmware workstation V16.1.2
 
-### 服务端配置
+# 服务端配置
 
-#### 系统安装
+## 系统安装
 
 系统安装过程略，系统版本：iSoft-ServerOS-V6.0-rc1
 
@@ -38,7 +38,7 @@ vmware workstation V16.1.2
 
 ![](https://image.lvbibir.cn/blog/image-20220712100835390.png)
 
-#### 关闭防火墙及selinux
+## 关闭防火墙及selinux
 
 ```shell
 iptables -F
@@ -48,7 +48,7 @@ setenforce 0
 sed -i '/SELINUX/s/enforcing/disabled/' /etc/sysconfig/selinux
 ```
 
-#### 安装相关的软件包
+## 安装相关的软件包
 
 这里由于HW行动的原因，外网yum源暂不可用，使用本地yum源安装相关软件包
 
@@ -77,7 +77,7 @@ cenots8安装syslinux时需要加 --nonlinux后缀，centos7则不需要
 
 ![image-20220712141810455](https://image.lvbibir.cn/blog/image-20220712141810455.png)
 
-#### http服务配置
+## http服务配置
 
 ```
 systemctl start httpd
@@ -86,7 +86,7 @@ systemctl enable httpd
 
 能访问到httpd即可
 
-#### tftp服务配置
+## tftp服务配置
 
 ```
 systemctl start tftp
@@ -97,7 +97,7 @@ cp /usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/
 mkdir /var/lib/tftpboot/pxelinux.cfg
 ```
 
-#### dhcp服务配置
+## dhcp服务配置
 
 vim /etc/dhcp/dhcpd.conf
 
@@ -123,9 +123,9 @@ systemctl start dhcpd
 systemctl enable dhcpd
 ```
 
-### isoft_6.0_x86
+# isoft_6.0_x86
 
-#### http服务配置
+## http服务配置
 
 创建目录
 
@@ -191,7 +191,7 @@ pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 reboot
 ```
 
-#### tftp服务配置
+## tftp服务配置
 
 ```
 # 拷贝内核启动文件
@@ -223,15 +223,15 @@ label linux
   append initrd=initrd.img ks=http://1.1.1.21/isoft_6.0/isos/x86_64/ks.cfg
 ```
 
-#### 测试
+## 测试
 
 注意测试虚拟机内存需要4G左右，否则会报错  `no space left`
 
 
 
-### icoud_1.0_x86
+# icoud_1.0_x86
 
-#### http服务配置
+## http服务配置
 
 创建目录
 
@@ -289,7 +289,7 @@ pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 %end
 ```
 
-#### tftp服务配置
+## tftp服务配置
 
 ```
 # 拷贝内核启动文件
@@ -320,7 +320,7 @@ label linux
   append initrd=initrd.img ks=http://1.1.1.21/icloud_1.0/isos/x86_64/ks.cfg
 ```
 
-#### 测试
+## 测试
 
 
 
@@ -346,6 +346,6 @@ label linux
 
 
 
-### 参考
+# 参考
 
 https://blog.csdn.net/weixin_45651006/article/details/103067283

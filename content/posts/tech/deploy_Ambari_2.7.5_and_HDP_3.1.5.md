@@ -1,16 +1,16 @@
 ---
-title: "部署Ambari 2.7.5 + HDP3.1.5" #标题
-date: 2021-12-01T00:00:00+08:00 #创建时间
-lastmod: 2021-12-01T00:00:00+08:00 #更新时间
-author: ["lvbibir"] #作者
+title: "部署Ambari 2.7.5 + HDP3.1.5" 
+date: 2021-12-01
+lastmod: 2021-12-01
+author: ["lvbibir"] 
 categories: 
 - 
 tags: 
 - ambari
 - HDP
 - hadoop
-description: "" #描述
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+description: "" 
+weight: 
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论
@@ -27,27 +27,27 @@ cover:
 ---
 ## 前期准备
 
-### 1. 安装包准备
+# 1. 安装包准备
 
 **Ambari2.7.5. HDP3.1.5. libtirpc-devel:**
 链接：https://pan.baidu.com/s/1eteZ2jGkSq4Pz5YFfHyJgQ
 提取码：6hq3
 
-### 2.服务器配置
+# 2.服务器配置
 
 | 主机名  | cpu  | 内存 | 硬盘 | 系统版本           | ip地址          |
 | ------- | ---- | ---- | ---- | ------------------ | --------------- |
 | node001 | 4c   | 10g  | 50g  | isoft-serveros-4.2 | 192.168.150.106 |
 | node002 | 2c   | 4g   | 20g  | isoft-serveros-4.2 | 192.168.150.107 |
 
-### 3.修改系统版本文件（所有节点执行）
+# 3.修改系统版本文件（所有节点执行）
 
 ```
 sed -i 's/4/7/g' /etc/redhat-release
 sed -i 's/4/7/g' /etc/os-release
 ```
 
-### 4.配置主机名（所有节点执行）
+# 4.配置主机名（所有节点执行）
 
 **2台服务器的hosts都需要做如下修改**
 
@@ -67,7 +67,7 @@ vim /etc/hosts
 192.168.150.107 node002
 ```
 
-### 5.关闭防火墙及selinux（所有节点执行）
+# 5.关闭防火墙及selinux（所有节点执行）
 
 **2台服务器上分别执行以下操作，关闭防火墙并配置开机不自动启动**
 
@@ -86,7 +86,7 @@ vim /etc/sysconfig/selinux
 SELINUX=disabled
 ```
 
-### 6.配置ssh互信（所有节点执行）
+# 6.配置ssh互信（所有节点执行）
 
 **方法一**
 
@@ -143,7 +143,7 @@ ssh到不同服务器
 ssh node002
 ```
 
-### 7. 配置ntp时钟同步
+# 7. 配置ntp时钟同步
 
 选择一台服务器作为NTP Server，这里选择node001
 
@@ -208,7 +208,7 @@ systemctl restart ntpd
 systemctl enable ntpd
 ```
 
-### 9.设置swap（所有节点执行）
+# 9.设置swap（所有节点执行）
 
 ```bash
 echo vm.swappiness = 1 >> /etc/sysctl.conf
@@ -216,7 +216,7 @@ sysctl vm.swappiness=1
 sysctl -p
 ```
 
-### 10. 关闭透明大页面（所有节点执行）
+# 10. 关闭透明大页面（所有节点执行）
 
 由于透明超大页面已知会导致意外的节点重新启动并导致RAC出现性能问题，因此Oracle强烈建议禁用
 
@@ -225,7 +225,7 @@ echo never > /sys/kernel/mm/transparent_hugepage/defrag
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 ```
 
-### 11.安装http服务（node001节点执行）
+# 11.安装http服务（node001节点执行）
 
 安装apache的httpd服务主要用于搭建OS. Ambari和hdp的yum源。在集群服务器中选择一台服务器来安装httpd服务，命令如下：
 
@@ -239,7 +239,7 @@ systemctl enable httpd.service
 
 ![image-20211123141149628](https://image.lvbibir.cn/blog/image-20211123141149628.png)
 
-### 13.安装Java（所有节点执行）
+# 13.安装Java（所有节点执行）
 
 下载地址：https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
 
@@ -271,7 +271,7 @@ source /root/.bashrc
 java -version
 ```
 
-### 14. 安装maven3.6（node001节点执行）
+# 14. 安装maven3.6（node001节点执行）
 
 下载解压
 
@@ -297,7 +297,7 @@ source /root/.bashrc
 
 ##  安装Ambari&HDP
 
-### 1. 配置Ambari. HDP. libtirpc-devel本地源
+# 1. 配置Ambari. HDP. libtirpc-devel本地源
 
 解压
 
@@ -401,7 +401,7 @@ yum clean all
 yum repolist
 ```
 
-### 2. 安装mariadb（node001节点执行）
+# 2. 安装mariadb（node001节点执行）
 
 安装MariaDB服务器
 
@@ -463,7 +463,7 @@ systemctl restart mariadb
 mysql -u root -p123456
 ```
 
-### 3. 安装和配置ambari-server（node001节点执行）
+# 3. 安装和配置ambari-server（node001节点执行）
 
 安装ambari-server
 
@@ -587,20 +587,20 @@ GRANT ALL PRIVILEGES ON *.* TO 'oozie'@'node001';
 FLUSH PRIVILEGES;
 ```
 
-### 4. 安装ambari-agent（所有节点执行）
+# 4. 安装ambari-agent（所有节点执行）
 
 ```bash
 pssh -h /node.list -i 'yum -y install ambari-agent'
 pssh -h /node.list -i 'systemctl start ambari-agent'
 ```
 
-### 5. 安装libtirpc-devel（所有节点）
+# 5. 安装libtirpc-devel（所有节点）
 
 ```bash
 pssh -h /node.list -i 'yum -y install libtirpc-devel'
 ```
 
-### 6. 启动ambari服务
+# 6. 启动ambari服务
 
 ```
 ambari-server start
@@ -608,7 +608,7 @@ ambari-server start
 
 ## 部署集群
 
-### 1. 登录界面
+# 1. 登录界面
 
 http://192.168.150.106:8080
 
@@ -616,7 +616,7 @@ http://192.168.150.106:8080
 
 ![image-20211123145726406](https://image.lvbibir.cn/blog/image-20211123145726406.png)
 
-### 2. 选择版本，配置yum源
+# 2. 选择版本，配置yum源
 
 1）选择Launch Install Wizard
 2）配置集群名称
@@ -632,7 +632,7 @@ HDP-UTILS-1.1.0.22: http://node001/HDP-UTILS/centos7/1.1.0.22/
 
 ![image-20211123150120718](https://image.lvbibir.cn/blog/image-20211123150120718.png)
 
-### 3. 配置节点和密钥
+# 3. 配置节点和密钥
 
 下载主节点的/root/.ssh/id_rsa，并上传！点击下一步，进入确认主机界面
 
@@ -646,17 +646,17 @@ HDP-UTILS-1.1.0.22: http://node001/HDP-UTILS/centos7/1.1.0.22/
 
 
 
-### 4. 勾选需要安装的服务
+# 4. 勾选需要安装的服务
 
 由于资源有限，这里并没有选择所有服务
 
 ![image-20211123151238695](https://image.lvbibir.cn/blog/image-20211123151238695.png)
 
-### 5. 分配服务master
+# 5. 分配服务master
 
 ![image-20211123151312856](https://image.lvbibir.cn/blog/image-20211123151312856.png)
 
-### 6. 分配服务slaves
+# 6. 分配服务slaves
 
 ![image-20211123151134172](https://image.lvbibir.cn/blog/image-20211123151134172.png)
 
@@ -671,21 +671,21 @@ Activity Explorer’s Admin: admin
 
 
 
-### 7. 连接数据库
+# 7. 连接数据库
 
 ![image-20211123151525068](https://image.lvbibir.cn/blog/image-20211123151525068.png)
 
 
 
-### 8. 编辑配置，默认即可
+# 8. 编辑配置，默认即可
 
 ![image-20211123151547943](https://image.lvbibir.cn/blog/image-20211123151547943.png)
 
-### 9.  开始部署
+# 9.  开始部署
 
 ![image-20211123151705941](https://image.lvbibir.cn/blog/image-20211123151705941.png)
 
-### 10. 安装成功
+# 10. 安装成功
 
 右上角两个警告是磁盘使用率警告，虚机分配的磁盘较小
 
@@ -693,7 +693,7 @@ Activity Explorer’s Admin: admin
 
 ## 其他问题（正常情况不需要修改）
 
-### 1. 添加其他系统支持
+# 1. 添加其他系统支持
 
 HDP默认不支持安装到 isoft-serverosv4.2，需手动添加支持
 
@@ -705,14 +705,14 @@ vim /usr/lib/ambari-server/lib/ambari_commons/resources/os_family.json
 
 ![image-20211123145525458](https://image.lvbibir.cn/blog/image-20211123145525458.png)
 
-### 2. YARN Registry DNS 服务启动失败
+# 2. YARN Registry DNS 服务启动失败
 
 ```
 lsof -i:53
 kill -9
 ```
 
-### 3. 设置初始检测的系统版本
+# 3. 设置初始检测的系统版本
 
 ```
 vim /etc/ambari-server/conf/ambari.properties

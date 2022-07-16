@@ -1,14 +1,14 @@
 ---
-title: "kubeadm快速搭建K8s集群v1.22.3" #标题
-date: 2021-10-01T00:00:00+08:00 #创建时间
-lastmod: 2021-10-01T00:00:00+08:00 #更新时间
-author: ["lvbibir"] #作者
+title: "kubeadm快速搭建K8s集群v1.22.3" 
+date: 2021-10-01
+lastmod: 2021-10-01
+author: ["lvbibir"] 
 categories: 
 - 
 tags: 
 - k8s
-description: "" #描述
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+description: "" 
+weight: 
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论
@@ -23,6 +23,8 @@ cover:
     alt: ""
     relative: false
 ---
+# 前言
+
 kubeadm是官方社区推出的一个用于快速部署kubernetes集群的工具。
 
 这个工具能通过两条指令完成一个kubernetes集群的部署：
@@ -35,7 +37,7 @@ $ kubeadm init
 $ kubeadm join <Master节点的IP和端口 >
 ```
 
-## 1. 安装要求
+# 1. 安装要求
 
 在开始之前，部署Kubernetes集群机器需要满足以下几个条件：
 
@@ -45,7 +47,7 @@ $ kubeadm join <Master节点的IP和端口 >
 - 可以访问外网，需要拉取镜像
 - 禁用swap分区
 
-## 2. 准备环境
+# 2. 准备环境
 
  ![kubernetesæ¶æå¾](https://blog-1252881505.cos.ap-beijing.myqcloud.com/k8s/single-master.jpg) 
 
@@ -91,11 +93,11 @@ $ yum install ntpdate -y
 $ ntpdate time.windows.com
 ```
 
-## 3. 安装 Docker/kubeadm/kubelet/kubectl (所有节点)
+# 3. 安装 Docker/kubeadm/kubelet/kubectl (所有节点)
 
 Kubernetes默认CRI（容器运行时）为Docker，因此先安装Docker。
 
-### 3.1 安装Docker
+## 3.1 安装Docker
 
 ```
 $ wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
@@ -103,7 +105,7 @@ $ yum -y install docker-ce
 $ systemctl enable docker && systemctl start docker
 ```
 
-### 3.2 配置镜像下载加速器，同时修改docker的cgroupdriver为systemd
+## 3.2 配置镜像下载加速器，同时修改docker的cgroupdriver为systemd
 
 ```
 $ cat > /etc/docker/daemon.json << EOF
@@ -116,7 +118,7 @@ $ systemctl restart docker
 $ docker info
 ```
 
-### 3.3 添加阿里云YUM软件源
+## 3.3 添加阿里云YUM软件源
 
 ```
 $ cat > /etc/yum.repos.d/kubernetes.repo << EOF
@@ -130,7 +132,7 @@ gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors
 EOF
 ```
 
-### 3.4 安装kubeadm，kubelet和kubectl
+## 3.4 安装kubeadm，kubelet和kubectl
 
 由于版本更新频繁，这里指定版本号部署：
 
@@ -140,7 +142,7 @@ $ systemctl enable kubelet
 $ systemctl start kubelet
 ```
 
-## 4. 部署Kubernetes Master
+# 4. 部署Kubernetes Master
 
 https://kubernetes.io/zh/docs/reference/setup-tools/kubeadm/kubeadm-init/#config-file 
 
@@ -192,7 +194,7 @@ NAME         STATUS   ROLES    AGE   VERSION
 k8s-master   Ready    master   2m   v1.18.0
 ```
 
-## 5. 加入Kubernetes Node
+# 5. 加入Kubernetes Node
 
 在192.168.150.102/103（Node）执行。
 
@@ -218,7 +220,7 @@ $ kubeadm join 192.168.150.101:6443 --token nuja6n.o3jrhsffiqs9swnu --discovery-
 
 <https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-join/>
 
-## 6. 部署容器网络（CNI）
+# 6. 部署容器网络（CNI）
 
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network 
 
@@ -245,7 +247,7 @@ $ kubectl apply -f calico.yaml
 $ kubectl get pods -n kube-system
 ```
 
-## 7. 测试kubernetes集群
+# 7. 测试kubernetes集群
 
 - 验证Pod工作
 - 验证Pod网络通信
@@ -261,7 +263,7 @@ $ kubectl get pod,svc
 
 访问地址：http://NodeIP:Port  
 
-## 8. 部署 Dashboard
+# 8. 部署 Dashboard
 
 ```
 $ wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.4.0/aio/deploy/recommended.yaml

@@ -1,14 +1,14 @@
 ---
-title: "ceph创建pool时pg_num的配置" #标题
-date: 2022-02-01T00:00:00+08:00 #创建时间
-lastmod: 2022-02-01T00:00:00+08:00 #更新时间
-author: ["lvbibir"] #作者
+title: "ceph创建pool时pg_num的配置" 
+date: 2022-02-01
+lastmod: 2022-02-01
+author: ["lvbibir"] 
 categories: 
 - 
 tags: 
 - ceph
-description: "" #描述
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+description: "" 
+weight: 
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论
@@ -23,7 +23,7 @@ cover:
     alt: ""
     relative: false
 ---
-### pg_num
+# pg_num
 
 用此命令创建存储池时：
 
@@ -41,6 +41,6 @@ ceph osd pool create {pool-name} pg_num
 
 
 
-### 参考
+# 参考
 
 https://www.cnblogs.com/varden/p/13921172.html

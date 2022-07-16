@@ -1,8 +1,8 @@
 ---
-title: "修改hugo的图片布局，使多张图片可以并排显示" #标题
+title: "修改hugo的图片布局，使多张图片可以并排显示" 
 date: 2022-07-07 
 lastmod: 2022-07-07
-author: ["lvbibir"] #作者
+author: ["lvbibir"] 
 categories: 
 - 
 tags: 
@@ -11,7 +11,7 @@ tags:
 - css
 - html
 description: ""
-weight:  # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+weight:  
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论
@@ -27,11 +27,11 @@ cover:
     relative: false
 ---
 
-### 前言
+# 前言
 
 仅是对前端一窍不通的我的一次尝试，如果有更好的实现方法可以评论或者发邮件告诉我~
 
-### md文件中图片并排显示
+# md文件中图片并排显示
 
 先贴结论，并排显示图片只需要一段简单的 html 代码
 
@@ -60,7 +60,7 @@ cover:
 
 ![image-20220707143841758](https://image.lvbibir.cn/blog/image-20220707143841758.png)
 
-### hugo-papermod主题中修改图片并排显示
+# hugo-papermod主题中修改图片并排显示
 
 先贴结论，按照上文中先在 post 文章中修改好图片代码，再修改站点主目录下面的` assets\css\core\reset.css`  文件
 
@@ -97,7 +97,7 @@ cover:
 
 到这里问题基本就解决了，先是尝试找请求的这个css文件，发现在 hugo 编译时生成的 public 下，没什么意义，通过 vscode 的全局查找，找到了 ` assets\css\core\reset.css`  文件，注释掉 `display: block`  后，图片就可以正常并排显示了。
 
-### 引发了友链页面某个问题
+# 引发了友链页面某个问题
 
 修改了上述css文件后发现友链界面的图片变成了下面这样
 

@@ -1,15 +1,15 @@
 ---
-title: "【置顶】Hello,hugo!" #标题
+title: "【置顶】Hello,hugo!"
 date: 2022-07-06
 lastmod: 2022-07-08
-author: ["lvbibir"] #作者
+author: ["lvbibir"] 
 categories: 
 - 
 tags: 
 - hugo
 - papermod
-description: "记录wordpress迁移至hugo的过程，大多参考sulv大佬的博客，本文更偏向于个人备忘，并不是一篇很合格的教程" #描述
-weight: 1 # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+description: ""
+weight: 1
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论
@@ -25,13 +25,17 @@ cover:
     relative: false
 ---
 
-### 博客流水线
+# 前言
 
-#### 编辑文章
+记录wordpress迁移至hugo的过程，大多参考sulv大佬的博客，本文更偏向于个人备忘，并不是一篇很合格的教程
+
+# 博客流水线
+
+## 编辑文章
 
 采用 typora + picgo + 七牛云图床流程，[参考文章](https://www.lvbibir.cn/posts/blog/typora_picgo_qiniu_upload_image/)
 
-#### 生成静态文件
+## 生成静态文件
 
 ```
 hugo -F --cleanDestinationDir
@@ -39,7 +43,7 @@ hugo -F --cleanDestinationDir
 
 后面两个参数表示会先删除之前生成的 public 目录，保证每次生成的 public 都是新的
 
-#### 上传静态文件
+## 上传静态文件
 
 ```
 rsync -avuz --progress --delete Desktop/lvbibir/2-lvbibir.github.io/public/ root@101.201.150.47:/root/wordpress-blog/hugo-public/
@@ -47,7 +51,7 @@ rsync -avuz --progress --delete Desktop/lvbibir/2-lvbibir.github.io/public/ root
 
 [mobaxterm](https://mobaxterm.mobatek.net/) 是我一直以来的主力终端，它的本地终端自带了很多linux命令，用`rsync`命令上传静态文件至阿里服务器，且会先删除服务器上之前的静态文件，保证博客的内容保持最新
 
-#### 归档备份
+## 归档备份
 
 研究 hugo 建站之初是打算采用 github pages 来发布静态博客
 
@@ -65,7 +69,7 @@ rsync -avuz --progress --delete Desktop/lvbibir/2-lvbibir.github.io/public/ root
 
 所以干脆沿用之前的 [github仓库](https://github.com/lvbibir/lvbibir.github.io) ，来作为我博客的归档管理，也可以方便家里电脑和工作电脑之间的数据同步
 
-### 将hugo博客部署到阿里云
+# 将hugo博客部署到阿里云
 
 之前的[wordpress博客](https://lvbibir.cn)部署在阿里云的一套 docker-compose 环境下，[这篇文章](https://www.lvbibir.cn/posts/blog/wordpress_to_docker/)有详细记录
 
@@ -73,7 +77,7 @@ rsync -avuz --progress --delete Desktop/lvbibir/2-lvbibir.github.io/public/ root
 
 以下是一些配置文件示例
 
-#### wordpress-blog/docker-compose.yml
+## wordpress-blog/docker-compose.yml
 
 新增了hugo-nginx容器
 
@@ -196,7 +200,7 @@ networks:
        - subnet: 172.19.0.0/16
 ```
 
-#### wordpress-blog/conf/proxy/default.conf
+## wordpress-blog/conf/proxy/default.conf
 
 前端代理nginx的配置文件，原先只有 lvbibir.cn ，新增了 www.lvbibir.cn 相关配置
 
@@ -313,7 +317,7 @@ server {
 }
 ```
 
-#### wordpress-blog/conf/hugo/nginx.conf
+## wordpress-blog/conf/hugo/nginx.conf
 
 ```nginx
 user root;
@@ -380,11 +384,11 @@ http {
 
 
 
-### seo优化
+# seo优化
 
 https://www.sulvblog.cn/posts/blog/hugo_seo/
 
-### 添加twikoo评论组件
+# 添加twikoo评论组件
 
 基本完全按照sulv博主的文章来操作，某些地方官方有更新，不过也只是更改了页面罢了
 
@@ -392,13 +396,13 @@ https://www.sulvblog.cn/posts/blog/hugo_twikoo/
 
 顺便记录一下账号关系：mongodb使用google账号登录，vercel使用github登录
 
-### 修改博客url
+# 修改博客url
 
 https://gohugo.io/content-management/urls/
 
 
 
-### todo
+# todo
 
 - [x] 修改所有文章的文件名为全英文
 - [x] 百度seo优化

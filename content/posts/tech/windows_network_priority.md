@@ -1,14 +1,14 @@
 ---
-title: "windows双网卡时设置网络优先级" #标题
-date: 2022-06-01T00:00:00+08:00 #创建时间
-lastmod: 2022-06-01T00:00:00+08:00 #更新时间
-author: ["lvbibir"] #作者
+title: "windows双网卡时设置网络优先级" 
+date: 2022-06-01
+lastmod: 2022-06-01
+author: ["lvbibir"] 
 categories: 
 - 
 tags: 
 - windows
-description: "" #描述
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+description: "" 
+weight: 
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论
@@ -32,8 +32,6 @@ cover:
 同时接入这两个网络时，内网访问正常，外网无法访问。
 
 此时可以通过调整网络优先级及配置路由实现内外网同时访问
-
-
 
 >  一般来说，内网的网段数量较少，我们可以配置使默认路由走外网，走内网时通过配置的路由走
 

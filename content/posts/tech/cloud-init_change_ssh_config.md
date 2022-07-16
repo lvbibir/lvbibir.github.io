@@ -1,15 +1,15 @@
 ---
-title: "cloud-init自动将ssh配置文件的PasswordAuthentication参数值修改为no" #标题
-date: 2021-12-01T00:00:00+08:00 #创建时间
-lastmod: 2021-12-01T00:00:00+08:00 #更新时间
-author: ["lvbibir"] #作者
+title: "cloud-init自动将ssh配置文件的PasswordAuthentication参数值修改为no" 
+date: 2021-12-01
+lastmod: 2021-12-01
+author: ["lvbibir"] 
 categories: 
 - 
 tags: 
 - openstack
 - ssh
-description: "" #描述
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+description: "" 
+weight: 
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论
@@ -24,7 +24,7 @@ cover:
     alt: ""
     relative: false
 ---
-### 前言
+# 前言
 在openEuler20.03 (LTS-SP1)系统上进行一些测试，发现某个东西会自动修改ssh配置文件导致系统无法通过密码登录，最后排查是由于安装了cloud-init导致的。
 
 ![image-20211217152941463](https://image.lvbibir.cn/blog/image-20211217152941463.png)

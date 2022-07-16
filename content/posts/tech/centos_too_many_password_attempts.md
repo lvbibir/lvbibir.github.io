@@ -1,15 +1,15 @@
 ---
-title: "CentOS密码尝试次数过多" #标题
-date: 2022-01-01T00:00:00+08:00 #创建时间
-lastmod: 2022-01-01T00:00:00+08:00 #更新时间
-author: ["lvbibir"] #作者
+title: "CentOS密码尝试次数过多" 
+date: 2022-01-01
+lastmod: 2022-01-01
+author: ["lvbibir"] 
 categories: 
 - 
 tags: 
 - centos
 - pam
-description: "" #描述
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+description: "" 
+weight: 
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论
@@ -24,11 +24,11 @@ cover:
     alt: ""
     relative: false
 ---
-### pam模块
+# pam模块
 
 pam：Pluggable Authentication Modules 可插拔的认证模块，linux 中的认证方式，“可插拔的“说明可以按需对认证内容进行变更。与nsswitch一样，也是一个通用框架。只不过是提供认证功能的。
 
-### 重置密码失败次数
+# 重置密码失败次数
 
 ```bash
 pam_tally2 -r -u root

@@ -1,16 +1,16 @@
 ---
-title: "批量导出&导入docker镜像" #标题
-date: 2022-02-01T00:00:00+08:00 #创建时间
-lastmod: 2021-02-01T00:00:00+08:00 #更新时间
-author: ["lvbibir"] #作者
+title: "批量导出&导入docker镜像" 
+date: 2022-02-01
+lastmod: 2021-02-01
+author: ["lvbibir"] 
 categories: 
 - 
 tags: 
 - python
 - shell
 - docker
-description: "" #描述
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+description: "" 
+weight: 
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论
@@ -25,7 +25,7 @@ cover:
     alt: ""
     relative: false
 ---
-### python方式
+# python方式
 
 批量导出，运行后所有tar包都在当前目录下
 
@@ -77,9 +77,9 @@ for imagename in images:
         os.system('docker load -i %s'%imagename)
 ```
 
-### bash方式
+# bash方式
 
-#### 导出
+## 导出
 
 ```bash
 #!/bin/bash
@@ -94,7 +94,7 @@ done < images_cut.txt
 echo finish
 ```
 
-#### 导入
+## 导入
 
 ```bash
 #!/bin/bash
@@ -107,6 +107,6 @@ echo finish
 ```
 
 
-### 参考
+# 参考
 
 https://www.cnblogs.com/ksir16/p/8865525.html

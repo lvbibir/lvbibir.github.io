@@ -1,15 +1,15 @@
 ---
-title: "typora+picgo+七牛云上传图片" #标题
-date: 2021-07-01T00:00:00+08:00 #创建时间
-lastmod: 2021-07-01T00:00:00+08:00 #更新时间
-author: ["lvbibir"] #作者
+title: "typora+picgo+七牛云上传图片" 
+date: 2021-07-01
+lastmod: 2021-07-01
+author: ["lvbibir"] 
 categories: 
 - 
 tags: 
 - typora
 - picgo
-description: "" #描述
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+description: "" 
+weight: 
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论

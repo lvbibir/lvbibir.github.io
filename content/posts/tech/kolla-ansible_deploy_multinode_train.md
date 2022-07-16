@@ -1,14 +1,14 @@
 ---
-title: "kolla-ansible部署多节点openstack（Train版）" #标题
-date: 2022-06-01T00:00:00+08:00 #创建时间
-lastmod: 2022-06-01T00:00:00+08:00 #更新时间
-author: ["lvbibir"] #作者
+title: "kolla-ansible部署多节点openstack（Train版）" 
+date: 2022-06-01
+lastmod: 2022-06-01
+author: ["lvbibir"] 
 categories: 
 - 
 tags: 
 - openstack
-description: "" #描述
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+description: "" 
+weight: 
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论
@@ -43,7 +43,7 @@ kolla-ansible -i ./multinode prechecks --limit node135
 kolla-ansible -i ./multinode deploy --limit node135
 ```
 
-### 参考
+# 参考
 
 https://blog.csdn.net/qq_33316576/article/details/107457111
 

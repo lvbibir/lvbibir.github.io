@@ -1,15 +1,15 @@
 ---
-title: "openssl源码构建rpm" #标题
-date: 2022-03-01T00:00:00+08:00 #创建时间
-lastmod: 2022-03-01T00:00:00+08:00 #更新时间
-author: ["lvbibir"] #作者
+title: "openssl源码构建rpm" 
+date: 2022-03-01
+lastmod: 2022-03-01
+author: ["lvbibir"] 
 categories: 
 - 
 tags: 
 - openssl
 - rpm
-description: "" #描述
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+description: "" 
+weight: 
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论
@@ -24,13 +24,13 @@ cover:
     alt: ""
     relative: false
 ---
-### 环境
+# 环境
 
 iSoftserver-v4.2(Centos-7)
 
 openssl version：1.0.2k
 
-### 编译
+# 编译
 
 从github上看到的编译脚本，本地修改后：
 
@@ -141,7 +141,7 @@ tree rpmbuild/*RPMS
 
 ![image-20220302154139155](https://image.lvbibir.cn/blog/image-20220302154139155.png)
 
-### 升级
+# 升级
 
 ```
 rpm -e openssl --nodeps

@@ -1,14 +1,14 @@
 ---
-title: "kubeadm 搭建 k8s 集群 [离线版] v1.18.6" #标题
-date: 2021-10-01T00:00:00+08:00 #创建时间
-lastmod: 2021-10-01T00:00:00+08:00 #更新时间
-author: ["lvbibir"] #作者
+title: "kubeadm 搭建 k8s 集群 [离线版] v1.18.6" 
+date: 2021-10-01
+lastmod: 2021-10-01
+author: ["lvbibir"] 
 categories: 
 - 
 tags: 
 - k8s
-description: "" #描述
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+description: "" 
+weight: 
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论
@@ -23,20 +23,16 @@ cover:
     alt: ""
     relative: false
 ---
-# kubeadm 搭建 k8s 集群 [离线版\] v1.18.6
+# Kubernetes 概述
 
-参考：https://www.cnblogs.com/hukey/p/13773927.html
-
-## Kubernetes 概述
-
-### kubernetes 是什么
+## kubernetes 是什么
 
 - kubernetes 是 Google 在 2014年开源的一个容器集群管理平台，kubernetes简称 k8s
 - k8s用于容器化应用程序的部署，扩展和管理。
 - k8s提供了容器的编排，资源调度，弹性伸缩，部署管理，服务发现等一系列功能
 - kubernetes目标是让部署容器化应用简单高效
 
-### Kubernetes 特性
+## Kubernetes 特性
 
 - 自我修复
   - 在节点故障时重新启动失败的容器，替换和重新部署，保证预期的副本数量；杀死健康检查失败的容器，并且在未准备好之前不会处理客户端请求，确保线上服务不中断。
@@ -53,7 +49,7 @@ cover:
 - 批处理
   - 提供一次性任务，定时任务；满足批量数据处理和分析的场景。
 
-### Kubeadm 概述
+## Kubeadm 概述
 
 > `kubeadm`是`Kubernetes`项目自带的及集群构建工具，负责执行构建一个最小化的可用集群以及将其启动等的必要基本步骤，`kubeadm`是`Kubernetes`集群全生命周期的管理工具，可用于实现集群的部署、升级、降级及拆除。`kubeadm`部署`Kubernetes`集群是将大部分资源以`pod`的方式运行，例如（`kube-proxy`、`kube-controller-manager`、`kube-scheduler`、`kube-apiserver`、`flannel`)都是以`pod`方式运行。
 >
@@ -61,13 +57,13 @@ cover:
 >
 > `Kubeadm`集成了`Kubeadm init`和`kubeadm join`等工具程序，其中`kubeadm init`用于集群的快速初始化，其核心功能是部署Master节点的各个组件，而`kubeadm join`则用于将节点快速加入到指定集群中，它们是创建`Kubernetes`集群最佳实践的“快速路径”。另外，`kubeadm token`可于集群构建后管理用于加入集群时使用的认证令牌（t`oken`)，而`kubeadm reset`命令的功能则是删除集群构建过程中生成的文件以重置回初始状态。
 
-## Kuberadm 离线部署 k8s 集群
+# Kuberadm 离线部署 k8s 集群
 
-### 架构图
+## 架构图
 
 [![img](https://img2020.cnblogs.com/blog/828019/202010/828019-20201006171931291-1034333699.png)](https://img2020.cnblogs.com/blog/828019/202010/828019-20201006171931291-1034333699.png)
 
-### 环境规划
+## 环境规划
 
 | 操作系统          | IP           | CPU/MEM | 主机名     | 角色      |
 | ----------------- | ------------ | ------- | ---------- | --------- |
@@ -83,19 +79,19 @@ cover:
 | kubeadm    | v1.18.6    |
 | kubernetes | v1.18.6    |
 
-### 安装前提条件
+## 安装前提条件
 
 - Centos 7.x 最小化安装
 - 时钟同步
 
-### 下载离线程序包
+## 下载离线程序包
 
 **更新修复，请下载 k8s-kubeadmin.zip 压缩包！！！**
 
 > 链接：https://pan.baidu.com/s/1Q3jbJcgq0rH8jK-LTpa6Vg
 > 提取码：hhhh
 
-### 部署Master节点
+## 部署Master节点
 
 1. **执行自动安装脚本**
 
@@ -184,7 +180,7 @@ k8s-master   Ready    master   3m58s   v1.18.6
 
 到此，通过 kubeadm 初始化安装 master 节点完毕。接下来是 node 节点就很简单。
 
-### 部署node节点
+## 部署node节点
 
 1. 将下载的压缩包拷贝到 node 节点执行
 
@@ -222,7 +218,7 @@ k8s-node1 成功加入集群，剩下的 node 节点都是一样的操作。
 
 到此，通过 kubeadm 搭建 k8s 环境已经完成。
 
-## k8s 集群简单测试
+# k8s 集群简单测试
 
 > 注意：本节测试需要网络拉取镜像，可以通过网络将 镜像拷贝到主机里 所需镜像： nginx:alpine / busybox
 
@@ -320,3 +316,6 @@ options ndots:5
 
 测试通过，网络及dns服务正常。集群处于正常健康状态。
 
+# 参考
+
+https://www.cnblogs.com/hukey/p/13773927.html

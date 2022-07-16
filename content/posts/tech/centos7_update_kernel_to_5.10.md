@@ -1,15 +1,15 @@
 ---
-title: "Centos7.5升级内核至5.10" #标题
-date: 2022-01-01T00:00:00+08:00 #创建时间
-lastmod: 2022-01-01T00:00:00+08:00 #更新时间
-author: ["lvbibir"] #作者
+title: "Centos7.5升级内核至5.10" 
+date: 2022-01-01
+lastmod: 2022-01-01
+author: ["lvbibir"] 
 categories: 
 - 
 tags: 
 - centos
 - kernel
-description: "" #描述
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+description: "" 
+weight: 
 slug: ""
 draft: false # 是否为草稿
 comments: true #是否展示评论
