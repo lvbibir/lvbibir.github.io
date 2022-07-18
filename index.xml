@@ -278,12 +278,12 @@
     </item>
     
     <item>
-      <title>openssh源码打包编译成rpm包（8.7p1）</title>
-      <link>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm_8.7p1/</link>
+      <title>openssh源码打包编译成rpm包</title>
+      <link>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm_8.7p1/</guid>
-      <description>编译环境 编译平台： vmware workstation 系统版本： 普华服务器操作系统v4.0 系统内核： 3.10.0-327.el7.isoft.x86_64 软件版本： openssh-8.7p1.tar.gz x11-ssh-askpass-1.2.4.1.tar.gz 编译步骤 yum安装依赖工具 yum install gdb imake libXt-devel gtk2-devel rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel libX11-devel</description>
+      <guid>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm/</guid>
+      <description>openssh-8.7p1 编译环境 编译平台： vmware workstation 系统版本： 普华服务器操作系统v4.0 系统内核： 3.10.0-327.el7.isoft.x86_64 软件版本： openssh-8.7p1.tar.gz x11-ssh-askpass-1.2.4.1.tar.gz 编译步骤 yum安装依赖工具 yum install wget vim gdb imake libXt-devel gtk2-devel rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel</description>
     </item>
     
     <item>
@@ -557,15 +557,6 @@
     </item>
     
     <item>
-      <title>openssh源码编译打包成rpm（openssh-8.6p1，aarch64，4.19内核）</title>
-      <link>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm_aarch4/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm_aarch4/</guid>
-      <description>环境 系统版本： 普华服务器操作系统openeuler版 系统内核： 4.19.90-2003.4.0.0036.oe1.aarch64 软件版本： openssh-8.6p1.tar.gz x11-ssh-askpass-1.2.4.1.tar.gz 编译步骤 dnf安装依赖工具 dnf install gdb imake libXt-devel gtk2-devel rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel libX11-devel initscripts -y 创</description>
-    </item>
-    
-    <item>
       <title>使用 docker 部署静态网站（nginx）</title>
       <link>https://www.lvbibir.cn/posts/tech/docker_run_nginx/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
@@ -590,6 +581,15 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/shell_get_server_hardware_information/</guid>
       <description>前言 查看硬件信息，并将信息整合成json数值，然后传给前段进行分析，最后再进行相应的处理。在装系统的时候，或是进行监控时，都是一个标准的自动</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.lvbibir.cn/posts/ceph_v16.2_aarch64/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/ceph_v16.2_aarch64/</guid>
+      <description>前言 ceph：v16.2（pacific） 操作系统：icloudos_aarch64（openEuler-20.03-LTS-aarch64</description>
     </item>
     
     

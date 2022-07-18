@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.lvbibir.cn/posts/tech/</loc>
-    <lastmod>2022-07-14T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/life/running/</loc>
     <lastmod>2022-07-17T00:00:00+00:00</lastmod>
@@ -21,7 +21,7 @@
     <lastmod>2022-07-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/</loc>
-    <lastmod>2022-07-17T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/glibc/</loc>
     <lastmod>2022-07-14T00:00:00+00:00</lastmod>
@@ -30,10 +30,10 @@
     <lastmod>2022-07-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/</loc>
-    <lastmod>2022-07-17T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/</loc>
-    <lastmod>2022-07-14T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/pxe/</loc>
     <lastmod>2022-07-12T00:00:00+00:00</lastmod>
@@ -108,7 +108,7 @@
     <lastmod>2022-03-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/rpm/</loc>
-    <lastmod>2022-03-01T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/centos/</loc>
     <lastmod>2022-02-01T00:00:00+00:00</lastmod>
@@ -174,7 +174,7 @@
     <lastmod>2021-12-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/ssh/</loc>
-    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/change_file_in_rpm_pkg/</loc>
     <lastmod>2021-12-01T00:00:00+00:00</lastmod>
@@ -204,10 +204,10 @@
     <lastmod>2021-09-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/openssh/</loc>
-    <lastmod>2021-09-01T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm_8.7p1/</loc>
-    <lastmod>2021-09-01T00:00:00+00:00</lastmod>
+    <loc>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm/</loc>
+    <lastmod>2022-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/redhat/</loc>
     <lastmod>2021-09-01T00:00:00+00:00</lastmod>
@@ -359,9 +359,6 @@
     <loc>https://www.lvbibir.cn/tags/nginx/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/openssh_src_build_rpm_aarch4/</loc>
-    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/docker_run_nginx/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -370,6 +367,8 @@
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/shell_get_server_hardware_information/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/ceph_v16.2_aarch64/</loc>
   </url><url>
     <loc>https://www.lvbibir.cn/archives/</loc>
   </url><url>
