@@ -25,10 +25,15 @@ cover:
     relative: false
 ---
 中国科学技术大学 : https://pypi.mirrors.ustc.edu.cn/simple
+
 清华：https://pypi.tuna.tsinghua.edu.cn/simple
+
 豆瓣：http://pypi.douban.com/simple/
+
 华中理工大学 : http://pypi.hustunique.com/simple
+
 山东理工大学 : http://pypi.sdutlinux.org/simple
+
 阿里云：https://mirrors.aliyun.com/pypi/simple/
 
 # linux环境
