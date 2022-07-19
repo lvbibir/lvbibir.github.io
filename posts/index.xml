@@ -9,11 +9,11 @@
     <lastBuildDate>Thu, 14 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>https://www.lvbibir.cn/posts/ceph_v16.2_aarch64/</link>
+      <link>https://www.lvbibir.cn/posts/ceph_v16.2_cpehadm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/ceph_v16.2_aarch64/</guid>
-      <description>前言 ceph：v16.2（pacific） 操作系统：icloudos_aarch64（openEuler-20.03-LTS-aarch64</description>
+      <guid>https://www.lvbibir.cn/posts/ceph_v16.2_cpehadm/</guid>
+      <description>前言 ceph：v16.2（pacific） 操作系统：icloudos_v1.0_aarch64（openEuler-20.03-LTS-aa</description>
     </item>
     
   </channel>
