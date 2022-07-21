@@ -62,8 +62,9 @@
       <p>
         {{- if .Description }}
         {{ .Description }}
+        {{- else }}
+        {{ .Summary | plainify | htmlUnescape }}
         {{- end }}
-        <!-- {{ .Summary | plainify | htmlUnescape }} -->
         {{ if .Truncated }}...{{ end }}
       </p>
     </section>
