@@ -1,3 +1,29 @@
+---
+title: "cephadm 安装 ceph V16.2" 
+date: 2022-07-22
+lastmod: 2022-07-22
+author: ["lvbibir"] 
+categories: 
+- 
+tags: 
+- ceph
+description: "" 
+weight: 6
+slug: ""
+draft: true # 是否为草稿
+comments: true #是否展示评论
+showToc: true # 显示目录
+TocOpen: true # 自动展开目录
+hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
+disableShare: true # 底部不显示分享栏
+showbreadcrumbs: true #顶部显示当前路径
+cover:
+    image: "" #图片路径：posts/tech/文章1/picture.png
+    caption: "" #图片底部描述
+    alt: ""
+    relative: false
+---
+
 # 前言
 
 ceph：v16.2（pacific）
@@ -15,18 +41,18 @@ ceph：v16.2（pacific）
 | 192.168.47.135 | ceph-aarch64-node2 | osd                    |
 | 192.168.47.130 | ceph-aarch64-node3 | osd                    |
 
-# 环境配置(所有节点)
+# 基础环境配置(所有节点)
 
 ## 关闭 node_exporter
 
-```
+```bash
 systemctl stop node_exporter
 systemctl disable node_exporter
 ```
 
 ## 修改主机名
 
-```
+```bash
 hostnamectl set-hostname ceph-aarch64-node1
 hostnamectl set-hostname ceph-aarch64-node2
 hostnamectl set-hostname ceph-aarch64-node3
@@ -40,14 +66,14 @@ vi /etc/hosts
 
 ## 添加 yum 源
 
-```
+```bash
 wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo
 yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 sed -i 's/$releasever/8/g' /etc/yum.repos.d/docker-ce.repo
 ```
 ## 添加 epel 源
 
-```
+```bash
 yum install epel-release
 # 修改 $releasever
 sed -i 's/$releasever/8/g' /etc/yum.repos.d/epel-modular.repo
@@ -59,14 +85,14 @@ sed -i 's/$releasever/8/g' /etc/yum.repos.d/epel-testing.repo
 
 ## 修改 /etc/os-release
 
-```
+```bash
 sed -i 's/ID="isoft"/ID="centos"/g' /etc/os-release
 sed -i 's/VERSION_ID="1.0"/VERSION_ID="8.0"/g' /etc/os-release
 ```
 
 ## 安装 python3.6
 
-```
+```bash
 yum install python3-pip-wheel python3-setuptools-wheel
 
 wget http://mirrors.aliyun.com/centos-vault/8.5.2111/BaseOS/aarch64/os/Packages/python3-libs-3.6.8-41.el8.aarch64.rpm
@@ -92,34 +118,32 @@ yum install firewalld-0.9.3-7.el8
 
 ## 安装 docker
 
-```
+```bash
 yum install docker-ce
 systemctl start docker
 systemctl status docker
 systemctl enable docker
 ```
 
-# 安装ceph
-
 ## 安装 cephadm & ceph-common
 
 
-```
+```bash
 curl --silent --remote-name --location https://github.com/ceph/ceph/raw/pacific/src/cephadm/cephadm
 chmod +x cephadm
 
 ./cephadm add-repo --release pacific
 
-yum install -y cephadm
-which cephadm
-# /usr/sbin/cephadm
+yum install cephadm
 
 yum install ceph-common-16.2.9-0.el8
 ```
 
-## ceph 集群初始化
+# ceph集群配置
 
-```
+## 集群初始化
+
+```bash
 cephadm bootstrap --mon-ip 192.168.47.133
 ```
 
@@ -131,7 +155,7 @@ cephadm bootstrap --mon-ip 192.168.47.133
 
 ## 添加主机
 
-```
+```bash
 ssh-copy-id -f -i /etc/ceph/ceph.pub root@ceph-aarch64-node2
 ssh-copy-id -f -i /etc/ceph/ceph.pub root@ceph-aarch64-node3
 ceph orch host add ceph-aarch64-node2 192.168.47.135 --labels _admin
@@ -141,14 +165,18 @@ ceph orch host add ceph-aarch64-node3 192.168.47.130 --labels _admin
 
 ## 添加磁盘
 
-```
+```bash
+# 单盘添加
 ceph orch daemon add osd ceph-aarch64-node1:/dev/vdb
+# 自动添加所有可用设备
 ceph orch apply osd --all-available-devices
 ```
 
+# 其他
+
 ## 清除ceph集群
 
-```
+```bash
 # 暂停集群，避免部署新的 ceph 守护进程
 ceph orch pause
 # 验证集群 fsid
@@ -157,11 +185,9 @@ ceph fsid
 cephadm rm-cluster --force --zap-osds --fsid <fsid>
 ```
 
-# 故障问题
+## 报错：no active mgr
 
-## no active mgr
-
-```
+```bash
 cephadm ls 
 cephadm run  --name mgr.ceph-aarch64-node3.ipgtzj --fsid 17136806-0735-11ed-9c4f-52546f3387f3
 ceph orch  apply  mgr label:_admin
