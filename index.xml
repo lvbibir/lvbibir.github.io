@@ -247,7 +247,7 @@
       <pubDate>Sat, 06 Nov 2021 14:57:28 +0800</pubDate>
       
       <guid>https://www.lvbibir.cn/about/</guid>
-      <description>英文名: Acton 职业: 运维工程师 运动: 跑步、steam 博客变更记录 2022年7月16日 将之前发布在 csdn 的文章迁移过来，将图片外链全部转到了我的七牛云</description>
+      <description>英文名: Acton 职业: 运维工程师 爱好: 跑步、steam 博客变更记录 2022年7月16日 迁移之前发布在 csdn 的文章，将图片外链全部转为七牛图床 2022年</description>
     </item>
     
     <item>
@@ -581,15 +581,6 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/shell_get_server_hardware_information/</guid>
       <description>前言 查看硬件信息，并将信息整合成json数值，然后传给前段进行分析，最后再进行相应的处理。在装系统的时候，或是进行监控时，都是一个标准的自动</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://www.lvbibir.cn/posts/ceph_v16.2_cpehadm/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/ceph_v16.2_cpehadm/</guid>
-      <description>前言 ceph：v16.2（pacific） 操作系统：icloudos_v1.0_aarch64（openEuler-20.03-LTS-aa</description>
     </item>
     
     
