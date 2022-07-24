@@ -10,7 +10,7 @@ tags:
 description: "" 
 weight: 
 slug: ""
-draft: false # 是否为草稿
+draft: true # 是否为草稿
 comments: true #是否展示评论
 showToc: true # 显示目录
 TocOpen: true # 自动展开目录
