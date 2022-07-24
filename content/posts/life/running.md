@@ -25,6 +25,14 @@ cover:
 # 2022年
 
 
+
+## 第 30 周
+
+
+<center class="half">
+    <img src="https://image.lvbibir.cn/blog/week-30-1.jpg" width="350"/>
+    <img src="https://image.lvbibir.cn/blog/week-30-2.jpg" width="350"/>
+</center>
 ## 第 29 周
 
 总跑量 60 公里，周跑量 20 公里，6 分左右配速，步频可以稳定在 170-180，心率可以控制在 175 左右了

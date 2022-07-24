@@ -11,10 +11,13 @@ comments: true
 reward: false
 showbreadcrumbs: false
 ---
+<div style="font-size: 20px;">👉友链为随机顺序</div>
 
 <div class="friend">
-{{< friend name="Sulv's Blog" url="https://www.sulvblog.cn" logo="https://www.sulvblog.cn/img/Q.gif" word="一个记录技术、阅读、生活的博客" >}}
+
+{{< friend name="lvbibir’s Blog" url="https://www.lvbibir.cn" logo="https://www.lvbibir.cn/img/avatar.gif" word="life is a fucking movie" >}}
 {{< friend name="lvbibir’s Blog" url="https://lvbibir.cn" logo="https://image.lvbibir.cn/lvbibir.jpg" word="life is a fucking movie" >}}
+{{< friend name="Sulv's Blog" url="https://www.sulvblog.cn" logo="https://www.sulvblog.cn/img/Q.gif" word="一个记录技术、阅读、生活的博客" >}}
 
 </div>
 
@@ -35,7 +38,7 @@ showbreadcrumbs: false
 | ------ | ------------------------------------ |
 | 名称： | lvbibir’s Blog                       |
 | 网址： | https://www.lvbibir.cn              |
-| 图标： | https://image.lvbibir.cn/lvbibir.jpg |
+| 图标： | https://www.lvbibir.cn/img/avatar.gif |
 | 描述： | life is a fucking movie              |
 
 </div>

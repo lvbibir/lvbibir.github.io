@@ -39,7 +39,7 @@ languages:
         title: (=^･ω･^=)
         subtitle: 👇 欢迎光临小站，联系方式 👇
         # subtitle: "🧨学而时习之，不亦说乎？有朋自远方来，不亦乐乎？<br/>👇联系方式"
-        imageUrl: "img/avatar.png"
+        imageUrl: "img/avatar.gif"
         imageTitle: 
         imageWidth: 200
         imageHeight: 200
@@ -137,7 +137,7 @@ params:
 
     label:
         text: "lvbibir's Blog"
-        icon: "img/avatar.png"
+        icon: "img/avatar.gif"
         iconHeight: 35
 
     analytics:
@@ -145,11 +145,11 @@ params:
             SiteVerificationTag: ""
 
     assets:
-        favicon: "img/avatar.png"
-        favicon16x16: "img/avatar.png"
-        favicon32x32: "img/avatar.png"
-        apple_touch_icon: "img/avatar.png"
-        safari_pinned_tab: "img/avatar.png"
+        favicon: "img/avatar.gif"
+        favicon16x16: "img/avatar.gif"
+        favicon32x32: "img/avatar.gif"
+        apple_touch_icon: "img/avatar.gif"
+        safari_pinned_tab: "img/avatar.gif"
 
     cover:
         hidden: false # hide everywhere but not in structured data
