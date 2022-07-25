@@ -53,18 +53,20 @@ sed -i '/SELINUX/s/enforcing/disabled/' /etc/sysconfig/selinux
 这里由于HW行动的原因，外网yum源暂不可用，使用本地yum源安装相关软件包
 
 ```
-[root@localhost ~]# mount -o loop /dev/sr0 /mnt
-[root@localhost ~]# mkdir /etc/yum.repos.d/bak
-[root@localhost ~]# mv /etc/yum.repos.d/isoft* /etc/yum.repos.d/bak/
-[root@localhost ~]# cat > /etc/yum.repos.d/local.repo <<EOF
-> [local]
-> name=local
-> baseurl=file:///mnt
-> gpgcheck=0
-> enabled=1
-> EOF
-[root@localhost ~]# dnf clean all
-[root@localhost ~]# dnf makecache
+mount -o loop /dev/sr0 /mnt
+mkdir /etc/yum.repos.d/bak
+mv /etc/yum.repos.d/isoft* /etc/yum.repos.d/bak/
+
+cat > /etc/yum.repos.d/local.repo <<EOF
+[local]
+name=local
+baseurl=file:///mnt
+gpgcheck=0
+enabled=1
+EOF
+
+dnf clean all
+dnf makecache
 ```
 
 ![image-20220712141522049](https://image.lvbibir.cn/blog/image-20220712141522049.png)
@@ -92,8 +94,8 @@ systemctl enable httpd
 systemctl start tftp
 systemctl enable tftp
 
-cp /usr/share/syslinux/menu.c32 /var/lib/tftpboot/
-cp /usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/
+/usr/bin/cp /usr/share/syslinux/menu.c32 /var/lib/tftpboot/
+/usr/bin/cp /usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/
 mkdir /var/lib/tftpboot/pxelinux.cfg
 ```
 
@@ -292,32 +294,43 @@ pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 ## tftp服务配置
 
 ```
+# 提取 menu.c32 和 pxelinux.0
+cp /var/www/html/icloud_1.0/isos/x86_64/Packages/syslinux-nonlinux-6.04-4.el8.isoft.noarch.rpm /root/
+rpm2cpio syslinux-nonlinux-6.04-4.el8.isoft.noarch.rpm | cpio -idv ./usr/share/syslinux/menu.c32
+rpm2cpio syslinux-nonlinux-6.04-4.el8.isoft.noarch.rpm | cpio -idv ./usr/share/syslinux/pxelinux.0
+/usr/bin/cp /root/usr/share/syslinux/menu.c32 /var/lib/tftpboot/
+/usr/bin/cp /root/usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/
+
 # 拷贝内核启动文件
-cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/vmlinuz /var/lib/tftpboot/
-cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/initrd.img /var/lib/tftpboot/
-cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/vesamenu.c32 /var/lib/tftpboot/
+/usr/bin/cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/vmlinuz /var/lib/tftpboot/
+/usr/bin/cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/initrd.img /var/lib/tftpboot/
+/usr/bin/cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/vesamenu.c32 /var/lib/tftpboot/
 
 # 拷贝菜单配置文件
 cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/isolinux.cfg /var/lib/tftpboot/pxelinux.cfg/default
 
 # 下面这三个文件centos7可以不要，centos8对于这三个文件有一定依赖性
-cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/ldlinux.c32 /var/lib/tftpboot/
-cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/libutil.c32 /var/lib/tftpboot/
-cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/libcom32.c32 /var/lib/tftpboot/
+/usr/bin/cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/ldlinux.c32 /var/lib/tftpboot/
+/usr/bin/cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/libutil.c32 /var/lib/tftpboot/
+/usr/bin/cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/libcom32.c32 /var/lib/tftpboot/
 ```
 
 vim /var/lib/tftpboot/pxelinux.cfg/default
 
 ```
-default vesamenu.c32
+default menu.c32
 timeout 30
 menu title i-CloudOS 1.0
 
 label linux
   menu label ^Install i-CloudOS 1.0
-  menu default
   kernel vmlinuz
   append initrd=initrd.img ks=http://1.1.1.21/icloud_1.0/isos/x86_64/ks.cfg
+
+label local
+  menu default
+  menu label Boot from ^local drive
+  localboot 0xffff
 ```
 
 ## 测试
