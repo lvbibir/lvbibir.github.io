@@ -216,11 +216,15 @@ OPTIONS说明：
 
 获取正在运行的容器mymysql的 IP。
 
-    runoob@runoob:~$ docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mymysql
-    172.17.0.3
+    docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mymysql
 
+获取所有容器的ip地址
 
-## docker start/stop/restart------开启、关闭、重启一个容器
+```
+docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
+```
+
+## doker start/stop/restart------开启、关闭、重启一个容器
 
 
 docker start :启动一个或多个已经被停止的容器

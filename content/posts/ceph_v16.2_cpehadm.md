@@ -8,7 +8,7 @@ categories:
 tags: 
 - ceph
 description: "" 
-weight: 6
+weight: 
 slug: ""
 draft: true # 是否为草稿
 comments: true #是否展示评论
