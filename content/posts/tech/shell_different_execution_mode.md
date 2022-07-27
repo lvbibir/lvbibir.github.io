@@ -34,7 +34,7 @@ shell 脚本通常有 `sh filename`、`bash filename`、`./filename`、`source f
 
 变量和权限问题示例
 
-```
+```bash
 # 设置临时变量，仅在当前 bash 环境生效
 [root@lvbibir ~]# name=lvbibir
 [root@lvbibir ~]# echo $name
@@ -65,7 +65,7 @@ lvbibir
 
 同理，使用 source 或者 . 也可以在 bash 环境中获取到脚本中设置的变量
 
-```
+```bash
 [root@lvbibir ~]# cat > test.sh << EOF
 > #!/bin/bash
 > number=22
@@ -97,7 +97,7 @@ lvbibir
 
 已知目前存在一个 mysqld 进程，其 pid 为 29426 ，写一个监控pid的脚本
 
-```
+```bash
 [root@lvbibir ~]# cat test.sh
 #!/bin/bash
 process=$1
@@ -107,7 +107,7 @@ echo $pid
 
 两种方式分别运行一下
 
-```
+```bash
 [root@lvbibir ~]# sh test.sh mysqld
 27038 27039 29426
 [root@lvbibir ~]# bash test.sh mysqld
@@ -124,7 +124,7 @@ echo $pid
 
 问题出现了，由于某种原因导致子 bash 环境中执行的脚本监控到多个 pid ，给脚本添加个 sleep 来看下
 
-```
+```bash
 [root@lvbibir ~]# cat test.sh
 #!/bin/bash
 process=$1
@@ -144,7 +144,7 @@ sleep 30
 
 在脚本再添加个 grep 过滤掉脚本本身的进程来规避这个问题
 
-```
+```bash
 [root@lvbibir ~]# cat test.sh
 #!/bin/bash
 process=$1
