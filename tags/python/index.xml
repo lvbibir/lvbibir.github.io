@@ -6,22 +6,31 @@
     <description>Recent content in python on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python批量修改目录下文件名</title>
+      <link>https://www.lvbibir.cn/posts/tech/python-rename-file/</link>
+      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/python-rename-file/</guid>
+      <description>import os # 输入文件夹地址 path = &amp;#34;C://Users//lvbibir//Desktop//lvbibir.github.io//content//posts//read//&amp;#34; files = os.listdir(path) # 输出所有文件名，只是为了确认一下 for file in files: print(file) # 获取旧名和新名 i = 0 for file in files: # 旧名称的信息 old = path + os.sep + files[i] # 新名</description>
+    </item>
+    
     <item>
       <title>批量导出&amp;导入docker镜像</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker_import_export_image/</link>
+      <link>https://www.lvbibir.cn/posts/tech/docker-import-export-image/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/docker_import_export_image/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/docker-import-export-image/</guid>
       <description>python方式 批量导出，运行后所有tar包都在当前目录下 # encoding: utf-8 import re import os import subprocess if __name__ == &amp;#34;__main__&amp;#34;: p = subprocess.Popen(&amp;#39;docker images&amp;#39;, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) for line in p.stdout.readlines(): # 此处的正则表达式是为了匹配镜像名</description>
     </item>
     
     <item>
       <title>python3修改pip源</title>
-      <link>https://www.lvbibir.cn/posts/tech/python3_change_pip_repo/</link>
+      <link>https://www.lvbibir.cn/posts/tech/python3-change-pip-repo/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/python3_change_pip_repo/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/python3-change-pip-repo/</guid>
       <description>中国科学技术大学 : https://pypi.mirrors.ustc.edu.cn/simple 清华：https://pypi.tuna.tsinghua.edu.cn/simple 豆瓣：http://pypi.do</description>
     </item>
     

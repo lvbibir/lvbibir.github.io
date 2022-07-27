@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 01 Aug 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/json/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>获取服务器硬件信息（整合为json格式）</title>
-      <link>https://www.lvbibir.cn/posts/tech/shell_get_server_hardware_information/</link>
+      <link>https://www.lvbibir.cn/posts/tech/shell-get-server-hardware-information/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/shell_get_server_hardware_information/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/shell-get-server-hardware-information/</guid>
       <description>前言 查看硬件信息，并将信息整合成json数值，然后传给前段进行分析，最后再进行相应的处理。在装系统的时候，或是进行监控时，都是一个标准的自动</description>
     </item>
     

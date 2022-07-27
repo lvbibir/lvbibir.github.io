@@ -9,91 +9,91 @@
     <lastBuildDate>Thu, 07 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello,hugo!</title>
-      <link>https://www.lvbibir.cn/posts/blog/hello_hugo/</link>
+      <link>https://www.lvbibir.cn/posts/blog/hello-hugo/</link>
       <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/hello_hugo/</guid>
+      <guid>https://www.lvbibir.cn/posts/blog/hello-hugo/</guid>
       <description>前言 记录 wordpress 迁移至 hugo+papermod 的过程，大多参考sulv大佬的博客，本文更偏向于个人备忘，并不是一篇很合格的教程 博客流水线 编辑文章 采用 typora + picgo + 七牛云图床流</description>
     </item>
     
     <item>
       <title>修改hugo的图片布局，使多张图片可以并排显示</title>
-      <link>https://www.lvbibir.cn/posts/blog/hugo_image_layout/</link>
+      <link>https://www.lvbibir.cn/posts/blog/hugo-image-layout/</link>
       <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/hugo_image_layout/</guid>
-      <description>前言 仅是对前端一窍不通的我的一次尝试，如果有更好的实现方法可以评论或者发邮件告诉我~ md文件中图片并排显示 先贴结论，并排显示图片只需要一段简</description>
+      <guid>https://www.lvbibir.cn/posts/blog/hugo-image-layout/</guid>
+      <description>前言 仅是对前端一窍不通的我的一次尝试，如果有更好的实现方法可以评论或者通过主页的联系方式告诉我~ md文件中图片并排显示 先贴结论，并排显示图片</description>
     </item>
     
     <item>
       <title>wordpress迁移到docker</title>
-      <link>https://www.lvbibir.cn/posts/blog/wordpress_to_docker/</link>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress-to-docker/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/wordpress_to_docker/</guid>
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress-to-docker/</guid>
       <description>前言 前段时间着手开始搭建自己的wordpress博客，刚开始图方便直接买了阿里云的轻量应用服务器，它是一套预先搭建好的lamp架构，并已经做</description>
     </item>
     
     <item>
       <title>typora&#43;picgo&#43;七牛云上传图片</title>
-      <link>https://www.lvbibir.cn/posts/blog/typora_picgo_qiniu_upload_image/</link>
+      <link>https://www.lvbibir.cn/posts/blog/typora-picgo-qiniu-upload-image/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/typora_picgo_qiniu_upload_image/</guid>
+      <guid>https://www.lvbibir.cn/posts/blog/typora-picgo-qiniu-upload-image/</guid>
       <description>七牛云配置 1、注册七牛云，新建存储空间 这里就不介绍七牛云的注册和新建空间了 七牛云新用户有10G的免费空间，作为个人博客来说基本足够了 2、为存</description>
     </item>
     
     <item>
       <title>wordpress加载图片失败</title>
-      <link>https://www.lvbibir.cn/posts/blog/wordpress_load_image_failed/</link>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress-load-image-failed/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/wordpress_load_image_failed/</guid>
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress-load-image-failed/</guid>
       <description>现象 博客加载不出来我在七牛云的图片资源 使用浏览器直接访问图片url却是可以成功的 我将之前csdn的博客迁移到了wordpress，图片外链地</description>
     </item>
     
     <item>
       <title>wordpress文章编辑页和发不出来内容不一样（http变成了https）</title>
-      <link>https://www.lvbibir.cn/posts/blog/wordpress_editpage_different_post/</link>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress-editpage-different-post/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/wordpress_editpage_different_post/</guid>
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress-editpage-different-post/</guid>
       <description>文章编辑界面和预览界面都是没问题的，发布出来后文章内容的http变成了https，而且仅有本博客域名lvbibir.cn出现这种情况，其他都</description>
     </item>
     
     <item>
       <title>wordpress添加icp备案号</title>
-      <link>https://www.lvbibir.cn/posts/blog/wordpress_add_icp/</link>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress-add-icp/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/wordpress_add_icp/</guid>
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress-add-icp/</guid>
       <description>默认主题下在后台设置里修改即可 自定义主题或者其他主题需要修改footer.php文件 在&amp;lt;footer&amp;gt;&amp;lt;/footer&amp;g</description>
     </item>
     
     <item>
       <title>wordpress配置https强制跳转</title>
-      <link>https://www.lvbibir.cn/posts/blog/wordpress_https/</link>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress-https/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/wordpress_https/</guid>
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress-https/</guid>
       <description>本文介绍如何在阿里轻量服务器wordpress站点配置http强制跳转到https 配置强制跳转前需要站点已经安装了ssl证书，可以通过htt</description>
     </item>
     
     <item>
       <title>七牛云配置免费ssl证书</title>
-      <link>https://www.lvbibir.cn/posts/blog/qiniu_ssl/</link>
+      <link>https://www.lvbibir.cn/posts/blog/qiniu-ssl/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/qiniu_ssl/</guid>
+      <guid>https://www.lvbibir.cn/posts/blog/qiniu-ssl/</guid>
       <description>1、购买免费证书 2、补全域名信息 3、域名验证 根据在域名提供商处新建解析 dns配置好之后等待CA机构审核后颁发证书就可以了 4、 为域名开启htt</description>
     </item>
     
     <item>
       <title>阿里云wordpress配置免费ssl证书</title>
-      <link>https://www.lvbibir.cn/posts/blog/wordpress_ssl/</link>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress-ssl/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/wordpress_ssl/</guid>
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress-ssl/</guid>
       <description>1、登录阿里云，选择产品中的ssl证书 如果域名是阿里的他会自动创建dns解析，如果是其他厂商需要按照图片配置，等待几分钟进行验证 点击审核，等</description>
     </item>
     

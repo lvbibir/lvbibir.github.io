@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 01 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/icp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>wordpress添加icp备案号</title>
-      <link>https://www.lvbibir.cn/posts/blog/wordpress_add_icp/</link>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress-add-icp/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/wordpress_add_icp/</guid>
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress-add-icp/</guid>
       <description>默认主题下在后台设置里修改即可 自定义主题或者其他主题需要修改footer.php文件 在&amp;lt;footer&amp;gt;&amp;lt;/footer&amp;g</description>
     </item>
     

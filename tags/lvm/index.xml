@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 01 Aug 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/lvm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>lvm基本特性及日常管理</title>
-      <link>https://www.lvbibir.cn/posts/tech/lvm_characteristic_management/</link>
+      <link>https://www.lvbibir.cn/posts/tech/lvm-characteristic-management/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/lvm_characteristic_management/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/lvm-characteristic-management/</guid>
       <description>LVM基本特性：（可以通过插件CLVM，实现群集逻辑卷管理） PV物理卷 LV逻辑卷（逻辑卷管理：会在物理存储上生成抽象层，以便创建逻辑存储卷，</description>
     </item>
     

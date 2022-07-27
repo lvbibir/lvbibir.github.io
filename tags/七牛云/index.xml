@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 01 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/%E4%B8%83%E7%89%9B%E4%BA%91/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>七牛云配置免费ssl证书</title>
-      <link>https://www.lvbibir.cn/posts/blog/qiniu_ssl/</link>
+      <link>https://www.lvbibir.cn/posts/blog/qiniu-ssl/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/qiniu_ssl/</guid>
+      <guid>https://www.lvbibir.cn/posts/blog/qiniu-ssl/</guid>
       <description>1、购买免费证书 2、补全域名信息 3、域名验证 根据在域名提供商处新建解析 dns配置好之后等待CA机构审核后颁发证书就可以了 4、 为域名开启htt</description>
     </item>
     

@@ -9,19 +9,19 @@
     <lastBuildDate>Thu, 14 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/glibc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>glibc 误升级后修复</title>
-      <link>https://www.lvbibir.cn/posts/tech/glibc_wu_sheng_ji/</link>
+      <link>https://www.lvbibir.cn/posts/tech/glibc-wu-sheng-ji/</link>
       <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/glibc_wu_sheng_ji/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/glibc-wu-sheng-ji/</guid>
       <description>前言 记录一下在 OpenEuler 20.03 LTS aarch64 系统上误操作升级了 glibc 后紧急修复的步骤 起因 在使用 cephadm 安装 ceph v16.2 时升级了 python，系统默认版本是 3.7.4 ，升级后版本是 3.8.5</description>
     </item>
     
     <item>
       <title>记一次程序测试</title>
-      <link>https://www.lvbibir.cn/posts/tech/record_of_program_test/</link>
+      <link>https://www.lvbibir.cn/posts/tech/record-of-program-test/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/record_of_program_test/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/record-of-program-test/</guid>
       <description>前言 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向</description>
     </item>
     

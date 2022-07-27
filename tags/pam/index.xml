@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 01 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/pam/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CentOS密码尝试次数过多</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos_too_many_password_attempts/</link>
+      <link>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/centos_too_many_password_attempts/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</guid>
       <description>pam模块 pam：Pluggable Authentication Modules 可插拔的认证模块，linux 中的认证方式，“可插拔的“说明可以按需对认证内容进行变更。与nsswit</description>
     </item>
     

@@ -9,20 +9,20 @@
     <lastBuildDate>Thu, 07 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello,hugo!</title>
-      <link>https://www.lvbibir.cn/posts/blog/hello_hugo/</link>
+      <link>https://www.lvbibir.cn/posts/blog/hello-hugo/</link>
       <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/hello_hugo/</guid>
+      <guid>https://www.lvbibir.cn/posts/blog/hello-hugo/</guid>
       <description>前言 记录 wordpress 迁移至 hugo+papermod 的过程，大多参考sulv大佬的博客，本文更偏向于个人备忘，并不是一篇很合格的教程 博客流水线 编辑文章 采用 typora + picgo + 七牛云图床流</description>
     </item>
     
     <item>
       <title>修改hugo的图片布局，使多张图片可以并排显示</title>
-      <link>https://www.lvbibir.cn/posts/blog/hugo_image_layout/</link>
+      <link>https://www.lvbibir.cn/posts/blog/hugo-image-layout/</link>
       <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/hugo_image_layout/</guid>
-      <description>前言 仅是对前端一窍不通的我的一次尝试，如果有更好的实现方法可以评论或者发邮件告诉我~ md文件中图片并排显示 先贴结论，并排显示图片只需要一段简</description>
+      <guid>https://www.lvbibir.cn/posts/blog/hugo-image-layout/</guid>
+      <description>前言 仅是对前端一窍不通的我的一次尝试，如果有更好的实现方法可以评论或者通过主页的联系方式告诉我~ md文件中图片并排显示 先贴结论，并排显示图片</description>
     </item>
     
   </channel>

@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 01 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/http/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>wordpress文章编辑页和发不出来内容不一样（http变成了https）</title>
-      <link>https://www.lvbibir.cn/posts/blog/wordpress_editpage_different_post/</link>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress-editpage-different-post/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/wordpress_editpage_different_post/</guid>
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress-editpage-different-post/</guid>
       <description>文章编辑界面和预览界面都是没问题的，发布出来后文章内容的http变成了https，而且仅有本博客域名lvbibir.cn出现这种情况，其他都</description>
     </item>
     

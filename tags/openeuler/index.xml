@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 01 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/openeuler/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>记一次程序测试</title>
-      <link>https://www.lvbibir.cn/posts/tech/record_of_program_test/</link>
+      <link>https://www.lvbibir.cn/posts/tech/record-of-program-test/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/record_of_program_test/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/record-of-program-test/</guid>
       <description>前言 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向</description>
     </item>
     
