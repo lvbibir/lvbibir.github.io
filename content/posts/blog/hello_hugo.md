@@ -19,15 +19,15 @@ hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
 disableShare: true # 底部不显示分享栏
 showbreadcrumbs: true #顶部显示当前路径
 cover:
-    image: "https://image.lvbibir.cn/blog/hugo-logo-wide.svg" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
+    image: "https://image.lvbibir.cn/blog/hugo-logo-wide.svg"
+    caption: ""
     alt: ""
     relative: false
 ---
 
 # 前言
 
-记录wordpress迁移至hugo的过程，大多参考sulv大佬的博客，本文更偏向于个人备忘，并不是一篇很合格的教程
+记录 wordpress 迁移至 hugo+[papermod](https://github.com/adityatelange/hugo-PaperMod) 的过程，大多参考[sulv大佬](https://www.sulvblog.cn/)的博客，本文更偏向于个人备忘，并不是一篇很合格的教程
 
 # 博客流水线
 
@@ -377,18 +377,25 @@ http {
 }
 ```
 
+# 修改链接颜色
 
+在默认配置下，链接颜色是黑色字体带下划线的组合，个人还是更喜欢淡蓝色的链接颜色，较为容易区分，[hugo官方文档](https://gohugo.io/templates/render-hooks/#link-with-title-markdown-example)给出了通过`render hooks`覆盖默认的markdown渲染的方式，如下
 
+新建`layouts/_default/_markup/render-link.html`文件，在官方给出的示例中添加了`style="color:cornflowerblue"`，颜色可以自行修改，代码如下
 
+```html
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener" style="color:cornflowerblue";{{ end }}>{{ .Text | safeHTML }}</a>
+```
 
+# url管理
 
-
+https://gohugo.io/content-management/urls/
 
 # seo优化
 
 https://www.sulvblog.cn/posts/blog/hugo_seo/
 
-# 添加twikoo评论组件
+# twikoo评论组件
 
 基本完全按照sulv博主的文章来操作，某些地方官方有更新，不过也只是更改了页面罢了
 
@@ -396,21 +403,15 @@ https://www.sulvblog.cn/posts/blog/hugo_twikoo/
 
 顺便记录一下账号关系：mongodb使用google账号登录，vercel使用github登录
 
-# 修改博客url
-
-https://gohugo.io/content-management/urls/
-
-
-
 # todo
 
 - [x] 修改所有文章的文件名为全英文
-- [x] 百度seo优化
+- [ ] 百度seo优化
 - [x] 谷歌seo优化
 - [x] 必应seo优化
 - [ ] 尝试再次优化nginx的配置，之前的配置对于wordpress可能更适用
 - [ ] 图床备份
-- [ ] 将所有文章进行内容整理，剔除一些没什么营养的文章
+- [x] 将所有文章进行内容整理
 
 
 
