@@ -9,10 +9,10 @@
     <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>批量导出&amp;导入docker镜像</title>
-      <link>https://www.lvbibir.cn/posts/tech/import_export_docker_image/</link>
+      <link>https://www.lvbibir.cn/posts/tech/docker_import_export_image/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/import_export_docker_image/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/docker_import_export_image/</guid>
       <description>python方式 批量导出，运行后所有tar包都在当前目录下 # encoding: utf-8 import re import os import subprocess if __name__ == &amp;#34;__main__&amp;#34;: p = subprocess.Popen(&amp;#39;docker images&amp;#39;, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) for line in p.stdout.readlines(): # 此处的正则表达式是为了匹配镜像名</description>
     </item>
     

@@ -74,7 +74,7 @@
     <loc>https://www.lvbibir.cn/posts/tech/git_set_proxy/</loc>
     <lastmod>2022-06-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_multinode_train/</loc>
+    <loc>https://www.lvbibir.cn/posts/tech/openstack_kolla_ansible_multinode_train/</loc>
     <lastmod>2022-06-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/openstack/</loc>
@@ -125,7 +125,7 @@
     <loc>https://www.lvbibir.cn/tags/python/</loc>
     <lastmod>2021-12-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/import_export_docker_image/</loc>
+    <loc>https://www.lvbibir.cn/posts/tech/docker_import_export_image/</loc>
     <lastmod>2021-02-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/centos7_update_kernel_to_5.10/</loc>
@@ -188,13 +188,13 @@
     <loc>https://www.lvbibir.cn/tags/k8s/</loc>
     <lastmod>2021-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kolla-ansible_deploy_allinone_train/</loc>
+    <loc>https://www.lvbibir.cn/posts/tech/openstack_kolla_ansible_allinone_train/</loc>
     <lastmod>2021-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.18.6_offline/</loc>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes_v1.18.6_kubeadm_offline/</loc>
     <lastmod>2021-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kubeadm_deploy_k8s_v1.22.3/</loc>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes_v1.22.3_kubeadm/</loc>
     <lastmod>2021-10-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/openeuler/</loc>
