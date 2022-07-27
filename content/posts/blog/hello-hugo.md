@@ -33,7 +33,7 @@ cover:
 
 ## 编辑文章
 
-采用 typora + picgo + 七牛云图床流程，[参考文章](https://www.lvbibir.cn/posts/blog/typora_picgo_qiniu_upload_image/)
+采用 typora + picgo + 七牛云图床流程，[参考文章](https://www.lvbibir.cn/posts/blog/typora-picgo-qiniu-upload-image/)
 
 ## 生成静态文件
 
@@ -71,7 +71,7 @@ rsync -avuz --progress --delete Desktop/lvbibir/2-lvbibir.github.io/public/ root
 
 # 将hugo博客部署到阿里云
 
-之前的[wordpress博客](https://lvbibir.cn)部署在阿里云的一套 docker-compose 环境下，[这篇文章](https://www.lvbibir.cn/posts/blog/wordpress_to_docker/)有详细记录
+之前的[wordpress博客](https://lvbibir.cn)部署在阿里云的一套 docker-compose 环境下，[这篇文章](https://www.lvbibir.cn/posts/blog/wordpress-to-docker/)有详细记录
 
 要做的仅仅是在之前的docker-compose.yml 中添加一个新的nginx环境用于跑hugo生成的静态文件，代理nginx中配置一下新nginx服务器，ssl证书依旧沿用之前的即可
 
