@@ -45,7 +45,7 @@ iptables -F
 systemctl stop firewalld
 systemctl disable firewalld
 setenforce 0
-sed -i '/SELINUX/s/enforcing/disabled/' /etc/sysconfig/selinux
+sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config
 ```
 
 ## 安装相关的软件包
@@ -84,6 +84,7 @@ cenots8安装syslinux时需要加 --nonlinux后缀，centos7则不需要
 ```
 systemctl start httpd
 systemctl enable httpd
+mkdir /var/www/html/ks/
 ```
 
 能访问到httpd即可
@@ -135,12 +136,12 @@ systemctl enable dhcpd
 # 创建目录
 mkdir -p /var/www/html/isoft_6.0/isos/x86_64/
 
-# 上传镜像文件
-cp -rf  /mnt/* /var/www/html/isoft_6.0/isos/x86_64/
+# 挂载镜像文件
+mount -o loop /dev/sr0 /var/www/html/isoft_6.0/isos/x86_64/
 
 # 上传ks.cfg应答文件
-vim /var/www/html/isoft_6.0/isos/x86_64/ks.cfg
-chmod 644 /var/www/html/isoft_6.0/isos/x86_64/ks.cfg
+vim /var/www/html/ks/ks-isoft-6.0.cfg
+chmod 644 /var/www/html/ks/ks-isoft-6.0.cfg
 ```
 
 ks.cfg文件内容
@@ -222,33 +223,28 @@ label linux
   menu label ^Install iSoft-Taiji Server OS 6.0
   menu default
   kernel vmlinuz
-  append initrd=initrd.img ks=http://1.1.1.21/isoft_6.0/isos/x86_64/ks.cfg
+  append initrd=initrd.img ks=http://1.1.1.21/ks/ks-isoft-6.0.cfg
 ```
 
 ## 测试
 
 注意测试虚拟机内存需要4G左右，否则会报错  `no space left`
 
+# icloud_1.0_x86
 
+为服务端虚拟机添加 CD/DVD 设备，挂载 i-cloud 系统镜像，系统中识别为 `/dev/sr1` 设备
 
-# icoud_1.0_x86
+> 默认添加的设备是 SCSI 类型的，需要重启修改成 IDE 才能生效
 
 ## http服务配置
 
-创建目录
-
 ```
-# 创建目录
-mkdir -p /var/www/html/icloud_1.0/isos/x86_64/
-
-# 上传镜像文件
-mkdir /icloud_os
-mount -o loop /root/i-CloudOS-1.0-x86_64-202108131137.iso /icloud_os/
-cp -rf  /icloud_os/* /var/www/html/icloud_1.0/isos/x86_64/
+# 挂载镜像
+mount -o loop /dev/sr1 /var/www/html/icloud_1.0/isos/x86_64/
 
 # 上传ks.cfg应答文件
-vim /var/www/html/icloud_1.0/isos/x86_64/ks.cfg
-chmod 644 /var/www/html/icloud_1.0/isos/x86_64/ks.cfg
+vim /var/www/html/ks/ks-i-cloud.cfg
+chmod 644 /var/www/html/ks/ks-i-cloud.cfg
 ```
 
 ks.cfg文件内容
@@ -324,13 +320,9 @@ menu title i-CloudOS 1.0
 
 label linux
   menu label ^Install i-CloudOS 1.0
+  menu default
   kernel vmlinuz
   append initrd=initrd.img ks=http://1.1.1.21/icloud_1.0/isos/x86_64/ks.cfg
-
-label local
-  menu default
-  menu label Boot from ^local drive
-  localboot 0xffff
 ```
 
 
