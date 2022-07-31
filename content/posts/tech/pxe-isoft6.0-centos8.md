@@ -10,7 +10,7 @@ tags:
 description: "" 
 weight: 
 slug: ""
-draft: true # 是否为草稿
+draft: false # 是否为草稿
 comments: true #是否展示评论
 showToc: true # 显示目录
 TocOpen: true # 自动展开目录
@@ -324,20 +324,6 @@ label linux
   kernel vmlinuz
   append initrd=initrd.img ks=http://1.1.1.21/icloud_1.0/isos/x86_64/ks.cfg
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # 参考
 
