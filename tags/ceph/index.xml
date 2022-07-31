@@ -6,7 +6,16 @@
     <description>Recent content in ceph on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/ceph/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/ceph/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cephadm 安装 ceph V16.2</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</link>
+      <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</guid>
+      <description>前言 ceph：v16.2（pacific） 操作系统：icloudos_v1.0_aarch64（openEuler-20.03-LTS-aa</description>
+    </item>
+    
     <item>
       <title>ceph创建pool时pg_num的配置</title>
       <link>https://www.lvbibir.cn/posts/tech/ceph-pg-num-config-create-pool/</link>

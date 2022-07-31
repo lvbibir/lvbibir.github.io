@@ -44,12 +44,30 @@
     </item>
     
     <item>
+      <title>cephadm 安装 ceph V16.2</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</link>
+      <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</guid>
+      <description>前言 ceph：v16.2（pacific） 操作系统：icloudos_v1.0_aarch64（openEuler-20.03-LTS-aa</description>
+    </item>
+    
+    <item>
       <title>glibc 误升级后修复</title>
       <link>https://www.lvbibir.cn/posts/tech/glibc-wu-sheng-ji/</link>
       <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/glibc-wu-sheng-ji/</guid>
       <description>前言 记录一下在 OpenEuler 20.03 LTS aarch64 系统上误操作升级了 glibc 后紧急修复的步骤 起因 在使用 cephadm 安装 ceph v16.2 时升级了 python，系统默认版本是 3.7.4 ，升级后版本是 3.8.5</description>
+    </item>
+    
+    <item>
+      <title>pxe安装isoft6.0及icloud1.0（Centos8）</title>
+      <link>https://www.lvbibir.cn/posts/tech/pxe-isoft6.0-centos8/</link>
+      <pubDate>Tue, 12 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/pxe-isoft6.0-centos8/</guid>
+      <description>前言 测试环境：vmware workstation V16.1.2 服务端配置 系统安装 系统安装过程略，系统版本：iSoft-ServerOS-V6.0-rc1 网卡选择nat模式，</description>
     </item>
     
     <item>
