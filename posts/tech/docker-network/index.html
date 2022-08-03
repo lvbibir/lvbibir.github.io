@@ -9,160 +9,160 @@ docker启动时默认会有一个docker0网桥，该网桥就是桥接模式的�
 用户也可以自建bridge网络，建立后dokcer也会创建一个网桥</p></li><li><p>跨主机的容器间的网络：macvlan overlay</p></li><li><p>第三方网络：flannel weave calic</p></li></ol><h1 id=docker0>docker0<a hidden class=anchor aria-hidden=true href=#docker0>#</a></h1><p>安装了docker的系统，使用ifconfig可以查看到docker0设备，docker守护进程就是通过docker0为容器提供网络连接的各种服务
 <img loading=lazy src=https://image.lvbibir.cn/blog/20190811124731281.png alt=在这里插入图片描述>
 docker0实际上是linux虚拟网桥（交换机)
-网桥是数据链路层的设备，它通过mac地址来对网络进行划分，并且在不同的网络之间传递数据</p><p>linux虚拟网桥的特点：</p><ol><li>可以设置ip地址（二层的网桥可以设置三层的ip地址）</li><li>相当于拥有一个隐藏的虚拟网卡</li></ol><p><img loading=lazy src=https://image.lvbibir.cn/blog/2019081112483089.png alt=在这里插入图片描述></p><p>docker0的地址划分：</p><ol><li>IP：172.17.0.1（各版本可能不同） 子网掩码：255.255.0.0</li><li>MAC：02:42:00:00:00:00 到 02:42:ff:ff:ff:ff（各版本可能不同）</li><li>总共提供了65534个地址</li></ol><p>每当一个容器启动时，docker守护进程会创建网络连接的两端，一端在容器内创建eth0网卡，另一端在dokcer0网桥中开启一个端口veth*</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811130803531.png alt=在这里插入图片描述></p><p>查看网桥设备需要预先安装bridge-utils软件包</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# yum install -y bridge-utils
-</span></span><span style=display:flex><span>[root@localhost ~]# brctl show
-</span></span><span style=display:flex><span>bridge name     bridge id               STP enabled     interfaces
-</span></span><span style=display:flex><span>docker0         8000.024247d799bf       no
-</span></span><span style=display:flex><span>virbr0          8000.525400b76fd4       yes             virbr0-nic
-</span></span></code></pre></div><p>开启一个容器，查看网络设置：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# docker run -it --name nwt1 centos /bin/bash
-</span></span><span style=display:flex><span>[root@0ef32e882bcf /]# ifconfig
-</span></span><span style=display:flex><span>bash: ifconfig: command not found
-</span></span><span style=display:flex><span>[root@0ef32e882bcf /]# yum install -y net-tools
-</span></span><span style=display:flex><span>[root@0ef32e882bcf /]# ifconfig
-</span></span></code></pre></div><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811133220548.png alt=在这里插入图片描述>
+网桥是数据链路层的设备，它通过mac地址来对网络进行划分，并且在不同的网络之间传递数据</p><p>linux虚拟网桥的特点：</p><ol><li>可以设置ip地址（二层的网桥可以设置三层的ip地址）</li><li>相当于拥有一个隐藏的虚拟网卡</li></ol><p><img loading=lazy src=https://image.lvbibir.cn/blog/2019081112483089.png alt=在这里插入图片描述></p><p>docker0的地址划分：</p><ol><li>IP：172.17.0.1（各版本可能不同） 子网掩码：255.255.0.0</li><li>MAC：02:42:00:00:00:00 到 02:42:ff:ff:ff:ff（各版本可能不同）</li><li>总共提供了65534个地址</li></ol><p>每当一个容器启动时，docker守护进程会创建网络连接的两端，一端在容器内创建eth0网卡，另一端在dokcer0网桥中开启一个端口veth*</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811130803531.png alt=在这里插入图片描述></p><p>查看网桥设备需要预先安装bridge-utils软件包</p><pre tabindex=0><code>[root@localhost ~]# yum install -y bridge-utils
+[root@localhost ~]# brctl show
+bridge name     bridge id               STP enabled     interfaces
+docker0         8000.024247d799bf       no
+virbr0          8000.525400b76fd4       yes             virbr0-nic
+</code></pre><p>开启一个容器，查看网络设置：</p><pre tabindex=0><code>[root@localhost ~]# docker run -it --name nwt1 centos /bin/bash
+[root@0ef32e882bcf /]# ifconfig
+bash: ifconfig: command not found
+[root@0ef32e882bcf /]# yum install -y net-tools
+[root@0ef32e882bcf /]# ifconfig
+</code></pre><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811133220548.png alt=在这里插入图片描述>
 ctrl+p，ctrl+q 让这个人继续后台运行
-再查看一下网桥</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# brctl show
-</span></span></code></pre></div><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811133457224.png alt=在这里插入图片描述></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# ifconfig
-</span></span></code></pre></div><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811133611993.png alt=在这里插入图片描述></p><h2 id=自定义docker0>自定义docker0<a hidden class=anchor aria-hidden=true href=#自定义docker0>#</a></h2><p>当默认docker0的ip或者网段与主机环境发生冲突时，可以修改docker0的地址和网段来进行自定义</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>ifconfig docker0 IP netmask NETMASK
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# ifconfig docker0 192.168.200.1 netmask 255.255.255.0
-</span></span><span style=display:flex><span>[root@localhost ~]# ifconfig
-</span></span></code></pre></div><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811134011802.png alt=在这里插入图片描述></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# systemctl restart docker
-</span></span><span style=display:flex><span>[root@localhost ~]# docker run -it centos /bin/bash
-</span></span><span style=display:flex><span>[root@a5c6ebf79340 /]# yum install -y net-tools
-</span></span><span style=display:flex><span>[root@a5c6ebf79340 /]# ifconfig
-</span></span></code></pre></div><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811135908809.png alt=在这里插入图片描述></p><h2 id=自定义虚拟网桥>自定义虚拟网桥<a hidden class=anchor aria-hidden=true href=#自定义虚拟网桥>#</a></h2><p>添加虚拟网桥：</p><ol><li>brctl addbr br0</li><li>ifconfig br0 IP netmask NETMASK</li></ol><p>更改docker守护进程的启动配置</p><ol><li>/lib/systemd/system/docker.service中添加-b=br0</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# brctl addbr br0
-</span></span><span style=display:flex><span>[root@localhost ~]# ifconfig br0 192.168.100.1 netmask 255.255.255.0
-</span></span><span style=display:flex><span>[root@localhost ~]# ifconfig
-</span></span></code></pre></div><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811140448102.png alt=在这里插入图片描述></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# vim /lib/systemd/system/docker.service
-</span></span><span style=display:flex><span>ExecStart=/usr/bin/dockerd -b=br0
-</span></span><span style=display:flex><span>[root@localhost ~]# systemctl daemon-reload
-</span></span><span style=display:flex><span>[root@localhost ~]# systemctl restart docker
-</span></span><span style=display:flex><span>[root@localhost ~]# ps -ef | grep docker
-</span></span><span style=display:flex><span>root       4156      1  1 14:06 ?        00:00:00 /usr/bin/dockerd -b=br0
-</span></span><span style=display:flex><span>root       4161   4156  0 14:06 ?        00:00:00 docker-containerd --config /var/run/docker/containerd/containerd.toml
-</span></span><span style=display:flex><span>root       4263   1558  0 14:06 pts/0    00:00:00 grep --color=auto docker
-</span></span></code></pre></div><p>开启一个容器</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# docker run -it --name nwt3 centos /bin/bash
-</span></span><span style=display:flex><span>[root@d70269c9557e /]# yum install -y net-tools
-</span></span><span style=display:flex><span>[root@d70269c9557e /]# ifconfig
-</span></span></code></pre></div><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811141504468.png alt=在这里插入图片描述></p><h1 id=同一宿主机间容器的连接>同一宿主机间容器的连接<a hidden class=anchor aria-hidden=true href=#同一宿主机间容器的连接>#</a></h1><ol><li>允许单台主机内所有容器互联（默认情况）</li><li>拒绝容器间连接</li><li>允许特定容器间的连接</li></ol><h2 id=允许单台主机内所有容器互联默认情况>允许单台主机内所有容器互联（默认情况）<a hidden class=anchor aria-hidden=true href=#允许单台主机内所有容器互联默认情况>#</a></h2><p>&ndash;icc=true 默认为true，即允许同一宿主机下所有容器之间网络连通</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# docker run -itd --name test1 busybox /bin/sh
-</span></span><span style=display:flex><span>7ec641b21b66b6472f4e92cfaa7f9c0674c4322a5265a05e272ae180b0d4687c
-</span></span><span style=display:flex><span>[root@localhost ~]# docker exec test1 ifconfig eth0
-</span></span><span style=display:flex><span>eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:02
-</span></span><span style=display:flex><span>          inet addr:172.17.0.2  Bcast:172.17.255.255  Mask:255.255.0.0
-</span></span><span style=display:flex><span>          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-</span></span><span style=display:flex><span>          RX packets:8 errors:0 dropped:0 overruns:0 frame:0
-</span></span><span style=display:flex><span>          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-</span></span><span style=display:flex><span>          collisions:0 txqueuelen:0
-</span></span><span style=display:flex><span>          RX bytes:648 (648.0 B)  TX bytes:0 (0.0 B)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>[root@localhost ~]# docker run -itd --name test2 busybox /bin/sh
-</span></span><span style=display:flex><span>fee0ff3e7f82cd1fa06eea11d850251931dff4dff2f0c7ee3e5a9904532beeb6
-</span></span><span style=display:flex><span>[root@localhost ~]# docker exec test2 ping 172.17.0.2 -c 4
-</span></span><span style=display:flex><span>PING 172.17.0.2 (172.17.0.2): 56 data bytes
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.2: seq=0 ttl=64 time=0.133 ms
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.2: seq=1 ttl=64 time=0.136 ms
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.2: seq=2 ttl=64 time=0.264 ms
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.2: seq=3 ttl=64 time=0.163 ms
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>--- 172.17.0.2 ping statistics ---
-</span></span><span style=display:flex><span>4 packets transmitted, 4 packets received, 0% packet loss
-</span></span><span style=display:flex><span>round-trip min/avg/max = 0.133/0.174/0.264 ms    
-</span></span></code></pre></div><p>容器的ip是不可靠的连接
-可以使用&ndash;link选项来连接两个容器</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>docker run --link=[CONTAINER_NAME]:[ALIAS] [IMAGE] [COMMAND]
-</span></span></code></pre></div><p>&ndash;link后面的test3指连接到test3容器，nt是为test3创建了一个别名
-新建两个容器进行测试</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# docker run -itd --name test3 busybox /bin/sh
-</span></span><span style=display:flex><span>1fd4e373dba17fdf1fa93121e08ea2f1f32d8f4116339c072a72a73574b0926f
-</span></span><span style=display:flex><span>[root@localhost ~]# docker run -itd --name test4 --link=test3:nt  busybox /bin/sh
-</span></span><span style=display:flex><span>c04b9b759bd4cc9af54000a742df58c8369a7f1bfc8862a8325481f1d61db135
-</span></span><span style=display:flex><span>[root@localhost ~]#
-</span></span><span style=display:flex><span>[root@localhost ~]# docker exec test4 ping nt -c 4
-</span></span><span style=display:flex><span>PING nt (172.17.0.4): 56 data bytes
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.4: seq=0 ttl=64 time=0.256 ms
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.4: seq=1 ttl=64 time=0.196 ms
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.4: seq=2 ttl=64 time=0.164 ms
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.4: seq=3 ttl=64 time=0.148 ms
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>--- nt ping statistics ---
-</span></span><span style=display:flex><span>4 packets transmitted, 4 packets received, 0% packet loss
-</span></span><span style=display:flex><span>round-trip min/avg/max = 0.148/0.191/0.256 ms
-</span></span></code></pre></div><p>&ndash;link选项对容器做了如下改变：</p><ol><li>修改了env环境变量</li><li>修改了hosts文件</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# docker exec test4 env
-</span></span><span style=display:flex><span>[root@localhost ~]# docker exec test4 cat /etc/hosts
-</span></span></code></pre></div><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811182505450.png alt=在这里插入图片描述>
-删除之前使用的test1与test2容器，这两个容器占用的ip释放，重启test3后，使用最新的ip地址</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# docker rm -f test1
-</span></span><span style=display:flex><span>test1
-</span></span><span style=display:flex><span>[root@localhost ~]# docker rm -f test2
-</span></span><span style=display:flex><span>test2
-</span></span><span style=display:flex><span>[root@localhost ~]# docker restart test3
-</span></span><span style=display:flex><span>test3
-</span></span><span style=display:flex><span>[root@localhost ~]# docker exec test3 ifconfig eth0
-</span></span><span style=display:flex><span>eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:02
-</span></span><span style=display:flex><span>          inet addr:172.17.0.2  Bcast:172.17.255.255  Mask:255.255.0.0
-</span></span><span style=display:flex><span>          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-</span></span><span style=display:flex><span>          RX packets:8 errors:0 dropped:0 overruns:0 frame:0
-</span></span><span style=display:flex><span>          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-</span></span><span style=display:flex><span>          collisions:0 txqueuelen:0
-</span></span><span style=display:flex><span>          RX bytes:648 (648.0 B)  TX bytes:0 (0.0 B)
-</span></span></code></pre></div><p>可以看到随着test3的ip地址发生改变，test4容器中的hosts文件也随之改变</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# docker exec test4 cat /etc/hosts
-</span></span></code></pre></div><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811183004484.png alt=在这里插入图片描述></p><h2 id=拒绝容器间连接>拒绝容器间连接<a hidden class=anchor aria-hidden=true href=#拒绝容器间连接>#</a></h2><p>修改守护进程的启动选项：&ndash;icc=false</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# vim /lib/systemd/system/docker.service
-</span></span><span style=display:flex><span>ExecStart=/usr/bin/dockerd   --icc=false
-</span></span><span style=display:flex><span>[root@localhost ~]# systemctl daemon-reload
-</span></span><span style=display:flex><span>[root@localhost ~]# systemctl restart docker
-</span></span></code></pre></div><p>新建两个容器进行测试，可以看到无法ping通</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# docker run -itd --name test10 busybox /bin/sh
-</span></span><span style=display:flex><span>700f026459206531b0fda811a43bc12af2f0815dc695f317a1f52939bfada2a1
-</span></span><span style=display:flex><span>[root@localhost ~]# docker run -itd --name test11 busybox /bin/sh
-</span></span><span style=display:flex><span>792cc31481739e1b2537597bc54c76737333bf95412dac2209e050f35d276dd4
-</span></span><span style=display:flex><span>[root@localhost ~]# docker exec test10 ifconfig eth0
-</span></span><span style=display:flex><span>eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:06
-</span></span><span style=display:flex><span>          inet addr:172.17.0.6  Bcast:172.17.255.255  Mask:255.255.0.0
-</span></span><span style=display:flex><span>          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-</span></span><span style=display:flex><span>          RX packets:8 errors:0 dropped:0 overruns:0 frame:0
-</span></span><span style=display:flex><span>          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-</span></span><span style=display:flex><span>          collisions:0 txqueuelen:0
-</span></span><span style=display:flex><span>          RX bytes:648 (648.0 B)  TX bytes:0 (0.0 B)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>[root@localhost ~]# docker exec test11 ping 172.16.0.6
-</span></span><span style=display:flex><span>^C
-</span></span></code></pre></div><h2 id=允许特定容器间的连接>允许特定容器间的连接<a hidden class=anchor aria-hidden=true href=#允许特定容器间的连接>#</a></h2><p>修改守护进程选项：</p><ol><li>&ndash;icc=false</li><li>&ndash;iptables=true #允许docker容器配置添加到linux的iptables设置中</li><li>&ndash;link</li></ol><p>只有设置了&ndash;link的两个容器间才可以互通</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# vim /lib/systemd/system/docker.service
-</span></span><span style=display:flex><span>ExecStart=/usr/bin/dockerd   --icc=false --iptables=true
-</span></span><span style=display:flex><span>[root@localhost ~]# systemctl daemon-reload
-</span></span><span style=display:flex><span>[root@localhost ~]# systemctl restart docker
-</span></span></code></pre></div><p>新建两个容器进行验证</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@localhost ~]# docker run -itd --name test21  busybox /bin/sh
-</span></span><span style=display:flex><span>77f56db227acaa590f729c12a4852d3131f1729851ea8c613a670effbfa512ad
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>[root@localhost ~]# docker run -itd --name test22 --link=test21:nt busybox /bin/sh
-</span></span><span style=display:flex><span>f4e346387588198cafcfd1d6a2c330a20375b746d05c08bf06e100f9af294a9e
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>[root@localhost ~]# docker exec test22 ping nt -c 4
-</span></span><span style=display:flex><span>PING nt (172.17.0.2): 56 data bytes
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.2: seq=0 ttl=64 time=0.201 ms
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.2: seq=1 ttl=64 time=0.164 ms
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.2: seq=2 ttl=64 time=0.195 ms
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.2: seq=3 ttl=64 time=0.188 ms
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>--- nt ping statistics ---
-</span></span><span style=display:flex><span>4 packets transmitted, 4 packets received, 0% packet loss
-</span></span><span style=display:flex><span>round-trip min/avg/max = 0.164/0.187/0.201 ms
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>[root@localhost ~]# docker exec test22 ifconfig eth0
-</span></span><span style=display:flex><span>eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:03
-</span></span><span style=display:flex><span>          inet addr:172.17.0.3  Bcast:172.17.255.255  Mask:255.255.0.0
-</span></span><span style=display:flex><span>          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-</span></span><span style=display:flex><span>          RX packets:14 errors:0 dropped:0 overruns:0 frame:0
-</span></span><span style=display:flex><span>          TX packets:6 errors:0 dropped:0 overruns:0 carrier:0
-</span></span><span style=display:flex><span>          collisions:0 txqueuelen:0
-</span></span><span style=display:flex><span>          RX bytes:1124 (1.0 KiB)  TX bytes:476 (476.0 B)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>[root@localhost ~]# docker exec test21 ping 172.17.0.3 -c 4
-</span></span><span style=display:flex><span>PING 172.17.0.3 (172.17.0.3): 56 data bytes
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.3: seq=0 ttl=64 time=0.181 ms
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.3: seq=1 ttl=64 time=0.168 ms
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.3: seq=2 ttl=64 time=0.109 ms
-</span></span><span style=display:flex><span>64 bytes from 172.17.0.3: seq=3 ttl=64 time=0.226 ms
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>--- 172.17.0.3 ping statistics ---
-</span></span><span style=display:flex><span>4 packets transmitted, 4 packets received, 0% packet loss
-</span></span><span style=display:flex><span>round-trip min/avg/max = 0.109/0.171/0.226 ms
-</span></span></code></pre></div></div><div class=post-reward><div style=padding:0;margin:0;width:100%;font-size:16px;text-align:center><div id=QR style=opacity:0><div id=wechat style=display:inline-block><a class=fancybox rel=group><img id=wechat_qr src=https://www.lvbibir.cn/img/wechat_pay.png alt=wechat_pay></a><p>微信</p></div><div id=alipay style=display:inline-block><a class=fancybox rel=group><img id=alipay_qr src=https://www.lvbibir.cn/img/alipay.png alt=alipay></a><p>支付宝</p></div></div><button id=rewardButton onclick='var qr=document.getElementById("QR");qr.style.opacity==="0"?qr.style.opacity="1":qr.style.opacity="0"'>
+再查看一下网桥</p><pre tabindex=0><code>[root@localhost ~]# brctl show
+</code></pre><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811133457224.png alt=在这里插入图片描述></p><pre tabindex=0><code>[root@localhost ~]# ifconfig
+</code></pre><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811133611993.png alt=在这里插入图片描述></p><h2 id=自定义docker0>自定义docker0<a hidden class=anchor aria-hidden=true href=#自定义docker0>#</a></h2><p>当默认docker0的ip或者网段与主机环境发生冲突时，可以修改docker0的地址和网段来进行自定义</p><pre tabindex=0><code>ifconfig docker0 IP netmask NETMASK
+</code></pre><pre tabindex=0><code>[root@localhost ~]# ifconfig docker0 192.168.200.1 netmask 255.255.255.0
+[root@localhost ~]# ifconfig
+</code></pre><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811134011802.png alt=在这里插入图片描述></p><pre tabindex=0><code>[root@localhost ~]# systemctl restart docker
+[root@localhost ~]# docker run -it centos /bin/bash
+[root@a5c6ebf79340 /]# yum install -y net-tools
+[root@a5c6ebf79340 /]# ifconfig
+</code></pre><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811135908809.png alt=在这里插入图片描述></p><h2 id=自定义虚拟网桥>自定义虚拟网桥<a hidden class=anchor aria-hidden=true href=#自定义虚拟网桥>#</a></h2><p>添加虚拟网桥：</p><ol><li>brctl addbr br0</li><li>ifconfig br0 IP netmask NETMASK</li></ol><p>更改docker守护进程的启动配置</p><ol><li>/lib/systemd/system/docker.service中添加-b=br0</li></ol><pre tabindex=0><code>[root@localhost ~]# brctl addbr br0
+[root@localhost ~]# ifconfig br0 192.168.100.1 netmask 255.255.255.0
+[root@localhost ~]# ifconfig
+</code></pre><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811140448102.png alt=在这里插入图片描述></p><pre tabindex=0><code>[root@localhost ~]# vim /lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd -b=br0
+[root@localhost ~]# systemctl daemon-reload
+[root@localhost ~]# systemctl restart docker
+[root@localhost ~]# ps -ef | grep docker
+root       4156      1  1 14:06 ?        00:00:00 /usr/bin/dockerd -b=br0
+root       4161   4156  0 14:06 ?        00:00:00 docker-containerd --config /var/run/docker/containerd/containerd.toml
+root       4263   1558  0 14:06 pts/0    00:00:00 grep --color=auto docker
+</code></pre><p>开启一个容器</p><pre tabindex=0><code>[root@localhost ~]# docker run -it --name nwt3 centos /bin/bash
+[root@d70269c9557e /]# yum install -y net-tools
+[root@d70269c9557e /]# ifconfig
+</code></pre><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811141504468.png alt=在这里插入图片描述></p><h1 id=同一宿主机间容器的连接>同一宿主机间容器的连接<a hidden class=anchor aria-hidden=true href=#同一宿主机间容器的连接>#</a></h1><ol><li>允许单台主机内所有容器互联（默认情况）</li><li>拒绝容器间连接</li><li>允许特定容器间的连接</li></ol><h2 id=允许单台主机内所有容器互联默认情况>允许单台主机内所有容器互联（默认情况）<a hidden class=anchor aria-hidden=true href=#允许单台主机内所有容器互联默认情况>#</a></h2><p>&ndash;icc=true 默认为true，即允许同一宿主机下所有容器之间网络连通</p><pre tabindex=0><code>[root@localhost ~]# docker run -itd --name test1 busybox /bin/sh
+7ec641b21b66b6472f4e92cfaa7f9c0674c4322a5265a05e272ae180b0d4687c
+[root@localhost ~]# docker exec test1 ifconfig eth0
+eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:02
+          inet addr:172.17.0.2  Bcast:172.17.255.255  Mask:255.255.0.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:8 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:648 (648.0 B)  TX bytes:0 (0.0 B)
+
+[root@localhost ~]# docker run -itd --name test2 busybox /bin/sh
+fee0ff3e7f82cd1fa06eea11d850251931dff4dff2f0c7ee3e5a9904532beeb6
+[root@localhost ~]# docker exec test2 ping 172.17.0.2 -c 4
+PING 172.17.0.2 (172.17.0.2): 56 data bytes
+64 bytes from 172.17.0.2: seq=0 ttl=64 time=0.133 ms
+64 bytes from 172.17.0.2: seq=1 ttl=64 time=0.136 ms
+64 bytes from 172.17.0.2: seq=2 ttl=64 time=0.264 ms
+64 bytes from 172.17.0.2: seq=3 ttl=64 time=0.163 ms
+
+--- 172.17.0.2 ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.133/0.174/0.264 ms    
+</code></pre><p>容器的ip是不可靠的连接
+可以使用&ndash;link选项来连接两个容器</p><pre tabindex=0><code>docker run --link=[CONTAINER_NAME]:[ALIAS] [IMAGE] [COMMAND]
+</code></pre><p>&ndash;link后面的test3指连接到test3容器，nt是为test3创建了一个别名
+新建两个容器进行测试</p><pre tabindex=0><code>[root@localhost ~]# docker run -itd --name test3 busybox /bin/sh
+1fd4e373dba17fdf1fa93121e08ea2f1f32d8f4116339c072a72a73574b0926f
+[root@localhost ~]# docker run -itd --name test4 --link=test3:nt  busybox /bin/sh
+c04b9b759bd4cc9af54000a742df58c8369a7f1bfc8862a8325481f1d61db135
+[root@localhost ~]#
+[root@localhost ~]# docker exec test4 ping nt -c 4
+PING nt (172.17.0.4): 56 data bytes
+64 bytes from 172.17.0.4: seq=0 ttl=64 time=0.256 ms
+64 bytes from 172.17.0.4: seq=1 ttl=64 time=0.196 ms
+64 bytes from 172.17.0.4: seq=2 ttl=64 time=0.164 ms
+64 bytes from 172.17.0.4: seq=3 ttl=64 time=0.148 ms
+
+--- nt ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.148/0.191/0.256 ms
+</code></pre><p>&ndash;link选项对容器做了如下改变：</p><ol><li>修改了env环境变量</li><li>修改了hosts文件</li></ol><pre tabindex=0><code>[root@localhost ~]# docker exec test4 env
+[root@localhost ~]# docker exec test4 cat /etc/hosts
+</code></pre><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811182505450.png alt=在这里插入图片描述>
+删除之前使用的test1与test2容器，这两个容器占用的ip释放，重启test3后，使用最新的ip地址</p><pre tabindex=0><code>[root@localhost ~]# docker rm -f test1
+test1
+[root@localhost ~]# docker rm -f test2
+test2
+[root@localhost ~]# docker restart test3
+test3
+[root@localhost ~]# docker exec test3 ifconfig eth0
+eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:02
+          inet addr:172.17.0.2  Bcast:172.17.255.255  Mask:255.255.0.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:8 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:648 (648.0 B)  TX bytes:0 (0.0 B)
+</code></pre><p>可以看到随着test3的ip地址发生改变，test4容器中的hosts文件也随之改变</p><pre tabindex=0><code>[root@localhost ~]# docker exec test4 cat /etc/hosts
+</code></pre><p><img loading=lazy src=https://image.lvbibir.cn/blog/20190811183004484.png alt=在这里插入图片描述></p><h2 id=拒绝容器间连接>拒绝容器间连接<a hidden class=anchor aria-hidden=true href=#拒绝容器间连接>#</a></h2><p>修改守护进程的启动选项：&ndash;icc=false</p><pre tabindex=0><code>[root@localhost ~]# vim /lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd   --icc=false
+[root@localhost ~]# systemctl daemon-reload
+[root@localhost ~]# systemctl restart docker
+</code></pre><p>新建两个容器进行测试，可以看到无法ping通</p><pre tabindex=0><code>[root@localhost ~]# docker run -itd --name test10 busybox /bin/sh
+700f026459206531b0fda811a43bc12af2f0815dc695f317a1f52939bfada2a1
+[root@localhost ~]# docker run -itd --name test11 busybox /bin/sh
+792cc31481739e1b2537597bc54c76737333bf95412dac2209e050f35d276dd4
+[root@localhost ~]# docker exec test10 ifconfig eth0
+eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:06
+          inet addr:172.17.0.6  Bcast:172.17.255.255  Mask:255.255.0.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:8 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:648 (648.0 B)  TX bytes:0 (0.0 B)
+
+[root@localhost ~]# docker exec test11 ping 172.16.0.6
+^C
+</code></pre><h2 id=允许特定容器间的连接>允许特定容器间的连接<a hidden class=anchor aria-hidden=true href=#允许特定容器间的连接>#</a></h2><p>修改守护进程选项：</p><ol><li>&ndash;icc=false</li><li>&ndash;iptables=true #允许docker容器配置添加到linux的iptables设置中</li><li>&ndash;link</li></ol><p>只有设置了&ndash;link的两个容器间才可以互通</p><pre tabindex=0><code>[root@localhost ~]# vim /lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd   --icc=false --iptables=true
+[root@localhost ~]# systemctl daemon-reload
+[root@localhost ~]# systemctl restart docker
+</code></pre><p>新建两个容器进行验证</p><pre tabindex=0><code>[root@localhost ~]# docker run -itd --name test21  busybox /bin/sh
+77f56db227acaa590f729c12a4852d3131f1729851ea8c613a670effbfa512ad
+
+[root@localhost ~]# docker run -itd --name test22 --link=test21:nt busybox /bin/sh
+f4e346387588198cafcfd1d6a2c330a20375b746d05c08bf06e100f9af294a9e
+
+[root@localhost ~]# docker exec test22 ping nt -c 4
+PING nt (172.17.0.2): 56 data bytes
+64 bytes from 172.17.0.2: seq=0 ttl=64 time=0.201 ms
+64 bytes from 172.17.0.2: seq=1 ttl=64 time=0.164 ms
+64 bytes from 172.17.0.2: seq=2 ttl=64 time=0.195 ms
+64 bytes from 172.17.0.2: seq=3 ttl=64 time=0.188 ms
+
+--- nt ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.164/0.187/0.201 ms
+
+[root@localhost ~]# docker exec test22 ifconfig eth0
+eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:03
+          inet addr:172.17.0.3  Bcast:172.17.255.255  Mask:255.255.0.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:14 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:6 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:1124 (1.0 KiB)  TX bytes:476 (476.0 B)
+
+[root@localhost ~]# docker exec test21 ping 172.17.0.3 -c 4
+PING 172.17.0.3 (172.17.0.3): 56 data bytes
+64 bytes from 172.17.0.3: seq=0 ttl=64 time=0.181 ms
+64 bytes from 172.17.0.3: seq=1 ttl=64 time=0.168 ms
+64 bytes from 172.17.0.3: seq=2 ttl=64 time=0.109 ms
+64 bytes from 172.17.0.3: seq=3 ttl=64 time=0.226 ms
+
+--- 172.17.0.3 ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.109/0.171/0.226 ms
+</code></pre></div><div class=post-reward><div style=padding:0;margin:0;width:100%;font-size:16px;text-align:center><div id=QR style=opacity:0><div id=wechat style=display:inline-block><a class=fancybox rel=group><img id=wechat_qr src=https://www.lvbibir.cn/img/wechat_pay.png alt=wechat_pay></a><p>微信</p></div><div id=alipay style=display:inline-block><a class=fancybox rel=group><img id=alipay_qr src=https://www.lvbibir.cn/img/alipay.png alt=alipay></a><p>支付宝</p></div></div><button id=rewardButton onclick='var qr=document.getElementById("QR");qr.style.opacity==="0"?qr.style.opacity="1":qr.style.opacity="0"'>
 <span>🧧 鼓励</span></button></div></div><footer class=post-footer><nav class=paginav><a class=prev href=https://www.lvbibir.cn/posts/tech/docker-jian-jie/><span class=title>« 上一页</span><br><span>docker简介以及基础概念</span></a>
 <a class=next href=https://www.lvbibir.cn/posts/tech/docker-yuan-cheng-fang-wen/><span class=title>下一页 »</span><br><span>docker远程访问</span></a></nav></footer></div><div><div class=pagination__title><span class=pagination__title-h style=font-size:20px>💬评论</span><hr></div><div id=tcomment></div><script src=https://cdn.staticfile.org/twikoo/1.5.11/twikoo.all.min.js></script><script>twikoo.init({envId:"https://twikoo-lvbibir.vercel.app/",el:"#tcomment",lang:"zh-CN",region:"ap-guangzhou",path:window.TWIKOO_MAGIC_PATH||window.location.pathname})</script></div></article></main><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><footer class=footer><span>Copyright
 &copy;

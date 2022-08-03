@@ -5,10 +5,10 @@
 &nbsp;|&nbsp;标签: &nbsp;<ul class=post-tags-meta><a href=https://www.lvbibir.cn/tags/centos/>centos</a>
 <a href=https://www.lvbibir.cn/tags/kernel/>、kernel</a></ul><span id=busuanzi_container_page_pv>&nbsp;| 访问: <span id=busuanzi_value_page_pv></span></span></div></header><div class=post-content><p>查看内核版本</p><p>[dpl@test1 ~]$ cat /etc/redhat-release
 Red Hat Enterprise Linux Server release 7.5 (Maipo)</p><p>下载内核</p><p><a href=https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ target=_blank rel=noopener style=color:#6495ed ;>https://elrepo.org/linux/kernel/el7/x86_64/RPMS/</a> 下载自己所需的内核
-更新版本：5.10.81</p><p>内核版本介绍：</p><table><thead><tr><th>lt</th><th>longterm的缩写</th><th>长期维护版</th></tr></thead><tbody><tr><td>ml</td><td>mainline的缩写</td><td>最新稳定版</td></tr></tbody></table><p>使用wget命令下载内核RPM包</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-5.10.81-1.el7.x86_64.rpm
-</span></span><span style=display:flex><span>[dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-devel-5.10.81-1.el7.x86_64.rpm
-</span></span></code></pre></div><p>安装内核</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1.el7.x86_64.rpm
-</span></span></code></pre></div><p>查看所有可用内核启动项</p><p>[dpl@test1 ~] awk -F' &lsquo;$1==&ldquo;menuentry " {print i++ " : " $2}&rsquo; /etc/grub2.cfg
+更新版本：5.10.81</p><p>内核版本介绍：</p><table><thead><tr><th>lt</th><th>longterm的缩写</th><th>长期维护版</th></tr></thead><tbody><tr><td>ml</td><td>mainline的缩写</td><td>最新稳定版</td></tr></tbody></table><p>使用wget命令下载内核RPM包</p><pre tabindex=0><code>[dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-5.10.81-1.el7.x86_64.rpm
+[dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-devel-5.10.81-1.el7.x86_64.rpm
+</code></pre><p>安装内核</p><pre tabindex=0><code>yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1.el7.x86_64.rpm
+</code></pre><p>查看所有可用内核启动项</p><p>[dpl@test1 ~] awk -F' &lsquo;$1==&ldquo;menuentry " {print i++ " : " $2}&rsquo; /etc/grub2.cfg
 0 : CentOS Linux (5.10.81-1.el7.x86_64) 7 (Core)
 1 : CentOS Linux (3.10.0-1160.21.1.el7.x86_64) 7 (Core)
 2 : CentOS Linux (3.10.0-957.el7.x86_64) 7 (Core)

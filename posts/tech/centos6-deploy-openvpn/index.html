@@ -10,13 +10,13 @@
 [root@vpnserver ~]# cp -a easy-rsa /etc/openvpn</p><ul><li>配置/etc/openvpn目录</li></ul><p>[root@vpnserver ~]# cd /etc/openvpn/easy-rsa/easyrsa3/
 [root@vpnserver easyrsa3]# cp vars.example vars
 [root@vpnserver easyrsa3]# vim vars
-添加如下变量</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>set_var EASYRSA_REQ_COUNTRY     &#34;CN&#34;
-</span></span><span style=display:flex><span>set_var EASYRSA_REQ_PROVINCE    &#34;Beijing&#34;
-</span></span><span style=display:flex><span>set_var EASYRSA_REQ_CITY        &#34;Beijing&#34;
-</span></span><span style=display:flex><span>set_var EASYRSA_REQ_ORG         &#34;lvbibir&#34;
-</span></span><span style=display:flex><span>set_var EASYRSA_REQ_EMAIL       &#34;lvbibir@163.com&#34;
-</span></span><span style=display:flex><span>set_var EASYRSA_REQ_OU          &#34;My OpenVPN&#34;
-</span></span></code></pre></div><h2 id=4创建服务端证书及key>4.创建服务端证书及key<a hidden class=anchor aria-hidden=true href=#4创建服务端证书及key>#</a></h2><ul><li>创建服务端证书及key</li></ul><p>初始化</p><p>[root@vpnserver ~]# cd /etc/openvpn/easy-rsa/easyrsa3/
+添加如下变量</p><pre tabindex=0><code>set_var EASYRSA_REQ_COUNTRY     &#34;CN&#34;
+set_var EASYRSA_REQ_PROVINCE    &#34;Beijing&#34;
+set_var EASYRSA_REQ_CITY        &#34;Beijing&#34;
+set_var EASYRSA_REQ_ORG         &#34;lvbibir&#34;
+set_var EASYRSA_REQ_EMAIL       &#34;lvbibir@163.com&#34;
+set_var EASYRSA_REQ_OU          &#34;My OpenVPN&#34;
+</code></pre><h2 id=4创建服务端证书及key>4.创建服务端证书及key<a hidden class=anchor aria-hidden=true href=#4创建服务端证书及key>#</a></h2><ul><li>创建服务端证书及key</li></ul><p>初始化</p><p>[root@vpnserver ~]# cd /etc/openvpn/easy-rsa/easyrsa3/
 [root@vpnserver easyrsa3]# ./easyrsa init-pki</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20210513154251555.png alt=image-20210513154251555></p><p>创建根证书</p><p>[root@vpnserver easyrsa3]# ./easyrsa build-ca</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20210513154450075.png alt=image-20210513152355808></p><p>注意：在上述部分需要输入PEM密码 PEM pass phrase，输入两次，此密码必须记住，不然以后不能为证书签名。还需要输入common name 通用名，这个你自己随便设置个独一无二的</p><p>创建服务器端证书</p><p>[root@vpnserver easyrsa3]# ./easyrsa gen-req server nopass</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20210513154701536.png alt=image-20210513154701536></p><p>该过程中需要输入common name，随意但是不要跟之前的根证书的一样</p><p>签约服务端证书</p><p>[root@vpnserver easyrsa3]# ./easyrsa sign server server</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20210513154839323.png alt=image-20210513154839323></p><p>需要手动输入yes去人，还需要提供创建ca证书时的密码</p><p>创建Diffie-Hellman，确保key穿越不安全网络的命令</p><p>[root@vpnserver easyrsa3]# ./easyrsa gen-dh</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20210513155046945.png alt=image-20210513155046945></p><h2 id=5创建客户端证书及key>5.创建客户端证书及key<a hidden class=anchor aria-hidden=true href=#5创建客户端证书及key>#</a></h2><ul><li>创建客户端证书</li></ul><p>初始化</p><p>[root@vpnserver ~]# mkdir client
 [root@vpnserver ~]# cd client/easy-rsa/easyrsa3/
 [root@vpnserver easyrsa3]# ./easyrsa init-pki</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20210513155822077.png alt=需输入yes确认></p><p>需输入yes确认</p><p>创建客户端key及生成证书</p><p>[root@vpnserver easyrsa3]# ./easyrsa gen-req zhijie.liu</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20210513161517810.png alt=image-20210513160134188></p><p>名字自己自定义，该密码是用户使用该key登录时输入的密码，可以加nopass参数在客户端登录时无需输入密码</p><p>导入req证书</p><p>[root@vpnserver ~]# cd /etc/openvpn/easy-rsa/easyrsa3/
@@ -25,47 +25,47 @@
 [root@vpnserver ~]# cp /etc/openvpn/easy-rsa/easyrsa3/pki/issued/server.crt /etc/openvpn/
 [root@vpnserver ~]# cp /etc/openvpn/easy-rsa/easyrsa3/pki/dh.pem /etc/openvpn/</p><ul><li>把客户端必要文件放到/root/client目录下（客户端的证书、密钥）</li></ul><p>[root@vpnserver ~]# cp /etc/openvpn/easy-rsa/easyrsa3/pki/ca.crt /root/client
 [root@vpnserver ~]# cp /etc/openvpn/easy-rsa/easyrsa3/pki/issued/zhijie.liu.crt /root/client/
-[root@vpnserver ~]# cp /root/client/easy-rsa/easyrsa3/pki/private/zhijie.liu.key /root/client</p><h2 id=7vpn服务端serverconf配置文件修改>7.vpn服务端server.conf配置文件修改<a hidden class=anchor aria-hidden=true href=#7vpn服务端serverconf配置文件修改>#</a></h2><ul><li>为服务器端编写配置文件</li></ul><p>安装好配置文件后他会提供一个server配置的文件案例，将该文件放到/etc/openvpn下</p><p>[root@vpnserver ~]# rpm -ql openvpn | grep server.conf</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20210513161637077.png alt=image-20210513162659235></p><p>[root@vpnserver ~]# cp /usr/share/doc/openvpn-2.4.7/sample/sample-config-files/server.conf /etc/openvpn/</p><ul><li>修改配置文件</li></ul><p>[root@vpnserver ~]# vim /etc/openvpn/server.conf</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@vpnserver ~]#  grep &#39;^[^#|;]&#39; /etc/openvpn/server.conf
-</span></span><span style=display:flex><span>local 0.0.0.0     #监听地址
-</span></span><span style=display:flex><span>port 1194     #监听端口
-</span></span><span style=display:flex><span>proto tcp     #监听协议
-</span></span><span style=display:flex><span>dev tun     #采用路由隧道模式
-</span></span><span style=display:flex><span>ca /etc/openvpn/ca.crt      #ca证书路径
-</span></span><span style=display:flex><span>cert /etc/openvpn/server.crt       #服务器证书
-</span></span><span style=display:flex><span>key /etc/openvpn/server.key  # This file should be kept secret 服务器秘钥
-</span></span><span style=display:flex><span>dh /etc/openvpn/dh.pem     #密钥交换协议文件
-</span></span><span style=display:flex><span>server 10.8.0.0 255.255.255.0     #给客户端分配地址池，注意：不能和VPN服务器内网网段有相同
-</span></span><span style=display:flex><span>ifconfig-pool-persist ipp.txt
-</span></span><span style=display:flex><span>push &#34;route 1.1.1.0 255.255.255.0&#34;	#推送内网地址
-</span></span><span style=display:flex><span>client-to-client       #客户端之间互相通信
-</span></span><span style=display:flex><span>keepalive 10 120       #存活时间，10秒ping一次,120 如未收到响应则视为断线
-</span></span><span style=display:flex><span>comp-lzo      #传输数据压缩
-</span></span><span style=display:flex><span>max-clients 100     #最多允许 100 客户端连接
-</span></span><span style=display:flex><span>user openvpn       #用户
-</span></span><span style=display:flex><span>group openvpn      #用户组
-</span></span><span style=display:flex><span>persist-key
-</span></span><span style=display:flex><span>persist-tun
-</span></span><span style=display:flex><span>status /var/log/openvpn/openvpn-status.log
-</span></span><span style=display:flex><span>log         /var/log/openvpn/openvpn.log
-</span></span><span style=display:flex><span>verb 3
-</span></span></code></pre></div><h2 id=8后续设置用户iptables和路由转发>8.后续设置（用户、iptables和路由转发）<a hidden class=anchor aria-hidden=true href=#8后续设置用户iptables和路由转发>#</a></h2><ul><li>后续设置</li></ul><p>[root@vpnserver ~]# mkdir /var/log/openvpn/
+[root@vpnserver ~]# cp /root/client/easy-rsa/easyrsa3/pki/private/zhijie.liu.key /root/client</p><h2 id=7vpn服务端serverconf配置文件修改>7.vpn服务端server.conf配置文件修改<a hidden class=anchor aria-hidden=true href=#7vpn服务端serverconf配置文件修改>#</a></h2><ul><li>为服务器端编写配置文件</li></ul><p>安装好配置文件后他会提供一个server配置的文件案例，将该文件放到/etc/openvpn下</p><p>[root@vpnserver ~]# rpm -ql openvpn | grep server.conf</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20210513161637077.png alt=image-20210513162659235></p><p>[root@vpnserver ~]# cp /usr/share/doc/openvpn-2.4.7/sample/sample-config-files/server.conf /etc/openvpn/</p><ul><li>修改配置文件</li></ul><p>[root@vpnserver ~]# vim /etc/openvpn/server.conf</p><pre tabindex=0><code>[root@vpnserver ~]#  grep &#39;^[^#|;]&#39; /etc/openvpn/server.conf
+local 0.0.0.0     #监听地址
+port 1194     #监听端口
+proto tcp     #监听协议
+dev tun     #采用路由隧道模式
+ca /etc/openvpn/ca.crt      #ca证书路径
+cert /etc/openvpn/server.crt       #服务器证书
+key /etc/openvpn/server.key  # This file should be kept secret 服务器秘钥
+dh /etc/openvpn/dh.pem     #密钥交换协议文件
+server 10.8.0.0 255.255.255.0     #给客户端分配地址池，注意：不能和VPN服务器内网网段有相同
+ifconfig-pool-persist ipp.txt
+push &#34;route 1.1.1.0 255.255.255.0&#34;	#推送内网地址
+client-to-client       #客户端之间互相通信
+keepalive 10 120       #存活时间，10秒ping一次,120 如未收到响应则视为断线
+comp-lzo      #传输数据压缩
+max-clients 100     #最多允许 100 客户端连接
+user openvpn       #用户
+group openvpn      #用户组
+persist-key
+persist-tun
+status /var/log/openvpn/openvpn-status.log
+log         /var/log/openvpn/openvpn.log
+verb 3
+</code></pre><h2 id=8后续设置用户iptables和路由转发>8.后续设置（用户、iptables和路由转发）<a hidden class=anchor aria-hidden=true href=#8后续设置用户iptables和路由转发>#</a></h2><ul><li>后续设置</li></ul><p>[root@vpnserver ~]# mkdir /var/log/openvpn/
 [root@vpnserver ~]# useradd openvpn -s /sbin/nologin
 [root@vpnserver ~]# chown -R openvpn.openvpn /var/log/openvpn/
 [root@vpnserver ~]# chown -R openvpn.openvpn /etc/openvpn/*</p><ul><li>iptables设置nat规则和打开路由转发</li></ul><p>[root@vpnserver ~]# iptables -A INPUT -p tcp &ndash;dport 1194 -j ACCEPT
 [root@vpnserver ~]# iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
-[root@vpnserver ~]# iptables -vnL -t nat</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes)
-</span></span><span style=display:flex><span> pkts bytes target     prot opt in     out     source               destination
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>Chain POSTROUTING (policy ACCEPT 0 packets, 0 bytes)
-</span></span><span style=display:flex><span> pkts bytes target     prot opt in     out     source               destination
-</span></span><span style=display:flex><span>    0     0 MASQUERADE  all  --  *      *       10.8.0.0/24          0.0.0.0/0
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
-</span></span><span style=display:flex><span> pkts bytes target     prot opt in     out     source               destination
-</span></span></code></pre></div><p>[root@vpnserver ~]# vim /etc/sysctl.conf</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>net.ipv4.ip_forward = 1
-</span></span></code></pre></div><p>[root@vpnserver ~]# sysctl -p</p><ul><li>开启openvpn服务</li></ul><p>[root@vpnserver ~]# openvpn &ndash;daemon &ndash;config /etc/openvpn/server.conf
-[root@vpnserver ~]# netstat -anput | grep 1194</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20210514103246272.png alt=image-20210513170615121></p><ul><li>proxy开启端口转发/映射</li></ul><p>[root@along ~]# vim /etc/sysctl.conf //打开路由转发</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>net.ipv4.ip_forward = 1
-</span></span></code></pre></div><p>[root@proxy ~]# sysctl -p</p><p>[root@proxy ~]# iptables -t nat -A PREROUTING -d 192.168.150.114 -p tcp &ndash;dport 1194 -j DNAT &ndash;to-destination 1.1.1.2:1194
+[root@vpnserver ~]# iptables -vnL -t nat</p><pre tabindex=0><code>Chain PREROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain POSTROUTING (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 MASQUERADE  all  --  *      *       10.8.0.0/24          0.0.0.0/0
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+</code></pre><p>[root@vpnserver ~]# vim /etc/sysctl.conf</p><pre tabindex=0><code>net.ipv4.ip_forward = 1
+</code></pre><p>[root@vpnserver ~]# sysctl -p</p><ul><li>开启openvpn服务</li></ul><p>[root@vpnserver ~]# openvpn &ndash;daemon &ndash;config /etc/openvpn/server.conf
+[root@vpnserver ~]# netstat -anput | grep 1194</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20210514103246272.png alt=image-20210513170615121></p><ul><li>proxy开启端口转发/映射</li></ul><p>[root@along ~]# vim /etc/sysctl.conf //打开路由转发</p><pre tabindex=0><code>net.ipv4.ip_forward = 1
+</code></pre><p>[root@proxy ~]# sysctl -p</p><p>[root@proxy ~]# iptables -t nat -A PREROUTING -d 192.168.150.114 -p tcp &ndash;dport 1194 -j DNAT &ndash;to-destination 1.1.1.2:1194
 [root@proxy ~]# iptables -t nat -A POSTROUTING -d 1.1.1.2 -p tcp &ndash;dport 1194 -j SNAT &ndash;to 1.1.1.3
 [root@proxy ~]# iptables -A FORWARD -o eth0 -d 1.1.1.2 -p tcp &ndash;dport 1194 -j ACCEPT
 [root@proxy ~]# iptables -A FORWARD -i eth0 -s 1.1.1.2 -p tcp &ndash;sport 1194 -j ACCEPT</p><p>[root@proxy ~]# iptables -A INPUT -p tcp &ndash;dport 1194 -j ACCEPT</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20210513170615121.png alt=image-20210514103123530></p><p>[root@proxy ~]# service iptables save

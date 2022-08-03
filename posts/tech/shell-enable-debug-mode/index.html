@@ -6,68 +6,68 @@
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>
 </span></span><span style=display:flex><span>foo
 </span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;hello&#34;</span>
-</span></span></code></pre></div><p>执行结果</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>./test.sh: line 3: foo: command not found
-</span></span><span style=display:flex><span>hello
-</span></span></code></pre></div><h2 id=after>after<a hidden class=anchor aria-hidden=true href=#after>#</a></h2><p>脚本内容</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></code></pre></div><p>执行结果</p><pre tabindex=0><code>./test.sh: line 3: foo: command not found
+hello
+</code></pre><h2 id=after>after<a hidden class=anchor aria-hidden=true href=#after>#</a></h2><p>脚本内容</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>
 </span></span><span style=display:flex><span>set -e
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>foo
 </span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;hello&#34;</span>
-</span></span></code></pre></div><p>执行结果</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>./test.sh: line 5: foo: command not found
-</span></span></code></pre></div><h2 id=阻止立即退出的例子>阻止立即退出的例子<a hidden class=anchor aria-hidden=true href=#阻止立即退出的例子>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></code></pre></div><p>执行结果</p><pre tabindex=0><code>./test.sh: line 5: foo: command not found
+</code></pre><h2 id=阻止立即退出的例子>阻止立即退出的例子<a hidden class=anchor aria-hidden=true href=#阻止立即退出的例子>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>
 </span></span><span style=display:flex><span>set -e
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>foo <span style=color:#f92672>||</span> true
 </span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;hello&#34;</span>
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>./test.sh: line 5: foo: command not found
-</span></span><span style=display:flex><span>hello
-</span></span></code></pre></div><h1 id=set--o-pipefail>set -o pipefail<a hidden class=anchor aria-hidden=true href=#set--o-pipefail>#</a></h1><p>默认情况下 bash 只会检查管道（pipelie）操作的最后一个命令的返回值，即最后一个命令返回值为 0 则判断整条管道语句是正确的</p><p>如下</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20220629145221486.png alt=image-20220629145221486></p><p><code>set -o pipefail</code> 的作用就是管道中只要有一个命令失败，则整个管道视为失败</p><h2 id=before-1>before<a hidden class=anchor aria-hidden=true href=#before-1>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></code></pre></div><pre tabindex=0><code>./test.sh: line 5: foo: command not found
+hello
+</code></pre><h1 id=set--o-pipefail>set -o pipefail<a hidden class=anchor aria-hidden=true href=#set--o-pipefail>#</a></h1><p>默认情况下 bash 只会检查管道（pipelie）操作的最后一个命令的返回值，即最后一个命令返回值为 0 则判断整条管道语句是正确的</p><p>如下</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20220629145221486.png alt=image-20220629145221486></p><p><code>set -o pipefail</code> 的作用就是管道中只要有一个命令失败，则整个管道视为失败</p><h2 id=before-1>before<a hidden class=anchor aria-hidden=true href=#before-1>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>
 </span></span><span style=display:flex><span>set -e
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>foo | echo <span style=color:#e6db74>&#34;a&#34;</span>
 </span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;hello&#34;</span>
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>./test.sh: line 5: foo: command not found
-</span></span><span style=display:flex><span>a
-</span></span><span style=display:flex><span>hello
-</span></span></code></pre></div><h2 id=after-1>after<a hidden class=anchor aria-hidden=true href=#after-1>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></code></pre></div><pre tabindex=0><code>./test.sh: line 5: foo: command not found
+a
+hello
+</code></pre><h2 id=after-1>after<a hidden class=anchor aria-hidden=true href=#after-1>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>
 </span></span><span style=display:flex><span>set -eo pipefail
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>foo | echo <span style=color:#e6db74>&#34;a&#34;</span>
 </span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;hello&#34;</span>
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>./test.sh: line 5: foo: command not found
-</span></span><span style=display:flex><span>a
-</span></span></code></pre></div><h1 id=set--u>set -u<a hidden class=anchor aria-hidden=true href=#set--u>#</a></h1><p><code>set -u</code> 的作用是将所有未定义的变量视为错误，默认情况下 bash 会将未定义的变量视为空</p><h2 id=before-2>before<a hidden class=anchor aria-hidden=true href=#before-2>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></code></pre></div><pre tabindex=0><code>./test.sh: line 5: foo: command not found
+a
+</code></pre><h1 id=set--u>set -u<a hidden class=anchor aria-hidden=true href=#set--u>#</a></h1><p><code>set -u</code> 的作用是将所有未定义的变量视为错误，默认情况下 bash 会将未定义的变量视为空</p><h2 id=before-2>before<a hidden class=anchor aria-hidden=true href=#before-2>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>
 </span></span><span style=display:flex><span>set -eo pipefail
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>echo $a
 </span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;hello&#34;</span>
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>
-</span></span><span style=display:flex><span>hello
-</span></span></code></pre></div><h2 id=after-2>after<a hidden class=anchor aria-hidden=true href=#after-2>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
-</span></span><span style=display:flex><span>set -euo pipefail
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>echo $a
-</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;hello&#34;</span>
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>./test.sh: line 5: a: unbound variable
-</span></span></code></pre></div><h1 id=set--x>set -x<a hidden class=anchor aria-hidden=true href=#set--x>#</a></h1><p><code>set -x</code> 可以让 bash 把每个命令在执行前先打印出来，好处显而易见，可以快速方便的找到出问题的脚本位置，坏处就是 bash 的 log 会格外的乱</p><p>另外，它在打印的时候会先把变量解析出来</p><p>纵然 log 可能会乱一些，但也比debug的时候掉头发强</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
-</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
-</span></span><span style=display:flex><span>set -euox pipefail
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>a<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span>
-</span></span><span style=display:flex><span>echo $a
-</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;hello&#34;</span>
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>+ a=2
-</span></span><span style=display:flex><span>+ echo 2   # 这里已经将变量 a 解析为 2 了
-</span></span><span style=display:flex><span>2
-</span></span><span style=display:flex><span>+ echo hello
-</span></span><span style=display:flex><span>hello
-</span></span></code></pre></div><h1 id=参考>参考<a hidden class=anchor aria-hidden=true href=#参考>#</a></h1><p><a href=https://zhuanlan.zhihu.com/p/107135290 target=_blank rel=noopener style=color:#6495ed ;>https://zhuanlan.zhihu.com/p/107135290</a></p></div><div class=post-reward><div style=padding:0;margin:0;width:100%;font-size:16px;text-align:center><div id=QR style=opacity:0><div id=wechat style=display:inline-block><a class=fancybox rel=group><img id=wechat_qr src=https://www.lvbibir.cn/img/wechat_pay.png alt=wechat_pay></a><p>微信</p></div><div id=alipay style=display:inline-block><a class=fancybox rel=group><img id=alipay_qr src=https://www.lvbibir.cn/img/alipay.png alt=alipay></a><p>支付宝</p></div></div><button id=rewardButton onclick='var qr=document.getElementById("QR");qr.style.opacity==="0"?qr.style.opacity="1":qr.style.opacity="0"'>
+</span></span></code></pre></div><pre tabindex=0><code>
+hello
+</code></pre><h2 id=after-2>after<a hidden class=anchor aria-hidden=true href=#after-2>#</a></h2><pre tabindex=0><code>#!/bin/bash
+
+set -euo pipefail
+
+echo $a
+echo &#34;hello&#34;
+</code></pre><pre tabindex=0><code>./test.sh: line 5: a: unbound variable
+</code></pre><h1 id=set--x>set -x<a hidden class=anchor aria-hidden=true href=#set--x>#</a></h1><p><code>set -x</code> 可以让 bash 把每个命令在执行前先打印出来，好处显而易见，可以快速方便的找到出问题的脚本位置，坏处就是 bash 的 log 会格外的乱</p><p>另外，它在打印的时候会先把变量解析出来</p><p>纵然 log 可能会乱一些，但也比debug的时候掉头发强</p><pre tabindex=0><code>#!/bin/bash
+
+set -euox pipefail
+
+a=2
+echo $a
+echo &#34;hello&#34;
+</code></pre><pre tabindex=0><code>+ a=2
++ echo 2   # 这里已经将变量 a 解析为 2 了
+2
++ echo hello
+hello
+</code></pre><h1 id=参考>参考<a hidden class=anchor aria-hidden=true href=#参考>#</a></h1><p><a href=https://zhuanlan.zhihu.com/p/107135290 target=_blank rel=noopener style=color:#6495ed ;>https://zhuanlan.zhihu.com/p/107135290</a></p></div><div class=post-reward><div style=padding:0;margin:0;width:100%;font-size:16px;text-align:center><div id=QR style=opacity:0><div id=wechat style=display:inline-block><a class=fancybox rel=group><img id=wechat_qr src=https://www.lvbibir.cn/img/wechat_pay.png alt=wechat_pay></a><p>微信</p></div><div id=alipay style=display:inline-block><a class=fancybox rel=group><img id=alipay_qr src=https://www.lvbibir.cn/img/alipay.png alt=alipay></a><p>支付宝</p></div></div><button id=rewardButton onclick='var qr=document.getElementById("QR");qr.style.opacity==="0"?qr.style.opacity="1":qr.style.opacity="0"'>
 <span>🧧 鼓励</span></button></div></div><footer class=post-footer><nav class=paginav><a class=prev href=https://www.lvbibir.cn/posts/tech/shell-different-execution-mode/><span class=title>« 上一页</span><br><span>shell脚本不同执行方式的区别</span></a>
 <a class=next href=https://www.lvbibir.cn/posts/tech/windows-network-priority/><span class=title>下一页 »</span><br><span>windows双网卡时设置网络优先级</span></a></nav></footer></div><div><div class=pagination__title><span class=pagination__title-h style=font-size:20px>💬评论</span><hr></div><div id=tcomment></div><script src=https://cdn.staticfile.org/twikoo/1.5.11/twikoo.all.min.js></script><script>twikoo.init({envId:"https://twikoo-lvbibir.vercel.app/",el:"#tcomment",lang:"zh-CN",region:"ap-guangzhou",path:window.TWIKOO_MAGIC_PATH||window.location.pathname})</script></div></article></main><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><footer class=footer><span>Copyright
 &copy;
