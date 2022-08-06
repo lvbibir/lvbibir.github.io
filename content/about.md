@@ -35,7 +35,7 @@ cover:
 ##### 2022年7月6日
 将所有文章的名字改为英文，博客内所有url地址应该全都是 英文 +  \' - \' 的组合了
 
-url中带有中文名太长了而且不好看，[hugo官方文档](https://gohugo.io/content-management/urls/)中倒是给出了解决方案通过在文章的 front matter 中定义 slug 属性来实现，但是喜欢折腾的我指不定就又去搞其他博客框架了，干脆直接修改文章名字吧
+url中带有中文名太长了而且不好看，[hugo官方文档](https://gohugo.io/content-management/urls/) 中倒是给出了解决方案通过在文章的 front matter 中定义 slug 属性来实现，但是喜欢折腾的我指不定就又去搞其他博客框架了，干脆直接修改文章名字吧
 
 
 ##### 2022年7月4日
