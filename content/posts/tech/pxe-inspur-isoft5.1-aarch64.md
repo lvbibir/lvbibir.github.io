@@ -1,5 +1,5 @@
 ---
-title: "pxe安装aarch64架构的操作系统" 
+title: "pxe 安装 isoft-5.1(aarch64)(浪潮inspur服务器)" 
 date: 2021-08-01
 lastmod: 2021-08-01
 author: ["lvbibir"] 

@@ -168,6 +168,8 @@ ceph orch host add ceph-aarch64-node3 192.168.47.130 --labels _admin
 ```bash
 # 单盘添加
 ceph orch daemon add osd ceph-aarch64-node1:/dev/vdb
+# 查看所有可用设备
+ceph orch device ls
 # 自动添加所有可用设备
 ceph orch apply osd --all-available-devices
 ```
