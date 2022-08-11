@@ -8,11 +8,11 @@
     <language>zh-cn</language>
     <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/aarch64/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>pxe安装aarch64架构的操作系统</title>
-      <link>https://www.lvbibir.cn/posts/tech/pxe-aarch64/</link>
+      <title>pxe 安装 isoft-5.1(aarch64)(浪潮inspur服务器)</title>
+      <link>https://www.lvbibir.cn/posts/tech/pxe-inspur-isoft5.1-aarch64/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/pxe-aarch64/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/pxe-inspur-isoft5.1-aarch64/</guid>
       <description>pxe环境 dhcp+tftp+http pxe-server：isoft-serveros-v4.2（3.10.0-957.el7.isoft.x86_64） 引导的is</description>
     </item>
     
