@@ -24,6 +24,46 @@ cover:
 
 # 2022年
 
+## 第 33 周---LSD 13.50 km
+
+LSD距离突破13.5km，感觉自己有些操之过急了，跑完后身体还是有明显的不适感的，主要是跑完后的头晕和反胃，晚上休息也受到较大影响，未免有些得不偿失了。
+
+在后续每周六的LSD训练以及日常跑步中，我会尽量控制自己的心率不超过160，哪怕距离没有这么长，配速掉到8分慢摇，还是以频率为主，先把跑量堆上去。
+
+暂定每周跑步的计划如下
+
+| | |
+|---|---|
+| 周一 | 慢跑7公里左右   |
+| 周二 | 慢跑7公里左右 |
+| 周三 | 20分钟力量训练 |
+| 周四 | 慢跑7公里左右 |
+| 周五 | 休息          |
+| 周六 | LSD           |
+| 周日 | 休息          |
+
+
+
+<center class="half">
+    <img src="https://image.lvbibir.cn/blog/2022-33week-1.jpg" width="260"/>
+    <img src="https://image.lvbibir.cn/blog/2022-33week-2.jpg" width="260"/>
+    <img src="https://image.lvbibir.cn/blog/2022-33week-3.jpg" width="260"/>
+</center>
+
+
+## 第 32 周---LSD 11.10 km
+
+>L.S.D.是Long Slow Distance的缩写，译作“长距离慢跑”，它是以“低强度”和“长距离”为特点进行的有氧训练（也属于一种持续训练法）。
+
+从本周开始加入了“LSD”训练，安排在了每周六晚上，~~早上起不来~~，旨在提高自己的有氧耐力
+
+<center class="half">
+    <img src="https://image.lvbibir.cn/blog/2022-32week-1.jpg" width="260"/>
+    <img src="https://image.lvbibir.cn/blog/2022-32week-2.jpg" width="260"/>
+    <img src="https://image.lvbibir.cn/blog/2022-32week-3.jpg" width="260"/>
+</center>
+
+
 ## 第 31 周
 
 <center class="half">
