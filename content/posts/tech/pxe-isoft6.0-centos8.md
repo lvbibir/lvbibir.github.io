@@ -400,14 +400,14 @@ reboot
 ## tftp服务配置
 
 ```
-rm -rf /var/www/html/*
+rm -rf /var/lib/tftpboot/*
 
 /usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/EFI/BOOT/grub.cfg /var/lib/tftpboot/
 /usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/EFI/BOOT/grubaa64.efi /var/lib/tftpboot/
 /usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/images/pxeboot/vmlinuz /var/lib/tftpboot/
 /usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/images/pxeboot/initrd.img /var/lib/tftpboot/
 
-chmod -R 644 /var/www/html/*
+chmod -R 644 /var/lib/tftpboot/*
 systemctl restart tftp
 ```
 
@@ -476,10 +476,8 @@ systemctl restart dhcpd
 
 
 
-
-
-
-
 # 参考
 
 https://blog.csdn.net/weixin_45651006/article/details/103067283
+
+https://blog.csdn.net/qq_44839276/article/details/106980334
