@@ -474,7 +474,147 @@ subnet 1.1.1.0 netmask 255.255.255.0 {
 systemctl restart dhcpd
 ```
 
+# icloud_1.0_aarch64
 
+## http服务配置
+
+创建目录
+
+```
+# 创建目录
+mkdir -p /var/www/html/isoft_6.0/isos/aarch64/
+
+# 挂载镜像文件
+mount -o loop /dev/sr0 /var/www/html/isoft_6.0/isos/aarch64/
+
+# 上传ks.cfg应答文件
+vim /var/www/html/ks/ks-isoft-6.0.cfg
+chmod 644 /var/www/html/ks/ks-isoft-6.0.cfg
+```
+
+ks.cfg文件内容
+
+```
+#version=DEVEL
+ignoredisk --only-use=vda
+autopart --type=lvm
+# Partition clearing information
+clearpart --all --initlabel
+# Use graphical install
+graphical
+# Use CDROM installation media
+install
+url --url=http://1.1.1.21/isoft_6.0/isos/aarch64
+# Keyboard layouts
+keyboard --vckeymap=cn --xlayouts='cn'
+# System language
+lang zh_CN.UTF-8
+
+# Network information
+network  --bootproto=static --device=enp3s0 --bootproto=dhcp --ipv6=auto --activate
+network  --hostname=localhost.localdomain
+# Root password
+rootpw --iscrypted $6$x94MGsfCoFdE/G4O$MEakgOwtq0O5i4pRIVzXntKQuMJVh9CJ3anhZKl8YZhZDtSXhzuMk5mpDr3wu..rDareWgy5tjsepCaGiPK3g/
+# X Window System configuration information
+xconfig  --startxonboot
+# Run the Setup Agent on first boot
+firstboot --enable
+# System services
+services --enabled="chronyd"
+# System timezone
+timezone Asia/Shanghai --isUtc
+
+%packages
+@^mate-desktop-environment
+
+%end
+
+
+%anaconda
+pwpolicy root --minlen=8 --minquality=1 --notstrict --nochanges --notempty
+pwpolicy user --minlen=8 --minquality=1 --notstrict --nochanges --emptyok
+pwpolicy luks --minlen=8 --minquality=1 --notstrict --nochanges --notempty
+%end
+
+reboot
+```
+
+## tftp服务配置
+
+```
+rm -rf /var/lib/tftpboot/*
+
+/usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/EFI/BOOT/grub.cfg /var/lib/tftpboot/
+/usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/EFI/BOOT/grubaa64.efi /var/lib/tftpboot/
+/usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/images/pxeboot/vmlinuz /var/lib/tftpboot/
+/usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/images/pxeboot/initrd.img /var/lib/tftpboot/
+
+chmod -R 644 /var/lib/tftpboot/*
+systemctl restart tftp
+```
+
+vim /var/lib/tftpboot/grub.cfg
+
+```
+set default="0"
+
+function load_video {
+  if [ x$feature_all_video_module = xy ]; then
+    insmod all_video
+  else
+    insmod efi_gop
+    insmod efi_uga
+    insmod ieee1275_fb
+    insmod vbe
+    insmod vga
+    insmod video_bochs
+    insmod video_cirrus
+  fi
+}
+
+load_video
+set gfxpayload=keep
+insmod gzio
+insmod part_gpt
+insmod ext2
+
+set timeout=60
+### END /etc/grub.d/00_header ###
+
+search --no-floppy --set=root -l 'iSoft-Taiji-Server-OS-6.0'
+
+### BEGIN /etc/grub.d/10_linux ###
+menuentry 'Install iSoft-Taiji-Server-OS 6.0 with GUI mode' --class red --class gnu-linux --class gnu --class os {
+        linux  /vmlinuz ip=dhcp inst.repo=http://1.1.1.21/isoft_6.0/isos/aarch64/ inst.ks=http://1.1.1.21/ks/ks-isoft-6.0-aarch64.cfg
+        initrd /initrd.img
+}
+}
+```
+
+## dhcp服务配置
+
+vim /etc/dhcp/dhcpd.conf
+
+```
+option domain-name "example.org";
+option domain-name-servers 8.8.8.8, 114.114.114.114;
+
+default-lease-time 84600;
+max-lease-time 100000;
+
+log-facility local7;
+
+subnet 1.1.1.0 netmask 255.255.255.0 {
+  range 1.1.1.100 1.1.1.200;
+  option routers 1.1.1.253;
+  next-server 1.1.1.21; # 本机ip（tftpserver的ip）
+  filename "grubaa64.efi"; 
+}
+```
+
+```
+systemctl restart dhcpd
+```
 
 # 参考
 
