@@ -1,5 +1,5 @@
 ---
-title: "pxe安装isoft6.0及icloud1.0（Centos8）" 
+title: "pxe 安装配置大全" 
 date: 2022-07-12
 lastmod: 2022-07-12
 author: ["lvbibir"] 
@@ -28,7 +28,7 @@ cover:
 
 测试环境：
 
-x86_64（amd）：vmware workstation V16.1.2
+x86_64（amd ryzen 7 4800u）：vmware workstation V16.1.2
 
 aarch64（kunpeng 920）： kvm-2.12
 
@@ -36,7 +36,7 @@ aarch64（kunpeng 920）： kvm-2.12
 >
 > 注意测试虚拟机内存尽量大于4G，否则会报错  `no space left` 或者测试机直接黑屏
 >
-> 注意 `ks.cfg` 尽量在当前环境先手动安装一台模板机，使用模板机生成的 ks 文件来进行修改，否则可能会有一些意料之外的破坏性操作且可提高成功率
+> 注意 `ks.cfg` 尽量在当前环境先手动安装一台模板机，使用模板机生成的 ks 文件来进行修改，否则可能会有一些清理磁盘分区的破坏性操作且可提高自动化安装的成功率，基本只需要将 `cdrom` 修改成 `install` 和 `url --url=http://......`
 
 # 服务端配置
 
@@ -65,7 +65,7 @@ sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config
 这里由于 HW 行动的原因，外网 yum 源暂不可用，使用本地 yum 源安装相关软件包
 
 ```
-mount -o loop /dev/sr0 /mnt
+mount -o loop /root/iSoft-Taiji-Server-OS-6.0-x86_64-rc1-202112311623.iso /mnt
 mkdir /etc/yum.repos.d/bak
 mv /etc/yum.repos.d/isoft* /etc/yum.repos.d/bak/
 
@@ -105,15 +105,23 @@ systemctl enable httpd
 ## tftp服务配置
 
 ```
-/usr/bin/cp /usr/share/syslinux/menu.c32 /var/lib/tftpboot/
-/usr/bin/cp /usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/
-mkdir /var/lib/tftpboot/pxelinux.cfg
-
 systemctl start tftp
 systemctl enable tftp
 ```
 
 ## dhcp服务配置
+
+> x86_64 架构和 aarch64 架构的 dhcp 的配置略有不同，按照下文分别配置
+
+```
+systemctl enable dhcpd
+```
+
+# x86_64
+
+## 服务端配置
+
+### dhcp 服务配置
 
 vim /etc/dhcp/dhcpd.conf
 
@@ -135,13 +143,12 @@ subnet 1.1.1.0 netmask 255.255.255.0 {
 ```
 
 ```
-systemctl start dhcpd
-systemctl enable dhcpd
+systemctl restart dhcpd
 ```
 
-# isoft_6.0_x86
+## isoft_6.0-rc1_x86
 
-## http服务配置
+### http服务配置
 
 创建目录
 
@@ -150,11 +157,11 @@ systemctl enable dhcpd
 mkdir -p /var/www/html/isoft_6.0/isos/x86_64/
 
 # 挂载镜像文件
-mount -o loop /dev/sr0 /var/www/html/isoft_6.0/isos/x86_64/
+mount -o loop /root/iSoft-Taiji-Server-OS-6.0-x86_64-rc1-202112311623.iso /var/www/html/isoft_6.0/isos/x86_64/
 
 # 上传ks.cfg应答文件
 vim /var/www/html/ks/ks-isoft-6.0-x86.cfg
-chmod 644 /var/www/html/ks/ks-isoft-6.0-x86.cfg
+chmod -R 755 /var/www/html
 ```
 
 ks.cfg文件内容
@@ -207,9 +214,14 @@ pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 reboot
 ```
 
-## tftp服务配置
+### tftp服务配置
 
 ```
+rm -rf /var/lib/tftpboot/*
+cp /usr/share/syslinux/menu.c32 /var/lib/tftpboot/
+cp /usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/
+mkdir /var/lib/tftpboot/pxelinux.cfg
+
 # 拷贝内核启动文件
 cp /var/www/html/isoft_6.0/isos/x86_64/isolinux/vmlinuz /var/lib/tftpboot/
 cp /var/www/html/isoft_6.0/isos/x86_64/isolinux/initrd.img /var/lib/tftpboot/
@@ -218,7 +230,6 @@ cp /var/www/html/isoft_6.0/isos/x86_64/isolinux/vesamenu.c32 /var/lib/tftpboot/
 # 拷贝菜单配置文件
 cp /var/www/html/isoft_6.0/isos/x86_64/isolinux/isolinux.cfg /var/lib/tftpboot/pxelinux.cfg/default
 
-# 下面这三个文件centos7可以不要，centos8对于这三个文件有一定依赖性
 cp /var/www/html/isoft_6.0/isos/x86_64/isolinux/ldlinux.c32 /var/lib/tftpboot/
 cp /var/www/html/isoft_6.0/isos/x86_64/isolinux/libutil.c32 /var/lib/tftpboot/
 cp /var/www/html/isoft_6.0/isos/x86_64/isolinux/libcom32.c32 /var/lib/tftpboot/
@@ -239,23 +250,19 @@ label linux
   append initrd=initrd.img ks=http://1.1.1.21/ks/ks-isoft-6.0-x86.cfg
 ```
 
-# icloud_1.0_x86
+## icloud_1.0_x86
 
-为服务端虚拟机添加 CD/DVD 设备，挂载 i-cloud 系统镜像，系统中识别为 `/dev/sr1` 设备
-
-> 默认添加的设备是 SCSI 类型的，需要重启修改成 IDE 才能生效
-
-## http服务配置
+### http服务配置
 
 ```
 mkdir -p /var/www/html/icloud_1.0/isos/x86_64/
 
 # 挂载镜像
-mount -o loop /dev/sr1 /var/www/html/icloud_1.0/isos/x86_64/
+mount -o loop /root/i-CloudOS-1.0-x86_64-202108131137.iso /var/www/html/icloud_1.0/isos/x86_64/
 
 # 上传ks.cfg应答文件
 vim /var/www/html/ks/ks-icloud-1.0-x86.cfg
-chmod 644 /var/www/html/ks/ks-icloud-1.0-x86.cfg
+chmod -R 755 /var/www/html
 ```
 
 ks-icloud-1.0-x86.cfg 文件内容
@@ -296,30 +303,37 @@ pwpolicy root --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 pwpolicy user --minlen=6 --minquality=1 --notstrict --nochanges --emptyok
 pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 %end
+
+reboot
 ```
 
-## tftp服务配置
+### tftp服务配置
 
 ```
+rm -rf /var/lib/tftpboot/*
+cp /usr/share/syslinux/menu.c32 /var/lib/tftpboot/
+cp /usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/
+mkdir /var/lib/tftpboot/pxelinux.cfg
+
 # 提取 menu.c32 和 pxelinux.0
 cp /var/www/html/icloud_1.0/isos/x86_64/Packages/syslinux-nonlinux-6.04-4.el8.isoft.noarch.rpm /root/
 rpm2cpio syslinux-nonlinux-6.04-4.el8.isoft.noarch.rpm | cpio -idv ./usr/share/syslinux/menu.c32
 rpm2cpio syslinux-nonlinux-6.04-4.el8.isoft.noarch.rpm | cpio -idv ./usr/share/syslinux/pxelinux.0
-/usr/bin/cp /root/usr/share/syslinux/menu.c32 /var/lib/tftpboot/
-/usr/bin/cp /root/usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/
+cp /root/usr/share/syslinux/menu.c32 /var/lib/tftpboot/
+cp /root/usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/
 
 # 拷贝内核启动文件
-/usr/bin/cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/vmlinuz /var/lib/tftpboot/
-/usr/bin/cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/initrd.img /var/lib/tftpboot/
-/usr/bin/cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/vesamenu.c32 /var/lib/tftpboot/
+cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/vmlinuz /var/lib/tftpboot/
+cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/initrd.img /var/lib/tftpboot/
+cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/vesamenu.c32 /var/lib/tftpboot/
 
 # 拷贝菜单配置文件
 cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/isolinux.cfg /var/lib/tftpboot/pxelinux.cfg/default
 
 # 下面这三个文件centos7可以不要，centos8对于这三个文件有一定依赖性
-/usr/bin/cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/ldlinux.c32 /var/lib/tftpboot/
-/usr/bin/cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/libutil.c32 /var/lib/tftpboot/
-/usr/bin/cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/libcom32.c32 /var/lib/tftpboot/
+cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/ldlinux.c32 /var/lib/tftpboot/
+cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/libutil.c32 /var/lib/tftpboot/
+cp /var/www/html/icloud_1.0/isos/x86_64/isolinux/libcom32.c32 /var/lib/tftpboot/
 ```
 
 vim /var/lib/tftpboot/pxelinux.cfg/default
@@ -336,9 +350,38 @@ label linux
   append initrd=initrd.img ks=http://1.1.1.21/icloud_1.0/isos/x86_64/ks-icloud-1.0-x86.cfg
 ```
 
-# isoft_6.0_aarch64
+# aarch64
 
-## http服务配置
+## 服务端配置
+
+### dhcp服务配置
+
+vim /etc/dhcp/dhcpd.conf
+
+```
+option domain-name "example.org";
+option domain-name-servers 8.8.8.8, 114.114.114.114;
+
+default-lease-time 84600;
+max-lease-time 100000;
+
+log-facility local7;
+
+subnet 1.1.1.0 netmask 255.255.255.0 {
+  range 1.1.1.100 1.1.1.200;
+  option routers 1.1.1.253;
+  next-server 1.1.1.21; # 本机ip（tftpserver的ip）
+  filename "grubaa64.efi"; 
+}
+```
+
+```
+systemctl restart dhcpd
+```
+
+## isoft_6.0_aarch64
+
+### http服务配置
 
 创建目录
 
@@ -347,12 +390,11 @@ label linux
 mkdir -p /var/www/html/isoft_6.0/isos/aarch64/
 
 # 挂载镜像文件
-mount -o loop /dev/sr0 /var/www/html/isoft_6.0/isos/aarch64/
-chmod 755 /var/www/html/isoft_6.0/isos/aarch64/
+mount -o loop /root/iSoft-Taiji-Server-OS-6.0-aarch64-202201240952.iso /var/www/html/isoft_6.0/isos/aarch64/
 
 # 上传ks.cfg应答文件
 vim /var/www/html/ks/ks-isoft-6.0-aarch64.cfg
-chmod 644 /var/www/html/ks/ks-isoft-6.0-aarch64.cfg
+chmod -R 755 /var/www/html
 ```
 
 ks-isoft-6.0-aarch64.cfg 文件内容
@@ -402,15 +444,15 @@ pwpolicy luks --minlen=8 --minquality=1 --notstrict --nochanges --notempty
 reboot
 ```
 
-## tftp服务配置
+### tftp服务配置
 
 ```bash
 rm -rf /var/lib/tftpboot/*
 
-/usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/EFI/BOOT/grub.cfg /var/lib/tftpboot/
-/usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/EFI/BOOT/grubaa64.efi /var/lib/tftpboot/
-/usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/images/pxeboot/vmlinuz /var/lib/tftpboot/
-/usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/images/pxeboot/initrd.img /var/lib/tftpboot/
+cp /var/www/html/isoft_6.0/isos/aarch64/EFI/BOOT/grub.cfg /var/lib/tftpboot/
+cp /var/www/html/isoft_6.0/isos/aarch64/EFI/BOOT/grubaa64.efi /var/lib/tftpboot/
+cp /var/www/html/isoft_6.0/isos/aarch64/images/pxeboot/vmlinuz /var/lib/tftpboot/
+cp /var/www/html/isoft_6.0/isos/aarch64/images/pxeboot/initrd.img /var/lib/tftpboot/
 
 chmod -R 644 /var/lib/tftpboot/*
 systemctl restart tftp
@@ -449,40 +491,17 @@ search --no-floppy --set=root -l 'iSoft-Taiji-Server-OS-6.0'
 ### BEGIN /etc/grub.d/10_linux ###
 menuentry 'Install iSoft-Taiji-Server-OS 6.0 with GUI mode' --class red --class gnu-linux --class gnu --class os {
         set root=(tftp,1.1.1.21)
-        linux  /vmlinuz ip=dhcp inst.repo=http://1.1.1.21/isoft_6.0/isos/aarch64/ inst.ks=http://1.1.1.21/ks/ks-isoft-6.0-aarch64.cfg
+        linux  /vmlinuz ro inst.geoloc=0 console=ttyAMA0 console=tty0 rd.iscsi.waitnet=0  inst.repo=http://1.1.1.21/isoft_6.0/isos/aarch64/ inst.ks=http://1.1.1.21/ks/ks-isoft-6.0-aarch64.cfg
         initrd /initrd.img
 }
 }
 ```
 
-## dhcp服务配置
+## icloud_1.0_aarch64
 
-vim /etc/dhcp/dhcpd.conf
+> 这里 iso 没有直接挂载到 apache 目录，是因为该 iso 文件 Packages 目录中有个别软件包没有读取权限，直接挂载无法修改权限
 
-```
-option domain-name "example.org";
-option domain-name-servers 8.8.8.8, 114.114.114.114;
-
-default-lease-time 84600;
-max-lease-time 100000;
-
-log-facility local7;
-
-subnet 1.1.1.0 netmask 255.255.255.0 {
-  range 1.1.1.100 1.1.1.200;
-  option routers 1.1.1.253;
-  next-server 1.1.1.21; # 本机ip（tftpserver的ip）
-  filename "grubaa64.efi"; 
-}
-```
-
-```
-systemctl restart dhcpd
-```
-
-# icloud_1.0_aarch64
-
-## http服务配置
+### http服务配置
 
 创建目录
 
@@ -491,19 +510,19 @@ systemctl restart dhcpd
 mkdir -p /var/www/html/icloud_1.0/isos/aarch64/
 
 # 挂载镜像文件
-mount /root/iCloudOS-1.0-aarch64-2021-0805-1423-test-1.iso /var/www/html/icloud_1.0/isos/aarch64/
-chmod 755 -R /var/www/html/icloud_1.0/
+mount -o loop /root/iCloudOS-1.0-aarch64-2021-0805-1423-test-1.iso /mnt/
+cp -r /mnt/* /var/www/html/icloud_1.0/isos/aarch64/
 
 # 上传 ks.cfg 应答文件
-vim /var/www/html/ks/ks-icloud-1.0-x86.cfg
-chmod 644 /var/www/html/ks/ks-icloud-1.0-x86.cfg
+vim /var/www/html/ks/ks-icloud-1.0-aarch64.cfg
+chmod -R 755 /var/www/html
 ```
 
-ks-icloud-1.0-x86.cfg 文件内容
+ks-icloud-1.0-aarch64.cfg 文件内容
 
 ```
 #version=RHEL8
-ignoredisk --only-use=sda
+ignoredisk --only-use=vda
 autopart --type=lvm
 # Partition clearing information
 clearpart --all --initlabel
@@ -537,17 +556,19 @@ pwpolicy root --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 pwpolicy user --minlen=6 --minquality=1 --notstrict --nochanges --emptyok
 pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 %end
+
+reboot
 ```
 
-## tftp服务配置
+### tftp服务配置
 
 ```
 rm -rf /var/lib/tftpboot/*
 
-/usr/bin/cp /var/www/html/icloud_1.0/isos/aarch64/EFI/BOOT/grub.cfg /var/lib/tftpboot/
-/usr/bin/cp /var/www/html/icloud_1.0/isos/aarch64/EFI/BOOT/grubaa64.efi /var/lib/tftpboot/
-/usr/bin/cp /var/www/html/icloud_1.0/isos/aarch64/images/pxeboot/vmlinuz /var/lib/tftpboot/
-/usr/bin/cp /var/www/html/icloud_1.0/isos/aarch64/images/pxeboot/initrd.img /var/lib/tftpboot/
+cp /var/www/html/icloud_1.0/isos/aarch64/EFI/BOOT/grub.cfg /var/lib/tftpboot/
+cp /var/www/html/icloud_1.0/isos/aarch64/EFI/BOOT/grubaa64.efi /var/lib/tftpboot/
+cp /var/www/html/icloud_1.0/isos/aarch64/images/pxeboot/vmlinuz /var/lib/tftpboot/
+cp /var/www/html/icloud_1.0/isos/aarch64/images/pxeboot/initrd.img /var/lib/tftpboot/
 
 chmod -R 644 /var/lib/tftpboot/*
 systemctl restart tftp
@@ -586,35 +607,132 @@ search --no-floppy --set=root -l 'iCloudOS-1.0-aarch64'
 ### BEGIN /etc/grub.d/10_linux ###
 menuentry 'Install iCloudOS 1.0 with GUI mode' --class red --class gnu-linux --class gnu --class os {
         set root=(tftp,1.1.1.21)
-        linux  /vmlinuz ro inst.geoloc=0 console=ttyAMA0 console=tty0 rd.iscsi.waitnet=0 inst.repo=http://1.1.1.21/icloud_1.0/isos/aarch64 inst.ks=http://1.1.1.21/ks/ks-icloud-1.0-x86.cfg
+        linux  /vmlinuz ro inst.geoloc=0 console=ttyAMA0 console=tty0 rd.iscsi.waitnet=0 inst.repo=http://1.1.1.21/icloud_1.0/isos/aarch64 inst.ks=http://1.1.1.21/ks/ks-icloud-1.0-aarch64.cfg
         initrd /initrd.img
 }
 ```
 
-## dhcp服务配置
+## openeuler_20.03-LTS_aarch64
 
-vim /etc/dhcp/dhcpd.conf
+### http服务配置
+
+创建目录
 
 ```
-option domain-name "example.org";
-option domain-name-servers 8.8.8.8, 114.114.114.114;
+# 创建目录
+mkdir -p /var/www/html/openeuler_20.03-LTS/isos/aarch64/
 
-default-lease-time 84600;
-max-lease-time 100000;
+# 挂载镜像文件
+mount -o loop /root/openEuler-20.03-LTS-aarch64-dvd.iso /var/www/html/openeuler_20.03-LTS/isos/aarch64/
 
-log-facility local7;
+# 上传ks.cfg应答文件
+vim /var/www/html/ks/ks-openeuler-20.03-LTS-aarch64.cfg
+chmod -R 755 /var/www/html
+```
 
-subnet 1.1.1.0 netmask 255.255.255.0 {
-  range 1.1.1.100 1.1.1.200;
-  option routers 1.1.1.253;
-  next-server 1.1.1.21; # 本机ip（tftpserver的ip）
-  filename "grubaa64.efi"; 
+ks-openeuler-20.03-LTS-aarch64.cfg 文件内容
+
+```
+#version=DEVEL
+ignoredisk --only-use=vda
+autopart --type=lvm
+# Partition clearing information
+clearpart --all --initlabel
+# Use graphical install
+graphical
+# Use CDROM installation media
+install
+url --url=http://1.1.1.21/openeuler_20.03-LTS/isos/aarch64
+# Keyboard layouts
+keyboard --vckeymap=cn --xlayouts='cn'
+# System language
+lang zh_CN.UTF-8
+
+# Network information
+network  --bootproto=static --device=enp3s0 --bootproto=dhcp --ipv6=auto --activate
+network  --hostname=localhost.localdomain
+# Root password
+rootpw --iscrypted $6$x94MGsfCoFdE/G4O$MEakgOwtq0O5i4pRIVzXntKQuMJVh9CJ3anhZKl8YZhZDtSXhzuMk5mpDr3wu..rDareWgy5tjsepCaGiPK3g/
+# X Window System configuration information
+xconfig  --startxonboot
+# Run the Setup Agent on first boot
+firstboot --enable
+# System services
+services --enabled="chronyd"
+# System timezone
+timezone Asia/Shanghai --isUtc
+
+%packages
+@^minimal-environment
+
+%end
+
+
+%anaconda
+pwpolicy root --minlen=8 --minquality=1 --notstrict --nochanges --notempty
+pwpolicy user --minlen=8 --minquality=1 --notstrict --nochanges --emptyok
+pwpolicy luks --minlen=8 --minquality=1 --notstrict --nochanges --notempty
+%end
+
+reboot
+```
+
+### tftp服务配置
+
+```bash
+rm -rf /var/lib/tftpboot/*
+
+cp /var/www/html/openeuler_20.03-LTS/isos/aarch64/EFI/BOOT/grub.cfg /var/lib/tftpboot/
+cp /var/www/html/openeuler_20.03-LTS/isos/aarch64/EFI/BOOT/grubaa64.efi /var/lib/tftpboot/
+cp /var/www/html/openeuler_20.03-LTS/isos/aarch64/images/pxeboot/vmlinuz /var/lib/tftpboot/
+cp /var/www/html/openeuler_20.03-LTS/isos/aarch64/images/pxeboot/initrd.img /var/lib/tftpboot/
+
+chmod -R 644 /var/lib/tftpboot/*
+systemctl restart tftp
+```
+
+vim /var/lib/tftpboot/grub.cfg
+
+```
+set default="1"
+
+function load_video {
+  if [ x$feature_all_video_module = xy ]; then
+    insmod all_video
+  else
+    insmod efi_gop
+    insmod efi_uga
+    insmod ieee1275_fb
+    insmod vbe
+    insmod vga
+    insmod video_bochs
+    insmod video_cirrus
+  fi
+}
+
+load_video
+set gfxpayload=keep
+insmod gzio
+insmod part_gpt
+insmod ext2
+
+set timeout=60
+### END /etc/grub.d/00_header ###
+
+search --no-floppy --set=root -l 'openEuler-20.03-LTS-aarch64'
+
+### BEGIN /etc/grub.d/10_linux ###
+menuentry 'Install openEuler 20.03 LTS' --class red --class gnu-linux --class gnu --class os {
+        set root=(tftp,1.1.1.21)
+        linux  /vmlinuz ro inst.geoloc=0 console=ttyAMA0 console=tty0 rd.iscsi.waitnet=0  inst.repo=http://1.1.1.21/openeuler_20.03-LTS/isos/aarch64/ inst.ks=http://1.1.1.21/ks/ks-openeuler-20.03-LTS-aarch64.cfg
+        initrd /initrd.img
+}
 }
 ```
 
-```
-systemctl restart dhcpd
-```
+
+
+
 
 # 参考
 
