@@ -133,7 +133,7 @@ chmod 600 ~/.ssh/authorized_keys
 scp ~/.ssh/authorized_keys node002:~/.ssh/authorized_keys
 ```
 
-- 注意：这里第一次使用同步还需要密码，之后就不需要了
+> 注意：这里第一次使用同步还需要密码，之后就不需要了
 
 验证免密是否配置成功
 

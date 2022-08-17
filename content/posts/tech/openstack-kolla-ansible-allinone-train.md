@@ -40,7 +40,10 @@ https://tarballs.opendev.org/openstack/kolla/
 dockerhub镜像地址
 https://hub.docker.com/u/kolla/
 
-# 安装环境准备
+# 部署 openstack 集群
+
+## 安装环境准备
+
 官方部署文档：
 https://docs.openstack.org/kolla-ansible/train/user/quickstart.html
 
@@ -101,7 +104,7 @@ vgcreate cinder-volumes /dev/sdb
 #cinder_volume_group: "cinder-volumes"
 ```
 
-# 部署kolla ansible
+## 部署 kolla ansible
 
 配置主机名,kolla预检查时rabbitmq可能需要能够进行主机名解析
 
@@ -234,23 +237,23 @@ EOF
 
 
 
-# 部署openstack组件
+## 部署 openstack 组件
 部署openstack
 
 ```
-#预配置，安装docker、docker sdk、关闭防火墙、配置时间同步等
+# 预配置，安装docker、docker sdk、关闭防火墙、配置时间同步等
 kolla-ansible -i ./all-in-one bootstrap-servers
 
-#部署前环境检查
+# 部署前环境检查
 kolla-ansible -i ./all-in-one prechecks
 
-#拉取镜像，也可省略该步骤，默认会自动拉取
+# 拉取镜像，也可省略该步骤，默认会自动拉取
 kolla-ansible -i ./all-in-one pull
 
-#执行实际部署，拉取镜像，运行对应组件容器
+# 执行实际部署，拉取镜像，运行对应组件容器
 kolla-ansible -i ./all-in-one deploy
 
-#生成openrc文件
+# 生成openrc文件
 kolla-ansible post-deploy
 ```
 
@@ -341,7 +344,7 @@ registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-neutron-l3-agent     
 
 另外需要注意，不要在该节点安装libvirt等工具，这些工具安装后可能会启用libvirtd和iscsid.sock等服务，kolla已经在容器中运行了这些服务，这些服务会调用节点上的sock文件，如果节点上也启用这些服务去抢占这些文件，会导致容器异常。默认kolla在预配置时也会主动禁用节点上的相关服务。
 
-# 安装OpenStack客户端
+## 安装 openStack 客户端
 > 可以直接安装到服务器上或者使用docker安装容器
 >
 > 推荐使用docker容器方式运行客户端
@@ -377,7 +380,7 @@ pip uninstall urllib3
 yum install -y python2-urllib3
 ```
 
-# 运行cirros实例
+## 运行 cirros 实例
 
 kolla ansible提供了一个快速创建cirros demo实例的脚本/usr/share/kolla-ansible/init-runonce。
 
@@ -421,7 +424,7 @@ openstack server create \
     demo1
 ```
 
-# 访问openstack horizon
+## 访问 openstack horizon
 访问openstack horizon需要使用vip地址，节点上可以看到由keepalived容器生成的vip
 
 ```
@@ -488,7 +491,7 @@ https://docs.openstack.org/image-guide/obtain-images.html#cirros-test
 cirros@192.168.35.183's password: 
 ```
 
-# 运行CentOS实例
+## 运行 centos 实例
 centos官方维护有相关cloud image，如果不需要进行定制，可以直接下载来运行实例。
 
 参考：https://docs.openstack.org/image-guide/obtain-images.html
@@ -566,7 +569,7 @@ Last login: Fri Oct 29 08:10:42 2021 from 192.168.35.188
 ```
 
 
-# 运行Ubuntu实例
+## 运行 ubuntu 实例
 下载镜像
 
 ```
@@ -602,6 +605,47 @@ openstack server create \
 ![image-20211029162258334](https://image.lvbibir.cn/blog/image-20211029162258334.png)
 
 # 调整集群配置
+
+## 新增 magnum & ironic 组件
+
+`magnum` 和 `ironic` 默认状态下是没有安装的，在 `/etc/kolla/globals.yml` 可以看到默认配置
+
+```
+#enable_magnum: "no"
+#enable_ironic: "no"
+```
+
+在 `/etc/kolla/globals.yml` 之前的配置下面新增如下，参数的具体含义查看 [官方文档](https://docs.openstack.org/kolla-ansible/train/reference/index.html)
+
+```
+# ironic
+enable_ironic: true
+ironic_dnsmasq_interface: "enp11s0f1"
+ironic_dnsmasq_dhcp_range: "192.168.45.200,192.168.45.210"
+ironic_dnsmasq_default_gateway: 192.168.45.1
+ironic_cleaning_network: "public1"
+ironic_dnsmasq_boot_file: pxelinux.0
+
+# magnum
+enable_magnum: true
+```
+
+ironic 组件还需要一些其他操作
+
+```bash
+mkdir -p /etc/kolla/config/ironic/
+curl https://tarballs.openstack.org/ironic-python-agent/dib/files/ipa-centos7-master.kernel -o /etc/kolla/config/ironic/ironic-agent.kernel
+curl https://tarballs.openstack.org/ironic-python-agent/dib/files/ipa-centos7-master.initramfs -o /etc/kolla/config/ironic/ironic-agent.initramfs
+```
+
+在现有集群中新增组件
+
+```
+kolla-ansible -i all-in-one deploy --tags horizon,magnum,ironic
+```
+
+## 修改组件配置
+
 集群部署完成后需要开启新的组件或者扩容，可以修改/etc/kolla/global.yml调整参数。
 或者在/etc/kolla/config目录下创建自定义配置文件，例如
 
@@ -622,16 +666,16 @@ block_device_allocate_retries_interval = 3
 kolla-ansible -i all-in-one reconfigure -t nova
 ```
 
-# kolla配置和日志文件
+## kolla配置和日志文件
 
 - 各个组件配置文件目录： /etc/kolla/
 - 各个组件日志文件目录：/var/log/kolla/
 
-# 清理kolla ansilbe集群
+## 清理kolla ansilbe集群
 
 ```
 kolla-ansible destroy --include-images --yes-i-really-really-mean-it
-#或者
+# 或者
 [root@kolla ~]# cd /usr/share/kolla-ansible/tools/
 [root@all tools]# ./cleanup-containers
 [root@all tools]# ./cleanup-host
@@ -639,7 +683,7 @@ kolla-ansible destroy --include-images --yes-i-really-really-mean-it
 vgremove cinder-volumes
 ```
 
-# 重新部署 Kolla ansible 集群
+## 重新部署 kolla ansible 集群
 
 ```
 ## 清除操作
@@ -686,6 +730,8 @@ https://www.nuomiphp.com/serverfault/en/5fff3e4524544316281a16b0.html
 # 参考
 
 https://blog.csdn.net/networken/article/details/106728002
+
+[官方文档](https://docs.openstack.org/kolla-ansible/train/reference/index.html)
 
 
 

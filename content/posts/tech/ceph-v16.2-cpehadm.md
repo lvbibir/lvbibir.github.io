@@ -160,7 +160,6 @@ ssh-copy-id -f -i /etc/ceph/ceph.pub root@ceph-aarch64-node2
 ssh-copy-id -f -i /etc/ceph/ceph.pub root@ceph-aarch64-node3
 ceph orch host add ceph-aarch64-node2 192.168.47.135 --labels _admin
 ceph orch host add ceph-aarch64-node3 192.168.47.130 --labels _admin
-
 ```
 
 ## 添加磁盘

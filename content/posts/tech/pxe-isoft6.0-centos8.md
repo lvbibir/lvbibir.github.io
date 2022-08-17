@@ -28,19 +28,25 @@ cover:
 
 测试环境：
 
-x86_64：vmware workstation V16.1.2
+x86_64（amd）：vmware workstation V16.1.2
 
-aarch64： kvm-2.12
+aarch64（kunpeng 920）： kvm-2.12
 
 > 注意测试的网络环境中不要存在其他的dhcp服务
+>
+> 注意测试虚拟机内存尽量大于4G，否则会报错  `no space left` 或者测试机直接黑屏
+>
+> 注意 `ks.cfg` 尽量在当前环境先手动安装一台模板机，使用模板机生成的 ks 文件来进行修改，否则可能会有一些意料之外的破坏性操作且可提高成功率
 
 # 服务端配置
 
-## 系统安装
+## 基础环境
 
-系统安装过程略，系统版本：iSoft-ServerOS-V6.0-rc1
+系统版本：iSoft-ServerOS-V6.0-rc1
 
-网卡选择nat模式，注意关闭一下 workstation 自带的 dhcp，ip：1.1.1.21
+ip地址：1.1.1.21
+
+网卡选择nat模式，注意关闭一下 workstation 自带的 dhcp，也可使用自定义的 `lan区段` 
 
 ![](https://image.lvbibir.cn/blog/image-20220712100835390.png)
 
@@ -56,7 +62,7 @@ sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config
 
 ## 安装相关的软件包
 
-这里由于HW行动的原因，外网yum源暂不可用，使用本地yum源安装相关软件包
+这里由于 HW 行动的原因，外网 yum 源暂不可用，使用本地 yum 源安装相关软件包
 
 ```
 mount -o loop /dev/sr0 /mnt
@@ -88,23 +94,23 @@ cenots8安装syslinux时需要加 --nonlinux后缀，centos7则不需要
 ## http服务配置
 
 ```
+mkdir /var/www/html/ks/
 chmod 755 -R /var/www/html/
 systemctl start httpd
 systemctl enable httpd
-mkdir /var/www/html/ks/
 ```
 
-能访问到httpd即可
+能访问到 httpd 即可
 
 ## tftp服务配置
 
 ```
-systemctl start tftp
-systemctl enable tftp
-
 /usr/bin/cp /usr/share/syslinux/menu.c32 /var/lib/tftpboot/
 /usr/bin/cp /usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/
 mkdir /var/lib/tftpboot/pxelinux.cfg
+
+systemctl start tftp
+systemctl enable tftp
 ```
 
 ## dhcp服务配置
@@ -147,8 +153,8 @@ mkdir -p /var/www/html/isoft_6.0/isos/x86_64/
 mount -o loop /dev/sr0 /var/www/html/isoft_6.0/isos/x86_64/
 
 # 上传ks.cfg应答文件
-vim /var/www/html/ks/ks-isoft-6.0.cfg
-chmod 644 /var/www/html/ks/ks-isoft-6.0.cfg
+vim /var/www/html/ks/ks-isoft-6.0-x86.cfg
+chmod 644 /var/www/html/ks/ks-isoft-6.0-x86.cfg
 ```
 
 ks.cfg文件内容
@@ -230,12 +236,8 @@ label linux
   menu label ^Install iSoft-Taiji Server OS 6.0
   menu default
   kernel vmlinuz
-  append initrd=initrd.img ks=http://1.1.1.21/ks/ks-isoft-6.0.cfg
+  append initrd=initrd.img ks=http://1.1.1.21/ks/ks-isoft-6.0-x86.cfg
 ```
-
-## 测试
-
-注意测试虚拟机内存需要4G左右，否则会报错  `no space left`
 
 # icloud_1.0_x86
 
@@ -246,22 +248,24 @@ label linux
 ## http服务配置
 
 ```
+mkdir -p /var/www/html/icloud_1.0/isos/x86_64/
+
 # 挂载镜像
 mount -o loop /dev/sr1 /var/www/html/icloud_1.0/isos/x86_64/
 
 # 上传ks.cfg应答文件
-vim /var/www/html/ks/ks-i-cloud.cfg
-chmod 644 /var/www/html/ks/ks-i-cloud.cfg
+vim /var/www/html/ks/ks-icloud-1.0-x86.cfg
+chmod 644 /var/www/html/ks/ks-icloud-1.0-x86.cfg
 ```
 
-ks.cfg文件内容
+ks-icloud-1.0-x86.cfg 文件内容
 
 ```
 #version=RHEL8
 ignoredisk --only-use=sda
 autopart --type=lvm
 # Partition clearing information
-clearpart --all --initlabel --drives=sda
+clearpart --all --initlabel
 # Use graphical install
 graphical
 # Use CDROM installation media
@@ -329,7 +333,7 @@ label linux
   menu label ^Install i-CloudOS 1.0
   menu default
   kernel vmlinuz
-  append initrd=initrd.img ks=http://1.1.1.21/icloud_1.0/isos/x86_64/ks.cfg
+  append initrd=initrd.img ks=http://1.1.1.21/icloud_1.0/isos/x86_64/ks-icloud-1.0-x86.cfg
 ```
 
 # isoft_6.0_aarch64
@@ -344,13 +348,14 @@ mkdir -p /var/www/html/isoft_6.0/isos/aarch64/
 
 # 挂载镜像文件
 mount -o loop /dev/sr0 /var/www/html/isoft_6.0/isos/aarch64/
+chmod 755 /var/www/html/isoft_6.0/isos/aarch64/
 
 # 上传ks.cfg应答文件
-vim /var/www/html/ks/ks-isoft-6.0.cfg
-chmod 644 /var/www/html/ks/ks-isoft-6.0.cfg
+vim /var/www/html/ks/ks-isoft-6.0-aarch64.cfg
+chmod 644 /var/www/html/ks/ks-isoft-6.0-aarch64.cfg
 ```
 
-ks.cfg文件内容
+ks-isoft-6.0-aarch64.cfg 文件内容
 
 ```
 #version=DEVEL
@@ -399,7 +404,7 @@ reboot
 
 ## tftp服务配置
 
-```
+```bash
 rm -rf /var/lib/tftpboot/*
 
 /usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/EFI/BOOT/grub.cfg /var/lib/tftpboot/
@@ -414,7 +419,7 @@ systemctl restart tftp
 vim /var/lib/tftpboot/grub.cfg
 
 ```
-set default="0"
+set default="1"
 
 function load_video {
   if [ x$feature_all_video_module = xy ]; then
@@ -436,13 +441,14 @@ insmod gzio
 insmod part_gpt
 insmod ext2
 
-set timeout=60
+set timeout=6
 ### END /etc/grub.d/00_header ###
 
 search --no-floppy --set=root -l 'iSoft-Taiji-Server-OS-6.0'
 
 ### BEGIN /etc/grub.d/10_linux ###
 menuentry 'Install iSoft-Taiji-Server-OS 6.0 with GUI mode' --class red --class gnu-linux --class gnu --class os {
+        set root=(tftp,1.1.1.21)
         linux  /vmlinuz ip=dhcp inst.repo=http://1.1.1.21/isoft_6.0/isos/aarch64/ inst.ks=http://1.1.1.21/ks/ks-isoft-6.0-aarch64.cfg
         initrd /initrd.img
 }
@@ -482,21 +488,22 @@ systemctl restart dhcpd
 
 ```
 # 创建目录
-mkdir -p /var/www/html/isoft_6.0/isos/aarch64/
+mkdir -p /var/www/html/icloud_1.0/isos/aarch64/
 
 # 挂载镜像文件
-mount -o loop /dev/sr0 /var/www/html/isoft_6.0/isos/aarch64/
+mount /root/iCloudOS-1.0-aarch64-2021-0805-1423-test-1.iso /var/www/html/icloud_1.0/isos/aarch64/
+chmod 755 -R /var/www/html/icloud_1.0/
 
-# 上传ks.cfg应答文件
-vim /var/www/html/ks/ks-isoft-6.0.cfg
-chmod 644 /var/www/html/ks/ks-isoft-6.0.cfg
+# 上传 ks.cfg 应答文件
+vim /var/www/html/ks/ks-icloud-1.0-x86.cfg
+chmod 644 /var/www/html/ks/ks-icloud-1.0-x86.cfg
 ```
 
-ks.cfg文件内容
+ks-icloud-1.0-x86.cfg 文件内容
 
 ```
-#version=DEVEL
-ignoredisk --only-use=vda
+#version=RHEL8
+ignoredisk --only-use=sda
 autopart --type=lvm
 # Partition clearing information
 clearpart --all --initlabel
@@ -504,39 +511,32 @@ clearpart --all --initlabel
 graphical
 # Use CDROM installation media
 install
-url --url=http://1.1.1.21/isoft_6.0/isos/aarch64
+url --url=http://1.1.1.21/icloud_1.0/isos/aarch64/
 # Keyboard layouts
-keyboard --vckeymap=cn --xlayouts='cn'
+keyboard --vckeymap=us --xlayouts=''
 # System language
 lang zh_CN.UTF-8
 
-# Network information
-network  --bootproto=static --device=enp3s0 --bootproto=dhcp --ipv6=auto --activate
-network  --hostname=localhost.localdomain
 # Root password
-rootpw --iscrypted $6$x94MGsfCoFdE/G4O$MEakgOwtq0O5i4pRIVzXntKQuMJVh9CJ3anhZKl8YZhZDtSXhzuMk5mpDr3wu..rDareWgy5tjsepCaGiPK3g/
-# X Window System configuration information
-xconfig  --startxonboot
+rootpw --iscrypted 123.com
 # Run the Setup Agent on first boot
 firstboot --enable
+# Do not configure the X Window System
+skipx
 # System services
 services --enabled="chronyd"
 # System timezone
 timezone Asia/Shanghai --isUtc
 
 %packages
-@^mate-desktop-environment
-
+@^vmserver-compute-node
 %end
-
 
 %anaconda
-pwpolicy root --minlen=8 --minquality=1 --notstrict --nochanges --notempty
-pwpolicy user --minlen=8 --minquality=1 --notstrict --nochanges --emptyok
-pwpolicy luks --minlen=8 --minquality=1 --notstrict --nochanges --notempty
+pwpolicy root --minlen=6 --minquality=1 --notstrict --nochanges --notempty
+pwpolicy user --minlen=6 --minquality=1 --notstrict --nochanges --emptyok
+pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 %end
-
-reboot
 ```
 
 ## tftp服务配置
@@ -544,10 +544,10 @@ reboot
 ```
 rm -rf /var/lib/tftpboot/*
 
-/usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/EFI/BOOT/grub.cfg /var/lib/tftpboot/
-/usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/EFI/BOOT/grubaa64.efi /var/lib/tftpboot/
-/usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/images/pxeboot/vmlinuz /var/lib/tftpboot/
-/usr/bin/cp /var/www/html/isoft_6.0/isos/aarch64/images/pxeboot/initrd.img /var/lib/tftpboot/
+/usr/bin/cp /var/www/html/icloud_1.0/isos/aarch64/EFI/BOOT/grub.cfg /var/lib/tftpboot/
+/usr/bin/cp /var/www/html/icloud_1.0/isos/aarch64/EFI/BOOT/grubaa64.efi /var/lib/tftpboot/
+/usr/bin/cp /var/www/html/icloud_1.0/isos/aarch64/images/pxeboot/vmlinuz /var/lib/tftpboot/
+/usr/bin/cp /var/www/html/icloud_1.0/isos/aarch64/images/pxeboot/initrd.img /var/lib/tftpboot/
 
 chmod -R 644 /var/lib/tftpboot/*
 systemctl restart tftp
@@ -556,7 +556,7 @@ systemctl restart tftp
 vim /var/lib/tftpboot/grub.cfg
 
 ```
-set default="0"
+set default="1"
 
 function load_video {
   if [ x$feature_all_video_module = xy ]; then
@@ -578,16 +578,16 @@ insmod gzio
 insmod part_gpt
 insmod ext2
 
-set timeout=60
+set timeout=6
 ### END /etc/grub.d/00_header ###
 
-search --no-floppy --set=root -l 'iSoft-Taiji-Server-OS-6.0'
+search --no-floppy --set=root -l 'iCloudOS-1.0-aarch64'
 
 ### BEGIN /etc/grub.d/10_linux ###
-menuentry 'Install iSoft-Taiji-Server-OS 6.0 with GUI mode' --class red --class gnu-linux --class gnu --class os {
-        linux  /vmlinuz ip=dhcp inst.repo=http://1.1.1.21/isoft_6.0/isos/aarch64/ inst.ks=http://1.1.1.21/ks/ks-isoft-6.0-aarch64.cfg
+menuentry 'Install iCloudOS 1.0 with GUI mode' --class red --class gnu-linux --class gnu --class os {
+        set root=(tftp,1.1.1.21)
+        linux  /vmlinuz ro inst.geoloc=0 console=ttyAMA0 console=tty0 rd.iscsi.waitnet=0 inst.repo=http://1.1.1.21/icloud_1.0/isos/aarch64 inst.ks=http://1.1.1.21/ks/ks-icloud-1.0-x86.cfg
         initrd /initrd.img
-}
 }
 ```
 
@@ -621,3 +621,5 @@ systemctl restart dhcpd
 https://blog.csdn.net/weixin_45651006/article/details/103067283
 
 https://blog.csdn.net/qq_44839276/article/details/106980334
+
+https://docs.openeuler.org/zh/docs/20.03_LTS_SP1/docs/Installation/%E4%BD%BF%E7%94%A8kickstart%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E8%A3%85.html
