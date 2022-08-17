@@ -62,12 +62,12 @@
     </item>
     
     <item>
-      <title>pxe安装isoft6.0及icloud1.0（Centos8）</title>
+      <title>pxe 安装配置大全</title>
       <link>https://www.lvbibir.cn/posts/tech/pxe-isoft6.0-centos8/</link>
       <pubDate>Tue, 12 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/pxe-isoft6.0-centos8/</guid>
-      <description>前言 测试环境： x86_64（amd）：vmware workstation V16.1.2 aarch64（kunpeng 920）： kvm-2.12 注意测试的网络环境中不要存在其他的dhcp服</description>
+      <description>前言 测试环境： x86_64（amd ryzen 7 4800u）：vmware workstation V16.1.2 aarch64（kunpeng 920）： kvm-2.12 注意测试的网络环境中不要存在其</description>
     </item>
     
     <item>
@@ -134,12 +134,12 @@
     </item>
     
     <item>
-      <title>windows双网卡时设置网络优先级</title>
+      <title>多网卡时设置网络优先级及添加静态路由的方法</title>
       <link>https://www.lvbibir.cn/posts/tech/windows-network-priority/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/windows-network-priority/</guid>
-      <description>前言 仅在win10测试可用 在工作中需要连接公司内网（有线，不可联网），访问外网时需要连接无线 同时接入这两个网络时，内网访问正常，外网无法访问</description>
+      <description>前言 在工作中需要连接公司内网（有线，不可联网），访问外网时需要连接无线 同时接入这两个网络时，内网访问正常，外网无法访问。 此时可以通过调整网络</description>
     </item>
     
     <item>
