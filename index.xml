@@ -67,7 +67,7 @@
       <pubDate>Tue, 12 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/pxe-isoft6.0-centos8/</guid>
-      <description>前言 测试环境： x86_64：vmware workstation V16.1.2 aarch64： kvm-2.12 注意测试的网络环境中不要存在其他的dhcp服务 服务端配置 系统安装 系统安装过程略</description>
+      <description>前言 测试环境： x86_64（amd）：vmware workstation V16.1.2 aarch64（kunpeng 920）： kvm-2.12 注意测试的网络环境中不要存在其他的dhcp服</description>
     </item>
     
     <item>
