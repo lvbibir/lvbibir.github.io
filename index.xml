@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 27 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>跑渣的跑步日常</title>
       <link>https://www.lvbibir.cn/posts/life/running/</link>
@@ -23,6 +23,15 @@
       
       <guid>https://www.lvbibir.cn/posts/blog/hello-hugo/</guid>
       <description>前言 记录 wordpress 迁移至 hugo+papermod 的过程，大多参考sulv大佬的博客，本文更偏向于个人备忘，并不是一篇很合格的教程 博客流水线 编辑文章 采用 typora + picgo + 七牛云图床流</description>
+    </item>
+    
+    <item>
+      <title>pxe环境中dhcp服务对不同模式（legacy和UEFI）和不同CPU架构(x86和aarch64)的处理</title>
+      <link>https://www.lvbibir.cn/posts/tech/pxe-dhcp-legacy-uefi-archs/</link>
+      <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/pxe-dhcp-legacy-uefi-archs/</guid>
+      <description>前言 在 pxe 的一般场景下，通常在只需要在 dhcp 服务中配置一个通用的 filename 来指定客户端在 tftp 服务端获取的引导程序，但是在略微复杂的场景中，比如可能有些服务器</description>
     </item>
     
     <item>
@@ -63,10 +72,10 @@
     
     <item>
       <title>pxe 安装配置大全</title>
-      <link>https://www.lvbibir.cn/posts/tech/pxe-isoft6.0-centos8/</link>
+      <link>https://www.lvbibir.cn/posts/tech/pxe-install-scripts/</link>
       <pubDate>Tue, 12 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/pxe-isoft6.0-centos8/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/pxe-install-scripts/</guid>
       <description>前言 测试环境： x86_64（amd ryzen 7 4800u）：vmware workstation V16.1.2 aarch64（kunpeng 920）： kvm-2.12 注意测试的网络环境中不要存在其</description>
     </item>
     
