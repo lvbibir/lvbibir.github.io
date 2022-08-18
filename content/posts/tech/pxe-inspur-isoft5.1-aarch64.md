@@ -53,12 +53,13 @@ ddns-update-style none;
 allow client-updates;
 allow booting;
 allow bootp;
-                  next-server 192.168.1.1;
-                if option arch = 00:07 or arch = 00:09 {
-                        filename "x86/bootx64.efi";
-                } else   {
-                        filename "arm/grubaa64.efi";
-                }
+
+next-server 192.168.1.1;
+if option arch = 00:07 or arch = 00:09 {
+        filename "x86/bootx64.efi";
+} else   {
+        filename "arm/grubaa64.efi";
+}
 shared-network works {
   subnet 192.168.1.0 netmask 255.255.255.0 {
           range dynamic-bootp 192.168.1.221 192.168.1.253;

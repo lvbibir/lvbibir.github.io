@@ -1,5 +1,5 @@
 ---
-title: "pxe环境中dhcp服务对不同模式（legacy和UEFI）和不同CPU架构(x86和aarch64)的处理" 
+title: "pxe环境中对不同模式（legacy和UEFI）和不同CPU架构(x86和aarch64)的处理" 
 date: 2022-08-18
 lastmod: 2022-08-18
 author: ["lvbibir"] 
@@ -106,14 +106,40 @@ Type   Architecture Name
 
 ![image-20220818172222043](https://image.lvbibir.cn/blog/image-20220818172222043.png)
 
-以上抓包都是在网络引导的环境下进行的，在使用已安装操作系统中的网卡去发送 dhcp 请求时，整个数据包传输过程 `option 60` 和 `option 93`  这两个选项的参与，我猜测这两个选项只有在网络引导的环境下才会去参与
+以上抓包都是在网络引导的环境下进行的，在使用已安装操作系统中的网卡去发送 dhcp 请求时，整个数据包传输过程都没有 `option 60` 和 `option 93`  这两个选项的参与，我猜测这两个选项只有在网络引导的环境下才会去参与
 
 # dhcp 配置文件示例
 
 在上述论证基础之上，我们就可以通过配置 dhcp 服务来使 pxe 足以应对复杂的网络环境和硬件环境
 
+解决前言中提到的两个难点分别通过 `option 60` 和 `option 93` 分别解决
+
 ```
-# PXE定义命名空间
+# 这里应该是将 option 93 的值格式化成 16 进制，用于下面的 if 判断（猜测）
+option arch code 93 = unsigned integer 16;
+class "pxeclients" {
+    # 这里判断 option 60 选项的值的前9个字符是否是 PXEClient
+    match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+    next-server 10.17.25.17;
+    # 这里通过 if 判断 arch 代码来决定如何去分配对应的 pxe 引导程序
+    if option arch = 00:07 {
+      filename "/BOOTX64.efi";
+    } else if option arch = 00:09 {
+      filename "/BOOTX64.efi";
+    } else {
+      filename "/pxelinux.0";
+    }
+    }
+```
+
+较为详细的配置文件示例，后面有简化版
+
+```
+# 启用 PXE 支持
+allow booting;
+allow bootp;
+
+# PXE 定义命名空间
 option space PXE;
 option PXE.mtftp-ip  code 1 = ip-address;
 option PXE.mtftp-cport code 2 = unsigned integer 16;
@@ -121,13 +147,15 @@ option PXE.mtftp-sport code 3 = unsigned integer 16;
 option PXE.mtftp-tmout code 4 = unsigned integer 8;
 option PXE.mtftp-delay code 5 = unsigned integer 8;
 option arch code 93 = unsigned integer 16; # RFC4578
-# 启用PXE支持
-allow booting;
-allow bootp;
+
 authoritative;
-ddns-update-style none;
-ignore client-updates;
 one-lease-per-client true;
+# 不使用DNS动态更新
+ddns-update-style none;
+# 忽略客户端DNS更新
+ignore client-updates;
+
+# 不使用 PXE 的网络
 shared-network main {
 subnet 10.17.25.0 netmask 255.255.255.0 {
   option routers 10.17.25.254;
@@ -144,7 +172,9 @@ subnet 10.17.25.0 netmask 255.255.255.0 {
   }
 }
 }
-shared-network xxzx {
+
+# 使用 PXE 的网络
+shared-network pxe {
 subnet 10.17.15.0 netmask 255.255.255.0 {
   option routers 10.17.15.254;
   option subnet-mask 255.255.255.0;
@@ -154,7 +184,7 @@ subnet 10.17.15.0 netmask 255.255.255.0 {
   max-lease-time 172800;
   pool {
     range 10.17.15.1 10.17.15.20;
-    class "pxeclients" {
+    class "pxeclient" {
     match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
     next-server 10.17.25.17;
     if option arch = 00:07 {
@@ -165,6 +195,7 @@ subnet 10.17.15.0 netmask 255.255.255.0 {
       filename "/pxelinux.0";
     }
     }
+  # 根据 MAC 地址单独分配地址和指定的 PXE 引导程序
   host gpxelinux {
     option host-name "gpxelinux.zhijie-liu.com";
     hardware ethernet 00:50:56:24:0B:30;
@@ -176,69 +207,29 @@ subnet 10.17.15.0 netmask 255.255.255.0 {
 }
 ```
 
-
+简化版（仅kvm平台测试通过）
 
 ```
-# 不使用DNS动态更新
-ddns-update-style none;
-# 忽略客户端DNS更新
-ignore client-updates;
+option domain-name "example.org";
+option domain-name-servers 8.8.8.8, 114.114.114.114;
+default-lease-time 84600;
+max-lease-time 100000;
+log-facility local7;
 
-authoritative;
+option arch code 93 = unsigned integer 16;
 
-# 响应客户端的启动查询（开机时发送的DHCP请求）
-allow booting;
-allow bootp;
-allow unknown-clients;
-
-#DHCP configuration for PXE boot server
-option space PXE;
-option PXE.mtftp-ip    code 1 = ip-address;
-option PXE.mtftp-cport code 2 = unsigned integer 16;
-option PXE.mtftp-sport code 3 = unsigned integer 16;
-option PXE.mtftp-tmout code 4 = unsigned integer 8;
-option PXE.mtftp-delay code 5 = unsigned integer 8;
-option arch code 93 = unsigned integer 16; # RFC4578
-
-subnet 192.168.33.0 netmask 255.255.255.0 {
-  range 192.168.33.100 192.168.33.199;
-  # 设置DNS服务器地址
-  option domain-name-servers 192.168.33.110;
-  # 设置DNS域
-  option domain-name "tielemao.com";
-  # 设置客户租的默认网关
-  option routers 192.168.33.1;
-  option broadcast-address 192.168.33.255;
-  # 默认租约时间，单位为秒
-  default-lease-time 3600;
-  # 设置最大租约时间，单位为秒
-  max-lease-time 7200;
-
+subnet 1.1.1.0 netmask 255.255.255.0 {
+  range 1.1.1.100 1.1.1.200;
+  option routers 1.1.1.253;
   class "pxeclients" {
-          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-          next-server 192.168.33.110;
-
-          # UEFI x86-64 boot (RFC4578 architecture types 7, 8 and 9)
-          if option arch = 00:07 {
-              filename "uefi/bootx64.efi";
-          } else if option arch = 00:08 {
-              filename "uefi/bootx64.efi";
-          } else if option arch = 00:09 {
-              filename "uefi/bootx64.efi";
-          } else {
-              filename "pxelinux.0";
-          }
+    match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+    next-server 1.1.1.21;
+    if option arch = 00:11 {
+      filename "/grubaa64.efi";
+    }
   }
 }
 ```
-
-
-
-
-
-
-
-
 
 # 参考
 
