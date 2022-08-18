@@ -13,7 +13,7 @@
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/git-set-proxy/</guid>
-      <description># 设置全局代理 git config --global https.proxy http://127.0.0.1:1080 git config --global https.proxy https://127.0.0.1:1080 # 使用socks5代理的 例如ss，ssr 1080是windows下ss的默认代理端口,mac下不同，或者有</description>
+      <description>查看 git 全局设置 git config --global --list 查看当前仓库的 git 设置 git config --list 设置全局代理，使用 http 代理 git config --global https.proxy http://127.0.0.1:1080 git config --global https.proxy https://127.0.0.1:1080 设置全局代理，使用socks5代理 git config --global http.proxy socks5://127.0.0.1:1080 git config</description>
     </item>
     
   </channel>

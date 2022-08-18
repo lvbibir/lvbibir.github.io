@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 01 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>多网卡时设置网络优先级及添加静态路由的方法</title>
-      <link>https://www.lvbibir.cn/posts/tech/windows-network-priority/</link>
+      <link>https://www.lvbibir.cn/posts/tech/network-priority/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/windows-network-priority/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/network-priority/</guid>
       <description>前言 在工作中需要连接公司内网（有线，不可联网），访问外网时需要连接无线 同时接入这两个网络时，内网访问正常，外网无法访问。 此时可以通过调整网络</description>
     </item>
     

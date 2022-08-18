@@ -8,7 +8,7 @@
     <language>zh-cn</language>
     <lastBuildDate>Thu, 18 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>pxe环境中dhcp服务对不同模式（legacy和UEFI）和不同CPU架构(x86和aarch64)的处理</title>
+      <title>pxe环境中对不同模式（legacy和UEFI）和不同CPU架构(x86和aarch64)的处理</title>
       <link>https://www.lvbibir.cn/posts/tech/pxe-dhcp-legacy-uefi-archs/</link>
       <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
       
@@ -67,7 +67,7 @@
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/git-set-proxy/</guid>
-      <description># 设置全局代理 git config --global https.proxy http://127.0.0.1:1080 git config --global https.proxy https://127.0.0.1:1080 # 使用socks5代理的 例如ss，ssr 1080是windows下ss的默认代理端口,mac下不同，或者有</description>
+      <description>查看 git 全局设置 git config --global --list 查看当前仓库的 git 设置 git config --list 设置全局代理，使用 http 代理 git config --global https.proxy http://127.0.0.1:1080 git config --global https.proxy https://127.0.0.1:1080 设置全局代理，使用socks5代理 git config --global http.proxy socks5://127.0.0.1:1080 git config</description>
     </item>
     
     <item>
@@ -99,10 +99,10 @@
     
     <item>
       <title>多网卡时设置网络优先级及添加静态路由的方法</title>
-      <link>https://www.lvbibir.cn/posts/tech/windows-network-priority/</link>
+      <link>https://www.lvbibir.cn/posts/tech/network-priority/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/windows-network-priority/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/network-priority/</guid>
       <description>前言 在工作中需要连接公司内网（有线，不可联网），访问外网时需要连接无线 同时接入这两个网络时，内网访问正常，外网无法访问。 此时可以通过调整网络</description>
     </item>
     

@@ -19,12 +19,13 @@
 </span></span><span style=display:flex><span>allow client-updates;
 </span></span><span style=display:flex><span>allow booting;
 </span></span><span style=display:flex><span>allow bootp;
-</span></span><span style=display:flex><span>                  next-server 192.168.1.1;
-</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> option arch <span style=color:#f92672>=</span> 00:07 or arch <span style=color:#f92672>=</span> 00:09 <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>                        filename <span style=color:#e6db74>&#34;x86/bootx64.efi&#34;</span>;
-</span></span><span style=display:flex><span>                <span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span>   <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>                        filename <span style=color:#e6db74>&#34;arm/grubaa64.efi&#34;</span>;
-</span></span><span style=display:flex><span>                <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>next-server 192.168.1.1;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> option arch <span style=color:#f92672>=</span> 00:07 or arch <span style=color:#f92672>=</span> 00:09 <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        filename <span style=color:#e6db74>&#34;x86/bootx64.efi&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span> <span style=color:#66d9ef>else</span>   <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        filename <span style=color:#e6db74>&#34;arm/grubaa64.efi&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
 </span></span><span style=display:flex><span>shared-network works <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>  subnet 192.168.1.0 netmask 255.255.255.0 <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>          range dynamic-bootp 192.168.1.221 192.168.1.253;
