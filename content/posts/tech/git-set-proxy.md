@@ -60,8 +60,8 @@ git config --global --unset https.proxy
 只对 github.com 使用代理
 
 ```
-git config --global http.https://github.com.proxy socks5://127.0.0.1:20081
-git config --global https.https://github.com.proxy socks5://127.0.0.1:20081
+git config --global http.https://github.com.proxy http://127.0.0.1:20081
+git config --global https.https://github.com.proxy http://127.0.0.1:20081
 ```
 
 取消 github.com 代理
