@@ -1,5 +1,5 @@
 ---
-title: "cephadm 安装 ceph V16.2" 
+title: "cephadm 安装 ceph V16.2（aarch64）" 
 date: 2022-07-22
 lastmod: 2022-07-22
 author: ["lvbibir"] 
