@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.lvbibir.cn/posts/tech/</loc>
-    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/life/running/</loc>
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
@@ -21,18 +21,24 @@
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/</loc>
-    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/ceph/</loc>
+    <lastmod>2022-08-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</loc>
+    <lastmod>2022-08-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/</loc>
-    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/</loc>
+    <lastmod>2022-08-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/pxe/</loc>
     <lastmod>2022-08-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/pxe-dhcp-legacy-uefi-archs/</loc>
-    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/</loc>
     <lastmod>2022-08-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/python/</loc>
@@ -46,9 +52,6 @@
   </url><url>
     <loc>https://www.lvbibir.cn/tags/read/</loc>
     <lastmod>2022-07-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/ceph/</loc>
-    <lastmod>2022-07-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</loc>
     <lastmod>2022-07-22T00:00:00+00:00</lastmod>

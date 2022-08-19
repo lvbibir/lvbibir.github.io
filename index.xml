@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 18 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>跑渣的跑步日常</title>
       <link>https://www.lvbibir.cn/posts/life/running/</link>
@@ -23,6 +23,15 @@
       
       <guid>https://www.lvbibir.cn/posts/blog/hello-hugo/</guid>
       <description>前言 记录 wordpress 迁移至 hugo+papermod 的过程，大多参考sulv大佬的博客，本文更偏向于个人备忘，并不是一篇很合格的教程 博客流水线 编辑文章 采用 typora + picgo + 七牛云图床流</description>
+    </item>
+    
+    <item>
+      <title>cephadm 离线安装 ceph V16.2.8</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</link>
+      <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</guid>
+      <description>前言 适用于 Centos8 + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有</description>
     </item>
     
     <item>
@@ -53,7 +62,7 @@
     </item>
     
     <item>
-      <title>cephadm 安装 ceph V16.2</title>
+      <title>cephadm 安装 ceph V16.2（aarch64）</title>
       <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</link>
       <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
       

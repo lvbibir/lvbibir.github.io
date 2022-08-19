@@ -6,7 +6,16 @@
     <description>Recent content in 👨🏻‍💻 技术 on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 18 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cephadm 离线安装 ceph V16.2.8</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</link>
+      <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</guid>
+      <description>前言 适用于 Centos8 + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有</description>
+    </item>
+    
     <item>
       <title>pxe环境中对不同模式（legacy和UEFI）和不同CPU架构(x86和aarch64)的处理</title>
       <link>https://www.lvbibir.cn/posts/tech/pxe-dhcp-legacy-uefi-archs/</link>
@@ -26,7 +35,7 @@
     </item>
     
     <item>
-      <title>cephadm 安装 ceph V16.2</title>
+      <title>cephadm 安装 ceph V16.2（aarch64）</title>
       <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</link>
       <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
       
