@@ -8,7 +8,7 @@
     <language>zh-cn</language>
     <lastBuildDate>Thu, 18 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/pxe/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>pxe环境中对不同模式（legacy和UEFI）和不同CPU架构(x86和aarch64)的处理</title>
+      <title>pxe环境中对不同模式(legacy和UEFI)和不同CPU架构(x86和aarch64)的处理</title>
       <link>https://www.lvbibir.cn/posts/tech/pxe-dhcp-legacy-uefi-archs/</link>
       <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
       

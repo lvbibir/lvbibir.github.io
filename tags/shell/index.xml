@@ -8,7 +8,7 @@
     <language>zh-cn</language>
     <lastBuildDate>Fri, 01 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/shell/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>shell脚本之检索某url中所有文件的内容</title>
+      <title>shell脚本 | 检索某url中所有文件的内容</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-search-url-files/</link>
       <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
       
@@ -17,7 +17,7 @@
     </item>
     
     <item>
-      <title>shell脚本不同执行方式的区别</title>
+      <title>shell脚本 | 不同执行方式的区别</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-different-execution-mode/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -26,7 +26,7 @@
     </item>
     
     <item>
-      <title>shell脚本开启debug模式</title>
+      <title>shell脚本 | 开启debug模式</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-enable-debug-mode/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -35,7 +35,7 @@
     </item>
     
     <item>
-      <title>批量导出&amp;导入docker镜像</title>
+      <title>docker | 脚本方式批量导出&amp;导入镜像</title>
       <link>https://www.lvbibir.cn/posts/tech/docker-import-export-image/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
@@ -44,7 +44,7 @@
     </item>
     
     <item>
-      <title>获取服务器硬件信息（整合为json格式）</title>
+      <title>shell脚本 | 获取服务器硬件信息（整合为json格式）</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-get-server-hardware-information/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       

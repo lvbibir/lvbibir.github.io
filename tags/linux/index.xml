@@ -6,7 +6,70 @@
     <description>Recent content in linux on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 01 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 14 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>glibc 误升级后修复</title>
+      <link>https://www.lvbibir.cn/posts/tech/glibc-wu-sheng-ji/</link>
+      <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/glibc-wu-sheng-ji/</guid>
+      <description>前言 记录一下在 OpenEuler 20.03 LTS aarch64 系统上误操作升级了 glibc 后紧急修复的步骤 起因 在使用 cephadm 安装 ceph v16.2 时升级了 python，系统默认版本是 3.7.4 ，升级后版本是 3.8.5</description>
+    </item>
+    
+    <item>
+      <title>多网卡时设置网络优先级及添加静态路由的方法</title>
+      <link>https://www.lvbibir.cn/posts/tech/network-priority/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/network-priority/</guid>
+      <description>前言 在工作中需要连接公司内网（有线，不可联网），访问外网时需要连接无线 同时接入这两个网络时，内网访问正常，外网无法访问。 此时可以通过调整网络</description>
+    </item>
+    
+    <item>
+      <title>httpd源码构建rpm</title>
+      <link>https://www.lvbibir.cn/posts/tech/httpd-src-build-rpm/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/httpd-src-build-rpm/</guid>
+      <description>系统版本：isoft-serveros-v4.2（centos7） 源码下载链接： https://dlcdn.apache.org//apr/apr-1.7.0.tar.bz2 https://dlcdn.apache.org//apr/apr-util-1.6.1.tar.bz2 https://dlcdn.apache.org//httpd/httpd-2.4.52.tar.bz2 安装依赖 yum install -y wget gcc rpm-build yum install -y autoconf zlib-devel libselinux-devel libuuid-devel apr-devel apr-util-devel pcre-devel openldap-devel lua-devel libxml2-devel openssl-devel yum install -y</description>
+    </item>
+    
+    <item>
+      <title>openssl源码构建rpm</title>
+      <link>https://www.lvbibir.cn/posts/tech/openssl-src-build-rpm/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/openssl-src-build-rpm/</guid>
+      <description>环境 iSoftserver-v4.2(Centos-7) openssl version：1.0.2k 编译 从github上看到的编译脚本，本地修改后： #!/bin/bash set -e set -v mkdir ~/openssl &amp;amp;&amp;amp; cd ~/openssl yum -y install \ curl \ which \ make \ gcc \ perl \ perl-WWW-Curl \ rpm-build #</description>
+    </item>
+    
+    <item>
+      <title>centos7修改网卡名称</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7-change-network-card-name/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7-change-network-card-name/</guid>
+      <description>前言 在使用kolla-ansible部署多节点openstack时，所有节点的外网网卡名称和管理网卡名称需要一样，其中两台是型号相同的物理机</description>
+    </item>
+    
+    <item>
+      <title>Centos7.5升级内核至5.10</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7-update-kernel-to-5.10/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7-update-kernel-to-5.10/</guid>
+      <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm的缩写 长期维护版 ml m</description>
+    </item>
+    
+    <item>
+      <title>CentOS密码尝试次数过多</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</guid>
+      <description>pam模块 pam：Pluggable Authentication Modules 可插拔的认证模块，linux 中的认证方式，“可插拔的“说明可以按需对认证内容进行变更。与nsswit</description>
+    </item>
+    
     <item>
       <title>关闭X服务本地监听的6000端口</title>
       <link>https://www.lvbibir.cn/posts/tech/close-6000-port/</link>
@@ -17,12 +80,75 @@
     </item>
     
     <item>
-      <title>服务器巡检脚本</title>
+      <title>centos7部署ceph&#43;dashboard（nautilus）</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7-deploy-ceph-dashboard-nautilus/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7-deploy-ceph-dashboard-nautilus/</guid>
+      <description>前言 ceph测试环境的搭建 基本环境 物理环境：Vmware Workstaion 系统版本：Centos-7.9-Minimal 两个osd节点添加一块虚拟磁盘，建议</description>
+    </item>
+    
+    <item>
+      <title>通过反编译修改rpm包内的文件</title>
+      <link>https://www.lvbibir.cn/posts/tech/change-file-in-rpm-pkg/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/change-file-in-rpm-pkg/</guid>
+      <description>前言 要修改rpm包中的文件，对于自己编译的rpm包，只需要在源码中修改好然后重新编译即可。而对于并不是自己编译的rpm包，且不熟悉编译环境的</description>
+    </item>
+    
+    <item>
+      <title>openssh源码打包编译成rpm包</title>
+      <link>https://www.lvbibir.cn/posts/tech/openssh-src-build-rpm/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/openssh-src-build-rpm/</guid>
+      <description>openssh-8.7p1 编译环境 编译平台： vmware workstation 系统版本： 普华服务器操作系统v4.0 系统内核： 3.10.0-327.el7.isoft.x86_64 软件版本： openssh-8.7p1.tar.gz x11-ssh-askpass-1.2.4.1.tar.gz 编译步骤 yum安装依赖工具 yum install wget vim gdb imake libXt-devel gtk2-devel rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel</description>
+    </item>
+    
+    <item>
+      <title>redhat服务器升级内核</title>
+      <link>https://www.lvbibir.cn/posts/tech/redhat-update-kernel/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/redhat-update-kernel/</guid>
+      <description>前言 按指定要求安装升级内核，保证grub2启动时为默认项目 第一步 确认当前操作系统的内核版本 [root@server0 ~]# uname -r 3.10.0-123.el7.x86_64 第二步 下载准备升级的内核文件，比如说内核</description>
+    </item>
+    
+    <item>
+      <title>shell脚本 | 服务器巡检脚本</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-server-inspection/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/shell-server-inspection/</guid>
       <description>#!/bin/bash #参数定义 date=`date +&amp;#34;%Y-%m-%d-%H:%M:%S&amp;#34;` centosVersion=$(awk &amp;#39;{print $(NF-1)}&amp;#39; /etc/redhat-release) VERSION=`date +%F` #日志相关 LOGPATH=&amp;#34;/tmp/awr&amp;#34; [ -e $LOGPATH ] || mkdir -p $LOGPATH RESULTFILE=&amp;#34;$LOGPATH/HostCheck-`hostname`-`date +%Y%m%d`.txt&amp;#34; #调用函数库 [ -f /etc/init.d/functions ] &amp;amp;&amp;amp; source /etc/init.d/functions export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin source /etc/profile #root用户执行脚本 [ $(id -u) -gt 0 ] &amp;amp;&amp;amp; echo &amp;#34</description>
+    </item>
+    
+    <item>
+      <title>记一次程序测试</title>
+      <link>https://www.lvbibir.cn/posts/tech/record-of-program-test/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/record-of-program-test/</guid>
+      <description>前言 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向</description>
+    </item>
+    
+    <item>
+      <title>centos7开启bbr算法</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7-open-bbr/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7-open-bbr/</guid>
+      <description>前言 介绍在CentOS7上部署BBR的详细过程 BBR简介：（Bottleneck Bandwidth and RTT）是一种新的拥塞控制算法，由Google开发。有了</description>
+    </item>
+    
+    <item>
+      <title>centos中free命令详解</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos-free/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos-free/</guid>
+      <description>CentOS6及以前 在CentOS6及以前的版本中，free命令输出是这样的： [root@wordpress ~]# free -m total used free shared buffers cached Mem: 1002 769 233 0 62 421 -/+ buffers/cache: 286 716 Swap: 1153 0 1153 第一行： ​ 系</description>
     </item>
     
     <item>
@@ -35,12 +161,30 @@
     </item>
     
     <item>
+      <title>H3C服务器配置raid</title>
+      <link>https://www.lvbibir.cn/posts/tech/h3c-server-config-raid/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/h3c-server-config-raid/</guid>
+      <description>1、进入bios修改启动模式，将 UEFI 改为 Legacy bios 2、 重启服务器，ctrl + r 进入 lsi 阵列卡管理 3、选择对应阵列卡 4、配置逻辑盘 5、配置完逻辑盘后可以</description>
+    </item>
+    
+    <item>
       <title>记一次服务器被入侵全过程</title>
       <link>https://www.lvbibir.cn/posts/tech/record-of-server-attacked/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/record-of-server-attacked/</guid>
       <description>周一早上刚到办公室，就听到同事说有一台服务器登陆不上了，我也没放在心上，继续边吃早点，边看币价是不是又跌了。不一会运维的同事也到了，气喘吁吁</description>
+    </item>
+    
+    <item>
+      <title>centos7基线检查平台部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7-deploy-benchmark/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7-deploy-benchmark/</guid>
+      <description>介绍 项目地址 这个项目准备打造一个安全基线检查平台，期望能够以最简单的方式在需要进行检查的服务器上运行。能够达到这么一种效果：基线检查脚本(以</description>
     </item>
     
     <item>
