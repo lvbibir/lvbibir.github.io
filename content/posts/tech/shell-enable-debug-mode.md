@@ -1,5 +1,5 @@
 ---
-title: "shell脚本 | 开启debug模式" 
+title: "shell | 开启debug模式" 
 date: 2022-06-01
 lastmod: 2022-06-01
 author: ["lvbibir"] 

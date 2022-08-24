@@ -1,5 +1,5 @@
 ---
-title: "shell脚本 | 检索某url中所有文件的内容" 
+title: "shell | 检索某url中所有文件的内容" 
 date: 2022-07-01
 lastmod: 2022-07-01
 author: ["lvbibir"] 

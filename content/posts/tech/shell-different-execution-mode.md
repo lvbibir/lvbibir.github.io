@@ -1,5 +1,5 @@
 ---
-title: "shell脚本 | 不同执行方式的区别" 
+title: "shell | 不同执行方式的区别" 
 date: 2022-06-01
 lastmod: 2022-06-01
 author: ["lvbibir"] 

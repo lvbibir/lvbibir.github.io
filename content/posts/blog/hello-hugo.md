@@ -44,11 +44,13 @@ hugo -F --cleanDestinationDir
 
 ## 上传静态文件
 
-```
-rsync -avuz --progress --delete Desktop/lvbibir/2-lvbibir.github.io/public/ root@101.201.150.47:/root/wordpress-blog/hugo-public/
-```
+~~[mobaxterm](https://mobaxterm.mobatek.net/) 是我一直以来的主力终端，它的本地终端自带了很多linux命令，用`rsync`命令上传静态文件至阿里服务器，且会先删除服务器上之前的静态文件，保证博客的内容保持最新~~
 
-[mobaxterm](https://mobaxterm.mobatek.net/) 是我一直以来的主力终端，它的本地终端自带了很多linux命令，用`rsync`命令上传静态文件至阿里服务器，且会先删除服务器上之前的静态文件，保证博客的内容保持最新
+将 mobaxterm 的命令添加到用户环境变量中，以实现 `git bash` 、 `vscode` 、以及 `windows terminal` 中运行一些 mobaxterm 本地终端附带的命令，也就无需再专门打开一次 mobaxterm 去上传文件了
+
+```
+rsync -avuz --progress --delete public/ root@lvbibir.cn:/root/wordpress-blog/hugo-public/
+```
 
 ## 归档备份
 
@@ -396,7 +398,7 @@ https://www.sulvblog.cn/posts/blog/hugo_seo/
 
 # twikoo评论组件
 
-基本完全按照sulv博主的文章来操作，某些地方官方有更新，不过也只是更改了页面罢了
+基本完全按照 sulv 博主的文章来操作，某些地方官方有更新，不过也只是更改了页面罢了
 
 https://www.sulvblog.cn/posts/blog/hugo_twikoo/
 
