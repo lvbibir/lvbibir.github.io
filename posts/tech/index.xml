@@ -62,7 +62,7 @@
     </item>
     
     <item>
-      <title>shell脚本 | 检索某url中所有文件的内容</title>
+      <title>shell | 检索某url中所有文件的内容</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-search-url-files/</link>
       <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
       
@@ -89,7 +89,7 @@
     </item>
     
     <item>
-      <title>shell脚本 | 不同执行方式的区别</title>
+      <title>shell | 不同执行方式的区别</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-different-execution-mode/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -98,7 +98,7 @@
     </item>
     
     <item>
-      <title>shell脚本 | 开启debug模式</title>
+      <title>shell | 开启debug模式</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-enable-debug-mode/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -278,7 +278,7 @@
     </item>
     
     <item>
-      <title>shell脚本 | 服务器巡检脚本</title>
+      <title>shell | 服务器巡检脚本</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-server-inspection/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
@@ -476,7 +476,7 @@
     </item>
     
     <item>
-      <title>shell脚本 | 获取服务器硬件信息（整合为json格式）</title>
+      <title>shell | 获取服务器硬件信息（整合为json格式）</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-get-server-hardware-information/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
