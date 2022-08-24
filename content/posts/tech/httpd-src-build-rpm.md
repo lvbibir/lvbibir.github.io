@@ -6,8 +6,7 @@ author: ["lvbibir"]
 categories: 
 - 
 tags: 
-- httpd
-- rpm
+- linux
 description: "" 
 weight: 
 slug: ""

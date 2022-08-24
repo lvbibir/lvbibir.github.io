@@ -1,13 +1,11 @@
 ---
-title: "部署Ambari 2.7.5 + HDP3.1.5" 
+title: "部署 Ambari 2.7.5 + HDP3.1.5" 
 date: 2021-12-01
 lastmod: 2021-12-01
 author: ["lvbibir"] 
 categories: 
 - 
 tags: 
-- ambari
-- HDP
 - hadoop
 description: "" 
 weight: 

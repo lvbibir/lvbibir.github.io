@@ -7,7 +7,6 @@ categories:
 - 
 tags: 
 - linux
-- H3C
 description: "" 
 weight: 
 slug: ""

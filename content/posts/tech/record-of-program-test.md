@@ -6,8 +6,7 @@ author: ["lvbibir"]
 categories: 
 - 
 tags: 
-- openeuler
-- glibc
+- linux
 description: "" 
 weight: 
 slug: ""

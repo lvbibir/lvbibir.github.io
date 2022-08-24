@@ -6,7 +6,7 @@ author: ["lvbibir"]
 categories: 
 - 
 tags: 
-- glibc
+- linux
 description: "" 
 weight: 
 slug: ""

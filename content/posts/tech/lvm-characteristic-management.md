@@ -7,7 +7,6 @@ categories:
 - 
 tags: 
 - linux
-- lvm
 description: "" 
 weight: 
 slug: ""

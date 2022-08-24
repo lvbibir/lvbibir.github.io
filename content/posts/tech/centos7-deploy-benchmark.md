@@ -6,8 +6,7 @@ author: ["lvbibir"]
 categories: 
 - 
 tags: 
-- centos
-- 基线检查
+- linux
 description: "" 
 weight: 
 slug: ""

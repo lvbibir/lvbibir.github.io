@@ -7,7 +7,6 @@ categories:
 - 
 tags: 
 - python
-- pip
 description: "" 
 weight: 
 slug: ""

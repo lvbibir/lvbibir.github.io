@@ -6,8 +6,7 @@ author: ["lvbibir"]
 categories: 
 - 
 tags: 
-- centos
-- bbr
+- linux
 description: "" 
 weight: 
 slug: ""

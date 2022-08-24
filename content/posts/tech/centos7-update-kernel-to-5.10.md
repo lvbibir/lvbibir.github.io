@@ -6,8 +6,7 @@ author: ["lvbibir"]
 categories: 
 - 
 tags: 
-- centos
-- kernel
+- linux
 description: "" 
 weight: 
 slug: ""

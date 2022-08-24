@@ -7,9 +7,6 @@ categories:
 - 
 tags: 
 - hugo
-- paper
-- css
-- html
 description: ""
 weight:  
 slug: ""

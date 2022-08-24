@@ -7,7 +7,6 @@ categories:
 - 
 tags: 
 - hugo
-- papermod
 description: ""
 weight: 1
 slug: ""

@@ -6,8 +6,7 @@ author: ["lvbibir"]
 categories: 
 - 
 tags: 
-- redhat
-- kernel
+- linux
 description: "" 
 weight: 
 slug: ""

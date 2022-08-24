@@ -7,7 +7,6 @@ categories:
 - 
 tags: 
 - linux
-- X
 description: "" 
 weight: 
 slug: ""

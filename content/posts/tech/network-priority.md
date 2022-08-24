@@ -6,7 +6,7 @@ author: ["lvbibir"]
 categories: 
 - 
 tags: 
-- windows
+- linux
 description: "" 
 weight: 
 slug: ""

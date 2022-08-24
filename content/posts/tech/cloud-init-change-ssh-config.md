@@ -7,7 +7,6 @@ categories:
 - 
 tags: 
 - openstack
-- ssh
 description: "" 
 weight: 
 slug: ""

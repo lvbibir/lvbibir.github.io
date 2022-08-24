@@ -7,8 +7,6 @@ categories:
 - 
 tags: 
 - wordpress
-- http
-- https
 description: "" 
 weight: 
 slug: ""

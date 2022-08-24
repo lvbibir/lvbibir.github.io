@@ -1,5 +1,5 @@
 ---
-title: "docker三剑客之swarm" 
+title: "docker | 三剑客之swarm" 
 date: 2019-08-01
 lastmod: 2019-08-01
 author: ["lvbibir"] 

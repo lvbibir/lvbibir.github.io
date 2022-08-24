@@ -6,9 +6,7 @@ author: ["lvbibir"]
 categories: 
 - 
 tags: 
-- openssh
-- ssh
-- rpm
+- linux
 description: "" 
 weight: 
 slug: ""

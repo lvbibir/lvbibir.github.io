@@ -1,5 +1,5 @@
 ---
-title: "pxe环境中对不同模式（legacy和UEFI）和不同CPU架构(x86和aarch64)的处理" 
+title: "pxe环境中对不同模式(legacy和UEFI)和不同CPU架构(x86和aarch64)的处理" 
 date: 2022-08-18
 lastmod: 2022-08-18
 author: ["lvbibir"] 

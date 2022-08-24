@@ -7,7 +7,6 @@ categories:
 - 
 tags: 
 - pxe
-- aarch64
 description: "" 
 weight: 
 slug: ""

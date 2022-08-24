@@ -1,5 +1,5 @@
 ---
-title: "服务器巡检脚本" 
+title: "shell脚本 | 服务器巡检脚本" 
 date: 2021-09-01
 lastmod: 2021-09-01
 author: ["lvbibir"] 
@@ -7,8 +7,6 @@ categories:
 - 
 tags: 
 - linux
-- centos
-- 巡检
 description: "" 
 weight: 
 slug: ""

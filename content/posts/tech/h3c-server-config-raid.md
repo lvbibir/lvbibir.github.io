@@ -6,8 +6,7 @@ author: ["lvbibir"]
 categories: 
 - 
 tags: 
-- H3C
-- raid
+- linux
 description: "" 
 weight: 
 slug: ""

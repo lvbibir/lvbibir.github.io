@@ -6,7 +6,7 @@ author: ["lvbibir"]
 categories: 
 - 
 tags: 
-- centos
+- linux
 - ceph
 description: "" 
 weight: 

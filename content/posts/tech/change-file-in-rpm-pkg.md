@@ -1,12 +1,12 @@
 ---
-title: "通过rpm反编译修改rpm包内的文件" 
+title: "通过反编译修改rpm包内的文件" 
 date: 2021-12-01
 lastmod: 2021-12-01
 author: ["lvbibir"] 
 categories: 
 - 
 tags: 
-- rpm 
+- linux 
 description: "" 
 weight: 
 slug: ""

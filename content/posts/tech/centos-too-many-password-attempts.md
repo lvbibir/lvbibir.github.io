@@ -6,8 +6,7 @@ author: ["lvbibir"]
 categories: 
 - 
 tags: 
-- centos
-- pam
+- linux
 description: "" 
 weight: 
 slug: ""

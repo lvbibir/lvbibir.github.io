@@ -6,8 +6,7 @@ author: ["lvbibir"]
 categories: 
 - 
 tags: 
-- typora
-- picgo
+- blog
 description: "" 
 weight: 
 slug: ""

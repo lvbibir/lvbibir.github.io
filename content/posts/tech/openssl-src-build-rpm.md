@@ -6,8 +6,7 @@ author: ["lvbibir"]
 categories: 
 - 
 tags: 
-- openssl
-- rpm
+- linux
 description: "" 
 weight: 
 slug: ""
