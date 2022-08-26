@@ -41,16 +41,16 @@ languages:
         # subtitle: "🧨学而时习之，不亦说乎？有朋自远方来，不亦乐乎？<br/>👇联系方式"
         imageUrl: "img/avatar.gif"
         imageTitle: 
-        imageWidth: 200
-        imageHeight: 200
+        imageWidth: 120
+        imageHeight: 120
         buttons:
           - name: 👨🏻‍💻 技术
             url: posts/tech
-          - name: 🧱 建站
+          - name: 🏗️ 建站
             url: posts/blog
-          - name: 📕 阅读
+          - name: 📖 阅读
             url: posts/read
-          - name: 🏖 生活
+          - name: 🏖️ 生活
             url: posts/life
       menu:
         main:
@@ -59,7 +59,7 @@ languages:
             url: search
             weight: 1
           - identifier: home
-            name: 🏠 主页
+            name: 🏡 主页
             url: /
             weight: 2
           - identifier: posts
@@ -67,11 +67,11 @@ languages:
             url: posts
             weight: 3
           - identifier: tags
-            name: 🧩 标签
+            name: 🏷️ 标签
             url: tags
             weight: 15
           - identifier: archives
-            name: ⏱ 时间轴
+            name: 📈 时间轴
             url: archives/
             weight: 20
           - identifier: about
