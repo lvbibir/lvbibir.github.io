@@ -24,6 +24,27 @@ cover:
 
 # 2022年
 
+## 第 35 周---LSD 15.00 km
+
+
+<center class="half">
+    <img src="https://image.lvbibir.cn/blog/2022-35week-1.jpg" width="260"/>
+    <img src="https://image.lvbibir.cn/blog/2022-35week-2.jpg" width="260"/>
+    <img src="https://image.lvbibir.cn/blog/2022-35week-3.jpg" width="260"/>
+</center>
+
+
+
+## 第 34 周
+
+
+<center class="half">
+    <img src="https://image.lvbibir.cn/blog/2022-34week-1.jpg" width="260"/>
+    <img src="https://image.lvbibir.cn/blog/2022-34week-2.jpg" width="260"/>
+    <img src="https://image.lvbibir.cn/blog/2022-34week-3.jpg" width="260"/>
+</center>
+
+
 ## 第 33 周---LSD 13.50 km
 
 LSD距离突破13.5km，感觉自己有些操之过急了，跑完后身体还是有明显的不适感的，主要是跑完后的头晕和反胃，晚上休息也受到较大影响，未免有些得不偿失了。
