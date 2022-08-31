@@ -23,22 +23,22 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     --toc-width: 300px;
 }
 
-.dark {
+/* .dark {
 
-}
+} */
 
 /*------------------------------------------------------------*/
 
 .post-content h1 {
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .post-content h2 {
-    font-size: 34px;
+    font-size: 28px;
 }
 
 .post-content h3 {
-    font-size: 28px;
+    font-size: 26px;
 }
 
 .post-content h4 {
@@ -55,7 +55,8 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 
 .post-content p {
     margin-top: 20px;
-    /*text-indent: 2em;*/ /*所有首行缩进*/
+    /* 所有首行缩进 */
+    /* text-indent: 2em;  */
 }
 
 /*---------------------------------------------------*/
@@ -78,13 +79,13 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 /*------------------------------------------------------------*/
 
 /*链接下划线*/
-.post-content a, .toc a:hover {
-    /*box-shadow: none;
+/* .post-content a, .toc a:hover {
+    box-shadow: none;
 
     background: linear-gradient(45deg,#5e82f9 11%,#B263FE 90%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;*/
-}
+    -webkit-text-fill-color: transparent;
+} */
 
 /*img*/
 img {
@@ -97,7 +98,7 @@ img {
 
 /*-----------点击图片放大------------*/
 img:active {
-    /*margin:50px;*/
+    /* margin:50px; */
     border-radius: 10px;
     transform: scale(1.35, 1.35);
 }
@@ -111,9 +112,9 @@ img:active {
 }
 
 /*页面滚动*/
-/*::-webkit-scrollbar-thumb {*/
-/*    border: 2px solid var(--theme);*/
-/*}*/
+/* ::-webkit-scrollbar-thumb {
+   border: 2px solid var(--theme);
+} */
 
 
 /*页面顶部栏两边宽度*/
@@ -133,17 +134,17 @@ img:active {
 .footer {
     max-width: none;
     padding: 10px 0 5px 0;
-    /*line-height: 50px;*/
+    /* line-height: 50px; */
 }
 
 /*字体大小*/
 .post-title {
-    /*font-size: 30px;*/
+    font-size: 30px;
 }
 
-/*.page-header h1 {
+/* .page-header h1 {
 	font-size: 30px;
-}*/
+} */
 
 .post-content {
     /*color: var(--secondary);*/
@@ -181,15 +182,15 @@ body {
 
 /*引言*/
 .post-content blockquote {
-    /*background: var(--border);*/
+    background: rgb(242, 240, 240);
 }
 
 /*文章章节图片展示大小*/
 .post-entry .entry-cover img {
-    /*width: 50%;*/
-    /*height: 50%;*/
-    /*display: initial;*/
-    /*max-width: 70%;*/
+    width: 50%;
+    height: 50%;
+    display: initial;
+    max-width: 70%;
 }
 
 .entry-cover1 {
