@@ -1,8 +1,10 @@
 /*代码*/
 .post-content code {
-    font-size: 0.8em;
-    line-height: 1.4!important;
-    /* font-family: monospace!important; */
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-size: 0.92rem;
+    color: #e96900;
+    background-color: #f7f7f7;
     font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }
 
