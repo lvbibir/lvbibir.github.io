@@ -380,12 +380,12 @@ http {
 
 # 修改链接颜色
 
-在默认配置下，链接颜色是黑色字体带下划线的组合，个人还是更喜欢淡蓝色的链接颜色，较为容易区分，[hugo官方文档](https://gohugo.io/templates/render-hooks/#link-with-title-markdown-example)给出了通过`render hooks`覆盖默认的markdown渲染的方式，如下
+在 hugo+papermod 默认配置下，链接颜色是黑色字体带下划线的组合，个人非常喜欢 [typora-vue主题](https://github.com/blinkfox/typora-vue-theme) 的渲染风格，[hugo官方文档](https://gohugo.io/templates/render-hooks/#link-with-title-markdown-example)给出了通过`render hooks`覆盖默认的markdown渲染的方式
 
-新建`layouts/_default/_markup/render-link.html`文件，在官方给出的示例中添加了`style="color:cornflowerblue"`，颜色可以自行修改，代码如下
+新建`layouts/_default/_markup/render-link.html`文件，在官方给出的示例中添加了 `style="color:#42b983`，颜色可以自行修改，代码如下
 
 ```html
-<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener" style="color:cornflowerblue";{{ end }}>{{ .Text | safeHTML }}</a>
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener" style="color:#42b983";{{ end }}>{{ .Text | safeHTML }}</a>
 ```
 
 # url管理
