@@ -1,11 +1,11 @@
 /*最原始目录*/
-.toc {
-    /*width: fit-content;
+/* .toc {
+    width: fit-content;
     position: fixed;
-    z-index: 1;*/
-    /*margin-left: 800px;
-    word-wrap: break-word;*/
-}
+    z-index: 1;
+    margin-left: 800px;
+    word-wrap: break-word;
+} */
 
 /*.toc li {
     list-style: none;
@@ -64,13 +64,14 @@
 
 .active {
     font-size: 100%;
-    /*font-weight: 600;*/
+    font-weight: 600;
     border-bottom: 1px solid transparent;
     padding-bottom: 0.1rem;
     border-bottom-color: var(--secondary);
-
+    
     /*会影响到其他地方*/
-    /*background: var(--tertiary);*/
+    /* background: var(--tertiary); */
+    /* color: #42b983; */
 }
 
 .toc ul {
@@ -105,10 +106,9 @@
 
 .toc li a:hover {
     font-weight: 600;
-    /*font-size: 110%;*/
-    /*color: var(--secondary);*/
+    /* font-size: 110%; */
+    color: #42b983;
 }
-
 
 /*自己写的目录扩展-------------------------------------------------*/
 
@@ -124,9 +124,9 @@
     top: 110px;
 }
 
-.dark .toc_extend {
-    /*background: var(--entry);*/
-}
+/* .dark .toc_extend {
+    background: var(--entry);
+} */
 
 .toc_extend details summary {
     cursor: zoom-in;

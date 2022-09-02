@@ -78,7 +78,9 @@ rsync -avuz --progress --delete public/ root@lvbibir.cn:/root/wordpress-blog/hug
 
 以下是一些配置文件示例
 
-## wordpress-blog/docker-compose.yml
+## docker-compose.yml
+
+修改 `wordpress-blog/docker-compose.yml`
 
 新增了hugo-nginx容器
 
@@ -201,7 +203,9 @@ networks:
        - subnet: 172.19.0.0/16
 ```
 
-## wordpress-blog/conf/proxy/default.conf
+## default.conf
+
+修改  `wordpress-blog/conf/proxy/`
 
 前端代理nginx的配置文件，原先只有 lvbibir.cn ，新增了 www.lvbibir.cn 相关配置
 
@@ -318,7 +322,9 @@ server {
 }
 ```
 
-## wordpress-blog/conf/hugo/nginx.conf
+## nginx.conf
+
+修改 `wordpress-blog/conf/hugo/nginx.conf`
 
 ```nginx
 user root;
