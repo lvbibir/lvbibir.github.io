@@ -60,7 +60,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 }
 
 .post-content p {
-    margin-top: 0px;
+    margin-top: 10px;
     margin-bottom: 10px;
     /* 所有首行缩进 */
     /* text-indent: 2em;  */
@@ -190,7 +190,7 @@ body {
 /*引言*/
 .post-content blockquote {
     border-left: 4px solid #42b983;
-    padding: 0px 15px;
+    padding: 1px 15px;
     color: #777;
     background-color: rgba(66, 185, 131, .1);
 }
