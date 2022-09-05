@@ -1,7 +1,7 @@
 ---
 title: "openssh源码打包编译成rpm包" 
 date: 2021-09-01
-lastmod: 2022-07-18
+lastmod: 2022-09-05
 author: ["lvbibir"] 
 categories: 
 - 
@@ -29,12 +29,14 @@ cover:
 
 编译平台：	vmware workstation
 
-系统版本：	普华服务器操作系统v4.0
+系统版本：	普华服务器操作系统v4.2
 
 系统内核：	3.10.0-327.el7.isoft.x86_64
 
-软件版本：	openssh-8.7p1.tar.gz
-						x11-ssh-askpass-1.2.4.1.tar.gz
+软件版本：	
+
+- openssh-8.7p1.tar.gz
+- x11-ssh-askpass-1.2.4.1.tar.gz
 
 ## 编译步骤
 
@@ -149,23 +151,42 @@ tar zxf openssh-8.7p1.rpm.x86_64.tar.gz
 
 系统版本：	普华服务器操作系统v3.0
 
-系统内核：	2.6.32-279.el6.isoft.x86_64
+系统内核：	
 
-软件版本：	openssh-9.0p1.tar.gz
-						x11-ssh-askpass-1.2.4.1.tar.gz
+- 2.6.32-279.el6.isoft.x86_64  
+- 2.6.32-504.el6.isoft.x86_64
+
+软件版本：	
+
+- openssh-9.0p1.tar.gz
+- x11-ssh-askpass-1.2.4.1.tar.gz
+
+> 这两个内核版本步骤基本一样，区别在于 279 内核需要升级 `openssl` 
 
 ## 编译步骤
 
-添加阿里云yum源
+添加阿里云yum源和本地yum源
 
 ```
+# 阿里yum源
 curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-6.10.repo
+# 本地yum源
+mount /dev/sr0 /mnt/
+cat > /etc/yum.repos.d/local.repo <<EOF
+[local]
+name=local
+baseurl=file:///mnt
+gpgcheck=0
+enabled=1
+EOF
 ```
 
 yum安装依赖工具
 
 ```
-yum install wget vim gdb imake libXt-devel gtk2-devel  rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel  libX11-devel  initscripts -y
+yum clean all
+yum makecache
+yum install wget vim gdb imake libXt-devel gtk2-devel  rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel  libX11-devel  initscripts 
 ```
 
 创建编译目录
@@ -180,7 +201,7 @@ mkdir -p /root/rpmbuild/{SOURCES,SPECS}
 cd /root/rpmbuild/SOURCES
 
 wget https://mirrors.aliyun.com/pub/OpenBSD/OpenSSH/portable/openssh-9.0p1.tar.gz
-wget https://src.fedoraproject.org/repo/pkgs/openssh/x11-ssh-askpass-1.2.4.1.tar.gz/8f2e41f3f7eaa8543a2440454637f3c3/x11-ssh-askpass-1.2.4.1.tar.gz
+wget https://src.fedoraproject.org/repo/pkgs/openssh/x11-ssh-askpass-1.2.4.1.tar.gz/8f2e41f3f7eaa8543a2440454637f3c3/x11-ssh-askpass-1.2.4.1.tar.gz --no-check-certificate
 
 tar -zxf openssh-9.0p1.tar.gz
 
@@ -218,6 +239,10 @@ vim /root/rpmbuild/SPECS/openssh.spec
 rpmbuild -ba /root/rpmbuild/SPECS/openssh.spec 
 ```
 
+> 注意，从这步开始两个内核版本的后续操作不太相同
+
+### 2.6.32-279.el6.isoft.x86_64
+
 准备目录
 
 ```
@@ -249,13 +274,51 @@ cp /etc/pam.d/sshd_bak /etc/pam.d/sshd
 cp /etc/ssh/sshd_config_bak /etc/ssh/sshd_config
 rm -rf /etc/ssh/ssh*key
 service sshd restart
+ssh -V
 EOF
+
+chmod 755 /root/openssh-9.0p1-rpms/run.sh
 ```
 
 打包
 
 ```
-tar zcf openssh-9.0p1-rpms.tar.gz openssh-9.0p1-rpms
+tar zcf /root/openssh-9.0p1-rpms.tar.gz /root/openssh-9.0p1-rpms
+```
+
+### 2.6.32-504.el6.isoft.x86_64
+
+准备目录
+
+```
+mkdir  /root/openssh-9.0p1-rpms/
+cp /root/rpmbuild/RPMS/x86_64/* /root/openssh-9.0p1-rpms/
+```
+
+编写升级脚本
+
+```
+cat > /root/openssh-9.0p1-rpms/run.sh <<EOF
+#!/bin/bash
+set -e
+ssh -V
+/bin/cp /etc/pam.d/sshd   /etc/pam.d/sshd_bak
+/bin/cp /etc/ssh/sshd_config /etc/ssh/sshd_config_bak
+rpm -Uvh ./*.rpm
+/bin/cp /etc/pam.d/sshd_bak /etc/pam.d/sshd
+/bin/cp /etc/ssh/sshd_config_bak /etc/ssh/sshd_config
+rm -rf /etc/ssh/ssh*key
+service sshd restart
+ssh -V
+EOF
+
+chmod 755 /root/openssh-9.0p1-rpms/run.sh
+```
+
+打包
+
+```
+tar zcf /root/openssh-9.0p1-rpms.tar.gz /root/openssh-9.0p1-rpms
 ```
 
 ## 使用
@@ -263,7 +326,7 @@ tar zcf openssh-9.0p1-rpms.tar.gz openssh-9.0p1-rpms
 ```
 tar zxf openssh-9.0p1-rpms.tar.gz
 cd openssh-9.0p1-rpms
-./run.sh
+sh run.sh
 ```
 
 # openssh-8.6p1-aarch64
