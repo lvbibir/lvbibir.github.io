@@ -196,12 +196,12 @@ body {
 }
 
 /*文章章节图片展示大小*/
-.post-entry .entry-cover img {
-    width: 50%;
-    height: 50%;
+/* .post-entry .entry-cover img {
+    width: 100%;
+    height: 100%;
     display: initial;
-    max-width: 70%;
-}
+    max-width: 100%;
+} */
 
 .entry-cover1 {
     border-radius: 10px;
