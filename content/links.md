@@ -15,19 +15,21 @@ showbreadcrumbs: false
 
 <div class="friend">
 
-{{< friend name="lvbibir’s Blog" url="https://www.lvbibir.cn" logo="https://www.lvbibir.cn/img/avatar.gif" word="life is a fucking movie" >}}
-{{< friend name="lvbibir’s Blog" url="https://lvbibir.cn" logo="https://image.lvbibir.cn/lvbibir.jpg" word="life is a fucking movie" >}}
+{{< friend name="lvbibir’s Blog" url="https://lvbibir.cn" logo="https://image.lvbibir.cn/lvbibir.jpg" word="我的 wordpress 站点" >}}
+{{< friend name="cuikx's blog" url="https://cuikx.cn/" logo="https://cuikx.cn/wp-content/uploads/2022/07/touxiang.jpg" word="cuikx's blog" >}}
 {{< friend name="Sulv's Blog" url="https://www.sulvblog.cn" logo="https://www.sulvblog.cn/img/Q.gif" word="一个记录技术、阅读、生活的博客" >}}
+{{< friend name="陈桂林博客" url="https://www.gl.sh.cn/" logo="https://www.gl.sh.cn/wp-content/uploads/2018/06/logo20180626052320578.png" word="成功最有效的方法就是向有经验的人学习！" >}}
+{{< friend name="黄忠德的博客" url="https://huangzhongde.cn/" logo="https://huangzhongde.cn/img/huangzhongde.png" word="DevOps,SRE,Python,Golang程序员,开源爱好者" >}}
+{{< friend name="阿虚同学的储物间" url="https://axutongxue.com/" logo="https://cdn.jsdelivr.net/gh/axutongxue/axutongxue.github.io@main/favicon.ico" word="收集了很多实用网站" >}}
+
+<!-- <details>
+    <summary style="cursor: pointer; margin-top: 10px; margin-bottom: 10px">
+        <span style="font-size: 20px;">点击查看更多友链......</span>
+	</summary>
+    ....
+</details> -->
 
 </div>
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-
 
 <div style="font-size: 20px;" class="youlian">👉友链格式</div>
 
@@ -43,17 +45,9 @@ showbreadcrumbs: false
 
 </div>
 
-<br/>
-
 <div style="font-size: 20px;">👉友链申请要求</div>
 
-> 秉承互换友链原则、文章定期更新<!-- 、网站在工信部备案 -->、不能有太多广告、个人描述字数控制在15字内
+> 秉承互换友链原则、文章定期更新、不能有太多广告
 
 <br/>
-
-
-
-
-
-
 
