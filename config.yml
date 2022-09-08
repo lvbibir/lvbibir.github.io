@@ -74,9 +74,9 @@ languages:
             name: 📈 时间轴
             url: archives
             weight: 50
-          - identifier: shuoshuo
-            name: 💬 说说
-            url: shuoshuo
+          # - identifier: shuoshuo
+          #   name: 💬 说说
+          #   url: shuoshuo
             weight: 55
           - identifier: about
             name: 🙋🏻‍♂️ 关于
