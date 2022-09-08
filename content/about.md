@@ -23,7 +23,7 @@ cover:
 <br><br/>
 
 
-<div style="font-size: 22px; font-weight: bolder">
+<!-- <div style="font-size: 22px;">
 🏡 关于本站
 
 <p style="font-size: 16px;">
@@ -48,8 +48,23 @@ cover:
 🏃‍♂️跑步 | 🎮️ 游戏 | 🎧 音乐 | 📺 动漫 | 🛌 摆烂 
 </p> 
 
-</div> 
+</div>  -->
 
+#### 🏡 关于本站
+
+本博客主要记录一些学习生活，和一些个人觉得值得记录的问题及其解决办法。如果本博客能有哪些内容帮助到了你，那也是极好的。
+
+#### 👦🏻 博主是谁
+
+网络时代的素质教育漏网之鱼 | 晚睡协会常任理事 | 国家级抬杠运动员 | 中国驰名窝里横 | 国宝级老污龟 | 超水平怼人大师 | 一秒入戏准影帝
+
+精通CSS、JavaScript、PHP、C、C＋＋、C#、java、Ruby、Perl、Lisp、python等单词的拼写；
+
+熟悉windows、Linux、Mac、Android、IOS等系统的开关机；
+
+#### 🏹 兴趣爱好
+
+🏃‍♂️ 跑步 | 🎮️ 游戏 | 🎧 音乐 | 📺 动漫 | 🛌 摆烂 
 
 
 <br><br/>

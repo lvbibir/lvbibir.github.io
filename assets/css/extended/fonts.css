@@ -7,3 +7,8 @@
     font-family: "NeverMindHand-Regular";
     src: url("/fonts/NeverMindHand-Regular.ttf") format("truetype");
 }
+
+@font-face {
+    font-family: "han-yi-jin-kai-jian";
+    src: url("/fonts/汉仪劲楷简.ttf") format("truetype");
+}

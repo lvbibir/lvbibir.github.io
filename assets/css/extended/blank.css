@@ -46,17 +46,14 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 
 .post-content h4 {
     font-size: 22px;
-    border-bottom: 1px solid #ddd;
 }
 
 .post-content h5 {
     font-size: 18px;
-    border-bottom: 1px solid #ddd;
 }
 
 .post-content h6 {
     font-size: 15px;
-    border-bottom: 1px solid #ddd;
 }
 
 .post-content p {
@@ -154,10 +151,11 @@ img:active {
 } */
 
 .post-content {
-    /*color: var(--secondary);*/
+    /* color: var(--secondary); */
     /*font-family: "Microsoft YaHei", Helvetica, Tahoma, Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;*/
     /*font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;*/
-    font-family: arial;
+    font-family: "han-yi-jin-kai-jian";
+    /* font-family: "sans-serif"; */
     /*font-family: STKaiti, STKaitiSC-Bold,  YouYuan, arial;*/
     /*font-family: trebuchet ms,Verdana,verdana ref,segoe ui,Candara,lucida grande,lucida sans unicode,lucida sans,Tahoma,sans-serif;*/
 
@@ -179,7 +177,8 @@ body {
     /*font-family: cursive;*/
     /*font-family: fantasy;*/
     /*font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;*/
-    font-family: arial;
+    font-family: "han-yi-jin-kai-jian";
+    /* font-family: "sans-serif"; */
     /*font-family: STKaiti, STKaitiSC-Bold, YouYuan, arial;*/
     /*font-family: trebuchet ms,Verdana,verdana ref,segoe ui,Candara,lucida grande,lucida sans unicode,lucida sans,Tahoma,sans-serif;*/
 
