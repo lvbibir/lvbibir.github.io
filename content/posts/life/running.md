@@ -28,20 +28,19 @@ cover:
 
 
 <center class="half">
-    <img src="https://image.lvbibir.cn/blog/2022-35week-1.jpg" width="260"/>
-    <img src="https://image.lvbibir.cn/blog/2022-35week-2.jpg" width="260"/>
-    <img src="https://image.lvbibir.cn/blog/2022-35week-3.jpg" width="260"/>
+    <img src="https://image.lvbibir.cn/blog/2022-35week-1.jpg" width="250"/>
+    <img src="https://image.lvbibir.cn/blog/2022-35week-2.jpg" width="250"/>
+    <img src="https://image.lvbibir.cn/blog/2022-35week-3.jpg" width="250"/>
 </center>
-
 
 
 ## 第 34 周
 
 
 <center class="half">
-    <img src="https://image.lvbibir.cn/blog/2022-34week-1.jpg" width="260"/>
-    <img src="https://image.lvbibir.cn/blog/2022-34week-2.jpg" width="260"/>
-    <img src="https://image.lvbibir.cn/blog/2022-34week-3.jpg" width="260"/>
+    <img src="https://image.lvbibir.cn/blog/2022-34week-1.jpg" width="250"/>
+    <img src="https://image.lvbibir.cn/blog/2022-34week-2.jpg" width="250"/>
+    <img src="https://image.lvbibir.cn/blog/2022-34week-3.jpg" width="250"/>
 </center>
 
 
@@ -66,9 +65,9 @@ LSD距离突破13.5km，感觉自己有些操之过急了，跑完后身体还�
 
 
 <center class="half">
-    <img src="https://image.lvbibir.cn/blog/2022-33week-1.jpg" width="260"/>
-    <img src="https://image.lvbibir.cn/blog/2022-33week-2.jpg" width="260"/>
-    <img src="https://image.lvbibir.cn/blog/2022-33week-3.jpg" width="260"/>
+    <img src="https://image.lvbibir.cn/blog/2022-33week-1.jpg" width="250"/>
+    <img src="https://image.lvbibir.cn/blog/2022-33week-2.jpg" width="250"/>
+    <img src="https://image.lvbibir.cn/blog/2022-33week-3.jpg" width="250"/>
 </center>
 
 
@@ -79,9 +78,9 @@ LSD距离突破13.5km，感觉自己有些操之过急了，跑完后身体还�
 从本周开始加入了“LSD”训练，安排在了每周六晚上，~~早上起不来~~，旨在提高自己的有氧耐力
 
 <center class="half">
-    <img src="https://image.lvbibir.cn/blog/2022-32week-1.jpg" width="260"/>
-    <img src="https://image.lvbibir.cn/blog/2022-32week-2.jpg" width="260"/>
-    <img src="https://image.lvbibir.cn/blog/2022-32week-3.jpg" width="260"/>
+    <img src="https://image.lvbibir.cn/blog/2022-32week-1.jpg" width="250"/>
+    <img src="https://image.lvbibir.cn/blog/2022-32week-2.jpg" width="250"/>
+    <img src="https://image.lvbibir.cn/blog/2022-32week-3.jpg" width="250"/>
 </center>
 
 
@@ -95,9 +94,9 @@ LSD距离突破13.5km，感觉自己有些操之过急了，跑完后身体还�
 ## 2022年7月28日，第一次十公里
 
 <center class="half">
-    <img src="https://image.lvbibir.cn/blog/2022-07-28-10km-1.jpg" width="260"/>
-    <img src="https://image.lvbibir.cn/blog/2022-07-28-10km-2.jpg" width="260"/>
-    <img src="https://image.lvbibir.cn/blog/2022-07-28-10km-3.jpg" width="260"/>
+    <img src="https://image.lvbibir.cn/blog/2022-07-28-10km-1.jpg" width="250"/>
+    <img src="https://image.lvbibir.cn/blog/2022-07-28-10km-2.jpg" width="250"/>
+    <img src="https://image.lvbibir.cn/blog/2022-07-28-10km-3.jpg" width="250"/>
 </center>
 
 ## 第 30 周
@@ -157,12 +156,11 @@ LSD距离突破13.5km，感觉自己有些操之过急了，跑完后身体还�
 后续计划：尝试提高步频，继续坚持5公里
 
 
-
 <center class="half">
-    <img src="https://image.lvbibir.cn/blog/ab25e6aa2a12997fb7f87e9cdb1878c.jpg" width="194"/>
-    <img src="https://image.lvbibir.cn/blog/a22c4d33b8e57027d41794c664063ad.jpg" width="194"/>
-    <img src="https://image.lvbibir.cn/blog/6fe992f7ca15bb15fbd0e321bbb4e88.jpg" width="194"/>
-    <img src="https://image.lvbibir.cn/blog/e01d0a1e9da4eccc499f0768f1311b3.jpg" width="194"/>
+    <img src="https://image.lvbibir.cn/blog/ab25e6aa2a12997fb7f87e9cdb1878c.jpg" width="190"/>
+    <img src="https://image.lvbibir.cn/blog/a22c4d33b8e57027d41794c664063ad.jpg" width="190"/>
+    <img src="https://image.lvbibir.cn/blog/6fe992f7ca15bb15fbd0e321bbb4e88.jpg" width="190"/>
+    <img src="https://image.lvbibir.cn/blog/e01d0a1e9da4eccc499f0768f1311b3.jpg" width="190"/>
 </center>
 
 
