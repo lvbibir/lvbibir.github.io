@@ -183,6 +183,10 @@ ppt、bilibili、youtube、豆瓣阅读和电影卡片
 
 https://www.sulvblog.cn/posts/blog/shortcodes/
 
+mermaid
+
+https://www.sulvblog.cn/posts/blog/hugo_mermaid/
+
 图片画廊
 
 https://github.com/liwenyip/hugo-easy-gallery/
