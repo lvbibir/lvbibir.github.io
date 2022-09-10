@@ -34,7 +34,7 @@ cover:
 
 之前的[wordpress博客](https://lvbibir.cn)部署在阿里云的一套 docker-compose 环境下，[wordpress迁移到docker](https://www.lvbibir.cn/posts/blog/wordpress-to-docker/) 有详细记录
 
-基于之前的配置进行了一些优化和调整，基于需求下载对应的配置文件：[hugo](https://image.lvbibir.cn/hugo-blog-dockercompose.tar.gz)、[wordpress](https://image.lvbibir.cn/wordpress-blog.zip)、[hugo + wordpress](https://image.lvbibir.cn/hugo-and-wordpress-dockercompose.tar.gz)
+基于之前的配置进行了一些优化和调整，基于需求下载对应的配置文件：[hugo](https://image.lvbibir.cn/files/hugo-blog-dockercompose.tar.gz)、[wordpress](https://image.lvbibir.cn/files/wordpress-blog.zip)、[hugo + wordpress](https://image.lvbibir.cn/files/hugo-and-wordpress-dockercompose.tar.gz)
 
 ## hugo
 
