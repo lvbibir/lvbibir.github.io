@@ -9,10 +9,10 @@
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/blog/hello-hugo/</loc>
-    <lastmod>2022-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/blog/</loc>
-    <lastmod>2022-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/read/</loc>
     <lastmod>2022-07-24T00:00:00+00:00</lastmod>
@@ -21,7 +21,7 @@
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/</loc>
-    <lastmod>2022-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/ceph/</loc>
     <lastmod>2022-08-19T00:00:00+00:00</lastmod>
@@ -30,10 +30,10 @@
     <lastmod>2022-08-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/</loc>
-    <lastmod>2022-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/</loc>
-    <lastmod>2022-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/pxe/</loc>
     <lastmod>2022-08-18T00:00:00+00:00</lastmod>
@@ -68,11 +68,14 @@
     <loc>https://www.lvbibir.cn/posts/read/ren-jian-shi-ge/</loc>
     <lastmod>2022-07-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/hugo/</loc>
-    <lastmod>2022-09-09T00:00:00+00:00</lastmod>
+    <loc>https://www.lvbibir.cn/tags/docker/</loc>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/hugo-image-layout/</loc>
-    <lastmod>2022-07-07T00:00:00+00:00</lastmod>
+    <loc>https://www.lvbibir.cn/tags/hugo/</loc>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/papermod/</loc>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/shell/</loc>
     <lastmod>2022-07-01T00:00:00+00:00</lastmod>
@@ -112,9 +115,6 @@
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/ceph-pg-num-config-create-pool/</loc>
     <lastmod>2022-02-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/docker/</loc>
-    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/docker-import-export-image/</loc>
     <lastmod>2021-02-01T00:00:00+00:00</lastmod>
@@ -224,13 +224,10 @@
     <loc>https://www.lvbibir.cn/posts/blog/wordpress-load-image-failed/</loc>
     <lastmod>2021-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/wordpress-editpage-different-post/</loc>
-    <lastmod>2021-07-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/posts/blog/wordpress-add-icp/</loc>
     <lastmod>2021-07-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/blog/wordpress-https/</loc>
+    <loc>https://www.lvbibir.cn/posts/blog/wordpress-https-rewrite/</loc>
     <lastmod>2021-07-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/blog/qiniu-ssl/</loc>

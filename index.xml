@@ -98,15 +98,6 @@
     </item>
     
     <item>
-      <title>修改hugo的图片布局，使多张图片可以并排显示</title>
-      <link>https://www.lvbibir.cn/posts/blog/hugo-image-layout/</link>
-      <pubDate>Thu, 07 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/blog/hugo-image-layout/</guid>
-      <description>前言 仅是对前端一窍不通的我的一次尝试，如果有更好的实现方法可以评论或者通过主页的联系方式告诉我~ md文件中图片并排显示 先贴结论，并排显示图片</description>
-    </item>
-    
-    <item>
       <title>shell | 检索某url中所有文件的内容</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-search-url-files/</link>
       <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
@@ -463,7 +454,7 @@
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/blog/typora-picgo-qiniu-upload-image/</guid>
-      <description>七牛云配置 1、注册七牛云，新建存储空间 这里就不介绍七牛云的注册和新建空间了 七牛云新用户有10G的免费空间，作为个人博客来说基本足够了 2、为存</description>
+      <description>在使用markdown写作的过程中，图片的存储是困扰很多人的一个问题，分享下我目前采用的typora&#43;picgo&#43;七牛云的图床配置流程</description>
     </item>
     
     <item>
@@ -473,15 +464,6 @@
       
       <guid>https://www.lvbibir.cn/posts/blog/wordpress-load-image-failed/</guid>
       <description>现象 博客加载不出来我在七牛云的图片资源 使用浏览器直接访问图片url却是可以成功的 我将之前csdn的博客迁移到了wordpress，图片外链地</description>
-    </item>
-    
-    <item>
-      <title>wordpress文章编辑页和发不出来内容不一样（http变成了https）</title>
-      <link>https://www.lvbibir.cn/posts/blog/wordpress-editpage-different-post/</link>
-      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/blog/wordpress-editpage-different-post/</guid>
-      <description>文章编辑界面和预览界面都是没问题的，发布出来后文章内容的http变成了https，而且仅有本博客域名lvbibir.cn出现这种情况，其他都</description>
     </item>
     
     <item>
@@ -495,10 +477,10 @@
     
     <item>
       <title>wordpress配置https强制跳转</title>
-      <link>https://www.lvbibir.cn/posts/blog/wordpress-https/</link>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress-https-rewrite/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/blog/wordpress-https/</guid>
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress-https-rewrite/</guid>
       <description>本文介绍如何在阿里轻量服务器wordpress站点配置http强制跳转到https 配置强制跳转前需要站点已经安装了ssl证书，可以通过htt</description>
     </item>
     
@@ -508,7 +490,7 @@
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/blog/qiniu-ssl/</guid>
-      <description>1、购买免费证书 2、补全域名信息 3、域名验证 根据在域名提供商处新建解析 dns配置好之后等待CA机构审核后颁发证书就可以了 4、 为域名开启htt</description>
+      <description>记录七牛云配置ssl证书的过程</description>
     </item>
     
     <item>
