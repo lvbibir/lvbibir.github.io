@@ -28,7 +28,7 @@
 }
 
 .frienddiv {
-    /* overflow: auto; */
+    overflow: auto;
     height: 100px;
     width: 49%;
     display: inline-block !important;
