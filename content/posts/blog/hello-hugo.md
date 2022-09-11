@@ -1,12 +1,20 @@
 ---
 title: "【置顶】Hello,hugo!"
 date: 2022-07-06
-lastmod: 2022-09-09
+lastmod: 2022-09-11
 author: ["lvbibir"] 
 categories: 
 - 
 tags: 
 - hugo
+- papermod
+- docker
+keywords:
+- hugo
+- papermod
+- docker
+- 博客部署
+- 博客优化
 description: "记录wordpress迁移至hugo+papermod的过程包含环境搭建、博客美化、功能实现、速度优化等……"
 weight: 1
 slug: ""
@@ -147,6 +155,25 @@ rsync -avuz --progress --delete public/ root@lvbibir.cn:/root/blog/data/hugo/
 
 所以干脆沿用之前的 [github仓库](https://github.com/lvbibir/lvbibir.github.io) ，来作为我博客的归档管理，也可以方便家里电脑和工作电脑之间的数据同步
 
+# 图片并排展示
+
+当主题默认配置下，图片宽度为 `max-width: 100%;`，如果是手机截图类型的图片，可能一个页面都展示不全一个图片
+
+单张图片建议修改尺寸，多张图片可以并排展示
+
+```html
+<center class="half">
+    <img src="图片路径" width="194" style="display: unset;"/>
+    <img src="图片路径" width="194" style="display: unset;"/>
+    <img src="图片路径" width="194" style="display: unset;"/>
+    <img src="图片路径" width="194" style="display: unset;"/>
+</center>
+```
+
+效果
+
+![image-20220911143526960](https://image.lvbibir.cn/blog/image-20220911143526960.png)
+
 # 修改链接颜色
 
 在 hugo+papermod 默认配置下，链接颜色是黑色字体带下划线的组合，个人非常喜欢 [typora-vue](https://github.com/blinkfox/typora-vue-theme) 的渲染风格，[hugo官方文档](https://gohugo.io/templates/render-hooks/#link-with-title-markdown-example)给出了通过`render hooks`覆盖默认的markdown渲染的方式
@@ -171,7 +198,7 @@ https://www.sulvblog.cn/posts/blog/hugo_seo/
 
 ~~顺便记录一下账号关系：mongodb使用google账号登录，vercel使用github登录~~
 
-> [上文](#一键将hugo博客部署到阿里云) 提到我将twikoo部署到了自己的阿里云服务器上，并为它配置了域名、反向代理、ssl证书等
+> [一键将hugo博客部署到阿里云](#一键将hugo博客部署到阿里云) 提到我将twikoo部署到了自己的阿里云服务器上，并为它配置了域名、反向代理、ssl证书等
 
 1. [私有部署twikoo（docker）](https://twikoo.js.org/quick-start.html#%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2-docker)
 2. [twikoo的更新（docker）](https://twikoo.js.org/quick-start.html#%E9%92%88%E5%AF%B9%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2-docker-%E7%9A%84%E6%9B%B4%E6%96%B0%E6%96%B9%E5%BC%8F)
@@ -193,9 +220,59 @@ https://github.com/liwenyip/hugo-easy-gallery/
 
 https://www.liwen.id.au/heg/
 
+# 自定义footer
 
+自定义页脚内容
 
+![image-20220911150229930](https://image.lvbibir.cn/blog/image-20220911150229930.png)
 
+添加完下面的页脚内容后要修改 `assets\css\extended\blank.css` 中的 `--footer-height` 的大小，具体数字需要考虑到行数和字体大小
+
+## 自定义徽标
+
+> 徽标功能源自：https://shields.io/
+
+在 `layouts\partials\footer.html` 中的 `<footer>` 添加如下
+
+```html
+<a href="https://gohugo.io/" target="-blank">
+    <img src="https://img.shields.io/static/v1?&style=plastic&color=308fb5&label=Power by&message=hugo&logo=hugo" style="display: unset;">
+</a>
+```
+
+## 网站运行时间
+
+在 `layouts\partials\footer.html` 中的 `<footer>` 添加如下
+
+起始时间自行修改
+
+```html
+    <span id="runtime_span"></span> 
+    <script type="text/javascript">function show_runtime(){window.setTimeout("show_runtime()",1000);X=new Date("7/13/2021 1:00:00");Y=new Date();T=(Y.getTime()-X.getTime());M=24*60*60*1000;a=T/M;A=Math.floor(a);b=(a-A)*24;B=Math.floor(b);c=(b-B)*60;C=Math.floor((b-B)*60);D=Math.floor((c-C)*60);runtime_span.innerHTML="网站已运行"+A+"天"+B+"小时"+C+"分"+D+"秒"}show_runtime();</script>
+```
+
+## 访问人数统计
+
+> 统计功能源自：http://busuanzi.ibruce.info/
+
+在`layouts\partials\footer.html` 文件起始添加脚本
+
+```html
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+```
+
+在 `layouts\partials\footer.html` 中的 `<footer>` 添加如下
+
+```html
+<span id="busuanzi_container">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    总访客数: <i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span>
+    |
+    总访问量: <i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span>
+    |
+    本页访问量: <i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+```
 
 
 

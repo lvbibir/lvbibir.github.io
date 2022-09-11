@@ -7,7 +7,7 @@ categories:
 - 
 tags: 
 - blog
-description: "" 
+description: "在使用markdown写作的过程中，图片的存储是困扰很多人的一个问题，分享下我目前采用的typora+picgo+七牛云的图床配置流程" 
 weight: 
 slug: ""
 draft: false # 是否为草稿
@@ -55,13 +55,13 @@ cover:
 
 配置cname
 
-![image-20210722111023745](https://image.lvbibir.cn/blog/20210722121831.png)
-
 # PicGo配置
 
 ## 下载安装
 
 下载链接：https://github.com/Molunerfinn/PicGo/releases/
+
+![image-20210722111023745](https://image.lvbibir.cn/blog/20210722121831.png)
 
 建议下载稳定版
 
