@@ -170,9 +170,7 @@ rsync -avuz --progress --delete public/ root@lvbibir.cn:/root/blog/data/hugo/
 </center>
 ```
 
-效果
-
-![image-20220911143526960](https://image.lvbibir.cn/blog/image-20220911143526960.png)
+另外也可以通过在线的免费工具拼接图片
 
 # 修改链接颜色
 
@@ -198,11 +196,75 @@ https://www.sulvblog.cn/posts/blog/hugo_seo/
 
 ~~顺便记录一下账号关系：mongodb使用google账号登录，vercel使用github登录~~
 
-> [一键将hugo博客部署到阿里云](#一键将hugo博客部署到阿里云) 提到我将twikoo部署到了自己的阿里云服务器上，并为它配置了域名、反向代理、ssl证书等
+> 官方文档：https://twikoo.js.org/quick-start.html
+>
+> vercel+mongodb+github部署方式参考：https://www.sulvblog.cn/posts/blog/hugo_twikoo/
 
-1. [私有部署twikoo（docker）](https://twikoo.js.org/quick-start.html#%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2-docker)
-2. [twikoo的更新（docker）](https://twikoo.js.org/quick-start.html#%E9%92%88%E5%AF%B9%E7%A7%81%E6%9C%89%E9%83%A8%E7%BD%B2-docker-%E7%9A%84%E6%9B%B4%E6%96%B0%E6%96%B9%E5%BC%8F)
-3. [前端代码](https://www.sulvblog.cn/posts/blog/hugo_twikoo/#2%e6%b7%bb%e5%8a%a0%e4%bb%a3%e7%a0%81)
+## 私有部署（docker)
+
+```
+docker run --name twikoo -e TWIKOO_THROTTLE=1000 -p 8080:8080 -v ${PWD}/data:/app/data -d imaegoo/twikoo
+```
+
+部署完成后看到如下结果即成功
+
+```
+[root@lvbibir ~]# curl http://localhost:8080
+{"code":100,"message":"Twikoo 云函数运行正常，请参考 https://twikoo.js.org/quick-start.html#%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2 完成前端的配置","version":"1.6.7"}
+```
+
+后续最好套上反向代理，加上域名和证书
+
+## 更新
+
+1. 拉取新版本 `docker pull imaegoo/twikoo`
+2. 停止旧版本容器 `docker stop twikoo`
+3. 删除旧版本容器 `docker rm twikoo`
+
+4. 部署新版本容器
+
+## 前端代码
+
+创建或者修改 `layouts\partials\comments.html`
+
+```
+<!-- Twikoo -->
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/{{ .Site.Params.twikoo.version }}/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "", //填自己的，例如：https://example.com
+            el: "#tcomment",
+            lang: 'zh-CN',
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+```
+
+调用上述twikoo代码的位置：`layouts/_default/single.html`
+
+```
+<article class="post-single">
+  // 其他代码......
+  {{- if (.Param "comments") }}
+    {{- partial "comments.html" . }}
+  {{- end }}
+</article>
+```
+
+在站点配置文件config中加上版本号
+
+```
+params:
+	twikoo:
+      version: 1.6.7
+```
 
 # shortcode
 
@@ -231,11 +293,12 @@ https://www.liwen.id.au/heg/
 ## 自定义徽标
 
 > 徽标功能源自：https://shields.io/
+> 考虑到访问速度，可以在生成完徽标后放到自己的cdn上
 
 在 `layouts\partials\footer.html` 中的 `<footer>` 添加如下
 
 ```html
-<a href="https://gohugo.io/" target="-blank">
+<a href="https://gohugo.io/" target="_blank">
     <img src="https://img.shields.io/static/v1?&style=plastic&color=308fb5&label=Power by&message=hugo&logo=hugo" style="display: unset;">
 </a>
 ```
@@ -255,15 +318,10 @@ https://www.liwen.id.au/heg/
 
 > 统计功能源自：http://busuanzi.ibruce.info/
 
-在`layouts\partials\footer.html` 文件起始添加脚本
-
-```html
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-```
-
 在 `layouts\partials\footer.html` 中的 `<footer>` 添加如下
 
 ```html
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     总访客数: <i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span>
@@ -273,8 +331,6 @@ https://www.liwen.id.au/heg/
     本页访问量: <i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 ```
-
-
 
 # todo
 
