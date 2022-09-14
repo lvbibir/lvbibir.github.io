@@ -3,8 +3,6 @@ title: "【置顶】Hello,hugo!"
 date: 2022-07-06
 lastmod: 2022-09-11
 author: ["lvbibir"] 
-categories: 
-- 
 tags: 
 - hugo
 - papermod

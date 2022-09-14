@@ -3,10 +3,14 @@ title: "wordpress加载图片失败"
 date: 2021-07-01
 lastmod: 2021-07-01
 author: ["lvbibir"] 
-categories: 
-- 
 tags: 
 - wordpress
+- ssl
+- https
+keywords:
+- wordpress
+- ssl
+- https
 description: "" 
 weight: 
 slug: ""
@@ -65,7 +69,7 @@ cover:
 
 # 解决
 
-[给七牛云的域名配置ssl证书](https://lvbibir.cn/archives/247/)
+给图床服务器安装ssl证书，开启https访问，参考：[typora-picgo-qiniu-upload-image](https://www.lvbibir.cn/posts/blog/typora-picgo-qiniu-upload-image/)
 
 
 

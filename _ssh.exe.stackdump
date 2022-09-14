@@ -1,7 +1,0 @@
-Exception: STATUS_ACCESS_VIOLATION at eip=0040A412
-eax=00000000 ebx=00000000 ecx=0000000A edx=00000000 esi=00000000 edi=00478A96
-ebp=006BA2C8 esp=006B7970 program=D:\1-免安装\MobaXterm\slash\bin\_ssh.exe, pid 1758, thread main
-cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
-Stack trace:
-Frame     Function  Args
-006BA2C8  0040A412 (203D2600, 00000000, 203D0EF8, 203CE9F0)

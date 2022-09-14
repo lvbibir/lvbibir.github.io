@@ -1,12 +1,20 @@
 ---
-title: "typora+picgo+七牛云上传图片" 
+title: "markdown图片存储方案 | typora+picgo+七牛云" 
 date: 2021-07-01
 lastmod: 2021-07-01
 author: ["lvbibir"] 
-categories: 
-- 
 tags: 
-- blog
+- markdown
+- typora
+- picgo
+- 七牛云
+keywords:
+- markdown
+- typora
+- picgo
+- 七牛云
+- https
+- ssl
 description: "在使用markdown写作的过程中，图片的存储是困扰很多人的一个问题，分享下我目前采用的typora+picgo+七牛云的图床配置流程" 
 weight: 
 slug: ""
@@ -25,35 +33,41 @@ cover:
 ---
 # 七牛云配置
 
-## 1、注册七牛云，新建存储空间
-
-这里就不介绍七牛云的注册和新建空间了
+## 1. 注册七牛云，新建存储空间
 
 七牛云新用户有10G的免费空间，作为个人博客来说基本足够了
 
-![image-20210722105644661](https://image.lvbibir.cn/blog/20210722121825.png)
+## 2. 为存储空间配置加速域名
 
-## 2、为存储空间配置加速域名
+![image-20210722111948353](https://image.lvbibir.cn/blog/20210722121833.png)
 
-![image-20210722105809443](https://image.lvbibir.cn/blog/20210722121826.png)
+## 3. 配置https证书
 
-这里使用http就可，https还需要证书，有点麻烦
+###  购买免费证书
 
-![image-20210722110411130](https://image.lvbibir.cn/blog/20210722121827.png)
+![image-20210722144416642](https://image.lvbibir.cn/blog/image-20210722144416642.png)
 
-## 3、配置域名解析
+![image-20210722144429953](https://image.lvbibir.cn/blog/image-20210722144429953.png)
 
-![image-20210722110659897](https://image.lvbibir.cn/blog/20210722121828.png)
+###  补全域名信息
 
-到域名厂商配置cname记录，我的域名是阿里的
+![image-20210722144515614](https://image.lvbibir.cn/blog/image-20210722144515614.png)
 
-在控制台首页进入dns配置
+![image-20210722145538079](https://image.lvbibir.cn/blog/image-20210722145538079.png)
 
-![image-20210722110816158](https://image.lvbibir.cn/blog/20210722121829.png)
+###  域名验证
 
-![image-20210722110858518](https://image.lvbibir.cn/blog/20210722121830.png)
+根据在域名提供商处新建解析
 
-配置cname
+dns配置好之后等待CA机构审核后颁发证书就可以了
+
+![image-20210722152240625](https://image.lvbibir.cn/blog/image-20210722152240625.png)
+
+![image-20210722153133297](https://image.lvbibir.cn/blog/image-20210722153133297.png)
+
+###  开启https
+
+![image-20210722153339766](https://image.lvbibir.cn/blog/image-20210722153339766.png)
 
 # PicGo配置
 
@@ -61,23 +75,17 @@ cover:
 
 下载链接：https://github.com/Molunerfinn/PicGo/releases/
 
-![image-20210722111023745](https://image.lvbibir.cn/blog/20210722121831.png)
-
 建议下载稳定版
 
-![image-20210722111913493](https://image.lvbibir.cn/blog/20210722121832.png)
+![image-20210722111023745](https://image.lvbibir.cn/blog/20210722121831.png)
 
 ## 配置七牛云图床
 
-主流图床都有支持
-
-![image-20210722111948353](https://image.lvbibir.cn/blog/20210722121833.png)
-
-配置七牛图床
+ak和sk在七牛云→个人中心→密钥管理中查看
 
 ![image-20210722121639391](https://image.lvbibir.cn/blog/20210722121834.png)
 
-ak和sk在七牛云→个人中心→密钥管理中查看
+在picgo端配置各项信息，注意网址要改成 https
 
 ![image-20210722112127613](https://image.lvbibir.cn/blog/20210722121835.png)
 
@@ -107,45 +115,19 @@ typora可以实现自动的图片上传，并将本地连接自动转换为外�
 
 # 可能的报错
 
-## 报错 {“success”,false}
-
-上传图片报错：
-
-![image-20210721102621658](https://image.lvbibir.cn/blog/image-20210721102621658.png)
-
-看日志：
-
-日志路径：C:\Users\lvbibir\AppData\Roaming\picgo
-
-![image-20210721103528005](https://image.lvbibir.cn/blog/image-20210721103528005.png)
+一般报错原因都可在picgo的日志文件找到，路径：`C:\Users\username\AppData\Roaming\picgo`
 
 ## failed to fetch
 
-
-
-Picgo配置完七牛云图床，使用typora测试图片上传
-
 ![image-20210721100740621](https://image.lvbibir.cn/blog/image-20210721100850294.png)
 
-报错：failed to fetch
+日志报错如下
 
 ![image-20210721100850294](https://image.lvbibir.cn/blog/image-20210721102004403.png)
 
-看日志
-
-日志路径：C:\Users\lvbibir\AppData\Roaming\picgo
-
-问题在于端口冲突，如果你打开了多个picgo程序，就会端口冲突，picgo自动帮你把36677端口改为366771端口，导致错误。log文件里也写得很清楚。
+问题在于端口冲突，如果你打开了多个picgo程序，就会端口冲突，picgo自动帮你把36677端口改为366771端口，导致错误。
 
 ![image-20210721102004403](https://image.lvbibir.cn/blog/image-20210721101018536.png)
-
-解决
-
-修改picgo的监听端口
-
-![image-20210721100946278](https://image.lvbibir.cn/blog/image-20210721100946278.png)
-
-![image-20210721101018536](https://image.lvbibir.cn/blog/image-20210721101039272.png)
 
 重新验证
 
