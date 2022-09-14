@@ -229,7 +229,7 @@
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/ambari-2.7.5-and-hdp-3.1.5/</guid>
-      <description>前期准备 1. 安装包准备 Ambari2.7.5. HDP3.1.5. libtirpc-devel: 链接：https://pan.baidu.com/s/1eteZ2jGkSq4Pz5YFfHyJgQ 提取码：6hq</description>
+      <description>记录通过 Ambari 部署 hadoop 集群的过程</description>
     </item>
     
     <item>

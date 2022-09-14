@@ -31,7 +31,7 @@
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/blog/wordpress-to-docker/</guid>
-      <description>前言 前段时间着手开始搭建自己的wordpress博客，刚开始图方便直接买了阿里云的轻量应用服务器，它是一套预先搭建好的lamp架构，并已经做</description>
+      <description>记录从阿里云轻量应用服务器(wordpress应用)迁移到docker部署，并针对博客的一些优化</description>
     </item>
     
     <item>
