@@ -18,6 +18,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     --tag: rgb(235, 235, 235);
 
     --nav-width: 1300px;
+    --main-width: 770px;
     /*--nav-width: 1024px;*/
     --article-width: 650px;
     --toc-width: 300px;
@@ -231,12 +232,13 @@ body {
 
 
 /*文章章节图片展示大小*/
-/* .post-entry .entry-cover img {
+.post-entry .entry-cover img {
     width: 100%;
     height: 100%;
     display: initial;
-    max-width: 100%;
-} */
+    max-height: 100px;
+    object-fit: contain;
+}
 
 .entry-cover1 {
     border-radius: 10px;
@@ -247,8 +249,6 @@ body {
     padding-bottom: 10px;
     color: var(--secondary);
 }
-
-/*------------------------------------------------------------------*/
 
 .post-entry {
     display: flex;
@@ -267,7 +267,7 @@ body {
 .post-info {
     display: inline-block;
     overflow: hidden;
-    width: 90%;
+    width: 95%;
 }
 
 /*---------------------------*/

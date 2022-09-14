@@ -22,7 +22,7 @@ hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
 disableShare: true # 底部不显示分享栏
 showbreadcrumbs: true #顶部显示当前路径
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
+    image: "https://image.lvbibir.cn/blog/wordpress.jpg" #图片路径：posts/tech/文章1/picture.png
     caption: "" #图片底部描述
     alt: ""
     relative: false
