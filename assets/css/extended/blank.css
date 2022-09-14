@@ -6,20 +6,14 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 
 :root {
     --footer-height: 90px;
-    /*--content-gap: 20px;*/
-    /*--content: rgb(80, 80, 80);*/
-    /*--hljs-bg: rgb(35, 35, 35);*/
     --hljs-bg: rgb(44, 44, 44);
-    /*--code-bg: rgb(235, 235, 235);*/
     --code-bg: rgb(240, 240, 240);
     --code-bg-border: rgb(200, 200, 200);
     --black: rgb(0, 0, 0);
     --white: rgb(255, 255, 255);
     --tag: rgb(235, 235, 235);
-
     --nav-width: 1300px;
     --main-width: 770px;
-    /*--nav-width: 1024px;*/
     --article-width: 650px;
     --toc-width: 300px;
 }
@@ -83,15 +77,6 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 
 /*------------------------------------------------------------*/
 
-/*链接下划线*/
-/* .post-content a, .toc a:hover {
-    box-shadow: none;
-
-    background: linear-gradient(45deg,#5e82f9 11%,#B263FE 90%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-} */
-
 /*img*/
 img {
     border-radius: 10px;
@@ -116,11 +101,6 @@ img:active {
     }
 }
 
-/*页面滚动*/
-/* ::-webkit-scrollbar-thumb {
-   border: 2px solid var(--theme);
-} */
-
 
 /*页面顶部栏两边宽度*/
 .nav {
@@ -129,10 +109,6 @@ img:active {
 
 .main {
     max-width: calc(var(--main-width) + var(--gap) * 5);
-    /*max-width: calc(var(--main-width) + var(--gap) * 5);*/
-    /*margin: 0px 0px 0px 320px;*/
-    /*margin-left: 23%;*/
-    /*margin-right: 0px;*/
 }
 
 /*footer*/
@@ -158,23 +134,9 @@ img:active {
     font-size: 30px;
 }
 
-/* .page-header h1 {
-	font-size: 30px;
-} */
 
 .post-content {
-    /* color: var(--secondary); */
-    /*font-family: "Microsoft YaHei", Helvetica, Tahoma, Arial, "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;*/
-    /*font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;*/
     font-family: "han-yi-jin-kai-jian";
-    /* font-family: "sans-serif"; */
-    /*font-family: STKaiti, STKaitiSC-Bold,  YouYuan, arial;*/
-    /*font-family: trebuchet ms,Verdana,verdana ref,segoe ui,Candara,lucida grande,lucida sans unicode,lucida sans,Tahoma,sans-serif;*/
-
-    /*-webkit-font-smoothing: antialiased;*/
-    /*-webkit-font-smoothing: auto;*/
-    /*font-family: jost,Helvetica Neue,Helvetica,Arial,sans-serif;*/
-    /*font-family:"You Yuan","Hiragino Sans GB","Helvetica Neue",Helvetica,tahoma,arial,Verdana,sans-serif,"WenQuanYi Micro Hei","\5B8B\4F53";*/
 }
 
 .dark .post-content {
@@ -184,18 +146,7 @@ img:active {
 body {
     font-size: 18px;
     line-height: 1.6;
-    /*-webkit-font-smoothing: auto;*/
-    /*-webkit-font-smoothing: antialiased;*/
-    /*font-family: cursive;*/
-    /*font-family: fantasy;*/
-    /*font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;*/
     font-family: "han-yi-jin-kai-jian";
-    /* font-family: "sans-serif"; */
-    /*font-family: STKaiti, STKaitiSC-Bold, YouYuan, arial;*/
-    /*font-family: trebuchet ms,Verdana,verdana ref,segoe ui,Candara,lucida grande,lucida sans unicode,lucida sans,Tahoma,sans-serif;*/
-
-    /*font-family: jost,Helvetica Neue,Helvetica,Arial,sans-serif;*/
-    /*font-family:"You Yuan","Hiragino Sans GB","Helvetica Neue",Helvetica,tahoma,arial,Verdana,sans-serif,"WenQuanYi Micro Hei","\5B8B\4F53";*/
 }
 
 /*引言*/
@@ -231,7 +182,7 @@ body {
 }
 
 
-/*文章章节图片展示大小*/
+/* 文章封面的cover图片展示大小 */
 .post-entry .entry-cover img {
     width: 100%;
     height: 100%;
@@ -242,6 +193,12 @@ body {
 
 .entry-cover1 {
     border-radius: 10px;
+}
+
+/* 文章内的cover图片展示大小 */
+.entry-cover1 img{
+    width: 100%;
+    margin-bottom: 5px;
 }
 
 /*描述*/
@@ -267,7 +224,7 @@ body {
 .post-info {
     display: inline-block;
     overflow: hidden;
-    width: 95%;
+    width: 100%;
 }
 
 /*---------------------------*/
