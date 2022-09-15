@@ -2,26 +2,16 @@
 title: "atd服务报错 Failed with result ‘exit-code’" 
 date: 2019-08-01
 lastmod: 2019-08-01
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
 - linux
-description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
+- 故障处理
+keywords:
+- linux
+- atd
+- 故障处理
+description: "因为一次不小心的手动执行导致的" 
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: "" 
 ---
 
 

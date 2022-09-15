@@ -1,30 +1,27 @@
 ---
-title: "编译安装crash（kernel=4.19，cpu=aarch64）" 
+title: "编译安装crash(aarch64平台)" 
 date: 2019-08-01
 lastmod: 2019-08-01
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
 - linux
+- aarch64
+keywords:
+- linux
+- aarch64
+- crash
+- 鲲鹏cpu
 description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: "" 
 ---
 
-# 环境：操作系统：isoft-serveros-v5.1鲲鹏版，crash-7.2.8
+# 环境：
+
+操作系统：isoft-serveros-v5.1 aarch64版
+
+软件版本：crash-7.2.8
+
+cpu：华为鲲鹏920
 
 ## 软件包下载地址
 https://ftp.gnu.org/gnu/termcap/termcap-1.3.tar.gz
@@ -39,8 +36,6 @@ https://ftp.gnu.org/gnu/gdb/gdb-7.6.tar.gz
 
 # 2、安装ncurses
 挂载本地dnf源略
-
-
 
 ```
 dnf install ncurses-libs

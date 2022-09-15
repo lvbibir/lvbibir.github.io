@@ -1,31 +1,21 @@
 ---
-title: "CentOS密码尝试次数过多" 
+title: "CentOS | 密码尝试次数过多" 
 date: 2022-01-01
 lastmod: 2022-01-01
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
 - linux
-description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
+- centos
+keywords:
+- linux
+- centos
+- pam
+description: "介绍centos系统中的pam模块，以及出现尝试密码次数过多如何处理" 
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: "" 
 ---
 # pam模块
 
-pam：Pluggable Authentication Modules 可插拔的认证模块，linux 中的认证方式，“可插拔的“说明可以按需对认证内容进行变更。与nsswitch一样，也是一个通用框架。只不过是提供认证功能的。
+pam：`Pluggable Authentication Modules` 可插拔的认证模块，linux 中的认证方式，“可插拔的”说明可以按需对认证内容进行变更。与nsswitch一样，也是一个通用框架。只不过是提供认证功能的。
 
 # 重置密码失败次数
 
@@ -37,7 +27,7 @@ pam_tally2 -r -u root
 faillock --user root --reset
 ```
 
-具体取决于在规则文件中使用的是 <font color="red">**pam_faillock.so**</font> 模块还是 <font color="red">**pam_tally2.so**</font> 模块
+具体取决于在规则文件中使用的是 `pam_faillock.so`模块还是 `pam_tally2.so` 模块
 
 例：
 

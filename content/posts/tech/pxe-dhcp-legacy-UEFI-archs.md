@@ -1,27 +1,20 @@
 ---
-title: "pxe环境中对不同模式(legacy和UEFI)和不同CPU架构(x86和aarch64)的处理" 
+title: "pxe如何应对复杂的服务器硬件环境" 
 date: 2022-08-18
 lastmod: 2022-08-18
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
+- linux
 - pxe
-description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
+- aarch64
+- dhcp
+keywords:
+- linux
+- pxe
+- aarch64
+- dhcp
+description: "本文主要探讨如何配置dhcp来使pxe可以应对复杂的服务器环境" 
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: "" 
 ---
 
 # 前言

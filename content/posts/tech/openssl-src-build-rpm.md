@@ -1,27 +1,20 @@
 ---
-title: "openssl源码构建rpm" 
+title: "openssl源码打包编译成rpm包" 
 date: 2022-03-01
 lastmod: 2022-03-01
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
 - linux
-description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
+- rpm
+- openssh
+keywords:
+- linux
+- rpm
+- openssh
+- 源码
+- rpm构建
+description: "记录一下centos7系统中通过源码构建openssh rpm包的过程" 
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: "" 
 ---
 # 环境
 

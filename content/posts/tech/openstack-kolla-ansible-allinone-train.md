@@ -2,34 +2,22 @@
 title: "kolla-ansible部署Train版openstack（all-in-one）" 
 date: 2021-10-01
 lastmod: 2021-10-01
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
+- linux
 - openstack
-description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
+keywords:
+- linux
+- openstack
+- ansible
+description: "介绍cenots中使用kolla-ansible+docker的方式快速部署openstack(all-in-one)单节点" 
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: "https://image.lvbibir.cn/blog/20200613094347844.png" 
 ---
 # kolla ansible简介
 
 kolla 的使命是为 openstack 云平台提供生产级别的、开箱即用的交付能力。kolla 的基本思想是一切皆容器，将所有服务基于 Docker 运行，并且保证一个容器只跑一个服务（进程），做到最小粒度的运行 docker。
 
 kolla 要实现 openetack 部署总体上分为两步，第一步是制作 docker 镜像，第二步是编排部署。因此，kolla 项目又被分为两个小项目：kolla、kolla-ansible 。
-
-![20200613094347844](https://image.lvbibir.cn/blog/20200613094347844.png)
 
 kolla-ansible项目
 https://github.com/openstack/kolla-ansible

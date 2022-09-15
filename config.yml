@@ -96,15 +96,15 @@ outputs:
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "lvbibir的个人博客，hugo，papermod，shell，python，linux，mysql，redis"
-    author: lvbibir
-    # author: ["Me", "You"] # multiple authors
-
+    author: lvbibir # author: ["Me", "You"] # multiple authors
+    draft: flase
     defaultTheme: auto  # defaultTheme: light or  dark 
     disableThemeToggle: false
     DateFormat: "2006-01-02"
-    ShowShareButtons: true
+    disableShare: true 
+    ShowShareButtons: false
     ShowReadingTime: true
-    # disableSpecialistPost: true
+    disableSpecialistPost: true
     displayFullLangName: true
     ShowPostNavLinks: true
     ShowBreadCrumbs: true
@@ -118,7 +118,7 @@ params:
     ShowToc: true # 显示目录
     TocOpen: true # 自动展开目录
 
-    comments: true
+    comments: true # 是否开启评论
     socialIcons:
         - name: github
           url: "https://github.com/lvbibir"

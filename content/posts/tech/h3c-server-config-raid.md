@@ -2,26 +2,18 @@
 title: "H3C服务器配置raid" 
 date: 2021-08-01
 lastmod: 2021-08-01
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
 - linux
-description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
+- 服务器
+- raid
+keywords:
+- linux
+- 服务器
+- raid
+- H3C
+description: "记录一下H3C服务器配置raid的过程" 
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: "" 
 ---
 1、进入bios修改启动模式，将 UEFI 改为 Legacy bios
 

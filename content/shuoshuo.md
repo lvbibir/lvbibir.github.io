@@ -3,18 +3,12 @@ title: "💬 说说"
 date: 2021-08-31
 hidemeta: true
 description: "胡言乱语"
-draft: false # 是否为草稿
-comments: true
 reward: false
-showToc: false # 显示目录
-TocOpen: false # 自动展开目录
-disableShare: true # 底部不显示分享栏
+showToc: false 
+TocOpen: false 
 showbreadcrumbs: false
 cover:
     image: ""
-    caption: "" 
-    alt: ""
-    relative: false
 ---
 
 

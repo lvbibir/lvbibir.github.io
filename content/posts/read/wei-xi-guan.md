@@ -6,22 +6,10 @@ author: ["lvbibir"]
 tags: 
 - read
 description: "简单到不可能失败的自我管理法则"
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true
-reward: true # 打赏
-mermaid: false #是否开启mermaid
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示路径
+reward: true 
+mermaid: false 
 cover:
     image: "" 
-    caption: ""
-    alt: ""
-    relative: false
 ---
 
 # 前言

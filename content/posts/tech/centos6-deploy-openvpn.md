@@ -1,27 +1,19 @@
 ---
-title: "openvpn部署" 
+title: "centos6部署openvpn" 
 date: 2021-07-01
 lastmod: 2021-07-01
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
+- linux
+- centos
+keywords:
+- linux
 - openvpn
-description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
+- centos
+- 服务部署
+- 内网穿透
+description: "介绍如何在centos6的环境中部署openvpn服务实现内网穿透" 
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: "https://image.lvbibir.cn/blog/OpenVPN_logo.png" 
 ---
 # 一、实验环境
 

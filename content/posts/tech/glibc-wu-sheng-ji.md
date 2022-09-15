@@ -2,31 +2,17 @@
 title: "glibc 误升级后修复" 
 date: 2022-07-14
 lastmod: 2022-07-14
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
 - linux
-description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
+- 故障处理
+keywords:
+- linux
+- glibc
+- 故障处理
+description: "记录一下在 OpenEuler 20.03 LTS aarch64 系统上误操作升级了 glibc 后紧急修复的步骤" 
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: "" 
 ---
-
-# 前言
-
-记录一下在 OpenEuler 20.03 LTS aarch64 系统上误操作升级了 glibc 后紧急修复的步骤
 
 # 起因
 

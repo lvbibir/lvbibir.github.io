@@ -2,22 +2,10 @@
 title: "跑步日常" 
 date: 2022-07-07 
 lastmod: 2022-07-31
-author: ["lvbibir"] 
 description: "记录一下本跑渣的跑步日常，一点一滴见证自己成长~"
 weight: 1 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
 cover:
     image: "https://image.lvbibir.cn/blog/cover-running.jpg"
-    caption: ""
-    alt: ""
-    relative: false
 ---
 
 # 2022年

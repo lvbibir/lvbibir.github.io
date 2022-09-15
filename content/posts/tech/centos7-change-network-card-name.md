@@ -2,26 +2,18 @@
 title: "centos7修改网卡名称" 
 date: 2022-02-01
 lastmod: 2022-02-01
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
 - linux
-description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
+- centos
+- network
+keywords:
+- linux
+- centos
+- network
+- grub
+description: "介绍如何在centos7的系统中通过配置网络规则命名文件的方式修改网卡的名称" 
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: "" 
 ---
 # 前言
 

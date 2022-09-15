@@ -1,27 +1,20 @@
 ---
-title: "centos7基线检查平台部署" 
+title: "centos7基线检查（benchmark）平台部署" 
 date: 2021-07-01
 lastmod: 2021-07-01
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
 - linux
-description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
+- centos
+- benchmark
+- 基线检查
+keywords:
+- linux
+- centos
+- benchmark
+- 基线检查
+description: "介绍在centos7环境中部署开源的benchmark基线检查平台，并通过web界面可视化展示" 
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: "https://image.lvbibir.cn/blog/image-20210719165252503.png" 
 ---
 # 介绍
 
@@ -130,7 +123,7 @@ chmod a+x ./*.sh
 
 - 运行脚本即可，终端会有检查结果的输出，前端页面相应也会有数据
 
-![image-20210721093304920](https://image.lvbibir.cn/blog/image-20210721094328627.png)
+![image-20210721093304920](https://image.lvbibir.cn/blog/image-20210719165252503.png)
 
 ![image-20210721094328627](https://image.lvbibir.cn/blog/image-20210719165032945.png)
 

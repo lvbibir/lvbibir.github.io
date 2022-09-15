@@ -2,26 +2,17 @@
 title: "kubeadm快速搭建K8s集群v1.22.3" 
 date: 2021-10-01
 lastmod: 2021-10-01
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
-- k8s
-description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
+- linux
+- centos
+- kubernetes
+keywords:
+- linux
+- centos
+- kubernetes
+description: "在centos中使用kubeadm快速搭建k8s集群、dashboard配置、安装cni组件的过程" 
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: "" 
 ---
 # 前言
 

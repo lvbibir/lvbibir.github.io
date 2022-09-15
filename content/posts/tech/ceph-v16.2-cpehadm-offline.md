@@ -1,27 +1,18 @@
 ---
-title: "cephadm 离线安装 ceph V16.2.8" 
+title: "cephadm离线安装ceph-V16.2.8" 
 date: 2022-08-19
 lastmod: 2022-08-19
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
+- linux
 - ceph
+- docker
+keywords:
+- linux
+- ceph
+- docker
 description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
 cover:
-    image: "https://image.lvbibir.cn/blog/Snipaste_2022-09-14_16-02-26.png" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false 
+    image: "https://image.lvbibir.cn/blog/Snipaste_2022-09-14_16-02-26.png" 
 ---
 
 # 前言

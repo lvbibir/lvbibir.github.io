@@ -1,27 +1,17 @@
 ---
-title: "centos中free命令详解" 
+title: "centos | free命令详解" 
 date: 2021-08-01
 lastmod: 2021-08-01
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
 - linux
-description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
+- centos
+keywords:
+- linux
+- centos
+- free
+description: "centos中free命令详解，以及centos6和centos7中free命令的不同" 
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: "" 
 ---
 # CentOS6及以前
 
@@ -37,7 +27,7 @@ Swap:         1153           0         1153
 
 第一行：
 
-​	系统内存主要分为五部分：total(系统内存总量)，used(程序已使用内存)，free(空闲内存)，buffers(buffer cache)，cached(Page cache)。
+​	系统内存主要分为五部分：`total`(系统内存总量)，`used`(程序已使用内存)，`free`(空闲内存)，`buffers`(buffer cache)，`cached`(Page cache)。
 
 ​	系统总内存total = used + free； buffers和cached被算在used里，因此第一行系统已使用内存used = buffers + cached + 第二行系统已使用内存used
 
@@ -72,7 +62,7 @@ Swap:             0           0           0
 
 buffer和cached被合成一组，加入了一个available，关于此available，文档上的说明如下：
 
-MemAvailable: An estimate of how much memory is available for starting new applications, without swapping.
+>  MemAvailable: An estimate of how much memory is available for starting new applications, without swapping.
 
 即系统可用内存，之前说过由于buffer和cache可以在需要时被释放回收，系统可用内存即 free + buffer + cache，在CentOS7之后这种说法并不准确，因为并不是所有的buffer/cache空间都可以被回收。
 

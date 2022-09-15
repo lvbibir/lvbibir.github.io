@@ -1,27 +1,16 @@
 ---
-title: "关闭X服务本地监听的6000端口" 
+title: "centos6关闭本地监听的6000端口" 
 date: 2022-01-01
 lastmod: 2022-01-01
-author: ["lvbibir"] 
-categories: 
-- 
 tags: 
 - linux
-description: "" 
-weight: 
-slug: ""
-draft: false # 是否为草稿
-comments: true #是否展示评论
-showToc: true # 显示目录
-TocOpen: true # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
+- CVE
+keywords:
+- linux
+- CVE
+description: "介绍如何在centos6中修复CVE-1999-0526披露的漏洞" 
 cover:
-    image: "" #图片路径：posts/tech/文章1/picture.png
-    caption: "" #图片底部描述
-    alt: ""
-    relative: false
+    image: "" 
 ---
 # 前言
 
