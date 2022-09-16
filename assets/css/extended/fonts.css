@@ -11,4 +11,5 @@
 @font-face {
     font-family: "han-yi-jin-kai-jian";
     src: url("https://image.lvbibir.cn/fonts/%E6%B1%89%E4%BB%AA%E5%8A%B2%E6%A5%B7%E7%AE%80.woff2") format("truetype");
+    font-display: swap;
 }
