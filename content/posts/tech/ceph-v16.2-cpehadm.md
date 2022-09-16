@@ -13,7 +13,7 @@ keywords:
 - arm
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/Snipaste_2022-09-14_16-02-26.png" 
+    image: "https://image.lvbibir.cn/blog/ceph.png" 
 ---
 
 # 前言

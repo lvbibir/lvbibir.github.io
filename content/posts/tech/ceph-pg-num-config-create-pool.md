@@ -10,7 +10,7 @@ keywords:
 - ceph
 description: "介绍在ceph集群创建pool时pb_num参数如何配置以及较为通用的取值" 
 cover:
-    image: "https://image.lvbibir.cn/blog/Snipaste_2022-09-14_16-02-26.png" 
+    image: "https://image.lvbibir.cn/blog/ceph.png" 
 ---
 # pg_num
 

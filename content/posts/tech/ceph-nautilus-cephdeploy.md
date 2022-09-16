@@ -12,7 +12,7 @@ keywords:
 - ceph
 description: "介绍在centos7环境中通过ceph-deploy部署ceph集群（nautilus）和可视化的dashboard" 
 cover:
-    image: "https://image.lvbibir.cn/blog/Snipaste_2022-09-14_16-02-26.png" 
+    image: "https://image.lvbibir.cn/blog/ceph.png" 
 ---
 # 前言
 
