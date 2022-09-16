@@ -6,7 +6,7 @@
     <description>Recent content in docker on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 06 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello,hugo!</title>
       <link>https://www.lvbibir.cn/posts/blog/hello-hugo/</link>
@@ -17,12 +17,21 @@
     </item>
     
     <item>
+      <title>cephadm离线安装ceph-V16.2.8</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</link>
+      <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</guid>
+      <description>前言 适用于 Centos8 + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有</description>
+    </item>
+    
+    <item>
       <title>docker | 脚本方式批量导出&amp;导入镜像</title>
       <link>https://www.lvbibir.cn/posts/tech/docker-import-export-image/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-import-export-image/</guid>
-      <description>python方式 批量导出，运行后所有tar包都在当前目录下 # encoding: utf-8 import re import os import subprocess if __name__ == &amp;#34;__main__&amp;#34;: p = subprocess.Popen(&amp;#39;docker images&amp;#39;, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) for line in p.stdout.readlines(): # 此处的正则表达式是为了匹配镜像名</description>
+      <description>通过shell | python的方式批量导入导出docker镜像</description>
     </item>
     
     <item>
@@ -40,7 +49,7 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-machine/</guid>
-      <description>Docker Machine简介 Docker Machine 是 Docker 官方编排（Orchestration）项目之一，负责在多种平台上快速安装 Docker环境。 Docker Machine支持在</description>
+      <description>docker machine简介以及实战</description>
     </item>
     
     <item>
@@ -49,7 +58,7 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-swarm/</guid>
-      <description>docker swarm 概述 https://blog.csdn.net/anumbrella/article/details/80369913 docker swarm 使用 环境搭建 准备3台Ubuntu系统主机(即用于搭建集群的3个Docker机器)，每台机器上都需要安装Docker并且可以连接</description>
+      <description>介绍docker-swarm集群的概述、使用和集群管理</description>
     </item>
     
     <item>
@@ -58,7 +67,7 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-command/</guid>
-      <description>docker info&amp;mdash;&amp;ndash;查看docker的各项信息 查看docke的各项操作，包括docker版本、容器数量、镜像数量、仓库地址</description>
+      <description>基于docker-18.03.0-ce版本，介绍常见的docker命令及参数的使用方法</description>
     </item>
     
     <item>
@@ -67,7 +76,7 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-rong-qi-kua-zhu-ji-lian-jie/</guid>
-      <description>实现跨主机的docker容器之间的通讯： 使用网桥实现跨主机的连接 docker原生的网络：overlay、macvlan 第三方网络：flaan</description>
+      <description>介绍docker容器在不同宿主机下实现通信的几种方案</description>
     </item>
     
     <item>
@@ -76,7 +85,7 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-data-volume/</guid>
-      <description>什么是数据卷 docker的理念之一就是将应用与其运行的环境打包。通常docker容器的生命周期都是与在容器中运行的程序相一致的，我们对于数据</description>
+      <description>介绍如何使用docker的数据卷和数据卷容器</description>
     </item>
     
     <item>
@@ -85,7 +94,7 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-jian-jie/</guid>
-      <description>docker简介 Docker 是一个开源项目，诞生于 2013 年初，最初是 dotCloud 公司内部的一个业余项目。它基于 Google 公司推出的 Go 语言实现。 项目后来加入了 Linux 基金会，遵从了</description>
+      <description>介绍docker的一些基础概念和优势</description>
     </item>
     
     <item>
@@ -94,7 +103,7 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-network/</guid>
-      <description>概述 独立容器网络：none host none网络最为安全，只有localback接口 host网络只和物理机相连，保证跟物理机相连的网络效率 跟物理机完</description>
+      <description>docker的网络结构简介 | 同一宿主机的docker容器之间是如何通信的</description>
     </item>
     
     <item>
@@ -103,7 +112,7 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-yuan-cheng-fang-wen/</guid>
-      <description>前言 实现docker客户端与另一台主机上的docker守护进程进行通信 环境准备 主机版本为Centos7.4，docker版本为docker-</description>
+      <description>实现docker客户端与另一台主机上的docker守护进程进行通信</description>
     </item>
     
     <item>
@@ -112,7 +121,7 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-run-nginx/</guid>
-      <description>创建映射80端口的交互式容器 [root@localhost ~]# docker run -it -p 80 --name web centos /bin/bash 安装nginx 安装wget、vim、make以及一些所需要的库文件和语言环境 [root@ca453e479d0c /]# yum -y install wget gcc</description>
+      <description>在docker中快速部署一个可以提供web服务的nginx服务器</description>
     </item>
     
   </channel>

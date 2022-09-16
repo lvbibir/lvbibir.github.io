@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CVE on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/cve/</link>
+    <description>Recent content in CVE on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 01 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/cve/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>centos6关闭本地监听的6000端口</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos6-close-6000-port/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos6-close-6000-port/</guid>
+      <description>介绍如何在centos6中修复CVE-1999-0526披露的漏洞</description>
+    </item>
+    
+  </channel>
+</rss>

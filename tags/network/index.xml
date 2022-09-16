@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>network on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/network/</link>
+    <description>Recent content in network on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 01 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>多网卡时设置网络优先级以及添加静态路由</title>
+      <link>https://www.lvbibir.cn/posts/tech/network-priority/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/network-priority/</guid>
+      <description>介绍centos和windows中分别如何配置多网卡时以实现灵活的网络访问</description>
+    </item>
+    
+    <item>
+      <title>centos7修改网卡名称</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7-change-network-card-name/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7-change-network-card-name/</guid>
+      <description>介绍如何在centos7的系统中通过配置网络规则命名文件的方式修改网卡的名称</description>
+    </item>
+    
+  </channel>
+</rss>

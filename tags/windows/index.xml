@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>windows on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/windows/</link>
+    <description>Recent content in windows on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 27 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python批量修改目录下文件名</title>
+      <link>https://www.lvbibir.cn/posts/tech/python-rename-file/</link>
+      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/python-rename-file/</guid>
+      <description>将windows中某个目录下的所有文件中的下划线_替换为中划线-</description>
+    </item>
+    
+    <item>
+      <title>多网卡时设置网络优先级以及添加静态路由</title>
+      <link>https://www.lvbibir.cn/posts/tech/network-priority/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/network-priority/</guid>
+      <description>介绍centos和windows中分别如何配置多网卡时以实现灵活的网络访问</description>
+    </item>
+    
+  </channel>
+</rss>

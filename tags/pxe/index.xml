@@ -8,12 +8,12 @@
     <language>zh-cn</language>
     <lastBuildDate>Thu, 18 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/pxe/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>pxe环境中对不同模式(legacy和UEFI)和不同CPU架构(x86和aarch64)的处理</title>
+      <title>pxe如何应对复杂的服务器硬件环境</title>
       <link>https://www.lvbibir.cn/posts/tech/pxe-dhcp-legacy-uefi-archs/</link>
       <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/pxe-dhcp-legacy-uefi-archs/</guid>
-      <description>前言 在 pxe 的一般场景下，通常在只需要在 dhcp 服务中配置一个通用的 filename 来指定客户端在 tftp 服务端获取的引导程序，但是在略微复杂的场景中，比如可能有些服务器</description>
+      <description>本文主要探讨如何配置dhcp来使pxe可以应对复杂的服务器环境</description>
     </item>
     
     <item>
@@ -22,11 +22,11 @@
       <pubDate>Tue, 12 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/pxe-install-scripts/</guid>
-      <description>前言 测试环境： x86_64（amd ryzen 7 4800u）：vmware workstation V16.1.2 aarch64（kunpeng 920）： kvm-2.12 注意测试的网络环境中不要存在其</description>
+      <description>自己整理的一些工作中用到的不同系统对应的pxe配置方法</description>
     </item>
     
     <item>
-      <title>pxe 安装 isoft-5.1(aarch64)(浪潮inspur服务器)</title>
+      <title>pxe 安装 isoft-5.1(aarch64)</title>
       <link>https://www.lvbibir.cn/posts/tech/pxe-inspur-isoft5.1-aarch64/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       

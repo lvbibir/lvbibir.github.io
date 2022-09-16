@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>centos on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/centos/</link>
+    <description>Recent content in centos on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>centos7修改网卡名称</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7-change-network-card-name/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7-change-network-card-name/</guid>
+      <description>介绍如何在centos7的系统中通过配置网络规则命名文件的方式修改网卡的名称</description>
+    </item>
+    
+    <item>
+      <title>CentOS | 密码尝试次数过多</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</guid>
+      <description>介绍centos系统中的pam模块，以及出现尝试密码次数过多如何处理</description>
+    </item>
+    
+    <item>
+      <title>centos7.5升级内核至5.10</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos-update-kernel-to-5.10/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos-update-kernel-to-5.10/</guid>
+      <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm的缩写 长期维护版 ml m</description>
+    </item>
+    
+    <item>
+      <title>centos7部署ceph&#43;dashboard（nautilus）</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-nautilus-cephdeploy/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-nautilus-cephdeploy/</guid>
+      <description>介绍在centos7环境中通过ceph-deploy部署ceph集群（nautilus）和可视化的dashboard</description>
+    </item>
+    
+    <item>
+      <title>kubeadm 搭建 k8s 集群 [离线版] v1.18.6</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-v1.18.6-kubeadm-offline/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-v1.18.6-kubeadm-offline/</guid>
+      <description>Kubernetes 概述 kubernetes 是什么 kubernetes 是 Google 在 2014年开源的一个容器集群管理平台，kubernetes简称 k8s k8s用于容器化应用程序的部署，扩展和管理。 k8s提供</description>
+    </item>
+    
+    <item>
+      <title>kubeadm快速搭建K8s集群v1.22.3</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</guid>
+      <description>在centos中使用kubeadm快速搭建k8s集群、dashboard配置、安装cni组件的过程</description>
+    </item>
+    
+    <item>
+      <title>centos | free命令详解</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos-free/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos-free/</guid>
+      <description>centos中free命令详解，以及centos6和centos7中free命令的不同</description>
+    </item>
+    
+    <item>
+      <title>centos7开启bbr算法</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7-open-bbr/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7-open-bbr/</guid>
+      <description>前言 介绍在CentOS7上部署BBR的详细过程 BBR简介：（Bottleneck Bandwidth and RTT）是一种新的拥塞控制算法，由Google开发。有了</description>
+    </item>
+    
+    <item>
+      <title>centos6部署openvpn</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos6-deploy-openvpn/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos6-deploy-openvpn/</guid>
+      <description>介绍如何在centos6的环境中部署openvpn服务实现内网穿透</description>
+    </item>
+    
+    <item>
+      <title>centos7基线检查（benchmark）平台部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7-deploy-benchmark/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7-deploy-benchmark/</guid>
+      <description>介绍在centos7环境中部署开源的benchmark基线检查平台，并通过web界面可视化展示</description>
+    </item>
+    
+  </channel>
+</rss>

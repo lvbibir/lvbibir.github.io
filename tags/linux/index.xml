@@ -6,41 +6,77 @@
     <description>Recent content in linux on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 14 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cephadm离线安装ceph-V16.2.8</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</link>
+      <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</guid>
+      <description>前言 适用于 Centos8 + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有</description>
+    </item>
+    
+    <item>
+      <title>pxe如何应对复杂的服务器硬件环境</title>
+      <link>https://www.lvbibir.cn/posts/tech/pxe-dhcp-legacy-uefi-archs/</link>
+      <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/pxe-dhcp-legacy-uefi-archs/</guid>
+      <description>本文主要探讨如何配置dhcp来使pxe可以应对复杂的服务器环境</description>
+    </item>
+    
+    <item>
+      <title>cephadm 安装 ceph-V16.2-aarch64</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</link>
+      <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</guid>
+      <description>前言 ceph：v16.2（pacific） 操作系统：icloudos_v1.0_aarch64（openEuler-20.03-LTS-aa</description>
+    </item>
+    
     <item>
       <title>glibc 误升级后修复</title>
       <link>https://www.lvbibir.cn/posts/tech/glibc-wu-sheng-ji/</link>
       <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/glibc-wu-sheng-ji/</guid>
-      <description>前言 记录一下在 OpenEuler 20.03 LTS aarch64 系统上误操作升级了 glibc 后紧急修复的步骤 起因 在使用 cephadm 安装 ceph v16.2 时升级了 python，系统默认版本是 3.7.4 ，升级后版本是 3.8.5</description>
+      <description>记录一下在 OpenEuler 20.03 LTS aarch64 系统上误操作升级了 glibc 后紧急修复的步骤</description>
     </item>
     
     <item>
-      <title>多网卡时设置网络优先级及添加静态路由的方法</title>
+      <title>pxe 安装配置大全</title>
+      <link>https://www.lvbibir.cn/posts/tech/pxe-install-scripts/</link>
+      <pubDate>Tue, 12 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/pxe-install-scripts/</guid>
+      <description>自己整理的一些工作中用到的不同系统对应的pxe配置方法</description>
+    </item>
+    
+    <item>
+      <title>多网卡时设置网络优先级以及添加静态路由</title>
       <link>https://www.lvbibir.cn/posts/tech/network-priority/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/network-priority/</guid>
-      <description>前言 在工作中需要连接公司内网（有线，不可联网），访问外网时需要连接无线 同时接入这两个网络时，内网访问正常，外网无法访问。 此时可以通过调整网络</description>
+      <description>介绍centos和windows中分别如何配置多网卡时以实现灵活的网络访问</description>
     </item>
     
     <item>
-      <title>httpd源码构建rpm</title>
+      <title>httpd源码打包编译成rpm包</title>
       <link>https://www.lvbibir.cn/posts/tech/httpd-src-build-rpm/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/httpd-src-build-rpm/</guid>
-      <description>系统版本：isoft-serveros-v4.2（centos7） 源码下载链接： https://dlcdn.apache.org//apr/apr-1.7.0.tar.bz2 https://dlcdn.apache.org//apr/apr-util-1.6.1.tar.bz2 https://dlcdn.apache.org//httpd/httpd-2.4.52.tar.bz2 安装依赖 yum install -y wget gcc rpm-build yum install -y autoconf zlib-devel libselinux-devel libuuid-devel apr-devel apr-util-devel pcre-devel openldap-devel lua-devel libxml2-devel openssl-devel yum install -y</description>
+      <description>记录一下centos7中通过源码构建httpd rpm包的过程</description>
     </item>
     
     <item>
-      <title>openssl源码构建rpm</title>
+      <title>openssl源码打包编译成rpm包</title>
       <link>https://www.lvbibir.cn/posts/tech/openssl-src-build-rpm/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/openssl-src-build-rpm/</guid>
-      <description>环境 iSoftserver-v4.2(Centos-7) openssl version：1.0.2k 编译 从github上看到的编译脚本，本地修改后： #!/bin/bash set -e set -v mkdir ~/openssl &amp;amp;&amp;amp; cd ~/openssl yum -y install \ curl \ which \ make \ gcc \ perl \ perl-WWW-Curl \ rpm-build #</description>
+      <description>记录一下centos7系统中通过源码构建openssh rpm包的过程</description>
     </item>
     
     <item>
@@ -49,43 +85,61 @@
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos7-change-network-card-name/</guid>
-      <description>前言 在使用kolla-ansible部署多节点openstack时，所有节点的外网网卡名称和管理网卡名称需要一样，其中两台是型号相同的物理机</description>
+      <description>介绍如何在centos7的系统中通过配置网络规则命名文件的方式修改网卡的名称</description>
     </item>
     
     <item>
-      <title>Centos7.5升级内核至5.10</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos7-update-kernel-to-5.10/</link>
-      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      <title>ceph创建pool时pg_num的配置</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-pg-num-config-create-pool/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/centos7-update-kernel-to-5.10/</guid>
-      <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm的缩写 长期维护版 ml m</description>
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-pg-num-config-create-pool/</guid>
+      <description>介绍在ceph集群创建pool时pb_num参数如何配置以及较为通用的取值</description>
     </item>
     
     <item>
-      <title>CentOS密码尝试次数过多</title>
+      <title>docker | 脚本方式批量导出&amp;导入镜像</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-import-export-image/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker-import-export-image/</guid>
+      <description>通过shell | python的方式批量导入导出docker镜像</description>
+    </item>
+    
+    <item>
+      <title>CentOS | 密码尝试次数过多</title>
       <link>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</guid>
-      <description>pam模块 pam：Pluggable Authentication Modules 可插拔的认证模块，linux 中的认证方式，“可插拔的“说明可以按需对认证内容进行变更。与nsswit</description>
+      <description>介绍centos系统中的pam模块，以及出现尝试密码次数过多如何处理</description>
     </item>
     
     <item>
-      <title>关闭X服务本地监听的6000端口</title>
-      <link>https://www.lvbibir.cn/posts/tech/close-6000-port/</link>
+      <title>centos6关闭本地监听的6000端口</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos6-close-6000-port/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/close-6000-port/</guid>
-      <description>前言 基于CVE-1999-0526漏洞的披露，对系统X服务的6000端口进行关闭 有三种方式： 修改系统/usr/bin/X内容，增加nolis</description>
+      <guid>https://www.lvbibir.cn/posts/tech/centos6-close-6000-port/</guid>
+      <description>介绍如何在centos6中修复CVE-1999-0526披露的漏洞</description>
+    </item>
+    
+    <item>
+      <title>centos7.5升级内核至5.10</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos-update-kernel-to-5.10/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos-update-kernel-to-5.10/</guid>
+      <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm的缩写 长期维护版 ml m</description>
     </item>
     
     <item>
       <title>centos7部署ceph&#43;dashboard（nautilus）</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos7-deploy-ceph-dashboard-nautilus/</link>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-nautilus-cephdeploy/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/centos7-deploy-ceph-dashboard-nautilus/</guid>
-      <description>前言 ceph测试环境的搭建 基本环境 物理环境：Vmware Workstaion 系统版本：Centos-7.9-Minimal 两个osd节点添加一块虚拟磁盘，建议</description>
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-nautilus-cephdeploy/</guid>
+      <description>介绍在centos7环境中通过ceph-deploy部署ceph集群（nautilus）和可视化的dashboard</description>
     </item>
     
     <item>
@@ -98,12 +152,48 @@
     </item>
     
     <item>
+      <title>部署 Ambari 2.7.5 &#43; HDP3.1.5</title>
+      <link>https://www.lvbibir.cn/posts/tech/ambari-2.7.5-and-hdp-3.1.5/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/ambari-2.7.5-and-hdp-3.1.5/</guid>
+      <description>记录通过 Ambari 部署 hadoop 集群的过程</description>
+    </item>
+    
+    <item>
+      <title>kolla-ansible部署Train版openstack（all-in-one）</title>
+      <link>https://www.lvbibir.cn/posts/tech/openstack-kolla-ansible-allinone-train/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/openstack-kolla-ansible-allinone-train/</guid>
+      <description>介绍cenots中使用kolla-ansible&#43;docker的方式快速部署openstack(all-in-one)单节点</description>
+    </item>
+    
+    <item>
+      <title>kubeadm 搭建 k8s 集群 [离线版] v1.18.6</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-v1.18.6-kubeadm-offline/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-v1.18.6-kubeadm-offline/</guid>
+      <description>Kubernetes 概述 kubernetes 是什么 kubernetes 是 Google 在 2014年开源的一个容器集群管理平台，kubernetes简称 k8s k8s用于容器化应用程序的部署，扩展和管理。 k8s提供</description>
+    </item>
+    
+    <item>
+      <title>kubeadm快速搭建K8s集群v1.22.3</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</guid>
+      <description>在centos中使用kubeadm快速搭建k8s集群、dashboard配置、安装cni组件的过程</description>
+    </item>
+    
+    <item>
       <title>openssh源码打包编译成rpm包</title>
       <link>https://www.lvbibir.cn/posts/tech/openssh-src-build-rpm/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/openssh-src-build-rpm/</guid>
-      <description>openssh-8.7p1 编译环境 编译平台： vmware workstation 系统版本： 普华服务器操作系统v4.2 系统内核： 3.10.0-327.el7.isoft.x86_64 软件版本： openssh-8.7p1.tar.gz x11-ssh-askpass-1.2.4.1.tar.gz 编译步骤 yum安装依赖工具 yum install wget vim gdb imake libXt-devel gtk2-devel rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel</description>
+      <description>记录一下不同系统环境下通过源码构建openssh rpm包的过程</description>
     </item>
     
     <item>
@@ -134,6 +224,15 @@
     </item>
     
     <item>
+      <title>centos | free命令详解</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos-free/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos-free/</guid>
+      <description>centos中free命令详解，以及centos6和centos7中free命令的不同</description>
+    </item>
+    
+    <item>
       <title>centos7开启bbr算法</title>
       <link>https://www.lvbibir.cn/posts/tech/centos7-open-bbr/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
@@ -143,21 +242,12 @@
     </item>
     
     <item>
-      <title>centos中free命令详解</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos-free/</link>
-      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/centos-free/</guid>
-      <description>CentOS6及以前 在CentOS6及以前的版本中，free命令输出是这样的： [root@wordpress ~]# free -m total used free shared buffers cached Mem: 1002 769 233 0 62 421 -/+ buffers/cache: 286 716 Swap: 1153 0 1153 第一行： ​ 系</description>
-    </item>
-    
-    <item>
       <title>H3C服务器装完系统无法引导</title>
       <link>https://www.lvbibir.cn/posts/tech/h3c-server-can-not-boot-system/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/h3c-server-can-not-boot-system/</guid>
-      <description>前端时间在国家信息中心的一个项目上需要在 H3C 服务器上安装操作系统然后配置一套 spring boot 项目，结果在装操作系统过程中就遇到了问题：安装完操作系统后无法</description>
+      <description>记录一下在H3C服务器上系统无法引导的问题的解决</description>
     </item>
     
     <item>
@@ -166,25 +256,34 @@
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/h3c-server-config-raid/</guid>
-      <description>1、进入bios修改启动模式，将 UEFI 改为 Legacy bios 2、 重启服务器，ctrl + r 进入 lsi 阵列卡管理 3、选择对应阵列卡 4、配置逻辑盘 5、配置完逻辑盘后可以</description>
+      <description>记录一下H3C服务器配置raid的过程</description>
     </item>
     
     <item>
-      <title>记一次服务器被入侵全过程</title>
-      <link>https://www.lvbibir.cn/posts/tech/record-of-server-attacked/</link>
+      <title>pxe 安装 isoft-5.1(aarch64)</title>
+      <link>https://www.lvbibir.cn/posts/tech/pxe-inspur-isoft5.1-aarch64/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/record-of-server-attacked/</guid>
-      <description>周一早上刚到办公室，就听到同事说有一台服务器登陆不上了，我也没放在心上，继续边吃早点，边看币价是不是又跌了。不一会运维的同事也到了，气喘吁吁</description>
+      <guid>https://www.lvbibir.cn/posts/tech/pxe-inspur-isoft5.1-aarch64/</guid>
+      <description>pxe环境 dhcp+tftp+http pxe-server：isoft-serveros-v4.2（3.10.0-957.el7.isoft.x86_64） 引导的is</description>
     </item>
     
     <item>
-      <title>centos7基线检查平台部署</title>
+      <title>centos6部署openvpn</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos6-deploy-openvpn/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos6-deploy-openvpn/</guid>
+      <description>介绍如何在centos6的环境中部署openvpn服务实现内网穿透</description>
+    </item>
+    
+    <item>
+      <title>centos7基线检查（benchmark）平台部署</title>
       <link>https://www.lvbibir.cn/posts/tech/centos7-deploy-benchmark/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos7-deploy-benchmark/</guid>
-      <description>介绍 项目地址 这个项目准备打造一个安全基线检查平台，期望能够以最简单的方式在需要进行检查的服务器上运行。能够达到这么一种效果：基线检查脚本(以</description>
+      <description>介绍在centos7环境中部署开源的benchmark基线检查平台，并通过web界面可视化展示</description>
     </item>
     
     <item>
@@ -198,11 +297,92 @@
     
     <item>
       <title>atd服务报错 Failed with result ‘exit-code’</title>
-      <link>https://www.lvbibir.cn/posts/tech/atd-failed-with-result-exit-code/</link>
+      <link>https://www.lvbibir.cn/posts/tech/atd-failed/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/atd-failed-with-result-exit-code/</guid>
-      <description>有需求需要测试下 at 单次计划任务，系统环境 isoftserveros-v5.1-oe1-aarch64 系统默认没有at软件包，使用本地yum源安装： yum -y install at 安装完后不小心执行了下atd atd 因为at计划任</description>
+      <guid>https://www.lvbibir.cn/posts/tech/atd-failed/</guid>
+      <description>因为一次不小心的手动执行导致的</description>
+    </item>
+    
+    <item>
+      <title>docker | 三剑客之machine</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-machine/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker-machine/</guid>
+      <description>docker machine简介以及实战</description>
+    </item>
+    
+    <item>
+      <title>docker | 三剑客之swarm</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-swarm/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker-swarm/</guid>
+      <description>介绍docker-swarm集群的概述、使用和集群管理</description>
+    </item>
+    
+    <item>
+      <title>docker | 命令大全</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-command/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker-command/</guid>
+      <description>基于docker-18.03.0-ce版本，介绍常见的docker命令及参数的使用方法</description>
+    </item>
+    
+    <item>
+      <title>docker | 容器的跨主机连接</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-rong-qi-kua-zhu-ji-lian-jie/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker-rong-qi-kua-zhu-ji-lian-jie/</guid>
+      <description>介绍docker容器在不同宿主机下实现通信的几种方案</description>
+    </item>
+    
+    <item>
+      <title>docker | 数据卷（data volume）</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-data-volume/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker-data-volume/</guid>
+      <description>介绍如何使用docker的数据卷和数据卷容器</description>
+    </item>
+    
+    <item>
+      <title>docker | 简介以及基础概念</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-jian-jie/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker-jian-jie/</guid>
+      <description>介绍docker的一些基础概念和优势</description>
+    </item>
+    
+    <item>
+      <title>docker | 网络简介</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-network/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker-network/</guid>
+      <description>docker的网络结构简介 | 同一宿主机的docker容器之间是如何通信的</description>
+    </item>
+    
+    <item>
+      <title>docker | 跨主机访问</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-yuan-cheng-fang-wen/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker-yuan-cheng-fang-wen/</guid>
+      <description>实现docker客户端与另一台主机上的docker守护进程进行通信</description>
+    </item>
+    
+    <item>
+      <title>docker | 部署静态网站（nginx）</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-run-nginx/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker-run-nginx/</guid>
+      <description>在docker中快速部署一个可以提供web服务的nginx服务器</description>
     </item>
     
     <item>
@@ -215,12 +395,12 @@
     </item>
     
     <item>
-      <title>编译安装crash（kernel=4.19，cpu=aarch64）</title>
+      <title>编译安装crash(aarch64平台)</title>
       <link>https://www.lvbibir.cn/posts/tech/crash-install-aarch64/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/crash-install-aarch64/</guid>
-      <description>环境：操作系统：isoft-serveros-v5.1鲲鹏版，crash-7.2.8 软件包下载地址 https://ftp.gnu.org/gnu/termcap/termcap-1.3.tar.gz https://github.com/crash-utility/crash/archive/refs/tags/7.2.8.tar.gz https://ftp.gnu.org/gnu/gdb/gdb-7.6.tar.gz 1、安装 termcap 按照 https://blog.csdn.net/u010241497/article/details/82998887 中的方法修改tpar</description>
+      <description>环境： 操作系统：isoft-serveros-v5.1 aarch64版 软件版本：crash-7.2.8 cpu：华为鲲鹏920 软件包下载地址 https://ftp.gnu.org/gnu/termcap/termcap-1.3.tar.gz</description>
     </item>
     
   </channel>
