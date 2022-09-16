@@ -71,20 +71,16 @@ languages:
             url: tags
             weight: 40
           - identifier: archives
-            name: 📈 时间轴
+            name: 📈 归档
             url: archives
             weight: 50
-          # - identifier: shuoshuo
-          #   name: 💬 说说
-          #   url: shuoshuo
-            weight: 55
-          - identifier: about
-            name: 🙋🏻‍♂️ 关于
-            url: about
-            weight: 60
           - identifier: links
             name: 🤝 友链
             url: links
+            weight: 60
+          - identifier: about
+            name: 🙋🏻‍♂️ 关于
+            url: about
             weight: 70
 
 outputs:
