@@ -10,6 +10,12 @@ cover:
 
 # 2022年
 
+## 2022年9月17日，第一次半程马拉松
+
+![running-half-marathon-first](https://image.lvbibir.cn/blog/running-half-marathon-first.jpg)
+
+
+
 ## 2022年 8月
 
 月跑量124.02km，完成15次
