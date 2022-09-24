@@ -6,7 +6,16 @@
     <description>Recent content in linux on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 19 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cephadm安装ceph-V16.2(pacific)(openeuler)</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-openeuler/</link>
+      <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-openeuler/</guid>
+      <description>前言 后续安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm依赖python3.6，而此版本的openeuler内置</description>
+    </item>
+    
     <item>
       <title>cephadm离线安装ceph-V16.2.8</title>
       <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</link>
@@ -26,12 +35,12 @@
     </item>
     
     <item>
-      <title>cephadm 安装 ceph-V16.2-aarch64</title>
+      <title>cephadm安装ceph-V16.2-aarch64</title>
       <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</link>
       <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</guid>
-      <description>前言 ceph：v16.2（pacific） 操作系统：icloudos_v1.0_aarch64（openEuler-20.03-LTS-aa</description>
+      <description>前言 后续安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm依赖python3.6，而此版本的openeuler内置</description>
     </item>
     
     <item>

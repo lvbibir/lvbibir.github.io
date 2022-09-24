@@ -6,13 +6,31 @@
     <description>Recent content in Tags on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 19 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ceph</title>
       <link>https://www.lvbibir.cn/tags/ceph/</link>
-      <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/tags/ceph/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://www.lvbibir.cn/tags/linux/</link>
+      <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openeuler</title>
+      <link>https://www.lvbibir.cn/tags/openeuler/</link>
+      <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/openeuler/</guid>
       <description></description>
     </item>
     
@@ -22,15 +40,6 @@
       <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>https://www.lvbibir.cn/tags/linux/</link>
-      <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/tags/linux/</guid>
       <description></description>
     </item>
     
