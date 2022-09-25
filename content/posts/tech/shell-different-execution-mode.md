@@ -14,7 +14,7 @@ cover:
 
 shell 脚本通常有 `sh filename`、`bash filename`、`./filename`、`source filename` 这四种执行方式
 
-- `source filename` 可以使用 `. filename` 代替，在当前的 bash 环境下读取并执行脚本文件中的命令，且脚本文件文件的变量，在脚本执行完成后会保存下来
+- `source filename` 可以使用 `. filename` 代替，在当前的 bash 环境下读取并执行脚本文件中的命令，且脚本文件的变量，在脚本执行完成后会保存下来
 - `./filename` 和  `sh filename` 或者  `bash filename`  是等效的，都是开启一个子shell来运行脚本文件，脚本中设置的变量执行完毕后不会保存
 
 > 除`./filename` 外，`source filename` 、`. filename` 、`sh filename`  、`bash filename` 都是不需要执行权限的                                    
@@ -127,7 +127,11 @@ sleep 30
 
 ![image-20220630160731914](https://image.lvbibir.cn/blog/image-20220630160731914.png)
 
-输出的第一个进程号和第三个进程号对上了，第二个目前不知道是怎么产生的
+- 第一个pid是在子shell中执行监控脚本的进程号
+- 第二个pid不太清楚哪里来的，也grep不到这个进程号，应该是脚本执行一瞬间就释放掉了
+- 第三个pid是mysql实际运行中的进程号
+
+实际中脚本的pid和mysqld的pid顺序不太一样，取决于pid的大小
 
 在脚本再添加个 grep 过滤掉脚本本身的进程来规避这个问题
 
