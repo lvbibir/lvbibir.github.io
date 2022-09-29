@@ -1,13 +1,11 @@
 ---
-title: "centos | free命令详解" 
+title: "free命令详解" 
 date: 2021-08-01
 lastmod: 2021-08-01
 tags: 
 - linux
-- centos
 keywords:
 - linux
-- centos
 - free
 description: "centos中free命令详解，以及centos6和centos7中free命令的不同" 
 cover:
