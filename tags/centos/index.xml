@@ -62,15 +62,6 @@
     </item>
     
     <item>
-      <title>centos | free命令详解</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos-free/</link>
-      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/centos-free/</guid>
-      <description>centos中free命令详解，以及centos6和centos7中free命令的不同</description>
-    </item>
-    
-    <item>
       <title>centos7开启bbr算法</title>
       <link>https://www.lvbibir.cn/posts/tech/centos7-open-bbr/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>

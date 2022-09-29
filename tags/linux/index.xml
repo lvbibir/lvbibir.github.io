@@ -6,7 +6,16 @@
     <description>Recent content in linux on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 24 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>set命令详解</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-command-set/</link>
+      <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-command-set/</guid>
+      <description>Bash有一个内置的set命令，可以用来查看、设置、取消shell选项 set设置的选项无法被继承，仅对当前的bash环境有效，bash命令也</description>
+    </item>
+    
     <item>
       <title>cephadm安装ceph-V16.2(pacific)(openeuler)</title>
       <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-openeuler/</link>
@@ -233,21 +242,21 @@
     </item>
     
     <item>
-      <title>centos | free命令详解</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos-free/</link>
-      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/centos-free/</guid>
-      <description>centos中free命令详解，以及centos6和centos7中free命令的不同</description>
-    </item>
-    
-    <item>
       <title>centos7开启bbr算法</title>
       <link>https://www.lvbibir.cn/posts/tech/centos7-open-bbr/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos7-open-bbr/</guid>
       <description>前言 介绍在CentOS7上部署BBR的详细过程 BBR简介：（Bottleneck Bandwidth and RTT）是一种新的拥塞控制算法，由Google开发。有了</description>
+    </item>
+    
+    <item>
+      <title>free命令详解</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-command-free/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-command-free/</guid>
+      <description>centos中free命令详解，以及centos6和centos7中free命令的不同</description>
     </item>
     
     <item>
