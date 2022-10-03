@@ -16,7 +16,7 @@ cover:
 
 书名《人间失格》，北京燕山出版社，译者高艳
 
-<!-- {{< douban src="https://book.douban.com/subject/4011670/" >}} -->
+{{< douban src="https://book.douban.com/subject/30422167/" >}}
 
 # 语句摘录
 
