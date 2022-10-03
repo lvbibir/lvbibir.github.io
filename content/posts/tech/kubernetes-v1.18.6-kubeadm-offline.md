@@ -12,7 +12,7 @@ keywords:
 - kubernetes
 description: "" 
 cover:
-    image: "" 
+    image: "https://image.lvbibir.cn/blog/kubernetes.png" 
 ---
 # Kubernetes 概述
 

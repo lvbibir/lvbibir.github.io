@@ -12,7 +12,7 @@ keywords:
 - kubernetes
 description: "在centos中使用kubeadm快速搭建k8s集群、dashboard配置、安装cni组件的过程" 
 cover:
-    image: "" 
+    image: "https://image.lvbibir.cn/blog/kubernetes.png" 
 ---
 # 前言
 
