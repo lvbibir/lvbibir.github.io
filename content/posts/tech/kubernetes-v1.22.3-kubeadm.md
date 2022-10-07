@@ -1,5 +1,5 @@
 ---
-title: "kubeadm快速搭建K8s集群v1.22.3" 
+title: "kubernetes | 简介 | kubeadm搭建K8s集群v1.22.3" 
 date: 2021-10-01
 lastmod: 2021-10-01
 tags: 
@@ -10,23 +10,52 @@ keywords:
 - linux
 - centos
 - kubernetes
-description: "在centos中使用kubeadm快速搭建k8s集群、dashboard配置、安装cni组件的过程" 
+description: "介绍kubernetes，并在centos中使用kubeadm快速搭建k8s集群v1.22.3、dashboard配置、安装cni组件" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png" 
 ---
-# 前言
+# Kubernetes 概述
 
-kubeadm是官方社区推出的一个用于快速部署kubernetes集群的工具。
+## kubernetes 是什么
 
-这个工具能通过两条指令完成一个kubernetes集群的部署：
+- kubernetes 是 Google 在 2014年开源的一个容器集群管理平台，kubernetes简称 k8s
+- k8s用于容器化应用程序的部署，扩展和管理。
+- k8s提供了容器的编排，资源调度，弹性伸缩，部署管理，服务发现等一系列功能
+- kubernetes目标是让部署容器化应用简单高效
 
-```
-# 创建一个 Master 节点
-$ kubeadm init
+## Kubernetes 特性
 
-# 将一个 Node 节点加入到当前集群中
-$ kubeadm join <Master节点的IP和端口 >
-```
+- 自我修复
+  
+  在节点故障时重新启动失败的容器，替换和重新部署，保证预期的副本数量；杀死健康检查失败的容器，并且在未准备好之前不会处理客户端请求，确保线上服务不中断。
+- 伸缩性
+  
+  使用命令、UI或者基于CPU使用情况自动快速扩容和缩容应用程序实例，保证应用业务高峰并发时的高可用性；业务低峰时回收资源，以最小成本运行服务。
+- 自动部署和回滚
+  
+  K8S采用滚动更新策略更新应用，一次更新一个Pod，而不是同时删除所有Pod，如果更新过程中出现问题，将回滚更改，确保升级不受影响业务。
+- 服务发现和负载均衡
+  
+  K8S为多个容器提供一个统一访问入口（内部IP地址和一个DNS名称），并且负载均衡关联的所有容器，使得用户无需考虑容器IP问题。
+- 机密和配置管理
+  
+  管理机密数据和应用程序配置，而不需要把敏感数据暴露在镜像里，提高敏感数据安全性。并可以将一些常用的配置存储在K8S中，方便应用程序使用。
+- 存储编排
+  
+  挂载外部存储系统，无论是来自本地存储，公有云（如AWS），还是网络存储（如NFS、GlusterFS、Ceph）都作为集群资源的一部分使用，极大提高存储使用灵活性。
+- 批处理
+  
+  提供一次性任务，定时任务；满足批量数据处理和分析的场景。
+
+## Kubeadm 概述
+
+> `kubeadm`是`Kubernetes`项目自带的及集群构建工具，负责执行构建一个最小化的可用集群以及将其启动等的必要基本步骤，`kubeadm`是`Kubernetes`集群全生命周期的管理工具，可用于实现集群的部署、升级、降级及拆除。`kubeadm`部署`Kubernetes`集群是将大部分资源以`pod`的方式运行，例如（`kube-proxy`、`kube-controller-manager`、`kube-scheduler`、`kube-apiserver`、`flannel`)都是以`pod`方式运行。
+>
+> `Kubeadm`仅关心如何初始化并启动集群，余下的其他操作，例如安装`Kubernetes Dashboard`、监控系统、日志系统等必要的附加组件则不在其考虑范围之内，需要管理员自行部署。
+>
+> `Kubeadm`集成了`Kubeadm init`和`kubeadm join`等工具程序，其中`kubeadm init`用于集群的快速初始化，其核心功能是部署Master节点的各个组件，而`kubeadm join`则用于将节点快速加入到指定集群中，它们是创建`Kubernetes`集群最佳实践的“快速路径”。另外，`kubeadm token`可于集群构建后管理用于加入集群时使用的认证令牌（`token`)，而`kubeadm reset`命令的功能则是删除集群构建过程中生成的文件以重置回初始状态。
+
+![img](https://image.lvbibir.cn/blog/828019-20201006171931291-1034333699.png)
 
 # 1. 安装要求
 
@@ -84,7 +113,7 @@ $ yum install ntpdate -y
 $ ntpdate time.windows.com
 ```
 
-# 3. 安装 Docker/kubeadm/kubelet/kubectl (所有节点)
+# 3. 安装各项服务(所有节点)
 
 Kubernetes默认CRI（容器运行时）为Docker，因此先安装Docker。
 

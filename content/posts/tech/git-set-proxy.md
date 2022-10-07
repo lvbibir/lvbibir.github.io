@@ -13,16 +13,13 @@ cover:
     image: "" 
 ---
 
-查看 git 全局设置
+查看 git 设置
 
 ```
-git config --global --list
-```
-
-查看当前仓库的 git 设置
-
-```
+# 当前仓库
 git config --list
+# 全局配置
+git config --global --list
 ```
 
 设置全局代理，使用 http 代理

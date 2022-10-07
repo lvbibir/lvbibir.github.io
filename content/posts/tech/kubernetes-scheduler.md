@@ -3,8 +3,6 @@ title: "kubernets | 调度"
 date: 2022-10-03
 lastmod: 2022-10-03
 tags: 
-- linux
-- centos
 - kubernetes
 keywords:
 - linux

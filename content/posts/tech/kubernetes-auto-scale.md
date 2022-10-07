@@ -3,8 +3,6 @@ title: "kubernets | 滚动升级和自动伸缩"
 date: 2022-10-05
 lastmod: 2022-10-05
 tags: 
-- linux
-- centos
 - kubernetes
 keywords:
 - linux

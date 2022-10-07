@@ -3,8 +3,6 @@ title: "kubernets | 控制器"
 date: 2022-10-04
 lastmod: 2022-10-04
 tags: 
-- linux
-- centos
 - kubernetes
 keywords:
 - linux

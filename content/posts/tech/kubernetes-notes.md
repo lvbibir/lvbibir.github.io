@@ -3,8 +3,6 @@ title: "kubernets | 杂记"
 date: 2022-10-01
 lastmod: 2022-10-01
 tags: 
-- linux
-- centos
 - kubernetes
 keywords:
 - linux
@@ -131,4 +129,25 @@ kubectl explain pods.spec.container
 kubectl explain deployment
 ```
 
+## yaml报错排查
+
+```
+error: error parsing pod-configmap.yaml: error converting YAML to JSON: yaml: line 19: did not find expected '-' indicator
+```
+
+解决
+
+由于yaml文件列表对齐不统一导致的
+
+yaml文件格式要对齐，同一级别的对象要放在同一列，几个空格不重要，不要用tab制表符
+
+```yaml
+# 格式1
+ports:
+  - port: 80
+  
+# 格式2
+ports:
+- port: 80
+```
 
