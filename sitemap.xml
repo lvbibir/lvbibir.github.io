@@ -23,19 +23,19 @@
     <loc>https://www.lvbibir.cn/posts/</loc>
     <lastmod>2022-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/centos/</loc>
+    <loc>https://www.lvbibir.cn/tags/kubernetes/</loc>
     <lastmod>2022-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/kubernetes/</loc>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-configmap-secret/</loc>
+    <lastmod>2022-10-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-rbac-podacl/</loc>
     <lastmod>2022-10-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/kubernetes-service-ingress/</loc>
     <lastmod>2022-10-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/kubernetes-storage/</loc>
-    <lastmod>2022-10-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/linux/</loc>
     <lastmod>2022-10-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/</loc>
@@ -64,6 +64,9 @@
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/kubernetes-notes/</loc>
     <lastmod>2022-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/linux/</loc>
+    <lastmod>2022-09-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/linux-command-set/</loc>
     <lastmod>2022-09-28T00:00:00+00:00</lastmod>
@@ -169,6 +172,9 @@
   </url><url>
     <loc>https://www.lvbibir.cn/tags/rpm/</loc>
     <lastmod>2022-09-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/centos/</loc>
+    <lastmod>2022-02-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/centos7-change-network-card-name/</loc>
     <lastmod>2022-02-01T00:00:00+00:00</lastmod>

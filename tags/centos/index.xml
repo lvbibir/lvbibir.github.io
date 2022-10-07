@@ -6,88 +6,7 @@
     <description>Recent content in centos on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 07 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/centos/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>kubernets | service &amp; ingress</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-service-ingress/</link>
-      <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-service-ingress/</guid>
-      <description>介绍kubernetes中的service基础概念，service的两种代理模式，以及ingress控制器的使用</description>
-    </item>
-    
-    <item>
-      <title>kubernets | 存储</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-storage/</link>
-      <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-storage/</guid>
-      <description>介绍kubernetes中的存储使用简介，例如emptydir|hostpath|NFS|pv|pvc|statefulset控制器</description>
-    </item>
-    
-    <item>
-      <title>kubernets | 滚动升级和自动伸缩</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-auto-scale/</link>
-      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-auto-scale/</guid>
-      <description>介绍kubernetes中滚动升级的实现机制，如何手动伸缩pod，以及基于hpa实现自动伸缩</description>
-    </item>
-    
-    <item>
-      <title>kubernets | 控制器</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-controllers/</link>
-      <pubDate>Tue, 04 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-controllers/</guid>
-      <description>介绍kubernetes中几种常用的控制器的使用场景和示例</description>
-    </item>
-    
-    <item>
-      <title>kubernets | 日志</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-logs/</link>
-      <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-logs/</guid>
-      <description>介绍kubernetes中组件日志、标准输出类型的应用日志、文件类型的应用日志如何收集分析</description>
-    </item>
-    
-    <item>
-      <title>kubernets | 监控</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-monitor/</link>
-      <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-monitor/</guid>
-      <description>介绍kubernetes中metric-server监控组件的部署</description>
-    </item>
-    
-    <item>
-      <title>kubernets | 调度</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-scheduler/</link>
-      <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-scheduler/</guid>
-      <description>介绍kubernetes中影响pod调度的一些因素，比如资源限制|nodeSelector|nodeAffinity|Taint|nodeName|DaemonSet控制器</description>
-    </item>
-    
-    <item>
-      <title>kubernets | pod</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-pod/</link>
-      <pubDate>Sun, 02 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-pod/</guid>
-      <description>介绍kubernetes中pod的基础概念、存在意义、pod中容器的分类、静态pod、重启策略、健康检查等</description>
-    </item>
-    
-    <item>
-      <title>kubernets | 杂记</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-notes/</link>
-      <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-notes/</guid>
-      <description>介绍kubectl命令的一些用法、yaml编写技巧等</description>
-    </item>
-    
+    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/centos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>centos7修改网卡名称</title>
       <link>https://www.lvbibir.cn/posts/tech/centos7-change-network-card-name/</link>
@@ -130,16 +49,16 @@
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/kubernetes-v1.18.6-kubeadm-offline/</guid>
-      <description>Kubernetes 概述 kubernetes 是什么 kubernetes 是 Google 在 2014年开源的一个容器集群管理平台，kubernetes简称 k8s k8s用于容器化应用程序的部署，扩展和管理。 k8s提供</description>
+      <description>环境规划 操作系统 IP CPU/MEM 主机名 角色 CentOS 7.7-x86_64 192.168.1.14 2/4G k8s-master Master CentOS 7.7-x86_64 192.168.1.15 2/4G k8s-node1 Work node CentOS 7.7-x86_64 192.168.1.16 2/4G k8s-node2 Work node 【软件包版本号】 name version Docker 3:19.03.13 kubeadm v1.18.6 kubernetes v1.18.6 安装前提条件 Centos 7.x 最小化安装 时钟同步 下载</description>
     </item>
     
     <item>
-      <title>kubeadm快速搭建K8s集群v1.22.3</title>
+      <title>kubernetes | 简介 | kubeadm搭建K8s集群v1.22.3</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</guid>
-      <description>在centos中使用kubeadm快速搭建k8s集群、dashboard配置、安装cni组件的过程</description>
+      <description>介绍kubernetes，并在centos中使用kubeadm快速搭建k8s集群v1.22.3、dashboard配置、安装cni组件</description>
     </item>
     
     <item>
