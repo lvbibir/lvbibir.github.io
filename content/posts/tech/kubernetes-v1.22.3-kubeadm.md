@@ -254,7 +254,7 @@ $ kubectl get pod,svc
 
 访问地址：http://NodeIP:Port  
 
-# 8. 部署 Dashboard
+# 8. 部署Dashboard
 
 ```
 $ wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.4.0/aio/deploy/recommended.yaml
