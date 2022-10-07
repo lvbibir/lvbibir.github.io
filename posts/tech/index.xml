@@ -6,7 +6,88 @@
     <description>Recent content in 👨🏻‍💻 技术 on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 28 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 07 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>kubernets | service &amp; ingress</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-service-ingress/</link>
+      <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-service-ingress/</guid>
+      <description>介绍kubernetes中的service基础概念，service的两种代理模式，以及ingress控制器的使用</description>
+    </item>
+    
+    <item>
+      <title>kubernets | 存储</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-storage/</link>
+      <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-storage/</guid>
+      <description>介绍kubernetes中的存储使用简介，例如emptydir|hostpath|NFS|pv|pvc|statefulset控制器</description>
+    </item>
+    
+    <item>
+      <title>kubernets | 滚动升级和自动伸缩</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-auto-scale/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-auto-scale/</guid>
+      <description>介绍kubernetes中滚动升级的实现机制，如何手动伸缩pod，以及基于hpa实现自动伸缩</description>
+    </item>
+    
+    <item>
+      <title>kubernets | 控制器</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-controllers/</link>
+      <pubDate>Tue, 04 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-controllers/</guid>
+      <description>介绍kubernetes中几种常用的控制器的使用场景和示例</description>
+    </item>
+    
+    <item>
+      <title>kubernets | 日志</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-logs/</link>
+      <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-logs/</guid>
+      <description>介绍kubernetes中组件日志、标准输出类型的应用日志、文件类型的应用日志如何收集分析</description>
+    </item>
+    
+    <item>
+      <title>kubernets | 监控</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-monitor/</link>
+      <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-monitor/</guid>
+      <description>介绍kubernetes中metric-server监控组件的部署</description>
+    </item>
+    
+    <item>
+      <title>kubernets | 调度</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-scheduler/</link>
+      <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-scheduler/</guid>
+      <description>介绍kubernetes中影响pod调度的一些因素，比如资源限制|nodeSelector|nodeAffinity|Taint|nodeName|DaemonSet控制器</description>
+    </item>
+    
+    <item>
+      <title>kubernets | pod</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-pod/</link>
+      <pubDate>Sun, 02 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-pod/</guid>
+      <description>介绍kubernetes中pod的基础概念、存在意义、pod中容器的分类、静态pod、重启策略、健康检查等</description>
+    </item>
+    
+    <item>
+      <title>kubernets | 杂记</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-notes/</link>
+      <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-notes/</guid>
+      <description>介绍kubectl命令的一些用法、yaml编写技巧等</description>
+    </item>
+    
     <item>
       <title>set命令详解</title>
       <link>https://www.lvbibir.cn/posts/tech/linux-command-set/</link>
