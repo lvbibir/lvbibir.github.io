@@ -13,7 +13,9 @@ keywords:
 - cadvisor
 description: "介绍kubernetes中metric-server监控组件的部署" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png" 
+    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    hidden: true
+    hiddenInSingle: true 
 ---
 # 前言
 

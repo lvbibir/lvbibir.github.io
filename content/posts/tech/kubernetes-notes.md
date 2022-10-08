@@ -10,7 +10,9 @@ keywords:
 - kubernetes
 description: "介绍kubectl命令的一些用法、yaml编写技巧等" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png" 
+    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    hidden: true
+    hiddenInSingle: true 
 ---
 
 # 前言
