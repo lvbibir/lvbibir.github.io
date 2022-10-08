@@ -170,7 +170,7 @@ nginx-7cf55fb7bb-qm4vl   1/1     Running   0          37m   10.244.169.135   k8s
 ......
 ```
 
-ipvs模式
+ipvs模式（所有节点都要配置）
 
 ```none
 [root@k8s-node1 ~]# yum install ipvsadm
@@ -191,8 +191,10 @@ EOF
     ipvs:
       scheduler: "rr" #rr, wrr, lc, wlc, ip hash等
 
-# 删除节点的kube-proxy，k8s会再自动拉起一个
-[root@k8s-node1 ~]# kubectl delete pod kube-proxy-wc4hk  -n kube-system
+# 删除所有节点的kube-proxy，k8s会再自动拉起一个
+[root@k8s-node1 ~]# kubectl delete pod kube-proxy-92rd4 -n kube-system
+[root@k8s-node1 ~]# kubectl delete pod kube-proxy-bgzhk -n kube-system
+[root@k8s-node1 ~]# kubectl delete pod kube-proxy-n57zw -n kube-system
 [root@k8s-node1 ~]# kubectl logs kube-proxy-245vq -n kube-system
 ......
 I1005 05:42:48.379343       1 server_others.go:274] Using ipvs Proxier.
@@ -273,7 +275,7 @@ Ingress Contorller主流控制器：
 [root@k8s-node1 ~]# wget https://github.com/kubernetes/ingress-nginx/raw/controller-v1.1.0/deploy/static/provider/baremetal/deploy.yaml --no-check-certificate
 [root@k8s-node1 ~]# vim deploy.yaml
 kind: DaemonSet # 将原先的Deployment修改为DaemontSet，实现所有物理节点访问
-      hostNetwork: true # hostNetwork将ingress-nginx-controller的端口直接暴露在宿主机上，不然还需要创建一个sevice用于暴露ingress-nginx-controller的端口
+      hostNetwork: true # 新增hostNetwork将ingress-nginx-controller的端口直接暴露在宿主机上，不然还需要创建一个sevice用于暴露ingress-nginx-controller的端口
       containers:
         - name: controller
           # 镜像地址
@@ -281,6 +283,11 @@ kind: DaemonSet # 将原先的Deployment修改为DaemontSet，实现所有物理
           image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-webhook-certgen:v1.1.1
           image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-webhook-certgen:v1.1.1
 [root@k8s-node1 ~]# kubectl apply -f deploy.yaml
+
+# 只有两个节点上有ingress-nginx-controller控制器，因为master节点有污点
+[root@k8s-node1 ~]# kubectl get pods -n ingress-nginx -o wide | grep controller
+ingress-nginx-controller-h6hl5            1/1     Running     0          2m36s   1.1.1.3          k8s-node3   <none>           <none>
+ingress-nginx-controller-rwbjx            1/1     Running     0          2m36s   1.1.1.2          k8s-node2   <none>           <none>
 ```
 
 示例（http）
