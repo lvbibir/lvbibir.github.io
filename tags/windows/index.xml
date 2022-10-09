@@ -6,14 +6,14 @@
     <description>Recent content in windows on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 27 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>python批量修改目录下文件名</title>
-      <link>https://www.lvbibir.cn/posts/tech/python-rename-file/</link>
-      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
+      <title>windows | hosts文件修复</title>
+      <link>https://www.lvbibir.cn/posts/tech/windows-hosts/</link>
+      <pubDate>Sun, 09 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/python-rename-file/</guid>
-      <description>将windows中某个目录下的所有文件中的下划线_替换为中划线-</description>
+      <guid>https://www.lvbibir.cn/posts/tech/windows-hosts/</guid>
+      <description>介绍win10中修复hosts文件的方法</description>
     </item>
     
     <item>

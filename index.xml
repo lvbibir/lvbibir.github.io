@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 07 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>跑步日常</title>
       <link>https://www.lvbibir.cn/posts/life/running/</link>
@@ -23,6 +23,15 @@
       
       <guid>https://www.lvbibir.cn/posts/blog/hello-hugo/</guid>
       <description>记录wordpress迁移至hugo&#43;papermod的过程包含环境搭建、博客美化、功能实现、速度优化等……</description>
+    </item>
+    
+    <item>
+      <title>windows | hosts文件修复</title>
+      <link>https://www.lvbibir.cn/posts/tech/windows-hosts/</link>
+      <pubDate>Sun, 09 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/windows-hosts/</guid>
+      <description>介绍win10中修复hosts文件的方法</description>
     </item>
     
     <item>

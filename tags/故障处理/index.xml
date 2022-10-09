@@ -17,6 +17,24 @@
     </item>
     
     <item>
+      <title>记一次程序测试</title>
+      <link>https://www.lvbibir.cn/posts/tech/record-of-program-test/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/record-of-program-test/</guid>
+      <description>前言 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向</description>
+    </item>
+    
+    <item>
+      <title>H3C服务器装完系统无法引导</title>
+      <link>https://www.lvbibir.cn/posts/tech/h3c-server-can-not-boot-system/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/h3c-server-can-not-boot-system/</guid>
+      <description>记录一下在H3C服务器上系统无法引导的问题的解决</description>
+    </item>
+    
+    <item>
       <title>atd服务报错 Failed with result ‘exit-code’</title>
       <link>https://www.lvbibir.cn/posts/tech/atd-failed/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>

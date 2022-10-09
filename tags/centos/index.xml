@@ -44,24 +44,6 @@
     </item>
     
     <item>
-      <title>kubeadm 搭建 k8s 集群 [离线版] v1.18.6</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-v1.18.6-kubeadm-offline/</link>
-      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-v1.18.6-kubeadm-offline/</guid>
-      <description>环境规划 操作系统 IP CPU/MEM 主机名 角色 CentOS 7.7-x86_64 192.168.1.14 2/4G k8s-master Master CentOS 7.7-x86_64 192.168.1.15 2/4G k8s-node1 Work node CentOS 7.7-x86_64 192.168.1.16 2/4G k8s-node2 Work node 【软件包版本号】 name version Docker 3:19.03.13 kubeadm v1.18.6 kubernetes v1.18.6 安装前提条件 Centos 7.x 最小化安装 时钟同步 下载</description>
-    </item>
-    
-    <item>
-      <title>kubernetes | 简介 | kubeadm搭建K8s集群v1.22.3</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</link>
-      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</guid>
-      <description>介绍kubernetes，并在centos中使用kubeadm快速搭建k8s集群v1.22.3、dashboard配置、安装cni组件</description>
-    </item>
-    
-    <item>
       <title>centos7开启bbr算法</title>
       <link>https://www.lvbibir.cn/posts/tech/centos7-open-bbr/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>

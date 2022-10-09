@@ -116,15 +116,6 @@
     </item>
     
     <item>
-      <title>docker | 脚本方式批量导出&amp;导入镜像</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker-import-export-image/</link>
-      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/docker-import-export-image/</guid>
-      <description>通过shell | python的方式批量导入导出docker镜像</description>
-    </item>
-    
-    <item>
       <title>CentOS | 密码尝试次数过多</title>
       <link>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
@@ -176,33 +167,6 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/ambari-2.7.5-and-hdp-3.1.5/</guid>
       <description>记录通过 Ambari 部署 hadoop 集群的过程</description>
-    </item>
-    
-    <item>
-      <title>kolla-ansible部署Train版openstack（all-in-one）</title>
-      <link>https://www.lvbibir.cn/posts/tech/openstack-kolla-ansible-allinone-train/</link>
-      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/openstack-kolla-ansible-allinone-train/</guid>
-      <description>介绍cenots中使用kolla-ansible&#43;docker的方式快速部署openstack(all-in-one)单节点</description>
-    </item>
-    
-    <item>
-      <title>kubeadm 搭建 k8s 集群 [离线版] v1.18.6</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-v1.18.6-kubeadm-offline/</link>
-      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-v1.18.6-kubeadm-offline/</guid>
-      <description>环境规划 操作系统 IP CPU/MEM 主机名 角色 CentOS 7.7-x86_64 192.168.1.14 2/4G k8s-master Master CentOS 7.7-x86_64 192.168.1.15 2/4G k8s-node1 Work node CentOS 7.7-x86_64 192.168.1.16 2/4G k8s-node2 Work node 【软件包版本号】 name version Docker 3:19.03.13 kubeadm v1.18.6 kubernetes v1.18.6 安装前提条件 Centos 7.x 最小化安装 时钟同步 下载</description>
-    </item>
-    
-    <item>
-      <title>kubernetes | 简介 | kubeadm搭建K8s集群v1.22.3</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</link>
-      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</guid>
-      <description>介绍kubernetes，并在centos中使用kubeadm快速搭建k8s集群v1.22.3、dashboard配置、安装cni组件</description>
     </item>
     
     <item>
@@ -320,87 +284,6 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/atd-failed/</guid>
       <description>因为一次不小心的手动执行导致的</description>
-    </item>
-    
-    <item>
-      <title>docker | 三剑客之machine</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker-machine/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/docker-machine/</guid>
-      <description>docker machine简介以及实战</description>
-    </item>
-    
-    <item>
-      <title>docker | 三剑客之swarm</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker-swarm/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/docker-swarm/</guid>
-      <description>介绍docker-swarm集群的概述、使用和集群管理</description>
-    </item>
-    
-    <item>
-      <title>docker | 命令大全</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker-command/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/docker-command/</guid>
-      <description>基于docker-18.03.0-ce版本，介绍常见的docker命令及参数的使用方法</description>
-    </item>
-    
-    <item>
-      <title>docker | 容器的跨主机连接</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker-rong-qi-kua-zhu-ji-lian-jie/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/docker-rong-qi-kua-zhu-ji-lian-jie/</guid>
-      <description>介绍docker容器在不同宿主机下实现通信的几种方案</description>
-    </item>
-    
-    <item>
-      <title>docker | 数据卷（data volume）</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker-data-volume/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/docker-data-volume/</guid>
-      <description>介绍如何使用docker的数据卷和数据卷容器</description>
-    </item>
-    
-    <item>
-      <title>docker | 简介以及基础概念</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker-jian-jie/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/docker-jian-jie/</guid>
-      <description>介绍docker的一些基础概念和优势</description>
-    </item>
-    
-    <item>
-      <title>docker | 网络简介</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker-network/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/docker-network/</guid>
-      <description>docker的网络结构简介 | 同一宿主机的docker容器之间是如何通信的</description>
-    </item>
-    
-    <item>
-      <title>docker | 跨主机访问</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker-yuan-cheng-fang-wen/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/docker-yuan-cheng-fang-wen/</guid>
-      <description>实现docker客户端与另一台主机上的docker守护进程进行通信</description>
-    </item>
-    
-    <item>
-      <title>docker | 部署静态网站（nginx）</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker-run-nginx/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/docker-run-nginx/</guid>
-      <description>在docker中快速部署一个可以提供web服务的nginx服务器</description>
     </item>
     
     <item>

@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.lvbibir.cn/posts/tech/</loc>
-    <lastmod>2022-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-10-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/life/running/</loc>
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
@@ -21,7 +21,19 @@
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/</loc>
-    <lastmod>2022-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-10-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/</loc>
+    <lastmod>2022-10-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/</loc>
+    <lastmod>2022-10-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/windows/</loc>
+    <lastmod>2022-10-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/windows-hosts/</loc>
+    <lastmod>2022-10-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/kubernetes/</loc>
     <lastmod>2022-10-08T00:00:00+00:00</lastmod>
@@ -37,12 +49,6 @@
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/kubernetes-storage/</loc>
     <lastmod>2022-10-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/</loc>
-    <lastmod>2022-10-08T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/</loc>
-    <lastmod>2022-10-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/kubernetes-auto-scale/</loc>
     <lastmod>2022-10-05T00:00:00+00:00</lastmod>
@@ -66,7 +72,7 @@
     <lastmod>2022-10-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/linux/</loc>
-    <lastmod>2022-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/linux-command-set/</loc>
     <lastmod>2022-09-28T00:00:00+00:00</lastmod>
@@ -77,23 +83,11 @@
     <loc>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-openeuler/</loc>
     <lastmod>2022-09-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/openeuler/</loc>
-    <lastmod>2022-09-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</loc>
     <lastmod>2022-08-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/docker/</loc>
     <lastmod>2022-09-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/aarch64/</loc>
-    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/dhcp/</loc>
-    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/pxe/</loc>
-    <lastmod>2022-08-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/pxe-dhcp-legacy-uefi-archs/</loc>
     <lastmod>2022-08-18T00:00:00+00:00</lastmod>
@@ -102,9 +96,6 @@
     <lastmod>2022-07-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/python-rename-file/</loc>
-    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/windows/</loc>
     <lastmod>2022-07-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/read/wei-xi-guan/</loc>
@@ -146,9 +137,6 @@
     <loc>https://www.lvbibir.cn/posts/tech/openstack-kolla-ansible-multinode-train/</loc>
     <lastmod>2022-06-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/network/</loc>
-    <lastmod>2022-06-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/tags/openstack/</loc>
     <lastmod>2022-06-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -164,17 +152,11 @@
     <loc>https://www.lvbibir.cn/posts/tech/httpd-src-build-rpm/</loc>
     <lastmod>2022-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/openssh/</loc>
-    <lastmod>2022-09-05T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/openssl-src-build-rpm/</loc>
     <lastmod>2022-03-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/rpm/</loc>
-    <lastmod>2022-09-05T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/tags/centos/</loc>
-    <lastmod>2022-10-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/centos7-change-network-card-name/</loc>
     <lastmod>2022-02-01T00:00:00+00:00</lastmod>
@@ -192,12 +174,6 @@
     <lastmod>2022-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/centos-update-kernel-to-5.10/</loc>
-    <lastmod>2022-01-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/cve/</loc>
-    <lastmod>2022-01-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/kernel/</loc>
     <lastmod>2022-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/ceph-nautilus-cephdeploy/</loc>
@@ -260,20 +236,11 @@
     <loc>https://www.lvbibir.cn/posts/tech/pxe-inspur-isoft5.1-aarch64/</loc>
     <lastmod>2021-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/raid/</loc>
-    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/tags/wordpress/</loc>
     <lastmod>2021-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/blog/wordpress-to-docker/</loc>
     <lastmod>2021-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/benchmark/</loc>
-    <lastmod>2021-07-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/blog/</loc>
     <lastmod>2021-07-01T00:00:00+00:00</lastmod>
@@ -297,9 +264,6 @@
     <lastmod>2021-07-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/blog/wordpress-ssl/</loc>
-    <lastmod>2021-07-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/%E5%9F%BA%E7%BA%BF%E6%A3%80%E6%9F%A5/</loc>
     <lastmod>2021-07-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/atd-failed/</loc>
