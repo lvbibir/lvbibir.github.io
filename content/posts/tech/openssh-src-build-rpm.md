@@ -4,8 +4,6 @@ date: 2021-09-01
 lastmod: 2022-09-05
 tags: 
 - linux
-- rpm
-- openssh
 keywords:
 - linux
 - rpm

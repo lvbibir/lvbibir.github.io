@@ -2,10 +2,11 @@
 title: "python3修改pip源" 
 date: 2021-12-01
 lastmod: 2021-12-01
-categories: 
-- 
 tags: 
 - python
+keyword:
+- python
+- pip
 description: "" 
 cover:
     image: "" 

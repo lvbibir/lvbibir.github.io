@@ -5,7 +5,6 @@ lastmod: 2022-06-01
 tags: 
 - linux
 - windows
-- network
 keywords:
 - linux
 - windows

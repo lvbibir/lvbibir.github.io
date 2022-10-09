@@ -4,9 +4,6 @@ date: 2022-08-18
 lastmod: 2022-08-18
 tags: 
 - linux
-- pxe
-- aarch64
-- dhcp
 keywords:
 - linux
 - pxe

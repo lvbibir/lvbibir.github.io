@@ -5,7 +5,6 @@ lastmod: 2022-01-01
 tags: 
 - linux
 - centos
-- kernel
 keywords:
 - linux
 - centos

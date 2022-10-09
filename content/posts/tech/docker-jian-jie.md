@@ -3,7 +3,6 @@ title: "docker | 简介以及基础概念"
 date: 2019-08-01
 lastmod: 2019-08-01
 tags: 
-- linux
 - docker
 keywords:
 - linux

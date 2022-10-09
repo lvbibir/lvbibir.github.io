@@ -3,7 +3,6 @@ title: "docker | 数据卷（data volume）"
 date: 2019-08-01
 lastmod: 2019-08-01
 tags: 
-- linux
 - docker
 keywords:
 - linux

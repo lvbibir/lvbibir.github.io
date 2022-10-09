@@ -3,7 +3,6 @@ title: "kolla-ansible部署Train版openstack（all-in-one）"
 date: 2021-10-01
 lastmod: 2021-10-01
 tags: 
-- linux
 - openstack
 keywords:
 - linux

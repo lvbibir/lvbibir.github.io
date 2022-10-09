@@ -3,7 +3,6 @@ title: "docker | 部署静态网站（nginx）"
 date: 2019-08-01
 lastmod: 2019-08-01
 tags: 
-- linux
 - docker
 keywords:
 - linux

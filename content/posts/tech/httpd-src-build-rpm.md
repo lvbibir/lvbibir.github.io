@@ -4,7 +4,6 @@ date: 2022-03-01
 lastmod: 2022-03-01
 tags: 
 - linux
-- rpm
 keywords:
 - linux
 - rpm

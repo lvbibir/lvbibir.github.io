@@ -2,8 +2,6 @@
 title: "kolla-ansible部署Train版openstack（multinode）" 
 date: 2022-06-01
 lastmod: 2022-06-01
-categories: 
-- 
 tags: 
 - openstack
 description: "介绍cenots中使用kolla-ansible+docker的方式快速部署openstack(multinode)集群式" 

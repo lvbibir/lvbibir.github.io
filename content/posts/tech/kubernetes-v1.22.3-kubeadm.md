@@ -3,8 +3,6 @@ title: "kubernetes | 简介 | kubeadm搭建K8s集群v1.22.3"
 date: 2021-10-01
 lastmod: 2022-10-08
 tags: 
-- linux
-- centos
 - kubernetes
 keywords:
 - linux

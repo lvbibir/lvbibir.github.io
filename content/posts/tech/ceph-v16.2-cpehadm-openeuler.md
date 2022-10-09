@@ -5,7 +5,6 @@ lastmod: 2022-09-24
 tags: 
 - linux
 - ceph
-- openeuler
 keywords:
 - linux
 - ceph

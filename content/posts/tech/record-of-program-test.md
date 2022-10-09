@@ -4,6 +4,7 @@ date: 2021-09-01
 lastmod: 2021-09-01
 tags: 
 - linux
+- 故障处理
 keywords:
 - linux
 - openeuler
