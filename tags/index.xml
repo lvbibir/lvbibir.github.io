@@ -62,15 +62,6 @@
     </item>
     
     <item>
-      <title>read</title>
-      <link>https://www.lvbibir.cn/tags/read/</link>
-      <pubDate>Sun, 24 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/tags/read/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>故障处理</title>
       <link>https://www.lvbibir.cn/tags/%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/</link>
       <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
@@ -80,11 +71,11 @@
     </item>
     
     <item>
-      <title>hugo</title>
-      <link>https://www.lvbibir.cn/tags/hugo/</link>
+      <title>博客搭建</title>
+      <link>https://www.lvbibir.cn/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/tags/hugo/</guid>
+      <guid>https://www.lvbibir.cn/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
       <description></description>
     </item>
     
@@ -94,15 +85,6 @@
       <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/tags/shell/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>https://www.lvbibir.cn/tags/git/</link>
-      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/tags/git/</guid>
       <description></description>
     </item>
     
@@ -130,15 +112,6 @@
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/tags/wordpress/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>blog</title>
-      <link>https://www.lvbibir.cn/tags/blog/</link>
-      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/tags/blog/</guid>
       <description></description>
     </item>
     
