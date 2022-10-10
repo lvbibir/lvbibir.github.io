@@ -3,7 +3,7 @@ title: "markdown图片存储方案 | typora+picgo+七牛云"
 date: 2021-07-01
 lastmod: 2021-07-01
 tags: 
-- blog
+- 博客搭建
 keywords:
 - markdown
 - typora

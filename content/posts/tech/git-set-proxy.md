@@ -3,7 +3,7 @@ title: "git设置代理"
 date: 2022-06-01
 lastmod: 2022-06-01
 tags: 
-- git
+- linux
 keywords:
 - git
 - proxy
