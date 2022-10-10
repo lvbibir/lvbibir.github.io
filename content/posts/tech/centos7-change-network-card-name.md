@@ -5,7 +5,6 @@ lastmod: 2022-02-01
 tags: 
 - linux
 - centos
-- network
 keywords:
 - linux
 - centos

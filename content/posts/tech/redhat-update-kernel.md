@@ -4,7 +4,6 @@ date: 2021-09-01
 lastmod: 2021-09-01
 tags: 
 - linux
-- kernel
 keywords:
 - linux
 - redhat

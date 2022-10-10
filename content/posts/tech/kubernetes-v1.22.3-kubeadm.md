@@ -1,10 +1,8 @@
 ---
 title: "kubernetes | 简介 | kubeadm搭建K8s集群v1.22.3" 
 date: 2021-10-01
-lastmod: 2021-10-01
+lastmod: 2022-10-08
 tags: 
-- linux
-- centos
 - kubernetes
 keywords:
 - linux
@@ -12,7 +10,9 @@ keywords:
 - kubernetes
 description: "介绍kubernetes，并在centos中使用kubeadm快速搭建k8s集群v1.22.3、dashboard配置、安装cni组件" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png" 
+    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    hidden: true
+    hiddenInSingle: true 
 ---
 # Kubernetes 概述
 
@@ -109,6 +109,7 @@ EOF
 $ sysctl --system  # 生效
 
 时间同步：
+$ timedatectl set-timezone Asia/Shanghai
 $ yum install ntpdate -y
 $ ntpdate time.windows.com
 ```
@@ -122,7 +123,6 @@ Kubernetes默认CRI（容器运行时）为Docker，因此先安装Docker。
 ```
 $ wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
 $ yum -y install docker-ce
-$ systemctl enable docker && systemctl start docker
 ```
 
 ## 3.2 配置镜像下载加速器，同时修改docker的cgroupdriver为systemd
@@ -134,7 +134,8 @@ $ cat > /etc/docker/daemon.json << EOF
   "exec-opts": ["native.cgroupdriver=systemd"]
 }
 EOF
-$ systemctl restart docker
+$ systemctl daemon-reload
+$ systemctl enable docker && systemctl start docker
 $ docker info
 ```
 
@@ -214,6 +215,26 @@ NAME         STATUS   ROLES    AGE   VERSION
 k8s-master   Ready    master   2m   v1.18.0
 ```
 
+查看k8s集群状态
+
+```
+$ kubectl get cs
+NAME                 STATUS      MESSAGE                                                                                       ERROR
+scheduler            Unhealthy   Get "http://127.0.0.1:10251/healthz": dial tcp 127.0.0.1:10251: connect: connection refused
+controller-manager   Healthy     ok                                                                      
+etcd-0               Healthy     {"health":"true","reason":""}   
+
+$ vim /etc/kubernetes/manifests/kube-scheduler.yaml
+# 注释掉 --port=0 ，scheduler会自动重启，稍等一小会状态变为正常
+#    - --port=0
+
+$ kubectl get cs
+NAME                 STATUS    MESSAGE                         ERROR
+scheduler            Healthy   ok
+controller-manager   Healthy   ok
+etcd-0               Healthy   {"health":"true","reason":""}
+```
+
 # 5. 加入Kubernetes Node
 
 在192.168.150.102/103（Node）执行。
@@ -255,7 +276,7 @@ Calico 在每一个计算节点利用 Linux Kernel 实现了一个高效的虚�
  https://docs.projectcalico.org/getting-started/kubernetes/quickstart 
 
 ```
-$ wget https://docs.projectcalico.org/manifests/calico.yaml
+$ wget --no-check-certificate https://docs.projectcalico.org/manifests/calico.yaml
 ```
 
 下载完后还需要修改里面定义Pod网络（CALICO_IPV4POOL_CIDR），与前面kubeadm init指定的一样
@@ -263,6 +284,10 @@ $ wget https://docs.projectcalico.org/manifests/calico.yaml
 修改完后应用清单：
 
 ```
+$ vim calico.yaml
+# 这两行默认是注释掉的
+- name: CALICO_IPV4POOL_CIDR
+value: "10.244.0.0/16"
 $ kubectl apply -f calico.yaml
 $ kubectl get pods -n kube-system
 ```

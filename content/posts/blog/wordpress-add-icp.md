@@ -4,6 +4,7 @@ date: 2021-07-01
 lastmod: 2021-07-01
 tags: 
 - wordpress
+- 博客搭建
 keywords:
 - wordpress
 - icp

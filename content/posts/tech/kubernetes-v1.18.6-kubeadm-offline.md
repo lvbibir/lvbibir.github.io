@@ -3,8 +3,6 @@ title: "kubeadm 搭建 k8s 集群 [离线版] v1.18.6"
 date: 2021-10-01
 lastmod: 2021-10-01
 tags: 
-- linux
-- centos
 - kubernetes
 keywords:
 - linux
@@ -12,7 +10,9 @@ keywords:
 - kubernetes
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png" 
+    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    hidden: true
+    hiddenInSingle: true 
 ---
 
 

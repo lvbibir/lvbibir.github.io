@@ -5,8 +5,6 @@ lastmod: 2021-07-01
 tags: 
 - linux
 - centos
-- benchmark
-- 基线检查
 keywords:
 - linux
 - centos

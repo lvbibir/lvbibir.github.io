@@ -13,7 +13,9 @@ keywords:
 - sidebar
 description: "介绍kubernetes中组件日志、标准输出类型的应用日志、文件类型的应用日志如何收集分析" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png" 
+    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    hidden: true
+    hiddenInSingle: true 
 ---
 # 前言
 

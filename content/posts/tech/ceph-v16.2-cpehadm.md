@@ -5,7 +5,6 @@ lastmod: 2022-07-22
 tags: 
 - linux
 - ceph
-- aarch64
 keywords:
 - linux
 - ceph

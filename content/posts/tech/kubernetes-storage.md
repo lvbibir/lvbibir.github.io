@@ -17,7 +17,9 @@ keywords:
 - statefulset
 description: "介绍kubernetes中的存储使用简介，例如emptydir|hostpath|NFS|pv|pvc|statefulset控制器" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png" 
+    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    hidden: true
+    hiddenInSingle: true 
 ---
 # 前言
 
@@ -372,19 +374,13 @@ apiVersion: v1
     - --feature-gates=RemoveSelfLink=false # 添加这个配置
 ```
 
-部署插件
+### 部署NFS插件
+
+下载插件
 
 ```
 git clone https://github.com/kubernetes-incubator/external-storage
 cd external-storage/nfs-client/deploy
-# 授权访问apiserver
-kubectl apply -f rbac.yaml 
-# 部署插件，需修改里面NFS服务器地址与共享目录
-kubectl apply -f deployment.yaml 
-# 创建存储类
-kubectl apply -f class.yaml
-# 查看创建的存储类
-kubectl get storageclasses | sc
 ```
 
 deployment.yaml
@@ -408,8 +404,23 @@ metadata:
   name: managed-nfs-storage
 provisioner: fuseim.pri/ifs 
 parameters:
-  archiveOnDelete: "true" # 设置为true可以使pv自动删除后保留数据，数据挂载目录会重命名为archived-name
+  archiveOnDelete: "true" # 默认是flase，设置为true可以使pv自动删除后保留数据，数据挂载目录会重命名为archived-<name>
 ```
+
+部署插件
+
+```
+# 授权访问apiserver
+kubectl apply -f rbac.yaml 
+# 部署插件
+kubectl apply -f deployment.yaml 
+# 创建存储类
+kubectl apply -f class.yaml
+# 查看创建的存储类
+kubectl get storageclasses | sc
+```
+
+### 示例
 
 部署使用自动pv的pod（deployment）
 

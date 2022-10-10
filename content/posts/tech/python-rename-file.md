@@ -3,7 +3,6 @@ title: "python批量修改目录下文件名"
 date: 2022-07-27
 lastmod: 2022-07-27
 tags: 
-- windows
 - python
 keywrods:
 - windows

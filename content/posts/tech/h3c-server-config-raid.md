@@ -4,8 +4,6 @@ date: 2021-08-01
 lastmod: 2021-08-01
 tags: 
 - linux
-- 服务器
-- raid
 keywords:
 - linux
 - 服务器

@@ -4,7 +4,6 @@ date: 2022-01-01
 lastmod: 2022-01-01
 tags: 
 - linux
-- CVE
 keywords:
 - linux
 - CVE
