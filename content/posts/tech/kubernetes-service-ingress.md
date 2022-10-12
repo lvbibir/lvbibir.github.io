@@ -288,6 +288,11 @@ kind: DaemonSet # 将原先的Deployment修改为DaemontSet，实现所有物理
 [root@k8s-node1 ~]# kubectl get pods -n ingress-nginx -o wide | grep controller
 ingress-nginx-controller-h6hl5            1/1     Running     0          2m36s   1.1.1.3          k8s-node3   <none>           <none>
 ingress-nginx-controller-rwbjx            1/1     Running     0          2m36s   1.1.1.2          k8s-node2   <none>           <none>
+
+
+# 如果出现内部访问报错：failed calling webhook "validate.nginx.ingress.kubernetes.io"
+kubectl get ValidatingWebhookConfiguration
+kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 ```
 
 示例（http）
