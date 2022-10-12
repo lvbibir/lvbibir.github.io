@@ -6,7 +6,25 @@
     <description>Recent content in Tags on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 09 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker</title>
+      <link>https://www.lvbibir.cn/tags/docker/</link>
+      <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shell</title>
+      <link>https://www.lvbibir.cn/tags/shell/</link>
+      <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/shell/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>windows</title>
       <link>https://www.lvbibir.cn/tags/windows/</link>
@@ -44,15 +62,6 @@
     </item>
     
     <item>
-      <title>docker</title>
-      <link>https://www.lvbibir.cn/tags/docker/</link>
-      <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>python</title>
       <link>https://www.lvbibir.cn/tags/python/</link>
       <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
@@ -76,15 +85,6 @@
       <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>shell</title>
-      <link>https://www.lvbibir.cn/tags/shell/</link>
-      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/tags/shell/</guid>
       <description></description>
     </item>
     

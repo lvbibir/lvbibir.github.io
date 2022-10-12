@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 09 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>跑步日常</title>
       <link>https://www.lvbibir.cn/posts/life/running/</link>
@@ -23,6 +23,15 @@
       
       <guid>https://www.lvbibir.cn/posts/blog/hello-hugo/</guid>
       <description>记录wordpress迁移至hugo&#43;papermod的过程包含环境搭建、博客美化、功能实现、速度优化等……</description>
+    </item>
+    
+    <item>
+      <title>shell | 将本地镜像批量推送到harbor</title>
+      <link>https://www.lvbibir.cn/posts/tech/shell-push-harbor/</link>
+      <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/shell-push-harbor/</guid>
+      <description>经常会下一些外网镜像用于测试，手动修改镜像tag然后推送在镜像较多的情况下比较繁琐，本文采用bash脚本方式批量推送不同格式的镜像</description>
     </item>
     
     <item>
