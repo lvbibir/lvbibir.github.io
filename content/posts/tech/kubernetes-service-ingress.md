@@ -68,7 +68,7 @@ spec:
       port: 80 # service端口，内部访问端口
       targetPort: 80 # 代理的业务端口
       nodePort: 30002 # 内部访问端口映射到节点端口
-
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
