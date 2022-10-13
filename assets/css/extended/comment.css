@@ -39,6 +39,7 @@ pre[class*="language-"] > code {
 code[class*="language-"], pre[class*="language-"] { /*会影响到文章里的代码*/
     font-size: 0.9em !important;
     line-height: 1.5 !important;
+    text-shadow: none !important;
     /* font-family: JetBrains Mono; */
     /*background-color: var(--hljs-bg)!important;*/
 }
