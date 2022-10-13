@@ -50,7 +50,7 @@
     <loc>https://www.lvbibir.cn/posts/tech/kubernetes-configmap-secret/</loc>
     <lastmod>2022-10-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-rbac-podacl/</loc>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-rbac-networkpolicy/</loc>
     <lastmod>2022-10-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/kubernetes-service-ingress/</loc>
@@ -65,10 +65,10 @@
     <loc>https://www.lvbibir.cn/posts/tech/kubernetes-controllers/</loc>
     <lastmod>2022-10-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-logs/</loc>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-metrics-server/</loc>
     <lastmod>2022-10-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-monitor/</loc>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-logs/</loc>
     <lastmod>2022-10-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/kubernetes-scheduler/</loc>

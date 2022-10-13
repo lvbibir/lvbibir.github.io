@@ -44,7 +44,7 @@
     </item>
     
     <item>
-      <title>kubernets | configmap &amp; secret</title>
+      <title>kubernetes | configmap &amp; secret</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-configmap-secret/</link>
       <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -53,16 +53,16 @@
     </item>
     
     <item>
-      <title>kubernets | RBAC鉴权和PodAcl</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-rbac-podacl/</link>
+      <title>kubernetes | RBAC鉴权和PodAcl</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-rbac-networkpolicy/</link>
       <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-rbac-podacl/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-rbac-networkpolicy/</guid>
       <description>介绍kubernetes中的安全框架、RBAC鉴权和网络策略（Pod ACL)</description>
     </item>
     
     <item>
-      <title>kubernets | service &amp; ingress</title>
+      <title>kubernetes | service &amp; ingress</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-service-ingress/</link>
       <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -71,7 +71,7 @@
     </item>
     
     <item>
-      <title>kubernets | 存储</title>
+      <title>kubernetes | 存储</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-storage/</link>
       <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -80,7 +80,7 @@
     </item>
     
     <item>
-      <title>kubernets | 滚动升级和自动伸缩</title>
+      <title>kubernetes | 滚动升级和自动伸缩</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-auto-scale/</link>
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -89,7 +89,7 @@
     </item>
     
     <item>
-      <title>kubernets | 控制器</title>
+      <title>kubernetes | 控制器</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-controllers/</link>
       <pubDate>Tue, 04 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -98,7 +98,16 @@
     </item>
     
     <item>
-      <title>kubernets | 日志</title>
+      <title>kubernetes | metrics-server部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-metrics-server/</link>
+      <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-metrics-server/</guid>
+      <description>介绍kubernetes中metric-server监控组件的部署</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | 日志</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-logs/</link>
       <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -107,16 +116,7 @@
     </item>
     
     <item>
-      <title>kubernets | 监控</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-monitor/</link>
-      <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-monitor/</guid>
-      <description>介绍kubernetes中metric-server监控组件的部署</description>
-    </item>
-    
-    <item>
-      <title>kubernets | 调度</title>
+      <title>kubernetes | 调度</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-scheduler/</link>
       <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -125,7 +125,7 @@
     </item>
     
     <item>
-      <title>kubernets | pod</title>
+      <title>kubernetes | pod</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-pod/</link>
       <pubDate>Sun, 02 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -134,7 +134,7 @@
     </item>
     
     <item>
-      <title>kubernets | 杂记</title>
+      <title>kubernetes | 杂记</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-notes/</link>
       <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
       
