@@ -1,5 +1,5 @@
 ---
-title: "kubernets | service & ingress" 
+title: "kubernetes | service & ingress" 
 date: 2022-10-07
 lastmod: 2022-10-07
 tags: 

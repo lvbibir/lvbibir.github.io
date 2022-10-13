@@ -1,5 +1,5 @@
 ---
-title: "kubernets | RBAC鉴权和PodAcl" 
+title: "kubernetes | RBAC鉴权和PodAcl" 
 date: 2022-10-07
 lastmod: 2022-10-07
 tags: 
@@ -274,7 +274,7 @@ NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
 nfs-client-provisioner   1/1     1            1           30h
 ```
 
-# 网络策略(PodAcl)
+# 网络策略(Network Policy)
 
 ## 基础概念
 

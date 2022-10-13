@@ -1,5 +1,5 @@
 ---
-title: "kubernets | 调度" 
+title: "kubernetes | 调度" 
 date: 2022-10-03
 lastmod: 2022-10-03
 tags: 

@@ -1,5 +1,5 @@
 ---
-title: "kubernets | 监控" 
+title: "kubernetes | metrics-server部署" 
 date: 2022-10-03
 lastmod: 2022-10-03
 tags: 

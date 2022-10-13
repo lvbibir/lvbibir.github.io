@@ -1,5 +1,5 @@
 ---
-title: "kubernets | pod" 
+title: "kubernetes | pod" 
 date: 2022-10-02
 lastmod: 2022-10-02
 tags: 

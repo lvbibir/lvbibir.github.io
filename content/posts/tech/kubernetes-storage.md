@@ -1,5 +1,5 @@
 ---
-title: "kubernets | 存储" 
+title: "kubernetes | 存储" 
 date: 2022-10-07
 lastmod: 2022-10-07
 tags: 

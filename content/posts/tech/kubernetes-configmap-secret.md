@@ -1,5 +1,5 @@
 ---
-title: "kubernets | configmap & secret" 
+title: "kubernetes | configmap & secret" 
 date: 2022-10-07
 lastmod: 2022-10-07
 tags: 

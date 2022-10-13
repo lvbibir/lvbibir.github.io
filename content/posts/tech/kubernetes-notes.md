@@ -1,5 +1,5 @@
 ---
-title: "kubernets | 杂记" 
+title: "kubernetes | 杂记" 
 date: 2022-10-01
 lastmod: 2022-10-01
 tags: 
