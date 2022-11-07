@@ -6,7 +6,16 @@
     <description>Recent content in 👨🏻‍💻 技术 on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 12 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux中history命令的格式化输出</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-history-format/</link>
+      <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-history-format/</guid>
+      <description>在/etc/prifile.d目录下新建一个文件，用户登录系统时自动生效 vim /etc/profile.d/history_conf.sh source /etc/profile.d/history_conf.sh # 手动生效 文件内容 export HISTFILE=&amp;#34;$HOME/.bash_history&amp;#34; # 指定命令写入文件(默认~/.bash</description>
+    </item>
+    
     <item>
       <title>shell | 将本地镜像批量推送到harbor</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-push-harbor/</link>
@@ -617,15 +626,6 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/crash-install-aarch64/</guid>
       <description>环境： 操作系统：isoft-serveros-v5.1 aarch64版 软件版本：crash-7.2.8 cpu：华为鲲鹏920 软件包下载地址 https://ftp.gnu.org/gnu/termcap/termcap-1.3.tar.gz</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://www.lvbibir.cn/posts/tech/linux-history-format/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/linux-history-format/</guid>
-      <description>title: &amp;#34;linux中history命令的格式化输出&amp;#34; date: 2022-11-07 lastmod: 2022-11-07 tags: - linux keywords: - linux - history description: &amp;#34;&amp;#34; 在/etc/prifile.d目录下新建一个文件</description>
     </item>
     
   </channel>

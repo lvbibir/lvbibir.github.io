@@ -6,7 +6,16 @@
     <description>Recent content in linux on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 28 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux中history命令的格式化输出</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-history-format/</link>
+      <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-history-format/</guid>
+      <description>在/etc/prifile.d目录下新建一个文件，用户登录系统时自动生效 vim /etc/profile.d/history_conf.sh source /etc/profile.d/history_conf.sh # 手动生效 文件内容 export HISTFILE=&amp;#34;$HOME/.bash_history&amp;#34; # 指定命令写入文件(默认~/.bash</description>
+    </item>
+    
     <item>
       <title>set命令详解</title>
       <link>https://www.lvbibir.cn/posts/tech/linux-command-set/</link>
