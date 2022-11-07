@@ -81,6 +81,14 @@ languages:
             name: 🙋🏻‍♂️ 关于
             url: about
             weight: 70
+          # - identifier: categories
+          #   name: 🤙🏿 分类
+          #   url: categories
+          #   weight: 1
+          # - parent: categories
+          #   name: docker
+          #   url: /posts
+          #   weight: 8
 
 outputs:
     home:
