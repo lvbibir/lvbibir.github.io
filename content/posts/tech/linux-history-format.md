@@ -1,4 +1,4 @@
-```
+---
 title: "linux中history命令的格式化输出" 
 date: 2022-11-07
 lastmod: 2022-11-07
@@ -8,7 +8,7 @@ keywords:
 - linux
 - history
 description: "" 
-```
+---
 
 在`/etc/prifile.d`目录下新建一个文件，用户登录系统时自动生效
 
