@@ -22,7 +22,7 @@
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/record-of-program-test/</guid>
-      <description>前言 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向</description>
+      <description>前言 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向文件中追加内容，程序要能读取到，效果如下： 测试程序代码如下： #include&amp;lt;stdlib.h&amp;gt; #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;unistd.h&amp;gt; int main(int argc, char **argv) { FILE *f = fopen(&amp;#34;./Syslog.log&amp;#34;, &amp;#34;rb&amp;#34;); if (f == NULL) return 1; char buffer[1024] = {0}; size_t len = 0; while(1) { len = fread(buffer, 1, sizeof(buffer), f); if (len &amp;gt; 0)</description>
     </item>
     
     <item>
