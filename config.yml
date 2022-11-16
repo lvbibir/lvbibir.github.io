@@ -96,9 +96,10 @@ outputs:
         - RSS
         - JSON
 
+# 这里的参数会被代码以 .Site.Params 的形式读取
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
-    description: "lvbibir的个人博客，hugo，papermod，shell，python，linux，mysql，redis"
+    description: "lvbibir的个人博客, hugo, papermod, shell, python, linux, mysql, redis, k8s, docker, devops"
     author: lvbibir # author: ["Me", "You"] # multiple authors
     draft: flase
     defaultTheme: auto  # defaultTheme: light or  dark 
@@ -115,7 +116,6 @@ params:
     hideFooter: false # 隐藏页脚
     ShowWordCounts: true
     VisitCount: true
-    Reward: true #打赏
     ShowLastMod: true #显示文章更新时间
 
     ShowToc: true # 显示目录
@@ -172,6 +172,13 @@ params:
         minMatchCharLength: 0
         keys: ["title", "permalink", "summary"]
 
+    # 打赏
+    Reward: true 
+    # 可用绝对和相对地址，相对地址的图片需放在static/img下
+    WechatPay: img/wechat_pay.png
+    Alipay: img/alipay.png #打赏支付宝图片地址
+
+    # twkioo评论
     twikoo:
       version: 1.6.7
 
