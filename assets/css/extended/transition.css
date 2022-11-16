@@ -114,15 +114,15 @@ button#theme-toggle {
 }
 
 /*搜索*/
-#searchbox input {
-}
+/* #searchbox input {
+} */
 
-#searchbox input:hover {
-}
+/* #searchbox input:hover {
+} */
 
 /*最顶级页面*/
-.list {
-}
+/* .list {
+} */
 
 /*时间轴*/
 .archive-entry {
@@ -150,7 +150,7 @@ button#theme-toggle {
     -o-transition: box-shadow 0.4s ease, transform 0.4s ease;
 
     transition: box-shadow 0.4s ease, transform 0.4s ease;
-    box-shadow: 0px 2px 4px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
+    box-shadow: 1px 2px 2px 1px rgb(144 164 174 / 60%);
 }
 
 .dark .post-entry {
@@ -170,7 +170,7 @@ button#theme-toggle {
     transform: scale(1.02);
 
     transition: box-shadow 0.4s ease, transform 0.4s ease;
-    box-shadow: 0px 4px 8px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
+    box-shadow: 1px 2px 2px 1px rgb(144 164 174 / 60%);
 }
 
 .dark .post-entry:hover {
