@@ -19,8 +19,8 @@ googleAnalytics:  # 谷歌统计
 paginate: 10    # 每页显示的文章数
 
 minify:
-    disableXML: true
-    # minifyOutput: true
+  disableXML: true
+  # minifyOutput: true
 
 permalinks: # 访问博客时网址的显示形式
   post: "/:title/"
@@ -30,200 +30,206 @@ defaultContentLanguage: en # 最顶部首先展示的语言页面
 defaultContentLanguageInSubdir: true
 
 languages:
-    en:
-      languageName: "English"
-      weight: 1
-      profileMode:
-        enabled: true
-        title: (=^･ω･^=)
-        subtitle: 👇 欢迎光临小站，联系方式 👇
-        # subtitle: "🧨学而时习之，不亦说乎？有朋自远方来，不亦乐乎？<br/>👇联系方式"
-        imageUrl: "img/avatar.gif"
-        imageTitle: 
-        imageWidth: 120
-        imageHeight: 120
-        buttons:
-          - name: 👨🏻‍💻 技术
-            url: posts/tech
-          - name: 🏗️ 建站
-            url: posts/blog
-          - name: 📖 阅读
-            url: posts/read
-          - name: 🏖️ 生活
-            url: posts/life
-      menu:
-        main:
-          - identifier: search
-            name: 🔍 搜索
-            url: search
-            weight: 10
-          - identifier: home
-            name: 🏡 主页
-            url: /
-            weight: 20
-          - identifier: posts
-            name: 📚 文章
-            url: posts
-            weight: 30
-          - identifier: tags
-            name: 🏷️ 标签
-            url: tags
-            weight: 40
-          - identifier: archives
-            name: 📈 归档
-            url: archives
-            weight: 50
-          - identifier: links
-            name: 🤝 友链
-            url: links
-            weight: 60
-          - identifier: about
-            name: 🙋🏻‍♂️ 关于
-            url: about
-            weight: 70
-          # - identifier: categories
-          #   name: 🤙🏿 分类
-          #   url: categories
-          #   weight: 1
-          # - parent: categories
-          #   name: docker
-          #   url: /posts
-          #   weight: 8
+  en:
+    languageName: "English"
+    weight: 1
+    profileMode:
+      enabled: true
+      title: (=^･ω･^=)
+      subtitle: 👇 欢迎光临小站，联系方式 👇
+      # subtitle: "🧨学而时习之，不亦说乎？有朋自远方来，不亦乐乎？<br/>👇联系方式"
+      imageUrl: "img/avatar.gif"
+      imageTitle: 
+      imageWidth: 120
+      imageHeight: 120
+      buttons:
+        - name: 👨🏻‍💻 技术
+          url: posts/tech
+        - name: 🏗️ 建站
+          url: posts/blog
+        - name: 📖 阅读
+          url: posts/read
+        - name: 🏖️ 生活
+          url: posts/life
+    menu:
+      main:
+        - identifier: search
+          name: 🔍 搜索
+          url: search
+          weight: 10
+        - identifier: home
+          name: 🏡 主页
+          url: /
+          weight: 20
+        - identifier: posts
+          name: 📚 文章
+          url: posts
+          weight: 30
+        - identifier: tags
+          name: 🏷️ 标签
+          url: tags
+          weight: 40
+        - identifier: archives
+          name: 📈 归档
+          url: archives
+          weight: 50
+        - identifier: links
+          name: 🤝 友链
+          url: links
+          weight: 60
+        - identifier: about
+          name: 🙋🏻‍♂️ 关于
+          url: about
+          weight: 70
+        # - identifier: categories
+        #   name: 🤙🏿 分类
+        #   url: categories
+        #   weight: 1
+        # - parent: categories
+        #   name: docker
+        #   url: /posts
+        #   weight: 8
 
 outputs:
-    home:
-        - HTML
-        - RSS
-        - JSON
+  home:
+    - HTML
+    - RSS
+    - JSON
 
 # 这里的参数会被代码以 .Site.Params 的形式读取
 params:
-    env: production # to enable google analytics, opengraph, twitter-cards and schema.
-    description: "lvbibir的个人博客, hugo, papermod, shell, python, linux, mysql, redis, k8s, docker, devops"
-    author: lvbibir # author: ["Me", "You"] # multiple authors
-    draft: flase
-    defaultTheme: auto  # defaultTheme: light or  dark 
-    disableThemeToggle: false
-    DateFormat: "2006-01-02"
-    disableShare: true 
-    ShowShareButtons: false
-    ShowReadingTime: true
-    disableSpecialistPost: true
-    displayFullLangName: true
-    ShowPostNavLinks: true
-    ShowBreadCrumbs: true
-    ShowCodeCopyButtons: true
-    hideFooter: false # 隐藏页脚
-    ShowWordCounts: true
-    VisitCount: true
-    ShowLastMod: true #显示文章更新时间
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  description: "lvbibir的个人博客, hugo, papermod, shell, python, linux, mysql, redis, k8s, docker, devops"
+  author: lvbibir # author: ["Me", "You"] # multiple authors
+  draft: flase
+  defaultTheme: auto  # defaultTheme: light or  dark 
+  disableThemeToggle: false
+  DateFormat: "2006-01-02"
+  disableShare: true 
+  ShowShareButtons: false
+  ShowReadingTime: true
+  disableSpecialistPost: true
+  displayFullLangName: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  hideFooter: false # 隐藏页脚
+  ShowWordCounts: true
+  VisitCount: true
+  ShowLastMod: true #显示文章更新时间
 
-    ShowToc: true # 显示目录
-    TocOpen: true # 自动展开目录
+  ShowToc: true # 显示目录
+  TocOpen: true # 自动展开目录
 
-    comments: true # 是否开启评论
-    socialIcons:
-        - name: github
-          url: "https://github.com/lvbibir"
-        - name: twitter
-          url:  "img/twitter.png"
-        # - name: facebook
-        #   url: "https://www.facebook.com/profile.php?id=100027782410997"
-        - name: instagram
-          url: "img/instagram.png"
-        - name: QQ
-          url: "img/qq.png"
-        - name: WeChat
-          url: "img/wechat.png"
-        - name: bilibili
-          url: "https://space.bilibili.com/280428279"
-        - name: email
-          url: "mailto:15810243114@163.com"
-        - name: RSS
-          url: "index.xml"
+  comments: true # 是否开启评论
+  socialIcons:
+    - name: github
+      url: "https://github.com/lvbibir"
+    - name: twitter
+      url:  "img/twitter.png"
+    # - name: facebook
+    #   url: "https://www.facebook.com/profile.php?id=100027782410997"
+    - name: instagram
+      url: "img/instagram.png"
+    - name: QQ
+      url: "img/qq.png"
+    - name: WeChat
+      url: "img/wechat.png"
+    - name: bilibili
+      url: "https://space.bilibili.com/280428279"
+    - name: email
+      url: "mailto:15810243114@163.com"
+    - name: RSS
+      url: "index.xml"
 
-    label:
-        text: "lvbibir's Blog"
-        icon: "img/avatar.gif"
-        iconHeight: 35
+  label:
+    text: "lvbibir's Blog"
+    icon: "img/avatar.gif"
+    iconHeight: 35
 
-    analytics:
-        google:
-            SiteVerificationTag: ""
+  analytics:
+    google:
+      SiteVerificationTag: ""
 
-    assets:
-        favicon: "img/avatar.gif"
-        favicon16x16: "img/avatar.gif"
-        favicon32x32: "img/avatar.gif"
-        apple_touch_icon: "img/avatar.gif"
-        safari_pinned_tab: "img/avatar.gif"
+  assets:
+    favicon: "img/avatar.gif"
+    favicon16x16: "img/avatar.gif"
+    favicon32x32: "img/avatar.gif"
+    apple_touch_icon: "img/avatar.gif"
+    safari_pinned_tab: "img/avatar.gif"
 
-    cover:
-        hidden: false         # 隐藏cover图片，但是不在格式化数据中隐藏
-        hiddenInList: false   # 在列表页和文章内容页隐藏cover图片
-        hiddenInSingle: false # 只在文章内容页隐藏cover图片
+  cover:
+    hidden: false         # 隐藏cover图片，但是不在格式化数据中隐藏
+    hiddenInList: false   # 在列表页和文章内容页隐藏cover图片
+    hiddenInSingle: false # 只在文章内容页隐藏cover图片
 
-    fuseOpts:
-        isCaseSensitive: false
-        shouldSort: true
-        location: 0
-        distance: 1000
-        threshold: 0.4
-        minMatchCharLength: 0
-        keys: ["title", "permalink", "summary"]
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary"]
 
-    # 打赏
-    Reward: true 
-    # 可用绝对和相对地址，相对地址的图片需放在static/img下
-    WechatPay: img/wechat_pay.png
-    Alipay: img/alipay.png #打赏支付宝图片地址
+  # footer配置
+  StartYear: 2020 # 底部开始年份
+  FilingNo: 京ICP备2021023168号-1 # 底部备案号
+  # PublicSecurityIconLink: 填自己的公安图标链接 # 填自己的公安图标链接,可用绝对路径，相对路径如 img/beian.png
+  # PublicNetworkSecurity: 填自己的公网安备 # 底部公网安备号
 
-    # twkioo评论
-    twikoo:
-      version: 1.6.7
+  # 打赏
+  Reward: true 
+  # 可用绝对和相对地址，相对地址的图片需放在static/img下
+  WechatPay: img/wechat_pay.png
+  Alipay: img/alipay.png #打赏支付宝图片地址
+
+  # twkioo评论
+  twikoo:
+    version: 1.6.7
 
 taxonomies:
-    category: categories
-    tag: tags
-    series: series
+  category: categories
+  tag: tags
+  series: series
 
 markup:
-    goldmark:
-        renderer:
-            unsafe: true # HUGO 默认转义 Markdown 文件中的 HTML 代码，如需开启的话
-    highlight:
-        codeFences: true   # 代码围栏功能，这个功能一般都要设为 true 的，不然很难看，就是干巴巴的-代码文字，没有颜色。
-        guessSyntax: false # 猜测语法，这个功能建议设置为 true, 如果你没有设置要显示的语言则会自动匹配。
-        lineNos: false     # 是否显示行号
-        noClasses: true    # 使用 class 标签，而不是内嵌的内联样式
-        tabWidth: 4
-        style: monokai
-        # anchorLineNos: true
-        # hl_Lines：高亮的行号，一般这个不设置，因为每个代码块我们可能希望让高亮的地方不一样。
-        # lineNoStart：行号从编号几开始，一般从 1 开始。
-        # lineNumbersInTable：使用表来格式化行号和代码,而不是 标签。这个属性一般设置为 true.
+  goldmark:
+    renderer:
+      unsafe: true # HUGO 默认转义 Markdown 文件中的 HTML 代码，如需开启的话
+  highlight:
+    codeFences: true   # 代码围栏功能，这个功能一般都要设为 true 的，不然很难看，就是干巴巴的-代码文字，没有颜色。
+    guessSyntax: false # 猜测语法，这个功能建议设置为 true, 如果你没有设置要显示的语言则会自动匹配。
+    lineNos: false     # 是否显示行号
+    noClasses: true    # 使用 class 标签，而不是内嵌的内联样式
+    tabWidth: 4
+    style: monokai
+    # anchorLineNos: true
+    # hl_Lines：高亮的行号，一般这个不设置，因为每个代码块我们可能希望让高亮的地方不一样。
+    # lineNoStart：行号从编号几开始，一般从 1 开始。
+    # lineNumbersInTable：使用表来格式化行号和代码,而不是 标签。这个属性一般设置为 true.
 
 privacy:
-    vimeo:
-        disabled: false
-        simple: true
-
-    twitter:
-        disabled: false
-        enableDNT: true
-        simple: true
-
-    instagram:
-        disabled: false
-        simple: true
-
-    youtube:
-        disabled: false
-        privacyEnhanced: true
+  vimeo:
+    disabled: false
+    simple: true
+  
+  twitter:
+    disabled: false
+    enableDNT: true
+    simple: true
+  
+  instagram:
+    disabled: false
+    simple: true
+  
+  youtube:
+    disabled: false
+    privacyEnhanced: true
 
 services:
-    instagram:
-        disableInlineCSS: true
-    twitter:
-        disableInlineCSS: true
+  instagram:
+    disableInlineCSS: true
+  twitter:
+    disableInlineCSS: true
         
