@@ -78,10 +78,14 @@ languages:
           name: 🤝 友链
           url: links
           weight: 60
+        - identifier: talk
+          name: 💬 说说
+          url: talk
+          weight: 70
         - identifier: about
           name: 🙋🏻‍♂️ 关于
           url: about
-          weight: 70
+          weight: 80
         # - identifier: categories
         #   name: 🤙🏿 分类
         #   url: categories

@@ -175,15 +175,21 @@ https://gohugo.io/content-management/urls/
 
 https://www.sulvblog.cn/posts/blog/hugo_seo/
 
+# Artitalk说说
+
+部署：[官方文档](https://artitalk.js.org/doc.html)
+
+需要注意的是如果使用的是国际版的LeadCloud，需要绑定自定义域名后才能正常访问
+
+记录一下账号关系：LeadCloud使用163邮箱登录
+
 # twikoo评论
 
-~~基本完全按照 [sulv 博主](https://www.sulvblog.cn/posts/blog/hugo_twikoo/)的文章来操作，某些地方官方有更新，不过也只是更改了页面罢了~~
+所有部署方式：https://twikoo.js.org/quick-start.html
 
-~~顺便记录一下账号关系：mongodb使用google账号登录，vercel使用github登录~~
+vercel+mongodb+github部署方式参考：https://www.sulvblog.cn/posts/blog/hugo_twikoo/
 
-> 官方文档：https://twikoo.js.org/quick-start.html
->
-> vercel+mongodb+github部署方式参考：https://www.sulvblog.cn/posts/blog/hugo_twikoo/
+记录一下账号关系：mongodb使用google账号登录，vercel使用github登录
 
 ## 私有部署（docker)
 
@@ -319,14 +325,13 @@ https://www.liwen.id.au/heg/
 
 # todo
 
-- [x] 修改所有文章的文件名为全英文
+- [x] url优化
 - [x] 百度seo优化
 - [x] 谷歌seo优化
 - [x] 必应seo优化
 - [x] 尝试再次优化nginx的配置，之前的配置对于 php 程序更适用
-- [ ] 图床备份
 - [x] 将所有文章进行内容整理
-- [ ] 说说页面
+- [x] 说说页面
 - [ ] 朋友圈页面
 
 
