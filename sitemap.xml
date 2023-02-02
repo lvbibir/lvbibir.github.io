@@ -137,12 +137,6 @@
     <loc>https://www.lvbibir.cn/posts/tech/git-settings/</loc>
     <lastmod>2022-11-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/openstack-kolla-ansible-multinode-train/</loc>
-    <lastmod>2022-06-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/openstack/</loc>
-    <lastmod>2022-06-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/shell-different-execution-mode/</loc>
     <lastmod>2022-06-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -180,6 +174,9 @@
     <lastmod>2022-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/ceph-nautilus-cephdeploy/</loc>
+    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/openstack/</loc>
     <lastmod>2021-12-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/python3-change-pip-repo/</loc>

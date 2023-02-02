@@ -224,15 +224,6 @@
     </item>
     
     <item>
-      <title>kolla-ansible部署Train版openstack（multinode）</title>
-      <link>https://www.lvbibir.cn/posts/tech/openstack-kolla-ansible-multinode-train/</link>
-      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/openstack-kolla-ansible-multinode-train/</guid>
-      <description>介绍cenots中使用kolla-ansible&#43;docker的方式快速部署openstack(multinode)集群式</description>
-    </item>
-    
-    <item>
       <title>shell | 不同执行方式的区别</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-different-execution-mode/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
