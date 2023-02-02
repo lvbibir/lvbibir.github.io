@@ -191,8 +191,8 @@ openstack_release: "train"
 kolla_internal_vip_address: "192.168.150.155"
 
 # Docker options
-#docker_registry: "registry.cn-beijing.aliyuncs.com"
-#docker_namespace: "kollaimage"
+# docker_registry: "registry.cn-beijing.aliyuncs.com"
+# docker_namespace: "kollaimage"
 
 # Neutron - Networking Options
 network_interface: "ens32"
@@ -231,7 +231,7 @@ EOF
 # 预配置，安装docker、docker sdk、关闭防火墙、配置时间同步等
 kolla-ansible -i ./all-in-one bootstrap-servers
 
-# 部署前环境检查
+# 部署前环境检查，可能会报docker版本的错，可以忽略
 kolla-ansible -i ./all-in-one prechecks
 
 # 拉取镜像，也可省略该步骤，默认会自动拉取
@@ -266,52 +266,16 @@ kolla-ansible post-deploy
 ```
 
 
-查看拉取的镜像，发现镜像数量与容器数量是一致的。
+查看拉取的镜像
 
 ```
 [root@kolla ~]# docker images | wc -l
 39
 [root@kolla ~]# docker images
-REPOSITORY                                                                             TAG                 IMAGE ID            CREATED             SIZE
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-glance-api                  train               aec757c5908a        2 days ago          1.05GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-keystone-ssh                train               2c95619322ed        2 days ago          1.04GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-keystone-fernet             train               918564aa9c01        2 days ago          1.04GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-keystone                    train               8d5f3ca2a73c        2 days ago          1.04GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-cinder-api                  train               500910236e85        2 days ago          1.19GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-cinder-volume               train               f76ebe1e133d        2 days ago          1.14GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-cinder-backup               train               19342786a92c        2 days ago          1.13GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-cinder-scheduler            train               920630f0ea6c        2 days ago          1.11GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-heat-api                    train               517f6a0643ee        2 days ago          1.07GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-heat-api-cfn                train               2d46b91d44ef        2 days ago          1.07GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-heat-engine                 train               ab570c135dbc        2 days ago          1.07GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-horizon                     train               a00ddb359ea5        2 days ago          1.2GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-fluentd                     train               6a5b7be2551b        2 days ago          697MB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-cron                        train               0f784cd532e2        2 days ago          408MB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-chrony                      train               374dabc62868        2 days ago          408MB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-iscsid                      train               575873f9e4b8        2 days ago          413MB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-haproxy                     train               9cf840548535        2 days ago          433MB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-keepalived                  train               b2a20ccd7d6a        2 days ago          414MB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-openstack-base              train               c35001fb182b        3 days ago          920MB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-nova-compute                train               93be43a73a3e        5 days ago          1.85GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-placement-api               train               26f8c88c3c50        5 days ago          1.05GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-nova-api                    train               2a9d3ea95254        5 days ago          1.08GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-nova-novncproxy             train               e6acfbe47b2b        5 days ago          1.05GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-nova-conductor              train               836a9f775263        5 days ago          1.05GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-nova-ssh                    train               f89a813f3902        5 days ago          1.05GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-nova-scheduler              train               8061eaa33d21        5 days ago          1.05GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-openvswitch-vswitchd        train               2b780c8075c6        5 days ago          425MB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-openvswitch-db-server       train               86168147b086        5 days ago          425MB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-rabbitmq                    train               19cd34b4f503        5 days ago          487MB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-mariadb                     train               882472a192b5        6 days ago          593MB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-neutron-dhcp-agent          train               a007b53f0507        7 days ago          1.04GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-neutron-metadata-agent      train               8bcff22221bd        7 days ago          1.04GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-nova-libvirt                train               539673da5c25        7 days ago          1.25GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-kolla-toolbox               train               a18a474c65ea        7 days ago          842MB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-tgtd                        train               ad5380187ca9        7 days ago          383MB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-memcached                   train               1fcf18645254        7 days ago          408MB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-neutron-server              train               539cfb7c1fd2        8 days ago          1.08GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-neutron-openvswitch-agent   train               95113c0f5b8c        8 days ago          1.08GB
-registry.cn-shenzhen.aliyuncs.com/kollaimage/centos-binary-neutron-l3-agent            train               fbe9385f49ca        8 days ago          1.08GB
+REPOSITORY                       TAG       IMAGE ID       CREATED         SIZE
+kolla/centos-binary-heat-api     train     b97df3444b35   10 months ago   1.11GB
+kolla/centos-binary-heat-engine  train     e19de6feec32   10 months ago   1.11GB
+......
 ```
 
 
@@ -716,11 +680,13 @@ https://www.nuomiphp.com/serverfault/en/5fff3e4524544316281a16b0.html
 
 # 参考
 
-https://blog.csdn.net/networken/article/details/106728002
-
 [官方文档](https://docs.openstack.org/kolla-ansible/train/reference/index.html)
 
+https://blog.csdn.net/networken/article/details/106728002
 
+https://blog.csdn.net/qq_33316576/article/details/107457111
+
+https://blog.csdn.net/networken/article/details/106745167
 
 
 
