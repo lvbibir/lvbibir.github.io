@@ -6,7 +6,16 @@
     <description>Recent content in python on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 27 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>逻辑题 | 鬼谷子数学问题</title>
+      <link>https://www.lvbibir.cn/posts/tech/logic-problem-guiguzi/</link>
+      <pubDate>Mon, 27 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/logic-problem-guiguzi/</guid>
+      <description>一道乍看毫无逻辑，细想却很有趣的逻辑题</description>
+    </item>
+    
     <item>
       <title>python批量修改目录下文件名</title>
       <link>https://www.lvbibir.cn/posts/tech/python-rename-file/</link>
