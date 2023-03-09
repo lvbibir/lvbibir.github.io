@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 27 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>steam挂刀教程</title>
       <link>https://www.lvbibir.cn/posts/life/steam-guadao/</link>
@@ -32,6 +32,24 @@
       
       <guid>https://www.lvbibir.cn/posts/blog/hello-hugo/</guid>
       <description>记录wordpress迁移至hugo&#43;papermod的过程包含环境搭建、博客美化、功能实现、速度优化等……</description>
+    </item>
+    
+    <item>
+      <title>docker | 下载外网镜像的几种方式</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-download-foreign-images/</link>
+      <pubDate>Thu, 09 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker-download-foreign-images/</guid>
+      <description>通过阿里云免费的容器镜像服务，构建平常无法下载的gcr.io或者quay.io</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | 常见报错解决</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-errors/</link>
+      <pubDate>Mon, 06 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-errors/</guid>
+      <description>kubernetes常见报错及解决</description>
     </item>
     
     <item>
