@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 09 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>steam挂刀教程</title>
       <link>https://www.lvbibir.cn/posts/life/steam-guadao/</link>
@@ -32,6 +32,15 @@
       
       <guid>https://www.lvbibir.cn/posts/blog/hello-hugo/</guid>
       <description>记录wordpress迁移至hugo&#43;papermod的过程包含环境搭建、博客美化、功能实现、速度优化等……</description>
+    </item>
+    
+    <item>
+      <title>shell | if条件判断</title>
+      <link>https://www.lvbibir.cn/posts/tech/shell-if/</link>
+      <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/shell-if/</guid>
+      <description>shell中if条件判断详解</description>
     </item>
     
     <item>

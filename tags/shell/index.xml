@@ -6,7 +6,16 @@
     <description>Recent content in shell on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 12 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>shell | if条件判断</title>
+      <link>https://www.lvbibir.cn/posts/tech/shell-if/</link>
+      <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/shell-if/</guid>
+      <description>shell中if条件判断详解</description>
+    </item>
+    
     <item>
       <title>shell | 将本地镜像批量推送到harbor</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-push-harbor/</link>

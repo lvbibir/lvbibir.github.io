@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.lvbibir.cn/posts/tech/</loc>
-    <lastmod>2023-03-09T00:00:00+00:00</lastmod>
+    <lastmod>2023-03-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/life/steam-guadao/</loc>
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
@@ -24,7 +24,19 @@
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/</loc>
-    <lastmod>2023-03-09T00:00:00+00:00</lastmod>
+    <lastmod>2023-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/</loc>
+    <lastmod>2023-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/shell/</loc>
+    <lastmod>2023-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/shell-if/</loc>
+    <lastmod>2023-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/</loc>
+    <lastmod>2023-03-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/docker/</loc>
     <lastmod>2023-03-09T00:00:00+00:00</lastmod>
@@ -33,12 +45,6 @@
     <lastmod>2023-03-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/kubernetes/</loc>
-    <lastmod>2023-03-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/</loc>
-    <lastmod>2023-03-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/</loc>
     <lastmod>2023-03-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/kubernetes-errors/</loc>
@@ -55,9 +61,6 @@
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/linux-history-format/</loc>
     <lastmod>2022-11-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/shell/</loc>
-    <lastmod>2022-10-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/shell-push-harbor/</loc>
     <lastmod>2022-10-12T00:00:00+00:00</lastmod>
