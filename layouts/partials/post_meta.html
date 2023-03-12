@@ -22,7 +22,6 @@
 {{- with ($scratch.Get "meta") }}
 {{- delimit . "&nbsp;|&nbsp;" -}}
 {{- end }}
-
 <!--
 {{- if (.Param "VisitCount") -}}
 {{- $scratch.Add "meta" (slice (printf "访问:&nbsp;<span id='%s'></span>" ("twikoo_visitors") )) }}

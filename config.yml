@@ -112,7 +112,7 @@ params:
   DateFormat: "2006-01-02"
   disableShare: true 
   ShowShareButtons: false
-  ShowReadingTime: true
+  ShowReadingTime: false
   disableSpecialistPost: true
   displayFullLangName: true
   ShowPostNavLinks: true
