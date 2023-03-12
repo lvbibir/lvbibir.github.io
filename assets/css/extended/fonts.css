@@ -1,15 +1,5 @@
 @font-face {
-    font-family: "MaShanZheng-Regular";
-    src: url("/fonts/MaShanZheng-Regular.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: "NeverMindHand-Regular";
-    src: url("/fonts/NeverMindHand-Regular.ttf") format("truetype");
-}
-
-@font-face {
-    font-family: "han-yi-jin-kai-jian";
-    src: url("https://image.lvbibir.cn/fonts/%E6%B1%89%E4%BB%AA%E5%8A%B2%E6%A5%B7%E7%AE%80.woff2") format("truetype");
+    font-family: "LXGWWenKaiLite-Bold";
+    src: url("https://image.lvbibir.cn/fonts/lxgw-wenkai-lite-v1.250/LXGWWenKaiLite-Bold.woff2") format("woff2");
     font-display: swap;
 }

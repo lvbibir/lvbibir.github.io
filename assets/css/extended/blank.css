@@ -60,13 +60,18 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 
 /*---------------------------------------------------*/
 
-.dark body, .dark a, .dark .post-title {
+.dark body,
+.dark a,
+.dark .post-title {
     color: rgba(180, 181, 182, 0.8);
 }
 
-.dark h1, .dark h2,
-.dark h3, .dark h4,
-.dark h5, .dark h6,
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
 .dark p {
     color: rgba(180, 181, 182, 0.8);
 }
@@ -136,7 +141,7 @@ img:active {
 
 
 .post-content {
-    font-family: "han-yi-jin-kai-jian";
+    font-family: Consolas, "LXGWWenKaiLite-Bold";
 }
 
 .dark .post-content {
@@ -146,7 +151,7 @@ img:active {
 body {
     font-size: 18px;
     line-height: 1.6;
-    font-family: "han-yi-jin-kai-jian";
+    font-family: Consolas, "LXGWWenKaiLite-Bold";
 }
 
 /*引言*/
@@ -162,17 +167,21 @@ body {
     page-break-inside: avoid;
     word-break: normal;
 }
+
 .post-content table tr {
     border: 1px solid #979da3 !important;
 }
+
 .post-content table tr:nth-child(2n),
 .post-content thead {
     background-color: var(--code-bg);
 }
+
 .post-content table th {
     border: 1px solid #979da3 !important;
     font-size: 18px;
 }
+
 .post-content table td {
     border: 1px solid #979da3 !important;
 }
@@ -196,7 +205,7 @@ body {
 }
 
 /* 文章内的cover图片展示大小 */
-.entry-cover1 img{
+.entry-cover1 img {
     width: 100%;
     margin-bottom: 5px;
 }
