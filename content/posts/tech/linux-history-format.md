@@ -25,9 +25,9 @@ export HISTSIZE=1000  # history输出记录数
 export HISTFILESIZE=10000  # HISTFILE文件记录数
 export HISTIGNORE="cmd1:cmd2:..."  # 忽略指定cmd1,cmd2...的命令不被记录到文件；(加参数时会记录)
 export HISTCONTOL=ignoredups   # ignoredups 不记录“重复”的命令；连续且相同 方为“重复” ；
-                                 # ignorespace 不记录所有以空格开头的命令；
-                                 # ignoreboth 表示ignoredups:ignorespace ,效果相当于以上两种的组合；
-                                 # erasedups 删除重复命令；
+                               # ignorespace 不记录所有以空格开头的命令；
+                               # ignoreboth 表示ignoredups:ignorespace ,效果相当于以上两种的组合；
+                               # erasedups 删除重复命令；
 export PROMPT_COMMAND="history -a"  # 设置每条命令执行完立即写入HISTFILE(默认等待退出会话写入)
 export HISTTIMEFORMAT="`whoami` %F %T "  # 设置命令执行时间格式，记录文件增加时间戳
 shopt -s histappend  # 防止会话退出时覆盖其他会话写到HISTFILE的内容；

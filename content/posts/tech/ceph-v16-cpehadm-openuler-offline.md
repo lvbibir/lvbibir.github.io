@@ -1,5 +1,5 @@
 ---
-title: "cephadm离线安装ceph-V16.2.8" 
+title: "cephadm 离线安装 ceph-v16 (Pacific) (openeuler)" 
 date: 2022-08-19
 lastmod: 2022-08-19
 tags: 
@@ -17,7 +17,7 @@ cover:
 
 # 前言
 
-> 适用于 Centos8 + docker 
+> 适用于 Centos8/openeuler + docker 
 
 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8
 

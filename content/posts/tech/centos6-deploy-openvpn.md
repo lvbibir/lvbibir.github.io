@@ -1,5 +1,5 @@
 ---
-title: "centos6部署openvpn" 
+title: "centos6 部署 openvpn" 
 date: 2021-07-01
 lastmod: 2021-07-01
 tags: 
@@ -15,29 +15,29 @@ description: "介绍如何在centos6的环境中部署openvpn服务实现内网�
 cover:
     image: "https://image.lvbibir.cn/blog/OpenVPN_logo.png" 
 ---
-# 一、实验环境
+# 1. 实验环境
 
-3台centos6.5，1台win10，openvpn-2.4.7，easy-rsa-3.0.5
+3台 centos6.5，1台 win10，openvpn-2.4.7，easy-rsa-3.0.5
 
-# 二、拓扑结构
+# 2. 拓扑结构
 
-Win10安装openvpn-gui，三台centos6.5为vmware虚拟机，分为client、vpnserver、proxy
+Win10 安装 openvpn-gui，三台 centos6.5 为 vmware虚拟机，分为 client、vpnserver、proxy
 
-三台centos6.5的eth0网卡均为内网(lan区段)地址1.1.1.0/24网段，proxy额外添加一块eth1网卡设置nat模式模拟外网ip
+三台 centos6.5 的 eth0 网卡均为内网(lan区段)地址 1.1.1.0/24 网段，proxy 额外添加一块 eth1 网卡设置 nat 模式模拟外网 ip
 
-# 三、实验目的
+# 3. 实验目的
 
 win10访问proxy的外网ip对应端口连接到vpnserver，分配到内网ip后可以访问到client
 
-# 四、实验思路
+# 4. 实验思路
 
 - proxy配置ipv4转发，将访问到本机eth1网卡相对应的端口上的流量转发给vpnserver的vpn服务端口
 
 - vpnserver为win10分配ip实现访问内网
 
-# 五、实施步骤
+# 5. 实施步骤
 
-## 1.初始化环境
+## 5.1 初始化环境
 
 - **虚拟机安装过程**
 
@@ -57,7 +57,7 @@ win10访问proxy的外网ip对应端口连接到vpnserver，分配到内网ip后
 [root@vpnserver ~]# sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config
 [root@vpnserver ~]# setenforce 0
 
-## 2.安装vpnserver及easy-rsa
+## 5.2 安装vpnserver及easy-rsa
 
 - **vpnserver安装openvpn**
 
@@ -79,7 +79,7 @@ openvpn版本：2.4.7
 
 
 
-## 3.创建openvpn目录，配置vars变量
+## 5.3 创建openvpn目录，配置vars变量
 
 - 解压easy-rsa目录
 
@@ -105,7 +105,7 @@ set_var EASYRSA_REQ_EMAIL       "lvbibir@163.com"
 set_var EASYRSA_REQ_OU          "My OpenVPN"
 ```
 
-## 4.创建服务端证书及key
+## 5.4 创建服务端证书及key
 
 - 创建服务端证书及key
 
@@ -146,7 +146,7 @@ set_var EASYRSA_REQ_OU          "My OpenVPN"
 
 ![image-20210513155046945](https://image.lvbibir.cn/blog/image-20210513155046945.png)
 
-## 5.创建客户端证书及key
+## 5.5 创建客户端证书及key
 
 - 创建客户端证书
 
@@ -185,7 +185,7 @@ set_var EASYRSA_REQ_OU          "My OpenVPN"
 
 签约证书期间需要输入yes确认，期间需要输入CA的密码
 
-## 6.归置服务器和客户端的证书
+## 5.6 归置服务器和客户端的证书
 
 - 把服务器端必要文件放到/etc/openvpn下（ca证书、服务端证书、密钥）
 
@@ -200,7 +200,7 @@ set_var EASYRSA_REQ_OU          "My OpenVPN"
 [root@vpnserver ~]# cp /etc/openvpn/easy-rsa/easyrsa3/pki/issued/zhijie.liu.crt /root/client/
 [root@vpnserver ~]# cp /root/client/easy-rsa/easyrsa3/pki/private/zhijie.liu.key /root/client
 
-## 7.vpn服务端server.conf配置文件修改
+## 5.7 vpn服务端server.conf配置文件修改
 
 - 为服务器端编写配置文件
 
@@ -242,7 +242,7 @@ log         /var/log/openvpn/openvpn.log
 verb 3
 ```
 
-## 8.后续设置（用户、iptables和路由转发）
+## 5.8 后续设置（用户、iptables和路由转发）
 
 - 后续设置
 
@@ -315,7 +315,7 @@ net.ipv4.ip_forward = 1
 
 ![image-20210514103246272](https://image.lvbibir.cn/blog/image-20210514173058861.png)
 
-# 六、客户段连接测试
+# 6.客户段连接测试
 
 - 下载openvpn客户端
 
@@ -323,7 +323,7 @@ net.ipv4.ip_forward = 1
 
 
 
-## 1.配置client端配置文件
+## 6.1 配置client端配置文件
 
 [root@vpnserver ~]# rpm -ql openvpn | grep client.ovpn
 
@@ -346,7 +346,7 @@ key client.key
 comp-lzo
 verb 3
 
-## 2.拷贝客户端证书及配置文件
+## 6.2 拷贝客户端证书及配置文件
 
 vpnserver没装vmtools所以先将所有文件放到proxy上然后通过远程工具下载
 
@@ -361,7 +361,7 @@ vpnserver没装vmtools所以先将所有文件放到proxy上然后通过远程�
 
 ![image-20210514173036246](https://image.lvbibir.cn/blog/image-20210514103123530.png)
 
-## 3.ping测试
+## 6.3 ping测试
 
 ping client的内网ip1.1.1.1
 

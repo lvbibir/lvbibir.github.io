@@ -1,5 +1,5 @@
 ---
-title: "cephadm安装ceph-V16.2(pacific)(openeuler)" 
+title: "cephadm 安装 ceph-v16 (pacific) (openeuler)" 
 date: 2022-09-24
 lastmod: 2022-09-24
 tags: 
@@ -16,7 +16,7 @@ cover:
 
 # 前言
 
-> 后续安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境
+> 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境
 >
 > cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python
 >

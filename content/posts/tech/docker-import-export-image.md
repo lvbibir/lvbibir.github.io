@@ -1,5 +1,5 @@
 ---
-title: "docker | 脚本方式批量导出&导入镜像" 
+title: "docker | 脚本方式批量导出/导入镜像" 
 date: 2022-02-01
 lastmod: 2021-02-01
 tags: 

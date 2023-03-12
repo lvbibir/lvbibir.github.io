@@ -1,5 +1,5 @@
 ---
-title: "centos7.5升级内核至5.10" 
+title: "centos7.5 升级内核至 5.10" 
 date: 2022-01-01
 lastmod: 2022-01-01
 tags: 
@@ -33,7 +33,7 @@ https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核
 | ml | mainline的缩写 | 最新稳定版 |
 
 
-使用wget命令下载内核RPM包
+使用 wget 命令下载内核 RPM 包
 
 ```
 [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-5.10.81-1.el7.x86_64.rpm
@@ -56,11 +56,11 @@ yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1
 3 : CentOS Linux (0-rescue-9a4efd5deb094f5d8a9a259066ff4f3d) 7 (Core)
 ```
 
-记下5.11.9内核前面的序号，修改启动项需要
+记下 5.11.9 内核前面的序号，修改启动项需要
 
 修改默认启动项
 
-默认启动项由/etc/default/grub中的GRUB_DEFAULT控制，如果GRUB_DEFAULT=saved，则该参数将存在/boot/grub2/grubenv
+默认启动项由`/etc/default/grub`中的 GRUB_DEFAULT 控制，如果 GRUB_DEFAULT=saved，则该参数将存在 /boot/grub2/grubenv
 
 输入`grub2-editenv list`命令查看默认启动项
 
@@ -69,7 +69,7 @@ yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1
 saved_entry=CentOS Linux (3.10.0-1060.el7.x86_64) 7 (Core)
 ```
 
-输入grub2-set-default命令修改默认启动项，0表示5.11.9内核的序号
+输入 grub2-set-default 命令修改默认启动项，0表示5.11.9内核的序号
 
 ```
 [dpl@test1 ~]# grub2-set-default 0

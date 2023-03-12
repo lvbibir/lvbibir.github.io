@@ -12,6 +12,9 @@ description: ""
 cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 
 ---
+
+代码如下
+
 ```bash
 #!/bin/bash
 #参数定义

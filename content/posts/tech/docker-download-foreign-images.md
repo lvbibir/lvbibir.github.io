@@ -8,7 +8,7 @@ tags:
 keywords:
 - linux
 - docker
-description: "通过阿里云免费的容器镜像服务，构建平常无法下载的gcr.io或者quay.io" 
+description: "通过阿里云免费的容器镜像服务，构建平常无法下载的 gcr.io 或者 quay.io 等仓库的镜像" 
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 
 ---

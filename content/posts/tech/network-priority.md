@@ -1,5 +1,5 @@
 ---
-title: "多网卡时设置网络优先级以及添加静态路由" 
+title: "windows & linux 多网卡时设置默认路由以及添加静态路由" 
 date: 2022-06-01
 lastmod: 2022-06-01
 tags: 

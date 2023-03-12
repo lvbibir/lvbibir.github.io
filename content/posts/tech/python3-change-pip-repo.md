@@ -36,11 +36,9 @@ EOF
 
 # windows环境
 
-使用dos命令set找到 userprofile 路径，在该路径下创建pip文件夹，在pip文件夹下创建pip.ini
+打开 cmd 使用 dos命令 set 找到 userprofile 路径，在该路径下创建 pip文件夹，在 pip文件夹下创建 pip.ini
 
 ![image-20211109160017309](https://image.lvbibir.cn/blog/image-20211109160017309.png)
-
-![image-20211109155952483](https://image.lvbibir.cn/blog/image-20211109155952483.png)
 
 pip.ini具体配置
 

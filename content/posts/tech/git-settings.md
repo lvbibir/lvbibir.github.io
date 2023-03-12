@@ -31,7 +31,7 @@ git config --global https.proxy http://127.0.0.1:1080
 git config --global https.proxy https://127.0.0.1:1080
 ```
 
-设置全局代理，使用socks5代理
+设置全局代理，使用 socks5 代理
 
 ```bash
 git config --global http.proxy socks5://127.0.0.1:1080
@@ -48,8 +48,8 @@ git config --global --unset https.proxy
 只对 github.com 使用代理
 
 ```bash
-git config --global http.https://github.com.proxy http://127.0.0.1:20081
-git config --global https.https://github.com.proxy http://127.0.0.1:20081
+git config --global http.https://github.com.proxy http://127.0.0.1:7890
+git config --global https.https://github.com.proxy http://127.0.0.1:7890
 ```
 
 取消 github.com 代理
@@ -59,7 +59,7 @@ git config --global --unset http.https://github.com.proxy
 git config --global --unset https.https://github.com.proxy
 ```
 
-# CRLF 和 LF 自动转换
+# CRLF 和 LF 
 
 ```bash
 # 提交时转换为LF，检出时转换为CRLF

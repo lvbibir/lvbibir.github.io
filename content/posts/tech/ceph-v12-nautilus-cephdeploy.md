@@ -1,5 +1,5 @@
 ---
-title: "centos7部署ceph+dashboard（nautilus）" 
+title: "centos7 部署 ceph-v12 (nautilus) + dashboard" 
 date: 2021-12-01
 lastmod: 2021-12-01
 tags: 
@@ -14,10 +14,6 @@ description: "介绍在centos7环境中通过ceph-deploy部署ceph集群（nauti
 cover:
     image: "https://image.lvbibir.cn/blog/ceph.png" 
 ---
-# 前言
-
-ceph测试环境的搭建
-
 # 基本环境
 
 - 物理环境：Vmware Workstaion

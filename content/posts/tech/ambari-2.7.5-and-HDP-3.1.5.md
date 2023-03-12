@@ -19,23 +19,23 @@ cover:
 链接：https://pan.baidu.com/s/1eteZ2jGkSq4Pz5YFfHyJgQ
 提取码：6hq3
 
-## 2.服务器配置
+## 2. 服务器配置
 
 | 主机名  | cpu  | 内存 | 硬盘 | 系统版本           | ip地址          |
 | ------- | ---- | ---- | ---- | ------------------ | --------------- |
 | node001 | 4c   | 10g  | 50g  | isoft-serveros-4.2 | 192.168.150.106 |
 | node002 | 2c   | 4g   | 20g  | isoft-serveros-4.2 | 192.168.150.107 |
 
-## 3.修改系统版本文件（所有节点执行）
+## 3. 修改系统版本文件（所有节点执行）
 
 ```
 sed -i 's/4/7/g' /etc/redhat-release
 sed -i 's/4/7/g' /etc/os-release
 ```
 
-## 4.配置主机名（所有节点执行）
+## 4. 配置主机名（所有节点执行）
 
-**2台服务器的hosts都需要做如下修改**
+2台服务器的 hosts 都需要做如下修改
 
 - 修改主机名
 ```
@@ -43,7 +43,7 @@ hostnamectl set-hostname node001
 bash
 ```
 
-- 修改hosts文件
+- 修改 hosts 文件
 
 ```bash
 vim /etc/hosts
@@ -53,7 +53,7 @@ vim /etc/hosts
 192.168.150.107 node002
 ```
 
-## 5.关闭防火墙及selinux（所有节点执行）
+## 5. 关闭防火墙及 selinux（所有节点执行）
 
 **2台服务器上分别执行以下操作，关闭防火墙并配置开机不自动启动**
 
@@ -72,7 +72,7 @@ vim /etc/sysconfig/selinux
 SELINUX=disabled
 ```
 
-## 6.配置ssh互信（所有节点执行）
+## 6. 配置 ssh 互信（所有节点执行）
 
 **方法一**
 
@@ -92,7 +92,7 @@ ssh-copy-id -i /root/.ssh/id_rsa.pub node002
 ssh-keygen -t rsa
 ```
 
-在服务器1上将公钥（名为id_rsa.pub文件）追加到认证文件（名为authorized_keys文件）中:
+在服务器1上将公钥（名为 id_rsa.pub 文件）追加到认证文件（名为 authorized_keys 文件）中:
 
 ```bash
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys 
@@ -123,15 +123,15 @@ scp ~/.ssh/authorized_keys node002:~/.ssh/authorized_keys
 
 验证免密是否配置成功
 
-ssh到不同服务器
+ssh 到不同服务器
 
 ```bash
 ssh node002
 ```
 
-## 7. 配置ntp时钟同步
+## 7. 配置 ntp 时钟同步
 
-选择一台服务器作为NTP Server，这里选择node001
+选择一台服务器作为 NTP Server，这里选择 node001
 
 将如下配置`vim /etc/ntp.conf`
 
@@ -194,7 +194,7 @@ systemctl restart ntpd
 systemctl enable ntpd
 ```
 
-## 9.设置swap（所有节点执行）
+## 9. 设置 swap（所有节点执行）
 
 ```bash
 echo vm.swappiness = 1 >> /etc/sysctl.conf
@@ -211,7 +211,7 @@ echo never > /sys/kernel/mm/transparent_hugepage/defrag
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 ```
 
-## 11.安装http服务（node001节点执行）
+## 11. 安装 http 服务（node001节点执行）
 
 安装apache的httpd服务主要用于搭建OS. Ambari和hdp的yum源。在集群服务器中选择一台服务器来安装httpd服务，命令如下：
 
@@ -225,7 +225,7 @@ systemctl enable httpd.service
 
 ![image-20211123141149628](https://image.lvbibir.cn/blog/image-20211123141149628.png)
 
-## 13.安装Java（所有节点执行）
+## 13. 安装Java（所有节点执行）
 
 下载地址：https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
 
@@ -257,7 +257,7 @@ source /root/.bashrc
 java -version
 ```
 
-## 14. 安装maven3.6（node001节点执行）
+## 14. 安装 maven3.6（node001节点执行）
 
 下载解压
 
@@ -281,9 +281,9 @@ export PATH=$PATH:/opt/src/maven/bin
 source /root/.bashrc
 ```
 
-#  安装Ambari&HDP
+#  安装 Ambari&HDP
 
-## 1. 配置Ambari. HDP. libtirpc-devel本地源
+## 1. 配置 Ambari/HDP/libtirpc-devel 本地源
 
 解压
 
@@ -313,7 +313,7 @@ chmod -R 755 /var/www/html/HDP-GPL
 chmod -R 755 /var/www/html/HDP-UTILS
 ```
 
-创建libtirpc-devel本地源
+创建 libtirpc-devel 本地源
 
 ```bash
 mkdir /var/www/html/libtirpc
@@ -324,7 +324,7 @@ createrepo .
 
 制作本地源
 
-配置ambari.repo
+配置 ambari.repo
 
 ```bash
 vim /etc/yum.repos.d/ambari.repo
@@ -336,7 +336,7 @@ enabled=1
 priority=1
 ```
 
-配置HDP和HDP-TILS
+配置 HDP 和 HDP-TILS
 
 ```bash
 vim /etc/yum.repos.d/HDP.repo
@@ -362,7 +362,7 @@ enabled=1
 priority=1
 ```
 
-配置libtirpc.repo
+配置 libtirpc.repo
 
 ```bash
 vim /etc/yum.repos.d/libtirpc.repo
@@ -387,9 +387,9 @@ yum clean all
 yum repolist
 ```
 
-## 2. 安装mariadb（node001节点执行）
+## 2. 安装 mariadb（node001节点执行）
 
-安装MariaDB服务器
+安装 MariaDB 服务器
 
 ```bash
 yum install mariadb-server -y
@@ -427,7 +427,7 @@ All done! If you've completed all of the above steps, your MariaDB 18 installati
 Thanks for using MariaDB!
 ```
 
-为MariaDB安装MySQL JDBC驱动程序
+为 MariaDB 安装 MySQL JDBC 驱动程序
 
 ```bash
 tar zxf mysql-connector-java-5.1.40.tar.gz
@@ -436,7 +436,7 @@ mv mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar /usr/share/ja
 
 创建需要的数据库
 
-如果需要ranger，编辑以下⽂件： vim /etc/my.cnf 并添加以下⾏：
+如果需要 ranger，编辑以下⽂件： vim /etc/my.cnf 并添加以下⾏：
 
 ```bash
 log_bin_trust_function_creators = 1
@@ -449,21 +449,21 @@ systemctl restart mariadb
 mysql -u root -p123456
 ```
 
-## 3. 安装和配置ambari-server（node001节点执行）
+## 3. 安装和配置 ambari-server（node001节点执行）
 
-安装ambari-server
+安装 ambari-server
 
 ```bash
 yum -y install ambari-server
 ```
 
-复制mysql jdbc驱动到/var/lib/ambari-server/resources/
+复制 mysql jdbc 驱动到 /var/lib/ambari-server/resources/
 
 ```bash
 cp /usr/share/java/mysql-connector-java.jar /var/lib/ambari-server/resources/
 ```
 
-配置/etc/ambari-server/conf/ambari.properties，添加如下行
+配置 /etc/ambari-server/conf/ambari.properties，添加如下行
 
 ```bash
 vim /etc/ambari-server/conf/ambari.properties
@@ -476,7 +476,7 @@ server.jdbc.driver.path=/usr/share/java/mysql-connector-java.jar
 ambari-server setup --jdbc-db=mysql --jdbc-driver=/usr/share/java/mysql-connector-java.jar
 ```
 
-初始化ambari-server
+初始化 ambari-server
 
 ```bash
 ambari-server setup
@@ -533,9 +533,9 @@ WARNING: Before starting Ambari Server, you must run the following DDL against t
 Proceed with configuring remote database connection properties [y/n] (y)? y
 ```
 
-登录mariadb创建ambari安装所需要的库
+登录 mariadb 创建 ambari 安装所需要的库
 
-设置的账号后面配置ambari-server的时候会用到
+设置的账号后面配置 ambari-server 的时候会用到
 
 ```bash
 mysql -uroot -p123456
@@ -573,20 +573,20 @@ GRANT ALL PRIVILEGES ON *.* TO 'oozie'@'node001';
 FLUSH PRIVILEGES;
 ```
 
-## 4. 安装ambari-agent（所有节点执行）
+## 4. 安装 ambari-agent（所有节点执行）
 
 ```bash
 pssh -h /node.list -i 'yum -y install ambari-agent'
 pssh -h /node.list -i 'systemctl start ambari-agent'
 ```
 
-## 5. 安装libtirpc-devel（所有节点）
+## 5. 安装 libtirpc-devel（所有节点）
 
 ```bash
 pssh -h /node.list -i 'yum -y install libtirpc-devel'
 ```
 
-## 6. 启动ambari服务
+## 6. 启动 ambari 服务
 
 ```
 ambari-server start
@@ -602,9 +602,9 @@ http://192.168.150.106:8080
 
 ![image-20211123145726406](https://image.lvbibir.cn/blog/image-20211123145726406.png)
 
-## 2. 选择版本，配置yum源
+## 2. 选择版本，配置 yum 源
 
-1）选择Launch Install Wizard
+1）选择 Launch Install Wizard
 2）配置集群名称
 3）选择版本并修改本地源地址
 
@@ -620,9 +620,9 @@ HDP-UTILS-1.1.0.22: http://node001/HDP-UTILS/centos7/1.1.0.22/
 
 ## 3. 配置节点和密钥
 
-下载主节点的/root/.ssh/id_rsa，并上传！点击下一步，进入确认主机界面
+下载主节点的 /root/.ssh/id_rsa，并上传！点击下一步，进入确认主机界面
 
-也可直接cat /root/.ssh/id_rsa 粘贴即可
+也可直接 cat /root/.ssh/id_rsa 粘贴即可
 
 ![image-20211123150255012](https://image.lvbibir.cn/blog/image-20211123150255012.png)
 
@@ -638,11 +638,11 @@ HDP-UTILS-1.1.0.22: http://node001/HDP-UTILS/centos7/1.1.0.22/
 
 ![image-20211123151238695](https://image.lvbibir.cn/blog/image-20211123151238695.png)
 
-## 5. 分配服务master
+## 5. 分配服务 master
 
 ![image-20211123151312856](https://image.lvbibir.cn/blog/image-20211123151312856.png)
 
-## 6. 分配服务slaves
+## 6. 分配服务 slaves
 
 ![image-20211123151134172](https://image.lvbibir.cn/blog/image-20211123151134172.png)
 
