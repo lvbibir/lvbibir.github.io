@@ -8,7 +8,7 @@
     <language>zh-cn</language>
     <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/centos/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>centos7修改网卡名称</title>
+      <title>centos7 修改网卡名称</title>
       <link>https://www.lvbibir.cn/posts/tech/centos7-change-network-card-name/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
@@ -22,24 +22,24 @@
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</guid>
-      <description>介绍centos系统中的pam模块，以及出现尝试密码次数过多如何处理</description>
+      <description>介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理</description>
     </item>
     
     <item>
-      <title>centos7.5升级内核至5.10</title>
+      <title>centos7.5 升级内核至 5.10</title>
       <link>https://www.lvbibir.cn/posts/tech/centos-update-kernel-to-5.10/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos-update-kernel-to-5.10/</guid>
-      <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm的缩写 长期维护版 ml mainline的缩写 最新稳定版 使用wget命令下载内核RPM包 [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-5.10.81-1.el7.x86_64.rpm [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 安装内核 yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 查看所有可用内核启动项 [dpl@test1 ~] awk -F\&amp;#39; &amp;#39;$1==&amp;#34;menuentry &amp;#34; {print i++ &amp;#34; : &amp;#34;</description>
+      <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm的缩写 长期维护版 ml mainline的缩写 最新稳定版 使用 wget 命令下载内核 RPM 包 [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-5.10.81-1.el7.x86_64.rpm [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 安装内核 yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 查看所有可用内核启动项 [dpl@test1 ~] awk -F\&amp;#39; &amp;#39;$1==&amp;#34;menuentry &amp;#34; {print i++ &amp;#34; : &amp;#34; $2}&amp;#39; /etc/grub2.cfg 0 : CentOS</description>
     </item>
     
     <item>
-      <title>centos7部署ceph&#43;dashboard（nautilus）</title>
-      <link>https://www.lvbibir.cn/posts/tech/ceph-nautilus-cephdeploy/</link>
+      <title>centos7 部署 ceph-v12 (nautilus) &#43; dashboard</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v12-nautilus-cephdeploy/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/ceph-nautilus-cephdeploy/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v12-nautilus-cephdeploy/</guid>
       <description>介绍在centos7环境中通过ceph-deploy部署ceph集群（nautilus）和可视化的dashboard</description>
     </item>
     
@@ -53,7 +53,7 @@
     </item>
     
     <item>
-      <title>centos6部署openvpn</title>
+      <title>centos6 部署 openvpn</title>
       <link>https://www.lvbibir.cn/posts/tech/centos6-deploy-openvpn/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       

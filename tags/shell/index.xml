@@ -31,7 +31,7 @@
       <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/shell-search-url-files/</guid>
-      <description>前言 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的，可以通过检索 kernel.org 中所有内核版本的 ChangeLog 文件中是否包含该 commit 来判断漏洞影响的内核版本（仅针对 linux 的 kernel 相关的漏洞） 脚本 #!/bin/bash # author: lvbibir # date: 2022-06-23 # 检索 kernel.org 下的所有 ChangeLog 文件，是否包含某项特定的 commit 号 commit=&amp;#39;520778042ccca019f3ffa136dd0ca565c486cedd&amp;#39; version=4 number=0 curl -ks https://cdn.kernel.org/pub/linux/kernel/v$version\.x/ &amp;gt; list_$version cat list_$version | grep Change | grep -v sign | awk</description>
+      <description>前言 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的。 可以通过检索 kernel.org 中所有内核版本的 ChangeLog 文件中是否包含该 commit 来判断漏洞影响的内核版本（仅针对 linux 的 kernel 相关的漏洞） 脚本 #!/bin/bash # author: lvbibir # date: 2022-06-23 # 检索 kernel.org 下的所有 ChangeLog 文件，是否包含某项特定的 commit 号 commit=&amp;#39;520778042ccca019f3ffa136dd0ca565c486cedd&amp;#39; version=4 number=0 curl -ks https://cdn.kernel.org/pub/linux/kernel/v$version\.x/ &amp;gt; list_$version cat list_$version | grep Change | grep -v sign | awk</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
     </item>
     
     <item>
-      <title>docker | 脚本方式批量导出&amp;导入镜像</title>
+      <title>docker | 脚本方式批量导出/导入镜像</title>
       <link>https://www.lvbibir.cn/posts/tech/docker-import-export-image/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
@@ -67,7 +67,7 @@
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/shell-server-inspection/</guid>
-      <description>#!/bin/bash #参数定义 date=`date +&amp;#34;%Y-%m-%d-%H:%M:%S&amp;#34;` centosVersion=$(awk &amp;#39;{print $(NF-1)}&amp;#39; /etc/redhat-release) VERSION=`date +%F` #日志相关 LOGPATH=&amp;#34;/tmp/awr&amp;#34; [ -e $LOGPATH ] || mkdir -p $LOGPATH RESULTFILE=&amp;#34;$LOGPATH/HostCheck-`hostname`-`date +%Y%m%d`.txt&amp;#34; #调用函数库 [ -f /etc/init.d/functions ] &amp;amp;&amp;amp; source /etc/init.d/functions export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin source /etc/profile #root用户执行脚本 [ $(id -u) -gt 0 ] &amp;amp;&amp;amp; echo &amp;#34;请用root用户执行此脚本！&amp;#34; &amp;amp;&amp;amp; exit 1 function version(){ echo &amp;#34;&amp;#34; echo &amp;#34;&amp;#34; echo &amp;#34;[${date}] &amp;gt;&amp;gt;&amp;gt; `hostname -s` 主机巡检&amp;#34; } function getSystemStatus(){ echo &amp;#34;&amp;#34; echo -e &amp;#34;\033[33m*******</description>
+      <description>代码如下 #!/bin/bash #参数定义 date=`date +&amp;#34;%Y-%m-%d-%H:%M:%S&amp;#34;` centosVersion=$(awk &amp;#39;{print $(NF-1)}&amp;#39; /etc/redhat-release) VERSION=`date +%F` #日志相关 LOGPATH=&amp;#34;/tmp/awr&amp;#34; [ -e $LOGPATH ] || mkdir -p $LOGPATH RESULTFILE=&amp;#34;$LOGPATH/HostCheck-`hostname`-`date +%Y%m%d`.txt&amp;#34; #调用函数库 [ -f /etc/init.d/functions ] &amp;amp;&amp;amp; source /etc/init.d/functions export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin source /etc/profile #root用户执行脚本 [ $(id -u) -gt 0 ] &amp;amp;&amp;amp; echo &amp;#34;请用root用户执行此脚本！&amp;#34; &amp;amp;&amp;amp; exit 1 function version(){ echo &amp;#34;&amp;#34; echo &amp;#34;&amp;#34; echo &amp;#34;[${date}] &amp;gt;&amp;gt;&amp;gt; `hostname -s` 主机巡检&amp;#34; } function getSystemStatus(){ echo &amp;#34;&amp;#34; echo -e &amp;#34;\033[33m***</description>
     </item>
     
     <item>

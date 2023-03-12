@@ -34,14 +34,5 @@
       <description>记录一下在H3C服务器上系统无法引导的问题的解决</description>
     </item>
     
-    <item>
-      <title>atd服务报错 Failed with result ‘exit-code’</title>
-      <link>https://www.lvbibir.cn/posts/tech/atd-failed/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/atd-failed/</guid>
-      <description>因为一次不小心的手动执行导致的</description>
-    </item>
-    
   </channel>
 </rss>

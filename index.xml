@@ -49,7 +49,7 @@
       <pubDate>Thu, 09 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-download-foreign-images/</guid>
-      <description>通过阿里云免费的容器镜像服务，构建平常无法下载的gcr.io或者quay.io</description>
+      <description>通过阿里云免费的容器镜像服务，构建平常无法下载的 gcr.io 或者 quay.io 等仓库的镜像</description>
     </item>
     
     <item>
@@ -90,10 +90,10 @@
     
     <item>
       <title>windows | hosts文件修复</title>
-      <link>https://www.lvbibir.cn/posts/tech/windows-hosts/</link>
+      <link>https://www.lvbibir.cn/posts/tech/windows-fix-hosts/</link>
       <pubDate>Sun, 09 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/windows-hosts/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/windows-fix-hosts/</guid>
       <description>介绍win10中修复hosts文件的方法</description>
     </item>
     
@@ -206,25 +206,25 @@
     </item>
     
     <item>
-      <title>cephadm安装ceph-V16.2(pacific)(openeuler)</title>
-      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-openeuler/</link>
+      <title>cephadm 安装 ceph-v16 (pacific) (openeuler)</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openeuler/</link>
       <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-openeuler/</guid>
-      <description>前言 后续安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific）</description>
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openeuler/</guid>
+      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作</description>
     </item>
     
     <item>
-      <title>cephadm离线安装ceph-V16.2.8</title>
-      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</link>
+      <title>cephadm 离线安装 ceph-v16 (Pacific) (openeuler)</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openuler-offline/</link>
       <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</guid>
-      <description>前言 适用于 Centos8 + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有外网的测试机（尽量跟生产系统的环境一致）通过 yum 安装 cephadm、ceph-common、docker 等需要的 rpm 包，注意使用 downloadonly 参数先下载好 rpm</description>
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openuler-offline/</guid>
+      <description>前言 适用于 Centos8/openeuler + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有外网的测试机（尽量跟生产系统的环境一致）通过 yum 安装 cephadm、ceph-common、docker 等需要的 rpm 包，注意使用 downloadonly 参数先下载好 rpm</description>
     </item>
     
     <item>
-      <title>pxe如何应对复杂的服务器硬件环境</title>
+      <title>pxe 如何应对复杂的服务器硬件环境</title>
       <link>https://www.lvbibir.cn/posts/tech/pxe-dhcp-legacy-uefi-archs/</link>
       <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
       
@@ -251,12 +251,12 @@
     </item>
     
     <item>
-      <title>cephadm安装ceph-V16.2-aarch64</title>
-      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</link>
+      <title>cephadm 安装 ceph-v16 (pacific) (openeuler) (aarch64)</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openeuler-aarch64/</link>
       <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</guid>
-      <description>前言 后续安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific）</description>
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openeuler-aarch64/</guid>
+      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作</description>
     </item>
     
     <item>
@@ -292,7 +292,7 @@
       <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/shell-search-url-files/</guid>
-      <description>前言 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的，可以通过检索 kernel.org 中所有内核版本的 ChangeLog 文件中是否包含该 commit 来判断漏洞影响的内核版本（仅针对 linux 的 kernel 相关的漏洞） 脚本 #!/bin/bash # author: lvbibir # date: 2022-06-23 # 检索 kernel.org 下的所有 ChangeLog 文件，是否包含某项特定的 commit 号 commit=&amp;#39;520778042ccca019f3ffa136dd0ca565c486cedd&amp;#39; version=4 number=0 curl -ks https://cdn.kernel.org/pub/linux/kernel/v$version\.x/ &amp;gt; list_$version cat list_$version | grep Change | grep -v sign | awk</description>
+      <description>前言 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的。 可以通过检索 kernel.org 中所有内核版本的 ChangeLog 文件中是否包含该 commit 来判断漏洞影响的内核版本（仅针对 linux 的 kernel 相关的漏洞） 脚本 #!/bin/bash # author: lvbibir # date: 2022-06-23 # 检索 kernel.org 下的所有 ChangeLog 文件，是否包含某项特定的 commit 号 commit=&amp;#39;520778042ccca019f3ffa136dd0ca565c486cedd&amp;#39; version=4 number=0 curl -ks https://cdn.kernel.org/pub/linux/kernel/v$version\.x/ &amp;gt; list_$version cat list_$version | grep Change | grep -v sign | awk</description>
     </item>
     
     <item>
@@ -323,7 +323,7 @@
     </item>
     
     <item>
-      <title>多网卡时设置网络优先级以及添加静态路由</title>
+      <title>windows &amp; linux 多网卡时设置默认路由以及添加静态路由</title>
       <link>https://www.lvbibir.cn/posts/tech/network-priority/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -342,15 +342,15 @@
     
     <item>
       <title>openssl源码打包编译成rpm包</title>
-      <link>https://www.lvbibir.cn/posts/tech/openssl-src-build-rpm/</link>
+      <link>https://www.lvbibir.cn/posts/tech/rpm-build-openssl/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/openssl-src-build-rpm/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/rpm-build-openssl/</guid>
       <description>记录一下centos7系统中通过源码构建openssh rpm包的过程</description>
     </item>
     
     <item>
-      <title>centos7修改网卡名称</title>
+      <title>centos7 修改网卡名称</title>
       <link>https://www.lvbibir.cn/posts/tech/centos7-change-network-card-name/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
@@ -368,7 +368,7 @@
     </item>
     
     <item>
-      <title>docker | 脚本方式批量导出&amp;导入镜像</title>
+      <title>docker | 脚本方式批量导出/导入镜像</title>
       <link>https://www.lvbibir.cn/posts/tech/docker-import-export-image/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
@@ -382,33 +382,33 @@
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</guid>
-      <description>介绍centos系统中的pam模块，以及出现尝试密码次数过多如何处理</description>
+      <description>介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理</description>
     </item>
     
     <item>
-      <title>centos6关闭本地监听的6000端口</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos6-close-6000-port/</link>
-      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/centos6-close-6000-port/</guid>
-      <description>介绍如何在centos6中修复CVE-1999-0526披露的漏洞</description>
-    </item>
-    
-    <item>
-      <title>centos7.5升级内核至5.10</title>
+      <title>centos7.5 升级内核至 5.10</title>
       <link>https://www.lvbibir.cn/posts/tech/centos-update-kernel-to-5.10/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/centos-update-kernel-to-5.10/</guid>
-      <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm的缩写 长期维护版 ml mainline的缩写 最新稳定版 使用wget命令下载内核RPM包 [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-5.10.81-1.el7.x86_64.rpm [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 安装内核 yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 查看所有可用内核启动项 [dpl@test1 ~] awk -F\&amp;#39; &amp;#39;$1==&amp;#34;menuentry &amp;#34; {print i++ &amp;#34; : &amp;#34;</description>
+      <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm的缩写 长期维护版 ml mainline的缩写 最新稳定版 使用 wget 命令下载内核 RPM 包 [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-5.10.81-1.el7.x86_64.rpm [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 安装内核 yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 查看所有可用内核启动项 [dpl@test1 ~] awk -F\&amp;#39; &amp;#39;$1==&amp;#34;menuentry &amp;#34; {print i++ &amp;#34; : &amp;#34; $2}&amp;#39; /etc/grub2.cfg 0 : CentOS</description>
     </item>
     
     <item>
-      <title>centos7部署ceph&#43;dashboard（nautilus）</title>
-      <link>https://www.lvbibir.cn/posts/tech/ceph-nautilus-cephdeploy/</link>
+      <title>CVE-1999-0526</title>
+      <link>https://www.lvbibir.cn/posts/tech/cve-1999-0526/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/cve-1999-0526/</guid>
+      <description>介绍如何在 centos6 中修复 CVE-1999-0526 披露的漏洞</description>
+    </item>
+    
+    <item>
+      <title>centos7 部署 ceph-v12 (nautilus) &#43; dashboard</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v12-nautilus-cephdeploy/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/ceph-nautilus-cephdeploy/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v12-nautilus-cephdeploy/</guid>
       <description>介绍在centos7环境中通过ceph-deploy部署ceph集群（nautilus）和可视化的dashboard</description>
     </item>
     
@@ -432,10 +432,10 @@
     
     <item>
       <title>通过反编译修改rpm包内的文件</title>
-      <link>https://www.lvbibir.cn/posts/tech/change-file-in-rpm-pkg/</link>
+      <link>https://www.lvbibir.cn/posts/tech/rpm-change-file/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/change-file-in-rpm-pkg/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/rpm-change-file/</guid>
       <description>前言 要修改rpm包中的文件，对于自己编译的rpm包，只需要在源码中修改好然后重新编译即可。而对于并不是自己编译的rpm包，且不熟悉编译环境的情况下，可以使用rpm-build和rpm-rebuild工具反编译来修改rpm中的文件 这里使用ceph-mgr软件包进行演示 安装rpm-b</description>
     </item>
     
@@ -467,7 +467,7 @@
     </item>
     
     <item>
-      <title>kolla-ansible部署Train版openstack（all-in-one）</title>
+      <title>kolla-ansible 部署 Train版 openstack（all-in-one）</title>
       <link>https://www.lvbibir.cn/posts/tech/openstack-kolla-ansible-allinone-train/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
       
@@ -476,16 +476,7 @@
     </item>
     
     <item>
-      <title>kubeadm 搭建 k8s 集群 [离线版] v1.18.6</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-v1.18.6-kubeadm-offline/</link>
-      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-v1.18.6-kubeadm-offline/</guid>
-      <description>环境规划 操作系统 IP CPU/MEM 主机名 角色 CentOS 7.7-x86_64 192.168.1.14 2/4G k8s-master Master CentOS 7.7-x86_64 192.168.1.15 2/4G k8s-node1 Work node CentOS 7.7-x86_64 192.168.1.16 2/4G k8s-node2 Work node 【软件包版本号】 name version Docker 3:19.03.13 kubeadm v1.18.6 kubernetes v1.18.6 安装前提条件 Centos 7.x 最小化安装 时钟同步 下载离线程序包 链接：https://pan.baidu.com/s/1Q3jbJcgq0rH8jK-LTpa6Vg 提取码：hhhh 部署Maste</description>
-    </item>
-    
-    <item>
-      <title>kubernetes | 简介 | kubeadm搭建K8s集群v1.22.3</title>
+      <title>kubernetes | kubeadm 搭建 K8s集群v1.22.3</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
       
@@ -495,10 +486,10 @@
     
     <item>
       <title>openssh源码打包编译成rpm包</title>
-      <link>https://www.lvbibir.cn/posts/tech/openssh-src-build-rpm/</link>
+      <link>https://www.lvbibir.cn/posts/tech/rpm-build-openssh/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/openssh-src-build-rpm/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/rpm-build-openssh/</guid>
       <description>记录一下不同系统环境下通过源码构建openssh rpm包的过程</description>
     </item>
     
@@ -517,7 +508,7 @@
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/shell-server-inspection/</guid>
-      <description>#!/bin/bash #参数定义 date=`date +&amp;#34;%Y-%m-%d-%H:%M:%S&amp;#34;` centosVersion=$(awk &amp;#39;{print $(NF-1)}&amp;#39; /etc/redhat-release) VERSION=`date +%F` #日志相关 LOGPATH=&amp;#34;/tmp/awr&amp;#34; [ -e $LOGPATH ] || mkdir -p $LOGPATH RESULTFILE=&amp;#34;$LOGPATH/HostCheck-`hostname`-`date +%Y%m%d`.txt&amp;#34; #调用函数库 [ -f /etc/init.d/functions ] &amp;amp;&amp;amp; source /etc/init.d/functions export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin source /etc/profile #root用户执行脚本 [ $(id -u) -gt 0 ] &amp;amp;&amp;amp; echo &amp;#34;请用root用户执行此脚本！&amp;#34; &amp;amp;&amp;amp; exit 1 function version(){ echo &amp;#34;&amp;#34; echo &amp;#34;&amp;#34; echo &amp;#34;[${date}] &amp;gt;&amp;gt;&amp;gt; `hostname -s` 主机巡检&amp;#34; } function getSystemStatus(){ echo &amp;#34;&amp;#34; echo -e &amp;#34;\033[33m*******</description>
+      <description>代码如下 #!/bin/bash #参数定义 date=`date +&amp;#34;%Y-%m-%d-%H:%M:%S&amp;#34;` centosVersion=$(awk &amp;#39;{print $(NF-1)}&amp;#39; /etc/redhat-release) VERSION=`date +%F` #日志相关 LOGPATH=&amp;#34;/tmp/awr&amp;#34; [ -e $LOGPATH ] || mkdir -p $LOGPATH RESULTFILE=&amp;#34;$LOGPATH/HostCheck-`hostname`-`date +%Y%m%d`.txt&amp;#34; #调用函数库 [ -f /etc/init.d/functions ] &amp;amp;&amp;amp; source /etc/init.d/functions export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin source /etc/profile #root用户执行脚本 [ $(id -u) -gt 0 ] &amp;amp;&amp;amp; echo &amp;#34;请用root用户执行此脚本！&amp;#34; &amp;amp;&amp;amp; exit 1 function version(){ echo &amp;#34;&amp;#34; echo &amp;#34;&amp;#34; echo &amp;#34;[${date}] &amp;gt;&amp;gt;&amp;gt; `hostname -s` 主机巡检&amp;#34; } function getSystemStatus(){ echo &amp;#34;&amp;#34; echo -e &amp;#34;\033[33m***</description>
     </item>
     
     <item>
@@ -593,7 +584,7 @@
     </item>
     
     <item>
-      <title>centos6部署openvpn</title>
+      <title>centos6 部署 openvpn</title>
       <link>https://www.lvbibir.cn/posts/tech/centos6-deploy-openvpn/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
@@ -653,15 +644,6 @@
       
       <guid>https://www.lvbibir.cn/posts/blog/wordpress-ssl/</guid>
       <description>介绍如何为阿里轻量应用服务器(wordpress应用)配置ssl证书，开启https访问且实现https强制跳转</description>
-    </item>
-    
-    <item>
-      <title>atd服务报错 Failed with result ‘exit-code’</title>
-      <link>https://www.lvbibir.cn/posts/tech/atd-failed/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/atd-failed/</guid>
-      <description>因为一次不小心的手动执行导致的</description>
     </item>
     
     <item>
@@ -737,15 +719,6 @@
     </item>
     
     <item>
-      <title>docker | 部署静态网站（nginx）</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker-run-nginx/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/docker-run-nginx/</guid>
-      <description>在docker中快速部署一个可以提供web服务的nginx服务器</description>
-    </item>
-    
-    <item>
       <title>lvm基本特性及日常管理</title>
       <link>https://www.lvbibir.cn/posts/tech/lvm-characteristic-management/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
@@ -761,15 +734,6 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/shell-get-server-hardware-information/</guid>
       <description>前言 查看硬件信息，并将信息整合成json数值，然后传给前段进行分析，最后再进行相应的处理。在装系统的时候，或是进行监控时，都是一个标准的自动化运维流程。使用shell直接生成好json数据再进行传输，会变得非常方便。 环境 [root@sys-idc-pxe01 ~]# yum install jq lsscsi MegaCli 脚本内容 #!/bin/sh #description: get server hardware info #author: lvbibir #date: 20180122 #需要安装jq工具</description>
-    </item>
-    
-    <item>
-      <title>编译安装crash(aarch64平台)</title>
-      <link>https://www.lvbibir.cn/posts/tech/crash-install-aarch64/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/crash-install-aarch64/</guid>
-      <description>环境： 操作系统：isoft-serveros-v5.1 aarch64版 软件版本：crash-7.2.8 cpu：华为鲲鹏920 软件包下载地址 https://ftp.gnu.org/gnu/termcap/termcap-1.3.tar.gz https://github.com/crash-utility/crash/archive/refs/tags/7.2.8.tar.gz https://ftp.gnu.org/gnu/gdb/gdb-7.6.tar.gz 1、安装 termcap 按照 https://blog.csdn.net/u010241497/article/details/82998887 中的方法修改tparam.c文件中的代码 ./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; make install 2、安装ncurses 挂载本地dnf源略 dnf install ncurses-libs dnf install ncurses-devel 3、安装gbd tar</description>
     </item>
     
     

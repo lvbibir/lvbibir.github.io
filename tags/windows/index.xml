@@ -9,15 +9,15 @@
     <lastBuildDate>Sun, 09 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>windows | hosts文件修复</title>
-      <link>https://www.lvbibir.cn/posts/tech/windows-hosts/</link>
+      <link>https://www.lvbibir.cn/posts/tech/windows-fix-hosts/</link>
       <pubDate>Sun, 09 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/windows-hosts/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/windows-fix-hosts/</guid>
       <description>介绍win10中修复hosts文件的方法</description>
     </item>
     
     <item>
-      <title>多网卡时设置网络优先级以及添加静态路由</title>
+      <title>windows &amp; linux 多网卡时设置默认路由以及添加静态路由</title>
       <link>https://www.lvbibir.cn/posts/tech/network-priority/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       

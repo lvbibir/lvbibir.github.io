@@ -22,7 +22,7 @@
       <pubDate>Thu, 09 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-download-foreign-images/</guid>
-      <description>通过阿里云免费的容器镜像服务，构建平常无法下载的gcr.io或者quay.io</description>
+      <description>通过阿里云免费的容器镜像服务，构建平常无法下载的 gcr.io 或者 quay.io 等仓库的镜像</description>
     </item>
     
     <item>
@@ -35,16 +35,16 @@
     </item>
     
     <item>
-      <title>cephadm离线安装ceph-V16.2.8</title>
-      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</link>
+      <title>cephadm 离线安装 ceph-v16 (Pacific) (openeuler)</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openuler-offline/</link>
       <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</guid>
-      <description>前言 适用于 Centos8 + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有外网的测试机（尽量跟生产系统的环境一致）通过 yum 安装 cephadm、ceph-common、docker 等需要的 rpm 包，注意使用 downloadonly 参数先下载好 rpm</description>
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openuler-offline/</guid>
+      <description>前言 适用于 Centos8/openeuler + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有外网的测试机（尽量跟生产系统的环境一致）通过 yum 安装 cephadm、ceph-common、docker 等需要的 rpm 包，注意使用 downloadonly 参数先下载好 rpm</description>
     </item>
     
     <item>
-      <title>docker | 脚本方式批量导出&amp;导入镜像</title>
+      <title>docker | 脚本方式批量导出/导入镜像</title>
       <link>https://www.lvbibir.cn/posts/tech/docker-import-export-image/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
@@ -131,15 +131,6 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-yuan-cheng-fang-wen/</guid>
       <description>实现docker客户端与另一台主机上的docker守护进程进行通信</description>
-    </item>
-    
-    <item>
-      <title>docker | 部署静态网站（nginx）</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker-run-nginx/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/docker-run-nginx/</guid>
-      <description>在docker中快速部署一个可以提供web服务的nginx服务器</description>
     </item>
     
   </channel>

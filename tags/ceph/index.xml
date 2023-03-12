@@ -8,30 +8,30 @@
     <language>zh-cn</language>
     <lastBuildDate>Sat, 24 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/ceph/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>cephadm安装ceph-V16.2(pacific)(openeuler)</title>
-      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-openeuler/</link>
+      <title>cephadm 安装 ceph-v16 (pacific) (openeuler)</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openeuler/</link>
       <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-openeuler/</guid>
-      <description>前言 后续安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific）</description>
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openeuler/</guid>
+      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作</description>
     </item>
     
     <item>
-      <title>cephadm离线安装ceph-V16.2.8</title>
-      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</link>
+      <title>cephadm 离线安装 ceph-v16 (Pacific) (openeuler)</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openuler-offline/</link>
       <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm-offline/</guid>
-      <description>前言 适用于 Centos8 + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有外网的测试机（尽量跟生产系统的环境一致）通过 yum 安装 cephadm、ceph-common、docker 等需要的 rpm 包，注意使用 downloadonly 参数先下载好 rpm</description>
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openuler-offline/</guid>
+      <description>前言 适用于 Centos8/openeuler + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有外网的测试机（尽量跟生产系统的环境一致）通过 yum 安装 cephadm、ceph-common、docker 等需要的 rpm 包，注意使用 downloadonly 参数先下载好 rpm</description>
     </item>
     
     <item>
-      <title>cephadm安装ceph-V16.2-aarch64</title>
-      <link>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</link>
+      <title>cephadm 安装 ceph-v16 (pacific) (openeuler) (aarch64)</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openeuler-aarch64/</link>
       <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16.2-cpehadm/</guid>
-      <description>前言 后续安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific）</description>
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openeuler-aarch64/</guid>
+      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作</description>
     </item>
     
     <item>
@@ -44,11 +44,11 @@
     </item>
     
     <item>
-      <title>centos7部署ceph&#43;dashboard（nautilus）</title>
-      <link>https://www.lvbibir.cn/posts/tech/ceph-nautilus-cephdeploy/</link>
+      <title>centos7 部署 ceph-v12 (nautilus) &#43; dashboard</title>
+      <link>https://www.lvbibir.cn/posts/tech/ceph-v12-nautilus-cephdeploy/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/ceph-nautilus-cephdeploy/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/ceph-v12-nautilus-cephdeploy/</guid>
       <description>介绍在centos7环境中通过ceph-deploy部署ceph集群（nautilus）和可视化的dashboard</description>
     </item>
     
