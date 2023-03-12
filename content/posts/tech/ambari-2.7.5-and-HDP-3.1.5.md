@@ -26,14 +26,14 @@ cover:
 | node001 | 4c   | 10g  | 50g  | isoft-serveros-4.2 | 192.168.150.106 |
 | node002 | 2c   | 4g   | 20g  | isoft-serveros-4.2 | 192.168.150.107 |
 
-## 3. 修改系统版本文件（所有节点执行）
+## 3. 修改系统版本文件(allnode)
 
 ```
 sed -i 's/4/7/g' /etc/redhat-release
 sed -i 's/4/7/g' /etc/os-release
 ```
 
-## 4. 配置主机名（所有节点执行）
+## 4. 配置主机名(allnode)
 
 2台服务器的 hosts 都需要做如下修改
 
@@ -53,7 +53,7 @@ vim /etc/hosts
 192.168.150.107 node002
 ```
 
-## 5. 关闭防火墙及 selinux（所有节点执行）
+## 5. 关闭防火墙及selinux(allnode)
 
 **2台服务器上分别执行以下操作，关闭防火墙并配置开机不自动启动**
 
@@ -72,7 +72,7 @@ vim /etc/sysconfig/selinux
 SELINUX=disabled
 ```
 
-## 6. 配置 ssh 互信（所有节点执行）
+## 6. 配置ssh互信(allnode)
 
 **方法一**
 
@@ -129,7 +129,7 @@ ssh 到不同服务器
 ssh node002
 ```
 
-## 7. 配置 ntp 时钟同步
+## 7. 配置ntp时钟同步
 
 选择一台服务器作为 NTP Server，这里选择 node001
 
@@ -194,7 +194,7 @@ systemctl restart ntpd
 systemctl enable ntpd
 ```
 
-## 9. 设置 swap（所有节点执行）
+## 9. 设置swap(allnode)
 
 ```bash
 echo vm.swappiness = 1 >> /etc/sysctl.conf
@@ -202,7 +202,7 @@ sysctl vm.swappiness=1
 sysctl -p
 ```
 
-## 10. 关闭透明大页面（所有节点执行）
+## 10. 关闭透明大页面(allnode)
 
 由于透明超大页面已知会导致意外的节点重新启动并导致RAC出现性能问题，因此Oracle强烈建议禁用
 
@@ -211,7 +211,7 @@ echo never > /sys/kernel/mm/transparent_hugepage/defrag
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 ```
 
-## 11. 安装 http 服务（node001节点执行）
+## 11. 安装http服务(node001)
 
 安装apache的httpd服务主要用于搭建OS. Ambari和hdp的yum源。在集群服务器中选择一台服务器来安装httpd服务，命令如下：
 
@@ -225,7 +225,7 @@ systemctl enable httpd.service
 
 ![image-20211123141149628](https://image.lvbibir.cn/blog/image-20211123141149628.png)
 
-## 13. 安装Java（所有节点执行）
+## 13. 安装Java(allnode)
 
 下载地址：https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
 
@@ -257,7 +257,7 @@ source /root/.bashrc
 java -version
 ```
 
-## 14. 安装 maven3.6（node001节点执行）
+## 14. 安装maven3.6(node001)
 
 下载解压
 
@@ -281,9 +281,9 @@ export PATH=$PATH:/opt/src/maven/bin
 source /root/.bashrc
 ```
 
-#  安装 Ambari&HDP
+#  安装Ambari&HDP
 
-## 1. 配置 Ambari/HDP/libtirpc-devel 本地源
+## 1. 配置本地源
 
 解压
 
@@ -387,7 +387,7 @@ yum clean all
 yum repolist
 ```
 
-## 2. 安装 mariadb（node001节点执行）
+## 2. 安装mariadb(node001)
 
 安装 MariaDB 服务器
 
@@ -449,7 +449,7 @@ systemctl restart mariadb
 mysql -u root -p123456
 ```
 
-## 3. 安装和配置 ambari-server（node001节点执行）
+## 3. 安装和配置ambari-server (node001)
 
 安装 ambari-server
 
@@ -573,20 +573,20 @@ GRANT ALL PRIVILEGES ON *.* TO 'oozie'@'node001';
 FLUSH PRIVILEGES;
 ```
 
-## 4. 安装 ambari-agent（所有节点执行）
+## 4. 安装ambari-agent(allnode)
 
 ```bash
 pssh -h /node.list -i 'yum -y install ambari-agent'
 pssh -h /node.list -i 'systemctl start ambari-agent'
 ```
 
-## 5. 安装 libtirpc-devel（所有节点）
+## 5. 安装libtirpc-devel(allnode)
 
 ```bash
 pssh -h /node.list -i 'yum -y install libtirpc-devel'
 ```
 
-## 6. 启动 ambari 服务
+## 6. 启动ambari服务
 
 ```
 ambari-server start
@@ -602,7 +602,7 @@ http://192.168.150.106:8080
 
 ![image-20211123145726406](https://image.lvbibir.cn/blog/image-20211123145726406.png)
 
-## 2. 选择版本，配置 yum 源
+## 2. 选择版本，配置yum源
 
 1）选择 Launch Install Wizard
 2）配置集群名称

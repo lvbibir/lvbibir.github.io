@@ -44,10 +44,8 @@
         .Site.Params.cover.hidden }}
         {{- partial "cover1.html" (dict "cxt" . "IsHome" false "isHidden" $isHidden) }}
         {{- if (.Param "ShowToc") }}
-        <!-- {{- partial "toc.html" . }} -->
-        {{- partial "toc_author.html" . }}
+        {{- partial "toc.html" . }}
         {{- end }}
-        <!-- {{- partial "toc_extend.html" . }} -->
 
         {{- if .Content }}
         <div class="post-content">
