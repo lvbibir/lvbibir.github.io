@@ -19,84 +19,39 @@ cover:
 
 # 前言
 
-这篇文章是个大杂烩，且之后对于我博客的修改基本都会记录在这里，所以本文偏向个人备忘，并不是一个很合格的教程
+研究 hugo 建站之初是打算采用 `Github Pages` 来发布静态博客
+
+- 优点
+- - 仅需一个github账号和简单配置即可将静态博客发布到 github pages
+  - 没有维护的时间成本，可以将精力更多的放到博客内容本身上去
+  - 无需备案
+  - 无需ssl证书
+- 缺点
+- - 访问速度较慢
+  - 访问速度较慢
+  - 访问速度较慢
+
+虽说访问速度较慢可以通过各家的cdn加速来解决，但由于刚开始建立 blog 选择的是 wordpress ，域名、服务器、备案、证书等都已经一应俱全，且之前的架构采用 docker，添加一台 nginx 来跑 hugo 的静态网站是很方便的
 
 # 一键将hugo博客部署到阿里云
 
-> 虽说标题带有一键，但还是有一定的门槛的，需要对`dokcer`、`docker-compose`、`nginx`有一定了解
+> 虽说标题带有一键，但还是有一定的门槛的，需要对`dokcer | docker-compose | nginx`有一定了解
 
-之前的 [wordpress博客](https://lvbibir.cn) 部署在阿里云的一套 docker-compose 环境下，[wordpress迁移到docker](https://www.lvbibir.cn/posts/blog/wordpress-to-docker/) 有详细记录
+[配置文件下载](https://image.lvbibir.cn/files/blog-docker-compose.zip) 下载完将目录上传到自己的服务器，重命名为 `blog` (当然你可以用其他名字)
 
-基于之前的配置进行了一些优化和调整，可根据需求下载对应的配置文件：[hugo](https://image.lvbibir.cn/files/hugo-blog-dockercompose.tar.gz)、[wordpress](https://image.lvbibir.cn/files/wordpress-blog.zip)、[hugo + wordpress](https://image.lvbibir.cn/files/hugo-and-wordpress-dockercompose.tar.gz)
-
-## hugo
-
-> 包含 nginx-proxy、nginx-hugo 和 twikoo 组件
-
-既然已经有了自己的服务器，我将 twikoo 评论组件也集成了进来访问速度要快很多，具体配置参考下文 [twikoo评论](#twikoo评论)
-
-1. 确保服务器网络、ssl证书申请、服务器公网ip、域名解析、服务器安全组权限(80/443)等基础配置已经一应俱全
+1. 确保服务器网络、ssl证书申请、服务器公网ip、服务器安全组权限(80/443)等基础配置已经一应俱全
 2. 确保服务器安装了 docker 和 docker-compose
-3. 按照下文先把自定义的配置添加进去（域名和证书）
-4. 配置完之后在`hugo-blog-dockercompose`目录下执行`docker-compose -f docker-compose.yml up -d`即可启动容器
+3. 修改`blog/conf/nginx-hugo/nginx.conf`和`blog/conf/nginx-proxy/default.conf`，需要修改的地方在文件中已经标注出来了
+4. 将你的ssl证书放到`hugo-blog-dockercompose/ssl/`目录下
+5. 在`blog`目录下执行`docker-compose up -d`即可启动容器
+6. 将hugo生成的`public`目录上传到服务器`blog/data/hugo/`中，[参考下文](#workflow)
+7. 在域名提供商处为你的域名添加A记录，指向服务器的公网ip地址(主域名和twikoo域名都要配置)
+   ![image-20230313142456952](https://image.lvbibir.cn/blog/image-20230313142456952.png)
+8. 都配置完后 [参考下文](#twikoo评论) 配置twikoo
 
-**hugo-blog-dockercompose/conf/nginx-hugo/nginx.conf**
+至此已经配置完成，应该可以通过域名访问hugo站点了，后续更新内容只需要hugo生成静态文件上传到服务即可
 
-```nginx
-......
-server {
-    listen       80 default_server; 
-    listen       [::]:80 default_server;
-    server_name www.lvbibir.cn; # 修改域名(hugo)
-    root /var/www/html;
-......
-```
-
-**hugo-blog-dockercompose/conf/nginx-proxy/default.conf**
-
-将你的ssl证书放到`hugo-blog-dockercompose/ssl/`目录下
-
-```nginx
-server {
-    listen 80;
-    listen [::]:80;
-    server_name www.lvbibir.cn; # 修改域名(hugo)
-    return 301 https://$host$request_uri;
-}
-
-server {
-    listen 80;
-    listen [::]:80;
-    server_name twikoo.lvbibir.cn; # 修改域名(twikoo)
-    return 301 https://$host$request_uri;
-}
-
-server {
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
-    server_name www.lvbibir.cn; # 修改域名(hugo)
-......
-    ssl_certificate /etc/nginx/ssl/example.crt; # 证书(hugo)
-    ssl_certificate_key /etc/nginx/ssl/example.key; # 证书(hugo)）
-......
-}
-
-server {
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
-    server_name twikoo.lvbibir.cn; # 修改域名(twikoo)
-......
-    ssl_certificate /etc/nginx/ssl/example.crt; # 证书(twikoo)
-    ssl_certificate_key /etc/nginx/ssl/example.key; # 证书(twikoo)
-......
-}
-```
-
-## hugo+wordpress
-
-> 包含组件：nginx-proxy | nginx-hugo、twikoo | nginx-wordpress、wordpress-php、redis、mysql
-
-这里就不过多介绍了，是我目前在用的方案，基于 [wordpress迁移到docker](https://www.lvbibir.cn/posts/blog/wordpress-to-docker/) 中介绍到的方案中加入了hugo的元素
+所有的配置、应用数据、日志都保存在blog目录下，你可以在不同的服务器上快速迁移hugo环境，无需担心后续想要迁移新服务器时遇到的各种问题
 
 # workflow
 
@@ -114,7 +69,7 @@ hugo -F --cleanDestinationDir
 
 ## 上传静态文件
 
-将 `mobaxterm` 的命令添加到用户环境变量中，以实现 `git bash` 、 `vscode` 、以及 `windows terminal` 中运行一些 mobaxterm 本地终端附带的命令，也就无需再专门打开一次 mobaxterm 去上传文件了
+将`mobaxterm`的命令添加到用户环境变量中，以实现`git bash | vscode | windows terminal`中运行一些 mobaxterm 本地终端附带的命令，也就无需再专门打开一次 mobaxterm 去上传文件了
 
 ```
 rsync -avuz --progress --delete public/ root@lvbibir.cn:/root/blog/data/hugo/
@@ -122,27 +77,117 @@ rsync -avuz --progress --delete public/ root@lvbibir.cn:/root/blog/data/hugo/
 
 ## 归档备份
 
-研究 hugo 建站之初是打算采用 github pages 来发布静态博客
+沿用搭建`Github pages`时使用的 [github仓库](https://github.com/lvbibir/lvbibir.github.io) ，来作为我博客的归档管理，也可以方便家里电脑和工作电脑之间的数据同步
 
-- 优点
-- - 仅需一个github账号和简单配置即可将静态博客发布到 github pages
-  - 没有维护的时间成本，可以将精力更多的放到博客内容本身上去
-  - 无需备案
-  - 无需ssl证书
-- 缺点
-- - 访问速度较慢
-  - 访问速度较慢
-  - 访问速度较慢
 
-虽说访问速度较慢可以通过各家的cdn加速来解决，但由于刚开始建立 blog 选择的是 wordpress ，域名、服务器、备案、证书等都已经一应俱全，且之前的架构采用 docker，添加一台 nginx 来跑 hugo 的静态网站是很方便的
 
-所以干脆沿用之前的 [github仓库](https://github.com/lvbibir/lvbibir.github.io) ，来作为我博客的归档管理，也可以方便家里电脑和工作电脑之间的数据同步
+# twikoo评论
+
+所有部署方式：https://twikoo.js.org/quick-start.html
+
+vercel+mongodb+github部署方式参考：https://www.sulvblog.cn/posts/blog/hugo_twikoo/
+
+记录一下账号关系：mongodb使用google账号登录，vercel使用github登录
+
+## 私有部署(docker)
+
+> 如果是使用 [一键将hugo博客部署到阿里云](#一键将hugo博客部署到阿里云) 中的步骤部署了twikoo，这步直接忽略，配置前端代码即可
+
+```
+docker run --name twikoo -e TWIKOO_THROTTLE=1000 -p 8080:8080 -v ${PWD}/data:/app/data -d imaegoo/twikoo
+```
+
+部署完成后看到如下结果即成功
+
+```
+[root@lvbibir ~]# curl http://localhost:8080
+{"code":100,"message":"Twikoo 云函数运行正常，请参考 https://twikoo.js.org/quick-start.html#%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2 完成前端的配置","version":"1.6.7"}
+```
+
+后续最好套上反向代理，加上域名和证书
+
+## 前端代码
+
+创建或者修改 `layouts\partials\comments.html`
+
+```
+<!-- Twikoo -->
+<div>
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
+        <hr />
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://cdn.staticfile.org/twikoo/{{ .Site.Params.twikoo.version }}/twikoo.all.min.js"></script>
+    <script>
+        twikoo.init({
+            envId: "", //填自己的，例如：https://example.com
+            el: "#tcomment",
+            lang: 'zh-CN',
+            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
+        });
+    </script>
+</div>
+```
+
+调用上述twikoo代码的位置：`layouts/_default/single.html`
+
+```
+<article class="post-single">
+  // 其他代码......
+  {{- if (.Param "comments") }}
+    {{- partial "comments.html" . }}
+  {{- end }}
+</article>
+```
+
+在站点配置文件config中加上版本号
+
+```
+params:
+	twikoo:
+      version: 1.6.7
+```
+
+## 更新
+
+1. 拉取新版本`docker pull imaegoo/twikoo`
+2. 停止旧版本容器`docker stop twikoo`
+3. 删除旧版本容器`docker rm twikoo`
+4. 部署新版本容器`docker-compose up -d`
+5. 在hugo配置文件 config.yml 中修改 twikoo版本
+
+## 修改数据
+
+直接修改`blog/data/twikoo/`目录下的文件后重启容器，❗慎重修改
+
+## 修改smms图床的api地址
+
+由于`sm.ms`域名国内无法访问，twikoo官方还没有出具体的修改方式，自己修改容器配置文件进行修改
+
+```bash
+# 复制配置文件
+[root@lvbibir blog]# docker cp twikoo:/app/node_modules/twikoo-func/utils/image.js /root/blog/conf/twikoo/
+
+# 修改配置文件，原来的配置是 https://sm.ms/api.v2/upload
+[root@lvbibir blog]# grep smms conf/twikoo/image.js
+      } else if (config.IMAGE_CDN === 'smms') {
+    const uploadResult = await axios.post('https://smms.app/api/v2/upload', formData, {
+
+# 将配置文件映射进容器内，重启容器即可
+[root@lvbibir blog]# grep twikoo docker-compose.yml
+  twikoo:
+    image: imaegoo/twikoo
+    container_name: twikoo
+      - $PWD/data/twikoo:/app/data
+      - $PWD/conf/twikoo/image.js:/app/node_modules/twikoo-func/utils/image.js
+```
 
 # 自定义字体
 
 可以使用一些在线的字体，可能会比较慢，推荐下载想要的字体放到自己的服务器或者cdn上
 
-修改 `assets\css\extended\fonts.css` ，添加 `@font-face`
+修改`assets\css\extended\fonts.css`，添加`@font-face`
 
 ```css
 @font-face {
@@ -152,7 +197,7 @@ rsync -avuz --progress --delete public/ root@lvbibir.cn:/root/blog/data/hugo/
 }
 ```
 
-修改 `assets\css\extended\blank.css` ，推荐将英文字体放在前面，可以实现英文和中文使用不同字体。
+修改`assets\css\extended\blank.css`，推荐将英文字体放在前面，可以实现英文和中文使用不同字体。
 
 ```css
 .post-content {
@@ -164,11 +209,9 @@ body {
 }
 ```
 
-
-
 # 修改链接颜色
 
-在 hugo+papermod 默认配置下，链接颜色是黑色字体带下划线的组合，个人非常喜欢 [typora-vue](https://github.com/blinkfox/typora-vue-theme) 的渲染风格，[hugo官方文档](https://gohugo.io/templates/render-hooks/#link-with-title-markdown-example) 给出了通过`render hooks` 覆盖默认的markdown渲染link的方式
+在 hugo+papermod 默认配置下，链接颜色是黑色字体带下划线的组合，个人非常喜欢[typora-vue](https://github.com/blinkfox/typora-vue-theme)的渲染风格[hugo官方文档](https://gohugo.io/templates/render-hooks/#link-with-title-markdown-example)给出了通过`render hooks`覆盖默认的markdown渲染link的方式
 
 新建`layouts/_default/_markup/render-link.html`文件，内容如下。在官方给出的示例中添加了 `style="color:#42b983`，颜色可以自行修改
 
@@ -237,81 +280,6 @@ new Artitalk({
 
 输入 leancloud配置 步骤中的第4步配置的用户名密码登录后就可以发布说说了
 
-# twikoo评论
-
-所有部署方式：https://twikoo.js.org/quick-start.html
-
-vercel+mongodb+github部署方式参考：https://www.sulvblog.cn/posts/blog/hugo_twikoo/
-
-记录一下账号关系：mongodb使用google账号登录，vercel使用github登录
-
-## 私有部署（docker)
-
-```
-docker run --name twikoo -e TWIKOO_THROTTLE=1000 -p 8080:8080 -v ${PWD}/data:/app/data -d imaegoo/twikoo
-```
-
-部署完成后看到如下结果即成功
-
-```
-[root@lvbibir ~]# curl http://localhost:8080
-{"code":100,"message":"Twikoo 云函数运行正常，请参考 https://twikoo.js.org/quick-start.html#%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2 完成前端的配置","version":"1.6.7"}
-```
-
-后续最好套上反向代理，加上域名和证书，docker-compose方式 [一键将hugo博客部署到阿里云](#一键将hugo博客部署到阿里云)
-
-## 前端代码
-
-创建或者修改 `layouts\partials\comments.html`
-
-```
-<!-- Twikoo -->
-<div>
-    <div class="pagination__title">
-        <span class="pagination__title-h" style="font-size: 20px;">💬评论</span>
-        <hr />
-    </div>
-    <div id="tcomment"></div>
-    <script src="https://cdn.staticfile.org/twikoo/{{ .Site.Params.twikoo.version }}/twikoo.all.min.js"></script>
-    <script>
-        twikoo.init({
-            envId: "", //填自己的，例如：https://example.com
-            el: "#tcomment",
-            lang: 'zh-CN',
-            path: window.TWIKOO_MAGIC_PATH||window.location.pathname,
-        });
-    </script>
-</div>
-```
-
-调用上述twikoo代码的位置：`layouts/_default/single.html`
-
-```
-<article class="post-single">
-  // 其他代码......
-  {{- if (.Param "comments") }}
-    {{- partial "comments.html" . }}
-  {{- end }}
-</article>
-```
-
-在站点配置文件config中加上版本号
-
-```
-params:
-	twikoo:
-      version: 1.6.7
-```
-
-## 更新
-
-1. 拉取新版本 `docker pull imaegoo/twikoo`
-2. 停止旧版本容器 `docker stop twikoo`
-3. 删除旧版本容器 `docker rm twikoo`
-
-4. 部署新版本容器
-
-5. 在hugo配置文件 config.yml 中修改 twikoo版本
 
 # shortcode
 
