@@ -1,5 +1,5 @@
 ---
-title: "git常用设置" 
+title: "git" 
 date: 2022-06-01
 lastmod: 2022-11-10
 tags: 
@@ -8,12 +8,23 @@ keywords:
 - git
 - proxy
 - 网络代理
-description: "介绍如何为git设置网络代理，优化git的连接速度" 
+description: "介绍使用git过程中常用的基础使用、参数设置、常见问题、配置优化等。" 
 cover:
     image: "" 
 ---
 
-# 设置代理
+# git命令
+
+## submodule
+
+当clone一个含有子模块的git仓库时可以使用如下命令安装所有子模块
+
+```bash
+git submodule init
+git submodule update
+```
+
+# git配置
 
 查看 git 设置
 
@@ -24,11 +35,20 @@ git config --list
 git config --global --list
 ```
 
+## 设置代理
+
 设置全局代理，使用 http 代理
 
 ```bash
 git config --global https.proxy http://127.0.0.1:1080
 git config --global https.proxy https://127.0.0.1:1080
+```
+
+取消 github.com 代理
+
+```bash
+git config --global --unset http.https://github.com.proxy
+git config --global --unset https.https://github.com.proxy
 ```
 
 设置全局代理，使用 socks5 代理
@@ -52,14 +72,7 @@ git config --global http.https://github.com.proxy http://127.0.0.1:7890
 git config --global https.https://github.com.proxy http://127.0.0.1:7890
 ```
 
-取消 github.com 代理
-
-```bash
-git config --global --unset http.https://github.com.proxy
-git config --global --unset https.https://github.com.proxy
-```
-
-# CRLF 和 LF 
+## CRLF 和 LF 
 
 ```bash
 # 提交时转换为LF，检出时转换为CRLF
@@ -75,5 +88,19 @@ git config --global core.safecrlf true
 git config --global core.safecrlf false   
 # 提交包含混合换行符的文件时给出警告
 git config --global core.safecrlf warn
+```
+
+# 常见问题
+
+## git clone 报错
+
+> fatal: early EOF 
+>
+> fatal: fetch-pack: invalid index-pack output
+
+解决
+
+```bash
+git config --global core.compression 0
 ```
 

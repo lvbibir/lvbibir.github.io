@@ -25,9 +25,9 @@ cover:
 
 > 虽说标题带有一键，但还是有一定的门槛的，需要对`dokcer`、`docker-compose`、`nginx`有一定了解
 
-之前的[wordpress博客](https://lvbibir.cn)部署在阿里云的一套 docker-compose 环境下，[wordpress迁移到docker](https://www.lvbibir.cn/posts/blog/wordpress-to-docker/) 有详细记录
+之前的 [wordpress博客](https://lvbibir.cn) 部署在阿里云的一套 docker-compose 环境下，[wordpress迁移到docker](https://www.lvbibir.cn/posts/blog/wordpress-to-docker/) 有详细记录
 
-基于之前的配置进行了一些优化和调整，基于需求下载对应的配置文件：[hugo](https://image.lvbibir.cn/files/hugo-blog-dockercompose.tar.gz)、[wordpress](https://image.lvbibir.cn/files/wordpress-blog.zip)、[hugo + wordpress](https://image.lvbibir.cn/files/hugo-and-wordpress-dockercompose.tar.gz)
+基于之前的配置进行了一些优化和调整，可根据需求下载对应的配置文件：[hugo](https://image.lvbibir.cn/files/hugo-blog-dockercompose.tar.gz)、[wordpress](https://image.lvbibir.cn/files/wordpress-blog.zip)、[hugo + wordpress](https://image.lvbibir.cn/files/hugo-and-wordpress-dockercompose.tar.gz)
 
 ## hugo
 
@@ -47,7 +47,7 @@ cover:
 server {
     listen       80 default_server; 
     listen       [::]:80 default_server;
-    server_name ******; # 修改域名(hugo)
+    server_name www.lvbibir.cn; # 修改域名(hugo)
     root /var/www/html;
 ......
 ```
@@ -56,40 +56,38 @@ server {
 
 将你的ssl证书放到`hugo-blog-dockercompose/ssl/`目录下
 
-这里共4个`server`，分别对应 `hugo的nginx 和 twikoo`的`http 和 https`，证书申请参考 [阿里云wordpress配置免费ssl证书](https://www.lvbibir.cn/posts/blog/wordpress-ssl/)
-
 ```nginx
 server {
     listen 80;
     listen [::]:80;
-    server_name ******; # 修改域名(hugo)
+    server_name www.lvbibir.cn; # 修改域名(hugo)
     return 301 https://$host$request_uri;
 }
 
 server {
     listen 80;
     listen [::]:80;
-    server_name ******; # 修改域名(twikoo)
+    server_name twikoo.lvbibir.cn; # 修改域名(twikoo)
     return 301 https://$host$request_uri;
 }
 
 server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
-    server_name ******; # 修改域名(hugo)
+    server_name www.lvbibir.cn; # 修改域名(hugo)
 ......
-    ssl_certificate /etc/nginx/ssl/******; # 证书(hugo)
-    ssl_certificate_key /etc/nginx/ssl/******; # 证书(hugo)）
+    ssl_certificate /etc/nginx/ssl/example.crt; # 证书(hugo)
+    ssl_certificate_key /etc/nginx/ssl/example.key; # 证书(hugo)）
 ......
 }
 
 server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
-    server_name ******; # 修改域名(twikoo)
+    server_name twikoo.lvbibir.cn; # 修改域名(twikoo)
 ......
-    ssl_certificate /etc/nginx/ssl/******; # 证书(twikoo)
-    ssl_certificate_key /etc/nginx/ssl/******; # 证书(twikoo)
+    ssl_certificate /etc/nginx/ssl/example.crt; # 证书(twikoo)
+    ssl_certificate_key /etc/nginx/ssl/example.key; # 证书(twikoo)
 ......
 }
 ```
@@ -140,48 +138,104 @@ rsync -avuz --progress --delete public/ root@lvbibir.cn:/root/blog/data/hugo/
 
 所以干脆沿用之前的 [github仓库](https://github.com/lvbibir/lvbibir.github.io) ，来作为我博客的归档管理，也可以方便家里电脑和工作电脑之间的数据同步
 
-# 图片并排展示
+# 自定义字体
 
-当主题默认配置下，图片宽度为 `max-width: 100%;`，如果是手机截图类型的图片，可能一个页面都展示不全一个图片
+可以使用一些在线的字体，可能会比较慢，推荐下载想要的字体放到自己的服务器或者cdn上
 
-单张图片建议修改尺寸，多张图片可以并排展示
+修改 `assets\css\extended\fonts.css` ，添加 `@font-face`
 
-```html
-<center class="half">
-    <img src="图片路径" width="194" style="display: unset;"/>
-    <img src="图片路径" width="194" style="display: unset;"/>
-    <img src="图片路径" width="194" style="display: unset;"/>
-    <img src="图片路径" width="194" style="display: unset;"/>
-</center>
+```css
+@font-face {
+    font-family: "LXGWWenKaiLite-Bold";
+    src: url("https://your.domain.com/fonts/test.woff2") format("woff2");
+    font-display: swap;
+}
 ```
 
-另外也可以通过在线的免费工具拼接图片
+修改 `assets\css\extended\blank.css` ，推荐将英文字体放在前面，可以实现英文和中文使用不同字体。
+
+```css
+.post-content {
+    font-family: Consolas, "LXGWWenKaiLite-Bold"; //修改
+}
+
+body {
+    font-family: Consolas, "LXGWWenKaiLite-Bold"; //修改
+}
+```
+
+
 
 # 修改链接颜色
 
-在 hugo+papermod 默认配置下，链接颜色是黑色字体带下划线的组合，个人非常喜欢 [typora-vue](https://github.com/blinkfox/typora-vue-theme) 的渲染风格，[hugo官方文档](https://gohugo.io/templates/render-hooks/#link-with-title-markdown-example)给出了通过`render hooks`覆盖默认的markdown渲染的方式
+在 hugo+papermod 默认配置下，链接颜色是黑色字体带下划线的组合，个人非常喜欢 [typora-vue](https://github.com/blinkfox/typora-vue-theme) 的渲染风格，[hugo官方文档](https://gohugo.io/templates/render-hooks/#link-with-title-markdown-example) 给出了通过`render hooks` 覆盖默认的markdown渲染link的方式
 
-新建`layouts/_default/_markup/render-link.html`文件，在官方给出的示例中添加了 `style="color:#42b983`，颜色可以自行修改，代码如下
+新建`layouts/_default/_markup/render-link.html`文件，内容如下。在官方给出的示例中添加了 `style="color:#42b983`，颜色可以自行修改
 
 ```html
 <a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener" style="color:#42b983";{{ end }}>{{ .Text | safeHTML }}</a>
 ```
 
-# url管理
-
-https://gohugo.io/content-management/urls/
-
-# seo优化
-
-https://www.sulvblog.cn/posts/blog/hugo_seo/
-
 # Artitalk说说
 
-部署：[官方文档](https://artitalk.js.org/doc.html)
+[官方文档](https://artitalk.js.org/doc.html)
 
 需要注意的是如果使用的是国际版的LeadCloud，需要绑定自定义域名后才能正常访问
 
 记录一下账号关系：LeadCloud使用163邮箱登录
+
+## leancloud配置
+
+1. 前往 [LeanCloud 国际版](https://leancloud.app/)，注册账号。
+2. 注册完成之后根据 LeanCloud 的提示绑定手机号和邮箱。
+3. 绑定完成之后点击`创建应用`，应用名称随意，接着在`结构化数据`中创建 `class`，命名为 `shuoshuo`。
+4. 在你新建的应用中找到`结构化数据`下的`用户`。点击`添加用户`，输入想用的用户名及密码。
+5. 回到`结构化数据`中，点击 `class` 下的 `shuoshuo`。找到权限，在 `Class 访问权限`中将 `add_fields` 以及 `create` 权限设置为指定用户，输入你刚才输入的用户名会自动匹配。为了安全起见，将 `delete` 和 `update` 也设置为跟它们一样的权限。
+6. 然后新建一个名为`atComment`的class，权限什么的使用默认的即可。
+7. 点击 `class` 下的 `_User` 添加列，列名称为 `img`，默认值填上你这个账号想要用的发布说说的头像url，这一项不进行配置，说说头像会显示为默认头像 —— Artitalk 的 logo。
+8. 在最菜单栏中找到设置-> 应用 keys，记下来 `AppID` 和 `AppKey` ，一会会用。
+9. 最后将 `_User` 中的权限全部调为指定用户，或者数据创建者，为了保证不被篡改用户数据以达到强制发布说说。
+10. 在设置->域名绑定中绑定自定义域名
+
+> ❗ 关于设置权限的这几步
+>
+> 这几步一定要设置好，才可以保证不被 “闲人” 破解发布说说的验证
+
+## hugo配置
+
+新增 `content/talk.md` 页面，内容如下，注意修改标注的内容，front-matter 的内容自行修改
+
+```markdown
+---
+title: "💬 说说"
+date: 2021-08-31
+hidemeta: true
+description: "胡言乱语"
+comments: true
+reward: false
+showToc: false 
+TocOpen: false 
+showbreadcrumbs: false
+---
+
+<body>
+<!-- 引用 artitalk -->
+<script type="text/javascript" src="https://unpkg.com/artitalk"></script>
+<!-- 存放说说的容器 -->
+<div id="artitalk_main"></div>
+<script>
+new Artitalk({
+    appId: '**********', // Your LeanCloud appId
+    appKey: '************', // Your LeanCloud appKey
+    serverURL: '*********' // 绑定的自定义域名
+})
+</script>
+</body>
+```
+
+这个时候已经可以直接访问了，`https://your.domain.com/talk`
+
+输入 leancloud配置 步骤中的第4步配置的用户名密码登录后就可以发布说说了
 
 # twikoo评论
 
@@ -204,15 +258,7 @@ docker run --name twikoo -e TWIKOO_THROTTLE=1000 -p 8080:8080 -v ${PWD}/data:/ap
 {"code":100,"message":"Twikoo 云函数运行正常，请参考 https://twikoo.js.org/quick-start.html#%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2 完成前端的配置","version":"1.6.7"}
 ```
 
-后续最好套上反向代理，加上域名和证书
-
-## 更新
-
-1. 拉取新版本 `docker pull imaegoo/twikoo`
-2. 停止旧版本容器 `docker stop twikoo`
-3. 删除旧版本容器 `docker rm twikoo`
-
-4. 部署新版本容器
+后续最好套上反向代理，加上域名和证书，docker-compose方式 [一键将hugo博客部署到阿里云](#一键将hugo博客部署到阿里云)
 
 ## 前端代码
 
@@ -257,6 +303,16 @@ params:
       version: 1.6.7
 ```
 
+## 更新
+
+1. 拉取新版本 `docker pull imaegoo/twikoo`
+2. 停止旧版本容器 `docker stop twikoo`
+3. 删除旧版本容器 `docker rm twikoo`
+
+4. 部署新版本容器
+
+5. 在hugo配置文件 config.yml 中修改 twikoo版本
+
 # shortcode
 
 ppt、bilibili、youtube、豆瓣阅读和电影卡片
@@ -279,7 +335,7 @@ https://www.liwen.id.au/heg/
 
 ![image-20220911150229930](https://image.lvbibir.cn/blog/image-20220911150229930.png)
 
-添加完下面的页脚内容后要修改 `assets\css\extended\blank.css` 中的 `--footer-height` 的大小，具体数字需要考虑到行数和字体大小
+> 添加完下面的页脚内容后要修改 `assets\css\extended\blank.css` 中的 `--footer-height` 的大小，具体数字需要考虑到行数和字体大小
 
 ## 自定义徽标
 
@@ -323,18 +379,9 @@ https://www.liwen.id.au/heg/
 </span>
 ```
 
-# todo
+# 其他修改
 
-- [x] url优化
-- [x] 百度seo优化
-- [x] 谷歌seo优化
-- [x] 必应seo优化
-- [x] 尝试再次优化nginx的配置，之前的配置对于 php 程序更适用
-- [x] 将所有文章进行内容整理
-- [x] 说说页面
-- [ ] 朋友圈页面
-
-
+前端知识比较匮乏，其他 css样式修改 基本都是通过 f12控制台 一点点摸索改的，不太规范且比较琐碎就不单独记录了，~~其实我根本已经忘记还改了哪些东西~~
 
 
 
