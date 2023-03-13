@@ -208,7 +208,7 @@ markup:
     lineNos: false     # 是否显示行号
     noClasses: true    # 使用 class 标签，而不是内嵌的内联样式
     tabWidth: 4
-    style: monokai
+    style: paraiso-dark
     # anchorLineNos: true
     # hl_Lines：高亮的行号，一般这个不设置，因为每个代码块我们可能希望让高亮的地方不一样。
     # lineNoStart：行号从编号几开始，一般从 1 开始。
