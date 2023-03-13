@@ -296,12 +296,12 @@
     </item>
     
     <item>
-      <title>git常用设置</title>
-      <link>https://www.lvbibir.cn/posts/tech/git-settings/</link>
+      <title>git</title>
+      <link>https://www.lvbibir.cn/posts/tech/git/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/git-settings/</guid>
-      <description>介绍如何为git设置网络代理，优化git的连接速度</description>
+      <guid>https://www.lvbibir.cn/posts/tech/git/</guid>
+      <description>介绍使用git过程中常用的基础使用、参数设置、常见问题、配置优化等。</description>
     </item>
     
     <item>
