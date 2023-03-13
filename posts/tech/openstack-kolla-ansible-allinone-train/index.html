@@ -244,7 +244,7 @@ ironic_dnsmasq_boot_file: pxelinux.0
 
 # magnum
 enable_magnum: true
-</code></pre><p>ironic 组件还需要一些其他操作</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>mkdir -p /etc/kolla/config/ironic/
+</code></pre><p>ironic 组件还需要一些其他操作</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>mkdir -p /etc/kolla/config/ironic/
 </span></span><span style=display:flex><span>curl https://tarballs.openstack.org/ironic-python-agent/dib/files/ipa-centos7-master.kernel -o /etc/kolla/config/ironic/ironic-agent.kernel
 </span></span><span style=display:flex><span>curl https://tarballs.openstack.org/ironic-python-agent/dib/files/ipa-centos7-master.initramfs -o /etc/kolla/config/ironic/ironic-agent.initramfs
 </span></span></code></pre></div><p>在现有集群中新增组件</p><pre tabindex=0><code>kolla-ansible -i all-in-one deploy --tags horizon,magnum,ironic

@@ -6,266 +6,266 @@
 sed -i &#39;s/4/7/g&#39; /etc/os-release
 </code></pre><h2 id=4-配置主机名allnode>4. 配置主机名(allnode)<a hidden class=anchor aria-hidden=true href=#4-配置主机名allnode>#</a></h2><p>2台服务器的 hosts 都需要做如下修改</p><ul><li>修改主机名</li></ul><pre tabindex=0><code>hostnamectl set-hostname node001
 bash
-</code></pre><ul><li>修改 hosts 文件</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/hosts
+</code></pre><ul><li>修改 hosts 文件</li></ul><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/hosts
 </span></span><span style=display:flex><span>127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 </span></span><span style=display:flex><span>::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 </span></span><span style=display:flex><span>192.168.150.106 node001
 </span></span><span style=display:flex><span>192.168.150.107 node002
-</span></span></code></pre></div><h2 id=5-关闭防火墙及selinuxallnode>5. 关闭防火墙及selinux(allnode)<a hidden class=anchor aria-hidden=true href=#5-关闭防火墙及selinuxallnode>#</a></h2><p><strong>2台服务器上分别执行以下操作，关闭防火墙并配置开机不自动启动</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>systemctl stop firewalld
+</span></span></code></pre></div><h2 id=5-关闭防火墙及selinuxallnode>5. 关闭防火墙及selinux(allnode)<a hidden class=anchor aria-hidden=true href=#5-关闭防火墙及selinuxallnode>#</a></h2><p><strong>2台服务器上分别执行以下操作，关闭防火墙并配置开机不自动启动</strong></p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>systemctl stop firewalld
 </span></span><span style=display:flex><span>systemctl disable firewalld
-</span></span><span style=display:flex><span>setenforce <span style=color:#ae81ff>0</span>
-</span></span></code></pre></div><p>为了重启后依然关闭，配置如下文件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/sysconfig/selinux
+</span></span><span style=display:flex><span>setenforce <span style=color:#f99b15>0</span>
+</span></span></code></pre></div><p>为了重启后依然关闭，配置如下文件</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/sysconfig/selinux
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>修改
-</span></span><span style=display:flex><span>SELINUX<span style=color:#f92672>=</span>disabled
-</span></span></code></pre></div><h2 id=6-配置ssh互信allnode>6. 配置ssh互信(allnode)<a hidden class=anchor aria-hidden=true href=#6-配置ssh互信allnode>#</a></h2><p><strong>方法一</strong></p><p>在每台服务器上执行如下操作，一直回车即可</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ssh-keygen -t rsa
+</span></span><span style=display:flex><span><span style=color:#ef6155>SELINUX</span><span style=color:#5bc4bf>=</span>disabled
+</span></span></code></pre></div><h2 id=6-配置ssh互信allnode>6. 配置ssh互信(allnode)<a hidden class=anchor aria-hidden=true href=#6-配置ssh互信allnode>#</a></h2><p><strong>方法一</strong></p><p>在每台服务器上执行如下操作，一直回车即可</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ssh-keygen -t rsa
 </span></span><span style=display:flex><span>ssh-copy-id -i /root/.ssh/id_rsa.pub node001
 </span></span><span style=display:flex><span>ssh-copy-id -i /root/.ssh/id_rsa.pub node002
-</span></span></code></pre></div><p><strong>方法二</strong></p><p>在每台服务器上执行如下操作，一直回车即可</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ssh-keygen -t rsa
-</span></span></code></pre></div><p>在服务器1上将公钥（名为 id_rsa.pub 文件）追加到认证文件（名为 authorized_keys 文件）中:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys 
-</span></span></code></pre></div><p>去其他服务器节点将<code>~/.ssh/id_rsa.pub</code>中的内容拷贝到服务器1的<code>~/.ssh/authorized_keys</code>中,查看文件中的内容</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cat ~/.ssh/authorized_keys
+</span></span></code></pre></div><p><strong>方法二</strong></p><p>在每台服务器上执行如下操作，一直回车即可</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ssh-keygen -t rsa
+</span></span></code></pre></div><p>在服务器1上将公钥（名为 id_rsa.pub 文件）追加到认证文件（名为 authorized_keys 文件）中:</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys 
+</span></span></code></pre></div><p>去其他服务器节点将<code>~/.ssh/id_rsa.pub</code>中的内容拷贝到服务器1的<code>~/.ssh/authorized_keys</code>中,查看文件中的内容</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cat ~/.ssh/authorized_keys
 </span></span><span style=display:flex><span>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/eA09X4s5RIYvuYNxVvtOo6unY1mgipsFyoz/hy/Gwk0onfZvBi/Sl3TVRZO5aqcHccAGlLF7OPTKH1qUuKVtnUOQik0TouL5VKsOBDMHHRT9D5UwqaIE8tYDC8V6uwieFgscZcBjhrsJ/Iramo9ce7N9RTO3otRMRQxOs+Wd1F/ZOmpRtMGU2N4RH4i2quRU6m2lt/eJKpNupSHKoztTQRsEanilHVASnikAXH8JpG70iO7RXR/hLz+/Of3ISUrOMSO4/ZIIu4xnYN3jvsXOdK/qIhP/PI2s+uF22IvVE6xZYVadQFa4zAuhQmCBWkE7vMyI1UJkxP7OQYj72LUH root@node001
 </span></span><span style=display:flex><span>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCnz8wHoytR2Xlnl04rQq4I2vgUVWbkKjv30pj+Toz4719ah4cY9pvZj0JsfhVzaaCsR14BLFVLkqKUhCWK3K6muT4iHb+N0WirpbwfJkztmQeco7Ha9xrPQ8v/I4xZujFoMVA0tkb/32zRTxOkPv9AUgB8V6Lin6LnB/AcnhnmoIs5PdbAdh/kBGpQGKIZkbyCUOYz9/PZuGJoJBblqfWiqzxYYLN9+cYMkmPnB1HdDewAepIsIC18U3ujE+1Su2UlmISPvvr1zG4XR4ZZoKQsOOJq3XRMGVkDvmFhl03JHZpd6BW0796CeYVZ41UomWXTOduQql+tYWUbegzGLmRZ root@node002
 </span></span><span style=display:flex><span>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8AFoGJHp2M45xLYNzXUHLWzRwHsgRPHjeErStq0tEy9bQv4OkN41j0FrxVAYJiGHdHGturriVgUEtL59RjcrJH6bAvhP54nM5YiQlNnWnSUR27Zuaodz4nhYUFq/Co5eDN6lTfL8pgYiEdpBOvE5t1w3bisdblP7YGQ2lF1zzCEGfQ79QbntEbyGNoR9sGHm11x9fOH+fape8TjQJrEAO4d1tAhMqVygQKwqwAPKeqhEum6BaLli83TsXzd7gyz9H7AAc1m04NaLB26xfynW6MVuk1j94awXKlGXjrbNTC/Kg6M8bd5PT/k3DOkx4b+nEs8xZ5x1j4D2OaO1X6rZx root@node003
-</span></span></code></pre></div><p>设置认证文件的权限：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>chmod <span style=color:#ae81ff>600</span> ~/.ssh/authorized_keys
-</span></span></code></pre></div><p>将<code>~/.ssh/authorized_keys</code>同步到其他节点</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>scp ~/.ssh/authorized_keys node002:~/.ssh/authorized_keys
-</span></span></code></pre></div><blockquote><p>注意：这里第一次使用同步还需要密码，之后就不需要了</p></blockquote><p>验证免密是否配置成功</p><p>ssh 到不同服务器</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ssh node002
-</span></span></code></pre></div><h2 id=7-配置ntp时钟同步>7. 配置ntp时钟同步<a hidden class=anchor aria-hidden=true href=#7-配置ntp时钟同步>#</a></h2><p>选择一台服务器作为 NTP Server，这里选择 node001</p><p>将如下配置<code>vim /etc/ntp.conf</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Use public servers from the pool.ntp.org project.</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Please consider joining the pool (http://www.pool.ntp.org/join.html).</span>
+</span></span></code></pre></div><p>设置认证文件的权限：</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>chmod <span style=color:#f99b15>600</span> ~/.ssh/authorized_keys
+</span></span></code></pre></div><p>将<code>~/.ssh/authorized_keys</code>同步到其他节点</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>scp ~/.ssh/authorized_keys node002:~/.ssh/authorized_keys
+</span></span></code></pre></div><blockquote><p>注意：这里第一次使用同步还需要密码，之后就不需要了</p></blockquote><p>验证免密是否配置成功</p><p>ssh 到不同服务器</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ssh node002
+</span></span></code></pre></div><h2 id=7-配置ntp时钟同步>7. 配置ntp时钟同步<a hidden class=anchor aria-hidden=true href=#7-配置ntp时钟同步>#</a></h2><p>选择一台服务器作为 NTP Server，这里选择 node001</p><p>将如下配置<code>vim /etc/ntp.conf</code></p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#776e71># Use public servers from the pool.ntp.org project.</span>
+</span></span><span style=display:flex><span><span style=color:#776e71># Please consider joining the pool (http://www.pool.ntp.org/join.html).</span>
 </span></span><span style=display:flex><span>server 0.centos.pool.ntp.org iburst
 </span></span><span style=display:flex><span>server 1.centos.pool.ntp.org iburst
 </span></span><span style=display:flex><span>server 2.centos.pool.ntp.org iburst
 </span></span><span style=display:flex><span>server 3.centos.pool.ntp.org iburst
-</span></span></code></pre></div><p>修改为</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Use public servers from the pool.ntp.org project.</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Please consider joining the pool (http://www.pool.ntp.org/join.html).</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>#server 0.centos.pool.ntp.org iburst</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>#server 1.centos.pool.ntp.org iburst</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>#server 2.centos.pool.ntp.org iburst</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>#server 3.centos.pool.ntp.org iburst</span>
+</span></span></code></pre></div><p>修改为</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#776e71># Use public servers from the pool.ntp.org project.</span>
+</span></span><span style=display:flex><span><span style=color:#776e71># Please consider joining the pool (http://www.pool.ntp.org/join.html).</span>
+</span></span><span style=display:flex><span><span style=color:#776e71>#server 0.centos.pool.ntp.org iburst</span>
+</span></span><span style=display:flex><span><span style=color:#776e71>#server 1.centos.pool.ntp.org iburst</span>
+</span></span><span style=display:flex><span><span style=color:#776e71>#server 2.centos.pool.ntp.org iburst</span>
+</span></span><span style=display:flex><span><span style=color:#776e71>#server 3.centos.pool.ntp.org iburst</span>
 </span></span><span style=display:flex><span>server 127.127.1.0 
-</span></span><span style=display:flex><span>fudge 127.127.1.0 stratum <span style=color:#ae81ff>10</span>
-</span></span></code></pre></div><p>node002节点做如下配置</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/ntp.conf
-</span></span></code></pre></div><p>将</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Use public servers from the pool.ntp.org project.</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Please consider joining the pool (http://www.pool.ntp.org/join.html).</span>
+</span></span><span style=display:flex><span>fudge 127.127.1.0 stratum <span style=color:#f99b15>10</span>
+</span></span></code></pre></div><p>node002节点做如下配置</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/ntp.conf
+</span></span></code></pre></div><p>将</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#776e71># Use public servers from the pool.ntp.org project.</span>
+</span></span><span style=display:flex><span><span style=color:#776e71># Please consider joining the pool (http://www.pool.ntp.org/join.html).</span>
 </span></span><span style=display:flex><span>server 0.centos.pool.ntp.org iburst
 </span></span><span style=display:flex><span>server 1.centos.pool.ntp.org iburst
 </span></span><span style=display:flex><span>server 2.centos.pool.ntp.org iburst
 </span></span><span style=display:flex><span>server 3.centos.pool.ntp.org iburst
-</span></span></code></pre></div><p>修改为</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Use public servers from the pool.ntp.org project.</span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Please consider joining the pool (http://www.pool.ntp.org/join.html).</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>#server 0.centos.pool.ntp.org iburst</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>#server 1.centos.pool.ntp.org iburst</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>#server 2.centos.pool.ntp.org iburst</span>
-</span></span><span style=display:flex><span><span style=color:#75715e>#server 3.centos.pool.ntp.org iburst</span>
+</span></span></code></pre></div><p>修改为</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#776e71># Use public servers from the pool.ntp.org project.</span>
+</span></span><span style=display:flex><span><span style=color:#776e71># Please consider joining the pool (http://www.pool.ntp.org/join.html).</span>
+</span></span><span style=display:flex><span><span style=color:#776e71>#server 0.centos.pool.ntp.org iburst</span>
+</span></span><span style=display:flex><span><span style=color:#776e71>#server 1.centos.pool.ntp.org iburst</span>
+</span></span><span style=display:flex><span><span style=color:#776e71>#server 2.centos.pool.ntp.org iburst</span>
+</span></span><span style=display:flex><span><span style=color:#776e71>#server 3.centos.pool.ntp.org iburst</span>
 </span></span><span style=display:flex><span>server 192.168.150.106
-</span></span></code></pre></div><p>在每台服务器上启动ntpd服务，并配置服务开机自启动</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>systemctl restart ntpd
+</span></span></code></pre></div><p>在每台服务器上启动ntpd服务，并配置服务开机自启动</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>systemctl restart ntpd
 </span></span><span style=display:flex><span>systemctl enable ntpd
-</span></span></code></pre></div><h2 id=9-设置swapallnode>9. 设置swap(allnode)<a hidden class=anchor aria-hidden=true href=#9-设置swapallnode>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>echo vm.swappiness <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span> &gt;&gt; /etc/sysctl.conf
-</span></span><span style=display:flex><span>sysctl vm.swappiness<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
+</span></span></code></pre></div><h2 id=9-设置swapallnode>9. 设置swap(allnode)<a hidden class=anchor aria-hidden=true href=#9-设置swapallnode>#</a></h2><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>echo vm.swappiness <span style=color:#5bc4bf>=</span> <span style=color:#f99b15>1</span> &gt;&gt; /etc/sysctl.conf
+</span></span><span style=display:flex><span>sysctl vm.swappiness<span style=color:#5bc4bf>=</span><span style=color:#f99b15>1</span>
 </span></span><span style=display:flex><span>sysctl -p
-</span></span></code></pre></div><h2 id=10-关闭透明大页面allnode>10. 关闭透明大页面(allnode)<a hidden class=anchor aria-hidden=true href=#10-关闭透明大页面allnode>#</a></h2><p>由于透明超大页面已知会导致意外的节点重新启动并导致RAC出现性能问题，因此Oracle强烈建议禁用</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag
+</span></span></code></pre></div><h2 id=10-关闭透明大页面allnode>10. 关闭透明大页面(allnode)<a hidden class=anchor aria-hidden=true href=#10-关闭透明大页面allnode>#</a></h2><p>由于透明超大页面已知会导致意外的节点重新启动并导致RAC出现性能问题，因此Oracle强烈建议禁用</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>echo never &gt; /sys/kernel/mm/transparent_hugepage/defrag
 </span></span><span style=display:flex><span>echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled
-</span></span></code></pre></div><h2 id=11-安装http服务node001>11. 安装http服务(node001)<a hidden class=anchor aria-hidden=true href=#11-安装http服务node001>#</a></h2><p>安装apache的httpd服务主要用于搭建OS. Ambari和hdp的yum源。在集群服务器中选择一台服务器来安装httpd服务，命令如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>yum -y install httpd
+</span></span></code></pre></div><h2 id=11-安装http服务node001>11. 安装http服务(node001)<a hidden class=anchor aria-hidden=true href=#11-安装http服务node001>#</a></h2><p>安装apache的httpd服务主要用于搭建OS. Ambari和hdp的yum源。在集群服务器中选择一台服务器来安装httpd服务，命令如下：</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>yum -y install httpd
 </span></span><span style=display:flex><span>systemctl start httpd
 </span></span><span style=display:flex><span>systemctl enable httpd.service
-</span></span></code></pre></div><p>验证，在浏览器输入http://192.168.150.106看到如下截图则说明启动成功。</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20211123141149628.png alt=image-20211123141149628></p><h2 id=13-安装javaallnode>13. 安装Java(allnode)<a hidden class=anchor aria-hidden=true href=#13-安装javaallnode>#</a></h2><p>下载地址：https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>tar -zxvf jdk-8u271-linux-x64.tar.gz 
+</span></span></code></pre></div><p>验证，在浏览器输入http://192.168.150.106看到如下截图则说明启动成功。</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20211123141149628.png alt=image-20211123141149628></p><h2 id=13-安装javaallnode>13. 安装Java(allnode)<a hidden class=anchor aria-hidden=true href=#13-安装javaallnode>#</a></h2><p>下载地址：https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>tar -zxvf jdk-8u271-linux-x64.tar.gz 
 </span></span><span style=display:flex><span>mkdir /usr/local/java
 </span></span><span style=display:flex><span>mv jdk1.8.0_271/* /usr/local/java
-</span></span></code></pre></div><p>配置环境变量</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /root/.bashrc
-</span></span></code></pre></div><p>添加如下配置</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>export JAVA_HOME<span style=color:#f92672>=</span>/usr/local/java
-</span></span><span style=display:flex><span>export PATH<span style=color:#f92672>=</span>$PATH:$JAVA_HOME/bin
-</span></span><span style=display:flex><span>export CLASSPATH<span style=color:#f92672>=</span>.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-</span></span><span style=display:flex><span>export JRE_HOME<span style=color:#f92672>=</span>$JAVA_HOME/jre
-</span></span></code></pre></div><p>激活配置</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>source /root/.bashrc
+</span></span></code></pre></div><p>配置环境变量</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /root/.bashrc
+</span></span></code></pre></div><p>添加如下配置</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>export <span style=color:#ef6155>JAVA_HOME</span><span style=color:#5bc4bf>=</span>/usr/local/java
+</span></span><span style=display:flex><span>export <span style=color:#ef6155>PATH</span><span style=color:#5bc4bf>=</span><span style=color:#ef6155>$PATH</span>:<span style=color:#ef6155>$JAVA_HOME</span>/bin
+</span></span><span style=display:flex><span>export <span style=color:#ef6155>CLASSPATH</span><span style=color:#5bc4bf>=</span>.:<span style=color:#ef6155>$JAVA_HOME</span>/lib/dt.jar:<span style=color:#ef6155>$JAVA_HOME</span>/lib/tools.jar
+</span></span><span style=display:flex><span>export <span style=color:#ef6155>JRE_HOME</span><span style=color:#5bc4bf>=</span><span style=color:#ef6155>$JAVA_HOME</span>/jre
+</span></span></code></pre></div><p>激活配置</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>source /root/.bashrc
 </span></span><span style=display:flex><span>java -version
-</span></span></code></pre></div><h2 id=14-安装maven36node001>14. 安装maven3.6(node001)<a hidden class=anchor aria-hidden=true href=#14-安装maven36node001>#</a></h2><p>下载解压</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>tar -zxvf apache-maven-3.6.3-bin.tar.gz
+</span></span></code></pre></div><h2 id=14-安装maven36node001>14. 安装maven3.6(node001)<a hidden class=anchor aria-hidden=true href=#14-安装maven36node001>#</a></h2><p>下载解压</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>tar -zxvf apache-maven-3.6.3-bin.tar.gz
 </span></span><span style=display:flex><span>mkdir -p /opt/src/maven
 </span></span><span style=display:flex><span>mv apache-maven-3.6.3/* /opt/src/maven
-</span></span></code></pre></div><p>配置maven环境变量</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /root/.bashrc
-</span></span><span style=display:flex><span><span style=color:#75715e># set maven home</span>
-</span></span><span style=display:flex><span>export PATH<span style=color:#f92672>=</span>$PATH:/opt/src/maven/bin
-</span></span></code></pre></div><p>激活</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>source /root/.bashrc
-</span></span></code></pre></div><h1 id=安装ambarihdp>安装Ambari&amp;HDP<a hidden class=anchor aria-hidden=true href=#安装ambarihdp>#</a></h1><h2 id=1-配置本地源>1. 配置本地源<a hidden class=anchor aria-hidden=true href=#1-配置本地源>#</a></h2><p>解压</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>tar -zxvf  ambari-2.7.5.0-centos7.tar.gz -C /var/www/html/
+</span></span></code></pre></div><p>配置maven环境变量</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /root/.bashrc
+</span></span><span style=display:flex><span><span style=color:#776e71># set maven home</span>
+</span></span><span style=display:flex><span>export <span style=color:#ef6155>PATH</span><span style=color:#5bc4bf>=</span><span style=color:#ef6155>$PATH</span>:/opt/src/maven/bin
+</span></span></code></pre></div><p>激活</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>source /root/.bashrc
+</span></span></code></pre></div><h1 id=安装ambarihdp>安装Ambari&amp;HDP<a hidden class=anchor aria-hidden=true href=#安装ambarihdp>#</a></h1><h2 id=1-配置本地源>1. 配置本地源<a hidden class=anchor aria-hidden=true href=#1-配置本地源>#</a></h2><p>解压</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>tar -zxvf  ambari-2.7.5.0-centos7.tar.gz -C /var/www/html/
 </span></span><span style=display:flex><span>tar -zxvf  HDP-3.1.5.0-centos7-rpm.tar.gz -C /var/www/html/
 </span></span><span style=display:flex><span>tar -zxvf  HDP-GPL-3.1.5.0-centos7-gpl.tar.gz -C /var/www/html/
 </span></span><span style=display:flex><span>tar -zxvf  HDP-UTILS-1.1.0.22-centos7.tar.gz -C /var/www/html/
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>ll /var/www/html/
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>总用量 <span style=color:#ae81ff>0</span>
-</span></span><span style=display:flex><span>drwxr-xr-x. <span style=color:#ae81ff>3</span> root root  <span style=color:#ae81ff>21</span> 11月 <span style=color:#ae81ff>23</span> 22:31 ambari
-</span></span><span style=display:flex><span>drwxr-xr-x. <span style=color:#ae81ff>3</span> <span style=color:#ae81ff>1001</span> users <span style=color:#ae81ff>21</span> 12月 <span style=color:#ae81ff>18</span> <span style=color:#ae81ff>2019</span> HDP
-</span></span><span style=display:flex><span>drwxr-xr-x. <span style=color:#ae81ff>3</span> <span style=color:#ae81ff>1001</span> users <span style=color:#ae81ff>21</span> 12月 <span style=color:#ae81ff>18</span> <span style=color:#ae81ff>2019</span> HDP-GPL
-</span></span><span style=display:flex><span>drwxr-xr-x. <span style=color:#ae81ff>3</span> <span style=color:#ae81ff>1001</span> users <span style=color:#ae81ff>21</span> 8月  <span style=color:#ae81ff>13</span> <span style=color:#ae81ff>2018</span> HDP-UTILS
-</span></span></code></pre></div><p>设置设置用户组和授权</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>chown -R root:root /var/www/html/HDP
+</span></span><span style=display:flex><span>总用量 <span style=color:#f99b15>0</span>
+</span></span><span style=display:flex><span>drwxr-xr-x. <span style=color:#f99b15>3</span> root root  <span style=color:#f99b15>21</span> 11月 <span style=color:#f99b15>23</span> 22:31 ambari
+</span></span><span style=display:flex><span>drwxr-xr-x. <span style=color:#f99b15>3</span> <span style=color:#f99b15>1001</span> users <span style=color:#f99b15>21</span> 12月 <span style=color:#f99b15>18</span> <span style=color:#f99b15>2019</span> HDP
+</span></span><span style=display:flex><span>drwxr-xr-x. <span style=color:#f99b15>3</span> <span style=color:#f99b15>1001</span> users <span style=color:#f99b15>21</span> 12月 <span style=color:#f99b15>18</span> <span style=color:#f99b15>2019</span> HDP-GPL
+</span></span><span style=display:flex><span>drwxr-xr-x. <span style=color:#f99b15>3</span> <span style=color:#f99b15>1001</span> users <span style=color:#f99b15>21</span> 8月  <span style=color:#f99b15>13</span> <span style=color:#f99b15>2018</span> HDP-UTILS
+</span></span></code></pre></div><p>设置设置用户组和授权</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>chown -R root:root /var/www/html/HDP
 </span></span><span style=display:flex><span>chown -R root:root /var/www/html/HDP-GPL
 </span></span><span style=display:flex><span>chown -R root:root /var/www/html/HDP-UTILS
-</span></span><span style=display:flex><span>chmod -R <span style=color:#ae81ff>755</span> /var/www/html/HDP
-</span></span><span style=display:flex><span>chmod -R <span style=color:#ae81ff>755</span> /var/www/html/HDP-GPL
-</span></span><span style=display:flex><span>chmod -R <span style=color:#ae81ff>755</span> /var/www/html/HDP-UTILS
-</span></span></code></pre></div><p>创建 libtirpc-devel 本地源</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>mkdir /var/www/html/libtirpc
+</span></span><span style=display:flex><span>chmod -R <span style=color:#f99b15>755</span> /var/www/html/HDP
+</span></span><span style=display:flex><span>chmod -R <span style=color:#f99b15>755</span> /var/www/html/HDP-GPL
+</span></span><span style=display:flex><span>chmod -R <span style=color:#f99b15>755</span> /var/www/html/HDP-UTILS
+</span></span></code></pre></div><p>创建 libtirpc-devel 本地源</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>mkdir /var/www/html/libtirpc
 </span></span><span style=display:flex><span>mv /root/libtirpc-* /var/www/html/libtirpc/
 </span></span><span style=display:flex><span>cd /var/www/html/libtirpc
 </span></span><span style=display:flex><span>createrepo .
-</span></span></code></pre></div><p>制作本地源</p><p>配置 ambari.repo</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/yum.repos.d/ambari.repo
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>Ambari-2.7.5.0<span style=color:#f92672>]</span>
-</span></span><span style=display:flex><span>name<span style=color:#f92672>=</span>Ambari-2.7.5.0
-</span></span><span style=display:flex><span>baseurl<span style=color:#f92672>=</span>http://192.168.150.106/ambari/centos7/2.7.5.0-72/
-</span></span><span style=display:flex><span>gpgcheck<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
-</span></span><span style=display:flex><span>enabled<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span>priority<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
-</span></span></code></pre></div><p>配置 HDP 和 HDP-TILS</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/yum.repos.d/HDP.repo
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>HDP-3.1.5.0<span style=color:#f92672>]</span>
-</span></span><span style=display:flex><span>name<span style=color:#f92672>=</span>HDP Version - HDP-3.1.5.0
-</span></span><span style=display:flex><span>baseurl<span style=color:#f92672>=</span>http://192.168.150.106/HDP/centos7/3.1.5.0-152/
-</span></span><span style=display:flex><span>gpgcheck<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
-</span></span><span style=display:flex><span>enabled<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span>priority<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
+</span></span></code></pre></div><p>制作本地源</p><p>配置 ambari.repo</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/yum.repos.d/ambari.repo
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>Ambari-2.7.5.0<span style=color:#5bc4bf>]</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>name</span><span style=color:#5bc4bf>=</span>Ambari-2.7.5.0
+</span></span><span style=display:flex><span><span style=color:#ef6155>baseurl</span><span style=color:#5bc4bf>=</span>http://192.168.150.106/ambari/centos7/2.7.5.0-72/
+</span></span><span style=display:flex><span><span style=color:#ef6155>gpgcheck</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>0</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>enabled</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>1</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>priority</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>1</span>
+</span></span></code></pre></div><p>配置 HDP 和 HDP-TILS</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/yum.repos.d/HDP.repo
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>HDP-3.1.5.0<span style=color:#5bc4bf>]</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>name</span><span style=color:#5bc4bf>=</span>HDP Version - HDP-3.1.5.0
+</span></span><span style=display:flex><span><span style=color:#ef6155>baseurl</span><span style=color:#5bc4bf>=</span>http://192.168.150.106/HDP/centos7/3.1.5.0-152/
+</span></span><span style=display:flex><span><span style=color:#ef6155>gpgcheck</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>0</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>enabled</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>1</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>priority</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>1</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>HDP-UTILS-1.1.0.22<span style=color:#f92672>]</span>
-</span></span><span style=display:flex><span>name<span style=color:#f92672>=</span>HDP-UTILS Version - HDP-UTILS-1.1.0.22
-</span></span><span style=display:flex><span>baseurl<span style=color:#f92672>=</span>http://192.168.150.106/HDP-UTILS/centos7/1.1.0.22/
-</span></span><span style=display:flex><span>gpgcheck<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
-</span></span><span style=display:flex><span>enabled<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span>priority<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>HDP-UTILS-1.1.0.22<span style=color:#5bc4bf>]</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>name</span><span style=color:#5bc4bf>=</span>HDP-UTILS Version - HDP-UTILS-1.1.0.22
+</span></span><span style=display:flex><span><span style=color:#ef6155>baseurl</span><span style=color:#5bc4bf>=</span>http://192.168.150.106/HDP-UTILS/centos7/1.1.0.22/
+</span></span><span style=display:flex><span><span style=color:#ef6155>gpgcheck</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>0</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>enabled</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>1</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>priority</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>1</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>HDP-GPL-3.1.5.0<span style=color:#f92672>]</span>
-</span></span><span style=display:flex><span>name<span style=color:#f92672>=</span>HDP-GPL Version - HDP-GPL-3.1.5.0
-</span></span><span style=display:flex><span>baseurl<span style=color:#f92672>=</span>http://192.168.150.106/HDP-GPL/centos7/3.1.5.0-152
-</span></span><span style=display:flex><span>gpgcheck<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
-</span></span><span style=display:flex><span>enabled<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span>priority<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
-</span></span></code></pre></div><p>配置 libtirpc.repo</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/yum.repos.d/libtirpc.repo
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>libtirpc_repo<span style=color:#f92672>]</span>
-</span></span><span style=display:flex><span>name<span style=color:#f92672>=</span>libtirpc-0.2.4-0.16
-</span></span><span style=display:flex><span>baseurl<span style=color:#f92672>=</span>http://192.168.150.106/libtirpc/
-</span></span><span style=display:flex><span>gpgcheck<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
-</span></span><span style=display:flex><span>enabled<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span>priority<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
-</span></span></code></pre></div><p>拷贝到其他节点</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>scp /etc/yum.repos.d/* node002:/etc/yum.repos.d/
-</span></span></code></pre></div><p>查看源</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>yum clean all
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>HDP-GPL-3.1.5.0<span style=color:#5bc4bf>]</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>name</span><span style=color:#5bc4bf>=</span>HDP-GPL Version - HDP-GPL-3.1.5.0
+</span></span><span style=display:flex><span><span style=color:#ef6155>baseurl</span><span style=color:#5bc4bf>=</span>http://192.168.150.106/HDP-GPL/centos7/3.1.5.0-152
+</span></span><span style=display:flex><span><span style=color:#ef6155>gpgcheck</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>0</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>enabled</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>1</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>priority</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>1</span>
+</span></span></code></pre></div><p>配置 libtirpc.repo</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/yum.repos.d/libtirpc.repo
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>libtirpc_repo<span style=color:#5bc4bf>]</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>name</span><span style=color:#5bc4bf>=</span>libtirpc-0.2.4-0.16
+</span></span><span style=display:flex><span><span style=color:#ef6155>baseurl</span><span style=color:#5bc4bf>=</span>http://192.168.150.106/libtirpc/
+</span></span><span style=display:flex><span><span style=color:#ef6155>gpgcheck</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>0</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>enabled</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>1</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>priority</span><span style=color:#5bc4bf>=</span><span style=color:#f99b15>1</span>
+</span></span></code></pre></div><p>拷贝到其他节点</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>scp /etc/yum.repos.d/* node002:/etc/yum.repos.d/
+</span></span></code></pre></div><p>查看源</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>yum clean all
 </span></span><span style=display:flex><span>yum repolist
-</span></span></code></pre></div><h2 id=2-安装mariadbnode001>2. 安装mariadb(node001)<a hidden class=anchor aria-hidden=true href=#2-安装mariadbnode001>#</a></h2><p>安装 MariaDB 服务器</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>yum install mariadb-server -y
-</span></span></code></pre></div><p>启动并设置开机启动</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>systemctl enable mariadb
+</span></span></code></pre></div><h2 id=2-安装mariadbnode001>2. 安装mariadb(node001)<a hidden class=anchor aria-hidden=true href=#2-安装mariadbnode001>#</a></h2><p>安装 MariaDB 服务器</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>yum install mariadb-server -y
+</span></span></code></pre></div><p>启动并设置开机启动</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>systemctl enable mariadb
 </span></span><span style=display:flex><span>systemctl start mariadb
-</span></span></code></pre></div><p>初始化</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>/usr/bin/mysql_secure_installation
+</span></span></code></pre></div><p>初始化</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>/usr/bin/mysql_secure_installation
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>...<span style=color:#f92672>]</span>
-</span></span><span style=display:flex><span>Enter current password <span style=color:#66d9ef>for</span> root <span style=color:#f92672>(</span>enter <span style=color:#66d9ef>for</span> none<span style=color:#f92672>)</span>:
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>...<span style=color:#5bc4bf>]</span>
+</span></span><span style=display:flex><span>Enter current password <span style=color:#815ba4>for</span> root <span style=color:#5bc4bf>(</span>enter <span style=color:#815ba4>for</span> none<span style=color:#5bc4bf>)</span>:
 </span></span><span style=display:flex><span>OK, successfully used password, moving on...
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>...<span style=color:#f92672>]</span>
-</span></span><span style=display:flex><span>Set root password? <span style=color:#f92672>[</span>Y/n<span style=color:#f92672>]</span> Y
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>...<span style=color:#5bc4bf>]</span>
+</span></span><span style=display:flex><span>Set root password? <span style=color:#5bc4bf>[</span>Y/n<span style=color:#5bc4bf>]</span> Y
 </span></span><span style=display:flex><span>New password:123456
 </span></span><span style=display:flex><span>Re-enter new password:123456
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>...<span style=color:#f92672>]</span> 
-</span></span><span style=display:flex><span>Remove anonymous users? <span style=color:#f92672>[</span>Y/n<span style=color:#f92672>]</span> Y 
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>...<span style=color:#f92672>]</span> 
-</span></span><span style=display:flex><span>Disallow root login remotely? <span style=color:#f92672>[</span>Y/n<span style=color:#f92672>]</span> N 
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>...<span style=color:#f92672>]</span> 
-</span></span><span style=display:flex><span>Remove test database and access to it <span style=color:#f92672>[</span>Y/n<span style=color:#f92672>]</span> Y 
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>...<span style=color:#f92672>]</span> 
-</span></span><span style=display:flex><span>Reload privilege tables now? <span style=color:#f92672>[</span>Y/n<span style=color:#f92672>]</span> Y 
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>...<span style=color:#f92672>]</span> 
-</span></span><span style=display:flex><span>All <span style=color:#66d9ef>done</span>! If you<span style=color:#960050;background-color:#1e0010>&#39;</span>ve completed all of the above steps, your MariaDB <span style=color:#ae81ff>18</span> installation should now be secure. 
-</span></span><span style=display:flex><span>Thanks <span style=color:#66d9ef>for</span> using MariaDB!
-</span></span></code></pre></div><p>为 MariaDB 安装 MySQL JDBC 驱动程序</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>tar zxf mysql-connector-java-5.1.40.tar.gz
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>...<span style=color:#5bc4bf>]</span> 
+</span></span><span style=display:flex><span>Remove anonymous users? <span style=color:#5bc4bf>[</span>Y/n<span style=color:#5bc4bf>]</span> Y 
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>...<span style=color:#5bc4bf>]</span> 
+</span></span><span style=display:flex><span>Disallow root login remotely? <span style=color:#5bc4bf>[</span>Y/n<span style=color:#5bc4bf>]</span> N 
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>...<span style=color:#5bc4bf>]</span> 
+</span></span><span style=display:flex><span>Remove test database and access to it <span style=color:#5bc4bf>[</span>Y/n<span style=color:#5bc4bf>]</span> Y 
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>...<span style=color:#5bc4bf>]</span> 
+</span></span><span style=display:flex><span>Reload privilege tables now? <span style=color:#5bc4bf>[</span>Y/n<span style=color:#5bc4bf>]</span> Y 
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>...<span style=color:#5bc4bf>]</span> 
+</span></span><span style=display:flex><span>All <span style=color:#815ba4>done</span>! If you<span style=color:#ef6155>&#39;</span>ve completed all of the above steps, your MariaDB <span style=color:#f99b15>18</span> installation should now be secure. 
+</span></span><span style=display:flex><span>Thanks <span style=color:#815ba4>for</span> using MariaDB!
+</span></span></code></pre></div><p>为 MariaDB 安装 MySQL JDBC 驱动程序</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>tar zxf mysql-connector-java-5.1.40.tar.gz
 </span></span><span style=display:flex><span>mv mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar /usr/share/java/mysql-connector-java.jar
-</span></span></code></pre></div><p>创建需要的数据库</p><p>如果需要 ranger，编辑以下⽂件： vim /etc/my.cnf 并添加以下⾏：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>log_bin_trust_function_creators <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
-</span></span></code></pre></div><p>重启数据库并登录</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>systemctl restart mariadb
+</span></span></code></pre></div><p>创建需要的数据库</p><p>如果需要 ranger，编辑以下⽂件： vim /etc/my.cnf 并添加以下⾏：</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#ef6155>log_bin_trust_function_creators</span> <span style=color:#5bc4bf>=</span> <span style=color:#f99b15>1</span>
+</span></span></code></pre></div><p>重启数据库并登录</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>systemctl restart mariadb
 </span></span><span style=display:flex><span>mysql -u root -p123456
-</span></span></code></pre></div><h2 id=3-安装和配置ambari-server-node001>3. 安装和配置ambari-server (node001)<a hidden class=anchor aria-hidden=true href=#3-安装和配置ambari-server-node001>#</a></h2><p>安装 ambari-server</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>yum -y install ambari-server
-</span></span></code></pre></div><p>复制 mysql jdbc 驱动到 /var/lib/ambari-server/resources/</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cp /usr/share/java/mysql-connector-java.jar /var/lib/ambari-server/resources/
-</span></span></code></pre></div><p>配置 /etc/ambari-server/conf/ambari.properties，添加如下行</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/ambari-server/conf/ambari.properties
-</span></span><span style=display:flex><span>server.jdbc.driver.path<span style=color:#f92672>=</span>/usr/share/java/mysql-connector-java.jar
-</span></span></code></pre></div><p>执行</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ambari-server setup --jdbc-db<span style=color:#f92672>=</span>mysql --jdbc-driver<span style=color:#f92672>=</span>/usr/share/java/mysql-connector-java.jar
-</span></span></code></pre></div><p>初始化 ambari-server</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ambari-server setup
+</span></span></code></pre></div><h2 id=3-安装和配置ambari-server-node001>3. 安装和配置ambari-server (node001)<a hidden class=anchor aria-hidden=true href=#3-安装和配置ambari-server-node001>#</a></h2><p>安装 ambari-server</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>yum -y install ambari-server
+</span></span></code></pre></div><p>复制 mysql jdbc 驱动到 /var/lib/ambari-server/resources/</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cp /usr/share/java/mysql-connector-java.jar /var/lib/ambari-server/resources/
+</span></span></code></pre></div><p>配置 /etc/ambari-server/conf/ambari.properties，添加如下行</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/ambari-server/conf/ambari.properties
+</span></span><span style=display:flex><span>server.jdbc.driver.path<span style=color:#5bc4bf>=</span>/usr/share/java/mysql-connector-java.jar
+</span></span></code></pre></div><p>执行</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ambari-server setup --jdbc-db<span style=color:#5bc4bf>=</span>mysql --jdbc-driver<span style=color:#5bc4bf>=</span>/usr/share/java/mysql-connector-java.jar
+</span></span></code></pre></div><p>初始化 ambari-server</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ambari-server setup
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>1） 提示是否自定义设置。输入：y
-</span></span><span style=display:flex><span>Customize user account <span style=color:#66d9ef>for</span> ambari-server daemon <span style=color:#f92672>[</span>y/n<span style=color:#f92672>]</span> <span style=color:#f92672>(</span>n<span style=color:#f92672>)</span>? y
+</span></span><span style=display:flex><span>Customize user account <span style=color:#815ba4>for</span> ambari-server daemon <span style=color:#5bc4bf>[</span>y/n<span style=color:#5bc4bf>]</span> <span style=color:#5bc4bf>(</span>n<span style=color:#5bc4bf>)</span>? y
 </span></span><span style=display:flex><span>（2）ambari-server 账号。
-</span></span><span style=display:flex><span>Enter user account <span style=color:#66d9ef>for</span> ambari-server daemon <span style=color:#f92672>(</span>root<span style=color:#f92672>)</span>:
+</span></span><span style=display:flex><span>Enter user account <span style=color:#815ba4>for</span> ambari-server daemon <span style=color:#5bc4bf>(</span>root<span style=color:#5bc4bf>)</span>:
 </span></span><span style=display:flex><span>如果直接回车就是默认选择root用户
 </span></span><span style=display:flex><span>如果输入已经创建的用户就会显示：
-</span></span><span style=display:flex><span>Enter user account <span style=color:#66d9ef>for</span> ambari-server daemon <span style=color:#f92672>(</span>root<span style=color:#f92672>)</span>:ambari
+</span></span><span style=display:flex><span>Enter user account <span style=color:#815ba4>for</span> ambari-server daemon <span style=color:#5bc4bf>(</span>root<span style=color:#5bc4bf>)</span>:ambari
 </span></span><span style=display:flex><span>Adjusting ambari-server permissions and ownership...
 </span></span><span style=display:flex><span>（3）设置JDK。输入：2
 </span></span><span style=display:flex><span>Checking JDK...
-</span></span><span style=display:flex><span>Do you want to change Oracle JDK <span style=color:#f92672>[</span>y/n<span style=color:#f92672>]</span> <span style=color:#f92672>(</span>n<span style=color:#f92672>)</span>? y
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>1<span style=color:#f92672>]</span> Oracle JDK 1.8 + Java Cryptography Extension <span style=color:#f92672>(</span>JCE<span style=color:#f92672>)</span> Policy Files <span style=color:#ae81ff>8</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>2<span style=color:#f92672>]</span> Custom JDK
-</span></span><span style=display:flex><span><span style=color:#f92672>==============================================================================</span>
-</span></span><span style=display:flex><span>Enter choice <span style=color:#f92672>(</span>1<span style=color:#f92672>)</span>: <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>Do you want to change Oracle JDK <span style=color:#5bc4bf>[</span>y/n<span style=color:#5bc4bf>]</span> <span style=color:#5bc4bf>(</span>n<span style=color:#5bc4bf>)</span>? y
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>1<span style=color:#5bc4bf>]</span> Oracle JDK 1.8 + Java Cryptography Extension <span style=color:#5bc4bf>(</span>JCE<span style=color:#5bc4bf>)</span> Policy Files <span style=color:#f99b15>8</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>2<span style=color:#5bc4bf>]</span> Custom <span style=color:#ef6155>JDK</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>==============================================================================</span>
+</span></span><span style=display:flex><span>Enter choice <span style=color:#5bc4bf>(</span>1<span style=color:#5bc4bf>)</span>: <span style=color:#f99b15>2</span>
 </span></span><span style=display:flex><span>如果上面选择3自定义JDK,则需要设置JAVA_HOME。输入：/usr/local/java
 </span></span><span style=display:flex><span>WARNING: JDK must be installed on all hosts and JAVA_HOME must be valid on all hosts.
-</span></span><span style=display:flex><span>WARNING: JCE Policy files are required <span style=color:#66d9ef>for</span> configuring Kerberos security. If you plan to use Kerberos,please make sure JCE Unlimited Strength Jurisdiction Policy Files are valid on all hosts.
+</span></span><span style=display:flex><span>WARNING: JCE Policy files are required <span style=color:#815ba4>for</span> configuring Kerberos security. If you plan to use Kerberos,please make sure JCE Unlimited Strength Jurisdiction Policy Files are valid on all hosts.
 </span></span><span style=display:flex><span>Path to JAVA_HOME: /usr/local/java
 </span></span><span style=display:flex><span>Validating JDK on Ambari Server...done.
 </span></span><span style=display:flex><span>Completing setup...
 </span></span><span style=display:flex><span>（4）安装GPL，选择：y
 </span></span><span style=display:flex><span>Checking GPL software agreement...
-</span></span><span style=display:flex><span>GPL License <span style=color:#66d9ef>for</span> LZO: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
-</span></span><span style=display:flex><span>Enable Ambari Server to download and install GPL Licensed LZO packages <span style=color:#f92672>[</span>y/n<span style=color:#f92672>]</span> <span style=color:#f92672>(</span>n<span style=color:#f92672>)</span>? y
+</span></span><span style=display:flex><span>GPL License <span style=color:#815ba4>for</span> LZO: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+</span></span><span style=display:flex><span>Enable Ambari Server to download and install GPL Licensed LZO packages <span style=color:#5bc4bf>[</span>y/n<span style=color:#5bc4bf>]</span> <span style=color:#5bc4bf>(</span>n<span style=color:#5bc4bf>)</span>? y
 </span></span><span style=display:flex><span>（5）数据库配置。选择：y
 </span></span><span style=display:flex><span>Configuring database...
-</span></span><span style=display:flex><span>Enter advanced database configuration <span style=color:#f92672>[</span>y/n<span style=color:#f92672>]</span> <span style=color:#f92672>(</span>n<span style=color:#f92672>)</span>? y
+</span></span><span style=display:flex><span>Enter advanced database configuration <span style=color:#5bc4bf>[</span>y/n<span style=color:#5bc4bf>]</span> <span style=color:#5bc4bf>(</span>n<span style=color:#5bc4bf>)</span>? y
 </span></span><span style=display:flex><span>（6）选择数据库类型。输入：3
 </span></span><span style=display:flex><span>Configuring database...
-</span></span><span style=display:flex><span><span style=color:#f92672>==============================================================================</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>==============================================================================</span>
 </span></span><span style=display:flex><span>Choose one of the following options:
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>1<span style=color:#f92672>]</span> - PostgreSQL <span style=color:#f92672>(</span>Embedded<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>2<span style=color:#f92672>]</span> - Oracle
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>3<span style=color:#f92672>]</span> - MySQL/ MariaDB
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>4<span style=color:#f92672>]</span> - PostgreSQL
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>5<span style=color:#f92672>]</span> - Microsoft SQL Server <span style=color:#f92672>(</span>Tech Preview<span style=color:#f92672>)</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>[</span>6<span style=color:#f92672>]</span> - SQL Anywhere
-</span></span><span style=display:flex><span><span style=color:#f92672>==============================================================================</span>
-</span></span><span style=display:flex><span>Enter choice <span style=color:#f92672>(</span>3<span style=color:#f92672>)</span>: <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>1<span style=color:#5bc4bf>]</span> - PostgreSQL <span style=color:#5bc4bf>(</span>Embedded<span style=color:#5bc4bf>)</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>2<span style=color:#5bc4bf>]</span> - Oracle
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>3<span style=color:#5bc4bf>]</span> - MySQL/ MariaDB
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>4<span style=color:#5bc4bf>]</span> - PostgreSQL
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>5<span style=color:#5bc4bf>]</span> - Microsoft SQL Server <span style=color:#5bc4bf>(</span>Tech Preview<span style=color:#5bc4bf>)</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>6<span style=color:#5bc4bf>]</span> - SQL <span style=color:#ef6155>Anywhere</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>==============================================================================</span>
+</span></span><span style=display:flex><span>Enter choice <span style=color:#5bc4bf>(</span>3<span style=color:#5bc4bf>)</span>: <span style=color:#f99b15>3</span>
 </span></span><span style=display:flex><span>（7）设置数据库的具体配置信息，根据实际情况输入，如果和括号内相同，则可以直接回车。如果想重命名，就输入。
-</span></span><span style=display:flex><span>Hostname <span style=color:#f92672>(</span>localhost<span style=color:#f92672>)</span>:node001
-</span></span><span style=display:flex><span>Port <span style=color:#f92672>(</span>3306<span style=color:#f92672>)</span>: <span style=color:#ae81ff>3306</span>
-</span></span><span style=display:flex><span>Database name <span style=color:#f92672>(</span>ambari<span style=color:#f92672>)</span>: ambari
-</span></span><span style=display:flex><span>Username <span style=color:#f92672>(</span>ambari<span style=color:#f92672>)</span>: ambari
-</span></span><span style=display:flex><span>Enter Database Password <span style=color:#f92672>(</span>bigdata<span style=color:#f92672>)</span>:ambari123
+</span></span><span style=display:flex><span>Hostname <span style=color:#5bc4bf>(</span>localhost<span style=color:#5bc4bf>)</span>:node001
+</span></span><span style=display:flex><span>Port <span style=color:#5bc4bf>(</span>3306<span style=color:#5bc4bf>)</span>: <span style=color:#f99b15>3306</span>
+</span></span><span style=display:flex><span>Database name <span style=color:#5bc4bf>(</span>ambari<span style=color:#5bc4bf>)</span>: ambari
+</span></span><span style=display:flex><span>Username <span style=color:#5bc4bf>(</span>ambari<span style=color:#5bc4bf>)</span>: ambari
+</span></span><span style=display:flex><span>Enter Database Password <span style=color:#5bc4bf>(</span>bigdata<span style=color:#5bc4bf>)</span>:ambari123
 </span></span><span style=display:flex><span>Re-Enter password: ambari123
 </span></span><span style=display:flex><span>（8）将Ambari数据库脚本导入到数据库
 </span></span><span style=display:flex><span>WARNING: Before starting Ambari Server, you must run the following DDL against the database to create the schema: /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql 这个sql后面会用到，导入数据库
-</span></span><span style=display:flex><span>Proceed with configuring remote database connection properties <span style=color:#f92672>[</span>y/n<span style=color:#f92672>]</span> <span style=color:#f92672>(</span>y<span style=color:#f92672>)</span>? y
-</span></span></code></pre></div><p>登录 mariadb 创建 ambari 安装所需要的库</p><p>设置的账号后面配置 ambari-server 的时候会用到</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>mysql -uroot -p123456
+</span></span><span style=display:flex><span>Proceed with configuring remote database connection properties <span style=color:#5bc4bf>[</span>y/n<span style=color:#5bc4bf>]</span> <span style=color:#5bc4bf>(</span>y<span style=color:#5bc4bf>)</span>? y
+</span></span></code></pre></div><p>登录 mariadb 创建 ambari 安装所需要的库</p><p>设置的账号后面配置 ambari-server 的时候会用到</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>mysql -uroot -p123456
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>CREATE DATABASE ambari; 
 </span></span><span style=display:flex><span>use ambari; 
-</span></span><span style=display:flex><span>CREATE USER <span style=color:#e6db74>&#39;ambari&#39;</span>@<span style=color:#e6db74>&#39;%&#39;</span> IDENTIFIED BY <span style=color:#e6db74>&#39;ambari123&#39;</span>; 
-</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#e6db74>&#39;ambari&#39;</span>@<span style=color:#e6db74>&#39;%&#39;</span>; 
-</span></span><span style=display:flex><span>CREATE USER <span style=color:#e6db74>&#39;ambari&#39;</span>@<span style=color:#e6db74>&#39;localhost&#39;</span> IDENTIFIED BY <span style=color:#e6db74>&#39;ambari123&#39;</span>; 
-</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#e6db74>&#39;ambari&#39;</span>@<span style=color:#e6db74>&#39;localhost&#39;</span>; 
-</span></span><span style=display:flex><span>CREATE USER <span style=color:#e6db74>&#39;ambari&#39;</span>@<span style=color:#e6db74>&#39;node001&#39;</span> IDENTIFIED BY <span style=color:#e6db74>&#39;ambari123&#39;</span>; 
-</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#e6db74>&#39;ambari&#39;</span>@<span style=color:#e6db74>&#39;node001&#39;</span>; 
+</span></span><span style=display:flex><span>CREATE USER <span style=color:#48b685>&#39;ambari&#39;</span>@<span style=color:#48b685>&#39;%&#39;</span> IDENTIFIED BY <span style=color:#48b685>&#39;ambari123&#39;</span>; 
+</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#48b685>&#39;ambari&#39;</span>@<span style=color:#48b685>&#39;%&#39;</span>; 
+</span></span><span style=display:flex><span>CREATE USER <span style=color:#48b685>&#39;ambari&#39;</span>@<span style=color:#48b685>&#39;localhost&#39;</span> IDENTIFIED BY <span style=color:#48b685>&#39;ambari123&#39;</span>; 
+</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#48b685>&#39;ambari&#39;</span>@<span style=color:#48b685>&#39;localhost&#39;</span>; 
+</span></span><span style=display:flex><span>CREATE USER <span style=color:#48b685>&#39;ambari&#39;</span>@<span style=color:#48b685>&#39;node001&#39;</span> IDENTIFIED BY <span style=color:#48b685>&#39;ambari123&#39;</span>; 
+</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#48b685>&#39;ambari&#39;</span>@<span style=color:#48b685>&#39;node001&#39;</span>; 
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>source /var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql 
 </span></span><span style=display:flex><span>show tables; 
 </span></span><span style=display:flex><span>use mysql; 
-</span></span><span style=display:flex><span><span style=color:#66d9ef>select</span> host,user from user where user<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;ambari&#39;</span>; 
+</span></span><span style=display:flex><span><span style=color:#815ba4>select</span> host,user from user where <span style=color:#ef6155>user</span><span style=color:#5bc4bf>=</span><span style=color:#48b685>&#39;ambari&#39;</span>; 
 </span></span><span style=display:flex><span>CREATE DATABASE hive; 
 </span></span><span style=display:flex><span>use hive; 
-</span></span><span style=display:flex><span>CREATE USER <span style=color:#e6db74>&#39;hive&#39;</span>@<span style=color:#e6db74>&#39;%&#39;</span> IDENTIFIED BY <span style=color:#e6db74>&#39;hive&#39;</span>; 
-</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#e6db74>&#39;hive&#39;</span>@<span style=color:#e6db74>&#39;%&#39;</span>; 
-</span></span><span style=display:flex><span>CREATE USER <span style=color:#e6db74>&#39;hive&#39;</span>@<span style=color:#e6db74>&#39;localhost&#39;</span> IDENTIFIED BY <span style=color:#e6db74>&#39;hive&#39;</span>; 
-</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#e6db74>&#39;hive&#39;</span>@<span style=color:#e6db74>&#39;localhost&#39;</span>; 
-</span></span><span style=display:flex><span>CREATE USER <span style=color:#e6db74>&#39;hive&#39;</span>@<span style=color:#e6db74>&#39;node001&#39;</span> IDENTIFIED BY <span style=color:#e6db74>&#39;hive&#39;</span>; 
-</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#e6db74>&#39;hive&#39;</span>@<span style=color:#e6db74>&#39;node001&#39;</span>; 
+</span></span><span style=display:flex><span>CREATE USER <span style=color:#48b685>&#39;hive&#39;</span>@<span style=color:#48b685>&#39;%&#39;</span> IDENTIFIED BY <span style=color:#48b685>&#39;hive&#39;</span>; 
+</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#48b685>&#39;hive&#39;</span>@<span style=color:#48b685>&#39;%&#39;</span>; 
+</span></span><span style=display:flex><span>CREATE USER <span style=color:#48b685>&#39;hive&#39;</span>@<span style=color:#48b685>&#39;localhost&#39;</span> IDENTIFIED BY <span style=color:#48b685>&#39;hive&#39;</span>; 
+</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#48b685>&#39;hive&#39;</span>@<span style=color:#48b685>&#39;localhost&#39;</span>; 
+</span></span><span style=display:flex><span>CREATE USER <span style=color:#48b685>&#39;hive&#39;</span>@<span style=color:#48b685>&#39;node001&#39;</span> IDENTIFIED BY <span style=color:#48b685>&#39;hive&#39;</span>; 
+</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#48b685>&#39;hive&#39;</span>@<span style=color:#48b685>&#39;node001&#39;</span>; 
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>CREATE DATABASE oozie; 
 </span></span><span style=display:flex><span>use oozie; 
-</span></span><span style=display:flex><span>CREATE USER <span style=color:#e6db74>&#39;oozie&#39;</span>@<span style=color:#e6db74>&#39;%&#39;</span> IDENTIFIED BY <span style=color:#e6db74>&#39;oozie&#39;</span>; 
-</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#e6db74>&#39;oozie&#39;</span>@<span style=color:#e6db74>&#39;%&#39;</span>; 
-</span></span><span style=display:flex><span>CREATE USER <span style=color:#e6db74>&#39;oozie&#39;</span>@<span style=color:#e6db74>&#39;localhost&#39;</span> IDENTIFIED BY <span style=color:#e6db74>&#39;oozie&#39;</span>; 
-</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#e6db74>&#39;oozie&#39;</span>@<span style=color:#e6db74>&#39;localhost&#39;</span>; 
-</span></span><span style=display:flex><span>CREATE USER <span style=color:#e6db74>&#39;oozie&#39;</span>@<span style=color:#e6db74>&#39;node001&#39;</span> IDENTIFIED BY <span style=color:#e6db74>&#39;oozie&#39;</span>; 
-</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#e6db74>&#39;oozie&#39;</span>@<span style=color:#e6db74>&#39;node001&#39;</span>; 
+</span></span><span style=display:flex><span>CREATE USER <span style=color:#48b685>&#39;oozie&#39;</span>@<span style=color:#48b685>&#39;%&#39;</span> IDENTIFIED BY <span style=color:#48b685>&#39;oozie&#39;</span>; 
+</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#48b685>&#39;oozie&#39;</span>@<span style=color:#48b685>&#39;%&#39;</span>; 
+</span></span><span style=display:flex><span>CREATE USER <span style=color:#48b685>&#39;oozie&#39;</span>@<span style=color:#48b685>&#39;localhost&#39;</span> IDENTIFIED BY <span style=color:#48b685>&#39;oozie&#39;</span>; 
+</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#48b685>&#39;oozie&#39;</span>@<span style=color:#48b685>&#39;localhost&#39;</span>; 
+</span></span><span style=display:flex><span>CREATE USER <span style=color:#48b685>&#39;oozie&#39;</span>@<span style=color:#48b685>&#39;node001&#39;</span> IDENTIFIED BY <span style=color:#48b685>&#39;oozie&#39;</span>; 
+</span></span><span style=display:flex><span>GRANT ALL PRIVILEGES ON *.* TO <span style=color:#48b685>&#39;oozie&#39;</span>@<span style=color:#48b685>&#39;node001&#39;</span>; 
 </span></span><span style=display:flex><span>FLUSH PRIVILEGES;
-</span></span></code></pre></div><h2 id=4-安装ambari-agentallnode>4. 安装ambari-agent(allnode)<a hidden class=anchor aria-hidden=true href=#4-安装ambari-agentallnode>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>pssh -h /node.list -i <span style=color:#e6db74>&#39;yum -y install ambari-agent&#39;</span>
-</span></span><span style=display:flex><span>pssh -h /node.list -i <span style=color:#e6db74>&#39;systemctl start ambari-agent&#39;</span>
-</span></span></code></pre></div><h2 id=5-安装libtirpc-develallnode>5. 安装libtirpc-devel(allnode)<a hidden class=anchor aria-hidden=true href=#5-安装libtirpc-develallnode>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>pssh -h /node.list -i <span style=color:#e6db74>&#39;yum -y install libtirpc-devel&#39;</span>
+</span></span></code></pre></div><h2 id=4-安装ambari-agentallnode>4. 安装ambari-agent(allnode)<a hidden class=anchor aria-hidden=true href=#4-安装ambari-agentallnode>#</a></h2><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>pssh -h /node.list -i <span style=color:#48b685>&#39;yum -y install ambari-agent&#39;</span>
+</span></span><span style=display:flex><span>pssh -h /node.list -i <span style=color:#48b685>&#39;systemctl start ambari-agent&#39;</span>
+</span></span></code></pre></div><h2 id=5-安装libtirpc-develallnode>5. 安装libtirpc-devel(allnode)<a hidden class=anchor aria-hidden=true href=#5-安装libtirpc-develallnode>#</a></h2><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>pssh -h /node.list -i <span style=color:#48b685>&#39;yum -y install libtirpc-devel&#39;</span>
 </span></span></code></pre></div><h2 id=6-启动ambari服务>6. 启动ambari服务<a hidden class=anchor aria-hidden=true href=#6-启动ambari服务>#</a></h2><pre tabindex=0><code>ambari-server start
 </code></pre><h1 id=部署集群>部署集群<a hidden class=anchor aria-hidden=true href=#部署集群>#</a></h1><h2 id=1-登录界面>1. 登录界面<a hidden class=anchor aria-hidden=true href=#1-登录界面>#</a></h2><p>http://192.168.150.106:8080</p><p>默认管理员账户登录， 账户：admin 密码：admin</p><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20211123145726406.png alt=image-20211123145726406></p><h2 id=2-选择版本配置yum源>2. 选择版本，配置yum源<a hidden class=anchor aria-hidden=true href=#2-选择版本配置yum源>#</a></h2><p>1）选择 Launch Install Wizard
 2）配置集群名称

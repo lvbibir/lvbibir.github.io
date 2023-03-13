@@ -4,8 +4,8 @@
 <a href=https://www.lvbibir.cn/tags/centos/>、centos</a></ul><span id=busuanzi_container_page_pv>&nbsp;|&nbsp;访问:&nbsp;<span id=busuanzi_value_page_pv></span></span></div></header><div class=post-content><p>pam 模块</p><blockquote><p>pam：<code>Pluggable Authentication Modules</code> 可插拔的认证模块，linux 中的认证方式，“可插拔的”说明可以按需对认证内容进行变更。与nsswitch一样，也是<strong>一个</strong>通用框架。只不过是提供认证功能的。</p></blockquote><p>查看密码失败次数</p><pre tabindex=0><code>pam_tally2 -u root
 # 或者
 faillock --user root
-</code></pre><p>重置密码失败次数</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>pam_tally2 -r -u root
-</span></span><span style=display:flex><span><span style=color:#75715e># 或者</span>
+</code></pre><p>重置密码失败次数</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>pam_tally2 -r -u root
+</span></span><span style=display:flex><span><span style=color:#776e71># 或者</span>
 </span></span><span style=display:flex><span>faillock --user root --reset
 </span></span></code></pre></div><p>具体取决于在规则文件中使用的是 <code>pam_faillock.so</code>模块还是 <code>pam_tally2.so</code> 模块</p><p>例：</p><pre tabindex=0><code>cat /etc/pam.d/system-auth
 </code></pre><p><img loading=lazy src=https://image.lvbibir.cn/blog/image-20220127100540162.png alt=image-20220127100540162></p></div><div class=post-reward><div style=padding:0;margin:0;width:100%;font-size:16px;text-align:center><div id=QR style=opacity:0><div id=wechat style=display:inline-block><a class=fancybox rel=group><img id=wechat_qr src=https://www.lvbibir.cn/img/wechat_pay.png alt=wechat_pay></a><p>微信</p></div><div id=alipay style=display:inline-block><a class=fancybox rel=group><img id=alipay_qr src=https://www.lvbibir.cn/img/alipay.png alt=alipay></a><p>支付宝</p></div></div><button id=rewardButton onclick='var qr=document.getElementById("QR");qr.style.opacity==="0"?qr.style.opacity="1":qr.style.opacity="0"'>

@@ -7,38 +7,38 @@ chmod a+x cfssl*
 mv cfssl_linux-amd64 /usr/bin/cfssl
 mv cfssljson_linux-amd64 /usr/bin/cfssljson
 mv cfssl-certinfo_linux-amd64 /usr/bin/cfssl-certinfo
-</code></pre><p>创建ca-config.json 证书文件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;signing&#34;</span>: {
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;default&#34;</span>: {
-</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;expiry&#34;</span>: <span style=color:#e6db74>&#34;87600h&#34;</span>
+</code></pre><p>创建ca-config.json 证书文件</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>&#34;signing&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#5bc4bf>&#34;default&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#5bc4bf>&#34;expiry&#34;</span>: <span style=color:#48b685>&#34;87600h&#34;</span>
 </span></span><span style=display:flex><span>    },
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;profiles&#34;</span>: {
-</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;kubernetes&#34;</span>: {
-</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;usages&#34;</span>: [
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;signing&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;key encipherment&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;server auth&#34;</span>,
-</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#34;client auth&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#5bc4bf>&#34;profiles&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#5bc4bf>&#34;kubernetes&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#5bc4bf>&#34;usages&#34;</span>: [
+</span></span><span style=display:flex><span>            <span style=color:#48b685>&#34;signing&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#48b685>&#34;key encipherment&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#48b685>&#34;server auth&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#48b685>&#34;client auth&#34;</span>
 </span></span><span style=display:flex><span>        ],
-</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;expiry&#34;</span>: <span style=color:#e6db74>&#34;87600h&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#5bc4bf>&#34;expiry&#34;</span>: <span style=color:#48b685>&#34;87600h&#34;</span>
 </span></span><span style=display:flex><span>      }
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>Amadeus-csr.json 证书文件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;CN&#34;</span>: <span style=color:#e6db74>&#34;Amadeus&#34;</span>,
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;hosts&#34;</span>: [],
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;key&#34;</span>: {
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;algo&#34;</span>: <span style=color:#e6db74>&#34;rsa&#34;</span>,
-</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;size&#34;</span>: <span style=color:#ae81ff>2048</span>
+</span></span></code></pre></div><p>Amadeus-csr.json 证书文件</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>&#34;CN&#34;</span>: <span style=color:#48b685>&#34;Amadeus&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>&#34;hosts&#34;</span>: [],
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>&#34;key&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#5bc4bf>&#34;algo&#34;</span>: <span style=color:#48b685>&#34;rsa&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#5bc4bf>&#34;size&#34;</span>: <span style=color:#f99b15>2048</span>
 </span></span><span style=display:flex><span>  },
-</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;names&#34;</span>: [
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>&#34;names&#34;</span>: [
 </span></span><span style=display:flex><span>    {
-</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;C&#34;</span>: <span style=color:#e6db74>&#34;CN&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;ST&#34;</span>: <span style=color:#e6db74>&#34;BeiJing&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;L&#34;</span>: <span style=color:#e6db74>&#34;BeiJing&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;O&#34;</span>: <span style=color:#e6db74>&#34;k8s&#34;</span>,
-</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;OU&#34;</span>: <span style=color:#e6db74>&#34;System&#34;</span>
+</span></span><span style=display:flex><span>      <span style=color:#5bc4bf>&#34;C&#34;</span>: <span style=color:#48b685>&#34;CN&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#5bc4bf>&#34;ST&#34;</span>: <span style=color:#48b685>&#34;BeiJing&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#5bc4bf>&#34;L&#34;</span>: <span style=color:#48b685>&#34;BeiJing&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#5bc4bf>&#34;O&#34;</span>: <span style=color:#48b685>&#34;k8s&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#5bc4bf>&#34;OU&#34;</span>: <span style=color:#48b685>&#34;System&#34;</span>
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  ]
 </span></span><span style=display:flex><span>}
@@ -47,46 +47,46 @@ mv cfssl-certinfo_linux-amd64 /usr/bin/cfssl-certinfo
 [root@k8s-node1 ~]# ls Amadeus*
 # 生成如下三个文件
 Amadeus.csr   Amadeus-key.pem  Amadeus.pem
-</code></pre><h3 id=生成kubeconfig授权文件>生成kubeconfig授权文件<a hidden class=anchor aria-hidden=true href=#生成kubeconfig授权文件>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl config set-cluster kubernetes <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--certificate-authority<span style=color:#f92672>=</span>/etc/kubernetes/pki/ca.crt <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--embed-certs<span style=color:#f92672>=</span>true <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--server<span style=color:#f92672>=</span>https://1.1.1.1:6443 <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--kubeconfig<span style=color:#f92672>=</span>Amadeus.kubeconfig
+</code></pre><h3 id=生成kubeconfig授权文件>生成kubeconfig授权文件<a hidden class=anchor aria-hidden=true href=#生成kubeconfig授权文件>#</a></h3><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl config set-cluster kubernetes <span style=color:#f99b15>\
+</span></span></span><span style=display:flex><span><span style=color:#f99b15></span>--certificate-authority<span style=color:#5bc4bf>=</span>/etc/kubernetes/pki/ca.crt <span style=color:#f99b15>\
+</span></span></span><span style=display:flex><span><span style=color:#f99b15></span>--embed-certs<span style=color:#5bc4bf>=</span>true <span style=color:#f99b15>\
+</span></span></span><span style=display:flex><span><span style=color:#f99b15></span>--server<span style=color:#5bc4bf>=</span>https://1.1.1.1:6443 <span style=color:#f99b15>\
+</span></span></span><span style=display:flex><span><span style=color:#f99b15></span>--kubeconfig<span style=color:#5bc4bf>=</span>Amadeus.kubeconfig
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># --embed-certs=true 表示将证书写入etcd</span>
-</span></span></code></pre></div><p>设置客户端证书</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl config set-credentials Amadeus <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--client-key<span style=color:#f92672>=</span>Amadeus-key.pem <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--client-certificate<span style=color:#f92672>=</span>Amadeus.pem <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--embed-certs<span style=color:#f92672>=</span>true <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--kubeconfig<span style=color:#f92672>=</span>Amadeus.kubeconfig
-</span></span></code></pre></div><p>设置默认上下文</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl config set-context kubernetes <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--cluster<span style=color:#f92672>=</span>kubernetes <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--user<span style=color:#f92672>=</span>Amadeus <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>--kubeconfig<span style=color:#f92672>=</span>Amadeus.kubeconfig
-</span></span></code></pre></div><p>设置将配置的授权文件添加到集群</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl config use-context kubernetes --kubeconfig<span style=color:#f92672>=</span>Amadeus.kubeconfig
-</span></span></code></pre></div><h3 id=创建rbac权限策略>创建RBAC权限策略<a hidden class=anchor aria-hidden=true href=#创建rbac权限策略>#</a></h3><p>yaml示例：使Amadeus用户仅有查看default命名空间下的pod</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>rbac.authorization.k8s.io/v1</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Role</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>metadata</span>:
-</span></span><span style=display:flex><span>  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>default</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>pod-reader</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>rules</span>:
-</span></span><span style=display:flex><span>- <span style=color:#f92672>apiGroups</span>: [<span style=color:#e6db74>&#34;&#34;</span>] <span style=color:#75715e># api组，置空为核心组</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>resources</span>: [<span style=color:#e6db74>&#34;pods&#34;</span>] <span style=color:#75715e># 资源</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>verbs</span>: [<span style=color:#e6db74>&#34;get&#34;</span>, <span style=color:#e6db74>&#34;watch&#34;</span>, <span style=color:#e6db74>&#34;list&#34;</span>] <span style=color:#75715e># 对资源的操作</span>
-</span></span><span style=display:flex><span>---
-</span></span><span style=display:flex><span><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>rbac.authorization.k8s.io/v1</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>kind</span>: <span style=color:#ae81ff>RoleBinding</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>metadata</span>:
-</span></span><span style=display:flex><span>  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>read-pods</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>default</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>subjects</span>:
-</span></span><span style=display:flex><span>- <span style=color:#f92672>kind</span>: <span style=color:#ae81ff>User</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Amadeus</span> <span style=color:#75715e># 绑定的用户名</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>apiGroup</span>: <span style=color:#ae81ff>rbac.authorization.k8s.io</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>roleRef</span>:
-</span></span><span style=display:flex><span>  <span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Role</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>pod-reader</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>apiGroup</span>: <span style=color:#ae81ff>rbac.authorization.k8s.io</span>
+</span></span><span style=display:flex><span><span style=color:#776e71># --embed-certs=true 表示将证书写入etcd</span>
+</span></span></code></pre></div><p>设置客户端证书</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl config set-credentials Amadeus <span style=color:#f99b15>\
+</span></span></span><span style=display:flex><span><span style=color:#f99b15></span>--client-key<span style=color:#5bc4bf>=</span>Amadeus-key.pem <span style=color:#f99b15>\
+</span></span></span><span style=display:flex><span><span style=color:#f99b15></span>--client-certificate<span style=color:#5bc4bf>=</span>Amadeus.pem <span style=color:#f99b15>\
+</span></span></span><span style=display:flex><span><span style=color:#f99b15></span>--embed-certs<span style=color:#5bc4bf>=</span>true <span style=color:#f99b15>\
+</span></span></span><span style=display:flex><span><span style=color:#f99b15></span>--kubeconfig<span style=color:#5bc4bf>=</span>Amadeus.kubeconfig
+</span></span></code></pre></div><p>设置默认上下文</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl config set-context kubernetes <span style=color:#f99b15>\
+</span></span></span><span style=display:flex><span><span style=color:#f99b15></span>--cluster<span style=color:#5bc4bf>=</span>kubernetes <span style=color:#f99b15>\
+</span></span></span><span style=display:flex><span><span style=color:#f99b15></span>--user<span style=color:#5bc4bf>=</span>Amadeus <span style=color:#f99b15>\
+</span></span></span><span style=display:flex><span><span style=color:#f99b15></span>--kubeconfig<span style=color:#5bc4bf>=</span>Amadeus.kubeconfig
+</span></span></code></pre></div><p>设置将配置的授权文件添加到集群</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl config use-context kubernetes --kubeconfig<span style=color:#5bc4bf>=</span>Amadeus.kubeconfig
+</span></span></code></pre></div><h3 id=创建rbac权限策略>创建RBAC权限策略<a hidden class=anchor aria-hidden=true href=#创建rbac权限策略>#</a></h3><p>yaml示例：使Amadeus用户仅有查看default命名空间下的pod</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#5bc4bf>apiVersion</span>: <span style=color:#f99b15>rbac.authorization.k8s.io/v1</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>kind</span>: <span style=color:#f99b15>Role</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>metadata</span>:
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>namespace</span>: <span style=color:#f99b15>default</span>
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>name</span>: <span style=color:#f99b15>pod-reader</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>rules</span>:
+</span></span><span style=display:flex><span>- <span style=color:#5bc4bf>apiGroups</span>: [<span style=color:#48b685>&#34;&#34;</span>] <span style=color:#776e71># api组，置空为核心组</span>
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>resources</span>: [<span style=color:#48b685>&#34;pods&#34;</span>] <span style=color:#776e71># 资源</span>
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>verbs</span>: [<span style=color:#48b685>&#34;get&#34;</span>, <span style=color:#48b685>&#34;watch&#34;</span>, <span style=color:#48b685>&#34;list&#34;</span>] <span style=color:#776e71># 对资源的操作</span>
+</span></span><span style=display:flex><span><span style=color:#fec418>---</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>apiVersion</span>: <span style=color:#f99b15>rbac.authorization.k8s.io/v1</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>kind</span>: <span style=color:#f99b15>RoleBinding</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>metadata</span>:
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>name</span>: <span style=color:#f99b15>read-pods</span>
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>namespace</span>: <span style=color:#f99b15>default</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>subjects</span>:
+</span></span><span style=display:flex><span>- <span style=color:#5bc4bf>kind</span>: <span style=color:#f99b15>User</span>
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>name</span>: <span style=color:#f99b15>Amadeus</span> <span style=color:#776e71># 绑定的用户名</span>
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>apiGroup</span>: <span style=color:#f99b15>rbac.authorization.k8s.io</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>roleRef</span>:
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>kind</span>: <span style=color:#f99b15>Role</span>
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>name</span>: <span style=color:#f99b15>pod-reader</span>
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>apiGroup</span>: <span style=color:#f99b15>rbac.authorization.k8s.io</span>
 </span></span></code></pre></div><p>测试验证</p><pre tabindex=0><code>[root@k8s-node1 ~]# kubectl apply -f rbac.yaml
 role.rbac.authorization.k8s.io/pod-reader created
 rolebinding.rbac.authorization.k8s.io/read-pods created
@@ -124,28 +124,28 @@ NAME                                      READY   STATUS    RESTARTS        AGE 
 client1                                   1/1     Running   0               69s    run=client1
 client2                                   1/1     Running   0               62s    run=client2
 web-bc7cc9f65-5mg9d                       1/1     Running   0               2m3s   app=web,pod-template-hash=bc7cc9f65
-</code></pre><p>networkpolicy.yaml示例</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>networking.k8s.io/v1</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>kind</span>: <span style=color:#ae81ff>NetworkPolicy</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>metadata</span>:
-</span></span><span style=display:flex><span>  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>test-network-policy</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>default</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>spec</span>:
-</span></span><span style=display:flex><span>  <span style=color:#f92672>podSelector</span>:
-</span></span><span style=display:flex><span>    <span style=color:#f92672>matchLabels</span>:
-</span></span><span style=display:flex><span>      <span style=color:#f92672>app</span>: <span style=color:#ae81ff>web</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>policyTypes</span>:
-</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>Ingress</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>ingress</span>:
-</span></span><span style=display:flex><span>  - <span style=color:#f92672>from</span>:
-</span></span><span style=display:flex><span>    - <span style=color:#f92672>namespaceSelector</span>:
-</span></span><span style=display:flex><span>        <span style=color:#f92672>matchLabels</span>:
-</span></span><span style=display:flex><span>          <span style=color:#f92672>project</span>: <span style=color:#ae81ff>default</span>
-</span></span><span style=display:flex><span>    - <span style=color:#f92672>podSelector</span>:
-</span></span><span style=display:flex><span>        <span style=color:#f92672>matchLabels</span>:
-</span></span><span style=display:flex><span>          <span style=color:#f92672>run</span>: <span style=color:#ae81ff>client1</span>
-</span></span><span style=display:flex><span>    <span style=color:#f92672>ports</span>:
-</span></span><span style=display:flex><span>    - <span style=color:#f92672>protocol</span>: <span style=color:#ae81ff>TCP</span>
-</span></span><span style=display:flex><span>      <span style=color:#f92672>port</span>: <span style=color:#ae81ff>80</span>
+</code></pre><p>networkpolicy.yaml示例</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#5bc4bf>apiVersion</span>: <span style=color:#f99b15>networking.k8s.io/v1</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>kind</span>: <span style=color:#f99b15>NetworkPolicy</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>metadata</span>:
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>name</span>: <span style=color:#f99b15>test-network-policy</span>
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>namespace</span>: <span style=color:#f99b15>default</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>spec</span>:
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>podSelector</span>:
+</span></span><span style=display:flex><span>    <span style=color:#5bc4bf>matchLabels</span>:
+</span></span><span style=display:flex><span>      <span style=color:#5bc4bf>app</span>: <span style=color:#f99b15>web</span>
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>policyTypes</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#f99b15>Ingress</span>
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>ingress</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#5bc4bf>from</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#5bc4bf>namespaceSelector</span>:
+</span></span><span style=display:flex><span>        <span style=color:#5bc4bf>matchLabels</span>:
+</span></span><span style=display:flex><span>          <span style=color:#5bc4bf>project</span>: <span style=color:#f99b15>default</span>
+</span></span><span style=display:flex><span>    - <span style=color:#5bc4bf>podSelector</span>:
+</span></span><span style=display:flex><span>        <span style=color:#5bc4bf>matchLabels</span>:
+</span></span><span style=display:flex><span>          <span style=color:#5bc4bf>run</span>: <span style=color:#f99b15>client1</span>
+</span></span><span style=display:flex><span>    <span style=color:#5bc4bf>ports</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#5bc4bf>protocol</span>: <span style=color:#f99b15>TCP</span>
+</span></span><span style=display:flex><span>      <span style=color:#5bc4bf>port</span>: <span style=color:#f99b15>80</span>
 </span></span></code></pre></div><p>测试验证</p><pre tabindex=0><code>[root@k8s-node1 ~]# kubectl apply -f networkpolicy.yaml
 [root@k8s-node1 ~]# kubectl get networkpolicy
 [root@k8s-node1 ~]# kubectl get pods  web-bc7cc9f65-hdhr2 -o jsonpath=&#39;{.metadata.annotations.cni\.projectcalico\.org\/podIP}&#39;
@@ -169,18 +169,18 @@ ns1-client2   1/1     Running   0          70s   10.244.107.212   k8s-node3   &l
 NAME                                      READY   STATUS    RESTARTS        AGE   IP               NODE        NOMINATED NODE   READINESS GATES
 client1                                   1/1     Running   0               51s   10.244.169.171   k8s-node2   &lt;none&gt;           &lt;none&gt;
 client2                                   1/1     Running   0               26m   10.244.107.238   k8s-node3   &lt;none&gt;           &lt;none&gt;
-</code></pre><p>networkpolicy.yaml</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>networking.k8s.io/v1</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>kind</span>: <span style=color:#ae81ff>NetworkPolicy</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>metadata</span>:
-</span></span><span style=display:flex><span>  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>deny-from-other-namespaces</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>ns1</span>
-</span></span><span style=display:flex><span><span style=color:#f92672>spec</span>:
-</span></span><span style=display:flex><span>  <span style=color:#f92672>podSelector</span>: {} <span style=color:#75715e># 置空表示默认所有Pod</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>policyTypes</span>:
-</span></span><span style=display:flex><span>  - <span style=color:#ae81ff>Ingress</span>
-</span></span><span style=display:flex><span>  <span style=color:#f92672>ingress</span>:
-</span></span><span style=display:flex><span>  - <span style=color:#f92672>from</span>:
-</span></span><span style=display:flex><span>    - <span style=color:#f92672>podSelector</span>: {} <span style=color:#75715e># 置空表示拒绝所有</span>
+</code></pre><p>networkpolicy.yaml</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#5bc4bf>apiVersion</span>: <span style=color:#f99b15>networking.k8s.io/v1</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>kind</span>: <span style=color:#f99b15>NetworkPolicy</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>metadata</span>:
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>name</span>: <span style=color:#f99b15>deny-from-other-namespaces</span>
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>namespace</span>: <span style=color:#f99b15>ns1</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>spec</span>:
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>podSelector</span>: {} <span style=color:#776e71># 置空表示默认所有Pod</span>
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>policyTypes</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#f99b15>Ingress</span>
+</span></span><span style=display:flex><span>  <span style=color:#5bc4bf>ingress</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#5bc4bf>from</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#5bc4bf>podSelector</span>: {} <span style=color:#776e71># 置空表示拒绝所有</span>
 </span></span></code></pre></div><p>验证</p><pre tabindex=0><code>[root@k8s-node1 ~]# kubectl apply -f networkpolicy.yaml
 [root@k8s-node1 ~]# kubectl get networkpolicy -n ns1
 

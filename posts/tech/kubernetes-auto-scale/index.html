@@ -16,14 +16,14 @@ kubectl rollout undo deployment/nginx-deployment --to-revision=2
  # 示例
  kubectl scale deployment nginx-deployment --replicas=10
 </code></pre><p>自动扩容</p><p>HPA：pod水平扩容，k8s中的一个api资源，使用autoscale时会创建一个hpa资源</p><p>实现自动扩容还需满足两个条件：</p><ul><li><p>运行了metric-server</p></li><li><p>HPA对应的pod设置了request资源</p></li></ul><p>示例：</p><p>metrics-server部署</p><pre tabindex=0><code>kubectl get pods -n kube-system | grep metrics-server
-</code></pre><p>pod中设置request资源</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span>      <span style=color:#f92672>containers</span>:
-</span></span><span style=display:flex><span>      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>nginx</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>image</span>: <span style=color:#ae81ff>nginx:1.14.2</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>ports</span>:
-</span></span><span style=display:flex><span>        - <span style=color:#f92672>containerPort</span>: <span style=color:#ae81ff>80</span>
-</span></span><span style=display:flex><span>        <span style=color:#f92672>resources</span>:
-</span></span><span style=display:flex><span>          <span style=color:#f92672>requests</span>:
-</span></span><span style=display:flex><span>            <span style=color:#f92672>cpu</span>: <span style=color:#ae81ff>0.3</span>
+</code></pre><p>pod中设置request资源</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span>      <span style=color:#5bc4bf>containers</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#5bc4bf>name</span>: <span style=color:#f99b15>nginx</span>
+</span></span><span style=display:flex><span>        <span style=color:#5bc4bf>image</span>: <span style=color:#f99b15>nginx:1.14.2</span>
+</span></span><span style=display:flex><span>        <span style=color:#5bc4bf>ports</span>:
+</span></span><span style=display:flex><span>        - <span style=color:#5bc4bf>containerPort</span>: <span style=color:#f99b15>80</span>
+</span></span><span style=display:flex><span>        <span style=color:#5bc4bf>resources</span>:
+</span></span><span style=display:flex><span>          <span style=color:#5bc4bf>requests</span>:
+</span></span><span style=display:flex><span>            <span style=color:#5bc4bf>cpu</span>: <span style=color:#f99b15>0.3</span>
 </span></span></code></pre></div><p>创建hpa</p><pre tabindex=0><code>kubectl autoscale (-f FILENAME | TYPE NAME | TYPE/NAME) [--min=MINPODS] --max=MAXPODS [--cpu-percent=CPU] [options]
 # 基于cpu指标进行扩容
 kubectl autoscale deployment nginx-deployment --min=3 --max=10 --cpu-percent=10
