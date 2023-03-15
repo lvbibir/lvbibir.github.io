@@ -6,7 +6,25 @@
     <description>Recent content in 👨🏻‍💻 技术 on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 10 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 15 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>elasticsearch 安装插件报错 java.nio.file.NotDirectoryException</title>
+      <link>https://www.lvbibir.cn/posts/tech/elasticsearch-plugin-error/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/elasticsearch-plugin-error/</guid>
+      <description>报错详细信息 Exception in thread &amp;#34;main&amp;#34; java.nio.file.NotDirectoryException: /usr/share/elasticsearch/plugins/plugin-descriptor.properties at java.base/sun.nio.fs.UnixFileSystemProvider.newDirectoryStream(UnixFileSystemProvider.java:439) at java.base/java.nio.file.Files.newDirectoryStream(Files.java:482) at java.base/java.nio.file.Files.list(Files.java:3793) at org.elasticsearch.tools.launchers.BootstrapJvmOptions.getPluginInfo(BootstrapJvmOptions.java:49) at org.elasticsearch.tools.launchers.BootstrapJvmOptions.bootstrapJvmOptions(BootstrapJvmOptions.java:34) at org.elasticsearch.tools.launchers.JvmOptionsParser.jvmOptions(JvmOptionsParser.java:137) at org.elasticsearch.tools.launchers.JvmOptionsParser.main(JvmOptionsParser.java:86) 安装插件时直接将插件的zip解压到了 plugins目录 导致的，每个插件应以目录的形式存放在 plugins目录 中 [root@21-centos-7 ~]# ls /data/elasticsearch/plugins/ commons-codec-1.9.jar commons-logging-1.2.jar config elasticsearch-analysis-ik-7.17.3.jar httpclient-4.5.2.jar httpcore-4.4.4.jar plugin-descriptor.properties plugin-security.policy 只需要为每个插件创建一个目录，并把插件解压到对应目录即可 mkdir /data/elasticsearch/plugins/elasticsearch-analysis-ik/ unzip elasticsearch-analysis-ik-7.17.3.zip -d /data/elasticsearch/plugins/elasticsearch-analysis-ik/ 参考: https://github.com/medcl/elasticsearch-analysis-ik/issues/638</description>
+    </item>
+    
+    <item>
+      <title>jenkins流水线搭建</title>
+      <link>https://www.lvbibir.cn/posts/tech/1-mall-swarm/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/1-mall-swarm/</guid>
+      <description>以 mall-swarm 项目为例，部署一套 jenkis &#43; gitlab &#43; docker &#43; 钉钉机器人的一套 CICD 流水线</description>
+    </item>
+    
     <item>
       <title>shell | if条件判断</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-if/</link>
