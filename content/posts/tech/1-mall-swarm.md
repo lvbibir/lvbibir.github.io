@@ -19,10 +19,10 @@ description: "以 mall-swarm 项目为例，部署一套 jenkis + gitlab + docke
 基础环境
 
 - 系统：Centos 7.9.2009 minimal
-- 配置：4 cpus / 16G mem / 50G disk
+- 配置：4 cpus / 24G mem / 50G disk
 - 网卡：1.1.1.4/24
 
-我这里采用的是 all-in-one 的配置，即所有操作都在一台主机上，如资源充足可以将 jenkins和gitlab 与后续项目容器分开部署，建议机器内存不少于 16G，磁盘容量不少于 50G。
+我这里采用的是 all-in-one 的配置，即所有操作都在一台主机上，如资源充足可以将 jenkins和gitlab 与后续项目容器分开部署
 
 # 1. 系统配置
 
@@ -43,7 +43,7 @@ sed -i '/aliyuncs.com/d' /etc/yum.repos.d/Centos-Base.repo
 
 yum clean all
 yum makecache fast
-yum install -y wget net-tools vim bash-completion
+yum install -y wget net-tools vim bash-completion unzip
 
 mkdir /mydata
 ```
@@ -217,27 +217,316 @@ docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
 
 ![image-20230315174825623](https://image.lvbibir.cn/blog/image-20230315174825623.png)
 
+修改默认密码
+
+![image-20230316102521034](https://image.lvbibir.cn/blog/image-20230316102521034.png)
+
 ## 4.3 上传项目
 
+新建空白项目
+
+![image-20230316100124782](https://image.lvbibir.cn/blog/image-20230316100124782.png)
+
+新建 mall-swarm 项目
+
+![image-20230316103923131](https://image.lvbibir.cn/blog/image-20230316103923131.png)
 
 
 
 
 
+clone github上的原项目，我是windows系统，所以这里用的是git-bash
 
+```bash
+git clone https://github.com/macrozheng/mall-swarm.git
+cd mall-swarm
 
+# 重命名github远端仓库
+git remote rename origin github
+# 添加gitlab仓库
+git remote add gitlab http://1.1.1.4:1080/root/mall-swarm.git
+git remote -v
+```
 
+![image-20230316101527597](https://image.lvbibir.cn/blog/image-20230316101527597.png)
 
+修改一下 docker.host 变量
 
+![image-20230316101902285](https://image.lvbibir.cn/blog/image-20230316101902285.png)
 
+新建 commit 并提交到 gitlab 仓库，初次提交需要输入 gitlab 的用户名密码
 
+```bash
+git add .
+git commit -m "change docker.host -> 1.1.1.4"
+git push gitlab master
+```
 
+![image-20230316103602343](https://image.lvbibir.cn/blog/image-20230316103602343.png)
 
+默认配置不合理，修改 docker-compose-env.yml 中 nginx 的配置文件挂载
 
+```
+      - /data/nginx/nginx.conf:/etc/nginx/nginx.conf #配置文件挂载
+```
 
+![image-20230316123226022](https://image.lvbibir.cn/blog/image-20230316123226022.png)
 
+上传到gitlab
 
+```bash
+git add .
+git commit -m "update nginx volume config in document/docker/docker-compose.env.yml"
+git push gitlab master
+```
 
+# 5. 依赖服务部署
 
+需要上传到服务器的配置文件准备，如下图所示，为了方便可以将整个`document`目录传到服务器
 
+![image-20230316105111389](https://image.lvbibir.cn/blog/image-20230316105111389.png)
 
+## 5.1 前期配置
+
+Elasticsearch
+
+- 设置内核参数，否则会因为内存不足无法启动
+
+  ```bash
+  sysctl -w vm.max_map_count=262144
+  sysctl -p
+  ```
+
+- 创建数据目录并设置权限，否则会报权限错误
+
+  ```bash
+  mkdir -p /mydata/elasticsearch/data/
+  chmod 777 /mydata/elasticsearch/data/
+  ```
+
+Nginx
+
+- 创建目录，上传配置文件
+  ```bash
+  mkdir -p /mydata/nginx/conf/
+  cp /mydata/document/docker/nginx.conf /mydata/nginx/conf/
+  ```
+
+Logstash
+
+- 创建目录上传配置文件
+  ```bash
+  mkdir /mydata/logstash
+  cp /mydata/document/elk/logstash.conf /mydata/logstash/
+  ```
+
+## 5.2 启动服务
+
+```bash
+docker-compose -f /mydata/document/docker/docker-compose-env.yml up -d
+```
+
+docker-compose 会自动创建一个 `docker_default` 网络，所有容器都在这个网络下
+
+![image-20230316110813031](https://image.lvbibir.cn/blog/image-20230316110813031.png)
+
+启动完成后 rabbitmq 由于权限问题未能正常启动，给 log 目录设置权限，再执行 docker-compose 启动异常的容器
+
+```bash
+chmod 777 /mydata/rabbitmq/log/
+docker-compose -f /mydata/document/docker/docker-compose-env.yml up -d
+```
+
+确保所有容器正常启动
+
+```bash
+docker ps | grep -v "Up"
+```
+
+## 5.3 服务配置
+
+mysql
+
+> 需要创建 mall 数据库并授权给 reader 用户
+
+- 将 sql 文件拷贝到容器
+
+  ```bash
+  docker cp /mydata/document/sql/mall.sql mysql:/
+  ```
+
+- 进入mysql容器执行如下操作
+
+  ```bash
+  # 进入mysql容器
+  docker exec -it mysql /bin/bash
+  # 连接到mysql服务
+  mysql -uroot -proot --default-character-set=utf8
+  # 创建远程访问用户
+  grant all privileges on *.* to 'reader' @'%' identified by '123456';
+  # 创建mall数据库
+  create database mall character set utf8;
+  # 使用mall数据库
+  use mall;
+  # 导入mall.sql脚本
+  source /mall.sql;
+  # 退出数据库
+  exit
+  # 退出容器
+  ctrl + d
+  ```
+
+Elasticsearch
+
+- 需要安装中文分词器 IKAnalyzer [下载地址](https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.17.3/elasticsearch-analysis-ik-7.17.3.zip)
+
+  注意版本需要与 elasticsearch 的版本一致
+
+- 上传到服务器并解压到 plugins 目录
+
+  ```bash
+  mkdir /mydata/elasticsearch/plugins/analysis-ik
+  unzip /mydata/elasticsearch-analysis-ik-7.17.3.zip -d /mydata/elasticsearch/plugins/analysis-ik/
+  ```
+
+- 重启容器
+
+  ```bash
+  docker restart elasticsearch
+  ```
+
+Logstash
+
+- 安装 `json_lines` 插件并重启
+
+  ```bash
+  docker exec -it logstash /bin/bash
+  logstash-plugin install logstash-codec-json_lines
+  docker restart logstash
+  ```
+
+rabbitmq
+
+> 需要创建一个mall用户并设置虚拟host为/mall
+
+- 访问管理页面: http://1.1.1.4:15672/ 
+  默认账户密码: guest / guest
+
+- 创建管理员用户: mall / mall
+
+  ![image-20230316121205905](https://image.lvbibir.cn/blog/image-20230316121205905.png)
+
+- 创建一个新的虚拟host为 /mall
+
+  ![image-20230316121307706](https://image.lvbibir.cn/blog/image-20230316121307706.png)
+
+- 点击mall用户进入用户配置界面
+
+  ![image-20230316121408922](https://image.lvbibir.cn/blog/image-20230316121408922.png)
+
+- 给mall账户配置虚拟host /mall 的权限
+
+  ![image-20230316121547316](https://image.lvbibir.cn/blog/image-20230316121547316.png)
+
+nacos
+
+- 由于我们使用Nacos作为配置中心，统一管理配置，所以我们需要将项目`config`目录下的所有配置都添加到Nacos中
+  Nacos访问地址：http://1.1.1.4:8848/nacos/
+  账号密码：nacos / nacos
+
+- 需要上传的配置
+
+  <img src="https://image.lvbibir.cn/blog/image-20230316124304792.png" alt="image-20230316124304792"  />
+
+- 上传配置
+
+  ![image-20230316124618771](https://image.lvbibir.cn/blog/image-20230316124618771.png)
+
+- 全部上传完成
+
+  ![image-20230316124828650](https://image.lvbibir.cn/blog/image-20230316124828650.png)
+
+# 6. jenkins手动发布项目
+
+## 6.1 脚本配置
+
+> Jenkins自动化部署是需要依赖Linux执行脚本的
+
+添加执行权限
+
+```bash
+chmod a+x /mydata/document/sh/*.sh
+```
+
+> 之前使用的是`Docker Compose`启动所有依赖服务，会默认创建一个网络，所有的依赖服务都会在此网络之中，不同网络内的服务无法互相访问。所以需要指定`sh`脚本中服务运行的的网络，否则启动的应用服务会无法连接到依赖服务。
+
+修改脚本内容，为每个脚本添加`--network docker_default \`
+
+```bash
+sed -i '/^docker run/ a\--network docker_default \\' /mydata/document/sh/*.sh
+```
+
+确认修改是否成功
+
+![image-20230316125833420](https://image.lvbibir.cn/blog/image-20230316125833420.png)
+
+## 6.2 jenkins配置
+
+### 6.2.1 mall-admin工程配置
+
+> 由于各个模块执行任务的创建都大同小异，下面将详细讲解`mall-admin`模块任务的创建，其他模块将简略讲解。
+
+![image-20230316131035301](https://image.lvbibir.cn/blog/image-20230316131035301.png)
+
+源码管理
+
+![image-20230316131241019](https://image.lvbibir.cn/blog/image-20230316131241019.png)
+
+创建一个构建，构建`mall-swarm`项目中的依赖模块，否则当构建可运行的服务模块时会因为无法找到这些模块而构建失败
+
+```bash
+# 只install mall-common,mall-mbg两个模块
+clean install -pl mall-common,mall-mbg -am
+```
+
+创建一个构建，单独构建并打包`mall-admin`模块
+
+```
+clean package
+${WORKSPACE}/mall-admin/pom.xml
+```
+
+![image-20230316131838994](https://image.lvbibir.cn/blog/image-20230316131838994.png)
+
+再创建一个构建，通过SSH去执行`sh`脚本，这里执行的是`mall-admin`的运行脚本：
+
+![image-20230316132503984](https://image.lvbibir.cn/blog/image-20230316132503984.png)
+
+### 6.2.2 其他模块工程配置
+
+以 mall-gateway 为例
+
+输入任务名称，直接复制 mall-admin 工程配置
+
+![image-20230316132845976](https://image.lvbibir.cn/blog/image-20230316132845976.png)
+
+修改第二步构建中的 pom 文件位置和第三步构建中的 sh 文件位置
+
+![image-20230316133013058](https://image.lvbibir.cn/blog/image-20230316133013058.png)
+
+## 6.3 开始构建
+
+单击开始构建即可开始构建任务，可以实时看到任务的控制台输出
+
+![image-20230316134827150](https://image.lvbibir.cn/blog/image-20230316134827150.png)
+
+> 由于作为注册中心和配置中心的Nacos已经启动了，其他模块基本没有启动顺序的限制，但是最好还是按照下面的顺序启动。
+
+推荐启动顺序：
+
+- mall-auth
+- mall-gateway
+- mall-monitor
+- mall-admin
+- mall-portal
+- mall-search

@@ -101,6 +101,8 @@ git config --global core.safecrlf warn
 解决
 
 ```bash
-git config --global core.compression 0
+git config --global http.sslVerify "false"
+
+git config --global core.compression -1
 ```
 
