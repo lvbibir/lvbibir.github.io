@@ -26,6 +26,9 @@ cover:
     caption: "" #图片底部描述
     alt: ""
     relative: false
+    hidden: false         # 隐藏cover图片，但是不在格式化数据中隐藏
+    hiddenInList: false   # 在列表页和文章内容页隐藏cover图片
+    hiddenInSingle: false # 只在文章内容页隐藏cover图片
 ---
 
 
