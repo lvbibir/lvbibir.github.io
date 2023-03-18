@@ -6,7 +6,7 @@
     <description>Recent content in docker on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 15 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello,hugo!</title>
       <link>https://www.lvbibir.cn/posts/blog/hello-hugo/</link>
@@ -14,15 +14,6 @@
       
       <guid>https://www.lvbibir.cn/posts/blog/hello-hugo/</guid>
       <description>记录wordpress迁移至hugo&#43;papermod的过程包含环境搭建、博客美化、功能实现、速度优化等……</description>
-    </item>
-    
-    <item>
-      <title>jenkins流水线搭建</title>
-      <link>https://www.lvbibir.cn/posts/tech/1-mall-swarm/</link>
-      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/1-mall-swarm/</guid>
-      <description>以 mall-swarm 项目为例，部署一套 jenkis &#43; gitlab &#43; docker &#43; 钉钉机器人的一套 CICD 流水线</description>
     </item>
     
     <item>
@@ -50,6 +41,15 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/ceph-v16-cpehadm-openuler-offline/</guid>
       <description>前言 适用于 Centos8/openeuler + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有外网的测试机（尽量跟生产系统的环境一致）通过 yum 安装 cephadm、ceph-common、docker 等需要的 rpm 包，注意使用 downloadonly 参数先下载好 rpm</description>
+    </item>
+    
+    <item>
+      <title>cicd | jenkins部署mall-swarm项目</title>
+      <link>https://www.lvbibir.cn/posts/tech/cicd-mall-swarm/</link>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/cicd-mall-swarm/</guid>
+      <description>以 mall-swarm 项目为例，部署一套 jenkis &#43; gitlab &#43; docker的一套 CICD 流水线</description>
     </item>
     
     <item>

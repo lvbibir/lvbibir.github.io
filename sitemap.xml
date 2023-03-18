@@ -26,16 +26,7 @@
     <loc>https://www.lvbibir.cn/posts/</loc>
     <lastmod>2023-03-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/devops/</loc>
-    <lastmod>2023-03-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/docker/</loc>
-    <lastmod>2023-03-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/elasticsearch-plugin-error/</loc>
-    <lastmod>2023-03-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/1-mall-swarm/</loc>
     <lastmod>2023-03-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/linux/</loc>
@@ -52,6 +43,9 @@
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/shell-if/</loc>
     <lastmod>2023-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/docker/</loc>
+    <lastmod>2023-03-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/docker-download-foreign-images/</loc>
     <lastmod>2023-03-09T00:00:00+00:00</lastmod>
@@ -166,6 +160,12 @@
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/network-priority/</loc>
     <lastmod>2022-06-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/cicd/</loc>
+    <lastmod>2022-03-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/cicd-mall-swarm/</loc>
+    <lastmod>2022-03-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/httpd-src-build-rpm/</loc>
     <lastmod>2022-03-01T00:00:00+00:00</lastmod>

@@ -44,15 +44,6 @@
     </item>
     
     <item>
-      <title>jenkins流水线搭建</title>
-      <link>https://www.lvbibir.cn/posts/tech/1-mall-swarm/</link>
-      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/1-mall-swarm/</guid>
-      <description>以 mall-swarm 项目为例，部署一套 jenkis &#43; gitlab &#43; docker &#43; 钉钉机器人的一套 CICD 流水线</description>
-    </item>
-    
-    <item>
       <title>shell | if条件判断</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-if/</link>
       <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
@@ -347,6 +338,15 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/network-priority/</guid>
       <description>介绍centos和windows中分别如何配置多网卡时以实现灵活的网络访问</description>
+    </item>
+    
+    <item>
+      <title>cicd | jenkins部署mall-swarm项目</title>
+      <link>https://www.lvbibir.cn/posts/tech/cicd-mall-swarm/</link>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/cicd-mall-swarm/</guid>
+      <description>以 mall-swarm 项目为例，部署一套 jenkis &#43; gitlab &#43; docker的一套 CICD 流水线</description>
     </item>
     
     <item>
