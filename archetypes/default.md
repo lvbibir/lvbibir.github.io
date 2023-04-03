@@ -3,17 +3,15 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 lastmod: {{ .Date }}
 author: ["lvbibir"]
-categories: 
-- 
-tags: 
-- 
-keywords: 
-- 
+series: [""] # 系列
+categories: ["",""]
+tags: ["",""]
+keywords: ["",""]
 description: ""
 weight:
-slug: ""
+slug: "" # 使用 slug属性 来作为当前文章的有效 url 的末尾部分 ；如果没有提供 slug 则使用 title 代替。
 draft: false # 是否为草稿
-comments: true
+comments: true # 本页面是否显示评论
 reward: true # 打赏
 mermaid: false #是否开启mermaid
 showToc: true # 显示目录
@@ -22,7 +20,7 @@ hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
 disableShare: true # 底部不显示分享栏
 showbreadcrumbs: true #顶部显示路径
 cover:
-    image: "" #图片路径例如：posts/tech/123/123.png
+    image: "https://source.unsplash.com/random/940x400?sunshine" #图片路径例如：posts/tech/123/123.png
     caption: "" #图片底部描述
     alt: ""
     relative: false

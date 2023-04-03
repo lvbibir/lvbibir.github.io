@@ -21,9 +21,26 @@
 </header>
 
 <div id="searchbox">
-    <input id="searchInput" autofocus placeholder="{{ .Params.placeholder | default (printf "%s ↵" .Title) }}"
+    <input id="searchInput" autofocus placeholder="{{ .Params.placeholder | default (printf "%s ↵" "查找的内容") }}"
         aria-label="search" type="search" autocomplete="off">
     <ul id="searchResults" aria-label="search results"></ul>
 </div>
+
+{{- if not (.Param "hideTags") }}
+{{- $taxonomies := .Site.Taxonomies.tags }}
+{{- if gt (len $taxonomies) 0 }}
+<h2 style="margin-top: 32px">{{ "🏷️ 标签" }}</h2>
+<ul class="terms-tags">
+    {{- range $name, $value := $taxonomies }}
+    {{- $count := .Count }}
+    {{- with site.GetPage (printf "/tags/%s" $name) }}
+    <li>
+        <a href="{{ .Permalink }}">{{ .Name }} <sup><strong><sup>{{ $count }}</sup></strong></sup> </a>
+    </li>
+    {{- end }}
+    {{- end }}
+</ul>
+{{- end }}
+{{- end }}
 
 {{- end }}{{/* end main */}}

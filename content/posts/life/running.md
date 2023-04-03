@@ -3,7 +3,6 @@ title: "跑步日常"
 date: 2022-07-07 
 lastmod: 2022-07-31
 description: "记录一下本跑渣的跑步日常，一点一滴见证自己成长~"
-weight: 1 
 cover:
     image: "https://image.lvbibir.cn/blog/cover-running.jpg"
 ---
