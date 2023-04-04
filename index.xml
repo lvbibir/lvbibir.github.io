@@ -44,15 +44,6 @@
     </item>
     
     <item>
-      <title>kubernetes | 常见报错解决</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-errors/</link>
-      <pubDate>Mon, 06 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-errors/</guid>
-      <description>kubernetes常见报错及解决</description>
-    </item>
-    
-    <item>
       <title>逻辑题 | 鬼谷子数学问题</title>
       <link>https://www.lvbibir.cn/posts/tech/logic-problem-guiguzi/</link>
       <pubDate>Mon, 27 Feb 2023 00:00:00 +0000</pubDate>
@@ -130,7 +121,7 @@
       <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/kubernetes-storage/</guid>
-      <description>介绍kubernetes中的存储使用简介，例如emptydir|hostpath|NFS|pv|pvc|statefulset控制器</description>
+      <description>介绍kubernetes中的存储使用简介，例如emptydir、hostpath、NFS、pv、pvc、statefulset控制器</description>
     </item>
     
     <item>
@@ -152,16 +143,7 @@
     </item>
     
     <item>
-      <title>kubernetes | metrics-server部署</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-metrics-server/</link>
-      <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-metrics-server/</guid>
-      <description>介绍kubernetes中metric-server监控组件的部署</description>
-    </item>
-    
-    <item>
-      <title>kubernetes | 日志</title>
+      <title>kubernetes | 日志收集分析</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-logs/</link>
       <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -175,7 +157,7 @@
       <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/kubernetes-scheduler/</guid>
-      <description>介绍kubernetes中影响pod调度的一些因素，比如资源限制|nodeSelector|nodeAffinity|Taint|nodeName|DaemonSet控制器</description>
+      <description>介绍kubernetes中影响pod调度的一些因素，比如资源限制、nodeSelector、nodeAffinity、Taint、nodeName、DaemonSet控制器</description>
     </item>
     
     <item>
@@ -189,11 +171,11 @@
     
     <item>
       <title>kubernetes | 杂记</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-notes/</link>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes/</link>
       <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-notes/</guid>
-      <description>介绍kubectl命令的一些用法、yaml编写技巧等</description>
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes/</guid>
+      <description>介绍一些常见的报错处理、kubectl命令的一些用法、yaml编写技巧</description>
     </item>
     
     <item>
