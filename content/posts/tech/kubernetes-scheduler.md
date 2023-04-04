@@ -13,7 +13,7 @@ keywords:
 - nodeAffinity
 - nodeName
 - DaemonSet
-description: "介绍kubernetes中影响pod调度的一些因素，比如资源限制|nodeSelector|nodeAffinity|Taint|nodeName|DaemonSet控制器" 
+description: "介绍kubernetes中影响pod调度的一些因素，比如资源限制、nodeSelector、nodeAffinity、Taint、nodeName、DaemonSet控制器" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
     hidden: true

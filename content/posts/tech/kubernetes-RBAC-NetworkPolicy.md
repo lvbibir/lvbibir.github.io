@@ -22,8 +22,6 @@ cover:
 
 基于`centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
-
-
 # kubernetes安全框架
 
 - 客户端要想访问K8s集群API Server，一般需要证书、Token或者用户名+密码；如果Pod访问，需要ServiceAccount

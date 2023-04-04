@@ -15,7 +15,7 @@ keywords:
 - pv
 - pvc
 - statefulset
-description: "介绍kubernetes中的存储使用简介，例如emptydir|hostpath|NFS|pv|pvc|statefulset控制器" 
+description: "介绍kubernetes中的存储使用简介，例如emptydir、hostpath、NFS、pv、pvc、statefulset控制器" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
     hidden: true
@@ -28,7 +28,9 @@ cover:
 **为什么需要数据卷**
 
 1. 启动时需要的初始数据，录入配置文件
+
 2. 启动过程中产生的临时数据，该临时数据需要多个容器间共享
+
 3. 启动过程中产生的持久化数据，例如mysql的data
 
 **数据卷概述**
@@ -56,7 +58,7 @@ emptyDir的实际存储路径在pod所在节点的`/var/lib/kubelet/pods/<pod-id
 
 查看pod的uid
 
-```
+```bash
 kubectl get pod <pod-name> -o jsonpath='{.metadata.uid}'
 ```
 
@@ -124,17 +126,17 @@ NFS卷提供对NFS挂载支持，可以自动将NFS共享路径挂载到Pod中
 配置nfs服务端，nfs-utils包每个节点都需安装
 
 ```
-[root@k8s-node1 ~]# yum install nfs-utils
-[root@k8s-node1 ~]# mkdir -p /ifs/kubernetes
-[root@k8s-node1 ~]# echo "/ifs/kubernetes *(rw,no_root_squash)" >> /etc/exports
-[root@k8s-node1 ~]# systemctl start nfs && systemctl enable nfs
+yum install nfs-utils
+mkdir -p /ifs/kubernetes
+echo "/ifs/kubernetes *(rw,no_root_squash)" >> /etc/exports
+systemctl start nfs && systemctl enable nfs
 ```
 
 客户端测试
 
-```
-[root@k8s-node2 ~]# mount -t nfs k8s-node1:/ifs/kubernetes /mnt/
-[root@k8s-node2 ~]# df -hT | grep k8s-node1
+```bash
+[root@k8s-node1 ~]# mount -t nfs k8s-node1:/ifs/kubernetes /mnt/
+[root@k8s-node1 ~]# df -hT | grep k8s-node1
 k8s-node1:/ifs/kubernetes nfs4       29G  4.8G   25G  17% /mnt
 ```
 
@@ -367,7 +369,7 @@ k8s-1.20版本后默认禁止使用selfLink，需要打开一下
 修改k8s的apiserver参数
 
 ```
-[root@k8sm storage]# vi /etc/kubernetes/manifests/kube-apiserver.yaml
+[root@k8s-node1 ~]#  vi /etc/kubernetes/manifests/kube-apiserver.yaml
 apiVersion: v1
 ···
     - --tls-private-key-file=/etc/kubernetes/pki/apiserver.key

@@ -8,26 +8,12 @@ keywords:
 - linux
 - centos
 - kubernetes
-description: "介绍kubectl命令的一些用法、yaml编写技巧等" 
+description: "介绍一些常见的报错处理、kubectl命令的一些用法、yaml编写技巧" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
     hidden: true
     hiddenInSingle: true 
 ---
-
-# 前言
-
-基于`centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
-
-# 其他
-
-用于控制是否优先本地寻找镜像
-
-```
-imagePullPolicy: IfNotPresent
-```
-
-# kubectl命令
 
 kubectl命令的自动补全
 
@@ -36,6 +22,53 @@ yum install bash-completion
 source /usr/share/bash-completion/bash_completion
 source <(kubectl completion bash)
 ```
+
+用于控制是否优先本地寻找镜像
+
+```
+imagePullPolicy: IfNotPresent
+```
+
+# 常见报错
+
+## 1.1 NodeNotReady
+
+### 1.2 Image garbage collection failed once
+
+[参考地址](https://stackoverflow.com/questions/62020493/kubernetes-1-18-warning-imagegcfailed-error-failed-to-get-imagefs-info-unable-t?newreg=6012e8d3a8494d7d816cf2d6606ed1b2)
+
+报错：
+
+```
+# kubectl describe node k8s-node01
+Events:
+  Type    Reason                   Age   From     Message
+  ----    ------                   ----  ----     -------
+  Normal  Starting                 11m   kubelet  Starting kubelet.
+  Normal  NodeHasSufficientMemory  11m   kubelet  Node k8s-node01 status is now: NodeHasSufficientMemory
+  Normal  NodeHasNoDiskPressure    11m   kubelet  Node k8s-node01 status is now: NodeHasNoDiskPressure
+  Normal  NodeHasSufficientPID     11m   kubelet  Node k8s-node01 status is now: NodeHasSufficientPID
+  Normal  NodeAllocatableEnforced  11m   kubelet  Updated Node Allocatable limit across pods
+  
+# journalctl -u kubelet | grep garbage
+Mar 06 09:50:33 k8s-node01 kubelet[45471]: E0306 09:50:33.106476   45471 kubelet.go:1343] "Image garbage collection failed once. Stats initialization may not have completed yet" err="failed to get imageFs info: unable to find data in memory cache"
+```
+
+解决：
+
+1. 未部署CNI组件
+
+2. docker镜像或容器未能正确删除导致的
+
+```
+docker system prune
+systemctl stop kubelet
+systemctl stop docker
+systemctl start docker
+systemctl start kubelet
+```
+
+# kubectl命令
 
 一些常用命令
 
@@ -131,7 +164,7 @@ kubectl explain pods.spec.container
 kubectl explain deployment
 ```
 
-## yaml报错排查
+yaml报错排查
 
 ```
 error: error parsing pod-configmap.yaml: error converting YAML to JSON: yaml: line 19: did not find expected '-' indicator
@@ -152,4 +185,3 @@ ports:
 ports:
 - port: 80
 ```
-

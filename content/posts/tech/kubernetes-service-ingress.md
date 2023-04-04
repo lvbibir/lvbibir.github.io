@@ -114,6 +114,7 @@ k8s默认采用的代理模式是iptables，可以通过查看kube-proxy组件�
 
 ```
 [root@k8s-node1 ~]# kubectl logs kube-proxy-qqdq4 -n kube-system
+......
 I1005 00:27:19.907705       1 node.go:172] Successfully retrieved node IP: 1.1.1.2
 I1005 00:27:19.907801       1 server_others.go:140] Detected node IP 1.1.1.2
 W1005 00:27:19.907939       1 server_others.go:565] Unknown proxy mode "", assuming iptables proxy
@@ -138,7 +139,8 @@ nginx-7cf55fb7bb-bts6p   1/1     Running   0          37m   10.244.107.252   k8s
 nginx-7cf55fb7bb-qm4vl   1/1     Running   0          37m   10.244.169.135   k8s-node2   <none>           <none>
 
 [root@k8s-node1 ~]# iptables-save |grep nginx |grep 30002
-...... 流量转发到SVC链
+...... 
+# 流量转发到SVC链
 -A KUBE-NODEPORTS -p tcp -m comment --comment "default/nginx" -m tcp --dport 30002 -j KUBE-SVC-2CMXP7HKUVJN7L6M
 ......
 
@@ -291,8 +293,8 @@ ingress-nginx-controller-rwbjx            1/1     Running     0          2m36s  
 
 
 # 如果出现内部访问报错：failed calling webhook "validate.nginx.ingress.kubernetes.io"
-kubectl get ValidatingWebhookConfiguration
-kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
+[root@k8s-node1 ~]# kubectl get ValidatingWebhookConfiguration
+[root@k8s-node1 ~]# kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 ```
 
 示例（http）

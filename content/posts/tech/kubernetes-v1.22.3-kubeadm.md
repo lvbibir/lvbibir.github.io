@@ -1,7 +1,7 @@
 ---
 title: "kubernetes | kubeadm 搭建 K8s集群v1.22.3" 
 date: 2021-10-01
-lastmod: 2023-03-12
+lastmod: 2023-04-04
 tags: 
 - kubernetes
 keywords:
@@ -14,16 +14,16 @@ cover:
     hidden: true
     hiddenInSingle: true 
 ---
-# Kubernetes 概述
+# Kubernetes概述
 
-## kubernetes 是什么
+kubernetes是什么
 
 - kubernetes 是 Google 在 2014年开源的一个容器集群管理平台，kubernetes简称 k8s
 - k8s用于容器化应用程序的部署，扩展和管理。
 - k8s提供了容器的编排，资源调度，弹性伸缩，部署管理，服务发现等一系列功能
 - kubernetes目标是让部署容器化应用简单高效
 
-## Kubernetes 特性
+Kubernetes特性
 
 - 自我修复
   
@@ -47,102 +47,96 @@ cover:
   
   提供一次性任务，定时任务；满足批量数据处理和分析的场景。
 
-## Kubeadm 概述
+Kubeadm概述
 
-> `kubeadm`是`Kubernetes`项目自带的及集群构建工具，负责执行构建一个最小化的可用集群以及将其启动等的必要基本步骤，`kubeadm`是`Kubernetes`集群全生命周期的管理工具，可用于实现集群的部署、升级、降级及拆除。`kubeadm`部署`Kubernetes`集群是将大部分资源以`pod`的方式运行，例如（`kube-proxy`、`kube-controller-manager`、`kube-scheduler`、`kube-apiserver`、`flannel`)都是以`pod`方式运行。
->
-> `Kubeadm`仅关心如何初始化并启动集群，余下的其他操作，例如安装`Kubernetes Dashboard`、监控系统、日志系统等必要的附加组件则不在其考虑范围之内，需要管理员自行部署。
->
-> `Kubeadm`集成了`Kubeadm init`和`kubeadm join`等工具程序，其中`kubeadm init`用于集群的快速初始化，其核心功能是部署Master节点的各个组件，而`kubeadm join`则用于将节点快速加入到指定集群中，它们是创建`Kubernetes`集群最佳实践的“快速路径”。另外，`kubeadm token`可于集群构建后管理用于加入集群时使用的认证令牌（`token`)，而`kubeadm reset`命令的功能则是删除集群构建过程中生成的文件以重置回初始状态。
+- `kubeadm`是`Kubernetes`项目自带的及集群构建工具，负责执行构建一个最小化的可用集群以及将其启动等的必要基本步骤，`kubeadm`是`Kubernetes`集群全生命周期的管理工具，可用于实现集群的部署、升级、降级及拆除。`kubeadm`部署`Kubernetes`集群是将大部分资源以`pod`的方式运行，例如（`kube-proxy`、`kube-controller-manager`、`kube-scheduler`、`kube-apiserver`、`flannel`)都是以`pod`方式运行。
+
+- `Kubeadm`仅关心如何初始化并启动集群，余下的其他操作，例如安装`Kubernetes Dashboard`、监控系统、日志系统等必要的附加组件则不在其考虑范围之内，需要管理员自行部署。
+
+- `Kubeadm`集成了`Kubeadm init`和`kubeadm join`等工具程序，其中`kubeadm init`用于集群的快速初始化，其核心功能是部署Master节点的各个组件，而`kubeadm join`则用于将节点快速加入到指定集群中，它们是创建`Kubernetes`集群最佳实践的“快速路径”。另外，`kubeadm token`可于集群构建后管理用于加入集群时使用的认证令牌（`token`)，而`kubeadm reset`命令的功能则是删除集群构建过程中生成的文件以重置回初始状态。
 
 ![img](https://image.lvbibir.cn/blog/828019-20201006171931291-1034333699.png)
 
-# 1. 安装要求
+# 1. 环境准备
 
-在开始之前，部署Kubernetes集群机器需要满足以下几个条件：
+基于`centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
-- 一台或多台机器，操作系统 CentOS7.x-86_x64
-- 硬件配置：2GB或更多RAM，2个CPU或更多CPU，硬盘30GB或更多
-- 集群中所有机器之间网络互通
-- 可以访问外网，需要拉取镜像
-- 禁用swap分区
+部署Kubernetes集群需要满足每个节点至少满足2核CPU、2G内存和30GB硬盘且都可以访问外网
 
-# 2. 准备环境
+| 角色      | IP      |
+| --------- | ------- |
+| k8s-node1 | 1.1.1.1 |
+| k8s-node2 | 1.1.1.2 |
+| k8s-node3 | 1.1.1.3 |
 
- ![kubernetesæ¶æå¾](https://blog-1252881505.cos.ap-beijing.myqcloud.com/k8s/single-master.jpg) 
+## 1.1 基础配置
 
-| 角色       | IP              |
-| ---------- | --------------- |
-| k8s-master | 192.168.150.101 |
-| k8s-node1  | 192.168.150.102 |
-| k8s-node2  | 192.168.150.103 |
+```bash
+# 关闭防火墙
+systemctl stop firewalld
+systemctl disable firewalld
 
-```
-关闭防火墙：
-$ systemctl stop firewalld
-$ systemctl disable firewalld
+# 关闭selinux
+sed -i 's/enforcing/disabled/' /etc/selinux/config  # 永久
+setenforce 0  # 临时
 
-关闭selinux：
-$ sed -i 's/enforcing/disabled/' /etc/selinux/config  # 永久
-$ setenforce 0  # 临时
+# 关闭swap
+swapoff -a  # 临时
+vim /etc/fstab  # 永久, 注释掉swap分区相关行
 
-关闭swap：
-$ swapoff -a  # 临时
-$ vim /etc/fstab  # 永久
-注释掉swap分区相关行
+# 设置主机名
+hostnamectl set-hostname <hostname>
 
-设置主机名：
-$ hostnamectl set-hostname <hostname>
-
-在master添加hosts：
-$ cat >> /etc/hosts << EOF
-192.168.150.101 k8s-master
-192.168.150.102 k8s-node1
-192.168.150.103 k8s-node2
+# 添加hosts
+cat >> /etc/hosts << EOF
+1.1.1.1 k8s-node1
+1.1.1.2 k8s-node2
+1.1.1.3 k8s-node3
 EOF
 
-将桥接的IPv4流量传递到iptables的链：
-$ cat > /etc/sysctl.d/k8s.conf << EOF
+# 将桥接的IPv4流量传递到iptables的链
+cat > /etc/sysctl.d/k8s.conf << EOF
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 EOF
-$ sysctl --system  # 生效
+sysctl --system  # 生效
 
-时间同步：
-$ timedatectl set-timezone Asia/Shanghai
-$ yum install ntpdate -y
-$ ntpdate time.windows.com
+# 时间同步
+timedatectl set-timezone Asia/Shanghai
+yum install ntpdate -y
+ntpdate time.windows.com
 ```
 
-# 3. 安装各项服务(所有节点)
+## 1.2 安装Docker
 
 Kubernetes默认CRI（容器运行时）为Docker，因此先安装Docker。
 
-## 3.1 安装Docker
-
 ```
-$ wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
-$ yum -y install docker-ce
+wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
+yum -y install docker-ce
 ```
 
-## 3.2 配置镜像下载加速器，同时修改docker的cgroupdriver为systemd
+配置镜像下载加速器，同时修改docker的cgroupdriver为systemd
 
 ```
-$ cat > /etc/docker/daemon.json << EOF
+cat > /etc/docker/daemon.json << EOF
 {
   "registry-mirrors": ["https://jc0srqak.mirror.aliyuncs.com"],
   "exec-opts": ["native.cgroupdriver=systemd"]
 }
 EOF
-$ systemctl daemon-reload
-$ systemctl enable docker && systemctl start docker
-$ docker info
+
+systemctl daemon-reload
+systemctl enable docker && systemctl start docker
+docker info
 ```
 
-## 3.3 添加阿里云YUM软件源
+## 1.3 kubeadm/kubelet/kubectl
 
-```
-$ cat > /etc/yum.repos.d/kubernetes.repo << EOF
+添加阿里云YUM软件源
+
+```bash
+cat > /etc/yum.repos.d/kubernetes.repo << EOF
 [kubernetes]
 name=Kubernetes
 baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
@@ -153,32 +147,30 @@ gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors
 EOF
 ```
 
-## 3.4 安装kubeadm，kubelet和kubectl
+这里指定版本号部署
 
-由于版本更新频繁，这里指定版本号部署：
-
-```
-$ yum install -y kubelet-1.22.3 kubeadm-1.22.3 kubectl-1.22.3
-$ systemctl enable kubelet
-$ systemctl start kubelet
+```bash
+yum install -y kubelet-1.22.3 kubeadm-1.22.3 kubectl-1.22.3
+systemctl enable kubelet
+systemctl start kubelet
 ```
 
-# 4. 部署Kubernetes Master
+# 2. 部署Kubernetes Master
 
 https://kubernetes.io/zh/docs/reference/setup-tools/kubeadm/kubeadm-init/#config-file 
 
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#initializing-your-control-plane-node 
 
-在192.168.150.101（Master）执行。
+在1.1.1.1（Master）执行。
 
-```
-    $ kubeadm init \
-      --apiserver-advertise-address=192.168.150.101 \
-      --kubernetes-version v1.22.3 \
-      --service-cidr=10.96.0.0/12 \
-      --pod-network-cidr=10.244.0.0/16 \
-      --ignore-preflight-errors=all \
-      --image-repository registry.aliyuncs.com/google_containers 
+```bash
+kubeadm init \
+--apiserver-advertise-address=1.1.1.1 \
+--kubernetes-version v1.22.3 \
+--service-cidr=10.96.0.0/12 \
+--pod-network-cidr=10.244.0.0/16 \
+--ignore-preflight-errors=all \
+--image-repository registry.aliyuncs.com/google_containers 
 ```
 
 - --apiserver-advertise-address 集群通告地址
@@ -190,8 +182,8 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-clu
 
 或者使用配置文件引导：
 
-```
-$ vi kubeadm.conf
+```bash
+cat > kubeadm.conf << EOF
 apiVersion: kubeadm.k8s.io/v1beta2
 kind: ClusterConfiguration
 kubernetesVersion: v1.22.3
@@ -199,8 +191,9 @@ imageRepository: registry.aliyuncs.com/google_containers
 networking:
   podSubnet: 10.244.0.0/16 
   serviceSubnet: 10.96.0.0/12 
+EOF
 
-$ kubeadm init --config kubeadm.conf --ignore-preflight-errors=all  
+kubeadm init --config kubeadm.conf --ignore-preflight-errors=all  
 ```
 
 拷贝kubectl使用的连接k8s认证文件到默认路径：
@@ -209,59 +202,56 @@ $ kubeadm init --config kubeadm.conf --ignore-preflight-errors=all
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
-$ kubectl get nodes
-NAME         STATUS   ROLES    AGE   VERSION
-k8s-master   Ready    master   2m   v1.18.0
 ```
 
 查看k8s集群状态
 
-```
-$ kubectl get cs
+```bash
+kubectl get cs
 NAME                 STATUS      MESSAGE                                                                                       ERROR
 scheduler            Unhealthy   Get "http://127.0.0.1:10251/healthz": dial tcp 127.0.0.1:10251: connect: connection refused
 controller-manager   Healthy     ok                                                                      
 etcd-0               Healthy     {"health":"true","reason":""}   
 
-$ vim /etc/kubernetes/manifests/kube-scheduler.yaml
+vim /etc/kubernetes/manifests/kube-scheduler.yaml
 # 注释掉 --port=0 ，scheduler会自动重启，稍等一小会状态变为正常
-#    - --port=0
 
-$ kubectl get cs
+kubectl get cs
 NAME                 STATUS    MESSAGE                         ERROR
 scheduler            Healthy   ok
 controller-manager   Healthy   ok
 etcd-0               Healthy   {"health":"true","reason":""}
 ```
 
-# 5. 加入Kubernetes Node
+# 3. 加入Kubernetes Node
+
+<https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-join/>
 
 在192.168.150.102/103（Node）执行。
 
 向集群添加新节点，执行在kubeadm init输出的kubeadm join命令：
 
-```
-$ kubeadm join 192.168.150.101:6443 --token esce21.q6hetwm8si29qxwn \
-    --discovery-token-ca-cert-hash sha256:00603a05805807501d7181c3d60b478788408cfe6cedefedb1f97569708be9c5
+```bash
+kubeadm join 1.1.1.1:6443 --token esce21.q6hetwm8si29qxwn \
+--discovery-token-ca-cert-hash sha256:00603a05805807501d7181c3d60b478788408cfe6cedefedb1f97569708be9c5
 ```
 
 默认token有效期为24小时，当过期之后，该token就不可用了。这时就需要重新创建token，操作如下：
 
-```
-$ kubeadm token create
-$ kubeadm token list
-$ openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'
+```bash
+kubeadm token create
+kubeadm token list
+
+openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'
 63bca849e0e01691ae14eab449570284f0c3ddeea590f8da988c07fe2729e924
 
-$ kubeadm join 192.168.150.101:6443 --token nuja6n.o3jrhsffiqs9swnu --discovery-token-ca-cert-hash sha256:63bca849e0e01691ae14eab449570284f0c3ddeea590f8da988c07fe2729e924
+kubeadm join 1.1.1.1:6443 --token nuja6n.o3jrhsffiqs9swnu --discovery-token-ca-cert-hash 
+sha256:63bca849e0e01691ae14eab449570284f0c3ddeea590f8da988c07fe2729e924
 ```
 
-或者直接命令快捷生成：kubeadm token create --print-join-command
+或者直接命令快捷生成: `kubeadm token create --print-join-command`
 
-<https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-join/>
-
-# 6. 部署容器网络（CNI）
+# 4. 部署容器网络(cni)
 
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network 
 
@@ -273,26 +263,79 @@ Calico 在每一个计算节点利用 Linux Kernel 实现了一个高效的虚�
 
 此外，Calico  项目还实现了 Kubernetes 网络策略，提供ACL功能。
 
- https://docs.projectcalico.org/getting-started/kubernetes/quickstart 
+https://docs.projectcalico.org/getting-started/kubernetes/quickstart 
 
-```
-$ wget --no-check-certificate https://docs.projectcalico.org/manifests/calico.yaml
+```bash
+wget --no-check-certificate https://docs.projectcalico.org/manifests/calico.yaml
 ```
 
 下载完后还需要修改里面定义Pod网络（CALICO_IPV4POOL_CIDR），与前面kubeadm init指定的一样
 
 修改完后应用清单：
 
-```
-$ vim calico.yaml
+```bash
+vim calico.yaml
 # 这两行默认是注释掉的
 - name: CALICO_IPV4POOL_CIDR
 value: "10.244.0.0/16"
-$ kubectl apply -f calico.yaml
-$ kubectl get pods -n kube-system
+
+kubectl apply -f calico.yaml
+kubectl get pods -n kube-system
 ```
 
-# 7. 测试kubernetes集群
+# 5. metric-server
+
+cadvisor负责提供数据，已集成到k8s中
+
+Metrics-server负责数据汇总，需额外安装
+
+![Snipaste_2022-10-02_09-04-36](https://image.lvbibir.cn/blog/Snipaste_2022-10-02_09-04-36.png)
+
+下载yaml
+
+```bash
+wget https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.6.0/components.yaml --no-check-certificate
+mv components.yaml metrics-server.yaml
+```
+
+修改yaml
+
+```yaml
+      containers:
+      - args:
+        - --cert-dir=/tmp
+        - --secure-port=4443
+        - --kubelet-preferred-address-types=InternalIP # 第一处修改
+        - --kubelet-use-node-status-port
+        - --metric-resolution=15s
+        - --kubelet-insecure-tls # 第二处修改
+        image: registry.aliyuncs.com/google_containers/metrics-server:v0.6.0 # 第三处修改
+        imagePullPolicy: IfNotPresent
+```
+
+**--kubelet-insecure-tls**
+
+不验证kubelet自签的证书
+
+**--kubelet-preferred-address-types=InternalIP**
+
+Metrics-server连接cadvisor默认通过主机名即node的名称进行连接，而Metric-server作为pod运行在集群中默认是无法解析的，所以这里修改成通过节点ip连接
+
+部署metrics-server
+
+```
+[root@k8s-node1 ~]# kubectl apply -f metrics-server.yaml
+[root@k8s-node1 ~]# kubectl get pods -n kube-system -l k8s-app=metrics-server
+NAME                              READY   STATUS    RESTARTS   AGE
+metrics-server-7f66b69ff6-bkfqg   1/1     Running   0          59s
+[root@k8s-node1 ~]# kubectl top nodes
+NAME        CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+k8s-node1   226m         11%    2004Mi          54%
+k8s-node2   97m          4%     1047Mi          28%
+k8s-node3   98m          4%     1096Mi          29%
+```
+
+# 6. 测试kubernetes集群
 
 - 验证Pod工作
 - 验证Pod网络通信
@@ -300,24 +343,24 @@ $ kubectl get pods -n kube-system
 
 在Kubernetes集群中创建一个pod，验证是否正常运行：
 
-```
-$ kubectl create deployment nginx --image=nginx
-$ kubectl expose deployment nginx --port=80 --type=NodePort
-$ kubectl get pod,svc
+```bash
+kubectl create deployment nginx --image=nginx
+kubectl expose deployment nginx --port=80 --type=NodePort
+kubectl get pod,svc
 ```
 
 访问地址：http://NodeIP:Port  
 
-# 8. 部署Dashboard
+# 7. 部署Dashboard
 
-```
-$ wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.4.0/aio/deploy/recommended.yaml
+```bash
+wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.4.0/aio/deploy/recommended.yaml
 ```
 
 默认Dashboard只能集群内部访问，修改Service为NodePort类型，暴露到外部：
 
-```
-$ vi recommended.yaml
+```bash
+vi recommended.yaml
 ...
 kind: Service
 apiVersion: v1
@@ -335,8 +378,10 @@ spec:
     k8s-app: kubernetes-dashboard
   type: NodePort
 ...
-$ kubectl apply -f recommended.yaml
-$ kubectl get pods -n kubernetes-dashboard
+
+kubectl apply -f recommended.yaml
+
+kubectl get pods -n kubernetes-dashboard
 NAME                                         READY   STATUS    RESTARTS   AGE
 dashboard-metrics-scraper-6b4884c9d5-gl8nr   1/1     Running   0          13m
 kubernetes-dashboard-7f99b75bf4-89cds        1/1     Running   0          13m
@@ -347,11 +392,11 @@ kubernetes-dashboard-7f99b75bf4-89cds        1/1     Running   0          13m
 
 ```
 # 创建用户
-$ kubectl create serviceaccount dashboard-admin -n kube-system
+kubectl create serviceaccount dashboard-admin -n kube-system
 # 用户授权
-$ kubectl create clusterrolebinding dashboard-admin --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin
+kubectl create clusterrolebinding dashboard-admin --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin
 # 获取用户Token
-$ kubectl describe secrets -n kube-system $(kubectl -n kube-system get secret | awk '/dashboard-admin/{print $1}')
+kubectl describe secrets -n kube-system $(kubectl -n kube-system get secret | awk '/dashboard-admin/{print $1}')
 ```
 使用输出的token登录Dashboard。
 

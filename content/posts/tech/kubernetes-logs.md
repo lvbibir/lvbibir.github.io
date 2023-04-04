@@ -1,5 +1,5 @@
 ---
-title: "kubernetes | 日志" 
+title: "kubernetes | 日志收集分析" 
 date: 2022-10-03
 lastmod: 2022-10-03
 tags: 
