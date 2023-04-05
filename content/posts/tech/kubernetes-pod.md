@@ -19,7 +19,7 @@ cover:
 
 基于`centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
-# 基本概念
+# 1. 基本概念
 
 - 最小部署单元
 
@@ -29,7 +29,7 @@ cover:
 
 - Pod是短暂的
 
-# 存在意义
+# 2. 存在意义
 
 Pod为亲密性应用而存在。
 
@@ -41,7 +41,7 @@ Pod为亲密性应用而存在。
 
 - 两个应用需要发生频繁的调用
 
-# 容器分类
+# 3. 容器分类
 
 - Infrastructure Container：基础容器，维护整个Pod网络空间
 
@@ -98,7 +98,7 @@ spec:
     emptyDir: {}
 ```
 
-# 静态pod
+# 4. 静态pod
 
 静态Pod特点：
 
@@ -110,7 +110,7 @@ spec:
 
 在kubelet配置文件启用静态Pod：
 
-```
+```bash
 vi /var/lib/kubelet/config.yaml
 ...
 staticPodPath: /etc/kubernetes/manifests
@@ -119,7 +119,7 @@ staticPodPath: /etc/kubernetes/manifests
 
 将部署的pod yaml放到该目录会由kubelet自动创建
 
-# 重启策略
+# 5. 重启策略
 
 - Always：当容器终止退出后，总是重启容器，默认策略。
 
@@ -127,7 +127,7 @@ staticPodPath: /etc/kubernetes/manifests
 
 - Never：当容器终止退出，从不重启容器。
 
-# 健康检查
+# 6. 健康检查
 
 **健康检查有以下两种类型：**
 
@@ -143,28 +143,49 @@ staticPodPath: /etc/kubernetes/manifests
 
 - tcpSocket：发起TCP Socket建立成功。
 
-示例
+## 6.1 liveness
+
+linveness实际触发重启需要的时间 = 失败次数 * 间隔时间 + 等待容器优雅退出的宽限期(默认30s) 
+
+`failureThreshold` * `periodSeconds` + `terminationGracePeriodSeconds`
+
+livenessProbe示例
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  labels:
-    test: liveness
-  name: liveness-exec
+  name: liveness-pod
+  namespace: default
 spec:
+  restartPolicy: OnFailure
+  # 等待容器优雅退出的时长，超出该时间后强制杀死，默认值30s
+  terminationGracePeriodSeconds: 10
   containers:
-  - name: liveness
+  - name: myapp
     image: busybox
-    args:
-    - /bin/sh
-    - -c
-    - touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600
+    imagePullPolicy: IfNotPresent
+    command: ["/bin/sh", "-c", "touch /tmp/healthy; sleep 10; rm -rf /tmp/healthy; sleep 600"]
     livenessProbe:
       exec:
-        command:
-        - cat
-        - /tmp/healthy
+        command: ["test", "-e", "/tmp/healthy"]
+      # 容器启动多长时间后开始检查
       initialDelaySeconds: 5
+      # 每次检查间隔时间
       periodSeconds: 5
+      # 允许连续失败的次数
+      failureThreshold: 2
 ```
+
+运行结果可以看到在两分钟的时间里重启了4次，每次30s
+
+```bash
+[root@k8s-node1 opt]# kubectl get pods
+NAME           READY   STATUS    RESTARTS     AGE
+liveness-pod   1/1     Running   4 (2s ago)   2m2s
+```
+
+1. POD运行的前10s检查一直成功
+2. 在POD启动的第15s第一次检查失败
+3. 第20s第二次检查失败，给容器发送停止信号
+4. 等待10s后强制重启容器

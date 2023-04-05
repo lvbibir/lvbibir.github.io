@@ -113,7 +113,8 @@ Kubernetes默认CRI（容器运行时）为Docker，因此先安装Docker。
 
 ```
 wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
-yum -y install docker-ce
+yum list docker-ce --show-duplicates
+yum install docker-ce-20.10.23-3.el7.x86_64
 ```
 
 配置镜像下载加速器，同时修改docker的cgroupdriver为systemd
@@ -121,7 +122,11 @@ yum -y install docker-ce
 ```
 cat > /etc/docker/daemon.json << EOF
 {
-  "registry-mirrors": ["https://jc0srqak.mirror.aliyuncs.com"],
+  "registry-mirrors": [
+    "http://hub-mirror.c.163.com",
+    "https://docker.mirrors.ustc.edu.cn",
+    "https://jc0srqak.mirror.aliyuncs.com"
+  ],
   "exec-opts": ["native.cgroupdriver=systemd"]
 }
 EOF

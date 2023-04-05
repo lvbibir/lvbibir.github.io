@@ -16,7 +16,7 @@ buildExpired: false
 googleAnalytics:  # 谷歌统计
 # Copyright: Sulv
 
-paginate: 10    # 每页显示的文章数
+paginate: 15    # 每页显示的文章数
 summaryLength: 140 # 文章概览的字数，默认70
 
 minify:
