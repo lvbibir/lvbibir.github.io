@@ -71,7 +71,7 @@ pod中总会多一个pause容器，这个容器就是实现将pod中的所有容
 apiVersion: v1
 kind: Pod
 metadata:
-  name: init-demo
+  name: pod-init
 spec:
   containers:
   - name: nginx
@@ -84,15 +84,10 @@ spec:
   initContainers:
   - name: install
     image: busybox
-    command:
-    - wget
-    - "-O"
-    - "/work-dir/index.html"
-    - http://www.baidu.com/index.html
+    command: ["wget", "-O", "/work-dir/index.html", "http://www.baidu.com/index.html"]
     volumeMounts:
     - name: workdir
       mountPath: "/work-dir"
-  dnsPolicy: Default
   volumes:
   - name: workdir
     emptyDir: {}
@@ -131,21 +126,30 @@ staticPodPath: /etc/kubernetes/manifests
 
 **健康检查有以下两种类型：**
 
-- livenessProbe（存活检查）：如果检查失败，将杀死容器，根据Pod的restartPolicy来操作。
+- livenessProbe(存活探针): 如果检查失败，将杀死并重建容器，根据Pod的restartPolicy来操作.
 
-- readinessProbe（就绪检查）：如果检查失败，Kubernetes会把Pod从service endpoints中剔除。
+- readinessProbe(就绪探针): 如果检查失败，Kubernetes会把Pod暂时从service endpoints中剔除.
 
-**支持以下三种检查方法：**
+- startupProbe(启动探针): 如果检查失败，将杀死并重建容器，根据Pod的restartPolicy来操作. 用于启动非常慢的应用，如果使用了启动探针，则禁用所有其他探针, 直到它成功为止.
+
+**支持以下四种检查方法：**
 
 - httpGet：发送HTTP请求，返回200-400范围状态码为成功。
-
 - exec：执行Shell命令返回状态码是0为成功。
-
 - tcpSocket：发起TCP Socket建立成功。
+- gRPC：需要应用程序支持，[参考](https://kubernetes.io/zh-cn/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#%E5%AE%9A%E4%B9%89-grpc-%E5%AD%98%E6%B4%BB%E6%8E%A2%E9%92%88)
+
+探针配置:
+
+- initialDelaySeconds: 容器启动后要等待多少秒后存活和就绪探测器才被初始化, 默认是0秒, 最小值是0.
+- periodSeconds: 执行探测的时间间隔.默认是10秒, 最小值是1.
+- timeoutSeconds: 探测的超时后等待多少秒. 默认值是1秒. 最小值是1.
+- successThreshold: 探测器在失败后, 被视为成功的最小连续成功数. 默认值是1. 存活探测的这个值必须是1。最小值是1.
+- failureThreshold: 当Pod启动了并且探测到失败的重试次数. 存活探测情况下的放弃就意味着重新启动容器. 就绪探测情况下的放弃Pod会被打上未就绪的标签, 默认值是3, 最小值是1.
 
 ## 6.1 liveness
 
-linveness实际触发重启需要的时间 = 失败次数 * 间隔时间 + 等待容器优雅退出的宽限期(默认30s) 
+linveness实际触发重启需要的时间 = 失败次数 * 间隔时间 + 等待容器优雅退出的宽限期(默认30s，docker默认是10s) 
 
 `failureThreshold` * `periodSeconds` + `terminationGracePeriodSeconds`
 
@@ -155,25 +159,22 @@ livenessProbe示例
 apiVersion: v1
 kind: Pod
 metadata:
-  name: liveness-pod
+  name: pod-livenessprobe
   namespace: default
 spec:
   restartPolicy: OnFailure
   # 等待容器优雅退出的时长，超出该时间后强制杀死，默认值30s
   terminationGracePeriodSeconds: 10
   containers:
-  - name: myapp
+  - name: busybox
     image: busybox
     imagePullPolicy: IfNotPresent
     command: ["/bin/sh", "-c", "touch /tmp/healthy; sleep 10; rm -rf /tmp/healthy; sleep 600"]
     livenessProbe:
       exec:
         command: ["test", "-e", "/tmp/healthy"]
-      # 容器启动多长时间后开始检查
       initialDelaySeconds: 5
-      # 每次检查间隔时间
       periodSeconds: 5
-      # 允许连续失败的次数
       failureThreshold: 2
 ```
 

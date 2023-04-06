@@ -120,6 +120,7 @@ yum install docker-ce-20.10.23-3.el7.x86_64
 配置镜像下载加速器，同时修改docker的cgroupdriver为systemd
 
 ```
+mkdir /etc/docker
 cat > /etc/docker/daemon.json << EOF
 {
   "registry-mirrors": [
@@ -258,34 +259,42 @@ sha256:63bca849e0e01691ae14eab449570284f0c3ddeea590f8da988c07fe2729e924
 
 # 4. 部署容器网络(cni)
 
-https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network 
-
-注意：只需要部署下面其中一个，推荐Calico。
-
 Calico是一个纯三层的数据中心网络方案，Calico支持广泛的平台，包括Kubernetes、OpenStack等。
 
 Calico 在每一个计算节点利用 Linux Kernel 实现了一个高效的虚拟路由器（ vRouter） 来负责数据转发，而每个 vRouter 通过 BGP 协议负责把自己上运行的 workload 的路由信息向整个 Calico 网络内传播。
 
-此外，Calico  项目还实现了 Kubernetes 网络策略，提供ACL功能。
+此外，Calico项目还实现了Kubernetes网络策略，提供ACL功能。
 
-https://docs.projectcalico.org/getting-started/kubernetes/quickstart 
+[quickstart](https://docs.projectcalico.org/getting-started/kubernetes/quickstart)
+
+[版本对照表](https://docs.tigera.io/archive/v3.23/getting-started/kubernetes/requirements)，在此页面可以看到calico每个版本支持的kubernetes的版本
+
+安装calico
 
 ```bash
-wget --no-check-certificate https://docs.projectcalico.org/manifests/calico.yaml
+wget --no-check-certificate https://docs.tigera.io/archive/v3.23/manifests/calico.yaml
 ```
 
-下载完后还需要修改里面定义Pod网络（CALICO_IPV4POOL_CIDR），与前面kubeadm init指定的一样
-
-修改完后应用清单：
+修改Pod网络和网卡识别参数，Pod网络与前面kubeadm init指定的一样
 
 ```bash
-vim calico.yaml
-# 这两行默认是注释掉的
+[root@k8s-node1 ~]# vim calico.yaml
+# 修改位置：DaemonSet.spec.template.spec.containers.env
+# 新增如下四行
 - name: CALICO_IPV4POOL_CIDR
-value: "10.244.0.0/16"
+  value: "10.244.0.0/16"
+- name: IP_AUTODETECTION_METHOD
+  value: interface=bond*,ens* #网卡名根据实际情况修改
 
 kubectl apply -f calico.yaml
 kubectl get pods -n kube-system
+
+# 所有Pod起来后，节点状态应该都是Ready状态了
+[root@k8s-node1 ~]# kubectl get nodes
+NAME        STATUS   ROLES                  AGE    VERSION
+k8s-node1   Ready    control-plane,master   153m   v1.22.3
+k8s-node2   Ready    <none>                 151m   v1.22.3
+k8s-node3   Ready    <none>                 151m   v1.22.3
 ```
 
 # 5. metric-server
@@ -299,7 +308,7 @@ Metrics-server负责数据汇总，需额外安装
 下载yaml
 
 ```bash
-wget https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.6.0/components.yaml --no-check-certificate
+wget --no-check-certificate https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.6.0/components.yaml 
 mv components.yaml metrics-server.yaml
 ```
 
@@ -328,7 +337,7 @@ Metrics-server连接cadvisor默认通过主机名即node的名称进行连接，
 
 部署metrics-server
 
-```
+```bash
 [root@k8s-node1 ~]# kubectl apply -f metrics-server.yaml
 [root@k8s-node1 ~]# kubectl get pods -n kube-system -l k8s-app=metrics-server
 NAME                              READY   STATUS    RESTARTS   AGE
@@ -350,11 +359,20 @@ k8s-node3   98m          4%     1096Mi          29%
 
 ```bash
 kubectl create deployment nginx --image=nginx
-kubectl expose deployment nginx --port=80 --type=NodePort
-kubectl get pod,svc
+kubectl expose deployment nginx --type=NodePort --port=80  --target-port=80
+[root@k8s-node1 ~]# kubectl get pod,deploy,svc
+NAME                         READY   STATUS    RESTARTS   AGE
+pod/nginx-6799fc88d8-57bqd   1/1     Running   0          10m
+
+NAME                    READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx   1/1     1            1           10m
+
+NAME                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+service/kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP        170m
+service/nginx        NodePort    10.102.188.108   <none>        80:30954/TCP   2m31s
 ```
 
-访问地址：http://NodeIP:Port  
+访问地址：http://1.1.1.1:30954，端口是固定的，ip可以是集群内任一节点的ip
 
 # 7. 部署Dashboard
 
