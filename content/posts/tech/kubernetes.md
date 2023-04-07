@@ -83,29 +83,54 @@ kubectl api-versions
 
 ## kubectl get
 
+options:
+
+```bash
+-w/--watch: # 实时更新，类似tail的-f选项
+-o wide: # 查看更为详细的信息，比如ip和分配的节点
+-o json: # 以json格式输出
+-o jsonpath='{}' # 输出指定的json内容
+-l key=vaule # 打lable
+--show-lables # 显示资源的所有label
 ```
+
+示例:
+
+```bash
 # 查看所有支持的资源
 kubectl api-resources
-# 查看集群健康状态
-kubectl get cs
-# 查看service资源
-kubectl get svc/services
 # 查看service映射的pod的端口和ip
 kubectl get cp/endpoints
-kubectl get ns/namespace
 # 查看pod
 kubectl get pod <podname> -n <namespace>
-  -w/--watch: # 实时更新，类似tail的-f选项
-  -o wide: # 查看更为详细的信息，比如ip和分配的节点
   -o jsonpath='{.metadata.uid}' # 查看pod的id
+# 查看指定pod的事件
+kubectl get events --field-selector involvedObject.name=demo-probes
 ```
 
 ## kubectl create
 
-```
+```bash
 kubectl create <resource> [Options]
   --dry-run=client:  仅尝试运行，不实际运行
   -o, --output='': 输出为指定的格式
+```
+
+## kubectl expose
+
+```bash
+kubectl expose deployment my-dep --port=80 --target-port=8080 --type=NodePort -n test
+# --port 表示service暴露的端口
+# --target-port 表示后端镜像实际提供服务的端口
+```
+
+## kubectl label
+
+```bash
+kubectl label nodes [node] key=value # 打lable, value可以是空
+kubectl label nodes [node] key- # 删除label
+kubectl get nodes -l key=value # 根据label筛选
+kubectl get nodes --show-labesl # 显示资源的所有标签
 ```
 
 # namespace

@@ -77,15 +77,16 @@ nodeSelector用于将Pod调度到匹配Label的Node上，如果没有匹配的�
 
 给节点打标签：
 
-```
-kubectl label nodes [node] key=value 
-kubectl label nodes [node] key-
+```bash
+kubectl label nodes [node] key=value # 打lable, value可以是空
+kubectl label nodes [node] key- # 删除label
+kubectl get nodes -l key=value # 根据label筛选
 # 示例
 kubectl label nodes k8s-node1 disktype=ssd
 kubectl label nodes k8s-node1 disktype-
 ```
 
-yaml
+示例
 
 ```yaml
 apiVersion: v1
@@ -102,20 +103,16 @@ spec:
 
 #  nodeAffinity
 
-nodeAffinity：节点亲和类似于nodeSelector，可以根据节点上的标签来约束Pod可以调度到哪些节点。
+节点亲和性概念上类似于 `nodeSelector`， 它使你可以根据节点上的标签来约束 Pod 可以调度到哪些节点上。 节点亲和性有两种：
 
-相比nodeSelector： 
+- `requiredDuringSchedulingIgnoredDuringExecution`： 调度器只有在规则被满足的时候才能执行调度。此功能类似于 `nodeSelector`， 但其语法表达能力更强。
+- `preferredDuringSchedulingIgnoredDuringExecution`： 调度器会尝试寻找满足对应规则的节点。如果找不到匹配的节点，调度器仍然会调度该 Pod。
 
-- 匹配有更多的逻辑组合，不只是字符串的完全相等
-
-- 调度分为软策略和硬策略，而不是硬性要求
-
-- - 硬（required）：必须满足
-  - 软（preferred）：尝试满足，但不保证
+> 先创建pod后打标签起始出于pending状态，打好标签后，pod会正常分配
+>
+> `IgnoredDuringExecution` 意味着如果节点标签在 Kubernetes 调度 Pod 后发生了变更，Pod 仍将继续运行。
 
 操作符：In、NotIn、Exists、DoesNotExist、Gt、Lt
-
-先创建pod后打标签，起始出于pending状态，打好标签后，pod会正常分配
 
 示例
 
@@ -123,31 +120,39 @@ nodeAffinity：节点亲和类似于nodeSelector，可以根据节点上的标�
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-nodeaffinity
+  name: with-affinity-anti-affinity
 spec:
-  containers:
-  - name: with-node-affinity
-    image: nignx:1.19
   affinity:
     nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution: # 硬策略
+      requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-          - key: disktype
+          - key: kubernetes.io/os
             operator: In
             values:
-            - ssd
-      preferredDuringSchedulingIgnoredDuringExecution: # 软策略
+            - linux
+            - windows
+      preferredDuringSchedulingIgnoredDuringExecution:
       - weight: 1
         preference:
           matchExpressions:
-          - key: disktype
+          - key: label-1
             operator: In
             values:
-            - ssd
+            - key-1
+      - weight: 50
+        preference:
+          matchExpressions:
+          - key: label-2
+            operator: In
+            values:
+            - key-2
+  containers:
+  - name: with-node-affinity
+    image: registry.k8s.io/pause:2.0
 ```
 
-# Taint (污点)
+# Taint(污点)
 
 Taints：避免Pod调度到特定Node上
 
@@ -159,12 +164,12 @@ Taints：避免Pod调度到特定Node上
 
 设置污点：
 
-```
+```bash
 kubectl taint node [node] key=value:[effect] 
-其中[effect]可取值：
-- NoSchedule ：一定不能被调度。
-- PreferNoSchedule：尽量不要调度。
-- NoExecute：不仅不会调度，还会驱逐Node上已有的Pod。
+# 其中[effect]可取值：
+# - NoSchedule ：一定不能被调度。
+# - PreferNoSchedule：尽量不要调度。
+# - NoExecute：不仅不会调度，还会驱逐Node上已有的Pod。
 ```
 
 去掉污点：
@@ -175,10 +180,12 @@ kubectl taint node [node] key:[effect]-
 
 示例
 
-```
+```bash
 [root@k8s-node1 ~]# kubectl label node k8s-node2 disktype=ssd
 node/k8s-node2 labeled
-[root@k8s-node1 ~]# kubectl describe node k8s-node2 | grep Taint
+[root@k8s-node1 ~]# kubectl taint node k8s-node2 disktype=ssd:NoSchedule
+node/k8s-node2 tainted
+[root@k8s-node1 ~]# kubectl describe node k8s-node2 | grep -i taints
 Taints:             disktype=ssd:NoSchedule
 ```
 
@@ -188,10 +195,8 @@ Taints:             disktype=ssd:NoSchedule
 
 示例
 
-```
-[root@k8s-node1 ~]# kubectl label node k8s-node2 disktype=ssd
-node/k8s-node2 labeled
-[root@k8s-node1 ~]# kubectl describe node k8s-node2 | grep Taint
+```bash
+[root@k8s-node1 ~]# kubectl describe node k8s-node2 | grep -i taints Taint
 Taints:             disktype=ssd:NoSchedule
 [root@k8s-node1 ~]# kubectl apply -f pod-tolerations.yaml
 [root@k8s-node1 ~]# kubectl get pods pod-tolerations -o wide

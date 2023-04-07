@@ -24,7 +24,7 @@ cover:
 kubelet logs命令的流程
 
 ```
-kubectl logs ----请求----> apiserver ----请求----> kubelet ----读取----> container日志
+kubectl logs --请求--> apiserver --请求--> kubelet --读取--> container日志
 ```
 
 k8s日志包含两大类：
@@ -39,11 +39,9 @@ k8s日志包含两大类：
 
 # 组件日志
 
-```
+```bash
 journalctl -u kubelet
-
 kubectl logs kube-proxy -n kube-system
-
 /var/log/messages
 ```
 
@@ -74,14 +72,16 @@ kubectl logs -f <podname> -c <containername>
 
 需要先找到pod分配的节点
 
-```
+```bash
 Kubectl get pods -o wide
 ```
 
 再查看pod的id
 
-```
-docker ps | grep pod-name
+```bash
+docker ps | grep pod-name 
+# 或者
+kubectl get pod <podname> -n <namespace> -o jsonpath='{.metadata.uid}'
 ```
 
 pod日志文件路径
@@ -96,20 +96,20 @@ pod日志文件路径
 apiVersion: v1
 kind: Pod
 metadata:
-  name: web2
+  name: pod-logs-emptydir
 spec:
   containers:
   - name: web
-    image: lizhenliang/nginx-php
+    image: nginx
     volumeMounts:
     - name: logs
-      mountPath: /usr/local/nginx/logs
+      mountPath: /var/log/nginx/
   volumes:
   - name: logs
     emptyDir: {}
 ```
 
-### sidebar边车容器
+### sidecar边车容器
 
 通过创建边车容器实现将应用原本的日志文件输出到标准输出
 
@@ -119,21 +119,22 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: sidebar
+  name: pod-sidecar
 spec:
   containers:
   - name: web
-    image: lizhenliang/nginx-php
+    image: nginx
     volumeMounts:
     - name: logs
-      mountPath: /usr/local/nginx/logs
+      mountPath: /var/log/nginx/
   - name: log
     image: busybox
-    args: [/bin/sh, -c, 'tail -f /opt/access.log']
+    command: ['/bin/sh', '-c', 'tail -f /opt/access.log']
     volumeMounts:
     - name: logs
       mountPath: /opt
   volumes:
   - name: logs
     emptyDir: {}
+
 ```
