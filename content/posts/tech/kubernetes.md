@@ -1,7 +1,7 @@
 ---
 title: "kubernetes | 杂记" 
 date: 2022-10-01
-lastmod: 2022-10-01
+lastmod: 2023-04-08
 tags: 
 - kubernetes
 keywords:
@@ -33,7 +33,7 @@ imagePullPolicy: IfNotPresent
 
 ## 1.1 NodeNotReady
 
-### 1.2 Image garbage collection failed once
+### 1.1.1 Image garbage collection failed once
 
 [参考地址](https://stackoverflow.com/questions/62020493/kubernetes-1-18-warning-imagegcfailed-error-failed-to-get-imagefs-info-unable-t?newreg=6012e8d3a8494d7d816cf2d6606ed1b2)
 
@@ -67,6 +67,30 @@ systemctl stop docker
 systemctl start docker
 systemctl start kubelet
 ```
+
+## 1.2 node无法ping通pod
+
+所有calico的pod运行都是running状态, 使用`calicoctl node status`看到的网卡绑定也是没问题的.
+
+calico的pod有如下报错
+
+```bash
+[root@k8s-node1 ~]# kubectl logs calico-node-l66pn -n kube-system
+2023-04-08 04:28:47.660 [INFO][65] felix/int_dataplane.go 1600: Received interface update msg=&intdataplane.ifaceUpdate{Name:"tunl0", State:"down", Index:4}
+bird: Netlink: Network is down
+bird: Netlink: Network is down
+bird: Netlink: Network is down
+bird: Netlink: Network is down
+```
+
+我这里是通过关闭NetworkManager解决的.关闭后pod日志立即就恢复正常了
+
+```bash
+[root@k8s-node1 ~]# systemctl stop NetworkManager
+[root@k8s-node1 ~]# systemctl disable NetworkManager
+```
+
+
 
 # kubectl命令
 
@@ -132,6 +156,49 @@ kubectl label nodes [node] key- # 删除label
 kubectl get nodes -l key=value # 根据label筛选
 kubectl get nodes --show-labesl # 显示资源的所有标签
 ```
+
+## kubectl run
+
+```bash
+kubectl run -it  test --image busybox --rm -- ping 10.244.107.207
+```
+
+# calicoctl
+
+[下载地址](https://github.com/projectcalico/calicoctl/releases)
+
+```bash
+# 查看集群信息
+DATASTORE_TYPE=kubernetes KUBECONFIG=~/.kube/config calicoctl get nodes
+
+# 使用配置文件的方式
+[root@k8s-node1 ~]# mkdir /etc/calico
+[root@k8s-node1 ~]# cat > /etc/calico/calicoctl.cfg <<EOF
+> apiVersion: projectcalico.org/v3
+> kind: CalicoAPIConfig
+> metadata:
+> spec:
+>   datastoreType: "kubernetes"
+>   kubeconfig: "/root/.kube/config"
+> EOF
+
+# 查看集群信息
+[root@k8s-node1 ~]# calicoctl --allow-version-mismatch get nodes
+NAME
+k8s-node1
+k8s-node2
+k8s-node3
+[root@k8s-node1 ~]# calicoctl --allow-version-mismatch node status
+IPv4 BGP status
++--------------+-------------------+-------+----------+-------------+
+| PEER ADDRESS |     PEER TYPE     | STATE |  SINCE   |    INFO     |
++--------------+-------------------+-------+----------+-------------+
+| 1.1.1.2      | node-to-node mesh | up    | 03:53:45 | Established |
+| 1.1.1.3      | node-to-node mesh | up    | 03:53:51 | Established |
++--------------+-------------------+-------+----------+-------------+
+```
+
+
 
 # namespace
 
