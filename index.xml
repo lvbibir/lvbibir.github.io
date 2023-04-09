@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 15 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello,hugo!</title>
       <link>https://www.lvbibir.cn/posts/blog/hello-hugo/</link>
@@ -14,6 +14,24 @@
       
       <guid>https://www.lvbibir.cn/posts/blog/hello-hugo/</guid>
       <description>记录wordpress迁移至hugo&#43;papermod的过程包含环境搭建、博客美化、功能实现、速度优化等……</description>
+    </item>
+    
+    <item>
+      <title>docker | dockerfile详解</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-dockerfile/</link>
+      <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker-dockerfile/</guid>
+      <description>dockerfile的简介、所有指令以及一些优化和最佳实践</description>
+    </item>
+    
+    <item>
+      <title>linux | kill命令详解以及linux中的信号</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-command-kill/</link>
+      <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-command-kill/</guid>
+      <description>1. 简介 kill命令很容易让人产生误解, 以为仅仅是用来终止linux中的进程. 在man手册中对kill命令的解释如下, 不难看出, kill命令是一个用于将指定的signal发送给进程的工具 DESCRIPTION The command kill sends the specified signal to the specified process or process group. If no signal is specified, the TERM signal is sent. The TERM signal will kill processes which do not catch this signal. For other processes, it may be necessary to use the KILL</description>
     </item>
     
     <item>
@@ -179,7 +197,7 @@
     </item>
     
     <item>
-      <title>set命令详解</title>
+      <title>linux | set命令详解</title>
       <link>https://www.lvbibir.cn/posts/tech/linux-command-set/</link>
       <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate>
       
@@ -333,10 +351,10 @@
     
     <item>
       <title>httpd源码打包编译成rpm包</title>
-      <link>https://www.lvbibir.cn/posts/tech/httpd-src-build-rpm/</link>
+      <link>https://www.lvbibir.cn/posts/tech/rpm-build-httpd/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/httpd-src-build-rpm/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/rpm-build-httpd/</guid>
       <description>记录一下centos7中通过源码构建httpd rpm包的过程</description>
     </item>
     
@@ -539,15 +557,6 @@
     </item>
     
     <item>
-      <title>free命令详解</title>
-      <link>https://www.lvbibir.cn/posts/tech/linux-command-free/</link>
-      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/linux-command-free/</guid>
-      <description>centos中free命令详解，以及centos6和centos7中free命令的不同</description>
-    </item>
-    
-    <item>
       <title>H3C服务器装完系统无法引导</title>
       <link>https://www.lvbibir.cn/posts/tech/h3c-server-can-not-boot-system/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
@@ -563,6 +572,15 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/h3c-server-config-raid/</guid>
       <description>记录一下H3C服务器配置raid的过程</description>
+    </item>
+    
+    <item>
+      <title>linux | free命令详解</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-command-free/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-command-free/</guid>
+      <description>centos中free命令详解，以及centos6和centos7中free命令的不同</description>
     </item>
     
     <item>
