@@ -1,5 +1,5 @@
 ---
-title: "free命令详解" 
+title: "linux | free命令详解" 
 date: 2021-08-01
 lastmod: 2021-08-01
 tags: 

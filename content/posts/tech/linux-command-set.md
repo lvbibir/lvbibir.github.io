@@ -1,5 +1,5 @@
 ---
-title: "set命令详解" 
+title: "linux | set命令详解" 
 date: 2022-09-28
 lastmod: 2022-09-28
 tags: 
