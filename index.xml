@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 09 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello,hugo!</title>
       <link>https://www.lvbibir.cn/posts/blog/hello-hugo/</link>
@@ -17,12 +17,21 @@
     </item>
     
     <item>
-      <title>docker | dockerfile详解</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker-dockerfile/</link>
+      <title>docker | dockerfile最佳实践</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-dockerfile-optimization/</link>
+      <pubDate>Tue, 11 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker-dockerfile-optimization/</guid>
+      <description>前言 在使用 Docker 的过程中，编写 Dockerfile 是非常重要的一部分工作。合理编写 Dockerfile 会使我们构建出来的 Docker image 拥有更佳的性能和健壮性 目标: 更快的构建速度 更小的 Docker 镜像大小 更少的 Docker 镜像层 充分利用镜像缓存 增加 Dockerfile 可读性 让 Docker 容器使用起来更简单 总结 编写.dockerignore 文件 容器只运行单个应用 将多个 RUN 指令合并为</description>
+    </item>
+    
+    <item>
+      <title>docker | dockerfile指令详解</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-dockerfile-instruction/</link>
       <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/docker-dockerfile/</guid>
-      <description>dockerfile的简介、所有指令以及一些优化和最佳实践，比如容器的优雅退出，多阶段构建等</description>
+      <guid>https://www.lvbibir.cn/posts/tech/docker-dockerfile-instruction/</guid>
+      <description>前言 Dockerfile用于构建docker镜像, 实际上就是把在linux下的命令操作写到了Dockerfile中, 通过Dockerfile去执行设置好的操作命令, 保证通过Dockerfile的构建镜像是一致的. Dockerfile 是一个文本文件，其内包含了一条条的指令(Instruction)，</description>
     </item>
     
     <item>
@@ -683,12 +692,21 @@
     </item>
     
     <item>
-      <title>docker | 命令大全</title>
+      <title>docker | 命令手册</title>
       <link>https://www.lvbibir.cn/posts/tech/docker-command/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-command/</guid>
       <description>基于docker-18.03.0-ce版本，介绍常见的docker命令及参数的使用方法</description>
+    </item>
+    
+    <item>
+      <title>docker | 守护进程的远程调用</title>
+      <link>https://www.lvbibir.cn/posts/tech/docker-remote-call-daemon/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/docker-remote-call-daemon/</guid>
+      <description>实现docker客户端与另一台主机上的docker守护进程进行通信</description>
     </item>
     
     <item>
@@ -725,15 +743,6 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/docker-network/</guid>
       <description>docker的网络结构简介 | 同一宿主机的docker容器之间是如何通信的</description>
-    </item>
-    
-    <item>
-      <title>docker | 跨主机访问</title>
-      <link>https://www.lvbibir.cn/posts/tech/docker-yuan-cheng-fang-wen/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/docker-yuan-cheng-fang-wen/</guid>
-      <description>实现docker客户端与另一台主机上的docker守护进程进行通信</description>
     </item>
     
     <item>
