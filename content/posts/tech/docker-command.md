@@ -1,7 +1,7 @@
 ---
-title: "docker | 命令大全" 
+title: "docker | 命令手册" 
 date: 2019-08-01
-lastmod: 2019-08-01
+lastmod: 2023-04-01
 tags: 
 - docker
 keywords:
@@ -28,32 +28,37 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 
 OPTIONS说明：
 
-    -a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；
-    -d: 后台运行容器，并返回容器ID；
-    -i: 以交互模式运行容器，通常与 -t 同时使用；
-    -P: 随机端口映射，容器内部端口随机映射到主机的高端口
-    -p: 指定端口映射，格式为：主机(宿主)端口:容器端口
-    	1. 只指定容器端口（宿主机端口随机映射）
-    	docker run -p 80 -it ubuntu /bin/bash
-    	2. 主机端口：容器端口
-    	docker run -p 8080:80 -it ubuntu /bin/bash
-    	3. IP：容器端口
-    	docker run -p 0.0.0.0:80 -it ubuntu /bin/bash
-    	4. IP：端口：容器端口
-    	dokcer run -p 0.0.0.0:8080:80 -it ubuntu /bin/bash
-    -t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；
-    --name="nginx-lb": 为容器指定一个名称；
-    --dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致；
-    --dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致；
-    -h "mars": 指定容器的hostname；
-    -e username="ritchie": 设置环境变量；
-    -env-file=[]: 从指定文件读入环境变量；
-    --cpuset="0-2" or --cpuset="0,1,2": 绑定容器到指定CPU运行；
-    -m :设置容器使用内存最大值；
-    --net="bridge": 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；
-    --link=[]: 添加链接到另一个容器；
-    --expose=[]: 开放一个端口或一组端口；
-    --volume , -v: 绑定一个卷
+```bash
+-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；
+-d: 后台运行容器，并返回容器ID；
+-i: 以交互模式运行容器，通常与 -t 同时使用；
+-P: 随机端口映射，容器内部端口随机映射到主机的高端口
+-p: 指定端口映射，格式为：主机(宿主)端口:容器端口
+	1. 只指定容器端口（宿主机端口随机映射）
+	docker run -p 80 -it ubuntu /bin/bash
+	2. 主机端口：容器端口
+	docker run -p 8080:80 -it ubuntu /bin/bash
+	3. IP：容器端口
+	docker run -p 0.0.0.0:80 -it ubuntu /bin/bash
+	4. IP：端口：容器端口
+	dokcer run -p 0.0.0.0:8080:80 -it ubuntu /bin/bash
+-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；
+--name="nginx-lb": 为容器指定一个名称；
+--dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致；
+--dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致；
+-h "mars": 指定容器的hostname；
+-e username="ritchie": 设置环境变量；
+-env-file=[]: 从指定文件读入环境变量；
+--cpuset="0-2" or --cpuset="0,1,2": 绑定容器到指定CPU运行；
+-m :设置容器使用内存最大值；
+--net="bridge": 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；
+--link=[]: 添加链接到另一个容器；
+--expose=[]: 开放一个端口或一组端口；
+--volume , -v: 绑定一个卷
+    -v [hostpath]:containerpath:[ro|wo|rw]
+    如果没有设置 hostpath 则挂载到 /var/lib/docker/volumes/<containerid>/ 目录下
+    如果没有设置权限，默认 rw(读写)
+```
 
 实例
 
@@ -142,40 +147,21 @@ OPTIONS说明：
 
     -f :指定返回值的模板文件。
     -s :显示总的文件大小。
-    --type :为指定类型返回JSON。
+    --type json:为指定类型返回JSON。
+    --format :以指定格式返回数据
 
 实例
-
-获取镜像mysql:5.6的元信息。
-
-    runoob@runoob:~$ docker inspect mysql:5.6
-    [
-        {
-            "Id": "sha256:2c0964ec182ae9a045f866bbc2553087f6e42bfc16074a74fb820af235f070ec",
-            "RepoTags": [
-                "mysql:5.6"
-            ],
-            "RepoDigests": [],
-            "Parent": "",
-            "Comment": "",
-            "Created": "2016-05-24T04:01:41.168371815Z",
-            "Container": "e0924bc460ff97787f34610115e9363e6363b30b8efa406e28eb495ab199ca54",
-            "ContainerConfig": {
-                "Hostname": "b0cf605c7757",
-                "Domainname": "",
-                "User": "",
-                "AttachStdin": false,
-                "AttachStdout": false,
-                "AttachStderr": false,
-                "ExposedPorts": {
-                    "3306/tcp": {}
-                },
-    ...
 
 获取所有容器的ip地址
 
 ```
 docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
+```
+
+获取某个容器的挂载信息
+
+```bash
+docker inspect --format='{{json .Mounts}}' demo-volume-2 | python -m json.tool
 ```
 
 ## start/stop/restart 开启/关闭/重启容器
@@ -218,9 +204,7 @@ docker rm [OPTIONS] CONTAINER [CONTAINER...]
 OPTIONS说明：
 
     -f :通过SIGKILL信号强制删除一个运行中的容器
-    
     -l :移除容器间的网络连接，而非容器本身
-    
     -v :-v 删除与容器关联的卷
 
 实例
@@ -411,6 +395,7 @@ OPTIONS说明：
     -f :指定返回值的模板文件。
     -s :显示总的文件大小。
     --type :为指定类型返回JSON。
+    --format :以指定格式返回数据
 
 实例
 
