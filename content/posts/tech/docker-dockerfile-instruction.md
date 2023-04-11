@@ -150,8 +150,6 @@ RUN set -x; buildDeps='gcc libc6-dev make wget' \
 - `exec` 格式：`CMD ["command", "<parameter1>", "parameter2", ...]`
 - 参数列表格式：`CMD ["参数1", "参数2"...]`。在指定了 `ENTRYPOINT` 指令后，用 `CMD` 指定具体的参数。
 
-
-
 `CMD` 指令用于设置容器启动时 <font color="red">默认执行</font> 的指令，一般会设置为应用程序的启动脚本或者工具镜像的`bash`，设置了多条`CMD`指令时，只有最后一条 `CMD` 会被执行。
 
 在运行时可以指定新的命令来替代镜像设置中的这个默认命令，比如，`ubuntu` 镜像默认的 `CMD` 是 `/bin/bash`，如果我们直接 `docker run -it ubuntu` 的话，会直接进入 `bash`。我们也可以在运行时指定运行别的命令，如 `docker run -it ubuntu cat /etc/os-release`。这就是用 `cat /etc/os-release` 命令替换了默认的 `/bin/bash` 命令了，会输出系统版本信息。
@@ -163,8 +161,6 @@ RUN set -x; buildDeps='gcc libc6-dev make wget' \
 ```dockerfile
 CMD ["nginx", "-g", "daemon off;"]
 ```
-
-
 
 ## ENTRYPOINT 入口点
 
@@ -746,3 +742,6 @@ ENTRYPOINT nginx
 # /bin/sh -cex "nginx"
 CMD nginx
 ```
+
+
+

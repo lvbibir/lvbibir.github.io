@@ -9,6 +9,8 @@ keywords:
 - linux
 - kill
 - sig
+cover:
+    image: "https://source.unsplash.com/random/400x200?code" #图片路径例如：posts/tech/123/123.png
 ---
 
 # 1. 简介

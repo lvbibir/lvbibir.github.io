@@ -62,30 +62,43 @@ emptyDir的实际存储路径在pod所在节点的`/var/lib/kubelet/pods/<pod-id
 kubectl get pod <pod-name> -o jsonpath='{.metadata.uid}'
 ```
 
-示例yaml
+示例如下
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-emptydir
+  name: demo-emptydir
 spec:
+  terminationGracePeriodSeconds: 5
   containers:
   - name: write
-    image: centos
-    command: ["bash", "-c", "for i in {1..100}; do echo $i >> /data/hello; sleep 1; done"]
+    image: busybox
+    imagePullPolicy: IfNotPresent
+    command: ["/bin/sh", "-c", "for i in $(seq 100); do echo $i >> /data/hello; sleep 1; done"]
     volumeMounts:
     - name: data
       mountPath: /data
   - name: read
-    image: centos
-    command: ["bash", "-c", "tail -f /data/hello"]
+    image: busybox
+    imagePullPolicy: IfNotPresent
+    command: ["/bin/sh", "-c", "tail -f /data/hello"]
     volumeMounts:
     - name: data
       mountPath: /data
   volumes:
   - name: data
     emptyDir: {}
+```
+
+查看日志
+
+```bash
+[root@k8s-node1 ~]# kubectl logs -f demo-emptydir -c read 
+1
+2
+3
+...
 ```
 
 # hostPath（节点存储卷）
@@ -102,13 +115,12 @@ kind: Pod
 metadata:
   name: pod-hostpath
 spec:
+  terminationGracePeriodSeconds: 5
   containers:
   - name: busybox
     image: busybox
-    args:
-    - /bin/sh
-    - -c
-    - sleep 36000
+    imagePullPolicy: IfNotPresent
+    command: ["/bin/sh", "-c", "sleep 36000"]
     volumeMounts:
     - name: data
       mountPath: /data
@@ -123,10 +135,10 @@ spec:
 
 NFS卷提供对NFS挂载支持，可以自动将NFS共享路径挂载到Pod中
 
-配置nfs服务端，nfs-utils包每个节点都需安装
+配置nfs服务端，
 
-```
-yum install nfs-utils
+```bash
+yum install nfs-utils # nfs-utils包每个节点都需安装
 mkdir -p /ifs/kubernetes
 echo "/ifs/kubernetes *(rw,no_root_squash)" >> /etc/exports
 systemctl start nfs && systemctl enable nfs
@@ -135,49 +147,35 @@ systemctl start nfs && systemctl enable nfs
 客户端测试
 
 ```bash
-[root@k8s-node1 ~]# mount -t nfs k8s-node1:/ifs/kubernetes /mnt/
-[root@k8s-node1 ~]# df -hT | grep k8s-node1
-k8s-node1:/ifs/kubernetes nfs4       29G  4.8G   25G  17% /mnt
+[root@k8s-node2 ~]# mount -t nfs k8s-node1:/ifs/kubernetes /mnt/
+[root@k8s-node2 ~]# df -hT | grep k8s-node1
+k8s-node1:/ifs/kubernetes nfs4       44G  4.0G   41G   9% /mnt
 ```
 
 示例yaml
 
 ```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx-nfs
-  labels:
-    app: nginx-nfs
-spec:
-  selector:
-    app: nginx-nfs
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-      nodePort: 30003
-  type: NodePort
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-nfs
+  name: demo-nfs
   labels:
-    app: nginx-nfs
+    app: demo-nfs
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx-nfs
+      app: demo-nfs
   template:
     metadata:
       labels:
-        app: nginx-nfs
+        app: demo-nfs
     spec:
+      terminationGracePeriodSeconds: 5
       containers:
-      - name: nginx-nfs
-        image: nginx:1.14.2
+      - name: demo-nfs
+        image: nginx:1.22.1
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
         volumeMounts:
@@ -188,38 +186,55 @@ spec:
         nfs:
           server: k8s-node1
           path: /ifs/kubernetes/
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-nfs
+  labels:
+    app: demo-nfs
+spec:
+  selector:
+    app: demo-nfs
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30003
+  type: NodePort
 ```
 
 验证
 
-```
-[root@k8s-node1 ~]# echo "The NFS server is successfully connected." > /ifs/kubernetes/index.html
-[root@k8s-node1 ~]# kubectl get svc nginx-nfs
-NAME        TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
-nginx-nfs   NodePort   10.105.95.228   <none>        80:30003/TCP   2m41s
-[root@k8s-node1 ~]# curl 10.105.95.228
-The NFS server is successfully connected.
+```bash
+[root@k8s-node1 ~]# kubectl get svc
+NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+demo-nfs     NodePort    10.97.209.119   <none>        80:30003/TCP   5m41s
+kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP        5d2h
+[root@k8s-node1 ~]# echo "hello, nfs" > /ifs/kubernetes/index.html
+[root@k8s-node1 ~]# curl 10.97.209.119
+hello, nfs
 ```
 
 # pv和pvc（持久存储卷）
 
 ## 基础概念
 
-- PersistentVolume（PV）：对存储资源创建和使用的抽象，使得存储作为集群中的资源管理
+- PersistentVolume（PV）：存储资源创建和使用抽象化，使得存储作为集群中的资源管理
 
 - PersistentVolumeClaim（PVC）：让用户不需要关心具体的Volume实现细节
 
 ![image-20221006103106669](https://image.lvbibir.cn/blog/image-20221006103106669.png)
 
-**pvc如何匹配到pv**
+pvc如何匹配到pv
 
 - 存储空间的请求
 
-匹配最接近的pv，如果没有满足条件的pv，则pod处于pending状态
+  匹配最接近的pv，如果没有满足条件的pv，则pod处于pending状态
 
 - 访问模式的设置
 
-**存储空间字段能否限制实际可用容量**
+存储空间字段能否限制实际可用容量
 
 - 不能，存储空间字段只用于匹配到pv，具体可用容量取决于网络存储
 
@@ -229,11 +244,11 @@ The NFS server is successfully connected.
 
 AccessModes 是用来对 PV 进行访问模式的设置，用于描述用户应用对存储资源的访问权限，访问权限包括下面几种方式：
 
-- ReadWriteOnce（RWO）：读写权限，但是只能被单个POD挂载
+- ReadWriteOnce（RWO）：可被一个 node 读写挂载
 
-- ReadOnlyMany（ROX）：只读权限，可以被多个POD挂载
+- ReadOnlyMany（ROX）：可被多个 node 只读挂载
 
-- ReadWriteMany（RWX）：读写权限，可以被多个POD挂载
+- ReadWriteMany（RWX）：可被多个 node 读写挂载
 
 **RECLAIM POLICY（回收策略）：**
 
@@ -263,7 +278,7 @@ pv示例
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: my-pv
+  name: demo-pv
 spec:
   capacity:
     storage: 5Gi
@@ -280,7 +295,7 @@ pvc示例
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: my-pvc
+  name: demo-pvc
 spec:
   accessModes:
   - ReadWriteMany
@@ -289,42 +304,30 @@ spec:
       storage: 5Gi
 ```
 
-deployment示例
+deployment & service 示例
 
 ```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx-pvc
-  labels:
-    app: nginx-pvc
-spec:
-  selector:
-    app: nginx-pvc
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-pvc
+  name: demo-pvc
   labels:
-    app: nginx-pvc
+    app: demo-pvc
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx-pvc
+      app: demo-pvc
   template:
     metadata:
       labels:
-        app: nginx-pvc
+        app: demo-pvc
     spec:
+      terminationGracePeriodSeconds: 5
       containers:
-      - name: nginx-pvc
-        image: nginx:1.14.2
+      - name: demo-pvc
+        image: nginx:1.22.1
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
         volumeMounts:
@@ -333,17 +336,31 @@ spec:
       volumes:
       - name: www-pvc
         persistentVolumeClaim:
-          claimName: my-pvc
+          claimName: demo-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-pvc
+  labels:
+    app: demo-pvc
+spec:
+  selector:
+    app: demo-pvc
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
 ```
 
 验证
 
-```
+```bash
 [root@k8s-node1 ~]# echo "pvc for NFS is successful" > /ifs/kubernetes/index.html
-[root@k8s-node1 ~]# kubectl get svc nginx-pvc
-NAME        TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
-nginx-pvc   ClusterIP   10.97.241.64   <none>        80/TCP    3m35s
-[root@k8s-node1 ~]# curl 10.97.241.64
+[root@k8s-node1 ~]# kubectl get svc -l app=demo-pvc
+NAME       TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE
+demo-pvc   ClusterIP   10.97.28.93   <none>        80/TCP    102s
+[root@k8s-node1 ~]# curl 10.97.28.93
 pvc for NFS is successful
 ```
 
@@ -366,7 +383,7 @@ pvc for NFS is successful
 
 k8s-1.20版本后默认禁止使用selfLink，需要打开一下
 
-修改k8s的apiserver参数
+修改k8s的apiserver参数，改完 apiserver 会自动重启
 
 ```
 [root@k8s-node1 ~]#  vi /etc/kubernetes/manifests/kube-apiserver.yaml
@@ -399,7 +416,7 @@ deployment.yaml
 
 class.yaml
 
-```
+```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
@@ -411,7 +428,7 @@ parameters:
 
 部署插件
 
-```
+```bash
 # 授权访问apiserver
 kubectl apply -f rbac.yaml 
 # 部署插件
@@ -424,28 +441,28 @@ kubectl get storageclasses | sc
 
 ### 示例
 
-部署使用自动pv的pod（deployment）
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-auto-pv
+  name: demo-auto-pv
   labels:
-    app: nginx-auto-pv
+    app: demo-auto-pv
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx-auto-pv
+      app: demo-auto-pv
   template:
     metadata:
       labels:
-        app: nginx-auto-pv
+        app: demo-auto-pv
     spec:
+      terminationGracePeriodSeconds: 5
       containers:
-      - name: nginx-auto-pv
-        image: nginx:1.14.2
+      - name: demo-auto-pv
+        image: nginx:1.22.1
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
         volumeMounts:
@@ -471,23 +488,23 @@ spec:
 
 测试验证
 
-```
-[root@k8s-node1 ~]# kubectl apply -f nginx-auto-pv.yaml
+```bash
 [root@k8s-node1 ~]# kubectl get pods
-nginx-auto-pv-69ccf66bfd-2xx6q            1/1     Running   0               12m
-nginx-auto-pv-69ccf66bfd-fdlbt            1/1     Running   0               12m
-nginx-auto-pv-69ccf66bfd-v92nm            1/1     Running   0               12m
-[root@k8s-node1 ~]#
+NAME                                          READY   STATUS    RESTARTS   AGE
+pod/demo-auto-pv-7c974689b4-4cwr6             1/1     Running   0          47s
+pod/demo-auto-pv-7c974689b4-bb9v8             1/1     Running   0          47s
+pod/demo-auto-pv-7c974689b4-p525n             1/1     Running   0          47s
+pod/nfs-client-provisioner-66d6cb77fd-47hsf   1/1     Running   0          4m15s
 [root@k8s-node1 ~]# kubectl get pvc
-NAME       STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS          AGE
-pvc-auto   Bound    pvc-0278b4c6-9fd9-4c07-a3f3-fe5ba47a0f1c   2Gi        RWO            managed-nfs-storage   13m
-[root@k8s-node1 ~]#
+NAME                             STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS          AGE
+persistentvolumeclaim/pvc-auto   Bound    pvc-22b65e10-ab97-47eb-aaa1-6c354a749a55   2Gi        RWO            managed-nfs-storage   47s
 [root@k8s-node1 ~]# kubectl get pv
-NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM              STORAGECLASS          REASON   AGE
-pvc-0278b4c6-9fd9-4c07-a3f3-fe5ba47a0f1c   2Gi        RWO            Delete           Bound    default/pvc-auto   managed-nfs-storage            6m20s
-[root@k8s-node1 ~]#
+NAME                                                        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM              STORAGECLASS          REASON   AGE
+persistentvolume/pvc-22b65e10-ab97-47eb-aaa1-6c354a749a55   2Gi        RWO            Delete           Bound    default/pvc-auto   managed-nfs-storage            47s
 [root@k8s-node1 ~]# ls -l /ifs/kubernetes/
-drwxrwxrwx 2 root root 6 Oct  6 01:08 default-pvc-auto-pvc-0278b4c6-9fd9-4c07-a3f3-fe5ba47a0f1c
+total 4
+drwxrwxrwx. 2 root root  6 Apr 11 17:37 default-pvc-auto-pvc-22b65e10-ab97-47eb-aaa1-6c354a749a55
+-rw-r--r--. 1 root root 26 Apr 11 17:22 index.htmlc
 ```
 
 # StatefulSet控制器

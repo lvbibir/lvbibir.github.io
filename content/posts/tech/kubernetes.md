@@ -15,7 +15,7 @@ cover:
     hiddenInSingle: true 
 ---
 
-kubectl命令的自动补全
+# kubectl命令的自动补全
 
 ```
 yum install bash-completion
@@ -23,17 +23,25 @@ source /usr/share/bash-completion/bash_completion
 source <(kubectl completion bash)
 ```
 
-用于控制是否优先本地寻找镜像
+# 镜像拉取策略
 
 ```
-imagePullPolicy: IfNotPresent
+imagePullPolicy: Always|Never|IfNotPresent
 ```
+
+# command 和 args
+
+`containers.command` 等同于 Dockerfile 中的 `ENTRYPOINT` 
+
+`containers.args` 等同于 Dockerfile 中的 `CMD`
+
+如果 Dockerfile 中默认的 ENTRYPOINT 被覆盖，则默认的 CMD 指令同时也会被覆盖
 
 # 常见报错
 
-## 1.1 NodeNotReady
+## NodeNotReady
 
-### 1.1.1 Image garbage collection failed once
+### Image garbage collection failed once
 
 [参考地址](https://stackoverflow.com/questions/62020493/kubernetes-1-18-warning-imagegcfailed-error-failed-to-get-imagefs-info-unable-t?newreg=6012e8d3a8494d7d816cf2d6606ed1b2)
 
@@ -68,7 +76,7 @@ systemctl start docker
 systemctl start kubelet
 ```
 
-## 1.2 node无法ping通pod
+## node无法ping通pod
 
 所有calico的pod运行都是running状态, 使用`calicoctl node status`看到的网卡绑定也是没问题的.
 
@@ -90,8 +98,6 @@ bird: Netlink: Network is down
 [root@k8s-node1 ~]# systemctl disable NetworkManager
 ```
 
-
-
 # kubectl命令
 
 一些常用命令
@@ -105,7 +111,7 @@ kubectl logs <pod> -n <namespace>
 kubectl api-versions
 ```
 
-## kubectl get
+## get
 
 options:
 
@@ -132,7 +138,7 @@ kubectl get pod <podname> -n <namespace>
 kubectl get events --field-selector involvedObject.name=demo-probes
 ```
 
-## kubectl create
+## create
 
 ```bash
 kubectl create <resource> [Options]
@@ -140,7 +146,7 @@ kubectl create <resource> [Options]
   -o, --output='': 输出为指定的格式
 ```
 
-## kubectl expose
+## expose
 
 ```bash
 kubectl expose deployment my-dep --port=80 --target-port=8080 --type=NodePort -n test
@@ -148,7 +154,7 @@ kubectl expose deployment my-dep --port=80 --target-port=8080 --type=NodePort -n
 # --target-port 表示后端镜像实际提供服务的端口
 ```
 
-## kubectl label
+## label
 
 ```bash
 kubectl label nodes [node] key=value # 打lable, value可以是空
@@ -157,7 +163,7 @@ kubectl get nodes -l key=value # 根据label筛选
 kubectl get nodes --show-labesl # 显示资源的所有标签
 ```
 
-## kubectl run
+## run
 
 ```bash
 kubectl run -it  test --image busybox --rm -- ping 10.244.107.207

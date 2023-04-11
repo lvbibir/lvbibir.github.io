@@ -49,18 +49,6 @@ cover:
 
 - https://blog.fundebug.com/2017/05/15/write-excellent-dockerfile/
 
-## CMD和ENTRYPOINT
-
-我们大概可以总结出下面几条规律：
-
-- 如果 ENTRYPOINT 使用了 shell 模式，CMD 指令会被忽略。
-- 如果 ENTRYPOINT 使用了 exec 模式，CMD 指定的内容被追加为 ENTRYPOINT 指定命令的参数。
-- 如果 ENTRYPOINT 使用了 exec 模式，CMD 也应该使用 exec 模式。
-
-真实的情况要远比这三条规律复杂，好在 docker 给出了[官方的解释](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact)，如下图所示：
-
-![image-20230410160304323](https://image.lvbibir.cn/blog/image-20230410160304323.png)
-
 ## 容器的优雅退出
 
 众所周知，docker容器本质上是一个个进程，进程的优雅退出需要考虑的是如何正确处理 `SIGTERM` 信号，关于这点在我的另一篇博文中介绍过 [kill命令详解以及linux中的信号](https://www.lvbibir.cn/posts/tech/linux-command-kill)
