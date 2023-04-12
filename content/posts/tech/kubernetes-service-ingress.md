@@ -5,16 +5,13 @@ lastmod: 2022-10-07
 tags: 
 - kubernetes
 keywords:
-- linux
-- centos
 - kubernetes
-- network
 - service
 - iptables
 - ipvs
 - ingress
 - nginx
-description: "介绍kubernetes中的service基础概念，service的两种代理模式，以及ingress控制器的使用" 
+description: "介绍kubernetes中的service和Headless Service，service的两种代理模式，以及ingress控制器的使用" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
     hidden: true
@@ -44,7 +41,7 @@ service的三种类型
 
 - NodePort：对外暴露应用
 
-  在每个节点上启用一个端口(30000-32767)来暴露服务，可以在集群外部访问。也会分配一个稳定内部集群IP地址。访问地址：[NodeIP]:[NodePort]
+  在每个节点上启用一个端口(30000-32767)来暴露服务，可以在集群外部访问。也会分配一个稳定内部集群IP地址。
 
 - LoadBalancer：对外暴露应用，适用公有云
 
@@ -66,7 +63,7 @@ spec:
   ports:
     - protocol: TCP
       port: 80 # service端口，内部访问端口
-      targetPort: 80 # 代理的业务端口
+      targetPort: 80 # 后端业务镜像实际暴露的端口
       nodePort: 30002 # 内部访问端口映射到节点端口
 ---
 apiVersion: apps/v1
@@ -87,12 +84,12 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.19
+        image: nginx:1.22.1
         ports:
         - containerPort: 80
 ```
 
-## service代理模式
+## 代理模式
 
 Iptables： 
 
@@ -110,71 +107,63 @@ IPVS：
 
 ![image-20221005090953888](https://image.lvbibir.cn/blog/image-20221005090953888.png)
 
+### iptables模式
+
+使用 iptables 模式时，根据 iptables 的 `--mode random --probability` 来匹配每一条请求，每个 pod 收到的流量趋近于平衡，不是完全的轮询
+
+这种模式，kube-proxy 会监听 Kubernetes 对 `Service` 对象和 `Endpoints` 对象的添加和移除。对每个 `Service`，它会安装 `iptables` 规则，从而捕获到达该 `Service` 的 `clusterIP` 和端口的请求，进而将请求重定向到 `Service` 任意一组 `backend pod` 中。对于每个 `Endpoints` 对象，它也会安装`iptables`规则，这个规则会选择一个 `backend pod` 组合。
+
 k8s默认采用的代理模式是iptables，可以通过查看kube-proxy组件的日志可得
 
-```
-[root@k8s-node1 ~]# kubectl logs kube-proxy-qqdq4 -n kube-system
-......
-I1005 00:27:19.907705       1 node.go:172] Successfully retrieved node IP: 1.1.1.2
-I1005 00:27:19.907801       1 server_others.go:140] Detected node IP 1.1.1.2
-W1005 00:27:19.907939       1 server_others.go:565] Unknown proxy mode "", assuming iptables proxy
-I1005 00:27:20.845559       1 server_others.go:206] kube-proxy running in dual-stack mode, IPv4-primary
-I1005 00:27:20.845678       1 server_others.go:212] Using iptables Proxier.
-I1005 00:27:20.845803       1 server_others.go:219] creating dualStackProxier for iptables.
-......
+```bash
+[root@k8s-node1 ~]# kubectl logs kube-proxy-8mf2l -n kube-system  | grep Using
+I0412 02:02:29.634610       1 server_others.go:212] Using iptables Proxier.
 ```
 
-创建一个nodeport类型的service，查看iptables规则
+创建一个上述示例中的 yaml ，查看 iptables 规则
 
-```
+```bash
 [root@k8s-node1 ~]# kubectl get svc nginx
-NAME    TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
-nginx   NodePort   10.109.98.33   <none>        80:30002/TCP   17m
+NAME    TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+nginx   NodePort   10.105.220.154   <none>        80:30002/TCP   4m40s
 
 # SVC当前共关联三个POD
-[root@k8s-node1 ~]# kubectl get pod -o wide
-NAME                     READY   STATUS    RESTARTS   AGE   IP               NODE        NOMINATED NODE   READINESS GATES
-nginx-7cf55fb7bb-5fjcn   1/1     Running   0          37m   10.244.169.136   k8s-node2   <none>           <none>
-nginx-7cf55fb7bb-bts6p   1/1     Running   0          37m   10.244.107.252   k8s-node3   <none>           <none>
-nginx-7cf55fb7bb-qm4vl   1/1     Running   0          37m   10.244.169.135   k8s-node2   <none>           <none>
+[root@k8s-node1 ~]# kubectl get pod -o wide -l app=nginx
+NAME                    READY   STATUS    RESTARTS   AGE     IP               NODE        NOMINATED NODE   READINESS GATES
+nginx-55f4d8c85-l29wx   1/1     Running   0          4m57s   10.244.169.133   k8s-node2   <none>           <none>
+nginx-55f4d8c85-lf5dj   1/1     Running   0          4m57s   10.244.107.205   k8s-node3   <none>           <none>
+nginx-55f4d8c85-q4gsx   1/1     Running   0          4m57s   10.244.107.203   k8s-node3   <none>           <none>
 
-[root@k8s-node1 ~]# iptables-save |grep nginx |grep 30002
-...... 
-# 流量转发到SVC链
+[root@k8s-node1 ~]# iptables-save |grep -i nodeport |grep 30002
+# NODEPORTS 根据端口将流量转发到 SVC 链
 -A KUBE-NODEPORTS -p tcp -m comment --comment "default/nginx" -m tcp --dport 30002 -j KUBE-SVC-2CMXP7HKUVJN7L6M
-......
 
 [root@k8s-node1 ~]# iptables-save |grep KUBE-SVC-2CMXP7HKUVJN7L6M
-......
-# ClusterIP相关
+# ClusterIP 相关
 -A KUBE-SERVICES -d 10.109.98.33/32 -p tcp -m comment --comment "default/nginx cluster IP" -m tcp --dport 80 -j KUBE-SVC-2CMXP7HKUVJN7L6M
-......
-# 转发到具体POD链
+# 转发到具体 POD 链，每条 POD 链都有一样的概率获取到流量
 -A KUBE-SVC-2CMXP7HKUVJN7L6M -m comment --comment "default/nginx" -m statistic --mode random --probability 0.33333333349 -j KUBE-SEP-ONLOYCYPTBL5FQH5
 -A KUBE-SVC-2CMXP7HKUVJN7L6M -m comment --comment "default/nginx" -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-JABTJNSPARJARZOW
 -A KUBE-SVC-2CMXP7HKUVJN7L6M -m comment --comment "default/nginx" -j KUBE-SEP-TZBGLRHUI2CFM5CU
 
 # POD链中定义了转发到具体的POD地址，
 [root@k8s-node1 ~]# iptables-save |grep KUBE-SEP-ONLOYCYPTBL5FQH5
-......
 -A KUBE-SEP-ONLOYCYPTBL5FQH5 -s 10.244.107.252/32 -m comment --comment "default/nginx" -j KUBE-MARK-MASQ
 -A KUBE-SEP-ONLOYCYPTBL5FQH5 -p tcp -m comment --comment "default/nginx" -m tcp -j DNAT --to-destination 10.244.107.252:80
-......
 [root@k8s-node1 ~]# iptables-save |grep KUBE-SEP-JABTJNSPARJARZOW
-......
 -A KUBE-SEP-JABTJNSPARJARZOW -s 10.244.169.135/32 -m comment --comment "default/nginx" -j KUBE-MARK-MASQ
 -A KUBE-SEP-JABTJNSPARJARZOW -p tcp -m comment --comment "default/nginx" -m tcp -j DNAT --to-destination 10.244.169.135:80
-......
 [root@k8s-node1 ~]# iptables-save |grep KUBE-SEP-TZBGLRHUI2CFM5CU
-......
 -A KUBE-SEP-TZBGLRHUI2CFM5CU -s 10.244.169.136/32 -m comment --comment "default/nginx" -j KUBE-MARK-MASQ
 -A KUBE-SEP-TZBGLRHUI2CFM5CU -p tcp -m comment --comment "default/nginx" -m tcp -j DNAT --to-destination 10.244.169.136:80
-......
+
 ```
 
-ipvs模式（所有节点都要配置）
+### ipvs模式
 
-```none
+ipvsadm安装配置(所有节点都要配置)
+
+```bash
 [root@k8s-node1 ~]# yum install ipvsadm
 [root@k8s-node1 ~]# cat > /etc/sysconfig/modules/ipvs.modules << EOF
 #!/bin/bash
@@ -186,26 +175,25 @@ modprobe -- nf_conntrack_ipv4
 EOF
 [root@k8s-node1 ~]# chmod 755 /etc/sysconfig/modules/ipvs.modules
 [root@k8s-node1 ~]# source /etc/sysconfig/modules/ipvs.modules
+```
 
-# 修改mode
+修改 service 使用的代理模式为 ipvs
+
+```bash
 [root@k8s-node1 ~]# kubectl edit configmap kube-proxy -n kube-system
     mode: "ipvs"
     ipvs:
       scheduler: "rr" #rr, wrr, lc, wlc, ip hash等
 
-# 删除所有节点的kube-proxy，k8s会再自动拉起一个
-[root@k8s-node1 ~]# kubectl delete pod kube-proxy-92rd4 -n kube-system
-[root@k8s-node1 ~]# kubectl delete pod kube-proxy-bgzhk -n kube-system
-[root@k8s-node1 ~]# kubectl delete pod kube-proxy-n57zw -n kube-system
-[root@k8s-node1 ~]# kubectl logs kube-proxy-245vq -n kube-system
-......
-I1005 05:42:48.379343       1 server_others.go:274] Using ipvs Proxier.
-......
+# 删除所有 kube-proxy，k8s 会重新创建
+[root@k8s-node1 ~]# kubectl delete pod -n kube-system -l k8s-app=kube-proxy
+[root@k8s-node1 ~]# kubectl logs kube-proxy-8z86w -n kube-system | grep Using
+I0412 08:30:21.169231       1 server_others.go:274] Using ipvs Proxier.
 ```
 
-查看iptables规则
+查看 ipvs 规则
 
-```
+```bash
 [root@k8s-node1 ~]# ipvsadm -L -n
 IP Virtual Server version 1.2.1 (size=4096)
 Prot LocalAddress:Port Scheduler Flags
@@ -228,7 +216,44 @@ TCP  10.109.98.33:80 rr
   -> 10.244.169.136:80            Masq    1      0          0
 ```
 
+# Headless Service
+
+Headless Service 相比普通 Service 只是将 spec.clusterIP 定义为 None
+
+Headless Service 几大特点：
+
+- 不分配 clusterIP
+
+- 没有负载均衡的功能(kube-proxy 不会安装 iptables 规则)
+
+- 可以通过解析 service 的 DNS，返回所有 Pod 的 IP 和 DNS (statefulSet部署的Pod才有DNS)
+
+  ```bash
+  [root@k8s-node1 ~]# kubectl run -it --rm --restart=Never --image busybox:1.28  dns-test -- nslookup statefulset-nginx.default.svc.cluster.local
+  Server:    10.96.0.10
+  Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
+  
+  Name:      statefulset-nginx.default.svc.cluster.local
+  Address 1: 10.244.107.200 statefulset-nginx-1.statefulset-nginx.default.svc.cluster.local
+  Address 2: 10.244.169.188 statefulset-nginx-0.statefulset-nginx.default.svc.cluster.local
+  pod "dns-test" deleted
+  ```
+
+Headless Services 应用场景
+
+1. 自主选择权，`client` 可以通过查询DNS来获取 `Real Server` 的信息，自己来决定使用哪个`Real Server`
+
+2. `Headless Service` 的对应的每一个 `Endpoints`，即每一个`Pod`，都会有对应的`DNS域名`，这样Pod之间就可以互相访问
+
+DNS解析名称：
+
+pod：`<pod-name>.<service-name>.<namespace>.svc.cluster.local`
+
+service: `<service-name>.<namespace>.svc.cluster.local`
+
 # Ingress
+
+## 基本概念
 
 NodePort的不足
 
@@ -263,41 +288,78 @@ Ingress Contronler通过与 Kubernetes API 交互，动态的去感知集群中 
 
 Ingress Contorller主流控制器：
 
-- ingress-nginx-controller: 官方维护的基于nginx的控制器
+- ingress-nginx-controller: nginx 官方维护的控制器
 
 - Traefik： HTTP反向代理、负载均衡工具
 
 - Istio：服务治理，控制入口流量
 
-这里使用官方维护的基于Nginx实现的，Github：https://github.com/kubernetes/ingress-nginx
+这里使用 Nginx 官方维护的，Github：https://github.com/kubernetes/ingress-nginx
+
+## 安装部署
+
+下载 yaml 文件
+
+```bash
+wget https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/baremetal/1.22/deploy.yaml --no-check-certificate
+```
+
+修改
+
+```yaml
+# 修改kind, 将原先的Deployment修改为DaemontSet，实现所有物理节点访问
+kind: DaemonSet 
+spec:
+  template:
+    spec:
+      # 新增 hostNetwork, 将ingress-nginx-controller的端口直接暴露在宿主机上
+      hostNetwork: true 
+      containers:
+        # 修改 image 为国内地址
+        image: registry.cn-hangzhou.aliyuncs.com/google_containers/nginx-ingress-controller:v1.3.0 
+      
+      tolerations: 
+      - key: "node-role.kubernetes.io/master"
+        operator: "Exists"
+        effect: "NoSchedule"
+---
+kind: Job
+spec:
+  template:
+    spec:
+      containers:
+        # 修改 image 为国内地址
+        image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-webhook-certgen:v1.1.1
+---
+kind: Job
+spec:
+  template:
+    spec:
+      containers:
+        # 修改 image 为国内地址
+        image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-webhook-certgen:v1.1.1
+```
 
 部署
-
-```
-[root@k8s-node1 ~]# wget https://github.com/kubernetes/ingress-nginx/raw/controller-v1.1.0/deploy/static/provider/baremetal/deploy.yaml --no-check-certificate
-[root@k8s-node1 ~]# vim deploy.yaml
-kind: DaemonSet # 将原先的Deployment修改为DaemontSet，实现所有物理节点访问
-      hostNetwork: true # 新增hostNetwork将ingress-nginx-controller的端口直接暴露在宿主机上，不然还需要创建一个sevice用于暴露ingress-nginx-controller的端口
-      containers:
-        - name: controller
-          # 镜像地址
-          image: registry.cn-hangzhou.aliyuncs.com/google_containers/nginx-ingress-controller:v1.1.0
-          image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-webhook-certgen:v1.1.1
-          image: registry.cn-hangzhou.aliyuncs.com/google_containers/kube-webhook-certgen:v1.1.1
+```bash
 [root@k8s-node1 ~]# kubectl apply -f deploy.yaml
 
-# 只有两个节点上有ingress-nginx-controller控制器，因为master节点有污点
-[root@k8s-node1 ~]# kubectl get pods -n ingress-nginx -o wide | grep controller
-ingress-nginx-controller-h6hl5            1/1     Running     0          2m36s   1.1.1.3          k8s-node3   <none>           <none>
-ingress-nginx-controller-rwbjx            1/1     Running     0          2m36s   1.1.1.2          k8s-node2   <none>           <none>
-
+[root@k8s-node1 opt]# kubectl get pods -n ingress-nginx -o wide
+NAME                                      READY   STATUS      RESTARTS   AGE   IP               NODE        NOMINATED NODE   READINESS GATES
+ingress-nginx-admission-create--1-zfwrz   0/1     Completed   0          12m   10.244.169.135   k8s-node2   <none>           <none>
+ingress-nginx-admission-patch--1-8rhjr    0/1     Completed   0          12m   10.244.169.134   k8s-node2   <none>           <none>
+ingress-nginx-controller-bb2kd            1/1     Running     0          12m   1.1.1.3          k8s-node3   <none>           <none>
+ingress-nginx-controller-bp588            1/1     Running     0          12m   1.1.1.2          k8s-node2   <none>           <none>
+ingress-nginx-controller-z2782            1/1     Running     0          12m   1.1.1.1          k8s-node1   <none>           <none>
 
 # 如果出现内部访问报错：failed calling webhook "validate.nginx.ingress.kubernetes.io"
 [root@k8s-node1 ~]# kubectl get ValidatingWebhookConfiguration
 [root@k8s-node1 ~]# kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 ```
 
-示例（http）
+## 测试
+
+示例如下，使用之前创建的 nginx svc
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -320,11 +382,131 @@ spec:
               number: 80
 ```
 
-curl访问
+测试访问
 
-```
+```bash
+[root@k8s-node1 ~]# kubectl get ingress
+NAME            CLASS    HOSTS         ADDRESS                   PORTS   AGE
+ingress-nginx   <none>   foo.bar.com   1.1.1.1,1.1.1.2,1.1.1.3   80      4m10s
+
+[root@k8s-node1 ~]# curl -I http://1.1.1.1 -H "Host: foo.bar.com"
 [root@k8s-node1 ~]# curl -I http://1.1.1.2 -H "Host: foo.bar.com"
-HTTP/1.1 200 OK
 [root@k8s-node1 ~]# curl -I http://1.1.1.3 -H "Host: foo.bar.com"
 HTTP/1.1 200 OK
+Date: Wed, 12 Apr 2023 09:25:27 GMT
+Content-Type: text/html
+Content-Length: 615
+Connection: keep-alive
+Last-Modified: Wed, 19 Oct 2022 08:02:20 GMT
+ETag: "634faf0c-267"
+Accept-Ranges: bytes
 ```
+
+测试 url 跳转，创建三套 nginx 应用 : test | foo | bar
+
+test 应用示例，foo 和 bar 的自行修改
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+  labels:
+    app: test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: test
+        image: nginx:1.22.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: www
+          mountPath: /usr/share/nginx/html/
+      volumes:
+      - name: www
+        persistentVolumeClaim:
+          claimName: pvc-test
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-test
+spec:
+  storageClassName: "managed-nfs-storage"
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test
+  labels:
+    app: test
+spec:
+  selector:
+    app: test
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+```
+
+创建 ingress
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: test.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: test
+            port:
+              number: 80
+      - path: /foo
+        pathType: Prefix
+        backend:
+          service:
+            name: foo
+            port:
+              number: 80
+      - path: /bar
+        pathType: Prefix
+        backend:
+          service:
+            name: bar
+            port:
+              number: 80
+```
+
+修改 index.html 
+
+```bash
+[root@k8s-node1 ~]# echo "test" > /ifs/kubernetes/default-pvc-test-pvc-93a7df14-90f2-4466-8655-6ef42549b760/index.html
+[root@k8s-node1 ~]# echo "foo" > /ifs/kubernetes/default-pvc-foo-pvc-a3c39541-dadb-4c19-812d-df2f77d92bfe/index.html
+[root@k8s-node1 ~]# echo "bar" > /ifs/kubernetes/default-pvc-bar-pvc-1d229b8b-a4ed-42ab-9bbb-fba31c8c2686/index.html
+```
+
