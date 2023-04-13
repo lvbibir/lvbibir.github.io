@@ -5,10 +5,8 @@ lastmod: 2023-04-08
 tags: 
 - kubernetes
 keywords:
-- linux
-- centos
 - kubernetes
-description: "介绍一些常见的报错处理、kubectl命令的一些用法、yaml编写技巧" 
+description: "介绍一些常见的报错处理、kubectl命令的一些用法、yaml编写技巧、小优化等" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
     hidden: true
@@ -120,7 +118,7 @@ options:
 -o wide: # 查看更为详细的信息，比如ip和分配的节点
 -o json: # 以json格式输出
 -o jsonpath='{}' # 输出指定的json内容
--l key=vaule # 打lable
+-l key=vaule # 根据lable筛选
 --show-lables # 显示资源的所有label
 ```
 
@@ -144,6 +142,28 @@ kubectl get events --field-selector involvedObject.name=demo-probes
 kubectl create <resource> [Options]
   --dry-run=client:  仅尝试运行，不实际运行
   -o, --output='': 输出为指定的格式
+```
+
+快速创建一系列资源
+
+```bash
+[root@k8s-node1 ~]# kubectl create namespace test
+namespace/test created
+[root@k8s-node1 ~]# kubectl create deployment my-dep --image=nginx:1.22. --replicas=3 -n test
+deployment.apps/my-dep created
+[root@k8s-node1 ~]# kubectl expose deployment my-dep --port=80 --target-port=8080 --type=NodePort -n test
+service/my-dep exposed
+[root@k8s-node1 ~]# kubectl get pods,deployment,svc -n test
+NAME                          READY   STATUS    RESTARTS   AGE
+pod/my-dep-5f8dfc8c78-7w5nz   1/1     Running   0          41s
+pod/my-dep-5f8dfc8c78-gt65r   1/1     Running   0          41s
+pod/my-dep-5f8dfc8c78-n4vjd   1/1     Running   0          41s
+
+NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/my-dep   3/3     3            3           41s
+
+NAME             TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+service/my-dep   NodePort   10.110.205.138   <none>        80:31890/TCP   17s
 ```
 
 ## expose
@@ -217,28 +237,6 @@ k8s中的namespace用于
 - k8s的抽象资源间的资源隔离，比如pods、控制器、service等
 
 - 资源隔离后，对这一组资源进行权限控制
-
-创建命名空间及一系列资源
-
-```
-[root@k8s-node1 ~]# kubectl create namespace test
-namespace/test created
-[root@k8s-node1 ~]# kubectl create deployment my-dep --image=lizhenliang/java-demo --replicas=3 -n test
-deployment.apps/my-dep created
-[root@k8s-node1 ~]# kubectl expose deployment my-dep --port=80 --target-port=8080 --type=NodePort -n test
-service/my-dep exposed
-[root@k8s-node1 ~]# kubectl get pods,deployment,svc -n test
-NAME                          READY   STATUS    RESTARTS   AGE
-pod/my-dep-5f8dfc8c78-7w5nz   1/1     Running   0          41s
-pod/my-dep-5f8dfc8c78-gt65r   1/1     Running   0          41s
-pod/my-dep-5f8dfc8c78-n4vjd   1/1     Running   0          41s
-
-NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/my-dep   3/3     3            3           41s
-
-NAME             TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
-service/my-dep   NodePort   10.110.205.138   <none>        80:31890/TCP   17s
-```
 
 
 # yaml编写

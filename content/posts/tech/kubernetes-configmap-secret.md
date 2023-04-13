@@ -1,12 +1,10 @@
 ---
 title: "kubernetes | configmap & secret" 
 date: 2022-10-07
-lastmod: 2022-10-07
+lastmod: 2023-04-13
 tags: 
 - kubernetes
 keywords:
-- linux
-- centos
 - kubernetes
 - configmap
 - secret
@@ -33,6 +31,15 @@ pod使用ConfigMap数据有两种方式：
 - 数据卷挂载
 
 ![Snipaste_2022-10-07_15-58-31](https://image.lvbibir.cn/blog/Snipaste_2022-10-07_15-58-31.png)
+
+可以通过读取目录或者文件快速创建 configmap
+
+```bash
+kubectl create configmap <configmap-name> \
+--from-file=[key-name]=<path>   \ # key 不指定时使用文件名作为 key 文件内容作为 value，path 既可以文件也可以是目录
+--from-env-file=<path>          \ # 文件内容应是 key=value 的形式，逐行读取
+--from-literal=<key>=<value>    \ # 通过指定的键值对创建 configmap
+```
 
 yaml示例
 
@@ -83,7 +90,7 @@ spec:
 
 容器内验证
 
-```
+```bash
 [root@k8s-node1 ~]# kubectl exec -it pod-configmap -- bash
 root@pod-configmap:/# echo $ABCD
 123
@@ -166,7 +173,7 @@ spec:
 
 验证
 
-```
+```bash
 [root@k8s-node1 ~]# kubectl apply -f secret.yaml
 secret/db-pass created
 [root@k8s-node1 ~]# kubectl apply -f pod-secret.yaml
@@ -180,22 +187,5 @@ root@pod-secret-demo:/# echo $PASS
 root@pod-secret-demo:/# cat /config/my-password
 123.com
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

@@ -4,11 +4,11 @@ date: 2023-03-09
 lastmod: 2023-03-09
 tags: 
 - docker
-- kubernetes
 keywords:
 - linux
 - docker
-description: "通过阿里云免费的容器镜像服务，构建平常无法下载的 gcr.io 或者 quay.io 等仓库的镜像" 
+- image
+description: "介绍几种方式用于构建平常无法下载的 gcr.io 或者 quay.io 等仓库的镜像，比如阿里云免费的容器镜像服务、开源项目、Docker Playground等" 
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 
 ---

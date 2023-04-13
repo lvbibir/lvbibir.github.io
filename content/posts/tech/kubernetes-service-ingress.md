@@ -317,7 +317,7 @@ spec:
       containers:
         # 修改 image 为国内地址
         image: registry.cn-hangzhou.aliyuncs.com/google_containers/nginx-ingress-controller:v1.3.0 
-      
+      # 新增污点容忍，允许在 master 节点创建pod
       tolerations: 
       - key: "node-role.kubernetes.io/master"
         operator: "Exists"
@@ -359,50 +359,9 @@ ingress-nginx-controller-z2782            1/1     Running     0          12m   1
 
 ## 测试
 
-示例如下，使用之前创建的 nginx svc
+测试 url 跳转，创建三套 nginx 应用 : `test | foo | bar`
 
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ingress-nginx
-  annotations:
-    kubernetes.io/ingress.class: nginx
-spec:
-  rules:
-  - host: foo.bar.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: nginx
-            port:
-              number: 80
-```
-
-测试访问
-
-```bash
-[root@k8s-node1 ~]# kubectl get ingress
-NAME            CLASS    HOSTS         ADDRESS                   PORTS   AGE
-ingress-nginx   <none>   foo.bar.com   1.1.1.1,1.1.1.2,1.1.1.3   80      4m10s
-
-[root@k8s-node1 ~]# curl -I http://1.1.1.1 -H "Host: foo.bar.com"
-[root@k8s-node1 ~]# curl -I http://1.1.1.2 -H "Host: foo.bar.com"
-[root@k8s-node1 ~]# curl -I http://1.1.1.3 -H "Host: foo.bar.com"
-HTTP/1.1 200 OK
-Date: Wed, 12 Apr 2023 09:25:27 GMT
-Content-Type: text/html
-Content-Length: 615
-Connection: keep-alive
-Last-Modified: Wed, 19 Oct 2022 08:02:20 GMT
-ETag: "634faf0c-267"
-Accept-Ranges: bytes
-```
-
-测试 url 跳转，创建三套 nginx 应用 : test | foo | bar
+需要注意的是，代理路径假如是 `/foo` 的话，后端真实路径也是 `/foo`
 
 test 应用示例，foo 和 bar 的自行修改
 
@@ -502,11 +461,43 @@ spec:
               number: 80
 ```
 
+查看创建的 ingress
+
+```bash
+[root@k8s-node1 ~]# kubectl describe ingress demo-nginx
+Name:             demo-nginx
+Namespace:        default
+Address:          1.1.1.1,1.1.1.2,1.1.1.3
+Default backend:  default-http-backend:80 (<error: endpoints "default-http-backend" not found>)
+Rules:
+  Host        Path  Backends
+  ----        ----  --------
+  test.com
+              /      test:80 (10.244.107.209:80,10.244.107.212:80,10.244.169.140:80)
+              /foo   foo:80 (10.244.107.210:80,10.244.169.138:80,10.244.169.144:80)
+              /bar   bar:80 (10.244.107.211:80,10.244.169.131:80,10.244.169.143:80)
+Annotations:  kubernetes.io/ingress.class: nginx
+Events:       <none>
+```
+
 修改 index.html 
 
 ```bash
 [root@k8s-node1 ~]# echo "test" > /ifs/kubernetes/default-pvc-test-pvc-93a7df14-90f2-4466-8655-6ef42549b760/index.html
-[root@k8s-node1 ~]# echo "foo" > /ifs/kubernetes/default-pvc-foo-pvc-a3c39541-dadb-4c19-812d-df2f77d92bfe/index.html
-[root@k8s-node1 ~]# echo "bar" > /ifs/kubernetes/default-pvc-bar-pvc-1d229b8b-a4ed-42ab-9bbb-fba31c8c2686/index.html
+[root@k8s-node1 ~]# mkdir /ifs/kubernetes/default-pvc-foo-pvc-75e73500-1a70-4305-8253-d1e7d8c88b49/foo
+[root@k8s-node1 ~]# echo "foo" > /ifs/kubernetes/default-pvc-foo-pvc-75e73500-1a70-4305-8253-d1e7d8c88b49/foo/index.html
+[root@k8s-node1 ~]# mkdir /ifs/kubernetes/default-pvc-bar-pvc-73d12b15-7c53-46ee-a1b6-d0cb2c25e7e6/bar/
+[root@k8s-node1 ~]# echo "bar" > /ifs/kubernetes/default-pvc-bar-pvc-73d12b15-7c53-46ee-a1b6-d0cb2c25e7e6/bar/index.html
+```
+
+访问测试
+
+```bash
+[root@k8s-node1 ~]# curl http://1.1.1.1/ -H "Host: test.com"
+test
+[root@k8s-node1 ~]# curl http://1.1.1.2/foo/ -H "Host: test.com"
+foo
+[root@k8s-node1 ~]# curl http://1.1.1.3/bar/ -H "Host: test.com"
+bar
 ```
 

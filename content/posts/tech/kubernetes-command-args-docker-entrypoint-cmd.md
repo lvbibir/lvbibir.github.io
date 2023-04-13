@@ -18,7 +18,7 @@ cover:
 
 # command args
 
-- 如果指定了 containers.command ，Dockerfile 中的 ENTRYPOINT 会被覆盖且 CMD指令 会被忽略。
+- 如果指定了 containers.command，Dockerfile 中的 ENTRYPOINT 会被覆盖且 CMD 指令被忽略
 
 - 如果指定了 containers.args，Dockerfile 中的 ENTRYPOINT 继续执行， CMD指令 被覆盖
 

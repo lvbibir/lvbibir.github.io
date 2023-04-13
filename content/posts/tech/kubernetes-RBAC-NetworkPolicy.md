@@ -1,21 +1,18 @@
 ---
-title: "kubernetes | RBAC鉴权和PodAcl" 
+title: "kubernetes | RBAC鉴权和NetworkPolicy" 
 date: 2022-10-07
-lastmod: 2022-10-07
+lastmod: 2023-04-13
 tags: 
 - kubernetes
 keywords:
-- linux
-- centos
 - kubernetes
 - RBAC
-- PodAcl
+- networkPolicy
 description: "介绍kubernetes中的安全框架、RBAC鉴权和网络策略（Pod ACL)" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
     hidden: true
     hiddenInSingle: true 
-
 ---
 
 # 前言
@@ -24,24 +21,28 @@ cover:
 
 # kubernetes安全框架
 
-- 客户端要想访问K8s集群API Server，一般需要证书、Token或者用户名+密码；如果Pod访问，需要ServiceAccount
+- 客户端要想访问 K8s 集群 `API Server`，一般需要 CA 证书、Token 或者用户名+密码
+- 如果 Pod 访问，需要 `ServiceAccount`
 
-- K8S安全控制框架主要由下面3个阶段进行控制，每一个阶段都支持插件方式，通过API Server配置来启用插件。
-  - Authentication（鉴权）
-  - Authorization（授权）
-  - Admission Control（准入控制） 
+
+K8S 安全控制框架主要由下面3个阶段进行控制，每一个阶段都支持插件方式，通过 `API Server` 配置来启用插件。
+1. Authentication（鉴权）
+
+2. Authorization（授权）
+
+3. Admission Control（准入控制） 
 
 ![image-20221007174309826](https://image.lvbibir.cn/blog/image-20221007174309826.png)
 
-**鉴权(Authentication)**
+## 鉴权(Authentication)
 
 三种客户端身份认证： 
 
-- HTTPS 证书认证：基于CA证书签名的数字证书认证
-
-- HTTP Token认证：通过一个Token来识别用户
-
+- HTTPS 证书认证：基于 CA 证书签名的数字证书认证
+- HTTP Token认证：通过一个 Token 来识别用户
 - HTTP Base认证：用户名+密码的方式认证
+
+## 授权(Authorization)
 
 RBAC（Role-Based Access Control，基于角色的访问控制）：负责完成授权（Authorization）工作。
 
@@ -61,11 +62,13 @@ RBAC根据API请求属性，决定允许还是拒绝。
 
 - API组
 
-**准入控制(Admission Control)**
+## 准入控制(Admission Control)
 
 Adminssion Control实际上是一个准入控制器插件列表，发送到API Server的请求都需要经过这个列表中的每个准入控制器插件的检查，检查不通过，则拒绝请求
 
 # RBAC
+
+> https://kubernetes.io/zh-cn/docs/reference/access-authn-authz/rbac/
 
 ## 基础概念
 
@@ -93,15 +96,55 @@ RBAC（Role-Based Access Control，基于角色的访问控制），允许通过
 
 ![2022年10月7日184036](https://image.lvbibir.cn/blog/2022%E5%B9%B410%E6%9C%887%E6%97%A5184036.png)
 
-## 示例
+## 示例 新建用户并授权
 
-为Amadeus用户授权default命名空间Pod读取权限
+为 Amadeus 用户授权 default 命名空间 Pod 读取权限
 
-### 用k8s ca签发客户端证书
+### 新建用户
+
+新建一个 k8s 用户大概可以分为以下几步：
+
+- 签发用户证书
+  - 生成用户的证书 key 
+  - 通过用户的证书 key，生成用户的证书请求 (csr)
+  - 通过 k8s api 的 ca 证书去签发用户的证书请求，生成用户的证书 (crt)
+- 生成 kubeconfig 配置文件
+  - kubectl config set-cluster      //集群配置
+  - kubectl config set-credentials  //用户配置
+  - kubectl config set-context      //context配置
+  - kubectl config use-context      //使用context
+- 使用新创建的用户
+  - kubectl --kubecofig=`path`  // 通过参数指定
+  - KUBECONFIG=`path` kubectl   // 通过环境变量指定，`path` 可以指定多个，用 `:` 连接，从而将多个配置文件合并在一起使用
+
+#### 签发用户证书
+
+可以使用 `openssl` 或者 `cfssl` 进行签发，任选一种
+
+```bash
+[root@k8s-node1 ~]# mkdir -p /etc/kubernetes/users/Amadeus
+[root@k8s-node1 ~]# cd /etc/kubernetes/users/Amadeus/
+```
+
+##### openssl
+
+```bash
+# 创建用户证书 key
+[root@k8s-node1 Amadeus]# openssl genrsa -out Amadeus.key 2048
+# 创建用户证书请求 (csr)，-subj 指定组和用户，其中 O 是组名，CN 是用户名
+[root@k8s-node1 Amadeus]# openssl req -new -key Amadeus.key -out Amadeus.csr -subj "/O=hello/CN=Amadeus"
+# 生成用户的证书 (crt)，使用 k8s 的 ca 签发用户证书
+[root@k8s-node1 Amadeus]# openssl x509 -req -in Amadeus.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out Amadeus.crt -days 3650
+
+[root@k8s-node1 Amadeus]# ls
+Amadeus.crt  Amadeus.csr  Amadeus.key
+```
+
+##### cfssl
 
 下载cfssl工具
 
-```
+```bash
 wget --no-check-certificate https://github.com/cloudflare/cfssl/releases/download/1.2.0/cfssl_linux-amd64
 wget --no-check-certificate https://github.com/cloudflare/cfssl/releases/download/1.2.0/cfssljson_linux-amd64
 wget --no-check-certificate https://github.com/cloudflare/cfssl/releases/download/1.2.0/cfssl-certinfo_linux-amd64
@@ -109,11 +152,17 @@ chmod a+x cfssl*
 mv cfssl_linux-amd64 /usr/bin/cfssl
 mv cfssljson_linux-amd64 /usr/bin/cfssljson
 mv cfssl-certinfo_linux-amd64 /usr/bin/cfssl-certinfo
+
+[root@k8s-node1 ~]# cfssl version
+Version: 1.2.0
+Revision: dev
+Runtime: go1.6
 ```
 
-创建ca-config.json 证书文件
+创建 ca-config.json 证书文件
 
-```json
+```bash
+cat > ca-config.json <<EOF
 {
   "signing": {
     "default": {
@@ -132,11 +181,13 @@ mv cfssl-certinfo_linux-amd64 /usr/bin/cfssl-certinfo
     }
   }
 }
+EOF
 ```
 
 Amadeus-csr.json 证书文件
 
-```json
+```bash
+cat > Amadeus-csr.json <<EOF
 {
   "CN": "Amadeus",
   "hosts": [],
@@ -154,19 +205,24 @@ Amadeus-csr.json 证书文件
     }
   ]
 }
+EOF
 ```
 
 生成证书
 
-```
+```bash
 [root@k8s-node1 ~]# cfssl gencert -ca=/etc/kubernetes/pki/ca.crt -ca-key=/etc/kubernetes/pki/ca.key -config=ca-config.json -profile=kubernetes Amadeus-csr.json | cfssljson -bare Amadeus
 # 生成时会有警告，可以忽略，是因为提供的信息不是很全
 [root@k8s-node1 ~]# ls Amadeus*
 # 生成如下三个文件
-Amadeus.csr   Amadeus-key.pem  Amadeus.pem
+Amadeus.csr      # csr
+Amadeus-key.pem  # key
+Amadeus.pem      # crt
 ```
 
-### 生成kubeconfig授权文件
+#### 配置 kubeconfig 配置文件
+
+生成 kubeconfig 文件，并将 cluster 信息添加进去
 
 ```bash
 kubectl config set-cluster kubernetes \
@@ -178,7 +234,7 @@ kubectl config set-cluster kubernetes \
 # --embed-certs=true 表示将证书写入etcd
 ```
 
-设置客户端证书
+为 kubeconfig 配置文件添加用户配置：设置用户证书(crt)和证书key
 
 ```bash
 kubectl config set-credentials Amadeus \
@@ -188,24 +244,49 @@ kubectl config set-credentials Amadeus \
 --kubeconfig=Amadeus.kubeconfig
 ```
 
-设置默认上下文
+为 kubeconfig 配置文件添加 context
 
 ```bash
-kubectl config set-context kubernetes \
+kubectl config set-context Amadeus@kubernetes \
 --cluster=kubernetes \
 --user=Amadeus \
 --kubeconfig=Amadeus.kubeconfig
 ```
 
-设置将配置的授权文件添加到集群
+为 kubeconfig 配置文件设置使用的context
 
 ```bash
-kubectl config use-context kubernetes --kubeconfig=Amadeus.kubeconfig
+kubectl config use-context Amadeus@kubernetes --kubeconfig=Amadeus.kubeconfig
+```
+
+查看生成的配置文件
+
+```yaml
+# KUBECONFIG=./Amadeus.kubeconfig kubectl config view
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://1.1.1.1:6443
+  name: kubernetes
+contexts:
+- context:
+    cluster: kubernetes
+    user: Amadeus
+  name: Amadeus@kubernetes
+current-context: Amadeus@kubernetes
+kind: Config
+preferences: {}
+users:
+- name: Amadeus
+  user:
+    client-certificate-data: REDACTED
+    client-key-data: REDACTED
 ```
 
 ### 创建RBAC权限策略
 
-yaml示例：使Amadeus用户仅有查看default命名空间下的pod
+使 Amadeus 用户有权限查看 default 命名空间下的 pod
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -233,46 +314,57 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-测试验证
+### 测试验证
 
-```
-[root@k8s-node1 ~]# kubectl apply -f rbac.yaml
+```bash
+[root@k8s-node1 ~]# kubectl apply -f demo-rbac.yml
 role.rbac.authorization.k8s.io/pod-reader created
 rolebinding.rbac.authorization.k8s.io/read-pods created
 
 # pod可以正常查看
-[root@k8s-node1 ~]# kubectl --kubeconfig=/root/Amadeus.kubeconfig get pods
-NAME                                      READY   STATUS    RESTARTS        AGE
-nfs-client-provisioner-66d6cb77fd-k2n9l   1/1     Running   7 (4h53m ago)   30h
-pod-configmap                             1/1     Running   0               3h6m
-pod-secret-demo                           1/1     Running   0               127m
+[root@k8s-node1 ~]# cp /etc/kubernetes/users/Amadeus/Amadeus.kubeconfig  /root/
+[root@k8s-node1 ~]# KUBECONFIG=/root/Amadeus.kubeconfig kubectl get pods -n default
+NAME                                      READY   STATUS    RESTARTS      AGE
+bar-664fbc5498-kz4sr                      1/1     Running   0             18h
+bar-664fbc5498-r74vl                      1/1     Running   0             18h
+bar-664fbc5498-smqxm                      1/1     Running   0             18h
+......
 
 # 其他资源都没有权限
-[root@k8s-node1 ~]# kubectl --kubeconfig=/root/Amadeus.kubeconfig get nodes
+[root@k8s-node1 ~]# KUBECONFIG=/root/Amadeus.kubeconfig kubectl get nodes
 Error from server (Forbidden): nodes is forbidden: User "Amadeus" cannot list resource "nodes" in API group "" at the cluster scope
-[root@k8s-node1 ~]# kubectl --kubeconfig=/root/Amadeus.kubeconfig get deployment
+[root@k8s-node1 ~]# KUBECONFIG=/root/Amadeus.kubeconfig kubectl get deployments
 Error from server (Forbidden): deployments.apps is forbidden: User "Amadeus" cannot list resource "deployments" in API group "apps" in the namespace "default"
 ```
 
-给该用户增加查看和删除deployment的权限，但pod的权限依旧只有查看
+给该用户增加查看、创建和删除deployment的权限，但pod的权限依旧只有查看
 
-```
-[root@k8s-node1 ~]# vim rbac.yaml
+```bash
+[root@k8s-node1 ~]# vim demo-rbac.yml
 # 在rbac.yaml中增加如下规则
 - apiGroups: ["apps"]
-  resources: ["deployments"] 
-  verbs: ["get", "watch", "list", "delete"] 
+  resources: ["deployments"]
+  verbs: ["get", "watch", "list", "create", "delete"]
 
-[root@k8s-node1 ~]# kubectl apply -f rbac.yaml
+[root@k8s-node1 ~]# kubectl apply -f demo-rbac.yml
 role.rbac.authorization.k8s.io/pod-reader configured
 rolebinding.rbac.authorization.k8s.io/read-pods unchanged
 
-[root@k8s-node1 ~]# kubectl --kubeconfig=/root/Amadeus.kubeconfig get deployment
-NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
-nfs-client-provisioner   1/1     1            1           30h
+# 操作 deployment
+[root@k8s-node1 ~]# KUBECONFIG=/root/Amadeus.kubeconfig kubectl create deployment my-dep --image=nginx:1.22.1 --replicas=3
+deployment.apps/my-dep created
+[root@k8s-node1 ~]# KUBECONFIG=/root/Amadeus.kubeconfig kubectl get pods -l app=my-dep
+NAME                    READY   STATUS    RESTARTS   AGE
+my-dep-bc4cb798-4kbkq   1/1     Running   0          15s
+my-dep-bc4cb798-jdzq7   1/1     Running   0          15s
+my-dep-bc4cb798-lhm8p   1/1     Running   0          15s
+[root@k8s-node1 ~]# KUBECONFIG=/root/Amadeus.kubeconfig kubectl delete deployment my-dep
+deployment.apps "my-dep" deleted
 ```
 
 # 网络策略(Network Policy)
+
+> https://kubernetes.io/zh-cn/docs/concepts/services-networking/network-policies/
 
 ## 基础概念
 
@@ -302,14 +394,14 @@ Pod网络出口方向隔离：
 
 - 基于目标端口的网络隔离：只允许Pod访问白名单上的端
 
-## 实际应用
+## 示例一
 
-示例一：只允许default命名空间中携带run=client1标签的Pod访问default命名空间携带app=web标签的Pod的80端口，无法ping通
+只允许default命名空间中携带run=client1标签的Pod访问default命名空间携带app=web标签的Pod的80端口，无法ping通
 
-```
-[root@k8s-node1 ~]# kubectl create deployment web --image=nginx:1.19
-[root@k8s-node1 ~]# kubectl run client1 --image=busybox -- sleep 36000
-[root@k8s-node1 ~]# kubectl run client2 --image=busybox -- sleep 36000
+```bash
+[root@k8s-node1 ~]# kubectl create deployment web --image=nginx:1.22.1
+[root@k8s-node1 ~]# kubectl run client1 --image=busybox:1.28 -- sleep 36000
+[root@k8s-node1 ~]# kubectl run client2 --image=busybox:1.28 -- sleep 36000
 [root@k8s-node1 ~]# kubectl get pods --show-labels
 NAME                                      READY   STATUS    RESTARTS        AGE    LABELS
 client1                                   1/1     Running   0               69s    run=client1
@@ -346,7 +438,7 @@ spec:
 
 测试验证
 
-```
+```bash
 [root@k8s-node1 ~]# kubectl apply -f networkpolicy.yaml
 [root@k8s-node1 ~]# kubectl get networkpolicy
 [root@k8s-node1 ~]# kubectl get pods  web-bc7cc9f65-hdhr2 -o jsonpath='{.metadata.annotations.cni\.projectcalico\.org\/podIP}'
@@ -361,9 +453,11 @@ Connected to 10.244.169.169
 [root@k8s-node1 ~]# kubectl delete -f networkpolicy.yaml
 ```
 
-示例二：ns1命名空间下所有pod可以互相访问，也可以访问其他命名空间Pod，但其他命名空间不能访问ns1命名空间Pod。
+## 示例二
 
-```
+ns1命名空间下所有pod可以互相访问，也可以访问其他命名空间Pod，但其他命名空间不能访问ns1命名空间Pod。
+
+```bash
 [root@k8s-node1 ~]# kubectl create ns ns1
 [root@k8s-node1 ~]# kubectl run ns1-client1 --image=busybox -n ns1 -- sleep 36000
 [root@k8s-node1 ~]# kubectl run ns1-client2 --image=busybox -n ns1 -- sleep 36000
@@ -396,7 +490,7 @@ spec:
 
 验证
 
-```
+```bash
 [root@k8s-node1 ~]# kubectl apply -f networkpolicy.yaml
 [root@k8s-node1 ~]# kubectl get networkpolicy -n ns1
 
