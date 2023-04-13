@@ -6,7 +6,16 @@
     <description>Recent content in linux on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 09 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dns配置文件/etc/resolv.conf中search和options ndots详解</title>
+      <link>https://www.lvbibir.cn/posts/tech/dns-search/</link>
+      <pubDate>Thu, 13 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/dns-search/</guid>
+      <description>简介 dns配置文件 /etc/resolv.conf 中常看到有 search 设置，以前以为是根据search 中的域去指定nameserver，其实不是这样用的。它的一个用处是程序只需要知道主机名就可以解析到 ip，不必知道域名后缀 domain 是什么 FQDN (Fully Qualified Domain Name) 含义是完整的域名. 例如, 一台机器主机名(hostname)是 www, 域名后缀(dom</description>
+    </item>
+    
     <item>
       <title>linux | kill命令详解以及linux中的信号</title>
       <link>https://www.lvbibir.cn/posts/tech/linux-command-kill/</link>
