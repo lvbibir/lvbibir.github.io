@@ -93,13 +93,13 @@ vercel+mongodb+github部署方式参考：https://www.sulvblog.cn/posts/blog/hug
 
 > 如果是使用 [一键将hugo博客部署到阿里云](#一键将hugo博客部署到阿里云) 中的步骤部署了twikoo，这步直接忽略，配置前端代码即可
 
-```
+```bash
 docker run --name twikoo -e TWIKOO_THROTTLE=1000 -p 8080:8080 -v ${PWD}/data:/app/data -d imaegoo/twikoo
 ```
 
 部署完成后看到如下结果即成功
 
-```
+```bash
 [root@lvbibir ~]# curl http://localhost:8080
 {"code":100,"message":"Twikoo 云函数运行正常，请参考 https://twikoo.js.org/quick-start.html#%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2 完成前端的配置","version":"1.6.7"}
 ```
@@ -110,7 +110,7 @@ docker run --name twikoo -e TWIKOO_THROTTLE=1000 -p 8080:8080 -v ${PWD}/data:/ap
 
 创建或者修改 `layouts\partials\comments.html`
 
-```
+```html
 <!-- Twikoo -->
 <div>
     <div class="pagination__title">
@@ -132,7 +132,7 @@ docker run --name twikoo -e TWIKOO_THROTTLE=1000 -p 8080:8080 -v ${PWD}/data:/ap
 
 调用上述twikoo代码的位置：`layouts/_default/single.html`
 
-```
+```html
 <article class="post-single">
   // 其他代码......
   {{- if (.Param "comments") }}
@@ -143,7 +143,7 @@ docker run --name twikoo -e TWIKOO_THROTTLE=1000 -p 8080:8080 -v ${PWD}/data:/ap
 
 在站点配置文件config中加上版本号
 
-```
+```yaml
 params:
 	twikoo:
       version: 1.6.7
@@ -163,7 +163,9 @@ params:
 
 ## 修改smms图床的api地址
 
-由于`sm.ms`域名国内无法访问，twikoo官方还没有出具体的修改方式，自己修改容器配置文件进行修改
+> 已于 1.6.12 新版本修复，https://github.com/imaegoo/twikoo/releases/tag/1.6.12
+
+由于`sm.ms`域名国内无法访问，~~twikoo官方还没有出具体的修改方式~~，自己修改容器配置文件进行修改
 
 ```bash
 # 复制配置文件
@@ -349,7 +351,7 @@ https://www.liwen.id.au/heg/
 
 # 其他修改
 
-前端知识比较匮乏，其他 css样式修改 基本都是通过 f12控制台 一点点摸索改的，不太规范且比较琐碎就不单独记录了，~~其实我根本已经忘记还改了哪些东西~~
+其他 css样式修改 基本都是通过 f12控制台 一点点摸索改的，不太规范且比较琐碎就不单独记录了，~~其实我根本已经忘记还改了哪些东西~~
 
 
 
