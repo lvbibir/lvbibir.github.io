@@ -139,17 +139,32 @@ NFS卷提供对NFS挂载支持，可以自动将NFS共享路径挂载到Pod中
 
 ```bash
 yum install nfs-utils # nfs-utils包每个节点都需安装
-mkdir -p /ifs/kubernetes
-echo "/ifs/kubernetes *(rw,no_root_squash)" >> /etc/exports
-systemctl start nfs && systemctl enable nfs
+mkdir -p /nfs
+echo "/nfs 1.1.1.0/24(rw,async,no_root_squash)" >> /etc/exports
+# 格式：NFS共享的目录 客户端地址1(参数1,参数2,...) 客户端地址2(参数1,参数2,...))
+systemctl enable --now nfs
+systemctl enable --now rpcbind
 ```
+
+- 常用选项：
+  - ro：客户端挂载后，其权限为只读，默认选项；
+  - rw:读写权限；
+  - sync：同时将数据写入到内存与硬盘中；
+  - async：异步，优先将数据保存到内存，然后再写入硬盘；
+  - Secure：要求请求源的端口小于1024
+- 用户映射：
+  - root_squash:当NFS客户端使用root用户访问时，映射到NFS服务器的匿名用户；
+  - no_root_squash:当NFS客户端使用root用户访问时，映射到NFS服务器的root用户；
+  - all_squash:全部用户都映射为服务器端的匿名用户；
+  - anonuid=UID：将客户端登录用户映射为此处指定的用户uid；
+  - anongid=GID：将客户端登录用户映射为此处指定的用户gid
 
 客户端测试
 
 ```bash
-[root@k8s-node2 ~]# mount -t nfs k8s-node1:/ifs/kubernetes /mnt/
+[root@k8s-node2 ~]# mount -t nfs k8s-node1:/nfs /mnt/
 [root@k8s-node2 ~]# df -hT | grep k8s-node1
-k8s-node1:/ifs/kubernetes nfs4       44G  4.0G   41G   9% /mnt
+k8s-node1:/nfs nfs4       44G  4.0G   41G   9% /mnt
 ```
 
 示例yaml
@@ -185,7 +200,7 @@ spec:
       - name: www
         nfs:
           server: k8s-node1
-          path: /ifs/kubernetes/
+          path: /nfs/
 ---
 apiVersion: v1
 kind: Service
@@ -211,7 +226,7 @@ spec:
 NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
 demo-nfs     NodePort    10.97.209.119   <none>        80:30003/TCP   5m41s
 kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP        5d2h
-[root@k8s-node1 ~]# echo "hello, nfs" > /ifs/kubernetes/index.html
+[root@k8s-node1 ~]# echo "hello, nfs" > /nfs/index.html
 [root@k8s-node1 ~]# curl 10.97.209.119
 hello, nfs
 ```
@@ -286,7 +301,7 @@ spec:
   - ReadWriteMany
   nfs:
     server: k8s-node1
-    path: /ifs/kubernetes
+    path: /nfs
 ```
 
 pvc示例
@@ -356,7 +371,7 @@ spec:
 验证
 
 ```bash
-[root@k8s-node1 ~]# echo "pvc for NFS is successful" > /ifs/kubernetes/index.html
+[root@k8s-node1 ~]# echo "pvc for NFS is successful" > /nfs/index.html
 [root@k8s-node1 ~]# kubectl get svc -l app=demo-pvc
 NAME       TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)   AGE
 demo-pvc   ClusterIP   10.97.28.93   <none>        80/TCP    102s
@@ -395,48 +410,152 @@ apiVersion: v1
 
 ### 部署NFS插件
 
-下载插件
+> 此组件是对 nfs-client-provisioner 的扩展，nfs-client-provisioner 已经不提供更新，且 nfs-client-provisioner 的 Github 仓库已经迁移到 [NFS-Subdir-External-Provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner) 的仓库
 
-```
-git clone https://github.com/kubernetes-incubator/external-storage
-cd external-storage/nfs-client/deploy
-```
+#### rbac
 
-deployment.yaml
+创建 `nfs-rbac.yml` 
 
 ```yaml
-            - name: NFS_SERVER
-              value: 1.1.1.1 # 修改ip地址，nfs服务器
-      volumes:
-        - name: nfs-client-root
-          nfs:
-            server: 1.1.1.1 # 修改ip地址，nfs服务器
-            path: /ifs/kubernetes
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nfs-client-provisioner
+  namespace: kube-system
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: nfs-client-provisioner-runner
+rules:
+  - apiGroups: [""]
+    resources: ["persistentvolumes"]
+    verbs: ["get", "list", "watch", "create", "delete"]
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims"]
+    verbs: ["get", "list", "watch", "update"]
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["storageclasses"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "update", "patch"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: run-nfs-client-provisioner
+subjects:
+  - kind: ServiceAccount
+    name: nfs-client-provisioner
+    namespace: kube-system
+roleRef:
+  kind: ClusterRole
+  name: nfs-client-provisioner-runner
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: leader-locking-nfs-client-provisioner
+  namespace: kube-system
+rules:
+  - apiGroups: [""]
+    resources: ["endpoints"]
+    verbs: ["get", "list", "watch", "create", "update", "patch"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: leader-locking-nfs-client-provisioner
+  namespace: kube-system
+subjects:
+  - kind: ServiceAccount
+    name: nfs-client-provisioner
+    namespace: kube-system
+roleRef:
+  kind: Role
+  name: leader-locking-nfs-client-provisioner
+  apiGroup: rbac.authorization.k8s.io
 ```
 
-class.yaml
+#### nfs-subdir-external-provisioner
+
+创建 `nfs-provisioner-deploy.yml`
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfs-client-provisioner
+  namespace: kube-system
+  labels:
+    app: nfs-client-provisioner
+spec:
+  replicas: 1
+  strategy: 
+    type: Recreate     # 设置升级策略为删除再创建(默认为滚动更新)
+  selector:
+    matchLabels:
+      app: nfs-client-provisioner
+  template:
+    metadata:
+      labels:
+        app: nfs-client-provisioner
+    spec:
+      serviceAccountName: nfs-client-provisioner
+      containers:
+      - name: nfs-client-provisioner
+        #image: gcr.io/k8s-staging-sig-storage/nfs-subdir-external-provisioner:v4.0.0
+        image: registry.cn-hangzhou.aliyuncs.com/lvbibir/nfs-subdir-external-provisioner:v4.0.2
+        volumeMounts:
+        - name: nfs-client-root
+          mountPath: /persistentvolumes
+        env:
+        - name: PROVISIONER_NAME     # Provisioner的名称,以后设置的storageclass要和这个保持一致
+          value: nfs-client 
+        - name: NFS_SERVER           # NFS服务器地址,需和valumes参数中配置的保持一致
+          value: 1.1.1.1
+        - name: NFS_PATH             # NFS服务器数据存储目录,需和valumes参数中配置的保持一致
+          value: /nfs/kubernetes
+      volumes:
+      - name: nfs-client-root
+        nfs:
+          server: 1.1.1.1            # NFS服务器地址
+          path: /nfs/kubernetes      # NFS服务器数据存储目录
+```
+
+#### storageClass
+
+创建 `nfs-sc.yml` 
 
 ```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: managed-nfs-storage
-provisioner: fuseim.pri/ifs 
+  name: nfs
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"  ## 是否设置为默认的storageclass
+provisioner: nfs-client                                   ## 动态卷分配者名称，必须和deployment的PROVISIONER_NAME变量中设置的Name一致
 parameters:
-  archiveOnDelete: "true" # 默认是flase，设置为true可以使pv自动删除后保留数据，数据挂载目录会重命名为archived-<name>
+  archiveOnDelete: "false"                                 ## 设置为"false"时删除PVC不会保留数据,"true"则保留数据
+mountOptions: 
+  - hard                                                  ## 指定为硬挂载方式
+  - nfsvers=4                                             ## 指定NFS版本,这个需要根据NFS Server版本号设置
 ```
 
-部署插件
+创建上述资源
 
 ```bash
-# 授权访问apiserver
-kubectl apply -f rbac.yaml 
-# 部署插件
-kubectl apply -f deployment.yaml 
-# 创建存储类
-kubectl apply -f class.yaml
-# 查看创建的存储类
-kubectl get storageclasses | sc
+[root@k8s-node1 nfs]# mkdir /nfs/kubernetes/
+[root@k8s-node1 nfs]# kubectl apply -f .
+deployment.apps/nfs-client-provisioner created
+serviceaccount/nfs-client-provisioner created
+clusterrole.rbac.authorization.k8s.io/nfs-client-provisioner-runner created
+clusterrolebinding.rbac.authorization.k8s.io/run-nfs-client-provisioner created
+role.rbac.authorization.k8s.io/leader-locking-nfs-client-provisioner created
+rolebinding.rbac.authorization.k8s.io/leader-locking-nfs-client-provisioner created
+storageclass.storage.k8s.io/nfs created
 ```
 
 ### 示例
@@ -478,7 +597,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: pvc-auto
 spec:
-  storageClassName: "managed-nfs-storage"
+  storageClassName: "nfs"
   accessModes:
   - ReadWriteOnce
   resources:
@@ -501,9 +620,8 @@ persistentvolumeclaim/pvc-auto   Bound    pvc-22b65e10-ab97-47eb-aaa1-6c354a749a
 [root@k8s-node1 ~]# kubectl get pv
 NAME                                                        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM              STORAGECLASS          REASON   AGE
 persistentvolume/pvc-22b65e10-ab97-47eb-aaa1-6c354a749a55   2Gi        RWO            Delete           Bound    default/pvc-auto   managed-nfs-storage            47s
-[root@k8s-node1 ~]# ls -l /ifs/kubernetes/
+[root@k8s-node1 ~]# ls -l /nfs/
 total 4
 drwxrwxrwx. 2 root root  6 Apr 11 17:37 default-pvc-auto-pvc-22b65e10-ab97-47eb-aaa1-6c354a749a55
--rw-r--r--. 1 root root 26 Apr 11 17:22 index.htmlc
 ```
 

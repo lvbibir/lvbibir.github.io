@@ -402,7 +402,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: pvc-test
 spec:
-  storageClassName: "managed-nfs-storage"
+  storageClassName: "nfs"
   accessModes:
   - ReadWriteOnce
   resources:
@@ -483,11 +483,11 @@ Events:       <none>
 修改 index.html 
 
 ```bash
-[root@k8s-node1 ~]# echo "test" > /ifs/kubernetes/default-pvc-test-pvc-93a7df14-90f2-4466-8655-6ef42549b760/index.html
-[root@k8s-node1 ~]# mkdir /ifs/kubernetes/default-pvc-foo-pvc-75e73500-1a70-4305-8253-d1e7d8c88b49/foo
-[root@k8s-node1 ~]# echo "foo" > /ifs/kubernetes/default-pvc-foo-pvc-75e73500-1a70-4305-8253-d1e7d8c88b49/foo/index.html
-[root@k8s-node1 ~]# mkdir /ifs/kubernetes/default-pvc-bar-pvc-73d12b15-7c53-46ee-a1b6-d0cb2c25e7e6/bar/
-[root@k8s-node1 ~]# echo "bar" > /ifs/kubernetes/default-pvc-bar-pvc-73d12b15-7c53-46ee-a1b6-d0cb2c25e7e6/bar/index.html
+[root@k8s-node1 ~]# echo "test" > /nfs/default-pvc-test-pvc-93a7df14-90f2-4466-8655-6ef42549b760/index.html
+[root@k8s-node1 ~]# mkdir /nfs/default-pvc-foo-pvc-75e73500-1a70-4305-8253-d1e7d8c88b49/foo
+[root@k8s-node1 ~]# echo "foo" > /nfs/default-pvc-foo-pvc-75e73500-1a70-4305-8253-d1e7d8c88b49/foo/index.html
+[root@k8s-node1 ~]# mkdir /nfs/default-pvc-bar-pvc-73d12b15-7c53-46ee-a1b6-d0cb2c25e7e6/bar/
+[root@k8s-node1 ~]# echo "bar" > /nfs/default-pvc-bar-pvc-73d12b15-7c53-46ee-a1b6-d0cb2c25e7e6/bar/index.html
 ```
 
 访问测试

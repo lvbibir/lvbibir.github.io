@@ -35,6 +35,58 @@ imagePullPolicy: Always|Never|IfNotPresent
 
 如果 Dockerfile 中默认的 ENTRYPOINT 被覆盖，则默认的 CMD 指令同时也会被覆盖
 
+# label标签选择运算符
+
+> https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/labels
+
+1. 基于等值
+
+有三种运算符 `=` `==` `!=`
+
+前两种是等效的，示例
+
+```bash
+[root@k8s-node1 ~]# kubectl get nodes -l kubernetes.io/hostname=k8s-node1
+NAME        STATUS   ROLES                  AGE   VERSION
+k8s-node1   Ready    control-plane,master   21d   v1.22.3
+[root@k8s-node1 ~]# kubectl get nodes -l kubernetes.io/hostname!=k8s-node1
+NAME        STATUS   ROLES    AGE   VERSION
+k8s-node2   Ready    <none>   21d   v1.22.3
+k8s-node3   Ready    <none>   21d   v1.22.3
+```
+
+2. 基于集合
+
+同样三种运算符 `in` `notin` `exists`
+
+`exists`只用于判断 key 是否存在
+
+```bash
+hello in (foo, bar)    # 所有包含了 hello 标签且值等于 foo 或者 bar 的资源
+hello notin (foo, bar) # 所有包含了 hello 标签且值不等于 foo 或者 bar 的资源；以及没有 hello 标签的资源
+hello                  # 所有包含了 hello 标签的资源；不校验值
+!hello                 # 所有未包含 hello 标签的资源；不校验值
+```
+
+示例
+
+```bash
+[root@k8s-node1 ~]# kubectl get nodes -l "kubernetes.io/hostname in (k8s-node1, k8s-node2)"
+NAME        STATUS   ROLES                  AGE   VERSION
+k8s-node1   Ready    control-plane,master   21d   v1.22.3
+k8s-node2   Ready    <none>                 21d   v1.22.3
+[root@k8s-node1 ~]# kubectl get nodes -l "kubernetes.io/hostname notin (k8s-node1, k8s-node2)"
+NAME        STATUS   ROLES    AGE   VERSION
+k8s-node3   Ready    <none>   21d   v1.22.3
+[root@k8s-node1 ~]# kubectl get nodes -l kubernetes.io/hostname
+NAME        STATUS   ROLES                  AGE   VERSION
+k8s-node1   Ready    control-plane,master   21d   v1.22.3
+k8s-node2   Ready    <none>                 21d   v1.22.3
+k8s-node3   Ready    <none>                 21d   v1.22.3
+[root@k8s-node1 ~]# kubectl get nodes -l \!kubernetes.io/hostname
+No resources found
+```
+
 # 常见报错
 
 ## NodeNotReady
@@ -94,6 +146,16 @@ bird: Netlink: Network is down
 ```bash
 [root@k8s-node1 ~]# systemctl stop NetworkManager
 [root@k8s-node1 ~]# systemctl disable NetworkManager
+```
+
+## 虚拟机挂起导致calico网络不可用
+
+出现在我的虚拟机测试机群上，挂起虚拟机过段时间后重新启动虚拟机，发现集群状态是正常的(node 是 ready 状态)，然而 `calico-kube-controllers` `metric-server` `nfs-provisiner` 等功能组件陷入了 `CrashLoopBackOff` 状态，报错基本上都是无法连接到 `api-server` 
+
+但是 `calicoctl` 看到 calico 集群是没什么问题的，之前遇到几次都是暴躁重启 docker 解决的，后面发现重启 calico 相关容器就可以了，具体原因还没找到，估计与 vmware 虚拟机挂起操作有关。
+
+```bash
+kubectl delete pods -n kube-system -l "k8s-app in (calico-node, calico-kube-controllers)"
 ```
 
 # kubectl命令

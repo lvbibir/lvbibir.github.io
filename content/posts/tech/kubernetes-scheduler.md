@@ -193,6 +193,11 @@ Taints:             disktype=ssd:NoSchedule
 
 允许Pod调度到持有Taints的Node上，但不是绝对分配到指定的标签，搭配nodeSelector或者nodeAffinity使用，实现将pod分配到特定污点的节点上
 
+```yaml
+      tolerations:              #设置容忍所有污点，防止节点被设置污点
+        - operator: "Exists"
+```
+
 示例
 
 ```bash

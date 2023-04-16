@@ -82,7 +82,7 @@ spec:
   - metadata:
       name: www
     spec:
-      storageClassName: "managed-nfs-storage"
+      storageClassName: "nfs"
       accessModes:
       - ReadWriteOnce
       resources:
@@ -106,7 +106,7 @@ persistentvolumeclaim/www-statefulset-nginx-1
 # pv NAME
 persistentvolume/pvc-17751fde-1b23-4535-98bb-a70342ddd6fe
 persistentvolume/pvc-b7519f46-b2af-42e4-b66d-d7459be2e87c
-[root@k8s-node1 ~]# ls  /ifs/kubernetes/
+[root@k8s-node1 ~]# ls  /nfs/
 default-www-statefulset-nginx-0-pvc-17751fde-1b23-4535-98bb-a70342ddd6fe 
 default-www-statefulset-nginx-1-pvc-b7519f46-b2af-42e4-b66d-d7459be2e87c
 ```
