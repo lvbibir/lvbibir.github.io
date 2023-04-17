@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.lvbibir.cn/posts/tech/</loc>
-    <lastmod>2023-04-13T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/blog/hello-hugo/</loc>
     <lastmod>2022-09-11T00:00:00+00:00</lastmod>
@@ -18,7 +18,19 @@
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/</loc>
-    <lastmod>2023-04-13T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/kubernetes/</loc>
+    <lastmod>2023-04-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-traefik/</loc>
+    <lastmod>2023-04-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/</loc>
+    <lastmod>2023-04-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/</loc>
+    <lastmod>2023-04-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/dns-search/</loc>
     <lastmod>2023-04-13T00:00:00+00:00</lastmod>
@@ -26,17 +38,8 @@
     <loc>https://www.lvbibir.cn/tags/linux/</loc>
     <lastmod>2023-04-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/</loc>
-    <lastmod>2023-04-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/</loc>
-    <lastmod>2023-04-13T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/tags/docker/</loc>
     <lastmod>2023-04-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/kubernetes/</loc>
-    <lastmod>2023-04-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/kubernetes-statefulset/</loc>
     <lastmod>2023-04-12T00:00:00+00:00</lastmod>
