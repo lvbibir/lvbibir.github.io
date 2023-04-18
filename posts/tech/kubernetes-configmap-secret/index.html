@@ -55,11 +55,11 @@
 </span></span><span style=display:flex><span>port: <span style=color:#f99b15>6379</span>
 </span></span><span style=display:flex><span>host: 1.1.1.4
 </span></span><span style=display:flex><span>password: <span style=color:#f99b15>123456</span>
-</span></span></code></pre></div><h1 id=secret>Secret<a hidden class=anchor aria-hidden=true href=#secret>#</a></h1><p>与ConfigMap类似，区别在于Secret主要存储敏感数据，所有的数据都会经过base64编码。</p><p>Secret支持三种数据类型：</p><ul><li>docker-registry：存储镜像仓库认证信息</li><li>generic：从文件、目录或者字符串创建，例如存储用户名密码</li><li>tls：存储证书，例如HTTPS证书</li></ul><p>示例</p><p>将用户名和密码进行编码</p><pre tabindex=0><code>[root@k8s-node1 ~]# echo -n &#39;admin&#39; | base64
-YWRtaW4=
-[root@k8s-node1 ~]# echo -n &#39;123.com&#39; | base64
-MTIzLmNvbQ==
-</code></pre><p>secret.yaml</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#5bc4bf>apiVersion</span>: <span style=color:#f99b15>v1</span>
+</span></span></code></pre></div><h1 id=secret>Secret<a hidden class=anchor aria-hidden=true href=#secret>#</a></h1><p>与ConfigMap类似，区别在于Secret主要存储敏感数据，所有的数据都会经过base64编码。</p><p>Secret支持三种数据类型：</p><ul><li>docker-registry：存储镜像仓库认证信息</li><li>generic：从文件、目录或者字符串创建，例如存储用户名密码</li><li>tls：存储证书，例如HTTPS证书</li></ul><p>示例</p><p>将用户名和密码进行编码</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#5bc4bf>[</span>root@k8s-node1 ~<span style=color:#5bc4bf>]</span><span style=color:#776e71># echo -n &#39;admin&#39; | base64</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>YWRtaW4</span><span style=color:#5bc4bf>=</span>
+</span></span><span style=display:flex><span><span style=color:#5bc4bf>[</span>root@k8s-node1 ~<span style=color:#5bc4bf>]</span><span style=color:#776e71># echo -n &#39;123.com&#39; | base64</span>
+</span></span><span style=display:flex><span><span style=color:#ef6155>MTIzLmNvbQ</span><span style=color:#5bc4bf>==</span>
+</span></span></code></pre></div><p>secret.yaml</p><div class=highlight><pre tabindex=0 style=color:#e7e9db;background-color:#2f1e2e;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#5bc4bf>apiVersion</span>: <span style=color:#f99b15>v1</span>
 </span></span><span style=display:flex><span><span style=color:#5bc4bf>kind</span>: <span style=color:#f99b15>Secret</span>
 </span></span><span style=display:flex><span><span style=color:#5bc4bf>metadata</span>:
 </span></span><span style=display:flex><span>  <span style=color:#5bc4bf>name</span>: <span style=color:#f99b15>db-pass</span>
