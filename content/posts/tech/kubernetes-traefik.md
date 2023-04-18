@@ -259,6 +259,10 @@ spec:
             - name: websecure
               containerPort: 443
               hostPort: 443             ## 将容器端口绑定所在服务器的 443 端口
+            - name: udped
+              protocol: UDP
+              containerPort: 8084       ## 将容器端口绑定所在服务器的 8084 端口
+              hostPort: 8084
             - name: admin
               containerPort: 8080       ## Traefik Dashboard 端口
       volumes:
@@ -285,11 +289,14 @@ spec:
       name: web
       port: 80
     - protocol: TCP
-      name: admin
-      port: 8080
-    - protocol: TCP
       name: websecure
       port: 443
+    - protocol: UDP
+      name: udpep
+      port: 8084
+    - protocol: TCP
+      name: admin
+      port: 8080
   selector:
     app: traefik
 ```
@@ -394,7 +401,7 @@ clusterrole.rbac.authorization.k8s.io/gateway-role created
 clusterrolebinding.rbac.authorization.k8s.io/gateway-controller created
 ```
 
-# 4. 功能示例
+# 4. traefik基础功能-路由
 
 ## 4.1 Traefik Dashboard
 
@@ -402,7 +409,7 @@ clusterrolebinding.rbac.authorization.k8s.io/gateway-controller created
 
 示例中用到的域名请自行映射，访问域名应看到如下页面
 
-<img src="https://image.lvbibir.cn/blog/image-20230417162116287.png" alt="image-20230417162116287" />
+![](https://image.lvbibir.cn/blog/image-20230417162116287.png)
 
 ### 4.1.1 ingress
 
@@ -493,7 +500,7 @@ spec:
 apiVersion: networking.x-k8s.io/v1alpha1
 kind: HTTPRoute
 metadata:
-  name: traefix-dashboard
+  name: traefik-dashboard
   namespace: kube-system
   labels:
     app: traefik
@@ -514,3 +521,862 @@ spec:
 访问：http://gateway.traefik.local
 
 > 目前，Traefik 对 Gateway APIs 的实现是基于 v1alpha1 版本的规范，目前最新的规范是 v1alpha2，所以和最新的规范可能有一些出入的地方。
+
+## 4.2 http 路由
+
+创建两个应用 `foo` `bar` 
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo
+  labels:
+    app: foo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: foo
+  template:
+    metadata:
+      labels:
+        app: foo
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: foo
+        image: nginx:1.22.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "mkdir /usr/share/nginx/html/foo/ && echo 'foo' > /usr/share/nginx/html/foo/index.html"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo
+  labels:
+    app: foo
+spec:
+  selector:
+    app: foo
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bar
+  labels:
+    app: bar
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bar
+  template:
+    metadata:
+      labels:
+        app: bar
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: bar
+        image: nginx:1.22.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "mkdir /usr/share/nginx/html/bar/ && echo 'bar' > /usr/share/nginx/html/bar/index.html"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bar
+  labels:
+    app: bar
+spec:
+  selector:
+    app: bar
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+```
+
+创建 ingressRoute
+
+```yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: test
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`test.local`) && PathPrefix(`/foo`)
+    kind: Rule
+    services:
+    - name: foo
+      port: 80
+  - match: Host(`test.local`) && PathPrefix(`/bar`)
+    kind: Rule
+    services:
+    - name: bar
+      port: 80
+```
+
+分别访问
+
+- http://test.local/foo
+- http://test.local/bar
+
+```bash
+[root@k8s-node1 traefik]# curl  http://test.local/foo/
+foo
+[root@k8s-node1 traefik]# curl  http://test.local/bar/
+bar
+```
+
+## 4.3 https 路由
+
+自签名证书
+
+```bash
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=test.local"
+```
+
+创建 tls 类型的 secret
+
+```bash
+kubectl create secret tls test.local --cert=tls.crt --key=tls.key
+```
+
+创建 ingressRoute
+
+```yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: test-https
+spec:
+  entryPoints:
+    - websecure     # 使用 https(443) 端口
+  routes:
+  - match: Host(`test.local`) && PathPrefix(`/foo`)
+    kind: Rule
+    services:
+    - name: foo
+      port: 80
+  - match: Host(`test.local`) && PathPrefix(`/bar`)
+    kind: Rule
+    services:
+    - name: bar
+      port: 80
+  tls:
+    secretName: test-tls # 使用 tls 证书
+```
+
+分别访问
+
+- https://test.local/foo
+- https://test.local/bar
+
+```bash
+[root@k8s-node1 traefik]# curl -k https://test.local/foo/
+foo
+[root@k8s-node1 traefik]# curl -k https://test.local/bar/
+bar
+```
+
+## 4.3 tcp 路由
+
+### 4.3.1 部署mysql
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+  namespace: default
+data:
+  my.cnf: |
+    [mysqld]
+    character-set-server = utf8mb4
+    collation-server = utf8mb4_unicode_ci
+    skip-character-set-client-handshake = 1
+    default-storage-engine = INNODB
+    max_allowed_packet = 500M
+    explicit_defaults_for_timestamp = 1
+    long_query_time = 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mysql
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:5.7
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: abc123
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - mountPath: /etc/mysql/conf.d/my.cnf
+          subPath: my.cnf
+          name: cm
+      volumes:
+        - name: cm
+          configMap:
+            name: mysql
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: default
+spec:
+  ports:
+    - port: 3306
+      protocol: TCP
+      targetPort: 3306
+  selector:
+    app: mysql
+```
+
+### 4.3.2 traefik添加tcp端口
+
+修改 configmap
+
+```bash
+[root@k8s-node1 traefik]# vim configmap.yml
+    entryPoints:
+      web:
+        address: ":80"          ## 配置 80 端口，并设置入口名称为 web
+      websecure:
+        address: ":443"         ## 配置 443 端口，并设置入口名称为 websecure
+      udpep:
+        address: ":8084/udp"    ## 配置 8084 端口，并设置入口名称为 udpep，做为 udp 入口
+      mysql:
+        address: ":3306"        ## 配置 3306 端口，并设置入口名称为 mysql，作为 tcp 入口
+[root@k8s-node1 traefik]# kubectl apply -f configmap.yml
+configmap/traefik configured
+```
+
+修改 daemonset
+
+```bash
+[root@k8s-node1 traefik]# vim daemonset.yml
+          ports:
+            - name: web
+              containerPort: 80
+              hostPort: 80              ## 将容器端口绑定所在服务器的 80 端口
+            - name: websecure
+              containerPort: 443
+              hostPort: 443             ## 将容器端口绑定所在服务器的 443 端口
+            - name: udped
+              protocol: UDP
+              containerPort: 8084       ## 将容器端口绑定所在服务器的 8084 端口
+              hostPort: 8084
+            - name: admin
+              containerPort: 8080       ## Traefik Dashboard 端口
+            - name: mysql
+              containerPort: 3306
+              hostPort: 3306            ## 将容器端口绑定所在服务器的 3306 端口
+[root@k8s-node1 traefik]# kubectl apply -f daemonset.yml
+daemonset.apps/traefik configured
+```
+
+修改service
+
+```bash
+[root@k8s-node1 traefik]# vim service.yml
+spec:
+  ports:
+    - protocol: TCP
+      name: web
+      port: 80
+    - protocol: TCP
+      name: websecure
+      port: 443
+    - protocol: UDP
+      name: udpep
+      port: 8084
+    - protocol: TCP
+      name: admin
+      port: 8080
+    - protocol: TCP
+      name: mysql
+      port: 3306
+[root@k8s-node1 traefik]# kubectl apply -f service.yml
+service/traefik configured
+```
+
+### 4.3.3 ingressRouteTCP
+
+> SNI为服务名称标识，是 TLS 协议的扩展。因此，只有 TLS 路由才能使用该规则指定域名。但是，非 TLS 路由必须使用带有 `*` 的规则（每个域）来声明每个非 TLS 请求都将由路由进行处理。
+
+```yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: mysql
+  namespace: default
+spec:
+  entryPoints:
+    - mysql
+  routes:
+  - match: HostSNI(`*`)
+    services:
+    - name: mysql
+      port: 3306
+```
+
+集群外主机验证
+
+- 添加 hosts 
+- 以 root & abc123 访问 3306 端口
+
+![image-20230418144253739](https://image.lvbibir.cn/blog/image-20230418144253739.png)
+
+![image-20230418144547043](https://image.lvbibir.cn/blog/image-20230418144547043.png)
+
+## 4.4 udp 路由
+
+创建应用
+
+```yaml
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: whoamiudp
+  labels:
+    app: whoamiudp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: whoamiudp
+  template:
+    metadata:
+      labels:
+        app: whoamiudp
+    spec:
+      containers:
+        - name: whoamiudp
+          image: traefik/whoamiudp:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoamiudp
+spec:
+  ports:
+    - port: 8080
+      protocol: UDP
+  selector:
+    app: whoamiudp
+```
+
+配置 ingressRouteUDP
+
+```yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteUDP
+metadata:
+  name: whoamiudp
+spec:
+  entryPoints:                  
+    - udpep
+  routes:                      
+  - services:                  
+    - name: whoamiudp                 
+      port: 8080
+```
+
+直接访问 svc 验证
+
+```bash
+[root@k8s-node1 traefik]# kubectl get svc whoamiudp
+NAME        TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+whoamiudp   ClusterIP   10.96.119.116   <none>        8080/UDP   2m22s
+[root@k8s-node1 traefik]# echo "WHO" | socat - udp4-datagram:10.96.119.116:8080
+Hostname: whoamiudp-6ff7dd6fb9-8qfc7
+IP: 127.0.0.1
+IP: 10.244.169.174
+[root@k8s-node1 traefik]# echo "test" | socat - udp4-datagram:10.96.119.116:8080
+Received: test
+```
+
+访问 udp 路由验证
+
+```bash
+[root@k8s-node1 traefik]# echo "WHO" | socat - udp4-datagram:k8s-node1:8084
+Hostname: whoamiudp-6ff7dd6fb9-5l8rd
+IP: 127.0.0.1
+IP: 10.244.107.243
+[root@k8s-node1 traefik]# echo "test" | socat - udp4-datagram:1.1.1.1:8084
+Received: test
+```
+
+# 5. traefik中间件Middleware
+
+> https://doc.traefik.io/traefik/v2.5/middlewares/overview/
+
+traefik 有丰富的中间件可以实现很多自定义功能，具体可看官方文档
+
+## 5.1 IPWhiteList
+
+> https://doc.traefik.io/traefik/v2.5/middlewares/http/ipwhitelist/
+
+创建应用
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-ipwhitelist
+  labels:
+    app: test-ipwhitelist
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: test-ipwhitelist
+  template:
+    metadata:
+      labels:
+        app: test-ipwhitelist
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: test-ipwhitelist
+        image: nginx:1.22.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-ipwhitelist
+  labels:
+    app: test-ipwhitelist
+spec:
+  selector:
+    app: test-ipwhitelist
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+```
+
+创建 middleware 和 ingressroute
+
+```yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: test-ipwhitelist
+spec:
+  ipWhiteList:
+    sourceRange:
+      - 127.0.0.1
+      - 10.244.0.0/16
+      - 10.96.0.0/12
+      - 1.1.1.0/24
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingressroutemiddle
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`middleware.test.com`) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - name: test-ipwhitelist
+      port: 80
+      namespace: default
+    middlewares:
+    - name: test-ipwhitelist
+```
+
+测试
+
+```bash
+[root@k8s-node1 traefik]# curl -I http://middleware.test.com
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Content-Length: 615
+Content-Type: text/html
+Date: Tue, 18 Apr 2023 08:00:51 GMT
+Etag: "634faf0c-267"
+Last-Modified: Wed, 19 Oct 2022 08:02:20 GMT
+Server: nginx/1.22.1
+```
+
+去掉白名单
+
+```bash
+[root@k8s-node1 traefik]# vim middleware/middleware-ingressroute.yml
+      - 1.1.1.0/24 # 去掉这行
+[root@k8s-node1 traefik]# kubectl apply -f middleware/middleware-ingressroute.yml
+middleware.traefik.containo.us/test-ipwhitelist configured
+ingressroute.traefik.containo.us/ingressroutemiddle unchanged
+[root@k8s-node1 traefik]# curl -I http://middleware.test.com
+HTTP/1.1 403 Forbidden
+Date: Tue, 18 Apr 2023 08:01:42 GMT
+Content-Length: 9
+Content-Type: text/plain; charset=utf-8
+```
+
+# 6. traefik高级功能
+
+## 6.1 负载均衡
+
+创建两个 web 应用 `foo` `bar` 
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo
+  labels:
+    app: foo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foo
+  template:
+    metadata:
+      labels:
+        app: foo
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: foo
+        image: nginx:1.22.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "echo 'foo' > /usr/share/nginx/html/index.html"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo
+  labels:
+    app: foo
+spec:
+  selector:
+    app: foo
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bar
+  labels:
+    app: bar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bar
+  template:
+    metadata:
+      labels:
+        app: bar
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: bar
+        image: nginx:1.22.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "echo 'bar' > /usr/share/nginx/html/index.html"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bar
+  labels:
+    app: bar
+spec:
+  selector:
+    app: bar
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+```
+
+创建 ingressroute
+
+```yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingressrouteweblb
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`lb.test.com`) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - name: foo
+      port: 80
+      namespace: default
+    - name: bar
+      port: 80
+      namespace: default
+```
+
+验证
+
+```bash
+[root@k8s-node1 traefik]# vim /etc/hosts
+[root@k8s-node1 traefik]# curl lb.test.com
+foo
+[root@k8s-node1 traefik]# curl lb.test.com
+bar
+[root@k8s-node1 traefik]# curl lb.test.com
+foo
+[root@k8s-node1 traefik]# curl lb.test.com
+bar
+```
+
+## 6.2 灰度发布(加权轮询)
+
+> 基于 6.1 负载均衡的基础上测试
+>
+> 灰度发布也称为金丝雀发布，让一部分即将上线的服务发布到线上，观察是否达到上线要求，主要通过加权轮询的方式实现。
+
+创建 traefikservice
+
+```yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: TraefikService
+metadata:
+  name: wrr
+  namespace: default
+spec:
+  weighted:
+    services:
+      - name: foo    
+        port: 80
+        weight: 3          # 定义权重
+        kind: Service      # 可选，默认就是 Service 
+      - name: bar
+        port: 80     
+        weight: 1
+```
+
+创建 ingressroute
+
+```yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingressroutewrr
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`wrr.test.com`) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - name: wrr
+      namespace: default
+      kind: TraefikService
+```
+
+测试结果如下，可以看到每 4 次访问会有 3 次流量落到 foo 应用， 1 次流量落到 bar 应用
+
+```bash
+[root@k8s-node1 traefik]# for i in {1..12}; do curl http://wrr.test.com; done
+foo
+foo
+foo
+bar
+foo
+foo
+foo
+bar
+foo
+foo
+foo
+bar
+```
+
+## 6.3 会话保持(粘性会话)
+
+> 在 6.1 负载均衡案例的基础上实施
+>
+> 会话保持依赖于 traefikService 的加权轮询
+
+创建 traefikServie 
+
+```yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: TraefikService
+metadata:
+  name: sticky
+  namespace: default
+spec:
+  weighted:
+    services:
+      - name: foo
+        port: 80
+        weight: 3          # 定义权重
+        kind: Service      # 可选，默认就是 Service
+      - name: bar
+        port: 80
+        weight: 1
+    sticky:                 # 开启粘性会话
+      cookie:               # 基于cookie区分客户端      
+        name: test-cookie   # 指定客户端请求时，包含的cookie名称
+```
+
+创建 ingressroute
+
+```yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingressroute-sticky
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`sticky.test.com`) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - name: sticky
+      namespace: default
+      kind: TraefikService
+```
+
+客户端访问测试，携带 cookie
+
+```yaml
+```
+
+
+
+
+
+
+
+
+
+## 6.4 流量复制
+
+> 在 6.1 负载均衡案例基础之上实施
+>
+> 所谓的流量复制，也称为镜像服务是指将请求的流量按规则复制一份发送给其它服务，并且会忽略这部分请求的响应，这个功能在做一些压测或者问题复现的时候很有用。
+
+创建 traefikservice
+
+```yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: TraefikService
+metadata:
+  name: mirror-from-service
+  namespace: default
+spec:
+  mirroring:
+    name: foo       # 发送 100% 的请求到 Service "foo"
+    port: 80
+    mirrors:
+      - name: bar   # 然后复制 20% 的请求到 "bar"
+        port: 80
+        percent: 20
+```
+
+创建 ingressroute
+
+```yaml
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingressroute-mirror
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`mirror.test.com`) && PathPrefix(`/`) 
+    kind: Rule
+    services:
+    - name: mirror-from-service         
+      namespace: default
+      kind: TraefikService
+```
+
+测试如下，可以看到只有`foo` 应用会有数据返回
+
+```bash
+[root@k8s-node1 traefik]# for i in {1..20}; do curl http://mirror.test.com && sleep 1; done
+foo
+foo
+......
+```
+
+`bar` 应用同样收到了请求，与预期相同，收到了 20% 的流量
+
+```bash
+[root@k8s-node1 ~]# kubectl logs -l app=bar
+....
+10.244.36.82 - - [18/Apr/2023:09:13:59 +0000] "GET / HTTP/1.1" 200 4 "-" "curl/7.29.0" "1.1.1.1"
+10.244.36.82 - - [18/Apr/2023:09:14:04 +0000] "GET / HTTP/1.1" 200 4 "-" "curl/7.29.0" "1.1.1.1"
+10.244.36.82 - - [18/Apr/2023:09:14:09 +0000] "GET / HTTP/1.1" 200 4 "-" "curl/7.29.0" "1.1.1.1"
+10.244.36.82 - - [18/Apr/2023:09:14:14 +0000] "GET / HTTP/1.1" 200 4 "-" "curl/7.29.0" "1.1.1.1"
+```
+
+
+

@@ -116,7 +116,7 @@ Secret支持三种数据类型：
 
 将用户名和密码进行编码
 
-```
+```bash
 [root@k8s-node1 ~]# echo -n 'admin' | base64
 YWRtaW4=
 [root@k8s-node1 ~]# echo -n '123.com' | base64
@@ -187,5 +187,4 @@ root@pod-secret-demo:/# echo $PASS
 root@pod-secret-demo:/# cat /config/my-password
 123.com
 ```
-
 

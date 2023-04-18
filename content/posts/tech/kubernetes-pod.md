@@ -19,7 +19,9 @@ cover:
 
 基于`centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
-# 1. 基本概念
+# 1. 简介
+
+基本概念
 
 - 最小部署单元
 
@@ -29,7 +31,7 @@ cover:
 
 - Pod是短暂的
 
-# 2. 存在意义
+存在意义
 
 Pod为亲密性应用而存在。
 
@@ -41,7 +43,7 @@ Pod为亲密性应用而存在。
 
 - 两个应用需要发生频繁的调用
 
-# 3. 容器分类
+# 2. pod中的容器分类
 
 - Infrastructure Container：基础容器，维护整个Pod网络空间
 
@@ -52,6 +54,16 @@ Pod为亲密性应用而存在。
 **Infrastructure Container**
 
 pod中总会多一个pause容器，这个容器就是实现将pod中的所有容器的网络命名空间进行统一，a容器在localhost或者127.0.0.1的某个端口提供了服务，b容器访问localhost或者127.0.0.1加端口也可以访问到
+
+**pause容器主要为每个业务容器提供以下功能：**
+
+- PID命名空间：Pod中的不同应用程序可以看到其他应用程序的进程ID。
+
+- 网络命名空间：Pod中的多个容器能够访问同一个IP和端口范围。
+
+- IPC命名空间：Pod中的多个容器能够使用SystemV IPC或POSIX消息队列进行通信。
+
+- UTS命名空间：Pod中的多个容器共享一个主机名；Volumes（共享存储卷）。
 
 **Init container：** 
 
@@ -93,7 +105,7 @@ spec:
     emptyDir: {}
 ```
 
-# 4. 静态pod
+# 3. 静态pod
 
 静态Pod特点：
 
@@ -114,7 +126,7 @@ staticPodPath: /etc/kubernetes/manifests
 
 将部署的pod yaml放到该目录会由kubelet自动创建
 
-# 5. 重启策略
+# 4. 重启策略
 
 Pod 的 `spec` 中包含一个 `restartPolicy` 字段，其可能取值包括 Always、OnFailure 和 Never。默认值是 Always。
 
@@ -126,9 +138,9 @@ Pod 的 `spec` 中包含一个 `restartPolicy` 字段，其可能取值包括 Al
 
 - Never：当容器终止退出，从不重启容器。
 
-# 6. 健康检查
+# 5. 健康检查
 
-## 6.1 三种探针
+## 5.1 三种探针
 
 kubernetes包含以下三种探针
 
@@ -138,7 +150,7 @@ kubernetes包含以下三种探针
 
 需要注意的是, 如果容器未配置以上三种探针, 则视为三种探针皆为成功, liveness和readiness探针的`initialDelaySeconds`配置代表startup探针成功后等待多少秒再去初始化 liveness和readiness 探针.
 
-### 6.1.1 检查方法
+### 5.1.1 检查方法
 
 支持以下四种检查方法：
 
@@ -147,14 +159,14 @@ kubernetes包含以下三种探针
 - tcpSocket：对容器的 IP 地址上的指定端口执行 TCP 检查。如果端口打开，则诊断被认为是成功的。 如果远程系统（容器）在打开连接后立即将其关闭，这算作是健康的。
 - gRPC：使用 [gRPC](https://grpc.io/) 执行一个远程过程调用。需要应用程序支持，[参考](https://kubernetes.io/zh-cn/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#%E5%AE%9A%E4%B9%89-grpc-%E5%AD%98%E6%B4%BB%E6%8E%A2%E9%92%88)
 
-### 6.1.2 检查结果
+### 5.1.2 检查结果
 
 - Success(成功)
 - Failure(失败)
 
 - Unknown(未知): 不会执行任何操作.
 
-### 6.1.3 探针配置
+### 5.1.3 探针配置
 
 - initialDelaySeconds: 容器启动后(startup探针成功)要等待多少秒后存活和就绪探测器才被初始化, 默认是0秒, 最小值是0.
 - periodSeconds: 执行探测的时间间隔.默认是10秒, 最小值是1.
@@ -162,9 +174,9 @@ kubernetes包含以下三种探针
 - successThreshold: 探测器在失败后, 被视为成功的最小连续成功数. 默认值是1. 存活探测的这个值必须是1。最小值是1.
 - failureThreshold: 当Pod启动了并且探测到失败的重试次数. 存活探测情况下的放弃就意味着重新启动容器. 就绪探测情况下的放弃Pod会被打上未就绪的标签, 默认值是3, 最小值是1.
 
-## 6.2 示例
+## 5.2 示例
 
-### 6.2.1 liveness
+### 5.2.1 liveness
 
 linveness实际触发重启需要的时间 = 失败次数 * 间隔时间 + 等待容器优雅退出的宽限期(默认30s，docker默认是10s) 
 
@@ -207,7 +219,7 @@ liveness-pod   1/1     Running   4 (2s ago)   2m2s
 3. 第20s第二次检查失败，给容器发送停止信号
 4. 等待10s后强制重启容器
 
-### 6.2.3 liveness-with-startup
+### 5.2.2 liveness-with-startup
 
 示例:
 
@@ -246,3 +258,61 @@ spec:
 4. 第40秒liveness探针第一次失败
 5. 第50秒liveness探针第三次失败, 触发重启, 等待容器优雅退出
 6. 第60秒强制重启container
+
+# 6. lifecycle
+
+![112gasgs81](https://image.lvbibir.cn/blog/112gasgs81.png)
+
+## 6.1 postStart 和 preStop
+
+如下示例
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lifecycle-demo-pod
+  namespace: default
+  labels:
+    test: lifecycle
+spec:
+  containers:
+  - name: lifecycle-demo
+    image: nginx:1.22.1
+    imagePullPolicy: IfNotPresent
+    lifecycle:
+      postStart:
+        exec:
+          command: ["/bin/sh", "-c", "echo 'Hello from the postStart handler' >> /var/log/nginx/message"]
+      preStop:
+        exec:
+          command: ["/bin/sh", "-c", "echo 'Hello from the preStop handler'   >> /var/log/nginx/message"]
+    volumeMounts:         
+    - name: message-log  
+      mountPath: /var/log/nginx/  
+      readOnly: false        # 读写挂载方式，默认为读写模式false    
+  initContainers:
+  - name: init-myservice
+    image: busybox:1.28
+    command: ["/bin/sh", "-c", "echo 'Hello initContainers'   >> /var/log/nginx/message"]
+    volumeMounts:        
+    - name: message-log  
+      mountPath: /var/log/nginx/ 
+      readOnly: false           # 读写挂载方式，默认为读写模式false  
+  volumes:             
+  - name: message-log   
+    hostPath:           
+      path: /data/volumes/nginx/log/   
+      type: DirectoryOrCreate     # 表示如果宿主机没有此目录则会自动创建
+```
+
+效果如下
+
+```bash
+[root@k8s-node1 ~]# kubectl delete pod lifecycle-demo-pod
+[root@k8s-node2 log]# cat message 
+Hello initContainers
+Hello from the postStart handler
+Hello from the preStop handler
+```
+
