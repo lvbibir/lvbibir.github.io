@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.lvbibir.cn/posts/tech/</loc>
-    <lastmod>2023-04-17T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/blog/hello-hugo/</loc>
     <lastmod>2022-09-11T00:00:00+00:00</lastmod>
@@ -18,19 +18,34 @@
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/</loc>
-    <lastmod>2023-04-17T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/kubernetes/</loc>
-    <lastmod>2023-04-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-traefik/</loc>
-    <lastmod>2023-04-17T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/</loc>
-    <lastmod>2023-04-17T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/traefik/</loc>
+    <lastmod>2023-04-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-4-traefikservice/</loc>
+    <lastmod>2023-04-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/</loc>
+    <lastmod>2023-04-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-3-middleware/</loc>
+    <lastmod>2023-04-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-2-router/</loc>
+    <lastmod>2023-04-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-1-deploy/</loc>
     <lastmod>2023-04-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-gatewayapi/</loc>
+    <lastmod>2023-04-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/dns-search/</loc>
     <lastmod>2023-04-13T00:00:00+00:00</lastmod>

@@ -6,14 +6,50 @@
     <description>Recent content in 👨🏻‍💻 技术 on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 17 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>kubernetes | traefik ingress</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik/</link>
+      <title>traefik系列之四 | 服务(TraefikService)</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-4-traefikservice/</link>
+      <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-4-traefikservice/</guid>
+      <description>kubernetes 中使用 Traefik ingress 的 TraefikService 实现加权轮询、灰度发布、流量复制、会话保持(粘性会话)等功能</description>
+    </item>
+    
+    <item>
+      <title>traefik系列之三 | 中间件(Middleware)</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-3-middleware/</link>
+      <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-3-middleware/</guid>
+      <description>kubernetes 中使用 Traefik ingress 的 Middleware 实现重定向、白名单、用户认证、限流、熔断、压缩、自定义error页等操作</description>
+    </item>
+    
+    <item>
+      <title>traefik系列之二 | 路由(ingressRoute)</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-2-router/</link>
+      <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-2-router/</guid>
+      <description>kubernetes 中使用 Traefik ingress 的 ingressRoute 代理 http、https、tcp、udp</description>
+    </item>
+    
+    <item>
+      <title>traefik系列之一 | 简介、部署和配置</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-1-deploy/</link>
       <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-traefik/</guid>
-      <description>kubernetes 中 Traefik ingress 的简介、部署、配置、应用示例(ingress, ingressRoute, Gateway API)、MiddleWare、负载均衡、灰度发布、流量复制。</description>
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-1-deploy/</guid>
+      <description>kubernetes 中 Traefik ingress 的简介、部署及配置。</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | Gateway API 简介及部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-gatewayapi/</link>
+      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-gatewayapi/</guid>
+      <description>1. 简介 Gateway API（之前叫 Service API）是由 SIG-NETWORK 社区管理的开源项目，项目地址：https://gateway-api.sigs.k8s.io/。主要原因是 Ingress 资源对象不能很好的满足网络需求，很多场景下 Ingress 控制器都需要通过定义 annotations 或者 crd 来进行功能扩展，这对于使用标准和支持是非常不利的，新推出的 Gateway API</description>
     </item>
     
     <item>
