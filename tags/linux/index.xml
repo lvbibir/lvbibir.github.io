@@ -8,7 +8,7 @@
     <language>zh-cn</language>
     <lastBuildDate>Thu, 13 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>dns配置文件/etc/resolv.conf中search和options ndots详解</title>
+      <title>dns配置文件中search和options ndots详解</title>
       <link>https://www.lvbibir.cn/posts/tech/dns-search/</link>
       <pubDate>Thu, 13 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -161,15 +161,6 @@
     </item>
     
     <item>
-      <title>CentOS | 密码尝试次数过多</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</link>
-      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</guid>
-      <description>介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理</description>
-    </item>
-    
-    <item>
       <title>centos7.5 升级内核至 5.10</title>
       <link>https://www.lvbibir.cn/posts/tech/centos-update-kernel-to-5.10/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
@@ -185,6 +176,15 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/cve-1999-0526/</guid>
       <description>介绍如何在 centos6 中修复 CVE-1999-0526 披露的漏洞</description>
+    </item>
+    
+    <item>
+      <title>密码尝试次数过多</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</guid>
+      <description>介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理</description>
     </item>
     
     <item>
@@ -221,15 +221,6 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/rpm-build-openssh/</guid>
       <description>记录一下不同系统环境下通过源码构建openssh rpm包的过程</description>
-    </item>
-    
-    <item>
-      <title>redhat服务器升级内核</title>
-      <link>https://www.lvbibir.cn/posts/tech/redhat-update-kernel/</link>
-      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/redhat-update-kernel/</guid>
-      <description>前言 按指定要求安装升级内核，保证grub2启动时为默认项目 第一步 确认当前操作系统的内核版本 [root@server0 ~]# uname -r 3.10.0-123.el7.x86_64 第二步 下载准备升级的内核文件，比如说内核已存在于某个 Yum 仓库：http://content.example.com/rhel7.0/x86_64/errata 此时只要添加这个 Yum 源就可</description>
     </item>
     
     <item>

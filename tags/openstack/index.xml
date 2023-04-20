@@ -8,12 +8,12 @@
     <language>zh-cn</language>
     <lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/openstack/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>ssh服务异常 | cloud-init自动修改ssh配置文件</title>
+      <title>cloud-init自动修改ssh配置文件</title>
       <link>https://www.lvbibir.cn/posts/tech/cloud-init-change-ssh-config/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/cloud-init-change-ssh-config/</guid>
-      <description>介绍cloud-init是如何将ssh配置文件的PasswordAuthentication参数值修改为no的</description>
+      <description>前言 在openEuler20.03 (LTS-SP1)系统上进行一些测试，发现某个东西会自动修改ssh配置文件导致系统无法通过密码登录，最后排查是由于安装了cloud-init导致的。 以下是大致的排查思路 出现这个问题前做的操作是安装了一些项目组同事指定的包，问题就应该出在这些包上 yum</description>
     </item>
     
     <item>

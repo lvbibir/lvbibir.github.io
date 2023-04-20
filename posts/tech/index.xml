@@ -49,11 +49,11 @@
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/kubernetes-gatewayapi/</guid>
-      <description>1. 简介 Gateway API（之前叫 Service API）是由 SIG-NETWORK 社区管理的开源项目，项目地址：https://gateway-api.sigs.k8s.io/。主要原因是 Ingress 资源对象不能很好的满足网络需求，很多场景下 Ingress 控制器都需要通过定义 annotations 或者 crd 来进行功能扩展，这对于使用标准和支持是非常不利的，新推出的 Gateway API</description>
+      <description>1. 简介 Gateway API（之前叫 Service API）是由 SIG-NETWORK 社区管理的开源项目，项目地址：https://gateway-api.sigs.k8s.io/。 Ingress 资源对象不能很好的满足网络需求，很多场景下 Ingress 控制器都需要通过定义 annotations 或者 crd 来进行功能扩展，这对于使用标准和支持是非常不利的，新推出的 Gateway API 旨在通过可</description>
     </item>
     
     <item>
-      <title>dns配置文件/etc/resolv.conf中search和options ndots详解</title>
+      <title>dns配置文件中search和options ndots详解</title>
       <link>https://www.lvbibir.cn/posts/tech/dns-search/</link>
       <pubDate>Thu, 13 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -224,7 +224,7 @@
     </item>
     
     <item>
-      <title>kubernetes | 日志收集分析</title>
+      <title>kubernetes | 日志</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-logs/</link>
       <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -431,15 +431,6 @@
     </item>
     
     <item>
-      <title>CentOS | 密码尝试次数过多</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</link>
-      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</guid>
-      <description>介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理</description>
-    </item>
-    
-    <item>
       <title>centos7.5 升级内核至 5.10</title>
       <link>https://www.lvbibir.cn/posts/tech/centos-update-kernel-to-5.10/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
@@ -458,6 +449,15 @@
     </item>
     
     <item>
+      <title>密码尝试次数过多</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</guid>
+      <description>介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理</description>
+    </item>
+    
+    <item>
       <title>centos7 部署 ceph-v12 (nautilus) &#43; dashboard</title>
       <link>https://www.lvbibir.cn/posts/tech/ceph-v12-nautilus-cephdeploy/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
@@ -467,21 +467,21 @@
     </item>
     
     <item>
+      <title>cloud-init自动修改ssh配置文件</title>
+      <link>https://www.lvbibir.cn/posts/tech/cloud-init-change-ssh-config/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/cloud-init-change-ssh-config/</guid>
+      <description>前言 在openEuler20.03 (LTS-SP1)系统上进行一些测试，发现某个东西会自动修改ssh配置文件导致系统无法通过密码登录，最后排查是由于安装了cloud-init导致的。 以下是大致的排查思路 出现这个问题前做的操作是安装了一些项目组同事指定的包，问题就应该出在这些包上 yum</description>
+    </item>
+    
+    <item>
       <title>python3修改pip源</title>
       <link>https://www.lvbibir.cn/posts/tech/python3-change-pip-repo/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/python3-change-pip-repo/</guid>
-      <description>中国科学技术大学 : https://pypi.mirrors.ustc.edu.cn/simple 清华：https://pypi.tuna.tsinghua.edu.cn/simple 豆瓣：http://pypi.douban.com/simple/ 华中理工大学 : http://pypi.hustunique.com/simple 山东理工大学 : http://pypi.sdutlinux.org/simple 阿里云：https://mirrors.aliyun.com/pypi/si</description>
-    </item>
-    
-    <item>
-      <title>ssh服务异常 | cloud-init自动修改ssh配置文件</title>
-      <link>https://www.lvbibir.cn/posts/tech/cloud-init-change-ssh-config/</link>
-      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/cloud-init-change-ssh-config/</guid>
-      <description>介绍cloud-init是如何将ssh配置文件的PasswordAuthentication参数值修改为no的</description>
+      <description>清单 地址 中国科学技术大学 https://pypi.mirrors.ustc.edu.cn/simple 清华 https://pypi.tuna.tsinghua.edu.cn/simple 豆瓣 http://pypi.douban.com/simple 华中理工大学 http://pypi.hustunique.com/simple 山东理工大学 http://pypi.sdutlinux.org/simple 阿里云 https://mirrors.aliyun.com/pypi/simple/ linux环境 mkdir ~/.pip cat &amp;gt; ~/.pip/pip.conf &amp;lt;&amp;lt; EOF [global] trusted-host=mirrors.aliyun.com index-url=https://mirrors.aliyun.com/pypi/simple/ EOF windows环境 打开 cmd 使用 dos命令 set 找到 userprofile 路径，在该路径下创建 pip文件夹，在 pip文件夹下创建 pip.ini pip.ini具体配置 [global] timeout = 6000 index-url = https://pypi.tuna.tsinghua.edu.cn/simple trusted-host = pypi.tuna.tsinghua.edu.cn</description>
     </item>
     
     <item>
@@ -513,11 +513,11 @@
     
     <item>
       <title>kubernetes | kubeadm 搭建 K8s集群v1.22.3</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</link>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-deploy-v1.22.3/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</guid>
-      <description>介绍kubernetes，并在centos中使用kubeadm快速搭建k8s集群v1.22.3、dashboard配置、安装cni组件</description>
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-deploy-v1.22.3/</guid>
+      <description>介绍kubernetes，并在centos中使用kubeadm快速搭建k8s集群v1.22.3、安装cni组件</description>
     </item>
     
     <item>
@@ -527,15 +527,6 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/rpm-build-openssh/</guid>
       <description>记录一下不同系统环境下通过源码构建openssh rpm包的过程</description>
-    </item>
-    
-    <item>
-      <title>redhat服务器升级内核</title>
-      <link>https://www.lvbibir.cn/posts/tech/redhat-update-kernel/</link>
-      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/redhat-update-kernel/</guid>
-      <description>前言 按指定要求安装升级内核，保证grub2启动时为默认项目 第一步 确认当前操作系统的内核版本 [root@server0 ~]# uname -r 3.10.0-123.el7.x86_64 第二步 下载准备升级的内核文件，比如说内核已存在于某个 Yum 仓库：http://content.example.com/rhel7.0/x86_64/errata 此时只要添加这个 Yum 源就可</description>
     </item>
     
     <item>

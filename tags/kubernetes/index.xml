@@ -49,7 +49,7 @@
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/kubernetes-gatewayapi/</guid>
-      <description>1. 简介 Gateway API（之前叫 Service API）是由 SIG-NETWORK 社区管理的开源项目，项目地址：https://gateway-api.sigs.k8s.io/。主要原因是 Ingress 资源对象不能很好的满足网络需求，很多场景下 Ingress 控制器都需要通过定义 annotations 或者 crd 来进行功能扩展，这对于使用标准和支持是非常不利的，新推出的 Gateway API</description>
+      <description>1. 简介 Gateway API（之前叫 Service API）是由 SIG-NETWORK 社区管理的开源项目，项目地址：https://gateway-api.sigs.k8s.io/。 Ingress 资源对象不能很好的满足网络需求，很多场景下 Ingress 控制器都需要通过定义 annotations 或者 crd 来进行功能扩展，这对于使用标准和支持是非常不利的，新推出的 Gateway API 旨在通过可</description>
     </item>
     
     <item>
@@ -125,7 +125,7 @@
     </item>
     
     <item>
-      <title>kubernetes | 日志收集分析</title>
+      <title>kubernetes | 日志</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-logs/</link>
       <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -162,11 +162,11 @@
     
     <item>
       <title>kubernetes | kubeadm 搭建 K8s集群v1.22.3</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</link>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-deploy-v1.22.3/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</guid>
-      <description>介绍kubernetes，并在centos中使用kubeadm快速搭建k8s集群v1.22.3、dashboard配置、安装cni组件</description>
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-deploy-v1.22.3/</guid>
+      <description>介绍kubernetes，并在centos中使用kubeadm快速搭建k8s集群v1.22.3、安装cni组件</description>
     </item>
     
   </channel>

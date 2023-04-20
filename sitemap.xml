@@ -215,25 +215,25 @@
     <loc>https://www.lvbibir.cn/posts/tech/docker-import-export-image/</loc>
     <lastmod>2021-02-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</loc>
-    <lastmod>2022-01-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/centos-update-kernel-to-5.10/</loc>
     <lastmod>2022-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/cve-1999-0526/</loc>
     <lastmod>2022-01-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</loc>
+    <lastmod>2022-01-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/ceph-v12-nautilus-cephdeploy/</loc>
+    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/cloud-init-change-ssh-config/</loc>
     <lastmod>2021-12-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/openstack/</loc>
     <lastmod>2021-12-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/python3-change-pip-repo/</loc>
-    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/cloud-init-change-ssh-config/</loc>
     <lastmod>2021-12-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/rpm-change-file/</loc>
@@ -251,14 +251,11 @@
     <loc>https://www.lvbibir.cn/posts/tech/openstack-kolla-ansible-allinone-train/</loc>
     <lastmod>2021-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/</loc>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-deploy-v1.22.3/</loc>
     <lastmod>2023-04-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/rpm-build-openssh/</loc>
     <lastmod>2022-09-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/redhat-update-kernel/</loc>
-    <lastmod>2021-09-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/shell-server-inspection/</loc>
     <lastmod>2021-09-01T00:00:00+00:00</lastmod>
