@@ -1,5 +1,5 @@
 ---
-title: "dns配置文件/etc/resolv.conf中search和options ndots详解" 
+title: "dns配置文件中search和options ndots详解" 
 date: 2023-04-13
 lastmod: 2023-04-13
 tags: 

@@ -1,5 +1,5 @@
 ---
-title: "CentOS | 密码尝试次数过多" 
+title: "密码尝试次数过多" 
 date: 2022-01-01
 lastmod: 2022-01-01
 tags: 

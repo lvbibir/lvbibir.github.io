@@ -9,7 +9,6 @@ keywords:
 - linux
 - openvpn
 - centos
-- 服务部署
 - 内网穿透
 description: "介绍如何在centos6的环境中部署openvpn服务实现内网穿透" 
 cover:

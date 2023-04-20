@@ -28,7 +28,7 @@ set设置的选项无法被继承，仅对当前的bash环境有效，bash命令
 
 例如 `set -B` 和`set -o braceexpand` 是等效的，注意这里的设置和取消有点反常识：**设置用 -，关闭反而是用 +**
 
-```
+```bash
 [root@lvbibir ~]# echo $-
 himBH
 

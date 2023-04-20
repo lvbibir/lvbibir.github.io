@@ -1,14 +1,16 @@
 ---
-title: "ssh服务异常 | cloud-init自动修改ssh配置文件" 
+title: "cloud-init自动修改ssh配置文件" 
 date: 2021-12-01
 lastmod: 2021-12-01
 tags: 
 - openstack
+- 故障处理
 keywords:
 - openstack
 - cloud-init
 - ssh
-description: "介绍cloud-init是如何将ssh配置文件的PasswordAuthentication参数值修改为no的" 
+- 故障处理
+description: "" 
 cover:
     image: "" 
 ---
