@@ -8,16 +8,16 @@
     <language>zh-cn</language>
     <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>kubernetes | kube-prometheus部署</title>
+      <title>kubernetes | kube-prometheus 监控系统</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus/</link>
       <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus/</guid>
-      <description>kubernetes 中部署配置 kube-prometheus </description>
+      <description>kubernetes 中部署配置 kube-prometheus, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系 </description>
     </item>
     
     <item>
-      <title>kubernetes | loki 部署</title>
+      <title>kubernetes | loki 开源日志框架</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-loki/</link>
       <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
       
