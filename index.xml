@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 19 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello,hugo!</title>
       <link>https://www.lvbibir.cn/posts/blog/hello-hugo/</link>
@@ -14,6 +14,24 @@
       
       <guid>https://www.lvbibir.cn/posts/blog/hello-hugo/</guid>
       <description>记录wordpress迁移至hugo&#43;papermod的过程包含环境搭建、博客美化、功能实现、速度优化等……</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | kube-prometheus部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus/</link>
+      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus/</guid>
+      <description>kubernetes 中部署配置 kube-prometheus </description>
+    </item>
+    
+    <item>
+      <title>kubernetes | loki 部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-loki/</link>
+      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-loki/</guid>
+      <description>kubernetes 中部署配置 loki 对接 grafana, 以及创建 traefik 的 dashboard 可视化展示数据</description>
     </item>
     
     <item>
@@ -270,10 +288,10 @@
     
     <item>
       <title>kubernetes | 杂记</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes/</link>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-notes/</link>
       <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-notes/</guid>
       <description>介绍一些常见的报错处理、kubectl命令的一些用法、yaml编写技巧、小优化等</description>
     </item>
     
