@@ -73,11 +73,12 @@ spec:
         backend:
           service:
             name: traefik
+            namespace: traefik
             port:
               number: 9000
 ```
 
-访问: http://traefik.local
+访问: http://ingress.traefik.local
 
 ## 2.2 ingressRoute
 
@@ -95,6 +96,7 @@ spec:
     kind: Rule
     services:
     - name: traefik
+      namespace: traefik
       port: 9000
 ```
 
@@ -156,7 +158,7 @@ spec:
         type: Prefix
         value: /
     forwardTo:
-    - serviceName: traefik 
+    - serviceName: traefik
       port: 9000
       weight: 1
 ```

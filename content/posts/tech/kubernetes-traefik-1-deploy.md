@@ -170,15 +170,11 @@ data:
     log:
       filePath: "/etc/traefik/logs/traefik.log" # 设置调试日志文件存储路径，如果为空则输出到控制台
       level: "DEBUG"            # 设置调试日志级别
-      format: "common"          # 设置调试日志格式
+      format: "json"          # 设置调试日志格式
     accessLog:
-      filePath: "/etc/traefik/logs/access.log" # 设置访问日志文件存储路径，如果为空则输出到控制台
-      format: "common"          # 设置访问调试日志格式
+      # filePath: "/etc/traefik/logs/access.log" # 设置访问日志文件存储路径，如果为空则输出到控制台
+      format: "json"          # 设置访问调试日志格式
       bufferingSize: 0          # 设置访问日志缓存行数
-      filters:
-        # statusCodes: ["200"]  # 设置只保留指定状态码范围内的访问日志
-        retryAttempts: true     # 设置代理访问重试失败时，保留访问日志
-        minDuration: 20         # 设置保留请求时间超过指定持续时间的访问日志
       fields:                   # 设置访问日志中的字段是否保留（keep保留、drop不保留）
         defaultMode: keep       # 设置默认保留访问日志字段
         names:                  # 针对访问日志特别字段特别配置保留模式

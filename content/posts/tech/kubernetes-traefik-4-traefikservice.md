@@ -25,7 +25,7 @@ cover:
 
 # 1. 简介
 
-traefik 的路由规则就可以实现 4 层和 7 层的基本负载均衡操作，使用 [IngressRoute](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroute)/[IngressRouteTCP](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroutetcp)/[IngressRouteUDP](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressrouteudp) 资源即可。但是如果想要实现 `加权轮询、流量复制` 等高级操作，traefik抽象出了一个 [TraefikService](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-traefikservice) 资源。此时整体流量走向为：外部流量先通过 entryPoints 端口进入 traefik，然后由 IngressRoute/IngressRouteTCP/IngressRouteUDP 匹配后进入 `TraefikService`，在 `TraefikService` 这一层实现加权轮循和流量复制，最后将请求转发至kubernetes的service。
+traefik 的路由规则就可以实现 4 层和 7 层的基本负载均衡操作，使用 [IngressRoute](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroute) [IngressRouteTCP](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroutetcp) [IngressRouteUDP](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressrouteudp) 资源即可。但是如果想要实现 `加权轮询、流量复制` 等高级操作，traefik抽象出了一个 [TraefikService](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-traefikservice) 资源。此时整体流量走向为：外部流量先通过 entryPoints 端口进入 traefik，然后由 IngressRoute/IngressRouteTCP/IngressRouteUDP 匹配后进入 `TraefikService`，在 `TraefikService` 这一层实现加权轮循和流量复制，最后将请求转发至kubernetes的service。
 
 除此之外traefik还支持7层的粘性会话、健康检查、传递请求头、响应转发、故障转移等操作。
 

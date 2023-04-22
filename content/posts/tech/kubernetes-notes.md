@@ -27,6 +27,14 @@ source <(kubectl completion bash)
 imagePullPolicy: Always|Never|IfNotPresent
 ```
 
+# 修改nodePort范围
+
+```bash
+vim /etc/kubernetes/manifests/kube-apiserver.yaml
+# spec.containers.command 增加
+- --service-node-port-range=1-65535
+```
+
 # command 和 args
 
 `containers.command` 等同于 Dockerfile 中的 `ENTRYPOINT` 
