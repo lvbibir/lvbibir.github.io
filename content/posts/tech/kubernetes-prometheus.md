@@ -1,5 +1,5 @@
 ---
-title: "kubernetes | kube-prometheus部署" 
+title: "kubernetes | kube-prometheus 监控系统" 
 date: 2023-04-22
 lastmod: 2023-04-22
 tags: 
@@ -7,7 +7,7 @@ tags:
 keywords:
 - kubernetes
 - prometheus
-description: "kubernetes 中部署配置 kube-prometheus " 
+description: "kubernetes 中部署配置 kube-prometheus, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系 " 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
     hidden: true
@@ -50,7 +50,7 @@ kubernets 与 kube-prometheus 的兼容性关系如下
 | release-0.11          | ✗               | ✗               | ✔               | ✔               | ✗               |
 | release-0.12          | ✗               | ✗               | ✗               | ✔               | ✔               |
 
-kube-prometheus 项目提供的 yaml 中使用的镜像大部分是 quay.io 或者 k8s.gcr.io 等外网仓库的镜像，博主已经将所需镜像上传到了阿里云，且 fork 官方仓库后修改了 yaml 中的仓库地址，可以直接拉取我修改后的 yaml
+kube-prometheus 项目提供的 yaml 中使用的镜像大部分是 quay.io 或者 k8s.gcr.io 等外网仓库的镜像，博主已经将所需镜像上传到了阿里云，且 fork 官方仓库后修改了 yaml 中的镜像仓库地址，可以直接拉取我修改后的 yaml
 
 这里我的 k8s 测试集群版本是 1.22.3，所以我部署的是 release-0.10 版本的 kube-prometheus
 

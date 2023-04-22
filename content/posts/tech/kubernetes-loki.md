@@ -1,5 +1,5 @@
 ---
-title: "kubernetes | loki 部署" 
+title: "kubernetes | loki 开源日志框架" 
 date: 2023-04-22
 lastmod: 2023-04-22
 tags: 
