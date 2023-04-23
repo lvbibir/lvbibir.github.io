@@ -1,7 +1,7 @@
 /*代码*/
 .post-content code {
-    padding: 3px 8px;
-    border-radius: 2px;
+    margin: 0px;
+    padding: 2px 5px;
     font-size: 0.92rem;
     color: #e96900;
     background-color: #f7f7f7;

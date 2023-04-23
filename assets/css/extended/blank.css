@@ -121,7 +121,7 @@ img:active {
     max-width: none;
     padding: 10px 0 5px 0;
     font-size: 14px;
-    color: black;
+    /* color: black; */
     /* line-height: 50px; */
 }
 
