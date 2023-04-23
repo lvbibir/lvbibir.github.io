@@ -191,29 +191,10 @@ body {
 }
 
 
-/* 文章封面的cover图片展示大小 */
-.post-entry .entry-cover img {
-    width: 100%;
-    height: 100%;
-    display: initial;
-    max-height: 100px;
-    object-fit: contain;
-}
-
 .entry-cover1 {
     border-radius: 10px;
-}
-
-/* 文章内的cover图片展示大小 */
-.entry-cover1 img {
-    width: 100%;
-    margin-bottom: 5px;
-}
-
-/*描述*/
-.post-description {
-    padding-bottom: 10px;
-    color: var(--secondary);
+    display: flex;
+    justify-content: center;
 }
 
 .post-entry {
@@ -223,17 +204,27 @@ body {
 }
 
 .entry-cover {
+    border-radius: 10px;
     overflow: hidden;
-    padding-left: 18px;
-    height: 100%;
-    width: 50%;
+    width: 40%;
     margin-bottom: unset;
+
+    max-height: 150px;
+    display: grid;
+    align-content: center;
 }
 
 .post-info {
     display: inline-block;
     overflow: hidden;
     width: 100%;
+    padding-right: 10px;
+}
+
+/*描述*/
+.post-description {
+    padding-bottom: 10px;
+    color: var(--secondary);
 }
 
 /*---------------------------*/
