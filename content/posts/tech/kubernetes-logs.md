@@ -45,21 +45,62 @@ kubectl logs kube-proxy -n kube-system
 /var/log/messages
 ```
 
-# 应用日志
+# pod 日志
 
 ## 标准输出
 
 实时查看pod标准输出日志
 
-```
+```bash
+kubectl logs [options] <podname>
 kubectl logs -f <podname>
 kubectl logs -f <podname> -c <containername>
+kubectl logs --previous <podname> # 查看pod上次重启的日志
 ```
 
-标准输出文件的路径
+k8s 会将每个 pod 中每个 container 的日志记录到 pod 所在 node 的 `/var/log/pods` 目录中, 日志文件其实是 docker 保存的日志文件的一个软连接.
 
-```
+k8s 会为每个 pod 的每个 container 日志保留 2 份, 一份为 container 当前状态的日志, 另一份是 container 上一次生命周期的日志, 日志保留数量应该是由 k8s 的 gc 机制管控. 
+
+```bash
+# k8s 日志
+/var/log/pods/<pod namespace>_<pod name>_<pod uid>/<容器名称>/容器重启次数.log
+# docker日志
 /var/lib/docker/containers/<container-id>/<container-id>-json.log
+```
+
+示例
+
+```bash
+# 可以看到 calico-kube-controllers 这个 pod 重启了 7 次
+[root@k8s-node1 ~]# kubectl get pods -n kube-system -l k8s-app=calico-kube-controllers
+NAME                                       READY   STATUS    RESTARTS      AGE
+calico-kube-controllers-6c76574f75-69flf   1/1     Running   7 (41h ago)   4d1h
+
+# k8s 分别保存了编号 6 和 7 两个日志文件
+[root@k8s-node3 ~]# ls -l /var/log/pods/kube-system_calico-kube-controllers-6c76574f75-69flf_066e1042-97a4-4547-8d2d-6580cbad40c5/calico-kube-controllers/
+lrwxrwxrwx. 1 root root 165 Apr 20 14:31 6.log -> /var/lib/docker/containers/8ed4865daa5d984d9b7e3412f61251ce1a5e12e295fce1f14ee341c3f79b1afe/8ed4865daa5d984d9b7e3412f61251ce1a5e12e295fce1f14ee341c3f79b1afe-json.log
+lrwxrwxrwx. 1 root root 165 Apr 23 10:23 7.log -> /var/lib/docker/containers/c30d353ee464efd853968dcd1524933aa214294303e5a7cd7828b0e86f0e94ec/c30d353ee464efd853968dcd1524933aa214294303e5a7cd7828b0e86f0e94ec-json.log
+
+# 7 号日志文件是当前生命周期的日志
+[root@k8s-node1 ~]# kubectl logs --tail=1 calico-kube-controllers-6c76574f75-69flf -n kube-system
+2023-04-23 03:05:54.256 [INFO][1] resources.go 350: Main client watcher loop
+[root@k8s-node3 calico-kube-controllers]# tail -n 1 7.log | python -m json.tool
+{
+    "log": "2023-04-23 03:05:54.256 [INFO][1] resources.go 350: Main client watcher loop\n",
+    "stream": "stderr",
+    "time": "2023-04-23T03:05:54.257447874Z"
+}
+
+# 6 号日志文件是上一次生命周期的日志
+[root@k8s-node1 ~]# kubectl logs --tail=1 --previous calico-kube-controllers-6c76574f75-69flf -n kube-system
+2023-04-21 08:57:20.637 [INFO][1] resources.go 350: Main client watcher loop
+[root@k8s-node3 calico-kube-controllers]# tail -n 1 6.log | python -m json.tool
+{
+    "log": "2023-04-21 08:57:20.637 [INFO][1] resources.go 350: Main client watcher loop\n",
+    "stream": "stderr",
+    "time": "2023-04-21T08:57:20.637780663Z"
+}
 ```
 
 ## 日志文件
@@ -119,16 +160,18 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-sidecar
+  name: nginx
+  labels:
+    app: nginx
 spec:
   containers:
   - name: web
-    image: nginx
+    image: nginx:1.22.1
     volumeMounts:
     - name: logs
       mountPath: /var/log/nginx/
-  - name: log
-    image: busybox
+  - name: accesslog
+    image: busybox:1.28
     command: ['/bin/sh', '-c', 'tail -f /opt/access.log']
     volumeMounts:
     - name: logs
@@ -136,5 +179,4 @@ spec:
   volumes:
   - name: logs
     emptyDir: {}
-
 ```

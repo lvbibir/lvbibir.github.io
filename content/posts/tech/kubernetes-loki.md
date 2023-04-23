@@ -20,16 +20,18 @@ cover:
 
 # 1. 简介
 
-Loki 是 Grafana Labs 团队最新的开源项目，是一个水平可扩展，高可用性，多租户的日志聚合系统。它的设计非常经济高效且易于操作，因为它不会为日志内容编制索引，而是为每个日志流编制一组标签，专门为 [Prometheus](https://cloud.tencent.com/product/tmp?from=20065&from_column=20065) 和 Kubernetes 用户做了相关优化。该项目受 Prometheus 启发，官方的介绍就是： Like Prometheus,But For Logs.，类似于 Prometheus 的日志系统;
+[项目地址](https://github.com/grafana/loki/)  [官方文档](https://grafana.com/docs/loki/latest/)
 
-项目地址：https://github.com/grafana/loki/
+Loki 是 Grafana Labs 团队最新的开源项目，是一个水平可扩展，高可用性，多租户的日志聚合系统。它的设计非常经济高效且易于操作，因为它不会为日志内容编制索引，而是为每个日志流编制一组标签，专门为 [Prometheus](https://cloud.tencent.com/product/tmp?from=20065&from_column=20065) 和 Kubernetes 用户做了相关优化。该项目受 Prometheus 启发，官方的介绍就是： `Like Prometheus, But For Logs.`
 
 与其他日志聚合系统相比， Loki 具有下面的一些特性:
 
 - 不对日志进行全文索引。通过存储压缩非结构化日志和仅索引元数据，Loki 操作起来会更简单，更省成本。
-- 通过使用与 Prometheus 相同的标签记录流对日志进行索引和分组，这使得日志的扩展和操作效率更高,能对接alertmanager;
+- 通过使用与 Prometheus 相同的标签记录流对日志进行索引和分组，这使得日志的扩展和操作效率更高,能对接 alertmanager;
 - 特别适合储存 Kubernetes Pod 日志; 诸如 Pod 标签之类的元数据会被自动删除和编入索引;
-- 受 Grafana 原生支持,避免kibana和grafana来回切换;
+- 受 Grafana 原生支持,避免 kibana 和 grafana 来回切换;
+
+loki 非常好用的一点是它的数据采集组件 `promtail` 可以直接通过 [kubernetes_sd_config ](https://grafana.com/docs/loki/latest/clients/promtail/configuration/#kubernetes_sd_config) 抓取 `kubernets REST API` 获取 `node` `service` `pod` `endpoints` `ingress` 等维度的元数据信息和日志信息
 
 # 2. 部署
 
@@ -664,7 +666,7 @@ spec:
 
 ## 2.3 验证
 
-应用所有配置文件
+应用所有配置文件, 上述配置是 loki 针对 k8s 的一套比较标准的配置, 所以目前的配置仅能抓取 k8s 中所有 pod 发送到 `stdout` 和 `stderr` 的信息, 如果需要抓取日志文件还需另外配置.
 
 ```bash
 [root@k8s-node1 ~]# kubectl apply -f /opt/loki/
@@ -682,6 +684,12 @@ loki         ClusterIP   10.105.115.178   <none>        3100/TCP         4m26s
 在 grafana 中添加 loki 作为 data source, 这里我的 grafana 是直接部署在 k8s 中的, 所以可以通过 `<svc-name>.<namespace>` 访问到 loki
 
 ![image-20230422144554668](https://image.lvbibir.cn/blog/image-20230422144554668.png)
+
+在 Explore => loki => `{job="kube-system/kube-apiserver"}` 可以看到 k8s 的 api-server 相关日志
+
+![image-20230423164457090](https://image.lvbibir.cn/blog/image-20230423164457090.png)
+
+# 3. traefik dashboard
 
 如下图所示, 已经可以看到收集到的 traefik 日志
 
