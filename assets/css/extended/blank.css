@@ -12,15 +12,15 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     --black: rgb(0, 0, 0);
     --white: rgb(255, 255, 255);
     --tag: rgb(235, 235, 235);
-    --nav-width: 1300px;
-    --main-width: 770px;
+    /* --nav-width: 1300px; */
+    /* --main-width: 770px; */
     --article-width: 650px;
-    --toc-width: 250px;
+    --toc-width: 230px;
 }
 
-/* .dark {
-
-} */
+.first-entry {
+    min-height: 100px;
+}
 
 /*------------------------------------------------------------*/
 
@@ -221,7 +221,6 @@ body {
     padding-right: 10px;
 }
 
-/*描述*/
 .post-description {
     padding-bottom: 10px;
     color: var(--secondary);
