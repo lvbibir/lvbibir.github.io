@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello,hugo!</title>
       <link>https://www.lvbibir.cn/posts/blog/hello-hugo/</link>
@@ -17,25 +17,34 @@
     </item>
     
     <item>
-      <title>kubernetes | kube-prometheus 监控系统</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus/</link>
+      <title>prometheus (二) 服务发现(serviceMonitor)</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-2-servicemonitor/</link>
+      <pubDate>Tue, 25 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-2-servicemonitor/</guid>
+      <description>kubernetes 中部署配置 kube-prometheus, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系 </description>
+    </item>
+    
+    <item>
+      <title>prometheus (一) 简介及部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-1-deploy/</link>
       <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus/</guid>
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-1-deploy/</guid>
       <description>kubernetes 中部署配置 kube-prometheus, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系 </description>
     </item>
     
     <item>
       <title>kubernetes | loki 开源日志框架</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-loki/</link>
-      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 21 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/kubernetes-loki/</guid>
       <description>kubernetes 中部署配置 loki 对接 grafana, 以及创建 traefik 的 dashboard 可视化展示数据</description>
     </item>
     
     <item>
-      <title>traefik系列之四 | 服务(TraefikService)</title>
+      <title>traefik (四) 服务(TraefikService)</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-4-traefikservice/</link>
       <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -44,7 +53,7 @@
     </item>
     
     <item>
-      <title>traefik系列之三 | 中间件(Middleware)</title>
+      <title>traefik (三) 中间件(Middleware)</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-3-middleware/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -53,7 +62,7 @@
     </item>
     
     <item>
-      <title>traefik系列之二 | 路由(ingressRoute)</title>
+      <title>traefik (二) 路由(ingressRoute)</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-2-router/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -62,7 +71,7 @@
     </item>
     
     <item>
-      <title>traefik系列之一 | 简介、部署和配置</title>
+      <title>traefik (一) 简介、部署和配置</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-1-deploy/</link>
       <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
       

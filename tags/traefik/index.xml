@@ -8,7 +8,7 @@
     <language>zh-cn</language>
     <lastBuildDate>Wed, 19 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/traefik/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>traefik系列之四 | 服务(TraefikService)</title>
+      <title>traefik (四) 服务(TraefikService)</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-4-traefikservice/</link>
       <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -17,7 +17,7 @@
     </item>
     
     <item>
-      <title>traefik系列之三 | 中间件(Middleware)</title>
+      <title>traefik (三) 中间件(Middleware)</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-3-middleware/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -26,7 +26,7 @@
     </item>
     
     <item>
-      <title>traefik系列之二 | 路由(ingressRoute)</title>
+      <title>traefik (二) 路由(ingressRoute)</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-2-router/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -35,7 +35,7 @@
     </item>
     
     <item>
-      <title>traefik系列之一 | 简介、部署和配置</title>
+      <title>traefik (一) 简介、部署和配置</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-1-deploy/</link>
       <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
       
