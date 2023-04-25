@@ -1,5 +1,5 @@
 ---
-title: "traefik系列之一 | 简介、部署和配置" 
+title: "traefik (一) 简介、部署和配置" 
 date: 2023-04-17
 lastmod: 2023-04-17
 tags: 

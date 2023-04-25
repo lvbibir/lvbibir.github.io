@@ -1,5 +1,5 @@
 ---
-title: "traefik系列之二 | 路由(ingressRoute)" 
+title: "traefik (二) 路由(ingressRoute)" 
 date: 2023-04-18
 lastmod: 2023-04-18
 tags: 

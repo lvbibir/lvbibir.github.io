@@ -1,5 +1,5 @@
 ---
-title: "traefik系列之四 | 服务(TraefikService)" 
+title: "traefik (四) 服务(TraefikService)" 
 date: 2023-04-19
 lastmod: 2023-04-19
 tags: 

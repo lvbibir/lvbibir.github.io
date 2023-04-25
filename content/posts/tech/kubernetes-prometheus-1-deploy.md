@@ -1,22 +1,23 @@
 ---
-title: "kubernetes | kube-prometheus 监控系统" 
+title: "prometheus (一) 简介及部署" 
 date: 2023-04-22
 lastmod: 2023-04-22
 tags: 
 - kubernetes
+- prometheus
 keywords:
 - kubernetes
 - prometheus
 description: "kubernetes 中部署配置 kube-prometheus, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系 " 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    image: "https://image.lvbibir.cn/blog/prometheus.png"
     hidden: true
     hiddenInSingle: true 
 ---
 
 # 0. 前言
 
-基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`，`kube-prometheus-0.10`
+基于 `centos7.9` `docker-ce-20.10.18` `kubelet-1.22.3-0` `kube-prometheus-0.10` `prometheus-v2.32.1`
 
 # 1. 简介
 
@@ -100,12 +101,4 @@ prometheus-operator     ClusterIP   None             <none>        8443/TCP     
 grafana 默认用户名密码为 admin/admin
 
 ![image-20230422131028713](https://image.lvbibir.cn/blog/image-20230422131028713.png)
-
-
-
-
-
-
-
-
 

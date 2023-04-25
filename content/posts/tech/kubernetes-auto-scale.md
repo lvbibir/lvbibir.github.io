@@ -171,7 +171,7 @@ REVISION  CHANGE-CAUSE
 
 实现自动扩容需满足两个条件：
 
-- 运行了[metric-server](https://www.lvbibir.cn/posts/tech/kubernetes-v1.22.3-kubeadm/#5-metric-server)
+- 运行了[metric-server](https://www.lvbibir.cn/posts/tech/kubernetes-deploy-v1.22.3/#5-metric-server)
 
 - pod设置了request资源
 

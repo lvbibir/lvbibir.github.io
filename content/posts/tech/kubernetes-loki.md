@@ -1,7 +1,7 @@
 ---
 title: "kubernetes | loki 开源日志框架" 
-date: 2023-04-22
-lastmod: 2023-04-22
+date: 2023-04-21
+lastmod: 2023-04-21
 tags: 
 - kubernetes
 keywords:
