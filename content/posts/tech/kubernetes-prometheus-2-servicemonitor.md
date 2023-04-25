@@ -33,7 +33,7 @@ kubernetes_sd_config 目前支持 node service pod endpoints endpointslice ingre
 
 在 `kube-prometheus` 中, 所有的 target 都是通过 endpoints 模式进行的服务发现.
 
-每种发现模式都支持很多 label, prometheus 可以通过 `relebel_config` 分析这些标签进行标签重写或者丢弃 target
+每种发现模式都支持很多 label, prometheus 可以通过 `relabel_config` 分析这些标签进行标签重写或者丢弃 target
 
 以比较常用的 endpoints 为例, endpoints 支持的标签如下所示
 
@@ -61,7 +61,7 @@ endpoints ===> pods ===> ip+port
   10            15        44
 ```
 
-同样, 在 prometheus 后端看到的 targets 将会是 44 个, 然后按照 `relebal` 规则在这些所有的 target 中选择合适的 target 并进行 `active`
+同样, 在 prometheus 后端看到的 targets 将会是 44 个, 然后按照 `relabel` 规则在这些所有的 target 中选择合适的 target 并进行 `active`
 
 ![image-20230425093636652](https://image.lvbibir.cn/blog/image-20230425093636652.png)
 
@@ -116,7 +116,7 @@ prometheus 中配置 kubernetes_sd_config, 自动发现 monitoring 命名空间�
         - monitoring
 ```
 
-在 prometheus 的服务发现界面可以看到采集到的所有 target, 每个 target 含有许多标签
+在 prometheus 的服务发现界面可以看到采集到的所有 target, 每个 target 含有许多标签, `relebal_config` 就是针对这些标签进行筛选和其他操作.
 
 ![image-20230424175715511](https://image.lvbibir.cn/blog/image-20230424175715511.png)
 
@@ -124,7 +124,7 @@ service 和 pod 级别的标签
 
 ![image-20230424175819756](https://image.lvbibir.cn/blog/image-20230424175819756.png)
 
-如下是 `kube-promenteus` 中自动发现 node-exporter 的完整配置, 包含了标签匹配规则(确保匹配到合适的target), 标签重写规则(可读性更强)
+如下是 `kube-promenteus` 中自动发现 node-exporter 的完整配置, 包含了标签匹配规则(确保匹配到正确的target), 标签重写规则(可读性更强)
 
 可通过 [http://1.1.1.1:39090/config](http://1.1.1.1:39090/config) 界面查看
 

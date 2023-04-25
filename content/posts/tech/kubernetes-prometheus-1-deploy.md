@@ -38,6 +38,8 @@ Prometheus Operator 的一个核心特性是 `watch` Kubernetes API 服务器对
 
 Prometheus Operator 自动检测 Kubernetes API 服务器对上述任何对象的更改，并确保匹配的部署和配置保持同步。
 
+> https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Prometheus
+
 # 2. 部署
 
 kubernets 与 kube-prometheus 的兼容性关系如下
@@ -99,4 +101,108 @@ prometheus-operator     ClusterIP   None             <none>        8443/TCP     
 grafana 默认用户名密码为 admin/admin
 
 ![image-20230422131028713](https://image.lvbibir.cn/blog/image-20230422131028713.png)
+
+# 3. 数据持久化
+
+## 3.1 prometheus
+
+prometheus 默认的数据文件使用的是 emptydir 方式进行的持久化, 我们改为 nfs
+
+修改 `manifests/prometheus-prometheus.yaml`
+
+在文件最后新增配置
+
+```yaml
+  retention: 15d          # 监控数据保存的时间为 15 天
+  storage:                # 存储配置, 使用 nfs 的 storageClass
+    volumeClaimTemplate:
+      spec:
+        storageClassName: "nfs"
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10Gi
+```
+
+应用后查看新建的 pod 中的 volumes 信息
+
+```bash
+# pod.spec.container.volumeMounts
+[root@k8s-node1 ~]# kubectl get pod prometheus-k8s-0 -n monitoring -o jsonpath='{.spec.containers[?(@.name=="prometheus")].volumeMounts[?(@.name=="prometheus-k8s-db")]}{"\n"}' | python -m json.tool
+{
+    "mountPath": "/prometheus",
+    "name": "prometheus-k8s-db",
+    "subPath": "prometheus-db"
+}
+
+# pod.spec.volumes
+[root@k8s-node1 ~]# kubectl get pod prometheus-k8s-0 -n monitoring -o jsonpath='{.spec.volumes[?(@.name=="prometheus-k8s-db")]}' | python -m json.tool
+{
+    "name": "prometheus-k8s-db",
+    "persistentVolumeClaim": {
+        "claimName": "prometheus-k8s-db-prometheus-k8s-0"
+    }
+}
+```
+
+与传统 statefulset 不同的是, prometheus 识别到 `.spec.storage.volumeClaimTemplate` 配置后会自动将 prometheus 的数据文件挂载到自动创建的 pvc 上, 无需手动指定 name 然后挂载
+
+## 3.2 alertmanager
+
+与 prometheus 类似, 这里就不赘述了
+
+`manifests/alertmanager-alertmanager.yaml`
+
+```yaml
+  storage:                # 存储配置, 使用 nfs 的 storageClass
+    volumeClaimTemplate:
+      spec:
+        storageClassName: "nfs"
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+```
+
+重新 apply 之后, 查看新生成 pod 的 volumes
+
+```bash
+# pod.spec.container.volumeMounts
+[root@k8s-node1 ~]# kubectl get pod alertmanager-main-0 -n monitoring -o jsonpath='{.spec.containers[?(@.name=="alertmanager")].volumeMounts[?(@.name=="alertmanager-main-db")]}{"\n"}' | python -m json.tool
+{
+    "mountPath": "/alertmanager",
+    "name": "alertmanager-main-db",
+    "subPath": "alertmanager-db"
+}
+
+# pod.spec.volumes
+[root@k8s-node1 ~]# kubectl get pod alertmanager-main-0 -n monitoring -o jsonpath='{.spec.volumes[?(@.name=="alertmanager-main-db")]}' | python -m json.tool
+{
+    "name": "alertmanager-main-db",
+    "persistentVolumeClaim": {
+        "claimName": "alertmanager-main-db-alertmanager-main-0"
+    }
+}
+```
+
+## 3.3 grafana
+
+grafana 就是一个普通的 deployment 应用, 直接修改 yaml 中的 volume 配置即可
+
+```bash
+[root@k8s-node1 ~]# mkdir /nfs/kubernetes/grafana-data
+[root@k8s-node1 ~]# chomd -R 777 /nfs/kubernetes/grafana-data
+```
+
+修改 `manifests/grafana-deployment.yaml` 直接将默认的 emptydir 修改为 nfs 即可
+
+```yaml
+      volumes:
+      - name: grafana-storage
+        nfs:
+          server: k8s-node1
+          path: /nfs/kubernetes/grafana-data
+```
 
