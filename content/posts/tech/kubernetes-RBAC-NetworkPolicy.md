@@ -11,8 +11,6 @@ keywords:
 description: "介绍kubernetes中的安全框架、RBAC鉴权和网络策略（Pod ACL)" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
-    hidden: true
-    hiddenInSingle: true 
 ---
 
 # 前言

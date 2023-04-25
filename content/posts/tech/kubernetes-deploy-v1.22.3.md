@@ -11,8 +11,6 @@ keywords:
 description: "介绍kubernetes，并在centos中使用kubeadm快速搭建k8s集群v1.22.3、安装cni组件" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
-    hidden: true
-    hiddenInSingle: true 
 ---
 # Kubernetes概述
 

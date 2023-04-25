@@ -11,8 +11,6 @@ keywords:
 description: "介绍kubernetes中的configmap和secret应用" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
-    hidden: true
-    hiddenInSingle: true 
 ---
 
 # 前言

@@ -10,8 +10,6 @@ keywords:
 description: ""
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
-    hidden: true
-    hiddenInSingle: true 
 ---
 
 ## 基础概念

@@ -10,8 +10,6 @@ keywords:
 description: "kubernetes 中部署配置 loki 对接 grafana, 以及创建 traefik 的 dashboard 可视化展示数据" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
-    hidden: true
-    hiddenInSingle: true 
 ---
 
 # 0. 前言

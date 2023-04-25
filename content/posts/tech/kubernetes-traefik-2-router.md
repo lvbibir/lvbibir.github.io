@@ -12,8 +12,6 @@ keywords:
 description: "kubernetes 中使用 Traefik ingress 的 ingressRoute 代理 http、https、tcp、udp" 
 cover:
     image: "https://image.lvbibir.cn/blog/traefik.png"
-    hidden: true
-    hiddenInSingle: true
 ---
 
 # 0. 前言

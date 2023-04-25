@@ -14,8 +14,6 @@ keywords:
 description: "介绍kubernetes中的service和Headless Service，service的两种代理模式，以及ingress控制器的使用" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
-    hidden: true
-    hiddenInSingle: true 
 ---
 # 前言
 

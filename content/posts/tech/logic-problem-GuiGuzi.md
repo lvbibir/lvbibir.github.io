@@ -10,8 +10,6 @@ keywords:
 description: "一道乍看毫无逻辑，细想却很有趣的逻辑题"  
 cover:
     image: "https://image.lvbibir.cn/blog/guiguzi.png" 
-    hidden: true
-    hiddenInSingle: true
 ---
 
 原题如下

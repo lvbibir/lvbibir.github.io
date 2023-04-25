@@ -12,8 +12,6 @@ keywords:
 description: "kubernetes 中 Traefik ingress 的简介、部署及配置。" 
 cover:
     image: "https://image.lvbibir.cn/blog/traefik.png"
-    hidden: true
-    hiddenInSingle: true
 ---
 
 # 0. 前言

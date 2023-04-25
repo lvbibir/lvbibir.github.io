@@ -9,8 +9,6 @@ keywords:
 description: "介绍一些常见的报错处理、kubectl命令的一些用法、yaml编写技巧、小优化等" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
-    hidden: true
-    hiddenInSingle: true 
 ---
 
 # kubectl命令的自动补全

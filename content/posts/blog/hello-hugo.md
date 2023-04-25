@@ -15,6 +15,8 @@ description: "记录wordpress迁移至hugo+papermod的过程包含环境搭建�
 weight: 1
 cover:
     image: "https://image.lvbibir.cn/blog/hugo-logo-wide.svg"
+    hidden: false
+    hiddenInSingle: false
 ---
 
 # 前言
