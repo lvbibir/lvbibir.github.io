@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 25 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello,hugo!</title>
       <link>https://www.lvbibir.cn/posts/blog/hello-hugo/</link>
@@ -17,12 +17,21 @@
     </item>
     
     <item>
-      <title>prometheus (二) 服务发现(serviceMonitor)</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-2-servicemonitor/</link>
+      <title>prometheus (三) 静态配置(probe)</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-3-staticconfig/</link>
+      <pubDate>Wed, 26 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-3-staticconfig/</guid>
+      <description>prometheus-operator 中使用 CRD 资源 Probe 添加自定义 job 和 target</description>
+    </item>
+    
+    <item>
+      <title>prometheus (二) 服务发现</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-2-servicemonitor-podmonitor/</link>
       <pubDate>Tue, 25 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-2-servicemonitor/</guid>
-      <description>kubernetes 中部署配置 kube-prometheus, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系 </description>
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-2-servicemonitor-podmonitor/</guid>
+      <description>prometheus-operator 中的服务发现(serviceMonitor)机制, kubernetes_sd_config 配置</description>
     </item>
     
     <item>
@@ -31,7 +40,7 @@
       <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-1-deploy/</guid>
-      <description>kubernetes 中部署配置 kube-prometheus, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系 </description>
+      <description>kubernetes 中部署配置 prometheus-operator, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系 </description>
     </item>
     
     <item>
