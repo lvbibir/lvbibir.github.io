@@ -8,7 +8,7 @@ tags:
 keywords:
 - kubernetes
 - prometheus
-description: "kubernetes 中部署配置 kube-prometheus, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系 " 
+description: "kubernetes 中部署配置 prometheus-operator, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系 " 
 cover:
     image: "https://image.lvbibir.cn/blog/prometheus.png"
 ---
@@ -38,7 +38,9 @@ Prometheus Operator 的一个核心特性是 `watch` Kubernetes API 服务器对
 
 Prometheus Operator 自动检测 Kubernetes API 服务器对上述任何对象的更改，并确保匹配的部署和配置保持同步。
 
-> https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Prometheus
+> 所有 CRD 资源的 API 文档:
+>
+> https://prometheus-operator.dev/docs/operator/api/
 
 # 2. 部署
 

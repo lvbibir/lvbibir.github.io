@@ -155,7 +155,7 @@ data:
       traefik:
         address: ":9000"        # 配置9000端口为 dashboard 的端口，不设置默认值为 8080
       metrics:
-        address: ":9101"        # 配置9101端口，作为metrics收集入口
+        address: ":9100"        # 配置9100端口，作为metrics收集入口
       tcpep:
         address: ":9200"        # 配置9200端口，作为tcp入口
       udpep:
@@ -170,7 +170,7 @@ data:
       level: "DEBUG"            # 设置调试日志级别
       format: "json"          # 设置调试日志格式
     accessLog:
-      # filePath: "/etc/traefik/logs/access.log" # 设置访问日志文件存储路径，如果为空则输出到控制台
+      # filePath: "/etc/traefik/logs/access.log" # 设置访问日志文件存储路径，如果为空则输出到 stdout 和 stderr
       format: "json"          # 设置访问调试日志格式
       bufferingSize: 0          # 设置访问日志缓存行数
       fields:                   # 设置访问日志中的字段是否保留（keep保留、drop不保留）
@@ -192,21 +192,24 @@ data:
 kubectl label node k8s-node1  IngressProxy=true
 ```
 
-## 2.3 daemonset service
+## 2.3 deployment service
 
-> 使用 DeamonSet 或者 Deployment 均可部署，此处使用 DaemonSet 方式部署 Traefik，调度至IngressProxy=true 的那台 master 边缘节点，并使用 host 网络模式，提高网络入口的网络性能
+使用 DeamonSet 或者 Deployment 均可，此处使用 Deployment 方式部署 Traefik，调度至含有 IngressProxy=true 的边缘节点
 
-`daemonset.yml`
+同时使用 `podAntiAffinity` 避免多个 traefik 实例运行在同一节点造成单点故障.
+
+`kubectl apply -f deployment.yml`
 
 ```yaml
 apiVersion: apps/v1
-kind: DaemonSet
+kind: Deployment
 metadata:
   name: traefik
   namespace: traefik
   labels:
     app: traefik
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: traefik
@@ -216,11 +219,26 @@ spec:
       labels:
         app: traefik
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - traefik
+            topologyKey: "kubernetes.io/hostname"
+    spec:
       serviceAccountName: traefik-ingress-controller
-      terminationGracePeriodSeconds: 5       # 等待容器优雅退出的时长
+      terminationGracePeriodSeconds: 5         # 等待容器优雅退出的时长
+      tolerations:                             # 设置容忍所有污点，防止节点被设置污点
+        - operator: "Exists"
+      nodeSelector:                            # 设置node筛选器，在特定label的节点上启动
+        IngressProxy: "true"                   # 调度至IngressProxy: "true"的节点
       containers:
       - name: traefik
-        image: traefik:v2.9.10
+        image: traefik:v2.9
         env:
         - name: KUBERNETES_SERVICE_HOST       # 手动指定k8s api,避免网络组件不稳定。
           value: "1.1.1.1"
@@ -233,20 +251,17 @@ spec:
         ports:
           - name: web
             containerPort: 80
-            hostPort: 80                      # 将容器端口绑定所在服务器的 80 端口
           - name: websecure
             containerPort: 443
-            hostPort: 443                     # 将容器端口绑定所在服务器的 443 端口
           - name: dashboard
             containerPort: 9000               # Traefik Dashboard 端口
           - name: metrics
-            containerPort: 9101               
-            hostPort: 9101                    # metrics 端口，由于 node_exporter 占据了 9100 端口，改到 9101  
+            containerPort: 9100
           - name: tcpep
             containerPort: 9200               # tcp端口
           - name: udpep
             containerPort: 9300               # udp端口
-        securityContext:                      # 只开放网络权限  
+        securityContext:                      # 只开放网络权限
           capabilities:
             drop:
               - ALL
@@ -265,14 +280,14 @@ spec:
         resources:
           requests:
             memory: "5Mi"
-            cpu: "10m" 
+            cpu: "10m"
           limits:
             memory: "256Mi"
             cpu: "1000m"
       volumes:
         - name: config                         # traefik配置文件
           configMap:
-            name: traefik-config 
+            name: traefik-config
         - name: logdir                         # traefik日志目录
           hostPath:
             path: /var/log/traefik
@@ -281,21 +296,6 @@ spec:
           hostPath:
             path: /etc/localtime
             type: File
-      tolerations:                             # 设置容忍所有污点，防止节点被设置污点
-        - operator: "Exists"
-      hostNetwork: true                        # 开启host网络，提高网络入口的网络性能
-      dnsConfig:                               # 开启host网络后，默认使用主机的dns配置，添加coredns配置
-        nameservers:
-          - 10.96.0.10
-        searches:
-          - traefik.svc.cluster.local 
-          - svc.cluster.local 
-          - cluster.local
-        options:
-          - name: ndots
-            value: "5"
-      nodeSelector:                            # 设置node筛选器，在特定label的节点上启动
-        IngressProxy: "true"                   # 调度至IngressProxy: "true"的节点
 ```
 
 service  `kubectl apply -f service.yml`
@@ -304,59 +304,72 @@ service  `kubectl apply -f service.yml`
 apiVersion: v1
 kind: Service
 metadata:
-  name: traefik
+  labels:
+    app: traefik
+  name: traefik             # 实际提供服务的 service, 使用 NodePort 模式
   namespace: traefik
 spec:
-  type: NodePort    ## 官网示例为LoadBalancer,为方便演示，此处改为NodePort
+  type: NodePort
   selector:
     app: traefik
   ports:
-    - name: web
-      protocol: TCP
-      port: 80
-      targetPort: 80
-    - name: websecure
-      protocol: TCP
-      port: 443
-      targetPort: 443
-    - name: dashboard
-      protocol: TCP
-      port: 9000
-      targetPort: 9000
-    - name: metrics
-      protocol: TCP
-      port: 9101
-      targetPort: 9101
-    - name: tcpep
-      protocol: TCP
-      port: 9200
-      targetPort: 9200
-    - name: udpep
-      protocol: UDP
-      port: 9300
-      targetPort: 9300
+  - name: web
+    protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 80
+  - name: websecure
+    protocol: TCP
+    port: 443
+    targetPort: 443
+    nodePort: 443
+  - name: dashboard
+    protocol: TCP
+    port: 9000
+    targetPort: 9000
+    nodePort: 9000
+  - name: tcpep
+    protocol: TCP
+    port: 9200
+    targetPort: 9200
+    nodePort: 9200
+  - name: udpep
+    protocol: UDP
+    port: 9300
+    targetPort: 9300
+    nodePort: 9300
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: traefik-metrics
+  name: traefik-metrics           # metrics 用于给集群内的 prometheus 提供数据
+  namespace: traefik
+spec:
+  selector:
+    app: traefik
+  ports:
+  - name: metrics
+    protocol: TCP
+    port: 9100
+    targetPort: 9100
 ```
 
 ## 2.4 验证
 
 ```bash
-# traefik pod 映射的主机端口
-[root@k8s-node1 traefik]# ss -tnlp | grep traefik
-LISTEN 0  128  [::]:9000   [::]:*   users:(("traefik",pid=36505,fd=11))
-LISTEN 0  128  [::]:9101   [::]:*   users:(("traefik",pid=36505,fd=12))
-LISTEN 0  128  [::]:9200   [::]:*   users:(("traefik",pid=36505,fd=13))
-LISTEN 0  128  [::]:80     [::]:*   users:(("traefik",pid=36505,fd=8))
-LISTEN 0  128  [::]:443    [::]:*   users:(("traefik",pid=36505,fd=9))
 [root@k8s-node1 traefik]# kubectl get pod,cm,sa,svc -n traefik |grep traefik
-pod/traefik-c29hs   1/1     Running   0          4m36s
-configmap/traefik-config     1      24m
-serviceaccount/traefik-ingress-controller   1         36m
-service/traefik   NodePort   10.109.10.18   <none>  80:57197/TCP,443:36218/TCP,9000:47179/TCP,9101:25785/TCP,9200:44736/TCP,9300:13220/UDP   2m14s
+pod/traefik-69bd67497f-v27qp   1/1     Running   0          12m
+configmap/traefik-config     1      7d5h
+serviceaccount/traefik-ingress-controller   1         7d5h
+service/traefik          NodePort    10.101.142.158   <none>        80:80/TCP,443:443/TCP,9000:9000/TCP,9200:9200/TCP,9300:9300/UDP   11m
+service/traefik-metrics   ClusterIP   10.98.89.13      <none>        9100/TCP                                                          12m
 ```
 
-可以直接通过 http://1.1.1.1:47179 或者 http://1.1.1.1:9000 访问到 dashboard
+可以直接通过 http://1.1.1.1:9000 访问到 dashboard
 
-![image-20230419105303492](https://image.lvbibir.cn/blog/image-20230419105303492.png)
+![image-20230426155416528](https://image.lvbibir.cn/blog/image-20230426155416528.png)
 
 ## 2.5 其他配置
 
