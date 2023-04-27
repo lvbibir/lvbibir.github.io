@@ -6,23 +6,32 @@
     <description>Recent content in prometheus on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 26 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/prometheus/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/prometheus/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>prometheus (三) 静态配置(probe)</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-3-staticconfig/</link>
-      <pubDate>Wed, 26 Apr 2023 00:00:00 +0000</pubDate>
+      <title>prometheus (四) 黑盒监控</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-4-blackbox-probe/</link>
+      <pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-3-staticconfig/</guid>
-      <description>prometheus-operator 中使用 CRD 资源 Probe 添加自定义 job 和 target</description>
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-4-blackbox-probe/</guid>
+      <description>prometheus-operator 中使用 additionalScrapeConfig 添加自定义 job 和 target</description>
     </item>
     
     <item>
-      <title>prometheus (二) 服务发现</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-2-servicemonitor-podmonitor/</link>
+      <title>prometheus (三) 服务发现</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-3-servicemonitor-podmonitor/</link>
+      <pubDate>Wed, 26 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-3-servicemonitor-podmonitor/</guid>
+      <description>prometheus-operator 中的服务发现(serviceMonitor)机制, kubernetes_sd_config 配置, 以及 serviceMonitor 和 podMonitor 自定义资源的使用.</description>
+    </item>
+    
+    <item>
+      <title>prometheus (二) 静态配置</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-2-additionalscrapeconfig/</link>
       <pubDate>Tue, 25 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-2-servicemonitor-podmonitor/</guid>
-      <description>prometheus-operator 中的服务发现(serviceMonitor)机制, kubernetes_sd_config 配置</description>
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-2-additionalscrapeconfig/</guid>
+      <description>prometheus-operator 中使用 additionalScrapeConfig 添加自定义 job 和 target</description>
     </item>
     
     <item>

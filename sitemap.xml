@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.lvbibir.cn/posts/tech/</loc>
-    <lastmod>2023-04-26T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/blog/hello-hugo/</loc>
     <lastmod>2022-09-11T00:00:00+00:00</lastmod>
@@ -18,24 +18,27 @@
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/</loc>
-    <lastmod>2023-04-26T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/kubernetes/</loc>
-    <lastmod>2023-04-26T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/</loc>
-    <lastmod>2023-04-26T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/prometheus/</loc>
-    <lastmod>2023-04-26T00:00:00+00:00</lastmod>
+    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-3-staticconfig/</loc>
-    <lastmod>2023-04-26T00:00:00+00:00</lastmod>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-4-blackbox-probe/</loc>
+    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/</loc>
+    <lastmod>2023-04-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-3-servicemonitor-podmonitor/</loc>
     <lastmod>2023-04-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-2-servicemonitor-podmonitor/</loc>
+    <loc>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-2-additionalscrapeconfig/</loc>
     <lastmod>2023-04-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-1-deploy/</loc>
