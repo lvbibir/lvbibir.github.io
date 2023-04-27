@@ -1,14 +1,14 @@
 ---
-title: "prometheus (二) 服务发现" 
-date: 2023-04-25
-lastmod: 2023-04-25
+title: "prometheus (三) 服务发现" 
+date: 2023-04-26
+lastmod: 2023-04-26
 tags: 
 - kubernetes
 - prometheus
 keywords:
 - kubernetes
 - prometheus
-description: "prometheus-operator 中的服务发现(serviceMonitor)机制, kubernetes_sd_config 配置" 
+description: "prometheus-operator 中的服务发现(serviceMonitor)机制, kubernetes_sd_config 配置, 以及 serviceMonitor 和 podMonitor 自定义资源的使用." 
 cover:
     image: "https://image.lvbibir.cn/blog/prometheus.png"
 ---
@@ -19,7 +19,7 @@ cover:
 
 # 1. 简介
 
-prometheus 原生支持很多种方式的服务发现, 在 k8s 中是通过 `kubernetes_sd_config` 配置实现的. 通过抓取 `k8s REST API` 实现将我们部署的 exporter 实例自动注册
+手动添加 job 配置未免过于繁琐, prometheus 支持很多种方式的服务发现, 在 k8s 中是通过 `kubernetes_sd_config` 配置实现的. 通过抓取 `k8s REST API` 自动发现我们部署在 k8s 集群中的 exporter 实例
 
 在 prometheus-operator 中, 我们无需手动编辑配置文件添加 kubernetes_sd_config 配置, prometheus-operator 抽象了出了两种 CRD 资源:
 
@@ -32,11 +32,15 @@ prometheus 原生支持很多种方式的服务发现, 在 k8s 中是通过 `kub
 
 > https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config
 
-kubernetes_sd_config 目前支持 node service pod endpoints endpointslice ingress 6 种服务发现级别. `node` 适用于与主机相关的监控资源，如节点中运行的 Kubernetes 组件状态、节点上运行的容器状态等；`service` 和 `ingress` 适用于通过黑盒监控的场景，如对服务的可用性以及服务质量的监控；`endpoints` 和 `pod` 均可用于获取 Pod 实例的监控数据，如监控用户或者管理员部署的支持 Prometheus 的应用。 
+kubernetes_sd_config 目前支持 node service pod endpoints endpointslice ingress 6 种服务发现级别.
+
+- `node` 适用于与主机相关的监控资源，如节点中运行的 Kubernetes 组件状态、节点上运行的容器状态等；
+- `service` 和 `ingress` 适用于通过黑盒监控的场景，如对服务的可用性以及服务质量的监控；
+- `endpoints` 和 `pod` 均可用于获取 Pod 实例的监控数据，如监控用户或者管理员部署的支持 Prometheus 的应用。 
 
 每种发现模式都支持很多 label, prometheus 可以通过 `relabel_config` 分析这些标签进行标签重写或者丢弃 target
 
-在 `kube-prometheus` 的模板配置中, 所有的 exporter 都是通过 endpoints 模式进行的服务发现.
+在 `kube-prometheus` 的模板配置中, 所有的 exporter 都是通过 endpoints 模式实现的.
 
 以比较常用的 endpoints 为例, endpoints 支持的标签如下所示
 
@@ -541,4 +545,285 @@ Service Discovery 界面
 Targets 界面
 
 ![image-20230426161849710](https://image.lvbibir.cn/blog/image-20230426161849710.png)
+
+# 3. podMonitor
+
+## 3.1 calico-node
+
+以 calico 为例, 使用 podMonitor 资源监控 calico-node 
+
+calico 中核心的组件是 Felix，它负责设置路由表和 ACL 规则，同时还负责提供网络健康状况的数据；这些数据会被写入etcd。
+由此可见，监控 calico 的核心便是监控 felix，felix 相当于 calico 的大脑。
+
+如下所示, 一般 calico-node 都是使用 daemonset 方式部署在集群中的
+
+```bash
+[root@k8s-node1 ~]# kubectl get pods -n kube-system -l k8s-app=calico-node -o wide
+NAME                READY   STATUS    RESTARTS        AGE     IP        NODE        NOMINATED NODE   READINESS GATES
+calico-node-8p9w5   1/1     Running   2 (5d16h ago)   7d23h   1.1.1.2   k8s-node2   <none>           <none>
+calico-node-bw2kb   1/1     Running   2 (5d16h ago)   7d23h   1.1.1.1   k8s-node1   <none>           <none>
+calico-node-gt688   1/1     Running   2 (5d16h ago)   7d23h   1.1.1.3   k8s-node3   <none>           <none>
+```
+
+calico-node 默认是没有打开 metrics 监听的, 我们修改 calico 的 daemonset 配置文件, 可以直接修改部署时的 yaml, 也可以 `kubectl edit ds calico-node -n kube-system`
+
+```yaml
+kind: DaemonSet
+spec:
+  template:
+    spec:
+      containers:
+        - name: calico-node
+          env:
+          #  添加如下配置, 开启 FELIX 的 metrics 的监听端口为 9101 (9100 端口被 node-exporter 占据了)
+            - name: FELIX_PROMETHEUSMETRICSENABLED
+              value: "True"
+            - name: FELIX_PROMETHEUSMETRICSPORT
+              value: "9101"
+          ports:
+          - containerPort: 9101
+            name: metrics
+            protocol: TCP
+```
+
+修改完等待 calico-node 的 pod 重新部署, 然后访问测试
+
+```bash
+[root@k8s-node1 ~]# curl -s k8s-node2:9101/metrics | head -6
+# HELP felix_active_local_endpoints Number of active endpoints on this host.
+# TYPE felix_active_local_endpoints gauge
+felix_active_local_endpoints 9
+# HELP felix_active_local_policies Number of active policies on this host.
+# TYPE felix_active_local_policies gauge
+felix_active_local_policies 0
+```
+
+由于 kube-prometheus 默认已经帮我们创建了基于 `kube-sysetm` 命名空间的授权, 我们无需再额外配置
+
+创建 podMonitor
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  labels:
+    app.kubernetes.io/name: calico-node
+  name: calico-node
+  namespace: monitoring
+spec:
+  jobLabel: app.kubernetes.io/name
+  podMetricsEndpoints:
+  - interval: 15s
+    path: /metrics
+    port: metrics           # 确保与 calico-node 的 containerPort 名称一致
+  namespaceSelector:
+    matchNames:
+    - kube-system           # 确保命名空间正确
+  selector:
+    matchLabels: 
+      k8s-app: calico-node  # 确保 label 配置正确
+```
+
+查看 prometheus
+
+![image-20230427100740612](https://image.lvbibir.cn/blog/image-20230427100740612.png)
+
+
+
+# 4. 集群范围的自动发现
+
+当我们的 k8s 集群中 service 和 pod 达到一定规模后手动一个一个创建 serviceMonitor 和 podMonitor 不免又麻烦了起来, 我们可以使用不限制 namespace 的 kubernetes_sd_configs 实现集群范围内自动发现所有的 exporter 实例
+
+接下来的演示中我们监控集群范围内的所有 endpoints, 并且将带有 `prometheus.io/scrape=true` 这个 `annotations ` 的 service 注册到 prometheus
+
+## 4.1 rbac
+
+由于需要访问访问集群范围内的资源对象, 继续使用 role+roleBinding 模式显然不适合, prometheus-k8s 这个 serviceAccount 还绑定一个名为 prometheus-k8s 的 clusterRole, 该 clusterRole 默认权限是不够的, 添加需要的权限:
+
+```yaml
+# vim manifests/prometheus-clusterRole.yaml
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/instance: k8s
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/part-of: kube-prometheus
+    app.kubernetes.io/version: 2.32.1
+  name: prometheus-k8s
+  namespace: monitoring
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - nodes
+  - services
+  - endpoints
+  - pods
+  - nodes/metrics
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  - nodes/metrics
+  verbs:
+  - get
+- nonResourceURLs:
+  - /metrics
+  verbs:
+  - get
+  
+# kubectl apply -f manifests/prometheus-clusterRole.yaml
+```
+
+## 4.2 自动发现配置
+
+通过上一篇文章中的 `additionalScrapeConfigs` 添加自动发现配置
+
+```yaml
+# vim prometheus-additional.yaml
+
+- job_name: 'kubernetes-service-endpoints'
+  kubernetes_sd_configs:
+  - role: endpoints
+  relabel_configs:
+  - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+    action: keep
+    regex: true
+  - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scheme]
+    action: replace
+    target_label: __scheme__
+    regex: (https?)
+  - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
+    action: replace
+    target_label: __metrics_path__
+    regex: (.+)
+  - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_io_port]
+    action: replace
+    target_label: __address__
+    regex: ([^:]+)(?::\d+)?;(\d+)
+    replacement: $1:$2
+  - action: labelmap
+    regex: __meta_kubernetes_service_label_(.+)
+  - source_labels: [__meta_kubernetes_namespace]
+    action: replace
+    target_label: kubernetes_namespace
+  - source_labels: [__meta_kubernetes_service_name]
+    action: replace
+    target_label: kubernetes_name
+```
+
+修改 secret
+
+```bash
+[root@k8s-node1 demo]# kubectl create secret generic additional-scrape-configs --from-file=prometheus-additional.yaml --dry-run -oyaml > additional-scrape-configs.yaml
+W0427 16:31:09.248567   26459 helpers.go:555] --dry-run is deprecated and can be replaced with --dry-run=client.
+[root@k8s-node1 demo]# kubectl apply -f additional-scrape-configs.yaml -n monitoring
+secret/additional-scrape-configs configured
+```
+
+确保 prometheus CRD 中添加了 `additionalScrapeConfigs` 配置
+
+```yaml
+kind: Prometheus
+spec:
+  additionalScrapeConfigs:
+    name: additional-scrape-configs  # secret name
+    key: prometheus-additional.yaml  # secret key
+```
+
+## 4.3 验证
+
+service kube-dns 默认有 `prometheus.io/scrape=true` 这个注解, 已经成功注册:
+
+![image-20230427164311865](https://image.lvbibir.cn/blog/image-20230427164311865.png)
+
+创建一个示例应用
+
+```yaml
+# vim node-exporter-deploy-svc.yml
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: test
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-node-exporter
+  namespace: test
+  labels:
+    app: test-node-exporter
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9200"
+spec:
+  selector:
+    app: test-node-exporter
+  ports:
+  - name: metrics
+    port: 9200
+    targetPort: metrics
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-node-exporter
+  namespace: test
+  labels:
+    app: test-node-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-node-exporter
+  template:
+    metadata:
+      labels:
+        app: test-node-exporter
+    spec:
+      containers:
+      - args:
+        - --web.listen-address=:9200
+        image: registry.cn-hangzhou.aliyuncs.com/lvbibir/node-exporter:v1.3.1
+        name: node-exporter
+        ports:
+        - name: metrics
+          containerPort: 9200
+
+# kubectl apply -f node-exporter-deploy-svc.yml
+```
+
+如下, 我们部署的 node-exporter 已经成功注册, 只要 service 设置了 `annotations` 即可
+
+![image-20230427171357838](https://image.lvbibir.cn/blog/image-20230427171357838.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
