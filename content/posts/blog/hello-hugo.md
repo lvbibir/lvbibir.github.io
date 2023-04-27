@@ -37,7 +37,7 @@ cover:
 
 # 一键将hugo博客部署到阿里云
 
-> 虽说标题带有一键，但还是有一定的门槛的，需要对`dokcer | docker-compose | nginx`有一定了解
+> 虽说标题带有一键，但还是有一定的门槛的，需要对 dokcer docker-compose nginx 有一定了解
 
 [配置文件下载](https://image.lvbibir.cn/files/blog-docker-compose.zip) 下载完将目录上传到自己的服务器，重命名为 `blog` (当然你可以用其他名字)
 
@@ -71,7 +71,7 @@ hugo -F --cleanDestinationDir
 
 ## 上传静态文件
 
-将`mobaxterm`的命令添加到用户环境变量中，以实现`git bash | vscode | windows terminal`中运行一些 mobaxterm 本地终端附带的命令，也就无需再专门打开一次 mobaxterm 去上传文件了
+将`mobaxterm`的命令添加到用户环境变量中，以实现 `git bash` `vscode` `windows terminal` 中运行一些 mobaxterm 本地终端附带的命令，也就无需再专门打开一次 mobaxterm 去上传文件了
 
 ```
 rsync -avuz --progress --delete public/ root@lvbibir.cn:/root/blog/data/hugo/

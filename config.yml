@@ -58,7 +58,7 @@ languages:
         本站主要内容包括读书笔记、技术积累、生活感悟。如果能有哪些内容可以帮助到你，那也是极好的。</br>
         精通 CSS JavaScript PHP C C++ C# java Ruby Perl Python 等单词的拼写</br>
         熟悉 Windows Linux Mac Android IOS 等系统的开关机</br>
-        🏃‍♂️ 跑步 🎮️ 游戏 🎧 音乐 📺 动漫 🛌 摆烂 
+        🏃‍♂️ 跑步 🎮️ 游戏 🎧 音乐 📺 动漫 
 
     menu:
       main:
@@ -212,7 +212,7 @@ markup:
       unsafe: true # HUGO 默认转义 Markdown 文件中的 HTML 代码，如需开启的话
   highlight:
     codeFences: true   # 代码围栏功能，这个功能一般都要设为 true 的，不然很难看，就是干巴巴的-代码文字，没有颜色。
-    guessSyntax: false # 猜测语法，这个功能建议设置为 true, 如果你没有设置要显示的语言则会自动匹配。
+    guessSyntax: true # 猜测语法，这个功能建议设置为 true, 如果你没有设置要显示的语言则会自动匹配。
     lineNos: false     # 是否显示行号
     noClasses: true    # 使用 class 标签，而不是内嵌的内联样式
     tabWidth: 4

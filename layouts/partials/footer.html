@@ -11,19 +11,20 @@
         <!-- <img style="display: unset;" src="https://img.shields.io/badge/frame-hugo-blue?style=flat&logo=hugo"> -->
         <img style="display: unset;" src="https://image.lvbibir.cn/blog/frame-hugo-blue.svg">
     </a>
-    <a href="https://github.com/adityatelange/hugo-PaperMod" target="_blank">    
+    <a href="https://github.com/adityatelange/hugo-PaperMod" target="_blank">
         <!-- <img style="display: unset;" src="https://img.shields.io/badge/theme-papermod-lightgrey?style=flat&logo=BookStack"> -->
         <img style="display: unset;" src="https://image.lvbibir.cn/blog/theme-papermod-lightgrey.svg">
     </a>
-    <a href="https://cn.aliyun.com/" target="_blank">    
+    <a href="https://cn.aliyun.com/" target="_blank">
         <!-- <img style="display: unset;" src="https://img.shields.io/badge/图床-阿里云-orange?style=flat&logo=alibabacloud"> -->
         <img style="display: unset;" src="https://image.lvbibir.cn/blog/图床-阿里云-orange.svg">
     </a>
 
     <br>
 
-    <span id="runtime_span"></span> 
-    <script type="text/javascript">function show_runtime(){window.setTimeout("show_runtime()",1000);X=new Date("7/13/2021 1:00:00");Y=new Date();T=(Y.getTime()-X.getTime());M=24*60*60*1000;a=T/M;A=Math.floor(a);b=(a-A)*24;B=Math.floor(b);c=(b-B)*60;C=Math.floor((b-B)*60);D=Math.floor((c-C)*60);runtime_span.innerHTML="网站已运行"+A+"天"+B+"小时"+C+"分"+D+"秒"}show_runtime();</script>
+    <span id="runtime_span"></span>
+    <script
+        type="text/javascript">function show_runtime() { window.setTimeout("show_runtime()", 1000); X = new Date("7/13/2021 1:00:00"); Y = new Date(); T = (Y.getTime() - X.getTime()); M = 24 * 60 * 60 * 1000; a = T / M; A = Math.floor(a); b = (a - A) * 24; B = Math.floor(b); c = (b - B) * 60; C = Math.floor((b - B) * 60); D = Math.floor((c - C) * 60); runtime_span.innerHTML = "网站已运行" + A + "天" + B + "小时" + C + "分" + D + "秒" } show_runtime();</script>
     |
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span id="busuanzi_container">
@@ -32,7 +33,7 @@
         |
         总访问量: <!-- <i class="fa fa-eye"></i>--> <span id="busuanzi_value_site_pv"></span>
     </span>
-    
+
     <br>
 
     <a href="https://beian.miit.gov.cn/" target="_blank" style="border-bottom:1px solid">{{ .Site.Params.FilingNo }}</a>&nbsp;
@@ -43,7 +44,7 @@
     <span>
         Copyright
         &copy;
-        {{ .Site.Params.StartYear }}-{{ now.Year }} 
+        {{ .Site.Params.StartYear }}-{{ now.Year }}
         <a href="{{ "" | absLangURL }}" style="border-bottom:1px solid">{{ .Site.Title }}</a>
     </span>
     {{- end }}
@@ -64,7 +65,7 @@
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <span class="topInner">
         <svg class="topSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-            <path d="M12 6H0l6-6z"/>
+            <path d="M12 6H0l6-6z" />
         </svg>
         <span id="read_progress"></span>
     </span>
@@ -221,29 +222,51 @@
             selection.removeRange(range);
         });
 
+        let language = codeblock.className.replaceAll("language-", "")
+        let macTool = document.createElement("div")
+        let macTool1 = document.createElement("div")
+        let macTool2 = document.createElement("div")
+        let macTool3 = document.createElement("div")
+        let languageType = document.createElement("div")
+        languageType.innerText = language
+        macTool.setAttribute('class', 'mac-tool')
+        macTool1.setAttribute('class', 'mac bb1')
+        macTool2.setAttribute('class', 'mac bb2')
+        macTool3.setAttribute('class', 'mac bb3')
+        languageType.setAttribute('class', 'language-type')
+        macTool.appendChild(macTool1)
+        macTool.appendChild(macTool2)
+        macTool.appendChild(macTool3)
+        macTool.appendChild(languageType)
+
         if (container.classList.contains("highlight")) {
             container.appendChild(copybutton);
+            container.appendChild(macTool)
         } else if (container.parentNode.firstChild === container) {
             // td containing LineNos
         } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === "TABLE") {
             // table containing LineNos and code
             codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+            container.appendChild(macTool)
         } else {
             // code blocks not having highlight as parent class
             codeblock.parentNode.appendChild(copybutton);
+            container.appendChild(macTool)
         }
     });
 </script>
 {{- end }}
 
 <!-- 代码块自动扩展 -->
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
     $("code[class^=language] ").on("mouseover", function () {
-        if (this.clientWidth < this.scrollWidth) {
+        if ($(window).width() > 768 && this.clientWidth < this.scrollWidth) {
             $(this).css("width", "135%")
+            $(this).css("border-top-right-radius", "var(--radius)")
         }
     }).on("mouseout", function () {
         $(this).css("width", "100%")
+        $(this).css("border-top-right-radius", "unset")
     })
-</script> -->
+</script>
