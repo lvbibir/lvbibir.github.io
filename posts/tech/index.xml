@@ -13,7 +13,7 @@
       <pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-4-blackbox-probe/</guid>
-      <description>prometheus-operator 中使用 additionalScrapeConfig 添加自定义 job 和 target</description>
+      <description>prometheus-operator 中使用 probe CRD 资源和 blackbox 添加黑盒监控项</description>
     </item>
     
     <item>
