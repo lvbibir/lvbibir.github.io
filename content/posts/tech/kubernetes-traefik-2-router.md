@@ -20,7 +20,7 @@ cover:
 
 # 1. 简介
 
-> 参考文档：https://doc.traefik.io/traefik/routing/overview/
+[官方文档](https://doc.traefik.io/traefik/routing/overview/)
 
 ## 1.1 三种方式
 
@@ -76,7 +76,7 @@ spec:
               number: 9000
 ```
 
-访问: http://ingress.traefik.local
+访问: [http://ingress.traefik.local](http://ingress.traefik.local)
 
 ## 2.2 ingressRoute
 
@@ -98,7 +98,7 @@ spec:
       port: 9000
 ```
 
-访问：http://ingressroute.traefik.local
+访问：[http://ingressroute.traefik.local](http://ingressroute.traefik.local)
 
 ## 2.3 Gateway API
 
@@ -161,7 +161,7 @@ spec:
       weight: 1
 ```
 
-访问：http://gateway.traefik.local
+访问：[http://gateway.traefik.local](http://gateway.traefik.local)
 
 # 3. myapp 环境准备
 
@@ -268,7 +268,7 @@ Hello MyApp | Version: v2 | <a href="hostname.html">Pod Name</a>
 
 ## 4.1 http 路由
 
-实现目标：集群外部用户通过访问 http://myapp1.test.com 域名时，将请求代理至myapp1应用。
+实现目标：集群外部用户通过访问 [http://myapp1.test.com](http://myapp1.test.com) 域名时，将请求代理至myapp1应用。
 
 创建 ingressRoute
 
@@ -349,6 +349,8 @@ ingressroute.traefik.containo.us/myapp2 created
 ![image-20230419132537993](https://image.lvbibir.cn/blog/image-20230419132537993.png)
 
 # 5. ingressRouteTCP
+
+[ingreeRouteTCP 官方文档](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroutetcp) 
 
 ## 5.1 不带 TLS 证书
 
@@ -463,8 +465,6 @@ ingressroutetcp.traefik.containo.us/mysql created
 ![image-20230419134929324](https://image.lvbibir.cn/blog/image-20230419134929324.png)
 
 ## 5.2 带 TLS 证书
-
-> 参考地址 https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroutetcp
 
 大多数情况下 tcp 路由不需要配置 TLS ，下面仅演示两个关键步骤
 

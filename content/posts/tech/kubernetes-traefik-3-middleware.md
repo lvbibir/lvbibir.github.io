@@ -22,14 +22,14 @@ cover:
 
 # 1. 简介
 
-> 参考文档：https://doc.traefik.io/traefik/middlewares/overview/ 
+[官方文档](https://doc.traefik.io/traefik/middlewares/overview/ )
 
 Traefik Middlewares 是一个处于路由和后端服务之前的中间件，在外部流量进入 Traefik，且路由规则匹配成功后，将流量发送到对应的后端服务前，先将其发给中间件进行一系列处理（类似于过滤器链 Filter，进行一系列处理），例如，添加 Header 头信息、鉴权、流量转发、处理访问路径前缀、IP 白名单等等，经过一个或者多个中间件处理完成后，再发送给后端服务，这个就是中间件的作用。
 Traefik内置了很多不同功能的Middleware，主要是针对HTTP和TCP，这里挑选几个比较常用的进行演示。
 
 ## 1.1 重定向-redirectScheme
 
-> https://doc.traefik.io/traefik/middlewares/http/redirectscheme/
+[官方文档](https://doc.traefik.io/traefik/middlewares/http/redirectscheme/)
 
 定义一个 ingressroute，包含一个自动将 http 跳转到 https 的中间件
 
@@ -74,7 +74,7 @@ Content-Type: text/plain; charset=utf-8
 
 ## 1.2 去除请求路径前缀-stripPrefix
 
-> https://doc.traefik.io/traefik/middlewares/http/stripprefix/
+[官方文档](https://doc.traefik.io/traefik/middlewares/http/stripprefix/)
 
 假设现在有这样一个需求，当访问 `http://myapp.test.com/v1` 时，流量调度至 myapp1。当访问 `http://myapp.test.com/v2` 时，流量调度至 myapp2。这种需求是非常常见的，在 NGINX 中，我们可以配置多个 Location 来定制规则，使用 Traefik 也可以这么做。但是定制不同的前缀后，由于应用本身并没有这些前缀，导致请求返回 404，这时候我们就需要对请求的 path 进行处理。
 
@@ -132,7 +132,7 @@ Hello MyApp | Version: v2 | <a href="hostname.html">Pod Name</a>
 
 ## 1.3 白名单-IPWhiteList
 
-> https://doc.traefik.io/traefik/middlewares/http/ipwhitelist/
+[官方文档](https://doc.traefik.io/traefik/middlewares/http/ipwhitelist/)
 
 为提高安全性，通常情况下一些管理员界面会设置 ip 访问白名单，只希望个别用户可以访问。
 
@@ -185,7 +185,7 @@ Hello MyApp | Version: v1 | <a href="hostname.html">Pod Name</a>
 
 ## 1.4 基础用户认证-basicAuth
 
-> https://doc.traefik.io/traefik/middlewares/http/basicauth/
+[官方文档](https://doc.traefik.io/traefik/middlewares/http/basicauth/)
 
 通常企业安全要求规范除了要对管理员页面限制访问ip外，还需要添加账号密码认证，而 traefik 默认没有提供账号密码认证功能，此时就可以通过BasicAuth 中间件完成用户认证，只有认证通过的授权用户才可以访问页面。
 
@@ -235,7 +235,7 @@ spec:
 
 ## 1.5 修改请求/响应头信息-headers
 
-> https://doc.traefik.io/traefik/middlewares/http/headers/
+[官方文档](https://doc.traefik.io/traefik/middlewares/http/headers/)
 
 为了提高业务的安全性，安全团队会定期进行漏洞扫描，其中有些 web 漏洞就需要通过修改响应头处理，traefik 的 Headers 中间件不仅可以修改返回客户端的响应头信息，还能修改反向代理后端 service 服务的请求头信息。
 
@@ -291,7 +291,7 @@ Strict-Transport-Security: max-age=63072000   # headers 插件添加的响应头
 
 ## 1.6 限流-rateLimit
 
-> https://doc.traefik.io/traefik/middlewares/http/ratelimit/
+[官方文档](https://doc.traefik.io/traefik/middlewares/http/ratelimit/)
 
 在实际生产环境中，流量限制也是经常用到的，它可以用作安全目的，比如可以减慢暴力密码破解的速率。通过将传入请求的速率限制为真实用户的典型值，并标识目标URL地址(通过日志)，还可以用来抵御 DDOS 攻击。更常见的情况，该功能被用来保护下游应用服务器不被同时太多用户请求所压垮。
 
@@ -339,7 +339,7 @@ Non-2xx responses:      72
 
 ## 1.7 熔断-circuitBreaker
 
-> https://doc.traefik.io/traefik/middlewares/http/circuitbreaker/
+[官方文档](https://doc.traefik.io/traefik/middlewares/http/circuitbreaker/)
 
 服务熔断的作用类似于保险丝，当某服务出现不可用或响应超时的情况时，为了防止整个系统出现雪崩，暂时停止对该服务的调用。
 
@@ -401,7 +401,7 @@ Non-2xx responses:      999
 
 ## 1.8 自定义错误页-errorPages
 
-> https://doc.traefik.io/traefik/middlewares/http/errorpages/
+[官方文档](https://doc.traefik.io/traefik/middlewares/http/errorpages/)
 
 在实际的业务中，肯定会存在 `4XX` `5XX` 相关的错误异常，如果每个应用都开发一个单独的错误页，无疑大大增加了开发成本，traefik 同样也支持自定义错误页，但是需要注意的是，错误页面不是由 traefik 存储处理，而是通过定义中间件，将错误的请求重定向到其他的页面。
 
@@ -565,7 +565,7 @@ Hello MyApp | Version: v2 | <a href="hostname.html">Pod Name</a>
 
 ## 1.9 数据压缩-compress
 
-> https://doc.traefik.io/traefik/middlewares/http/compress/
+[官方文档](https://doc.traefik.io/traefik/middlewares/http/compress/)
 
 有时候客户端和服务器之间会传输比较大的报文数据，这时候就占用较大的网络带宽和时长。为了节省带宽，加速报文的响应速速，可以将传输的报文数据先进行压缩，然后再进行传输，traefik也同样支持数据压缩。
 

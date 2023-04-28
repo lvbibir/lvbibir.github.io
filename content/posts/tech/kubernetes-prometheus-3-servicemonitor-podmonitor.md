@@ -30,7 +30,7 @@ cover:
 
 ## 1.1 kubernetes_sd_config
 
-> https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config
+[kubernets_sd_config 官方文档](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config)
 
 kubernetes_sd_config 目前支持 node service pod endpoints endpointslice ingress 6 种服务发现级别.
 

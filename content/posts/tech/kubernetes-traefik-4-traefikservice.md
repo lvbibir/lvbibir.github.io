@@ -29,7 +29,7 @@ traefik 的路由规则就可以实现 4 层和 7 层的基本负载均衡操作
 
 # 2. 灰度发布(加权轮询)
 
-> https://doc.traefik.io/traefik/routing/services/#weighted-round-robin-service
+[官方文档](https://doc.traefik.io/traefik/routing/services/#weighted-round-robin-service)
 
 灰度发布也称为金丝雀发布，让一部分即将上线的服务发布到线上，观察是否达到上线要求，主要通过加权轮询的方式实现。
 
@@ -86,8 +86,8 @@ Hello MyApp | Version: v2 | <a href="hostname.html">Pod Name</a>
 
 # 3. 会话保持(粘性会话)
 
-> https://doc.traefik.io/traefik/routing/services/#servers
->
+[官方文档](https://doc.traefik.io/traefik/routing/services/#servers)
+
 > 会话保持功能依赖加权轮询功能
 
 当我们使用 traefik 的负载均衡时，默认情况下轮循多个 k8s 的 service 服务，如果用户对同一内容的多次请求，可能被转发到了不同的后端服务器。假设用户发出请求被分配至服务器 A，保存了一些信息在 session 中，该用户再次发送请求被分配到服务器 B，要用之前保存的信息，若服务器 A 和 B 之间没有 session 粘滞，那么服务器 B 就拿不到之前的信息，这样会导致一些问题。traefik 同样也支持粘性会话，可以让用户在一次会话周期内的所有请求始终转发到一台特定的后端服务器上。
@@ -148,11 +148,9 @@ Hello MyApp | Version: v1 | <a href="hostname.html">Pod Name</a>
 Hello MyApp | Version: v1 | <a href="hostname.html">Pod Name</a>
 ```
 
-
-
 # 4. 流量复制
 
-> https://doc.traefik.io/traefik/routing/services/#mirroring-service
+[官方文档](https://doc.traefik.io/traefik/routing/services/#mirroring-service)
 
 所谓的流量复制，也称为镜像服务是指将请求的流量按规则复制一份发送给其它服务，并且会忽略这部分请求的响应，这个功能在做一些压测或者问题复现的时候很有用。
 

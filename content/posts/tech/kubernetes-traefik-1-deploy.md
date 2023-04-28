@@ -48,7 +48,7 @@ Traefik 是一个为了让部署微服务更加便捷而诞生的现代HTTP反�
 
 ## 1.3 Traefik CRD资源
 
-> 参考文档：https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/
+[官方文档](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/)
 
 traefik通过自定义资源实现了对traefik资源的创建和管理，支持的crd资源类型如下所示：
 
@@ -118,7 +118,7 @@ subjects:
 
 ## 2.2 configmap 
 
-> 在 Traefik 中有三种方式定义静态配置：在配置文件中、在命令行参数中、通过环境变量传递，由于 Traefik 配置很多，通过 CLI 定义不是很方便，一般时候选择将其配置选项放到配置文件中，然后存入 ConfigMap，将其挂入 traefik 中。参考文档：https://doc.traefik.io/traefik/getting-started/configuration-overview/
+在 Traefik 中有三种方式定义静态配置：在配置文件中、在命令行参数中、通过环境变量传递，由于 Traefik 配置很多，通过 CLI 定义不是很方便，一般时候选择将其配置选项放到配置文件中，然后存入 ConfigMap，将其挂入 traefik 中。
 
 `configmap.yml` 文件内容：
 
@@ -161,6 +161,8 @@ data:
       udpep:
         address: ":9300/udp"    # 配置9300端口，作为udp入口
     providers:
+      kubernetesIngress: ""     # 启用 Kubernetes Ingress 方式来配置路由规则
+      kubernetesGateway: ""     # 启用 Kubernetes Gateway API
       kubernetesCRD:            # 启用Kubernetes CRD方式来配置路由规则
         ingressClass: ""        # 指定traefik的ingressClass名称
         allowCrossNamespace: true   #允许跨namespace
@@ -404,9 +406,7 @@ tlsoption.traefik.containo.us/default created
 
 ### 2.5.2 日志切割
 
-> 官方并没有日志轮换的功能，但是traefik收到USR1信号后会重建日志文件，因此可以通过logrotate实现日志轮换
->
-> 参考文档：https://doc.traefik.io/traefik/observability/logs/
+官方并没有日志轮换的功能，但是 traefik 收到 `USR1` 信号后会重建日志文件，因此可以通过 `logrotate` 实现日志轮换
 
 ```bash
 mkdir -p /etc/logrotate.d/traefik
@@ -441,9 +441,7 @@ crontab -e
 
 ### 2.6.1 annotations 注解筛选
 
-> 参考文档：https://doc.traefik.io/traefik/providers/kubernetes-crd/#ingressclass
-
-首先在traefik配置文件中的providers下增加Ingressclass参数，指定具体的值
+首先在 traefik 配置文件中的 providers 下增加 Ingressclass 参数，指定具体的值
 
 ```yaml
     providers:
@@ -476,8 +474,6 @@ spec:
 ```
 
 ### 2.6.2 label 标签选择器筛选
-
-> 参考文档：https://doc.traefik.io/traefik/providers/kubernetes-crd/#labelselector
 
 首先在traefik配置文件中的providers下增加labelSelector参数，指定具体的标签键值。
 

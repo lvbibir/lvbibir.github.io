@@ -19,12 +19,12 @@ cover:
 
 # 1. 简介
 
-> https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/additional-scrape-config.md
-
 使用原生的 prometheus 时, 我们创建 job 直接修改配置文件即可, 然而在 prometheus-operator 中所有的配置都抽象成了 k8s `CRD` 资源, 手动配置 job 需要:
 
 - 创建 secret
 - 在 prometheus CRD 资源中配置 `additionalScrapeConfigs`
+
+[additional-scrape-config 官方示例](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/additional-scrape-config.md)
 
 # 2. 示例
 

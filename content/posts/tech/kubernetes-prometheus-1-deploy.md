@@ -23,24 +23,22 @@ cover:
 
 [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) 提供了一个基于 Prometheus 和 Prometheus Operator 的完整集群监控堆栈的示例配置。这包括部署多个 Prometheus 和 Alertmanager 实例、用于收集节点指标的指标导出器（如 node_exporters)、将 Prometheus 链接到各种指标端点的目标配置，以及用于通知集群中潜在问题的示例警报规则。
 
+[所有 CRD 资源的 API 文档](https://prometheus-operator.dev/docs/operator/api/)
+
 Prometheus Operator 的一个核心特性是 `watch` Kubernetes API 服务器对特定对象的更改，并确保当前 Prometheus 部署与这些对象匹配。Operator 对以下自定义资源定义 (crd) 进行操作：
 
 `monitoring.coreos.com/v1`:
 
-- `Prometheus`: 它定义了 Prometheus 期望的部署。
-- `Alertmanager`: 它定义了 AlertManager 期望的部署。
-- `ThanosRuler`: 它定义了 ThanosRuler 期望的部署；如果有多个 Prometheus 实例，则通过 `ThanosRuler` 进行告警规则的统一管理。
-- `ServiceMonitor`: Prometheus Operator 通过 `PodMonitor` 和 `ServiceMonitor` 实现对资源的监控，`ServiceMonitor` 用于通过 Service 对 K8S 中的任何资源进行监控，推荐首选 `ServiceMonitor`. 它声明性地指定了 Kubernetes service 应该如何被监控。Operator 根据 API 服务器中对象的当前状态自动生成 Prometheus 刮擦配置。
-- `PodMonitor`: Prometheus Operator 通过 `PodMonitor` 和 `ServiceMonitor` 实现对资源的监控，`PodMonitor` 用于对 Pod 进行监控，推荐首选 `ServiceMonitor`. `PodMonitor` 声明性地指定了应该如何监视一组 pod。Operator 根据 API 服务器中对象的当前状态自动生成 Prometheus 刮擦配置。
-- `Probe`: 它声明性地指定了应该如何监视 ingress 或静态目标组。Operator 根据定义自动生成 Prometheus 刮擦配置。
-- `PrometheusRule`: 用于管理 Prometheus 告警规则；它定义了一套所需的 Prometheus 警报和/或记录规则。Prometheus 生成一个规则文件，可以被 Prometheus 实例使用。
+- `Prometheus`: 定义 Prometheus statefulset 及 Prometheus 的一些配置。
+- `Alertmanager`: 定义 AlertManager statefulset 及 AlertManager 的一些配置。
+- `ThanosRuler`: 定义 ThanosRuler 期望的部署；
+- `ServiceMonitor`: 用于通过 Service 对 K8S 中的任何资源进行监控，推荐首选 `ServiceMonitor`. 它声明性地指定了 Kubernetes service 应该如何被监控。Operator 根据 API 服务器中对象的当前状态自动生成 Prometheus 配置。
+- `PodMonitor`: 用于对 Pod 进行监控，推荐首选 `ServiceMonitor`. `PodMonitor` 声明性地指定了应该如何监视一组 pod。Operator 根据 API 服务器中对象的当前状态自动生成 Prometheus 配置。
+- `Probe`: 它声明性地指定了应该如何监视 ingress 或静态目标组。Operator 根据定义自动生成 Prometheus 配置。
+- `PrometheusRule`: 用于管理 Prometheus 告警规则；它定义了一套所需的 Prometheus 警报和/或记录规则。可以被 Prometheus 实例挂载使用。
 - `AlertmanagerConfig`: 用于管理 AlertManager 配置文件，主要是告警发给谁；它声明性地指定 Alertmanager 配置的子部分，允许将警报路由到自定义接收器，并设置禁止规则。
 
-Prometheus Operator 自动检测 Kubernetes API 服务器对上述任何对象的更改，并确保匹配的部署和配置保持同步。
-
-> 所有 CRD 资源的 API 文档:
->
-> https://prometheus-operator.dev/docs/operator/api/
+Prometheus Operator 自动检测 Kubernetes API 服务器对上述对象的更改，并确保匹配的部署和配置保持同步。
 
 # 2. 部署
 
