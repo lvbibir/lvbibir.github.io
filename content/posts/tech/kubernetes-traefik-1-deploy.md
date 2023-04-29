@@ -172,7 +172,7 @@ data:
       level: "DEBUG"            # 设置调试日志级别
       format: "json"          # 设置调试日志格式
     accessLog:
-      # filePath: "/etc/traefik/logs/access.log" # 设置访问日志文件存储路径，如果为空则输出到 stdout 和 stderr
+      filePath: "/etc/traefik/logs/access.log" # 设置访问日志文件存储路径，如果为空则输出到 stdout 和 stderr
       format: "json"          # 设置访问调试日志格式
       bufferingSize: 0          # 设置访问日志缓存行数
       fields:                   # 设置访问日志中的字段是否保留（keep保留、drop不保留）

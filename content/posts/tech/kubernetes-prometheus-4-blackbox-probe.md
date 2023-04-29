@@ -60,7 +60,7 @@ Probe 支持 `staticConfig` 和 `ingress` 两种配置方式, 使用 ingress 时
 
 ![3526046601-63e4a22006154_fix732](https://image.lvbibir.cn/blog/3526046601-63e4a22006154_fix732.png)
 
-# 2. 示例
+# 2. probe 示例
 
 ## 2.1 staticConfig
 
@@ -200,7 +200,7 @@ spec:
 
 ![image-20230428163153649](https://image.lvbibir.cn/blog/image-20230428163153649.png)
 
-## 2.2 ingress
+## 2.2 ingress自动发现
 
 接下来使用 ingrss 自动发现实现集群内的 ingress 并进行黑盒探测
 
@@ -214,7 +214,9 @@ kubectl create deployment web-2 --image=nginx:1.22.1 --port=80
 kubectl expose deployment web-2 --name=web-2 --port=80 --target-port=80
 ```
 
-创建 ingress
+### 2.2.1 创建 ingress
+
+包含三个路径: `http://web1.test.com` `http://web1.test.com/test` `http://web2.test.com`
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -222,6 +224,8 @@ kind: Ingress
 metadata:
   name: demo-web
   namespace: default
+  labels:
+    prometheus.io/http-probe: "true" # 用于监测
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: web
@@ -237,6 +241,13 @@ spec:
             name: web-1
             port:
               number: 80
+      - pathType: Prefix
+        path: /test
+        backend:
+          service:
+            name: web-1
+            port:
+              number: 80
   - host: web2.test.com
     http:
       paths:
@@ -246,35 +257,261 @@ spec:
           service:
             name: web-2
             port:
-              number: 80              
+              number: 80
 ```
 
 部署并访问测试
 
 ```bash
+[root@k8s-node1 manifests]# echo "1.1.1.1 web1.test.com web2.test.com" >> /etc/hosts
 [root@k8s-node1 manifests]# curl -sI web1.test.com | head -1
 HTTP/1.1 200 OK
+[root@k8s-node1 manifests]# curl -sI web1.test.com/test | head -1
+HTTP/1.1 404 Not Found
 [root@k8s-node1 manifests]# curl -sI web2.test.com | head -1
 HTTP/1.1 200 OK
 ```
 
-创建 probe
+### 2.2.2 创建 probe
+
+可以使用 `label` 或者 `annotation` 两种方式筛选监测的 ingress, 不配置监测所有 ingress
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
 kind: Probe
 metadata:
-  name: blackbox-http-nginx
+  name: blackbox-ingress
   namespace: monitoring
 spec:
-  jobName: blackbox-http-nginx 
+  jobName: blackbox-ingress
   prober:
     url: blackbox-exporter:19115
     path: /probe
-  module: http_2xx # 配置文件中的检测模块
+  module: http_2xx
   targets:
-    ingress:
+    ingress:      
+      namespaceSelector:
+        # 监测所有 namespace
+        # any: true      
+        # 只监测指定 namespace 的 ingress
+        matchNames:
+        - default  
+        - monitoring
+      # 只监测配置了标签 prometheus.io/http-probe: true 的 ingress
+      selector:
+        matchLabels:
+          prometheus.io/http-probe: "true"
+      # 只监测配置了注解 prometheus.io/http_probe: true 的 ingress
+      # relabelingConfigs: 
+      # - action: keep
+      #   sourceLabels:
+      #   - __meta_kubernetes_ingress_annotation_prometheus_io_http_probe
+      #   regex: "true"
 ```
 
+查看 targets
 
+![image-20230429131759421](https://image.lvbibir.cn/blog/image-20230429131759421.png)
+
+不过由于 ingress 配置的域名无法解析, 所以监测到的状态是失败的:
+
+![image-20230429141436766](https://image.lvbibir.cn/blog/image-20230429141436766.png)
+
+### 2.2.3 配置 coredns
+
+我们为 coredns 添加自定义 hosts, 实现 blackbox 可以解析到我们的自定义域名
+
+```yaml
+# kubectl edit cm coredns -n kube-system
+apiVersion: v1
+data:
+  Corefile: |
+    .:53 {
+        errors
+        health {
+           lameduck 5s
+        }
+        ready
+        kubernetes cluster.local in-addr.arpa ip6.arpa {
+           pods insecure
+           fallthrough in-addr.arpa ip6.arpa
+           ttl 30
+        }
+        prometheus :9153
+        forward . /etc/resolv.conf {
+           max_concurrent 1000
+        }
+        hosts {    # 添加 hosts 配置
+          1.1.1.1 web1.test.com 
+          1.1.1.1 web2.test.com
+          fallthrough
+        }
+        cache 30
+        loop
+        reload
+        loadbalance
+    }
+kind: ConfigMap
+```
+
+等待 coredns 的配置生效后, 我们重新再看一下 target 状态
+
+![image-20230429150029851](https://image.lvbibir.cn/blog/image-20230429150029851.png)
+
+# 3. additionalScrapeConfigs
+
+目前 prometheus operator 只支持 ingress 方式的自动发现, 而且自定义配置其实不是很多, 更推荐使用 `additionalScrapeConfigs` 静态配置的方式实现
+
+## 3.2 service自动发现
+
+沿用 2.2 章节中创建的两个 service
+
+修改 service `web-1`, 添加 annotation
+
+```yaml
+# kubectl edit svc web-1
+metadata:
+  annotations:
+    prometheus.io/http-probe: "true"    # 控制是否监测
+    prometheus.io/http-probe-path: /    # 控制监测路径
+    prometheus.io/http-probe-port: "80" # 控制监测端口
+```
+
+修改静态配置
+
+```yaml
+# vim prometheus-additional.yaml
+- job_name: "kubernetes-services"
+  metrics_path: /probe
+  params:
+    module:
+    - "http_2xx"
+  ## 使用 Kubernetes 动态服务发现,且使用 Service 类型的发现
+  kubernetes_sd_configs:
+  - role: service
+  relabel_configs:
+    ## 设置只监测 Annotation 里配置了 prometheus.io/http_probe: true 的 service
+  - action: keep
+    source_labels: [__meta_kubernetes_service_annotation_prometheus_io_http_probe]
+    regex: "true"
+  - action: replace
+    source_labels:
+    - "__meta_kubernetes_service_name"
+    - "__meta_kubernetes_namespace"
+    - "__meta_kubernetes_service_annotation_prometheus_io_http_probe_port"
+    - "__meta_kubernetes_service_annotation_prometheus_io_http_probe_path"
+    target_label: __param_target
+    regex: (.+);(.+);(.+);(.+)
+    replacement: $1.$2:$3$4
+  - target_label: __address__
+    replacement: blackbox-exporter:19115
+  - source_labels: [__param_target]
+    target_label: instance
+  - action: labelmap
+    regex: __meta_kubernetes_service_label_(.+)
+  - source_labels: [__meta_kubernetes_namespace]
+    target_label: kubernetes_namespace
+  - source_labels: [__meta_kubernetes_service_name]
+    target_label: kubernetes_name
+```
+
+更新 secret
+
+```bash
+kubectl create secret generic additional-scrape-configs --from-file=prometheus-additional.yaml --dry-run -oyaml > additional-scrape-configs.yaml
+kubectl apply -f additional-scrape-configs.yaml -n monitoring
+```
+
+确保 prometheus CRD 实例配置了 secret
+
+```bash
+[root@k8s-node1 manifests]# grep -A2 additionalScrapeConfigs prometheus-prometheus.yaml
+  additionalScrapeConfigs:
+    name: additional-scrape-configs  # secret name
+    key: prometheus-additional.yaml  # secret key
+```
+
+查看 target, 可以看到只有 web-1 发现成功, 因为 web-2 没有配置 annotation
+
+![image-20230429142923440](https://image.lvbibir.cn/blog/image-20230429142923440.png)
+
+查看一下监测状态, 直接使用 `<service-name>.<namespace>` 访问, 在集群内是可以正常解析的, 所以这里 http 状态码为正常的 200
+
+![image-20230429143126584](https://image.lvbibir.cn/blog/image-20230429143126584.png)
+
+## 3.1 ingress自动发现
+
+依旧使用 2.2 章节中创建的 ingress
+
+为 ingress 添加 annotation 注解
+
+```yaml
+# kubectl edit ingress demo-web
+  annotations:
+    # 添加如下项 
+    prometheus.io/http-probe: "true"     # 用于控制是否监测
+    prometheus.io/http-probe-port: "80"  # 用于控制监测端口
+```
+
+修改静态配置
+
+```yaml
+# cat prometheus-additional.yaml
+- job_name: "kubernetes-ingresses"
+  metrics_path: /probe
+  params:
+    module:
+    - "http_2xx"
+  ## 使用 Kubernetes 动态服务发现,且使用 ingress 类型的发现
+  kubernetes_sd_configs:
+  - role: ingress
+  relabel_configs:
+    ## 设置只监测 Annotation 里配置了 prometheus.io/http_probe: true 的 ingress
+  - action: keep
+    source_labels: [__meta_kubernetes_ingress_annotation_prometheus_io_http_probe]
+    regex: "true"
+  - action: replace
+    source_labels:
+    - "__meta_kubernetes_ingress_scheme"
+    - "__meta_kubernetes_ingress_host"
+    - "__meta_kubernetes_ingress_annotation_prometheus_io_http_probe_port"
+    - "__meta_kubernetes_ingress_path"
+    target_label: __param_target
+    regex: (.+);(.+);(.+);(.+)
+    replacement: ${1}://${2}:${3}${4}
+  - target_label: __address__
+    replacement: blackbox-exporter:19115
+  - source_labels: [__param_target]
+    target_label: instance
+  - action: labelmap
+    regex: __meta_kubernetes_ingress_label_(.+)
+  - source_labels: [__meta_kubernetes_namespace]
+    target_label: namespace
+  - source_labels: [__meta_kubernetes_ingress_name]
+    target_label: ingress_name
+```
+
+更新 secret
+
+```bash
+kubectl create secret generic additional-scrape-configs --from-file=prometheus-additional.yaml --dry-run -oyaml > additional-scrape-configs.yaml
+kubectl apply -f additional-scrape-configs.yaml -n monitoring
+```
+
+确保 prometheus CRD 实例配置了 secret
+
+```bash
+[root@k8s-node1 manifests]# grep -A2 additionalScrapeConfigs prometheus-prometheus.yaml
+  additionalScrapeConfigs:
+    name: additional-scrape-configs  # secret name
+    key: prometheus-additional.yaml  # secret key
+```
+
+查看 target
+
+![image-20230429145138845](https://image.lvbibir.cn/blog/image-20230429145138845.png)
+
+查看监测状态, 与预期配置一样
+
+![image-20230429150518709](https://image.lvbibir.cn/blog/image-20230429150518709.png)
 

@@ -119,3 +119,8 @@ secret/additional-scrape-configs configured
 prometheus 会自动重载配置
 
 ![image-20230427152718192](https://image.lvbibir.cn/blog/image-20230427152718192.png)
+
+# 4. 更新失败排查
+
+如果修改了 secret 不生效一定要注意 secret 部署的 namespace 是不是 monitoring
+

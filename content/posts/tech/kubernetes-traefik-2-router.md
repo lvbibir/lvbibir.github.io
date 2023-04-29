@@ -57,13 +57,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: traefik-dashboard
-  namespace: kube-system
+  namespace: traefik
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-  - host: ingress.traefik.local
+  - host: ingress.test.com
     http:
       paths:
       - pathType: Prefix
@@ -71,12 +71,11 @@ spec:
         backend:
           service:
             name: traefik
-            namespace: traefik
             port:
               number: 9000
 ```
 
-访问: [http://ingress.traefik.local](http://ingress.traefik.local)
+访问: [http://ingress.test.com](http://ingress.test.com)
 
 ## 2.2 ingressRoute
 
@@ -84,21 +83,21 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: traefik-dashboard
-  namespace: kube-system
+  name: dashboard
+  namespace: traefik
 spec:
   entryPoints:
-    - web
+  - web
   routes:
-  - match: Host(`ingressroute.traefik.local`) && PathPrefix(`/`)
+  - match: Host(`traefik.test.com`)
     kind: Rule
     services:
-    - name: traefik
+    - name: api@internal
+      kind: TraefikService
       namespace: traefik
-      port: 9000
 ```
 
-访问：[http://ingressroute.traefik.local](http://ingressroute.traefik.local)
+访问：[http://traefik.test.com](http://traefik.test.com)
 
 ## 2.3 Gateway API
 
@@ -149,7 +148,7 @@ metadata:
     app: traefik
 spec:
   hostnames:
-  - "gateway.traefik.local"
+  - "gateway.test.com"
   rules:
   - matches:
     - path:
@@ -161,7 +160,7 @@ spec:
       weight: 1
 ```
 
-访问：[http://gateway.traefik.local](http://gateway.traefik.local)
+访问：[http://gateway.test.com](http://gateway.test.com)
 
 # 3. myapp 环境准备
 

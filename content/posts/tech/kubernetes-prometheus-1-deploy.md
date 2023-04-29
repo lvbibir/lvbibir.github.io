@@ -193,7 +193,7 @@ grafana 就是一个普通的 deployment 应用, 直接修改 yaml 中的 volume
 
 ```bash
 [root@k8s-node1 ~]# mkdir /nfs/kubernetes/grafana-data
-[root@k8s-node1 ~]# chomd -R 777 /nfs/kubernetes/grafana-data
+[root@k8s-node1 ~]# chmod -R 777 /nfs/kubernetes/grafana-data
 ```
 
 修改 `manifests/grafana-deployment.yaml` 直接将默认的 emptydir 修改为 nfs 即可
