@@ -25,7 +25,7 @@ cover:
 
 [所有 CRD 资源的 API 文档](https://prometheus-operator.dev/docs/operator/api/)
 
-Prometheus Operator 的一个核心特性是 `watch` Kubernetes API 服务器对特定对象的更改，并确保当前 Prometheus 部署与这些对象匹配。Operator 对以下自定义资源定义 (crd) 进行操作：
+Prometheus Operator 的核心特性是 `watch` Kubernetes API 服务器对特定对象的更改，并确保当前 Prometheus 部署与这些对象匹配。Operator 对以下自定义资源定义 (crd) 进行操作：
 
 `monitoring.coreos.com/v1`:
 
@@ -37,8 +37,6 @@ Prometheus Operator 的一个核心特性是 `watch` Kubernetes API 服务器对
 - `Probe`: 它声明性地指定了应该如何监视 ingress 或静态目标组。Operator 根据定义自动生成 Prometheus 配置。
 - `PrometheusRule`: 用于管理 Prometheus 告警规则；它定义了一套所需的 Prometheus 警报和/或记录规则。可以被 Prometheus 实例挂载使用。
 - `AlertmanagerConfig`: 用于管理 AlertManager 配置文件，主要是告警发给谁；它声明性地指定 Alertmanager 配置的子部分，允许将警报路由到自定义接收器，并设置禁止规则。
-
-Prometheus Operator 自动检测 Kubernetes API 服务器对上述对象的更改，并确保匹配的部署和配置保持同步。
 
 # 2. 部署
 

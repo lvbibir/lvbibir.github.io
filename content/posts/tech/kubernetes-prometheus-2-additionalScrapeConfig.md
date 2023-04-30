@@ -36,7 +36,7 @@ cover:
 
 ```bash
 docker run -d --name node-exporter \
--p 9100:9100 \
+-p 9102:9100 \
 -v "/proc:/host/proc:ro" \
 -v "/sys:/host/sys:ro"   \
 -v "/:/rootfs:ro"        \
@@ -65,9 +65,8 @@ go_gc_duration_seconds{quantile="0.5"} 0.000714158
 创建 secret `additional-scrape-configs.yaml`
 
 ```bash
-[root@k8s-node1 demo]# kubectl create secret generic additional-scrape-configs --from-file=prometheus-additional.yaml --dry-run -oyaml > additional-scrape-configs.yaml
-[root@k8s-node1 demo]# kubectl apply -f additional-scrape-configs.yaml -n monitoring
-secret/additional-scrape-configs created
+kubectl create secret generic additional-scrape-configs -n monitoring --from-file=prometheus-additional.yaml  > additional-scrape-configs.yaml
+kubectl apply -f additional-scrape-configs.yaml 
 ```
 
 修改 prometheus 资源 `prometheus-prometheus.yaml` , 添加 `additionalScrapeConfigs`
@@ -110,10 +109,8 @@ spec:
 更新 secret
 
 ```bash
-[root@k8s-node1 demo]# kubectl create secret generic additional-scrape-configs --from-file=prometheus-additional.yaml --dry-run -oyaml > additional-scrape-configs.yaml
-W0427 15:15:52.834817   88217 helpers.go:555] --dry-run is deprecated and can be replaced with --dry-run=client.
-[root@k8s-node1 demo]# kubectl apply -f additional-scrape-configs.yaml -n monitoring
-secret/additional-scrape-configs configured
+kubectl create secret generic additional-scrape-configs -n monitoring --from-file=prometheus-additional.yaml  > additional-scrape-configs.yaml
+kubectl apply -f additional-scrape-configs.yaml 
 ```
 
 prometheus 会自动重载配置

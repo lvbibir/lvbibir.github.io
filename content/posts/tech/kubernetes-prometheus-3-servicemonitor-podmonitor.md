@@ -72,7 +72,7 @@ endpoints ===> pods ===> pod-ip+port
 
 ![image-20230425093636652](https://image.lvbibir.cn/blog/image-20230425093636652.png)
 
-# 2. serviceMonitor
+# 2. serviceMonitor CRD
 
 ## 2.1 node-exporter
 
@@ -546,7 +546,7 @@ Targets 界面
 
 ![image-20230426161849710](https://image.lvbibir.cn/blog/image-20230426161849710.png)
 
-# 3. podMonitor
+# 3. podMonitor CRD
 
 ## 3.1 calico-node
 
@@ -722,10 +722,8 @@ rules:
 修改 secret
 
 ```bash
-[root@k8s-node1 demo]# kubectl create secret generic additional-scrape-configs --from-file=prometheus-additional.yaml --dry-run -oyaml > additional-scrape-configs.yaml
-W0427 16:31:09.248567   26459 helpers.go:555] --dry-run is deprecated and can be replaced with --dry-run=client.
-[root@k8s-node1 demo]# kubectl apply -f additional-scrape-configs.yaml -n monitoring
-secret/additional-scrape-configs configured
+kubectl create secret generic additional-scrape-configs -n monitoring --from-file=prometheus-additional.yaml  > additional-scrape-configs.yaml
+kubectl apply -f additional-scrape-configs.yaml 
 ```
 
 确保 prometheus CRD 中添加了 `additionalScrapeConfigs` 配置

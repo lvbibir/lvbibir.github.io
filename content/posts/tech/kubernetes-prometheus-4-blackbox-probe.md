@@ -418,8 +418,8 @@ metadata:
 更新 secret
 
 ```bash
-kubectl create secret generic additional-scrape-configs --from-file=prometheus-additional.yaml --dry-run -oyaml > additional-scrape-configs.yaml
-kubectl apply -f additional-scrape-configs.yaml -n monitoring
+kubectl create secret generic additional-scrape-configs -n monitoring --from-file=prometheus-additional.yaml  > additional-scrape-configs.yaml
+kubectl apply -f additional-scrape-configs.yaml 
 ```
 
 确保 prometheus CRD 实例配置了 secret
@@ -494,8 +494,8 @@ kubectl apply -f additional-scrape-configs.yaml -n monitoring
 更新 secret
 
 ```bash
-kubectl create secret generic additional-scrape-configs --from-file=prometheus-additional.yaml --dry-run -oyaml > additional-scrape-configs.yaml
-kubectl apply -f additional-scrape-configs.yaml -n monitoring
+kubectl create secret generic additional-scrape-configs -n monitoring --from-file=prometheus-additional.yaml  > additional-scrape-configs.yaml
+kubectl apply -f additional-scrape-configs.yaml 
 ```
 
 确保 prometheus CRD 实例配置了 secret
