@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 30 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello,hugo!</title>
       <link>https://www.lvbibir.cn/posts/blog/hello-hugo/</link>
@@ -17,21 +17,39 @@
     </item>
     
     <item>
-      <title>prometheus (五) 记录规则与告警规则</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-5-rule/</link>
+      <title>loki (二) 部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-loki-2-deploy/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-loki-2-deploy/</guid>
+      <description>Loki 的部署, 对接 Grafana, traefik 采集监控示例</description>
+    </item>
+    
+    <item>
+      <title>loki (一) 简介</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-loki-1-jianjie/</link>
       <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-5-rule/</guid>
-      <description>prometheus 的 recording rule 和 alerting rule 介绍, 以及使用 prometheusrule CRD 资源配置规则</description>
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-loki-1-jianjie/</guid>
+      <description>loki 开源日志的优缺点及架构; loki 的四个角色; prometail 简介; 日志告警</description>
     </item>
     
     <item>
       <title>prometheus (六) Alertmanager</title>
       <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-6-alertmanager/</link>
-      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 29 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-6-alertmanager/</guid>
       <description>prometheus 架构中的 Alertmanager 介绍, 以及使用 alertmanagerconfig CRD 资源配置 Alertmanager</description>
+    </item>
+    
+    <item>
+      <title>prometheus (五) 记录规则与告警规则</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-5-rule/</link>
+      <pubDate>Fri, 28 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-5-rule/</guid>
+      <description>prometheus 的 recording rule 和 alerting rule 介绍, 以及使用 prometheusrule CRD 资源配置规则</description>
     </item>
     
     <item>
@@ -68,15 +86,6 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-1-deploy/</guid>
       <description>kubernetes 中部署配置 prometheus-operator, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系 </description>
-    </item>
-    
-    <item>
-      <title>kubernetes | loki 开源日志框架</title>
-      <link>https://www.lvbibir.cn/posts/tech/kubernetes-loki/</link>
-      <pubDate>Fri, 21 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-loki/</guid>
-      <description>kubernetes 中部署配置 loki 对接 grafana, 以及创建 traefik 的 dashboard 可视化展示数据</description>
     </item>
     
     <item>
