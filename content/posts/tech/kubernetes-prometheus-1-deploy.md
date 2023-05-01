@@ -19,24 +19,32 @@ cover:
 
 # 1. 简介
 
-[Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator): 在 Kubernetes 上管理 Prometheus 集群。该项目的目的是简化和自动化基于 Prometheus 的 Kubernetes 集群监控堆栈的配置。
+## 1.1 prometheus operator
 
-[kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) 提供了一个基于 Prometheus 和 Prometheus Operator 的完整集群监控堆栈的示例配置。这包括部署多个 Prometheus 和 Alertmanager 实例、用于收集节点指标的指标导出器（如 node_exporters)、将 Prometheus 链接到各种指标端点的目标配置，以及用于通知集群中潜在问题的示例警报规则。
+[Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator): 在 Kubernetes 上管理 Prometheus 集群。该项目的目的是简化和自动化基于 Prometheus 的 Kubernetes 集群监控堆栈的配置。
 
 [所有 CRD 资源的 API 文档](https://prometheus-operator.dev/docs/operator/api/)
 
-Prometheus Operator 的核心特性是 `watch` Kubernetes API 服务器对特定对象的更改，并确保当前 Prometheus 部署与这些对象匹配。Operator 对以下自定义资源定义 (crd) 进行操作：
+Prometheus Operator 的核心特性是 `watch` Kubernetes API 服务器对特定对象的更改，并确保当前 Prometheus 部署与这些对象匹配。
 
 `monitoring.coreos.com/v1`:
 
-- `Prometheus`: 定义 Prometheus statefulset 及 Prometheus 的一些配置。
-- `Alertmanager`: 定义 AlertManager statefulset 及 AlertManager 的一些配置。
-- `ThanosRuler`: 定义 ThanosRuler 期望的部署；
-- `ServiceMonitor`: 用于通过 Service 对 K8S 中的任何资源进行监控，推荐首选 `ServiceMonitor`. 它声明性地指定了 Kubernetes service 应该如何被监控。Operator 根据 API 服务器中对象的当前状态自动生成 Prometheus 配置。
-- `PodMonitor`: 用于对 Pod 进行监控，推荐首选 `ServiceMonitor`. `PodMonitor` 声明性地指定了应该如何监视一组 pod。Operator 根据 API 服务器中对象的当前状态自动生成 Prometheus 配置。
-- `Probe`: 它声明性地指定了应该如何监视 ingress 或静态目标组。Operator 根据定义自动生成 Prometheus 配置。
-- `PrometheusRule`: 用于管理 Prometheus 告警规则；它定义了一套所需的 Prometheus 警报和/或记录规则。可以被 Prometheus 实例挂载使用。
-- `AlertmanagerConfig`: 用于管理 AlertManager 配置文件，主要是告警发给谁；它声明性地指定 Alertmanager 配置的子部分，允许将警报路由到自定义接收器，并设置禁止规则。
+- prometheus 相关
+  - `Prometheus`: 配置 Prometheus statefulset 及 Prometheus 的一些配置。
+  - `ServiceMonitor`: 用于通过 Service 对 K8S 中的资源进行监控，推荐首选 `ServiceMonitor`. 它声明性地指定了 Kubernetes service 应该如何被监控。
+  - `PodMonitor`: 用于对 Pod 进行监控，推荐首选 `ServiceMonitor`. `PodMonitor` 声明性地指定了应该如何监视一组 pod。
+  - `Probe`: 它声明性地指定了应该如何监视 ingress 或静态目标组. 一般用于黑盒监控.
+  - `PrometheusRule`: 用于管理 Prometheus 告警规则；它定义了一套所需的 Prometheus 警报和/或记录规则。可以被 Prometheus 实例挂载使用。
+
+- Alertmanager 相关
+  - `Alertmanager`: 配置 AlertManager statefulset 及 AlertManager 的一些配置。
+  - `AlertmanagerConfig`: 用于管理 AlertManager 配置文件；它声明性地指定 Alertmanager 配置的子部分，允许将警报路由到自定义接收器，并设置禁止规则。
+- 其他
+  - `ThanosRuler`: 管理 ThanosRuler deployment；
+
+## 1.2 kube-prometheus
+
+[kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) 提供了一个基于 Prometheus 和 Prometheus Operator 的完整集群监控堆栈的示例配置。这包括部署多个 Prometheus 和 Alertmanager 实例、用于收集节点指标的指标导出器（如 node_exporters)、将 Prometheus 链接到各种指标端点的目标配置，以及用于通知集群中潜在问题的示例警报规则。
 
 # 2. 部署
 
@@ -51,7 +59,7 @@ kubernets 与 kube-prometheus 的兼容性关系如下
 
 kube-prometheus 项目提供的 yaml 中使用的镜像大部分是 quay.io 或者 k8s.gcr.io 等外网仓库的镜像，博主已经将所需镜像上传到了阿里云，且 fork 官方仓库后修改了 yaml 中的镜像仓库地址，可以直接拉取我修改后的 yaml
 
-这里我的 k8s 测试集群版本是 1.22.3，所以我部署的是 release-0.10 版本的 kube-prometheus
+这里我的 k8s 测试集群版本是 1.22.3，部署 release-0.10 版本的 kube-prometheus
 
 ```bash
 [root@k8s-node1 opt]# cd /opt/ && git clone https://github.com/lvbibir/kube-prometheus -b release-0.10
@@ -94,7 +102,7 @@ prometheus-operated     ClusterIP   None             <none>        9090/TCP     
 prometheus-operator     ClusterIP   None             <none>        8443/TCP                        9m10s
 ```
 
-可以通过 nodePort 访问 `alertmanager prometheus grafana`，也可以通过 ingress 将 grafana 暴露到外部
+可以通过 nodePort 访问，也可以通过 ingress 将 grafana 暴露到外部
 
 grafana 默认用户名密码为 admin/admin
 

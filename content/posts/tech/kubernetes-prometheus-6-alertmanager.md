@@ -1,7 +1,7 @@
 ---
 title: "prometheus (六) Alertmanager" 
-date: 2023-04-30
-lastmod: 2023-04-30
+date: 2023-04-29
+lastmod: 2023-04-29
 tags: 
 - kubernetes
 - prometheus

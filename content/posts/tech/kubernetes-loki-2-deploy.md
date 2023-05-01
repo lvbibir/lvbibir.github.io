@@ -1,37 +1,28 @@
 ---
-title: "kubernetes | loki 开源日志框架" 
-date: 2023-04-21
-lastmod: 2023-04-21
+title: "loki (二) 部署" 
+date: 2023-05-01
+lastmod: 2023-05-01
 tags: 
 - kubernetes
 keywords:
 - kubernetes
 - prometheus
-description: "kubernetes 中部署配置 loki 对接 grafana, 以及创建 traefik 的 dashboard 可视化展示数据" 
+description: "Loki 的部署, 对接 Grafana, traefik 采集监控示例" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    image: "https://image.lvbibir.cn/blog/loki.png"
 ---
 
 # 0. 前言
 
-基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`，`kube-prometheus-0.10`
+基于 `centos7.9` `docker-ce-20.10.18` `kubelet-1.22.3-0` `loki-2.3.0` `promtail-2.3.0`
 
-# 1. 简介
+这次部署的 loki 整体架构如下, loki 使用 statefulset 的方式运行, promtail 以 daemonset 的方式运行在 k8s 集群的每个节点.
 
-[项目地址](https://github.com/grafana/loki/)  [官方文档](https://grafana.com/docs/loki/latest/)
+![img](https://image.lvbibir.cn/blog/e6803b446f0e875f0ae03f5bf1bd9e3f.jpeg)
 
-Loki 是 Grafana Labs 团队最新的开源项目，是一个水平可扩展，高可用性，多租户的日志聚合系统。它的设计非常经济高效且易于操作，因为它不会为日志内容编制索引，而是为每个日志流编制一组标签，专门为 [Prometheus](https://cloud.tencent.com/product/tmp?from=20065&from_column=20065) 和 Kubernetes 用户做了相关优化。该项目受 Prometheus 启发，官方的介绍就是： `Like Prometheus, But For Logs.`
 
-与其他日志聚合系统相比， Loki 具有下面的一些特性:
 
-- 不对日志进行全文索引。通过存储压缩非结构化日志和仅索引元数据，Loki 操作起来会更简单，更省成本。
-- 通过使用与 Prometheus 相同的标签记录流对日志进行索引和分组，这使得日志的扩展和操作效率更高,能对接 alertmanager;
-- 特别适合储存 Kubernetes Pod 日志; 诸如 Pod 标签之类的元数据会被自动删除和编入索引;
-- 受 Grafana 原生支持,避免 kibana 和 grafana 来回切换;
-
-loki 非常好用的一点是它的数据采集组件 `promtail` 可以直接通过 [kubernetes_sd_config ](https://grafana.com/docs/loki/latest/clients/promtail/configuration/#kubernetes_sd_config) 抓取 `kubernets REST API` 获取 `node` `service` `pod` `endpoints` `ingress` 等维度的元数据信息和日志信息
-
-# 2. 部署
+# 1. promtail
 
 namespace
 
@@ -42,16 +33,9 @@ metadata:
   name: logging
 ```
 
-## 2.1 promtail
-
 rbac
 
 ```yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: logging
-[root@k8s-node1 loki]# cat promtail-rbac.yml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -69,7 +53,7 @@ metadata:
   name: promtail-clusterrole
   namespace: logging
 rules:
-- apiGroups: [""] # "" indicates the core API group
+- apiGroups: [""] 
   resources:
   - nodes
   - nodes/proxy
@@ -108,15 +92,15 @@ metadata:
     app: promtail
 data:
   promtail.yaml: |
-    client:      # 配置Promtail如何连接到Loki的实例
+    client:                # 配置Promtail如何连接到Loki的实例
       backoff_config:      # 配置当请求失败时如何重试请求给Loki
         max_period: 5m
         max_retries: 10
         min_period: 500ms
       batchsize: 1048576      # 发送给Loki的最大批次大小(以字节为单位)
-      batchwait: 1s      # 发送批处理前等待的最大时间（即使批次大小未达到最大值）
-      external_labels: {}      # 所有发送给Loki的日志添加静态标签
-      timeout: 10s      # 等待服务器响应请求的最大时间
+      batchwait: 1s           # 发送批处理前等待的最大时间（即使批次大小未达到最大值）
+      external_labels: {}     # 所有发送给Loki的日志添加静态标签
+      timeout: 10s            # 等待服务器响应请求的最大时间
     positions:
       filename: /run/promtail/positions.yaml
     server:
@@ -422,7 +406,7 @@ spec:
             readOnly: true
           ports:
           - containerPort: 3101
-            name: http-metrics
+            name: http
             protocol: TCP
           securityContext:
             readOnlyRootFilesystem: true
@@ -457,7 +441,38 @@ spec:
             path: /var/log/pods
 ```
 
-## 2.2 loki
+## scrape_config 配置详解
+
+主要解释一下 promtail 中的匹配规则, 因为采集的日志可以说非常地杂乱, 如何将应用日志分类就尤为重要, 可以说匹配规则是 `promtail` 的核心所在
+
+通常我们分类 pod 的手段基本为 namespace + labels + controller , 在 loki 中也一样, 在上述 configmap 的配置中将 k8s 中的所有 pod 分为了五类:
+
+- 定义了 label_name
+- 未定义 label_name, 定义了 label_app
+- 未定义 label_name & label_app, 由 Daemonset 控制
+- 未定义 label_name & label_app, 由非 Daemonset 控制
+- 未定义 label_name & label_app, 由 kubelet 直接控制 
+
+对应上述 configmap 中配置的五个 job:
+
+- kubernetes-pods-name `job=namespace/label_name`
+- kubernetes-pods-app `job=namespace/label_app`
+- kubernetes-pods-direct-controllers `job=namespace/controller`
+- kubernetes-pods-indirect-controllers `job=namespace/controller`
+- kubernetes-pods-static `job=namespace/label_component`
+
+每个指标数据将由上述规则分类, 添加一个 `job` 的 label
+
+然后基于指标数据对应 pod 的所有 label 附加到指标数据上
+
+```yaml
+  - action: labelmap
+    regex: __meta_kubernetes_pod_label_(.+)
+```
+
+再加上指标数据本身携带的一些 label, 我们就可以对 pod 日志做一个十分细致的区分
+
+# 2. loki
 
 rbac
 
@@ -513,31 +528,31 @@ data:
   loki.yaml: |
     auth_enabled: false
     ingester:
-      chunk_idle_period: 3m      # 如果块没有达到最大的块大小，那么在刷新之前，块应该在内存中不更新多长时间
+      chunk_idle_period: 3m        # 如果块没有达到最大的块大小，那么在刷新之前，块应该在内存中不更新多长时间
       chunk_block_size: 262144
       chunk_retain_period: 1m      # 块刷新后应该在内存中保留多长时间
       max_transfer_retries: 0      # Number of times to try and transfer chunks when leaving before falling back to flushing to the store. Zero = no transfers are done.
-      lifecycler:       #配置ingester的生命周期，以及在哪里注册以进行发现
+      lifecycler:                  # 配置ingester的生命周期，以及在哪里注册以进行发现
         ring:
           kvstore:
-            store: inmemory      # 用于ring的后端存储，支持consul、etcd、inmemory
-          replication_factor: 1      # 写入和读取的ingesters数量，至少为1（为了冗余和弹性，默认情况下为3)
+            store: inmemory        # 用于ring的后端存储，支持consul、etcd、inmemory
+          replication_factor: 1    # 写入和读取的ingesters数量，至少为1（为了冗余和弹性，默认情况下为3)
     limits_config:
       enforce_metric_name: false
       reject_old_samples: true      # 旧样品是否会被拒绝
       reject_old_samples_max_age: 168h      # 拒绝旧样本的最大时限
-    schema_config:      # 配置从特定时间段开始应该使用哪些索引模式
+    schema_config:                    # 配置从特定时间段开始应该使用哪些索引模式
       configs:
-      - from: 2020-10-24      # 创建索引的日期。如果这是唯一的schema_config，则使用过去的日期，否则使用希望切换模式时的日期
+      - from: 2020-10-24           # 创建索引的日期。如果这是唯一的schema_config，则使用过去的日期，否则使用希望切换模式时的日期
         store: boltdb-shipper      # 索引使用哪个存储，如：cassandra, bigtable, dynamodb，或boltdb
-        object_store: filesystem      # 用于块的存储，如：gcs, s3， inmemory, filesystem, cassandra，如果省略，默认值与store相同
+        object_store: filesystem   # 用于块的存储，如：gcs, s3， inmemory, filesystem, cassandra，如果省略，默认值与store相同
         schema: v11
-        index:      # 配置如何更新和存储索引
+        index:                # 配置如何更新和存储索引
           prefix: index_      # 所有周期表的前缀
-          period: 24h      # 表周期
+          period: 24h         # 表周期
     server:
       http_listen_port: 3100
-    storage_config:      # 为索引和块配置一个或多个存储
+    storage_config:            # 为索引和块配置一个或多个存储
       boltdb_shipper:
         active_index_directory: /data/loki/boltdb-shipper-active
         cache_location: /data/loki/boltdb-shipper-cache
@@ -545,14 +560,26 @@ data:
         shared_store: filesystem
       filesystem:
         directory: /data/loki/chunks
-    chunk_store_config:      # 配置如何缓存块，以及在将它们保存到存储之前等待多长时间
-      max_look_back_period: 0s      #限制查询数据的时间，默认是禁用的，这个值应该小于或等于table_manager.retention_period中的值
+    chunk_store_config:             # 配置如何缓存块，以及在将它们保存到存储之前等待多长时间
+      max_look_back_period: 0s      # 限制查询数据的时间，默认是禁用的，这个值应该小于或等于table_manager.retention_period中的值
     table_manager:
-      retention_deletes_enabled: true      # 日志保留周期开关，用于表保留删除
-      retention_period: 48h       # 日志保留周期，保留期必须是索引/块的倍数
+      retention_deletes_enabled: true   # 日志保留周期开关，用于表保留删除
+      retention_period: 48h             # 日志保留周期，保留期必须是索引/块的倍数
     compactor:
       working_directory: /data/loki/boltdb-shipper-compactor
       shared_store: filesystem
+    ruler:
+      storage:
+        type: local
+        local:
+          directory: /etc/loki/rules/rules1.yaml
+      rule_path: /tmp/loki/rules-temp
+      alertmanager_url: http://alertmanager-main.monitoring.svc:9093
+      ring:
+        kvstore:
+          store: inmemory
+      enable_api: true
+      enable_alertmanager_v2: true
 ```
 
 statefulset service, 注意修改 storageClass 为自己的
@@ -571,8 +598,8 @@ spec:
   ports:
     - port: 3100
       protocol: TCP
-      name: http-metrics
-      targetPort: http-metrics
+      name: http
+      targetPort: http
   selector:
     app: loki
 ---
@@ -662,7 +689,9 @@ spec:
           storage: "2Gi"
 ```
 
-## 2.3 验证
+# 3. Grafana
+
+grafana 部署请参考 [prometheus 系列文章](https://www.lvbibir.cn/tags/prometheus/)
 
 应用所有配置文件, 上述配置是 loki 针对 k8s 的一套比较标准的配置, 所以目前的配置仅能抓取 k8s 中所有 pod 发送到 `stdout` 和 `stderr` 的信息, 如果需要抓取日志文件还需另外配置.
 
@@ -687,13 +716,15 @@ loki         ClusterIP   10.105.115.178   <none>        3100/TCP         4m26s
 
 ![image-20230423164457090](https://image.lvbibir.cn/blog/image-20230423164457090.png)
 
-# 3. traefik dashboard
+# 4. traefik dashboard 示例
+
+traefik 部署参考 [traefik 系列文章](https://www.lvbibir.cn/tags/traefik)
 
 如下图所示, 已经可以看到收集到的 traefik 日志
 
 ![image-20230422145419822](https://image.lvbibir.cn/blog/image-20230422145419822.png)
 
-我们还可以通过 dashboard 实时展示 traefik 的信息, 在 grafana 导入 13713 号模板 https://grafana.com/grafana/dashboards/13713
+我们还可以通过 dashboard 实时展示 traefik 的信息, 在 grafana 导入 [13713 号模板](https://grafana.com/grafana/dashboards/13713) 
 
 此 dashboard 默认的  traefik 的采集语句是 `{job="/var/log/traefik.log"}` , 我们需要按照实际情况进行修改, 这里我改成了 `{app="traefik"}`
 
@@ -722,3 +753,30 @@ pod "grafana-78bb4557f5-7rbbq" deleted
 等待重建 pod, 可以看到这里已经可以正常显示了
 
 ![image-20230422153000965](https://image.lvbibir.cn/blog/image-20230422153000965.png)
+
+# 5. grafana 光标跳动问题
+
+在 grafana 中手动写 logQL 查询数据时总会出现光标要么一直往行首跳, 要么一直往行尾跳, [Github](https://github.com/grafana/grafana/issues/54942) 也有很多人遇到了同样的问题, 社区仍未解决该问题, 目前可以通过 F12 控制台输入一条指令单次地修复这个问题, 指令如下
+
+```javascript
+document.querySelectorAll(".slate-query-field > div")[0]['style'].removeProperty('-webkit-user-modify');
+```
+
+![image-20230501182103342](https://image.lvbibir.cn/blog/image-20230501182103342.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

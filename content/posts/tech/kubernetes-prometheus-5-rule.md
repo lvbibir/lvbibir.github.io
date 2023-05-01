@@ -1,7 +1,7 @@
 ---
 title: "prometheus (五) 记录规则与告警规则" 
-date: 2023-04-30
-lastmod: 2023-04-30
+date: 2023-04-28
+lastmod: 2023-04-28
 tags: 
 - kubernetes
 - prometheus

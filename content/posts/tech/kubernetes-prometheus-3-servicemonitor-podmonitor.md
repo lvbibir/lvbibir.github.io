@@ -21,44 +21,27 @@ cover:
 
 手动添加 job 配置未免过于繁琐, prometheus 支持很多种方式的服务发现, 在 k8s 中是通过 `kubernetes_sd_config` 配置实现的. 通过抓取 `k8s REST API` 自动发现我们部署在 k8s 集群中的 exporter 实例
 
-在 prometheus-operator 中, 我们无需手动编辑配置文件添加 kubernetes_sd_config 配置, prometheus-operator 抽象了出了两种 CRD 资源:
+在 Prometheus Operator 中, 我们无需手动编辑配置文件添加 kubernetes_sd_config 配置, Prometheus Operator 提供了下述资源: 
 
 - `serviceMonitor`: 创建 endpoints 级别的服务发现
 - `podMonitor`: 创建 pod 级别的服务发现
+- `probe`: 创建 ingress 级别的服务发现(用于黑盒监控)
 
-通过对这两种 CRD 资源的管理实现 prometheus 动态的服务发现.
+通过对这三种 CRD 资源的管理实现 prometheus 动态的服务发现.
 
 ## 1.1 kubernetes_sd_config
 
 [kubernets_sd_config 官方文档](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config)
 
-kubernetes_sd_config 目前支持 node service pod endpoints endpointslice ingress 6 种服务发现级别.
+kubernetes_sd_config 支持 node service pod endpoints ingress 5 种服务发现模式.
 
-- `node` 适用于与主机相关的监控资源，如节点中运行的 Kubernetes 组件状态、节点上运行的容器状态等；
-- `service` 和 `ingress` 适用于通过黑盒监控的场景，如对服务的可用性以及服务质量的监控；
-- `endpoints` 和 `pod` 均可用于获取 Pod 实例的监控数据，如监控用户或者管理员部署的支持 Prometheus 的应用。 
+- `node` 适用于与主机相关的监控资源，如 Kubernetes 组件状态、节点上运行的容器状态等；
+- `service` 和 `ingress` 用于黑盒监控的场景，如对服务的可用性以及服务质量的监控；
+- `endpoints` 和 `pod` 用于获取 Pod 的监控数据，如监控用户部署的支持 Prometheus 的应用。
 
-每种发现模式都支持很多 label, prometheus 可以通过 `relabel_config` 分析这些标签进行标签重写或者丢弃 target
+每种发现模式都支持很多 `label`, prometheus 可以通过 `relabel_config` 分析这些标签进行标签重写或者丢弃 target
 
-在 `kube-prometheus` 的模板配置中, 所有的 exporter 都是通过 endpoints 模式实现的.
-
-以比较常用的 endpoints 为例, endpoints 支持的标签如下所示
-
-- `__meta_kubernetes_namespace`: The namespace of the endpoints object.
-- `__meta_kubernetes_endpoints_name`: The names of the endpoints object.
-- `__meta_kubernetes_endpoints_label_<labelname>`: Each label from the endpoints object.
-- `__meta_kubernetes_endpoints_labelpresent_<labelname>`: `true` for each label from the endpoints object.
-- 如果 pod+port 刚好是 endpoint 对应的, 则会附加如下标签
-  - `__meta_kubernetes_endpoint_hostname`: Hostname of the endpoint.
-  - `__meta_kubernetes_endpoint_node_name`: Name of the node hosting the endpoint.
-  - `__meta_kubernetes_endpoint_ready`: Set to `true` or `false` for the endpoint's ready state.
-  - `__meta_kubernetes_endpoint_port_name`: Name of the endpoint port.
-  - `__meta_kubernetes_endpoint_port_protocol`: Protocol of the endpoint port.
-  - `__meta_kubernetes_endpoint_address_target_kind`: Kind of the endpoint address target.
-  - `__meta_kubernetes_endpoint_address_target_name`: Name of the endpoint address target.
-
-- 如果该 endpoints 是由 service 创建的, 那么所有 service 发现模式的标签也会被附加上
-- 如果该 endpoints 的后端是 pod 提供服务, 那么所有 pod 发现模式的标签也会被附加上
+在 `kube-prometheus` 的模板配置中, 所有的 target 都是通过 endpoints 模式实现的.
 
 endpoints 模式的自动发现会添加 endpoints 后端所有 pod 暴露出来的所有 port. 如下所示
 
@@ -152,6 +135,7 @@ spec:
 上述的 serviceMonitor 将会为 prometheus 生成一个 job, 使用了 endpoints 模式的 kubernetes_sd_config, 用于自动发现集群内符合条件的 node-exporter
 
 ```yaml
+##### job 基础信息 ########
 - job_name: serviceMonitor/monitoring/node-exporter/0
   honor_timestamps: true
   scrape_interval: 15s
@@ -164,7 +148,7 @@ spec:
   tls_config:
     insecure_skip_verify: true
   follow_redirects: true
-#####  自动发现的配置 #########  
+#####  kubernetes_sd_configs 自动发现的配置 #########  
   kubernetes_sd_configs:
   - role: endpoints
     kubeconfig_file: ""
@@ -172,6 +156,7 @@ spec:
     namespaces:
       names:
       - monitoring
+##### 开始执行 relabel, 第一个规则是替换任务名 ################      
   relabel_configs:
   - source_labels: [job]
     separator: ;
@@ -418,7 +403,7 @@ spec:
   - interval: 15s
     port: metrics         # endpoint(service) 中定义的 portName
     path: /metrics        # metrics 访问路径
-  namespaceSelector:      # endpoint 的 namespace
+  namespaceSelector:      # 指定 namespace
     matchNames:
     - traefik
   selector:
@@ -429,10 +414,7 @@ spec:
 部署
 
 ```bash
-[root@k8s-node1 kube-prometheus]# kubectl apply -f  manifests/traefik-serviceMonitor.yml
-[root@k8s-node1 kube-prometheus]# kubectl get serviceMonitor -n monitoring -l app.kubernetes.io/name=traefik
-NAME      AGE
-traefik   4m7s
+kubectl apply -f  manifests/traefik-serviceMonitor.yml
 ```
 
 ### 2.2.3 验证
@@ -553,7 +535,8 @@ Targets 界面
 以 calico 为例, 使用 podMonitor 资源监控 calico-node 
 
 calico 中核心的组件是 Felix，它负责设置路由表和 ACL 规则，同时还负责提供网络健康状况的数据；这些数据会被写入etcd。
-由此可见，监控 calico 的核心便是监控 felix，felix 相当于 calico 的大脑。
+
+监控 calico 的核心便是监控 felix，felix 相当于 calico 的大脑。
 
 如下所示, 一般 calico-node 都是使用 daemonset 方式部署在集群中的
 
@@ -634,7 +617,7 @@ spec:
 
 当我们的 k8s 集群中 service 和 pod 达到一定规模后手动一个一个创建 serviceMonitor 和 podMonitor 不免又麻烦了起来, 我们可以使用不限制 namespace 的 kubernetes_sd_configs 实现集群范围内自动发现所有的 exporter 实例
 
-接下来的演示中我们监控集群范围内的所有 endpoints, 并且将带有 `prometheus.io/scrape=true` 这个 `annotations ` 的 service 注册到 prometheus
+接下来的演示中我们监控集群范围内的所有 endpoints, 并且将带有 `prometheus.io/scrape=true` 这个 `annotations` 的 service 注册到 prometheus
 
 ## 4.1 rbac
 
