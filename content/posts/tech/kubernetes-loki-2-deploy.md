@@ -24,6 +24,8 @@ cover:
 
 # 1. promtail
 
+## 1.1 部署
+
 namespace
 
 ```yaml
@@ -441,7 +443,7 @@ spec:
             path: /var/log/pods
 ```
 
-## scrape_config 配置详解
+## 1.2 scrape_config 配置详解
 
 主要解释一下 promtail 中的匹配规则, 因为采集的日志可以说非常地杂乱, 如何将应用日志分类就尤为重要, 可以说匹配规则是 `promtail` 的核心所在
 
@@ -689,10 +691,6 @@ spec:
           storage: "2Gi"
 ```
 
-# 3. Grafana
-
-grafana 部署请参考 [prometheus 系列文章](https://www.lvbibir.cn/tags/prometheus/)
-
 应用所有配置文件, 上述配置是 loki 针对 k8s 的一套比较标准的配置, 所以目前的配置仅能抓取 k8s 中所有 pod 发送到 `stdout` 和 `stderr` 的信息, 如果需要抓取日志文件还需另外配置.
 
 ```bash
@@ -708,6 +706,12 @@ NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 loki         ClusterIP   10.105.115.178   <none>        3100/TCP         4m26s
 ```
 
+# 3. Grafana
+
+grafana 部署请参考 [prometheus 系列文章](https://www.lvbibir.cn/tags/prometheus/)
+
+## 3.1 配置
+
 在 grafana 中添加 loki 作为 data source, 这里我的 grafana 是直接部署在 k8s 中的, 所以可以通过 `<svc-name>.<namespace>` 访问到 loki
 
 ![image-20230422144554668](https://image.lvbibir.cn/blog/image-20230422144554668.png)
@@ -716,7 +720,19 @@ loki         ClusterIP   10.105.115.178   <none>        3100/TCP         4m26s
 
 ![image-20230423164457090](https://image.lvbibir.cn/blog/image-20230423164457090.png)
 
-# 4. traefik dashboard 示例
+## 3.1 光标跳动问题
+
+在 grafana 中手动写 logQL 查询数据时总会出现光标要么一直往行首跳, 要么一直往行尾跳, [Github](https://github.com/grafana/grafana/issues/54942) 也有很多人遇到了同样的问题, 社区仍未解决该问题, 目前可以通过 F12 控制台输入一条指令单次地修复这个问题, 指令如下
+
+```javascript
+document.querySelectorAll(".slate-query-field > div")[0]['style'].removeProperty('-webkit-user-modify');
+```
+
+![image-20230501182103342](https://image.lvbibir.cn/blog/image-20230501182103342.png)
+
+# 4. dashboard 示例
+
+## 4.1 traefik
 
 traefik 部署参考 [traefik 系列文章](https://www.lvbibir.cn/tags/traefik)
 
@@ -726,7 +742,7 @@ traefik 部署参考 [traefik 系列文章](https://www.lvbibir.cn/tags/traefik)
 
 我们还可以通过 dashboard 实时展示 traefik 的信息, 在 grafana 导入 [13713 号模板](https://grafana.com/grafana/dashboards/13713) 
 
-此 dashboard 默认的  traefik 的采集语句是 `{job="/var/log/traefik.log"}` , 我们需要按照实际情况进行修改, 这里我改成了 `{app="traefik"}`
+此 dashboard 默认的  traefik 的采集语句是 `{job="/var/log/traefik.log"}` , 我们需要按照实际情况进行修改, 这里我改成了 `{app="traefik/traefik"}`
 
 ![image-20230422150345420](https://image.lvbibir.cn/blog/image-20230422150345420.png)
 
@@ -753,16 +769,6 @@ pod "grafana-78bb4557f5-7rbbq" deleted
 等待重建 pod, 可以看到这里已经可以正常显示了
 
 ![image-20230422153000965](https://image.lvbibir.cn/blog/image-20230422153000965.png)
-
-# 5. grafana 光标跳动问题
-
-在 grafana 中手动写 logQL 查询数据时总会出现光标要么一直往行首跳, 要么一直往行尾跳, [Github](https://github.com/grafana/grafana/issues/54942) 也有很多人遇到了同样的问题, 社区仍未解决该问题, 目前可以通过 F12 控制台输入一条指令单次地修复这个问题, 指令如下
-
-```javascript
-document.querySelectorAll(".slate-query-field > div")[0]['style'].removeProperty('-webkit-user-modify');
-```
-
-![image-20230501182103342](https://image.lvbibir.cn/blog/image-20230501182103342.png)
 
 
 

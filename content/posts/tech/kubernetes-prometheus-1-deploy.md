@@ -108,6 +108,20 @@ grafana 默认用户名密码为 admin/admin
 
 ![image-20230422131028713](https://image.lvbibir.cn/blog/image-20230422131028713.png)
 
+## 2.1 组件介绍
+
+kube-prometheus 中部署了如下组件:
+
+- CRD 资源: `manifests/setup` 目录中的内容
+- 实际的组件部署和配置: `manifests` 目录中的内容
+  - exporter 数据采集器:
+    - node-exporter 
+    - blackbox-exporter 用于黑盒监控
+  - prometheus 实例
+  - grafana 实例
+  - alertmanager 实例
+  - adapter 实例, 替代原始 metrics-server 组件, 实现自定义 HPA 指标, [参考](https://docs.ucloud.cn/uk8s/monitor/prometheus/autoscale_on_custom_metrics)
+
 # 3. 数据持久化
 
 ## 3.1 prometheus

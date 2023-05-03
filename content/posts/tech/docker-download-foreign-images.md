@@ -101,6 +101,13 @@ git push origin master
 
 ![image-20230309170605907](https://image.lvbibir.cn/blog/image-20230309170605907.png)
 
+```bash
+docker login --username=lvbibir registry.cn-hangzhou.aliyuncs.com
+docker pull <image>:<tag>
+dokcer tag <image>:<tag> registry.cn-hangzhou.aliyuncs.com/lvbibir/<image>:<tag>
+docker push registry.cn-hangzhou.aliyuncs.com/lvbibir/<image>:<tag>
+```
+
 # 4. http proxy
 
 如果有代理软件可以在docker中配置代理实现
