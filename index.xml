@@ -494,6 +494,33 @@
     </item>
     
     <item>
+      <title>mysql (二) 主从复制原理 GTID 并行复制</title>
+      <link>https://www.lvbibir.cn/posts/tech/mysql-2-master-slave/</link>
+      <pubDate>Tue, 03 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/mysql-2-master-slave/</guid>
+      <description>mysql 主从复制的详细原理, 主从复制模式, 主从复制方式, 以及 GTID 复制和并行复制</description>
+    </item>
+    
+    <item>
+      <title>mysql (一) 部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/mysql-1-deploy/</link>
+      <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/mysql-1-deploy/</guid>
+      <description>在 centos7 中部署 mysql-5.7 </description>
+    </item>
+    
+    <item>
+      <title>mysql 杂记</title>
+      <link>https://www.lvbibir.cn/posts/tech/mysql-0-notes/</link>
+      <pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/mysql-0-notes/</guid>
+      <description>0. 前言 基于 centos-7.9 mysql-5.7.42</description>
+    </item>
+    
+    <item>
       <title>cicd | jenkins部署mall-swarm项目</title>
       <link>https://www.lvbibir.cn/posts/tech/cicd-mall-swarm/</link>
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
