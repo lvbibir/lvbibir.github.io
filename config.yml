@@ -135,6 +135,8 @@ params:
   TocOpen: true # 自动展开目录
   comments: true # 是否开启评论
   
+  extendCodeBackground: false # 代码块是否横向展开
+
   socialIcons:
     - name: github
       url: "https://github.com/lvbibir"

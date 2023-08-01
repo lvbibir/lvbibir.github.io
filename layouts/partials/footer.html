@@ -36,7 +36,8 @@
 
     <br>
 
-    <a href="https://beian.miit.gov.cn/" target="_blank" style="border-bottom:1px solid">{{ .Site.Params.FilingNo }}</a>&nbsp;
+    <a href="https://beian.miit.gov.cn/" target="_blank" style="border-bottom:1px solid">{{ .Site.Params.FilingNo
+        }}</a>&nbsp;
     |
     {{- if .Site.Copyright }}
     <span>{{ .Site.Copyright | markdownify }}</span>
@@ -259,6 +260,7 @@
 
 <!-- 代码块自动扩展 -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+{{- if .Site.Params.extendCodeBackground }}
 <script>
     $("code[class^=language] ").on("mouseover", function () {
         if ($(window).width() > 768 && this.clientWidth < this.scrollWidth) {
@@ -270,3 +272,4 @@
         $(this).css("border-top-right-radius", "unset")
     })
 </script>
+{{- end }}
