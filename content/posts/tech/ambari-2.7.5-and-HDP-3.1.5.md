@@ -261,7 +261,7 @@ java -version
 
 下载解压
 
-```shell
+```bash
 tar -zxvf apache-maven-3.6.3-bin.tar.gz
 mkdir -p /opt/src/maven
 mv apache-maven-3.6.3/* /opt/src/maven

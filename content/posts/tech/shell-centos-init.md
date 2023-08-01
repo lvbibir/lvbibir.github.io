@@ -21,7 +21,7 @@ cover:
 
 ## iptables & selinux
 
-```shell
+```bash
 sed -i '/SELINUX/s/enforcing/disabled/' /etc/sysconfig/selinux
 setenforce 0
 
@@ -222,7 +222,7 @@ sysctl -p
 
 # 一键脚本
 
-```shell
+```bash
 #!/bin/bash
 
 set -e

@@ -15,7 +15,7 @@ cover:
 
 # 1. 基本语法
 
-```shell
+```bash
 if [ command ];then
    符合该条件执行的语句
 elif [ command ];then

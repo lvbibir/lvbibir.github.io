@@ -15,7 +15,7 @@ cover:
 
 在CentOS6及以前的版本中，free命令输出是这样的：
 
-```shell
+```bash
 [root@wordpress ~]# free -m
              total           used      free    shared    buffers     cached
 Mem:         1002            769       233       0         62         421
@@ -49,7 +49,7 @@ Swap:         1153           0         1153
 
 CentOS7及以后free命令的输出如下：
 
-```shell
+```bash
 [root@wordpress ~]# free -m
               total        used        free      shared  buff/cache   available
 Mem:           1839         866          74          97         897         695

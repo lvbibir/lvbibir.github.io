@@ -57,7 +57,7 @@ route add -net 192.168.45.0  netmask 255.255.255.0 dev enp4s0 metric 3
 
 > /etc/sysconfig/static-routes 文件不存在的话，创建一个即可
 
-```shell
+```bash
  # Add non interface-specific static-routes.
     if [ -f /etc/sysconfig/static-routes ]; then
         if [ -x /sbin/route ]; then

@@ -42,7 +42,7 @@ ip地址：1.1.1.21
 
 ## 	关闭防火墙及selinux
 
-```shell
+```bash
 iptables -F
 systemctl stop firewalld
 systemctl disable firewalld

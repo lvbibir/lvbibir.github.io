@@ -25,7 +25,7 @@ pxe-server：isoft-serveros-v4.2（3.10.0-957.el7.isoft.x86_64）
 
 # dhcpd.conf配置
 
-```shell
+```bash
 [root@localhost isoft-5.1-arm]# vim /etc/dhcp/dhcpd.conf
 
 default-lease-time 43200;
@@ -58,7 +58,7 @@ shared-network works {
 
 # grub.cfg配置
 
-```shell
+```bash
 [root@localhost tftpboot]# vim arm/grub.cfg
 
 set default="0"
@@ -103,7 +103,7 @@ menuentry 'Install iSoftServerOS 5.1 with GUI mode' --class red --class gnu-linu
 
 # ks.cfg配置
 
-```shell
+```bash
 [root@localhost isoft-5.1-arm]# vim anaconda-ks.cfg
 
 lang zh_CN.UTF-8
