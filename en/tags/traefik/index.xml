@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>traefik on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/en/tags/traefik/</link>
+    <description>Recent content in traefik on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 19 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/traefik/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>traefik (四) 服务(TraefikService)</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-4-traefikservice/</link>
+      <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-4-traefikservice/</guid>
+      <description>kubernetes 中使用 Traefik ingress 的 TraefikService 实现加权轮询、灰度发布、流量复制、会话保持(粘性会话)等功能</description>
+    </item>
+    
+    <item>
+      <title>traefik (三) 中间件(Middleware)</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-3-middleware/</link>
+      <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-3-middleware/</guid>
+      <description>kubernetes 中使用 Traefik ingress 的 Middleware 实现重定向、白名单、用户认证、限流、熔断、压缩、自定义error页等操作</description>
+    </item>
+    
+    <item>
+      <title>traefik (二) 路由(ingressRoute)</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-2-router/</link>
+      <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-2-router/</guid>
+      <description>kubernetes 中使用 Traefik ingress 的 ingressRoute 代理 http、https、tcp、udp</description>
+    </item>
+    
+    <item>
+      <title>traefik (一) 简介、部署和配置</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-1-deploy/</link>
+      <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-1-deploy/</guid>
+      <description>kubernetes 中 Traefik ingress 的简介、部署及配置。</description>
+    </item>
+    
+  </channel>
+</rss>

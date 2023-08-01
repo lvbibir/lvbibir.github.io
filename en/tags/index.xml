@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>🏷️ 标签 on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/en/tags/</link>
+    <description>Recent content in 🏷️ 标签 on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 01 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>centos</title>
+      <link>https://www.lvbibir.cn/en/tags/centos/</link>
+      <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/centos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shell</title>
+      <link>https://www.lvbibir.cn/en/tags/shell/</link>
+      <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://www.lvbibir.cn/en/tags/kubernetes/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>prometheus</title>
+      <link>https://www.lvbibir.cn/en/tags/prometheus/</link>
+      <pubDate>Sat, 29 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/prometheus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>traefik</title>
+      <link>https://www.lvbibir.cn/en/tags/traefik/</link>
+      <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/traefik/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://www.lvbibir.cn/en/tags/linux/</link>
+      <pubDate>Thu, 13 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://www.lvbibir.cn/en/tags/docker/</link>
+      <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://www.lvbibir.cn/en/tags/python/</link>
+      <pubDate>Mon, 27 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>https://www.lvbibir.cn/en/tags/windows/</link>
+      <pubDate>Sun, 09 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ceph</title>
+      <link>https://www.lvbibir.cn/en/tags/ceph/</link>
+      <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/ceph/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>故障处理</title>
+      <link>https://www.lvbibir.cn/en/tags/%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/</link>
+      <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>博客搭建</title>
+      <link>https://www.lvbibir.cn/en/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>https://www.lvbibir.cn/en/tags/mysql/</link>
+      <pubDate>Tue, 03 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cicd</title>
+      <link>https://www.lvbibir.cn/en/tags/cicd/</link>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/cicd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openstack</title>
+      <link>https://www.lvbibir.cn/en/tags/openstack/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/openstack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wordpress</title>
+      <link>https://www.lvbibir.cn/en/tags/wordpress/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/wordpress/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

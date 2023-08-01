@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>shell on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/en/tags/shell/</link>
+    <description>Recent content in shell on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 01 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>shell | centos 初始化</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/shell-centos-init/</link>
+      <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/shell-centos-init/</guid>
+      <description>前言 以 centos7 为例, 通常我们新装完操作系统后需要进行配置 yum 源, iptables, selinux, ntp 以及优化 kernel 等操作, 现分享一些较为通用的配置. 同时博主将这些配置整理成了脚本, 可以一键执行. 常用配置 iptables &amp;amp; selinux sed -i &amp;#39;/SELINUX/s/enforcing/disabled/&amp;#39; /etc/sysconfig/selinux setenforce 0 iptables -F systemctl disable --now firewalld PS1 终端美化 cat &amp;gt; /etc/profile.d/PS1_conf.sh &amp;lt;&amp;lt; &amp;#39;EOF&amp;#39; export PS1=&amp;#34;\n[\[\e[31m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]] -\$?- \[\e[33m\]\$(pwd)\[\e[m\] \[\e[34m\]\$(date +&amp;#39;%F %T&amp;#39;)\[\e[m\] \n(\#)$ &amp;#34; EOF source /etc/profile.d/PS1_conf.sh history 格式化 cat &amp;gt; /etc/profile.d/history_conf.sh &amp;lt;&amp;lt; &amp;#39;EOF&amp;#39; export HISTFILE=&amp;#34;\$HOME/.bash_history&amp;#34; # 写入文件 export HISTSIZE=1000 # hist</description>
+    </item>
+    
+    <item>
+      <title>shell | if条件判断</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/shell-if/</link>
+      <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/shell-if/</guid>
+      <description>shell中if条件判断详解</description>
+    </item>
+    
+    <item>
+      <title>shell | 将本地镜像批量推送到harbor</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/shell-push-harbor/</link>
+      <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/shell-push-harbor/</guid>
+      <description>经常会下一些外网镜像用于测试，手动修改镜像tag然后推送在镜像较多的情况下比较繁琐，本文采用bash脚本方式批量推送不同格式的镜像</description>
+    </item>
+    
+    <item>
+      <title>shell | 检索某url中所有文件的内容</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/shell-search-url-files/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/shell-search-url-files/</guid>
+      <description>前言 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的。 可以通过检索 kernel.org 中所有内核版本的 ChangeLog 文件中是否包含该 commit 来判断漏洞影响的内核版本（仅针对 linux 的 kernel 相关的漏洞） 脚本 #!/bin/bash # author: lvbibir # date: 2022-06-23 # 检索 kernel.org 下的所有 ChangeLog 文件，是否包含某项特定的 commit 号 commit=&amp;#39;520778042ccca019f3ffa136dd0ca565c486cedd&amp;#39; version=4 number=0 curl -ks https://cdn.kernel.org/pub/linux/kernel/v$version\.x/ &amp;gt; list_$version cat list_$version | grep Change | grep -v sign | awk</description>
+    </item>
+    
+    <item>
+      <title>shell | 不同执行方式的区别</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/shell-different-execution-mode/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/shell-different-execution-mode/</guid>
+      <description>shell 脚本通常有 sh filename、bash filename、./filename、source filename 这四种执行方式 source filename 可以使用 . filename 代替，在当前的 bash 环境下读取并执行脚本文件中的命令，且脚本文件的变量，在脚本执行完成后会保存下来 ./filename 和 sh filename 或者 bash filename 是等效的，都是开启一个子shell来运行脚本文</description>
+    </item>
+    
+    <item>
+      <title>shell | 开启debug模式</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/shell-enable-debug-mode/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/shell-enable-debug-mode/</guid>
+      <description>前言 shell脚本是没有debug模式的，不过可以通过 set 指令实现简单的debug功能 shell脚本中默认每条指令都会从上到下依次执行，但是当某行指令报错时，我们大多数情况下是不希望继续执行后续指令的 这时可以使用shell脚本中 set 指令的四个参数：-e、-u、-x、-o pipefail 命令报错即返</description>
+    </item>
+    
+    <item>
+      <title>docker | 脚本方式批量导出/导入镜像</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-import-export-image/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-import-export-image/</guid>
+      <description>通过shell | python的方式批量导入导出docker镜像</description>
+    </item>
+    
+    <item>
+      <title>shell | 服务器巡检脚本</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/shell-server-inspection/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/shell-server-inspection/</guid>
+      <description>代码如下 #!/bin/bash #参数定义 date=`date +&amp;#34;%Y-%m-%d-%H:%M:%S&amp;#34;` centosVersion=$(awk &amp;#39;{print $(NF-1)}&amp;#39; /etc/redhat-release) VERSION=`date +%F` #日志相关 LOGPATH=&amp;#34;/tmp/awr&amp;#34; [ -e $LOGPATH ] || mkdir -p $LOGPATH RESULTFILE=&amp;#34;$LOGPATH/HostCheck-`hostname`-`date +%Y%m%d`.txt&amp;#34; #调用函数库 [ -f /etc/init.d/functions ] &amp;amp;&amp;amp; source /etc/init.d/functions export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin source /etc/profile #root用户执行脚本 [ $(id -u) -gt 0 ] &amp;amp;&amp;amp; echo &amp;#34;请用root用户执行此脚本！&amp;#34; &amp;amp;&amp;amp; exit 1 function version(){ echo &amp;#34;&amp;#34; echo &amp;#34;&amp;#34; echo &amp;#34;[${date}] &amp;gt;&amp;gt;&amp;gt; `hostname -s` 主机巡检&amp;#34; } function getSystemStatus(){ echo &amp;#34;&amp;#34; echo -e &amp;#34;\033[33m***</description>
+    </item>
+    
+    <item>
+      <title>shell | 获取服务器硬件信息（整合为json格式）</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/shell-get-server-hardware-information/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/shell-get-server-hardware-information/</guid>
+      <description>前言 查看硬件信息，并将信息整合成json数值，然后传给前段进行分析，最后再进行相应的处理。在装系统的时候，或是进行监控时，都是一个标准的自动化运维流程。使用shell直接生成好json数据再进行传输，会变得非常方便。 环境 [root@sys-idc-pxe01 ~]# yum install jq lsscsi MegaCli 脚本内容 #!/bin/sh #description: get server hardware info #author: lvbibir #date: 20180122 #需要安装jq工具</description>
+    </item>
+    
+  </channel>
+</rss>

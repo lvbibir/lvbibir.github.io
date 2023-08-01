@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>openstack on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/en/tags/openstack/</link>
+    <description>Recent content in openstack on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/openstack/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cloud-init自动修改ssh配置文件</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/cloud-init-change-ssh-config/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/cloud-init-change-ssh-config/</guid>
+      <description>前言 在openEuler20.03 (LTS-SP1)系统上进行一些测试，发现某个东西会自动修改ssh配置文件导致系统无法通过密码登录，最后排查是由于安装了cloud-init导致的。 以下是大致的排查思路 出现这个问题前做的操作是安装了一些项目组同事指定的包，问题就应该出在这些包上 yum</description>
+    </item>
+    
+    <item>
+      <title>kolla-ansible 部署 Train版 openstack（all-in-one）</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/openstack-kolla-ansible-allinone-train/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/openstack-kolla-ansible-allinone-train/</guid>
+      <description>介绍cenots中使用kolla-ansible&#43;docker的方式快速部署openstack(all-in-one)单节点</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>docker on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/en/tags/docker/</link>
+    <description>Recent content in docker on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 12 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【置顶】Hello,hugo!</title>
+      <link>https://www.lvbibir.cn/en/posts/blog/hello-hugo/</link>
+      <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/blog/hello-hugo/</guid>
+      <description>记录wordpress迁移至hugo&#43;papermod的过程包含环境搭建、博客美化、功能实现、速度优化等……</description>
+    </item>
+    
+    <item>
+      <title>kubernetes中的command和args 与 dockerfile中的ENTRYPOINT和CMD的关系</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-command-args-docker-entrypoint-cmd/</link>
+      <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-command-args-docker-entrypoint-cmd/</guid>
+      <description>command args 如果指定了 containers.command，Dockerfile 中的 ENTRYPOINT 会被覆盖且 CMD 指令被忽略 如果指定了 containers.args，Dockerfile 中的 ENTRYPOINT 继续执行， CMD指令 被覆盖 ENTRYPOINT CMD command args finally [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] ep-1 foo bar [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] ep-2 [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-1 zoo boo [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-2 zoo boo CMD ENTRYPOINT 我们大概可以总结</description>
+    </item>
+    
+    <item>
+      <title>docker | dockerfile最佳实践</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-dockerfile-optimization/</link>
+      <pubDate>Tue, 11 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-dockerfile-optimization/</guid>
+      <description>前言 在使用 Docker 的过程中，编写 Dockerfile 是非常重要的一部分工作。合理编写 Dockerfile 会使我们构建出来的 Docker image 拥有更佳的性能和健壮性 目标: 更快的构建速度 更小的 Docker 镜像大小 更少的 Docker 镜像层 充分利用镜像缓存 增加 Dockerfile 可读性 让 Docker 容器使用起来更简单 总结 编写.dockerignore 文件 容器只运行单个应用 将多个 RUN 指令合并为</description>
+    </item>
+    
+    <item>
+      <title>docker | dockerfile指令详解</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-dockerfile-instruction/</link>
+      <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-dockerfile-instruction/</guid>
+      <description>前言 Dockerfile用于构建docker镜像, 实际上就是把在linux下的命令操作写到了Dockerfile中, 通过Dockerfile去执行设置好的操作命令, 保证通过Dockerfile的构建镜像是一致的. Dockerfile 是一个文本文件，其内包含了一条条的指令(Instruction)，</description>
+    </item>
+    
+    <item>
+      <title>docker | 下载外网镜像的几种方式</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-download-foreign-images/</link>
+      <pubDate>Thu, 09 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-download-foreign-images/</guid>
+      <description>介绍几种方式用于构建平常无法下载的 gcr.io 或者 quay.io 等仓库的镜像，比如阿里云免费的容器镜像服务、开源项目、Docker Playground等</description>
+    </item>
+    
+    <item>
+      <title>shell | 将本地镜像批量推送到harbor</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/shell-push-harbor/</link>
+      <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/shell-push-harbor/</guid>
+      <description>经常会下一些外网镜像用于测试，手动修改镜像tag然后推送在镜像较多的情况下比较繁琐，本文采用bash脚本方式批量推送不同格式的镜像</description>
+    </item>
+    
+    <item>
+      <title>cephadm 离线安装 ceph-v16 (Pacific) (openeuler)</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openuler-offline/</link>
+      <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openuler-offline/</guid>
+      <description>前言 适用于 Centos8/openeuler + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有外网的测试机（尽量跟生产系统的环境一致）通过 yum 安装 cephadm、ceph-common、docker 等需要的 rpm 包，注意使用 downloadonly 参数先下载好 rpm</description>
+    </item>
+    
+    <item>
+      <title>cicd | jenkins部署mall-swarm项目</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/cicd-mall-swarm/</link>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/cicd-mall-swarm/</guid>
+      <description>以 mall-swarm 项目为例，部署一套 jenkis &#43; gitlab &#43; docker的一套 CICD 流水线</description>
+    </item>
+    
+    <item>
+      <title>docker | 脚本方式批量导出/导入镜像</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-import-export-image/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-import-export-image/</guid>
+      <description>通过shell | python的方式批量导入导出docker镜像</description>
+    </item>
+    
+    <item>
+      <title>wordpress迁移到docker</title>
+      <link>https://www.lvbibir.cn/en/posts/blog/wordpress-to-docker/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/blog/wordpress-to-docker/</guid>
+      <description>记录从阿里云轻量应用服务器(wordpress应用)迁移到docker部署，并针对博客的一些优化</description>
+    </item>
+    
+    <item>
+      <title>docker | 三剑客之machine</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-machine/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-machine/</guid>
+      <description>docker machine简介以及实战</description>
+    </item>
+    
+    <item>
+      <title>docker | 三剑客之swarm</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-swarm/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-swarm/</guid>
+      <description>介绍docker-swarm集群的概述、使用和集群管理</description>
+    </item>
+    
+    <item>
+      <title>docker | 命令手册</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-command/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-command/</guid>
+      <description>基于docker-18.03.0-ce版本，介绍常见的docker命令及参数的使用方法</description>
+    </item>
+    
+    <item>
+      <title>docker | 守护进程的远程调用</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-remote-call-daemon/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-remote-call-daemon/</guid>
+      <description>实现docker客户端与另一台主机上的docker守护进程进行通信</description>
+    </item>
+    
+    <item>
+      <title>docker | 容器的跨主机连接</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-rong-qi-kua-zhu-ji-lian-jie/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-rong-qi-kua-zhu-ji-lian-jie/</guid>
+      <description>介绍docker容器在不同宿主机下实现通信的几种方案</description>
+    </item>
+    
+    <item>
+      <title>docker | 数据卷（data volume）</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-data-volume/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-data-volume/</guid>
+      <description>介绍如何使用docker的数据卷和数据卷容器</description>
+    </item>
+    
+    <item>
+      <title>docker | 简介以及基础概念</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-jian-jie/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-jian-jie/</guid>
+      <description>介绍docker的一些基础概念和优势</description>
+    </item>
+    
+    <item>
+      <title>docker | 网络简介</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-network/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-network/</guid>
+      <description>docker的网络结构简介 | 同一宿主机的docker容器之间是如何通信的</description>
+    </item>
+    
+  </channel>
+</rss>

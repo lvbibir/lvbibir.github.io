@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>centos on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/en/tags/centos/</link>
+    <description>Recent content in centos on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 01 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>shell | centos 初始化</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/shell-centos-init/</link>
+      <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/shell-centos-init/</guid>
+      <description>前言 以 centos7 为例, 通常我们新装完操作系统后需要进行配置 yum 源, iptables, selinux, ntp 以及优化 kernel 等操作, 现分享一些较为通用的配置. 同时博主将这些配置整理成了脚本, 可以一键执行. 常用配置 iptables &amp;amp; selinux sed -i &amp;#39;/SELINUX/s/enforcing/disabled/&amp;#39; /etc/sysconfig/selinux setenforce 0 iptables -F systemctl disable --now firewalld PS1 终端美化 cat &amp;gt; /etc/profile.d/PS1_conf.sh &amp;lt;&amp;lt; &amp;#39;EOF&amp;#39; export PS1=&amp;#34;\n[\[\e[31m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]] -\$?- \[\e[33m\]\$(pwd)\[\e[m\] \[\e[34m\]\$(date +&amp;#39;%F %T&amp;#39;)\[\e[m\] \n(\#)$ &amp;#34; EOF source /etc/profile.d/PS1_conf.sh history 格式化 cat &amp;gt; /etc/profile.d/history_conf.sh &amp;lt;&amp;lt; &amp;#39;EOF&amp;#39; export HISTFILE=&amp;#34;\$HOME/.bash_history&amp;#34; # 写入文件 export HISTSIZE=1000 # hist</description>
+    </item>
+    
+    <item>
+      <title>centos7 修改网卡名称</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/centos7-change-network-card-name/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/centos7-change-network-card-name/</guid>
+      <description>介绍如何在centos7的系统中通过配置网络规则命名文件的方式修改网卡的名称</description>
+    </item>
+    
+    <item>
+      <title>centos7.5 升级内核至 5.10</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/centos-update-kernel-to-5.10/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/centos-update-kernel-to-5.10/</guid>
+      <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm的缩写 长期维护版 ml mainline的缩写 最新稳定版 使用 wget 命令下载内核 RPM 包 [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-5.10.81-1.el7.x86_64.rpm [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 安装内核 yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 查看所有可用内核启动项 [dpl@test1 ~] awk -F\&amp;#39; &amp;#39;$1==&amp;#34;menuentry &amp;#34; {print i++ &amp;#34; : &amp;#34; $2}&amp;#39; /etc/grub2.cfg 0 : CentOS</description>
+    </item>
+    
+    <item>
+      <title>密码尝试次数过多</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/centos-too-many-password-attempts/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/centos-too-many-password-attempts/</guid>
+      <description>介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理</description>
+    </item>
+    
+    <item>
+      <title>centos7 部署 ceph-v12 (nautilus) &#43; dashboard</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/ceph-v12-nautilus-cephdeploy/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v12-nautilus-cephdeploy/</guid>
+      <description>介绍在centos7环境中通过ceph-deploy部署ceph集群（nautilus）和可视化的dashboard</description>
+    </item>
+    
+    <item>
+      <title>centos7开启bbr算法</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/centos7-open-bbr/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/centos7-open-bbr/</guid>
+      <description>前言 介绍在CentOS7上部署BBR的详细过程 BBR简介：（Bottleneck Bandwidth and RTT）是一种新的拥塞控制算法，由Google开发。有了BBR，Linux服务器可以显着提高吞吐量并减少连接延迟 1. 查看当前内核版本 uname -r 显示当前内核为3.10.0，因此我们需要更新内核 2. 使用 ELRepo RPM 仓库</description>
+    </item>
+    
+    <item>
+      <title>centos6 部署 openvpn</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/centos6-deploy-openvpn/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/centos6-deploy-openvpn/</guid>
+      <description>介绍如何在centos6的环境中部署openvpn服务实现内网穿透</description>
+    </item>
+    
+    <item>
+      <title>centos7基线检查（benchmark）平台部署</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/centos7-deploy-benchmark/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/centos7-deploy-benchmark/</guid>
+      <description>介绍在centos7环境中部署开源的benchmark基线检查平台，并通过web界面可视化展示</description>
+    </item>
+    
+  </channel>
+</rss>

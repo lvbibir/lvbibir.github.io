@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>故障处理 on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/en/tags/%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/</link>
+    <description>Recent content in 故障处理 on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 14 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>glibc 误升级后修复</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/glibc-wu-sheng-ji/</link>
+      <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/glibc-wu-sheng-ji/</guid>
+      <description>记录一下在 OpenEuler 20.03 LTS aarch64 系统上误操作升级了 glibc 后紧急修复的步骤</description>
+    </item>
+    
+    <item>
+      <title>cloud-init自动修改ssh配置文件</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/cloud-init-change-ssh-config/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/cloud-init-change-ssh-config/</guid>
+      <description>前言 在openEuler20.03 (LTS-SP1)系统上进行一些测试，发现某个东西会自动修改ssh配置文件导致系统无法通过密码登录，最后排查是由于安装了cloud-init导致的。 以下是大致的排查思路 出现这个问题前做的操作是安装了一些项目组同事指定的包，问题就应该出在这些包上 yum</description>
+    </item>
+    
+    <item>
+      <title>记一次程序测试</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/record-of-program-test/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/record-of-program-test/</guid>
+      <description>前言 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向文件中追加内容，程序要能读取到，效果如下： 测试程序代码如下： #include&amp;lt;stdlib.h&amp;gt; #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;unistd.h&amp;gt; int main(int argc, char **argv) { FILE *f = fopen(&amp;#34;./Syslog.log&amp;#34;, &amp;#34;rb&amp;#34;); if (f == NULL) return 1; char buffer[1024] = {0}; size_t len = 0; while(1) { len = fread(buffer, 1, sizeof(buffer), f); if (len &amp;gt; 0)</description>
+    </item>
+    
+    <item>
+      <title>H3C服务器装完系统无法引导</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/h3c-server-can-not-boot-system/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/h3c-server-can-not-boot-system/</guid>
+      <description>记录一下在H3C服务器上系统无法引导的问题的解决</description>
+    </item>
+    
+  </channel>
+</rss>
