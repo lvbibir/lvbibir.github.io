@@ -6,7 +6,16 @@
     <description>Recent content in 👨🏻‍💻 技术 on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 01 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zabbix 监控主机到指定 ip 的流量大小</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/zabbix-ip-traffic-monitor/</link>
+      <pubDate>Fri, 04 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/zabbix-ip-traffic-monitor/</guid>
+      <description>0. 前言 分享一下如何监控某个主机上的网卡到指定 ip 的流量大小, 测试环境已安装 tcpdump 并配置了 zabbix_agent 被检测端 ip 为 1.1.1.11, 要检测到 1.1.1.12-17 这些 ip 的出口流量 大致流程为: 创建一个监控脚本, 分析 1 分钟内指定网卡发送到指定 ip 的数据包大小并输出到日志文件 将该脚本放到 crontab 中, 每分钟执行一次 配置 zabbix-agent 创建数据采集脚本, 提取日志文</description>
+    </item>
+    
     <item>
       <title>shell | centos 初始化</title>
       <link>https://www.lvbibir.cn/en/posts/tech/shell-centos-init/</link>

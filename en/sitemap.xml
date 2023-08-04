@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.lvbibir.cn/en/posts/tech/</loc>
-    <lastmod>2023-05-01T00:00:00+00:00</lastmod>
+    <lastmod>2023-08-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/blog/hello-hugo/</loc>
     <lastmod>2022-09-11T00:00:00+00:00</lastmod>
@@ -18,22 +18,28 @@
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/</loc>
-    <lastmod>2023-05-01T00:00:00+00:00</lastmod>
+    <lastmod>2023-08-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/</loc>
+    <lastmod>2023-08-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/tags/shell/</loc>
+    <lastmod>2023-08-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/tags/zabbix/</loc>
+    <lastmod>2023-08-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/posts/tech/zabbix-ip-traffic-monitor/</loc>
+    <lastmod>2023-08-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/tags/</loc>
+    <lastmod>2023-08-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/centos/</loc>
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/en/</loc>
-    <lastmod>2023-05-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/en/tags/shell/</loc>
-    <lastmod>2023-03-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/shell-centos-init/</loc>
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/en/tags/</loc>
-    <lastmod>2023-05-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/kubernetes/</loc>
     <lastmod>2023-05-01T00:00:00+00:00</lastmod>
