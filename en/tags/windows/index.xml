@@ -6,7 +6,16 @@
     <description>Recent content in windows on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 09 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>windows 使用 miniconda 配置 python 虚拟环境</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/windows-miniconda/</link>
+      <pubDate>Mon, 07 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/windows-miniconda/</guid>
+      <description>0. 前言 python 虚拟环境的重要性已经无需多言了, 目前所有支持 python 虚拟环境的工具中最好用的应该就是 conda 了, 最重要的一点是可以一键创建不同版本的 python 环境以适应不同的需求. Anaconda 比较臃肿, 本文使用无 GUI 的 miniconda. 环境: win10 miniconda3-py11-23.5.2-0 1. 安装 安装前需要确认一下系统及用户的环境变量中不要存在中文, 在 CMD 中直接执行 path 或者 git-bash 中执行 echo</description>
+    </item>
+    
     <item>
       <title>windows | hosts文件修复</title>
       <link>https://www.lvbibir.cn/en/posts/tech/windows-fix-hosts/</link>

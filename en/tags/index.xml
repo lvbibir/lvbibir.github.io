@@ -6,7 +6,25 @@
     <description>Recent content in 🏷️ 标签 on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 04 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python</title>
+      <link>https://www.lvbibir.cn/en/tags/python/</link>
+      <pubDate>Mon, 07 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>https://www.lvbibir.cn/en/tags/windows/</link>
+      <pubDate>Mon, 07 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/windows/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>shell</title>
       <link>https://www.lvbibir.cn/en/tags/shell/</link>
@@ -76,24 +94,6 @@
       <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://www.lvbibir.cn/en/tags/python/</link>
-      <pubDate>Mon, 27 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>windows</title>
-      <link>https://www.lvbibir.cn/en/tags/windows/</link>
-      <pubDate>Sun, 09 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/tags/windows/</guid>
       <description></description>
     </item>
     

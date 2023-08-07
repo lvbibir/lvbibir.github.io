@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.lvbibir.cn/en/posts/tech/</loc>
-    <lastmod>2023-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/blog/hello-hugo/</loc>
     <lastmod>2022-09-11T00:00:00+00:00</lastmod>
@@ -18,10 +18,22 @@
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/</loc>
-    <lastmod>2023-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/</loc>
-    <lastmod>2023-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/tags/python/</loc>
+    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/tags/windows/</loc>
+    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/posts/tech/windows-miniconda/</loc>
+    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/tags/</loc>
+    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/shell/</loc>
     <lastmod>2023-08-04T00:00:00+00:00</lastmod>
@@ -30,9 +42,6 @@
     <lastmod>2023-08-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/zabbix-ip-traffic-monitor/</loc>
-    <lastmod>2023-08-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/en/tags/</loc>
     <lastmod>2023-08-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/centos/</loc>
@@ -122,9 +131,6 @@
     <loc>https://www.lvbibir.cn/en/posts/tech/docker-download-foreign-images/</loc>
     <lastmod>2023-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/en/tags/python/</loc>
-    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/logic-problem-guiguzi/</loc>
     <lastmod>2023-02-27T00:00:00+00:00</lastmod>
   </url><url>
@@ -136,9 +142,6 @@
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/shell-push-harbor/</loc>
     <lastmod>2022-10-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/en/tags/windows/</loc>
-    <lastmod>2022-10-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/windows-fix-hosts/</loc>
     <lastmod>2022-10-09T00:00:00+00:00</lastmod>
