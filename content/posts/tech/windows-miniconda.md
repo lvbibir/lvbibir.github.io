@@ -37,9 +37,9 @@ Anaconda 比较臃肿, 本文使用无 GUI 的 [miniconda](https://docs.conda.io
 在用户环境变量 `PATH` 添加如下项, 我的安装路径是 `D:\miniconda`, 按实际情况修改
 
 ```text
-D:\miniconda
-D:\miniconda\Scripts
-D:\miniconda\Library\bin
+D:\software\miniconda
+D:\software\miniconda\Scripts
+D:\software\miniconda\Library\bin
 ```
 
 添加完后重启系统, 让系统重新读取一下环境变量
@@ -80,22 +80,15 @@ custom_channels:
 auto_activate_base: false
 # 虚拟环境存放路径
 envs_dirs:
-  - D:\software\miniconda\envs
+  - D:\software\python\envs
 # pkg 存放路径
 pkgs_dirs:
-  - D:\software\miniconda\pkgs
+  - D:\software\python\pkgs
 ```
 
 上述配置文件中主要配置了三项: conda 的清华国内源, 虚拟环境和 pkg 的存储路径
 
-如不配置创建虚拟环境时可能会生成到用户目录下, 导致系统盘臃肿, 这里我直接配置的是 conda 安装路径, 需要注意安装路径可能是不可写的, 需要开放一下权限
-
-```bash
-$ conda info | grep "base environment"
-       base environment : D:\software\miniconda  (writable)
-```
-
-如果上述输出是 `read only`, 需要在系统中取消一下只读权限, 或者新创建一个目录存放虚拟环境
+如不配置创建虚拟环境时可能会生成到用户目录下, 导致系统盘臃肿, 建议新建一个目录专门存放
 
 ## 2.3 pip 配置
 
