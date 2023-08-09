@@ -22,12 +22,11 @@ cover:
 ## iptables & selinux
 
 ```bash
-sed -i '/SELINUX/s/enforcing/disabled/' /etc/sysconfig/selinux
+sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config
 setenforce 0
 
 iptables -F
 systemctl disable --now firewalld
-
 ```
 
 ## PS1 终端美化
@@ -38,25 +37,23 @@ export PS1="\n[\[\e[31m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]] -\$?- \[\e[33m\]\$(pwd
 EOF
 
 source /etc/profile.d/PS1_conf.sh
-
 ```
 
 ## history 格式化
 
 ```bash
 cat > /etc/profile.d/history_conf.sh << 'EOF'
-export HISTFILE="\$HOME/.bash_history"  # 写入文件
+export HISTFILE="$HOME/.bash_history"  # 写入文件
 export HISTSIZE=1000  # history输出记录数
 export HISTFILESIZE=10000  # HISTFILE文件记录数
 export HISTIGNORE="cmd1:cmd2:..."  # 忽略指定cmd1,cmd2...的命令不被记录到文件；(加参数时会记录)
 export HISTCONTOL=ignoredups   # ignoredups 不记录“重复”的命令；连续且相同 方为“重复” 
 export PROMPT_COMMAND="history -a"  # 设置每条命令执行完立即写入HISTFILE(默认等待退出会话写入)
-export HISTTIMEFORMAT="\$(whoami) %F %T "  # 设置命令执行时间格式，记录文件增加时间戳
+export HISTTIMEFORMAT="$(whoami) %F %T "  # 设置命令执行时间格式，记录文件增加时间戳
 shopt -s histappend  # 防止会话退出时覆盖其他会话写到HISTFILE的内容
 EOF
 
 source /etc/profile.d/history_conf.sh
-
 ```
 
 ## ssh 公钥
@@ -69,7 +66,12 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCeQZmPg93SNx6zzR/l4RiPnHtFPbDTSOL7AtJOIvrl
 EOF
 
 chmod 600 /root/.ssh/authorized_keys
+```
 
+## 加速 ssh 连接
+
+```bash
+echo "UseDNS no" >> /etc/ssh/sshd_config
 ```
 
 ## 配置 yum 源
@@ -126,17 +128,21 @@ EOF
 ```bash
 cat > /root/proxy << 'EOF'
 #!/bin/bash
-case "\$1" in
+case "$1" in
 set)
-    export http_proxy="http://1.1.1.253:7890"
-    export https_proxy="http://1.1.1.253:7890"
-    ;;
+    export http_proxy="http://1.1.1.1:7890"
+    export https_proxy="http://1.1.1.1:7890"
+	export all_proxy="socks5://1.1.1.1:7890"
+	export ALL_PROXY="socks5://1.1.1.1:7890"
+	;;
 unset)
     unset http_proxy
     unset https_proxy
+	unset all_proxy
+	unset ALL_PROXY
     ;;
 *)
-    echo "Usage: source \$0 {set|unset}"
+    echo "Usage: source $0 {set|unset}"
     ;;
 esac
 EOF
@@ -237,33 +243,26 @@ echo "========start============="
 function disable_selinux_firewalld() {
 
     echo "========selinux==========="
-    sed -i '/SELINUX/s/enforcing/disabled/' /etc/sysconfig/selinux
+    sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config
     setenforce 0
     
     echo "========firewalld========="
     iptables -F
-    systemctl disable firewalld
-    systemctl stop firewalld
+    systemctl disable --now firewalld
 
 }
 
-function format_PS1_history() {
-
-    echo "========PS1 format======="
-    cat > /etc/profile.d/PS1_conf.sh << 'EOF'
-export PS1="\n[\[\e[31m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]] -\$?- \[\e[33m\]\$(pwd)\[\e[m\] \[\e[34m\]\$(date +'%F %T')\[\e[m\] \n(\#)$ "
-EOF
-    source /etc/profile.d/PS1_conf.sh
+function format_history() {
 
     echo "========history format========"
     cat > /etc/profile.d/history_conf.sh << 'EOF'
-export HISTFILE="\$HOME/.bash_history"  # 写入文件
+export HISTFILE="$HOME/.bash_history"  # 写入文件
 export HISTSIZE=1000  # history输出记录数
 export HISTFILESIZE=10000  # HISTFILE文件记录数
 export HISTIGNORE="cmd1:cmd2:..."  # 忽略指定cmd1,cmd2...的命令不被记录到文件；(加参数时会记录)
 export HISTCONTOL=ignoredups   # ignoredups 不记录“重复”的命令；连续且相同 方为“重复” 
 export PROMPT_COMMAND="history -a"  # 设置每条命令执行完立即写入HISTFILE(默认等待退出会话写入)
-export HISTTIMEFORMAT="\$(whoami) %F %T "  # 设置命令执行时间格式，记录文件增加时间戳
+export HISTTIMEFORMAT="$(whoami) %F %T "  # 设置命令执行时间格式，记录文件增加时间戳
 shopt -s histappend  # 防止会话退出时覆盖其他会话写到HISTFILE的内容
 EOF
 
@@ -271,7 +270,7 @@ EOF
 
 }
 
-function add_ssh_key() {
+function setup_ssh() {
 
     echo "========add ssh key========"
     mkdir /root/.ssh || true
@@ -280,6 +279,9 @@ function add_ssh_key() {
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCeQZmPg93SNx6zzR/l4RiPnHtFPbDTSOL7AtJOIvrlMm300x1OM8a48VqYuKEx7B7WM7UhszVndg8efJv9UdOtOaa0o8L0Wd2uujn2rFKKok69c5i7c/jmU1my9MkEsKpkx1MHQWVZTFqayv/DB9L5GaE/ShChsTSlXoQ6rc6JC4k1zgSsoNSTLwPrbZcDOZWprt/AOhqCklf9mL1E50WTx9XsjxBLqJIwwVEzmHAhzIiVowjBKjJpQ6hEvygCz67gNVn0vAvHPvCz3amrkCQa333Z9r8tbY7mJpq2Anj4qWtlnL9kHreVK6YoKGvM8+DrbVoT5/zM7wMZ+tdLmreUsu4OhgDkE4IgUMHWQ3T1GyD1EjCkqCdSfJbrLaAR8v7g92uDXO5irIyYMc/iQJ8v4okus9Iid61zFF0SPgZEykOVfT7jJqH0a/630D41uD0TK90v5PicVdh1FfEfok8P4F4UHGLUly2jRVBESQ/TXVGPaMITHPEtYEpmT3kmnOk= 15810243114@163.com
 EOF
     chmod 600 /root/.ssh/authorized_keys
+
+	echo "=========setup ssh========"
+	echo "UseDNS no" >> /etc/ssh/sshd_config
 
 }
 
@@ -334,17 +336,21 @@ EOF
     echo "========http proxy=========="
     cat > /root/proxy << 'EOF'
 #!/bin/bash
-case "\$1" in
+case "$1" in
 set)
-    export http_proxy="http://1.1.1.253:7890"
-    export https_proxy="http://1.1.1.253:7890"
-    ;;
+    export http_proxy="http://1.1.1.1:7890"
+    export https_proxy="http://1.1.1.1:7890"
+	export all_proxy="socks5://1.1.1.1:7890"
+	export ALL_PROXY="socks5://1.1.1.1:7890"
+	;;
 unset)
     unset http_proxy
     unset https_proxy
+	unset all_proxy
+	unset ALL_PROXY
     ;;
 *)
-    echo "Usage: source \$0 {set|unset}"
+    echo "Usage: source $0 {set|unset}"
     ;;
 esac
 EOF
@@ -430,10 +436,9 @@ EOF
 
 }
 
-
 disable_selinux_firewalld
-format_PS1_history
-add_ssh_key
+format_history
+setup_ssh
 setup_yum
 time_limit_proxy
 setup_kernel
@@ -441,6 +446,5 @@ setup_kernel
 echo "=========finish============"
 
 exit 0
-
 ```
 
