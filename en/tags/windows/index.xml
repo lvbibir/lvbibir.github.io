@@ -6,7 +6,16 @@
     <description>Recent content in windows on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 07 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>windows | 自定义开机快速启动项</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/windows-early-auto-start/</link>
+      <pubDate>Mon, 14 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/windows-early-auto-start/</guid>
+      <description>0. 前言 最近注意到 windows 系统中当 onedrive 和 clash 同时开机自启时会导致 onedrive 无法自动登录, 需要退出 onedrive 重新启动一下才能正常登录. 出现这个问题的原因是 onedrive 启动速度要比 clash 快, 导致 onedrive 启动时访问不到 clash. 其实只要将这两个其中一个不设置为开机自启即可解决, 但是这两个都是刚需, 放下任何一个都会不舒服. 一番 google 下来, 大部分的</description>
+    </item>
+    
     <item>
       <title>windows 使用 miniconda 配置 python 虚拟环境</title>
       <link>https://www.lvbibir.cn/en/posts/tech/windows-miniconda/</link>
