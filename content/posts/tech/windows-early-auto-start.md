@@ -40,6 +40,8 @@ C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /u .\EarlyStart.ex
 
 # 2. 配置启动项
 
+首先将要配置快速启动的应用默认的开机自启给关掉
+
 在用户目录 `C:\Users\<username>` 创建一个名为 `.earlystart` 的文件, 每一行输入一个 exe 的路径
 
 ![image-20230815025643880](https://image.lvbibir.cn/blog/image-20230815025643880.png)
