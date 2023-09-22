@@ -1,13 +1,19 @@
 ---
 title: "跑步日常" 
 date: 2022-07-07 
-lastmod: 2022-07-31
+lastmod: 2023-09-23
 description: "记录一下本跑渣的跑步日常，一点一滴见证自己成长~"
 cover:
     image: "https://image.lvbibir.cn/blog/cover-running.jpg"
 ---
 
+## 2308_5_25km
 
+经历了`初阳`->`冬天太冷`->`二阳`->`换工作`以及最关键的开始变 <font color='red'>懒</font> , 总算开始恢复正常的跑步节奏了, 大半年的时间体能下降很严重, 体重也涨了起来, 这次一定要熬过冬天
+
+怎么恢复跑感觉比从零开始还要难啊 o(╥﹏╥)o
+
+![running-2023-08](https://image.lvbibir.cn/blog/running-2023-08.png)
 
 ## 2212-2307_15_66.81km
 
