@@ -7,6 +7,14 @@ cover:
     image: "https://image.lvbibir.cn/blog/cover-running.jpg"
 ---
 
+## 2309_18_140.53km
+
+跑量加的有点快, 肌腱疼了几天, 好在已经恢复了,希望能早点回到 6 分有氧
+
+![running-2023-09](https://image.lvbibir.cn/blog/running-2023-09.png)
+
+
+
 ## 2308_5_25km
 
 经历了`初阳`->`冬天太冷`->`二阳`->`换工作`以及最关键的开始变 <font color='red'>懒</font> , 总算开始恢复正常的跑步节奏了, 大半年的时间体能下降很严重, 体重也涨了起来, 这次一定要熬过冬天
