@@ -6,7 +6,25 @@
     <description>Recent content in shell on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 04 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>shell | 检测网站存活并自动钉钉告警</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/shell-check-website-available/</link>
+      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/shell-check-website-available/</guid>
+      <description>脚本内容如下, 替换钉钉 bot 的 token, 将脚本放至 crontab 执行即可 #!/bin/bash export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin # 设置要检测的网页URL urls=(&amp;#34;https://emp.cnpc.com.cn/index.html&amp;#34; &amp;#34;https://mdm.cnpc.com.cn/&amp;#34;) #urls=(&amp;#34;https://emp.cnpc.com.cn/index.html&amp;#34; &amp;#34;https://mdm.cnpc.com.cn/&amp;#34; &amp;#34;https://www.956100.com&amp;#34; &amp;#34;https://mm.956100.com&amp;#34; &amp;#34;https://app.956100.com&amp;#34;) # 钉钉机器人的 webhook 地址 webhook=&amp;#34;https://oapi.dingtalk.com/robot/send?access_token=******************************&amp;#34; # 最大连续无法访问次数 max_attempts=3 # 设置并发进程数为 URL 数量 max_concurrent=${#urls[@]} # 初始化计数器 completed=0 for url in &amp;#34;${urls[@]}&amp;#34;; do # 在后台启动一个子进程进行测试 ( attempts=0 while [ $attempts -lt $max_attempts ]; do # 使用curl获取网页内容，并保存HTTP</description>
+    </item>
+    
+    <item>
+      <title>Zabbix 监控端口连通性并自动追踪 TCP 路由</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/zabbix-port-monitor/</link>
+      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/zabbix-port-monitor/</guid>
+      <description>0. 前言 本文实现被检测主机到特定 ip 的特定端口的连通性, 通过 nc 命令测试端口可用性, 当 nc 超时时自动执行 traceroute 追踪路由定位网络故障点, 本文的案例是监控我们生产的短信业务服务器到运营商提供的短信接口之间的连通性. 环境信息: CentOS 7.6 Zabbix 3.4 确保需要检测端口连通性的服务器安装了 nc 及 traceroute 1. 服务器配置 每个需要检</description>
+    </item>
+    
     <item>
       <title>Zabbix 监控主机到指定 ip 的流量大小</title>
       <link>https://www.lvbibir.cn/en/posts/tech/zabbix-ip-traffic-monitor/</link>

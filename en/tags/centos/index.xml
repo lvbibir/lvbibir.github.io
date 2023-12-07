@@ -6,7 +6,16 @@
     <description>Recent content in centos on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 01 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>shell | 检测网站存活并自动钉钉告警</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/shell-check-website-available/</link>
+      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/shell-check-website-available/</guid>
+      <description>脚本内容如下, 替换钉钉 bot 的 token, 将脚本放至 crontab 执行即可 #!/bin/bash export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin # 设置要检测的网页URL urls=(&amp;#34;https://emp.cnpc.com.cn/index.html&amp;#34; &amp;#34;https://mdm.cnpc.com.cn/&amp;#34;) #urls=(&amp;#34;https://emp.cnpc.com.cn/index.html&amp;#34; &amp;#34;https://mdm.cnpc.com.cn/&amp;#34; &amp;#34;https://www.956100.com&amp;#34; &amp;#34;https://mm.956100.com&amp;#34; &amp;#34;https://app.956100.com&amp;#34;) # 钉钉机器人的 webhook 地址 webhook=&amp;#34;https://oapi.dingtalk.com/robot/send?access_token=******************************&amp;#34; # 最大连续无法访问次数 max_attempts=3 # 设置并发进程数为 URL 数量 max_concurrent=${#urls[@]} # 初始化计数器 completed=0 for url in &amp;#34;${urls[@]}&amp;#34;; do # 在后台启动一个子进程进行测试 ( attempts=0 while [ $attempts -lt $max_attempts ]; do # 使用curl获取网页内容，并保存HTTP</description>
+    </item>
+    
     <item>
       <title>shell | centos 初始化</title>
       <link>https://www.lvbibir.cn/en/posts/tech/shell-centos-init/</link>
