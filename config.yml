@@ -90,10 +90,6 @@ languages:
           name: 🤝 友链
           url: links
           weight: 70
-        - identifier: reference
-          name: 🗒️ reference
-          url: /reference
-          weight: 80
         # - identifier: about
         #   name: 🙋🏻‍♂️ 关于
         #   url: about
