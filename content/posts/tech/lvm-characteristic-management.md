@@ -104,14 +104,14 @@ pvremove /dev/sdb1
 制作VG
 vgcreate datavg /dev/sdb1
 vgcreate datavg /dev/sdb1 /dev/sdb2
-#解释：vgcreate vg名 分区
+解释：vgcreate vg名 分区
 
 vgcreate -s 16M datavg2 /dev/sdb3
-#解释：-s 指定pe的大小为16M，默认不指定是4M
+解释：-s 指定pe的大小为16M，默认不指定是4M
 
 从卷组中移除缺失的磁盘
 vgreduce --removemissing datavg
-vgreduce --removemissing datavg --force		#强制移除
+vgreduce --removemissing datavg --force		# 强制移除
 
 扩展VG空间
 vgextend datavg /dev/sdb3
@@ -124,11 +124,11 @@ vgs
 
 制作LV
 lvcreate -n lvdata1 -L 1.5G datavg
-#解释：-n lv的name，-L 指定lv的大小，datavg 是vg的名字，表示从那个vg
+解释：-n lv的name，-L 指定lv的大小，datavg 是vg的名字，表示从那个vg
 
 激活修复后的逻辑卷
 lvchange -ay /dev/datavg/lvdata1
-lvchange -ay /dev/datavg/lvdata1 -K	#强制激活
+lvchange -ay /dev/datavg/lvdata1 -K	# 强制激活
 # LVM的快照
 
 用途：注意用途是数据一致性备份，先做一个快照，冻结当前系统，这样快照里面的内容可暂时保持不变，系统本身继续运行，通过重新挂载备份快照卷，实现不中断服务备份。
@@ -164,13 +164,13 @@ vgrename xxxx-vgid-xxxx-xxxx xinname
 1:用vgdisplay查看vg还有多少空余空间
 2:扩充逻辑卷
 lvextend -L +1G /dev/VG/LV01
-lvextend -L +1G /dev/VG/LV01 -r  #这个命令表示在扩展的同时也更新文件系统，但是不是所有的发行版本都支持，部分文件系统不支持在线扩展的除外
+lvextend -L +1G /dev/VG/LV01 -r  # 这个命令表示在扩展的同时也更新文件系统，但是不是所有的发行版本都支持，部分文件系统不支持在线扩展的除外
 3:进行扩充操作后，df -h你会发现大小并没有变
 4:更新文件系统（争对不同的文件系统，其更新的命令也不一样）
-e2fsck -f /dev/datavg/lvdata1	#ext4文件系统，检查lv的文件系统
-resize2fs /dev/VG/LV01		#ext4文件系统命令，该命令后面接lv的设备名就行
+e2fsck -f /dev/datavg/lvdata1	# ext4文件系统，检查lv的文件系统
+resize2fs /dev/VG/LV01		# ext4文件系统命令，该命令后面接lv的设备名就行
 
-xfs_growfs /nas			#xfs文件系统，该命令后面直接跟的是挂载点
+xfs_growfs /nas			# xfs文件系统，该命令后面直接跟的是挂载点
 当更新文件系统后，你就会发现，df -h正常了
 # 缩小逻辑卷LV（必须离线，umount）
 

@@ -257,7 +257,7 @@ eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:06
 ## 允许特定容器间的连接
 修改守护进程选项：
 1. --icc=false
-2. --iptables=true	#允许docker容器配置添加到linux的iptables设置中
+2. --iptables=true	# 允许docker容器配置添加到linux的iptables设置中
 3. --link
 
 只有设置了--link的两个容器间才可以互通

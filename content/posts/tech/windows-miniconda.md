@@ -18,7 +18,6 @@ python 虚拟环境的重要性已经无需多言了, 目前所有支持 python 
 Anaconda 比较臃肿, 本文使用无 GUI 的 [miniconda](https://docs.conda.io/en/latest/miniconda.html).
 
 环境:
-
 - win10
 - miniconda3-py11-23.5.2-0
 
