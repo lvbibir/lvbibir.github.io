@@ -193,7 +193,7 @@
       <pubDate>Thu, 13 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/dns-search/</guid>
-      <description>简介 dns配置文件 /etc/resolv.conf 中常看到有 search 设置，以前以为是根据search 中的域去指定nameserver，其实不是这样用的。它的一个用处是程序只需要知道主机名就可以解析到 ip，不必知道域名后缀 domain 是什么 FQDN (Fully Qualified Domain Name) 含义是完整的域名. 例如, 一台机器主机名(hostname)是 www, 域名后缀(dom</description>
+      <description>简介 dns 配置文件 /etc/resolv.conf 中常看到有 search 设置，以前以为是根据 search 中的域去指定 nameserver，其实不是这样用的。它的一个用处是程序只需要知道主机名就可以解析到 ip，不必知道域名后缀 domain 是什么 FQDN (Fully Qualified Domain Name) 含义是完整的域名. 例如, 一台机器主机名 (hostname) 是 www, 域名后缀 (domain) 是 baidu.com, 那么该主机的 FQDN 应该是 www.baidu.com. 最后是以 . 来</description>
     </item>
     
     <item>
@@ -202,7 +202,7 @@
       <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-statefulset/</guid>
-      <description>基础概念 StatefulSet 应用场景：分布式应用、集群 部署有状态应用 解决Pod独立生命周期，保持Pod启动顺序和唯一性 稳定，唯一的网络标识符，持久存储 有序，优雅的部署和扩展、删除和终止 有序，滚动更新 StatefulSet 控制器的优势 稳定的存储 StatefulSet的存储卷使用VolumeClaimTemplate创建</description>
+      <description>基础概念 StatefulSet 应用场景：分布式应用、集群 部署有状态应用 解决 Pod 独立生命周期，保持 Pod 启动顺序和唯一性 稳定，唯一的网络标识符，持久存储 有序，优雅的部署和扩展、删除和终止 有序，滚动更新 StatefulSet 控制器的优势 稳定的存储 StatefulSet 的存储卷使用 VolumeClaimTemplate 创建，称为卷申请模板，当 StatefulSet 使用 VolumeClaimTemplate 创建一个 PersistentVolume 时，同样也会为每个 Pod 分配并</description>
     </item>
     
     <item>
@@ -211,7 +211,7 @@
       <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-command-args-docker-entrypoint-cmd/</guid>
-      <description>command args 如果指定了 containers.command，Dockerfile 中的 ENTRYPOINT 会被覆盖且 CMD 指令被忽略 如果指定了 containers.args，Dockerfile 中的 ENTRYPOINT 继续执行， CMD指令 被覆盖 ENTRYPOINT CMD command args finally [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] ep-1 foo bar [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] ep-2 [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-1 zoo boo [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-2 zoo boo CMD ENTRYPOINT 我们大概可以总结</description>
+      <description>command args 如果指定了 containers.command，Dockerfile 中的 ENTRYPOINT 会被覆盖且 CMD 指令被忽略 如果指定了 containers.args，Dockerfile 中的 ENTRYPOINT 继续执行， CMD 指令 被覆盖 ENTRYPOINT CMD command args finally [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] ep-1 foo bar [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] ep-2 [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-1 zoo boo [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-2 zoo boo CMD ENTRYPOINT 我们大概可以总结出下</description>
     </item>
     
     <item>
@@ -229,7 +229,7 @@
       <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/docker-dockerfile-instruction/</guid>
-      <description>前言 Dockerfile用于构建docker镜像, 实际上就是把在linux下的命令操作写到了Dockerfile中, 通过Dockerfile去执行设置好的操作命令, 保证通过Dockerfile的构建镜像是一致的. Dockerfile 是一个文本文件，其内包含了一条条的指令(Instruction)，</description>
+      <description>前言 Dockerfile 用于构建 docker 镜像, 实际上就是把在 linux 下的命令操作写到了 Dockerfile 中, 通过 Dockerfile 去执行设置好的操作命令, 保证通过 Dockerfile 的构建镜像是一致的. Dockerfile 是一个文本文件，其内包含了一条条的指令 (Instruction)，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。 参考内容： https://yeasy.gitbook.io/docker_practice/image/dockerfile FROM 指定基础</description>
     </item>
     
     <item>
@@ -238,7 +238,7 @@
       <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/linux-command-kill/</guid>
-      <description>1. 简介 kill命令很容易让人产生误解, 以为仅仅是用来终止linux中的进程. 在man手册中对kill命令的解释如下, 不难看出, kill命令是一个用于将指定的signal发送给进程的工具 DESCRIPTION The command kill sends the specified signal to the specified process or process group. If no signal is specified, the TERM signal is sent. The TERM signal will kill processes which do not catch this signal. For other processes, it may be necessary to use the KILL</description>
+      <description>1. 简介 kill 命令很容易让人产生误解, 以为仅仅是用来终止 linux 中的进程. 在 man 手册中对 kill 命令的解释如下, 不难看出, kill 命令是一个用于将指定的 signal 发送给进程的工具 DESCRIPTION The command kill sends the specified signal to the specified process or process group. If no signal is specified, the TERM signal is sent. The TERM signal will kill processes which do not catch this signal. For other processes, it may be necessary to use the KILL (9) signal, since this signal cannot be caught. Most modern shells have a builtin kill function, with a usage rather</description>
     </item>
     
     <item>
@@ -247,7 +247,7 @@
       <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/elasticsearch-plugin-error/</guid>
-      <description>报错详细信息 Exception in thread &amp;#34;main&amp;#34; java.nio.file.NotDirectoryException: /usr/share/elasticsearch/plugins/plugin-descriptor.properties at java.base/sun.nio.fs.UnixFileSystemProvider.newDirectoryStream(UnixFileSystemProvider.java:439) at java.base/java.nio.file.Files.newDirectoryStream(Files.java:482) at java.base/java.nio.file.Files.list(Files.java:3793) at org.elasticsearch.tools.launchers.BootstrapJvmOptions.getPluginInfo(BootstrapJvmOptions.java:49) at org.elasticsearch.tools.launchers.BootstrapJvmOptions.bootstrapJvmOptions(BootstrapJvmOptions.java:34) at org.elasticsearch.tools.launchers.JvmOptionsParser.jvmOptions(JvmOptionsParser.java:137) at org.elasticsearch.tools.launchers.JvmOptionsParser.main(JvmOptionsParser.java:86) 安装插件时直接将插件的zip解压到了 plugins目录 导致的，每个插件应以目录的形式存放在 plugins目录 中 [root@21-centos-7 ~]# ls /data/elasticsearch/plugins/ commons-codec-1.9.jar commons-logging-1.2.jar config elasticsearch-analysis-ik-7.17.3.jar httpclient-4.5.2.jar httpcore-4.4.4.jar plugin-descriptor.properties plugin-security.policy 只需要为每个插件创建一个目录，并把插件解压到对应目录即可 mkdir /data/elasticsearch/plugins/elasticsearch-analysis-ik/ unzip elasticsearch-analysis-ik-7.17.3.zip -d /data/elasticsearch/plugins/elasticsearch-analysis-ik/ 参考: https://github.com/medcl/elasticsearch-analysis-ik/issues/638</description>
+      <description>报错详细信息 Exception in thread &amp;#34;main&amp;#34; java.nio.file.NotDirectoryException: /usr/share/elasticsearch/plugins/plugin-descriptor.properties at java.base/sun.nio.fs.UnixFileSystemProvider.newDirectoryStream(UnixFileSystemProvider.java:439) at java.base/java.nio.file.Files.newDirectoryStream(Files.java:482) at java.base/java.nio.file.Files.list(Files.java:3793) at org.elasticsearch.tools.launchers.BootstrapJvmOptions.getPluginInfo(BootstrapJvmOptions.java:49) at org.elasticsearch.tools.launchers.BootstrapJvmOptions.bootstrapJvmOptions(BootstrapJvmOptions.java:34) at org.elasticsearch.tools.launchers.JvmOptionsParser.jvmOptions(JvmOptionsParser.java:137) at org.elasticsearch.tools.launchers.JvmOptionsParser.main(JvmOptionsParser.java:86) 安装插件时直接将插件的 zip 解压到了 plugins 目录 导致的，每个插件应以目录的形式存放在 plugins 目录 中 [root@21-centos-7 ~]# ls /data/elasticsearch/plugins/ commons-codec-1.9.jar commons-logging-1.2.jar config elasticsearch-analysis-ik-7.17.3.jar httpclient-4.5.2.jar httpcore-4.4.4.jar plugin-descriptor.properties plugin-security.policy 只需要为每个插件创建一个目录，并把插件解压到对应目录即可 mkdir /data/elasticsearch/plugins/elasticsearch-analysis-ik/ unzip elasticsearch-analysis-ik-7.17.3.zip -d /data/elasticsearch/plugins/elasticsearch-analysis-ik/ 参考: https://github.com/medcl/elasticsearch-analysis-ik/issues/638</description>
     </item>
     
     <item>
@@ -283,7 +283,7 @@
       <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/linux-history-format/</guid>
-      <description>在/etc/prifile.d目录下新建一个文件，用户登录系统时自动生效 vim /etc/profile.d/history_conf.sh source /etc/profile.d/history_conf.sh # 手动生效 文件内容 export HISTFILE=&amp;#34;$HOME/.bash_history&amp;#34; # 指定命令写入文件(默认~/.bash_history) export HISTSIZE=1000 # history输出记录数 export HISTFILESIZE=10000 # HISTFILE文件记录数 export HISTIGNORE=&amp;#34;cmd1:cmd2:...&amp;#34; # 忽略指定cmd1,cmd2...的命令不被记录到文件；</description>
+      <description>在 /etc/prifile.d 目录下新建一个文件，用户登录系统时自动生效 vim /etc/profile.d/history_conf.sh source /etc/profile.d/history_conf.sh # 手动生效 文件内容 export HISTFILE=&amp;#34;$HOME/.bash_history&amp;#34; # 指定命令写入文件(默认~/.bash_history) export HISTSIZE=1000 # history输出记录数 export HISTFILESIZE=10000 # HISTFILE文件记录数 export HISTIGNORE=&amp;#34;cmd1:cmd2:...&amp;#34; # 忽略指定cmd1,cmd2...的命令不被记录到文件；(加参数时会记录) export HISTCONTOL=ignoredups # ignoredups</description>
     </item>
     
     <item>
@@ -400,7 +400,7 @@
       <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/linux-command-set/</guid>
-      <description>Bash有一个内置的set命令，可以用来查看、设置、取消shell选项 set设置的选项无法被继承，仅对当前的bash环境有效，bash命令也可以直接使用set的单字符选项来开启一个自定义参数的子bash环境，比如执行的脚本 查看： echo $- 和 set -o 和 echo ${SHELLOPTS} 设置： set -abefhkmnptuvxBCHP 和 set -o options-name 取消： set +abefhkmnptuvxBCHP 和 set +o options-name</description>
+      <description>Bash 有一个内置的 set 命令，可以用来查看、设置、取消 shell 选项 set 设置的选项无法被继承，仅对当前的 bash 环境有效，bash 命令也可以直接使用 set 的单字符选项来开启一个自定义参数的子 bash 环境，比如执行的脚本 查看： echo $- 和 set -o 和 echo ${SHELLOPTS} 设置： set -abefhkmnptuvxBCHP 和 set -o options-name 取消： set +abefhkmnptuvxBCHP 和 set +o options-name set - 和 set + 设置单字符选项，使用 echo $- 查看</description>
     </item>
     
     <item>
@@ -409,7 +409,7 @@
       <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openeuler/</guid>
-      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作</description>
+      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm 依赖 python3.6，而此版本的 openeuler 内置版本为 3.7，且不支持 platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作系统：openEuler-20.03-LTS-SP3 内核</description>
     </item>
     
     <item>
@@ -445,7 +445,7 @@
       <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openeuler-aarch64/</guid>
-      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作</description>
+      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm 依赖 python3.6，而此版本的 openeuler 内置版本为 3.7，且不支持 platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作系统：icloudos_v1.0_aarch64（ope</description>
     </item>
     
     <item>
@@ -490,7 +490,7 @@
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/shell-different-execution-mode/</guid>
-      <description>shell 脚本通常有 sh filename、bash filename、./filename、source filename 这四种执行方式 source filename 可以使用 . filename 代替，在当前的 bash 环境下读取并执行脚本文件中的命令，且脚本文件的变量，在脚本执行完成后会保存下来 ./filename 和 sh filename 或者 bash filename 是等效的，都是开启一个子shell来运行脚本文</description>
+      <description>shell 脚本通常有 sh filename、bash filename、./filename、source filename 这四种执行方式 source filename 可以使用 . filename 代替，在当前的 bash 环境下读取并执行脚本文件中的命令，且脚本文件的变量，在脚本执行完成后会保存下来 ./filename 和 sh filename 或者 bash filename 是等效的，都是开启一个子 shell 来运行脚本文件，脚本</description>
     </item>
     
     <item>
@@ -499,7 +499,7 @@
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/shell-enable-debug-mode/</guid>
-      <description>前言 shell脚本是没有debug模式的，不过可以通过 set 指令实现简单的debug功能 shell脚本中默认每条指令都会从上到下依次执行，但是当某行指令报错时，我们大多数情况下是不希望继续执行后续指令的 这时可以使用shell脚本中 set 指令的四个参数：-e、-u、-x、-o pipefail 命令报错即返</description>
+      <description>前言 shell 脚本是没有 debug 模式的，不过可以通过 set 指令实现简单的 debug 功能 shell 脚本中默认每条指令都会从上到下依次执行，但是当某行指令报错时，我们大多数情况下是不希望继续执行后续指令的 这时可以使用 shell 脚本中 set 指令的四个参数：-e、-u、-x、-o pipefail 命令报错即返回值（$?）不为 0 set -e set -e 选项可以在脚本</description>
     </item>
     
     <item>
@@ -598,7 +598,7 @@
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/centos-update-kernel-to-5.10/</guid>
-      <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm的缩写 长期维护版 ml mainline的缩写 最新稳定版 使用 wget 命令下载内核 RPM 包 [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-5.10.81-1.el7.x86_64.rpm [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 安装内核 yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 查看所有可用内核启动项 [dpl@test1 ~] awk -F\&amp;#39; &amp;#39;$1==&amp;#34;menuentry &amp;#34; {print i++ &amp;#34; : &amp;#34; $2}&amp;#39; /etc/grub2.cfg 0 : CentOS</description>
+      <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm 的缩写 长期维护版 ml mainline 的缩写 最新稳定版 使用 wget 命令下载内核 RPM 包 [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-5.10.81-1.el7.x86_64.rpm [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 安装内核 yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 查看所有可用内核启动项 [dpl@test1 ~] awk -F\&amp;#39; &amp;#39;$1==&amp;#34;menuentry &amp;#34; {print i++ &amp;#34; : &amp;#34; $2}&amp;#39; /etc/grub2.cfg 0 : CentOS Linux (5.10.81-1.el7.x86_64) 7 (Core) 1 : CentOS Linux (3.10.0-1160.21.1.el7.x86_64) 7 (Core) 2 : CentOS</description>
     </item>
     
     <item>
@@ -634,7 +634,7 @@
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/cloud-init-change-ssh-config/</guid>
-      <description>前言 在openEuler20.03 (LTS-SP1)系统上进行一些测试，发现某个东西会自动修改ssh配置文件导致系统无法通过密码登录，最后排查是由于安装了cloud-init导致的。 以下是大致的排查思路 出现这个问题前做的操作是安装了一些项目组同事指定的包，问题就应该出在这些包上 yum</description>
+      <description>前言 在 openEuler20.03 (LTS-SP1) 系统上进行一些测试，发现某个东西会自动修改 ssh 配置文件导致系统无法通过密码登录，最后排查是由于安装了 cloud-init 导致的。 以下是大致的排查思路 出现这个问题前做的操作是安装了一些项目组同事指定的包，问题就应该出在这些包上 yum install -y telnet rsync ntpdate zip unzip libaio dos2unix sos vim vim-enhanced net-tools man ftp lrzsz psmisc gzip network-scripts cloud-init cloud-utils-growpart tar libnsl authselect-compat 大致看了下，除了</description>
     </item>
     
     <item>
@@ -643,7 +643,7 @@
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/python3-change-pip-repo/</guid>
-      <description>清单 地址 中国科学技术大学 https://pypi.mirrors.ustc.edu.cn/simple 清华 https://pypi.tuna.tsinghua.edu.cn/simple 豆瓣 http://pypi.douban.com/simple 华中理工大学 http://pypi.hustunique.com/simple 山东理工大学 http://pypi.sdutlinux.org/simple 阿里云 https://mirrors.aliyun.com/pypi/simple/ linux环境 mkdir ~/.pip cat &amp;gt; ~/.pip/pip.conf &amp;lt;&amp;lt; EOF [global] trusted-host=mirrors.aliyun.com index-url=https://mirrors.aliyun.com/pypi/simple/ EOF windows环境 打开 cmd 使用 dos命令 set 找到 userprofile 路径，在该路径下创建 pip文件夹，在 pip文件夹下创建 pip.ini pip.ini具体配置 [global] timeout = 6000 index-url = https://pypi.tuna.tsinghua.edu.cn/simple trusted-host = pypi.tuna.tsinghua.edu.cn</description>
+      <description>清单 地址 中国科学技术大学 https://pypi.mirrors.ustc.edu.cn/simple 清华 https://pypi.tuna.tsinghua.edu.cn/simple 豆瓣 http://pypi.douban.com/simple 华中理工大学 http://pypi.hustunique.com/simple 山东理工大学 http://pypi.sdutlinux.org/simple 阿里云 https://mirrors.aliyun.com/pypi/simple/ linux 环境 mkdir ~/.pip cat &amp;gt; ~/.pip/pip.conf &amp;lt;&amp;lt; EOF [global] trusted-host=mirrors.aliyun.com index-url=https://mirrors.aliyun.com/pypi/simple/ EOF windows 环境 打开 cmd 使用 dos 命令 set 找到 userprofile 路径，在该路径下创建 pip 文件夹，在 pip 文件夹下创建 pip.ini pip.ini 具体配置 [global] timeout = 6000 index-url = https://pypi.tuna.tsinghua.edu.cn/simple trusted-host = pypi.tuna.tsinghua.edu.cn</description>
     </item>
     
     <item>
@@ -652,7 +652,7 @@
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/rpm-change-file/</guid>
-      <description>前言 要修改rpm包中的文件，对于自己编译的rpm包，只需要在源码中修改好然后重新编译即可。而对于并不是自己编译的rpm包，且不熟悉编译环境的情况下，可以使用rpm-build和rpm-rebuild工具反编译来修改rpm中的文件 这里使用ceph-mgr软件包进行演示 安装rpm-b</description>
+      <description>前言 要修改 rpm 包中的文件，对于自己编译的 rpm 包，只需要在源码中修改好然后重新编译即可。而对于并不是自己编译的 rpm 包，且不熟悉编译环境的情况下，可以使用 rpm-build 和 rpm-rebuild 工具反编译来修改 rpm 中的文件 这里使用 ceph-mgr 软件包进行演示 安装 rpm-build&amp;amp;rpmrebuild rpmrebuild 官网：http://rpmrebuild.sourceforge.net</description>
     </item>
     
     <item>
@@ -715,7 +715,7 @@
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/centos7-open-bbr/</guid>
-      <description>前言 介绍在CentOS7上部署BBR的详细过程 BBR简介：（Bottleneck Bandwidth and RTT）是一种新的拥塞控制算法，由Google开发。有了BBR，Linux服务器可以显着提高吞吐量并减少连接延迟 1. 查看当前内核版本 uname -r 显示当前内核为3.10.0，因此我们需要更新内核 2. 使用 ELRepo RPM 仓库</description>
+      <description>前言 介绍在 CentOS7 上部署 BBR 的详细过程 BBR 简介：（Bottleneck Bandwidth and RTT）是一种新的拥塞控制算法，由 Google 开发。有了 BBR，Linux 服务器可以显着提高吞吐量并减少连接延迟 1. 查看当前内核版本 uname -r 显示当前内核为 3.10.0，因此我们需要更新内核 2. 使用 ELRepo RPM 仓库升级内核 rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org //无返回内容 rpm</description>
     </item>
     
     <item>
@@ -751,7 +751,7 @@
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/pxe-inspur-isoft5.1-aarch64/</guid>
-      <description>pxe环境 dhcp+tftp+http pxe-server：isoft-serveros-v4.2（3.10.0-957.el7.isoft.x86_64） 引导的iso：isoft-serveros-aarch64-oe1-v5.1（4.19.90-2003.4.0.0036.oe1.aarch64） 物理</description>
+      <description>pxe 环境 dhcp+tftp+http pxe-server：isoft-serveros-v4.2（3.10.0-957.el7.isoft.x86_64） 引导的 iso：isoft-serveros-aarch64-oe1-v5.1（4.19.90-2003.4.0.0036.oe1.aarch64） 物理服务</description>
     </item>
     
     <item>
@@ -778,7 +778,7 @@
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/hwaddr-macaddr-different/</guid>
-      <description>环境：centos7.8 在centos中可以在如下文件中查看一个NIC的配置 ： /etc/sysconfig/network-scripts/ifcfg-N HWADDR=, 其中 以AA:BB:CC:DD:EE:FF形式的以太网设备的硬件地址.在有多个网卡设备的机器上，这个字段是非常有用的，它保证设备接口被分配了正确的设备名 ，而不考虑每个网卡模块被配置的加载顺序.这个字段</description>
+      <description>环境：centos7.8 在 centos 中可以在如下文件中查看一个 NIC 的配置 ： /etc/sysconfig/network-scripts/ifcfg-N HWADDR=, 其中 以 AA:BB:CC:DD:EE:FF 形式的以太网设备的硬件地址.在有多个网卡设备的机器上，这个字段是非常有用的，它保证设备接口被分配了正确的设备名 ，而不考虑每个网卡模块被配置的加载顺序.这个字段不能和 MACADDR 一起使用. MACADDR=, 其中 以 AA:BB:CC:DD:EE:FF 形式的以太网设备的</description>
     </item>
     
     <item>
@@ -859,7 +859,7 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/lvm-characteristic-management/</guid>
-      <description>LVM基本特性：（可以通过插件CLVM，实现群集逻辑卷管理） PV物理卷 LV逻辑卷（逻辑卷管理：会在物理存储上生成抽象层，以便创建逻辑存储卷，方便设备命名）（下面是逻辑卷的分类） Linear 线性卷(这是默认的lvm形式，即按顺序占用磁盘，一块写完了再写另一块) Stripe 条带逻辑卷 RAID raid逻辑卷 Mirror 镜</description>
+      <description>LVM 基本特性：（可以通过插件 CLVM，实现群集逻辑卷管理） PV 物理卷 LV 逻辑卷（逻辑卷管理：会在物理存储上生成抽象层，以便创建逻辑存储卷，方便设备命名）（下面是逻辑卷的分类） Linear 线性卷 (这是默认的 lvm 形式，即按顺序占用磁盘，一块写完了再写另一块) Stripe 条带逻辑卷 RAID raid 逻辑卷 Mirror 镜像卷 Thinly-Provision 精简配置逻辑</description>
     </item>
     
     <item>
@@ -868,7 +868,7 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/shell-get-server-hardware-information/</guid>
-      <description>前言 查看硬件信息，并将信息整合成json数值，然后传给前段进行分析，最后再进行相应的处理。在装系统的时候，或是进行监控时，都是一个标准的自动化运维流程。使用shell直接生成好json数据再进行传输，会变得非常方便。 环境 [root@sys-idc-pxe01 ~]# yum install jq lsscsi MegaCli 脚本内容 #!/bin/sh #description: get server hardware info #author: lvbibir #date: 20180122 #需要安装jq工具</description>
+      <description>前言 查看硬件信息，并将信息整合成 json 数值，然后传给前段进行分析，最后再进行相应的处理。在装系统的时候，或是进行监控时，都是一个标准的自动化运维流程。使用 shell 直接生成好 json 数据再进行传输，会变得非常方便。 环境 [root@sys-idc-pxe01 ~]# yum install jq lsscsi MegaCli 脚本内容 #!/bin/sh #description: get server hardware info #author: lvbibir #date: 20180122 #需要安装jq工具 yum install jq #用于存放该服</description>
     </item>
     
   </channel>

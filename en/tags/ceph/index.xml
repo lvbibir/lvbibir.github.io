@@ -13,7 +13,7 @@
       <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openeuler/</guid>
-      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作</description>
+      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm 依赖 python3.6，而此版本的 openeuler 内置版本为 3.7，且不支持 platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作系统：openEuler-20.03-LTS-SP3 内核</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openeuler-aarch64/</guid>
-      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作</description>
+      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm 依赖 python3.6，而此版本的 openeuler 内置版本为 3.7，且不支持 platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作系统：icloudos_v1.0_aarch64（ope</description>
     </item>
     
     <item>

@@ -76,7 +76,7 @@
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/shell-different-execution-mode/</guid>
-      <description>shell 脚本通常有 sh filename、bash filename、./filename、source filename 这四种执行方式 source filename 可以使用 . filename 代替，在当前的 bash 环境下读取并执行脚本文件中的命令，且脚本文件的变量，在脚本执行完成后会保存下来 ./filename 和 sh filename 或者 bash filename 是等效的，都是开启一个子shell来运行脚本文</description>
+      <description>shell 脚本通常有 sh filename、bash filename、./filename、source filename 这四种执行方式 source filename 可以使用 . filename 代替，在当前的 bash 环境下读取并执行脚本文件中的命令，且脚本文件的变量，在脚本执行完成后会保存下来 ./filename 和 sh filename 或者 bash filename 是等效的，都是开启一个子 shell 来运行脚本文件，脚本</description>
     </item>
     
     <item>
@@ -85,7 +85,7 @@
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/shell-enable-debug-mode/</guid>
-      <description>前言 shell脚本是没有debug模式的，不过可以通过 set 指令实现简单的debug功能 shell脚本中默认每条指令都会从上到下依次执行，但是当某行指令报错时，我们大多数情况下是不希望继续执行后续指令的 这时可以使用shell脚本中 set 指令的四个参数：-e、-u、-x、-o pipefail 命令报错即返</description>
+      <description>前言 shell 脚本是没有 debug 模式的，不过可以通过 set 指令实现简单的 debug 功能 shell 脚本中默认每条指令都会从上到下依次执行，但是当某行指令报错时，我们大多数情况下是不希望继续执行后续指令的 这时可以使用 shell 脚本中 set 指令的四个参数：-e、-u、-x、-o pipefail 命令报错即返回值（$?）不为 0 set -e set -e 选项可以在脚本</description>
     </item>
     
     <item>
@@ -112,7 +112,7 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/shell-get-server-hardware-information/</guid>
-      <description>前言 查看硬件信息，并将信息整合成json数值，然后传给前段进行分析，最后再进行相应的处理。在装系统的时候，或是进行监控时，都是一个标准的自动化运维流程。使用shell直接生成好json数据再进行传输，会变得非常方便。 环境 [root@sys-idc-pxe01 ~]# yum install jq lsscsi MegaCli 脚本内容 #!/bin/sh #description: get server hardware info #author: lvbibir #date: 20180122 #需要安装jq工具</description>
+      <description>前言 查看硬件信息，并将信息整合成 json 数值，然后传给前段进行分析，最后再进行相应的处理。在装系统的时候，或是进行监控时，都是一个标准的自动化运维流程。使用 shell 直接生成好 json 数据再进行传输，会变得非常方便。 环境 [root@sys-idc-pxe01 ~]# yum install jq lsscsi MegaCli 脚本内容 #!/bin/sh #description: get server hardware info #author: lvbibir #date: 20180122 #需要安装jq工具 yum install jq #用于存放该服</description>
     </item>
     
   </channel>
