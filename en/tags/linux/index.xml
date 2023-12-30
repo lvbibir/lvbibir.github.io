@@ -6,7 +6,16 @@
     <description>Recent content in linux on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 13 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux | 常用命令总结</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/linux-offen-used-command/</link>
+      <pubDate>Sat, 30 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/linux-offen-used-command/</guid>
+      <description>记录 linux 系统如文本处理, 进程处理, 网络及其他的常用命令</description>
+    </item>
+    
     <item>
       <title>dns配置文件中search和options ndots详解</title>
       <link>https://www.lvbibir.cn/en/posts/tech/dns-search/</link>
@@ -206,7 +215,7 @@
     </item>
     
     <item>
-      <title>部署 Ambari 2.7.5 &#43; HDP3.1.5</title>
+      <title>部署 Ambari 2.7.5 &#43; HDP 3.1.5</title>
       <link>https://www.lvbibir.cn/en/posts/tech/ambari-2.7.5-and-hdp-3.1.5/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       

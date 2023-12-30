@@ -6,14 +6,14 @@
     <description>Recent content in 👨🏻‍💻 技术 on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 29 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/posts/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>docker 部署 piclist</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/docker-deploy-piclist/</link>
-      <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
+      <title>linux | 常用命令总结</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/linux-offen-used-command/</link>
+      <pubDate>Sat, 30 Dec 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/docker-deploy-piclist/</guid>
-      <description>介绍如何使用 docker 部署 piclist 实现远程上传图片至图床</description>
+      <guid>https://www.lvbibir.cn/en/posts/tech/linux-offen-used-command/</guid>
+      <description>记录 linux 系统如文本处理, 进程处理, 网络及其他的常用命令</description>
     </item>
     
     <item>
@@ -139,7 +139,7 @@
       <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-prometheus-1-deploy/</guid>
-      <description>kubernetes 中部署配置 prometheus-operator, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系 </description>
+      <description>kubernetes 中部署配置 prometheus-operator, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系</description>
     </item>
     
     <item>
@@ -656,7 +656,7 @@
     </item>
     
     <item>
-      <title>部署 Ambari 2.7.5 &#43; HDP3.1.5</title>
+      <title>部署 Ambari 2.7.5 &#43; HDP 3.1.5</title>
       <link>https://www.lvbibir.cn/en/posts/tech/ambari-2.7.5-and-hdp-3.1.5/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       

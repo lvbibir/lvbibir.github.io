@@ -6,14 +6,23 @@
     <description>Recent content in 🏗️ 建站 on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 06 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/posts/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/posts/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>【置顶】Hello,hugo!</title>
+      <title>【置顶】Hello, hugo!</title>
       <link>https://www.lvbibir.cn/en/posts/blog/hello-hugo/</link>
       <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/blog/hello-hugo/</guid>
-      <description>记录wordpress迁移至hugo&#43;papermod的过程包含环境搭建、博客美化、功能实现、速度优化等……</description>
+      <description>记录 wordpress 迁移至 hugo&#43;papermod 的过程包含环境搭建、博客美化、功能实现、速度优化等……</description>
+    </item>
+    
+    <item>
+      <title>docker 部署 piclist</title>
+      <link>https://www.lvbibir.cn/en/posts/blog/docker-deploy-piclist/</link>
+      <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/blog/docker-deploy-piclist/</guid>
+      <description>介绍如何使用 docker 部署 piclist 实现 obsidian 远程上传图片至阿里云 OSS 图床</description>
     </item>
     
     <item>
@@ -31,7 +40,7 @@
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/blog/typora-picgo-qiniu-upload-image/</guid>
-      <description>在使用markdown写作的过程中，图片的存储是困扰很多人的一个问题，分享下我目前采用的typora&#43;picgo&#43;七牛云的图床配置流程</description>
+      <description>在使用 markdown 写作的过程中，图片的存储是困扰很多人的一个问题，分享下我目前采用的 typora&#43;picgo&#43;七牛云的图床配置流程</description>
     </item>
     
     <item>

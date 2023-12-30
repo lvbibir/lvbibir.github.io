@@ -9,11 +9,11 @@
     <lastBuildDate>Fri, 29 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/obsidian/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>docker 部署 piclist</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/docker-deploy-piclist/</link>
+      <link>https://www.lvbibir.cn/en/posts/blog/docker-deploy-piclist/</link>
       <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/docker-deploy-piclist/</guid>
-      <description>介绍如何使用 docker 部署 piclist 实现远程上传图片至图床</description>
+      <guid>https://www.lvbibir.cn/en/posts/blog/docker-deploy-piclist/</guid>
+      <description>介绍如何使用 docker 部署 piclist 实现 obsidian 远程上传图片至阿里云 OSS 图床</description>
     </item>
     
   </channel>
