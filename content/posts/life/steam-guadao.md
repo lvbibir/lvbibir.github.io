@@ -2,9 +2,12 @@
 title: "steam挂刀教程" 
 date: 2023-01-01 
 lastmod: 2023-01-01
+tags:
+keywords:
 description: ""
+cover:
+  image: ""
 ---
-
 # 1 前言
 
 挂刀是指从饰品交易平台购买游戏饰品，在steam市场出售以实现将人民币转换为steam阿根廷账号余额。

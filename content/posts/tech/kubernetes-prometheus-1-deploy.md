@@ -1,16 +1,16 @@
 ---
-title: "prometheus (一) 简介及部署" 
+title: "prometheus (一) 简介及部署"
 date: 2023-04-22
 lastmod: 2023-04-22
-tags: 
-- kubernetes
-- prometheus
+tags:
+  - kubernetes
+  - prometheus
 keywords:
-- kubernetes
-- prometheus
-description: "kubernetes 中部署配置 prometheus-operator, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系 " 
+  - kubernetes
+  - prometheus
+description: "kubernetes 中部署配置 prometheus-operator, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系"
 cover:
-    image: "https://image.lvbibir.cn/blog/prometheus.png"
+  image: "https://image.lvbibir.cn/blog/prometheus.png"
 ---
 
 # 0. 前言

@@ -1,15 +1,15 @@
 ---
-title: "部署 Ambari 2.7.5 + HDP3.1.5" 
+title: 部署 Ambari 2.7.5 + HDP 3.1.5
 date: 2021-12-01
 lastmod: 2021-12-01
-tags: 
-- linux
+tags:
+  - linux
 keywords:
-- hadoop
-- ambari
-description: "记录通过 Ambari 部署 hadoop 集群的过程" 
+  - hadoop
+  - ambari
+description: 记录通过 Ambari 部署 hadoop 集群的过程
 cover:
-    image: "https://image.lvbibir.cn/blog/apache-ambari-project.png"
+  image: https://image.lvbibir.cn/blog/apache-ambari-project.png
 ---
 # 前期准备
 

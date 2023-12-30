@@ -1,19 +1,19 @@
 ---
-title: "markdown图片存储方案 | typora+picgo+七牛云" 
+title: markdown图片存储方案 | typora+picgo+七牛云
 date: 2021-07-01
 lastmod: 2021-07-01
-tags: 
-- 博客搭建
+tags:
+  - 博客搭建
 keywords:
-- markdown
-- typora
-- picgo
-- 七牛云
-- https
-- ssl
-description: "在使用markdown写作的过程中，图片的存储是困扰很多人的一个问题，分享下我目前采用的typora+picgo+七牛云的图床配置流程" 
+  - markdown
+  - typora
+  - picgo
+  - 七牛云
+  - https
+  - ssl
+description: 在使用 markdown 写作的过程中，图片的存储是困扰很多人的一个问题，分享下我目前采用的 typora+picgo+七牛云的图床配置流程
 cover:
-    image: "" 
+  image: ""
 ---
 # 七牛云配置
 

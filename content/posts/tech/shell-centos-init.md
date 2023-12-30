@@ -12,7 +12,6 @@ description: ""
 cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 
 ---
-
 # 前言
 
 以 centos7 为例, 通常我们新装完操作系统后需要进行配置 yum 源, iptables, selinux, ntp 以及优化 kernel 等操作, 现分享一些较为通用的配置. 同时博主将这些配置整理成了脚本, 可以一键执行.

@@ -11,13 +11,13 @@ keywords:
   - centos
   - piclist
   - obsidian
-description: 介绍如何使用 docker 部署 piclist 实现远程上传图片至图床
+description: 介绍如何使用 docker 部署 piclist 实现 obsidian 远程上传图片至阿里云 OSS 图床
 cover:
   image: https://image.lvbibir.cn/blog/docker.png
 ---
 # 前言
 
-感谢 piclist 作者的[不吝解答](https://github.com/Kuingsmile/PicList/issues/127)
+感谢 piclist 作者的 [不吝解答](https://github.com/Kuingsmile/PicList/issues/127)
 
 最近从 typora 迁移到了 obsidian, typora 可以很方便的自动调用 [picgo](https://github.com/Molunerfinn/PicGo) 实现图片上传, obsidian 得益于丰富的插件市场, 可以通过 [Image Auto Upload Plugin](https://github.com/renmu123/obsidian-image-auto-upload-plugin) 插件调用 picgo, 但是必须手动启动 picgo 后才能正常使用
 

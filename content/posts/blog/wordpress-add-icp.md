@@ -13,8 +13,6 @@ description: "记录wordpress中如何添加icp备案号"
 cover:
     image: "https://image.lvbibir.cn/blog/wordpress.jpg" 
 ---
-
-
 默认主题下在后台设置里修改即可
 
 ![image-20210722165156647](https://image.lvbibir.cn/blog/image-20210722165156647.png)
@@ -29,9 +27,9 @@ dux主题修改方式：在后台管理→dux主题编辑器→网站底部信�
 
 通用修改方式
 
-在主题目录的`footer.php` 文件中的`<footer></footer>` 下添加代码
+在主题目录的 `footer.php` 文件中的 `<footer></footer>` 下添加代码
 
-```
+```php
 <a href="http://beian.miit.gov.cn/" rel="external nofollow" target="_blank">你的备案号</a>
 ```
 

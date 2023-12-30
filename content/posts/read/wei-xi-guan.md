@@ -4,8 +4,6 @@ date: 2022-07-24
 lastmod: 2022-10-15
 author: ["lvbibir"]
 description: "简单到不可能失败的自我管理法则"
-reward: true 
-mermaid: false 
 cover:
     image: "" 
 ---

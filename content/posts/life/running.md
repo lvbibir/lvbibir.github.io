@@ -1,12 +1,13 @@
 ---
-title: "跑步日常" 
-date: 2022-07-07 
-lastmod: 2023-11-14
-description: "记录一下本跑渣的跑步日常，一点一滴见证自己成长~"
+title: 跑步日常
+date: 2022-07-07
+lastmod: 2023-12-30
+tags:
+keywords:
+description: 记录一下本跑渣的跑步日常，一点一滴见证自己成长~
 cover:
-    image: "https://image.lvbibir.cn/blog/cover-running.jpg"
+  image: https://image.lvbibir.cn/blog/cover-running.jpg
 ---
-
 ## 2310_6_62.78km
 
 从国庆假期结束后就一直在西安出差, 只保证了一星期一跑, 勉勉强强算是维持住体能
