@@ -12,21 +12,23 @@ cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 
 ---
 
-# info 查看docker的各项信息
+# info 查看 docker 的各项信息
 
-查看docke的各项操作，包括docker版本、容器数量、镜像数量、仓库地址、镜像存放位置等
+查看 docke 的各项操作，包括 docker 版本、容器数量、镜像数量、仓库地址、镜像存放位置等
+
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20190805132709466.png)
 
 # 容器操作
+
 ## run 启动容器
 
-
 docker run ：创建一个新的容器并运行一个命令
+
 语法
 
-docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+docker run [OPTIONS] IMAGE [COMMAND] [ARG…]
 
-OPTIONS说明：
+OPTIONS 说明：
 
 ```bash
 -a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；
@@ -62,11 +64,11 @@ OPTIONS说明：
 
 实例
 
-使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx。
+使用 docker 镜像 nginx:latest 以后台模式启动一个容器,并将容器命名为 mynginx。
 
     docker run --name mynginx -d nginx:latest
 
-使用镜像nginx:latest以后台模式启动一个容器,并将容器的80端口映射到主机随机端口。
+使用镜像 nginx:latest 以后台模式启动一个容器,并将容器的 80 端口映射到主机随机端口。
 
     docker run -P -d nginx:latest
 
@@ -78,20 +80,20 @@ OPTIONS说明：
 
     docker run -p 127.0.0.1:80:8080/tcp ubuntu bash
 
-使用镜像nginx:latest以交互模式启动一个容器,在容器内执行/bin/bash命令。
+使用镜像 nginx:latest 以交互模式启动一个容器,在容器内执行/bin/bash 命令。
 
     runoob@runoob:~$ docker run -it nginx:latest /bin/bash
     root@b8573233d675:/# 
 
-
 ## ps 查看容器
 
 docker ps : 列出容器
+
 语法
 
 docker ps [OPTIONS]
 
-OPTIONS说明：
+OPTIONS 说明：
 
     -a: 显示所有的容器，包括未运行的。
     -f: 根据条件过滤显示的内容。
@@ -111,7 +113,7 @@ OPTIONS说明：
     09b93464c2f7   nginx:latest   "nginx -g 'daemon off" ...  80/tcp, 443/tcp          myrunoob
     96f7f14e99ab   mysql:5.6      "docker-entrypoint.sh" ...  0.0.0.0:3306->3306/tcp   mymysql
 
-列出最近创建的5个容器信息。
+列出最近创建的 5 个容器信息。
 
     runoob@runoob:~$ docker ps -n 5
     CONTAINER ID        IMAGE               COMMAND                   CREATED           
@@ -121,7 +123,7 @@ OPTIONS说明：
     f46fb1dec520        5c6e1090e771        "/bin/sh -c 'set -x \t"   2 days ago   ...   
     a63b4a5597de        860c279d2fec        "bash"                    2 days ago   ...
 
-列出所有创建的容器ID。
+列出所有创建的容器 ID。
 
     runoob@runoob:~$ docker ps -a -q
     09b93464c2f7
@@ -135,15 +137,15 @@ OPTIONS说明：
     664a8ab1a585
     ba52eb632bbd
 
-
 ## inspect 查看详细信息
 
 docker inspect : 获取容器/镜像的元数据。
+
 语法
 
-docker inspect [OPTIONS] NAME|ID [NAME|ID...]
+docker inspect [OPTIONS] NAME|ID [NAME|ID…]
 
-OPTIONS说明：
+OPTIONS 说明：
 
     -f :指定返回值的模板文件。
     -s :显示总的文件大小。
@@ -152,9 +154,9 @@ OPTIONS说明：
 
 实例
 
-获取所有容器的ip地址
+获取所有容器的 ip 地址
 
-```
+```textile
 docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
 ```
 
@@ -166,42 +168,43 @@ docker inspect --format='{{json .Mounts}}' demo-volume-2 | python -m json.tool
 
 ## start/stop/restart 开启/关闭/重启容器
 
+docker start : 启动一个或多个已经被停止的容器
 
-docker start :启动一个或多个已经被停止的容器
+docker stop : 停止一个运行中的容器
 
-docker stop :停止一个运行中的容器
-
-docker restart :重启容器
+docker restart : 重启容器
 
 语法
 
-docker start [OPTIONS] CONTAINER [CONTAINER...]
+docker start [OPTIONS] CONTAINER [CONTAINER…]
 
-docker stop [OPTIONS] CONTAINER [CONTAINER...]
+docker stop [OPTIONS] CONTAINER [CONTAINER…]
 
-docker restart [OPTIONS] CONTAINER [CONTAINER...]
+docker restart [OPTIONS] CONTAINER [CONTAINER…]
 
 实例
 
-启动已被停止的容器myrunoob
+启动已被停止的容器 myrunoob
 
     docker start myrunoob
 
-停止运行中的容器myrunoob
+停止运行中的容器 myrunoob
 
     docker stop myrunoob
 
-重启容器myrunoob
+重启容器 myrunoob
 
     docker restart myrunoob
 
 ## rm 删除容器
+
 docker rm ：删除一个或多少容器
+
 语法
 
-docker rm [OPTIONS] CONTAINER [CONTAINER...]
+docker rm [OPTIONS] CONTAINER [CONTAINER…]
 
-OPTIONS说明：
+OPTIONS 说明：
 
     -f :通过SIGKILL信号强制删除一个运行中的容器
     -l :移除容器间的网络连接，而非容器本身
@@ -209,45 +212,46 @@ OPTIONS说明：
 
 实例
 
-强制删除容器db01、db02
+强制删除容器 db01、db02
 
     docker rm -f db01 db02
 
-移除容器nginx01对容器db01的连接，连接名db
+移除容器 nginx01 对容器 db01 的连接，连接名 db
 
     docker rm -l db 
 
-删除容器nginx01,并删除容器挂载的数据卷
+删除容器 nginx01,并删除容器挂载的数据卷
 
     docker rm -v nginx01
 
 ## attach 进入一个开启的容器中
-docker attach :连接到正在运行中的容器。
+
+docker attach : 连接到正在运行中的容器。
 
 语法
 
 docker attach [OPTIONS] CONTAINER
 
-要attach上去的容器必须正在运行，可以同时连接上同一个container来共享屏幕（与screen命令的attach类似）。
+要 attach 上去的容器必须正在运行，可以同时连接上同一个 container 来共享屏幕（与 screen 命令的 attach 类似）。
 
-官方文档中说attach后可以通过CTRL-C来detach，但实际上经过我的测试，如果container当前在运行bash，CTRL-C自然是当前行的输入，没有退出；如果container当前正在前台运行进程，如输出nginx的access.log日志，CTRL-C不仅会导致退出容器，而且还stop了。这不是我们想要的，detach的意思按理应该是脱离容器终端，但容器依然运行。好在attach是可以带上--sig-proxy=false来确保CTRL-D或CTRL-C不会关闭容器。
+官方文档中说 attach 后可以通过 CTRL-C 来 detach，但实际上经过我的测试，如果 container 当前在运行 bash，CTRL-C 自然是当前行的输入，没有退出；如果 container 当前正在前台运行进程，如输出 nginx 的 access.log 日志，CTRL-C 不仅会导致退出容器，而且还 stop 了。这不是我们想要的，detach 的意思按理应该是脱离容器终端，但容器依然运行。好在 attach 是可以带上 --sig-proxy=false 来确保 CTRL-D 或 CTRL-C 不会关闭容器。
 
 实例
 
-容器mynginx将访问日志指到标准输出，连接到容器查看访问信息。
+容器 mynginx 将访问日志指到标准输出，连接到容器查看访问信息。
 
     runoob@runoob:~$ docker attach --sig-proxy=false mynginx
     192.168.239.1 - - [10/Jul/2016:16:54:26 +0000] "GET / HTTP/1.1" 304 0 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36" "-"
 
-
-
 ## logs 查看容器日志
+
 docker logs : 获取容器的日志
+
 语法
 
 docker logs [OPTIONS] CONTAINER
 
-OPTIONS说明：
+OPTIONS 说明：
 
     -f : 跟踪日志输出。类似 tail 命令的 -f 选项
     --since :显示某个开始时间的所有日志
@@ -256,7 +260,7 @@ OPTIONS说明：
 
 实例
 
-跟踪查看容器mynginx的日志输出。
+跟踪查看容器 mynginx 的日志输出。
 
     runoob@runoob:~$ docker logs -f mynginx
     192.168.239.1 - - [10/Jul/2016:16:53:33 +0000] "GET / HTTP/1.1" 200 612 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36" "-"
@@ -265,20 +269,23 @@ OPTIONS说明：
     192.168.239.1 - - [10/Jul/2016:16:53:59 +0000] "GET / HTTP/1.1" 304 0 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36" "-"
     ...
 
-查看容器mynginx从2016年7月1日后的最新10条日志。
+查看容器 mynginx 从 2016 年 7 月 1 日后的最新 10 条日志。
 
     docker logs --since="2016-07-01" --tail=10 mynginx
 
 ## top 查看容器内的进程
-docker top :查看容器中运行的进程信息，支持 ps 命令参数。
+
+docker top : 查看容器中运行的进程信息，支持 ps 命令参数。
+
 语法
 
 docker top [OPTIONS] CONTAINER [ps OPTIONS]
 
-容器运行时不一定有/bin/bash终端来交互执行top命令，而且容器还不一定有top命令，可以使用docker top来实现查看container中正在运行的进程。
+容器运行时不一定有/bin/bash 终端来交互执行 top 命令，而且容器还不一定有 top 命令，可以使用 docker top 来实现查看 container 中正在运行的进程。
+
 实例
 
-查看容器mymysql的进程信息。
+查看容器 mymysql 的进程信息。
 
     runoob@runoob:~/mysql$ docker top mymysql
     UID    PID    PPID    C      STIME   TTY  TIME       CMD
@@ -289,12 +296,14 @@ docker top [OPTIONS] CONTAINER [ps OPTIONS]
     for i in  `docker ps |grep Up|awk '{print $1}'`;do echo \ &&docker top $i; done
 
 ## exec 在容器中启动新的进程
+
 docker exec ：在运行的容器中执行命令
+
 语法
 
-docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+docker exec [OPTIONS] CONTAINER COMMAND [ARG…]
 
-OPTIONS说明：
+OPTIONS 说明：
 
     -d :分离模式: 在后台运行
     -i :即使没有附加也保持STDIN 打开
@@ -328,30 +337,35 @@ OPTIONS说明：
      docker exec -it 9df70f9a0714 /bin/bash
 
 ## kill 停止容器
-docker kill :杀掉一个运行中的容器。
+
+docker kill : 杀掉一个运行中的容器。
+
 语法
 
-docker kill [OPTIONS] CONTAINER [CONTAINER...]
+docker kill [OPTIONS] CONTAINER [CONTAINER…]
 
-OPTIONS说明：
+OPTIONS 说明：
 
     -s :向容器发送一个信号
 
 实例
 
-杀掉运行中的容器mynginx
+杀掉运行中的容器 mynginx
 
     runoob@runoob:~$ docker kill -s KILL mynginx
     mynginx
 
 # 镜像操作
+
 ## images 查看镜像
+
 docker images : 列出本地镜像。
+
 语法
 
 docker images [OPTIONS] [REPOSITORY[:TAG]]
 
-OPTIONS说明：
+OPTIONS 说明：
 
     -a :列出本地所有的镜像（含中间映像层，默认情况下，过滤掉中间映像层）；
     --digests :显示镜像的摘要信息；
@@ -377,7 +391,7 @@ OPTIONS说明：
     python                  3.5                 045767ddf24a        3 weeks ago         684.1 MB
     ...
 
-列出本地镜像中REPOSITORY为ubuntu的镜像列表。
+列出本地镜像中 REPOSITORY 为 ubuntu 的镜像列表。
 
     root@runoob:~# docker images  ubuntu
     REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
@@ -385,12 +399,14 @@ OPTIONS说明：
     ubuntu              15.10               4e3b13c8a266        3 months ago        136.3 MB
 
 ## inspect 查看详细信息
+
 docker inspect : 获取容器/镜像的元数据。
+
 语法
 
-docker inspect [OPTIONS] NAME|ID [NAME|ID...]
+docker inspect [OPTIONS] NAME|ID [NAME|ID…]
 
-OPTIONS说明：
+OPTIONS 说明：
 
     -f :指定返回值的模板文件。
     -s :显示总的文件大小。
@@ -399,7 +415,7 @@ OPTIONS说明：
 
 实例
 
-获取镜像mysql:5.6的元信息。
+获取镜像 mysql:5.6 的元信息。
 
     runoob@runoob:~$ docker inspect mysql:5.6
     [
@@ -426,20 +442,24 @@ OPTIONS说明：
     ...
 
 ## rmi 删除镜像
+
 docker rmi : 删除本地一个或多少镜像。
+
 语法
 
-docker rmi [OPTIONS] IMAGE [IMAGE...]
+docker rmi [OPTIONS] IMAGE [IMAGE…]
 
-OPTIONS说明：
+OPTIONS 说明：
 
     -f :强制删除；
     
     --no-prune :不移除该镜像的过程镜像，默认移除；
 
-注：IMAGE可以使用[仓库：标签]的格式，也可以使用镜像ID，可以同时删除多个镜像
-1、使用[仓库：标签]的格式：删除一个标签。当一个镜像文件有多个标签时，删除完所有的标签，镜像文件也随之删除
-2、使用镜像ID的格式：先将该镜像文件的所有标签删除，再删除镜像文件
+注：IMAGE 可以使用 [仓库：标签] 的格式，也可以使用镜像 ID，可以同时删除多个镜像
+
+1、使用 [仓库：标签] 的格式：删除一个标签。当一个镜像文件有多个标签时，删除完所有的标签，镜像文件也随之删除
+
+2、使用镜像 ID 的格式：先将该镜像文件的所有标签删除，再删除镜像文件
 
 删除所有镜像
 
@@ -464,7 +484,7 @@ OPTIONS说明：
 
 docker search [OPTIONS] TERM
 
-OPTIONS说明：
+OPTIONS 说明：
 
     --automated :只列出 automated build类型的镜像；
     --no-trunc :显示完整的镜像描述；
@@ -472,7 +492,7 @@ OPTIONS说明：
 
 实例
 
-从Docker Hub查找所有镜像名包含java，并且收藏数大于10的镜像
+从 Docker Hub 查找所有镜像名包含 java，并且收藏数大于 10 的镜像
 
     runoob@runoob:~$ docker search -s 10 java
     NAME                  DESCRIPTION                           STARS   OFFICIAL   AUTOMATED
@@ -484,9 +504,10 @@ OPTIONS说明：
     nimmis/java-centos    This is docker images of CentOS 7...   13                 [OK]
 
 ## pull 拉取镜像
+
 docker pull [OPTIONS] NAME[:TAG|@DIGEST]
 
-OPTIONS说明：
+OPTIONS 说明：
 
     -a :拉取所有 tagged 镜像
     
@@ -494,37 +515,41 @@ OPTIONS说明：
 
 实例
 
-从Docker Hub下载java最新版镜像。
+从 Docker Hub 下载 java 最新版镜像。
 
     docker pull java
 
-从Docker Hub下载REPOSITORY为java的所有镜像。
+从 Docker Hub 下载 REPOSITORY 为 java 的所有镜像。
 
     docker pull -a java
 
 ## push 推送镜像
+
 docker push : 将本地的镜像上传到镜像仓库,要先登陆到镜像仓库
+
 语法
 
 docker push [OPTIONS] NAME[:TAG]
 
-OPTIONS说明：
+OPTIONS 说明：
 
     --disable-content-trust :忽略镜像的校验,默认开启
 
 实例
 
-上传本地镜像myapache:v1到镜像仓库中。
+上传本地镜像 myapache:v1 到镜像仓库中。
 
     docker push myapache:v1
 
 ## commit 通过容器构建镜像
-docker commit :从容器创建一个新的镜像。
+
+docker commit : 从容器创建一个新的镜像。
+
 语法
 
 docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
 
-OPTIONS说明：
+OPTIONS 说明：
 
     -a :提交的镜像作者；
     -c :使用Dockerfile指令来创建镜像；
@@ -533,7 +558,7 @@ OPTIONS说明：
 
 实例
 
-将容器a404c6c174a2 保存为新的镜像,并添加提交人信息和说明信息。
+将容器 a404c6c174a2 保存为新的镜像,并添加提交人信息和说明信息。
 
     runoob@runoob:~$ docker commit -a "runoob.com" -m "my apache" a404c6c174a2  mymysql:v1 
     sha256:37af1236adef1544e8886be23010b66577647a40bc02c0885a6600b33ee28057
@@ -541,14 +566,15 @@ OPTIONS说明：
     REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
     mymysql             v1                  37af1236adef        15 seconds ago      329 MB
 
+## build 通过 Dockerfile 构建镜像
 
-## build 通过Dockerfile构建镜像
 docker build 命令用于使用 Dockerfile 创建镜像。
+
 语法
 
 docker build [OPTIONS] PATH | URL | -
 
-OPTIONS说明：
+OPTIONS 说明：
 
     --build-arg=[] :设置镜像创建时的变量；
     --cpu-shares :设置 cpu 使用权重；
@@ -578,7 +604,7 @@ OPTIONS说明：
 
     docker build -t runoob/ubuntu:v1 . 
 
-使用URL github.com/creack/docker-firefox 的 Dockerfile 创建镜像。
+使用 URL github.com/creack/docker-firefox 的 Dockerfile 创建镜像。
 
     docker build github.com/creack/docker-firefox
 

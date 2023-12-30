@@ -11,34 +11,38 @@ description: 记录通过 Ambari 部署 hadoop 集群的过程
 cover:
   image: https://image.lvbibir.cn/blog/apache-ambari-project.png
 ---
+
 # 前期准备
 
 ## 1. 安装包准备
 
 **Ambari2.7.5. HDP3.1.5. libtirpc-devel:**
-链接：https://pan.baidu.com/s/1eteZ2jGkSq4Pz5YFfHyJgQ
+
+链接：<https://pan.baidu.com/s/1eteZ2jGkSq4Pz5YFfHyJgQ>
+
 提取码：6hq3
 
 ## 2. 服务器配置
 
-| 主机名  | cpu  | 内存 | 硬盘 | 系统版本           | ip地址          |
+| 主机名  | cpu  | 内存 | 硬盘 | 系统版本           | ip 地址          |
 | ------- | ---- | ---- | ---- | ------------------ | --------------- |
 | node001 | 4c   | 10g  | 50g  | isoft-serveros-4.2 | 192.168.150.106 |
 | node002 | 2c   | 4g   | 20g  | isoft-serveros-4.2 | 192.168.150.107 |
 
-## 3. 修改系统版本文件(allnode)
+## 3. 修改系统版本文件 (allnode)
 
-```
+```textile
 sed -i 's/4/7/g' /etc/redhat-release
 sed -i 's/4/7/g' /etc/os-release
 ```
 
-## 4. 配置主机名(allnode)
+## 4. 配置主机名 (allnode)
 
-2台服务器的 hosts 都需要做如下修改
+2 台服务器的 hosts 都需要做如下修改
 
 - 修改主机名
-```
+
+```textile
 hostnamectl set-hostname node001
 bash
 ```
@@ -53,9 +57,9 @@ vim /etc/hosts
 192.168.150.107 node002
 ```
 
-## 5. 关闭防火墙及selinux(allnode)
+## 5. 关闭防火墙及 selinux(allnode)
 
-**2台服务器上分别执行以下操作，关闭防火墙并配置开机不自动启动**
+**2 台服务器上分别执行以下操作，关闭防火墙并配置开机不自动启动**
 
 ```bash
 systemctl stop firewalld
@@ -72,7 +76,7 @@ vim /etc/sysconfig/selinux
 SELINUX=disabled
 ```
 
-## 6. 配置ssh互信(allnode)
+## 6. 配置 ssh 互信 (allnode)
 
 **方法一**
 
@@ -92,13 +96,13 @@ ssh-copy-id -i /root/.ssh/id_rsa.pub node002
 ssh-keygen -t rsa
 ```
 
-在服务器1上将公钥（名为 id_rsa.pub 文件）追加到认证文件（名为 authorized_keys 文件）中:
+在服务器 1 上将公钥（名为 id_rsa.pub 文件）追加到认证文件（名为 authorized_keys 文件）中:
 
 ```bash
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys 
 ```
 
-去其他服务器节点将`~/.ssh/id_rsa.pub`中的内容拷贝到服务器1的`~/.ssh/authorized_keys`中,查看文件中的内容
+去其他服务器节点将 `~/.ssh/id_rsa.pub` 中的内容拷贝到服务器 1 的 `~/.ssh/authorized_keys` 中,查看文件中的内容
 
 ```bash
 cat ~/.ssh/authorized_keys
@@ -113,7 +117,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8AFoGJHp2M45xLYNzXUHLWzRwHsgRPHjeErStq0tE
 chmod 600 ~/.ssh/authorized_keys
 ```
 
-将`~/.ssh/authorized_keys`同步到其他节点
+将 `~/.ssh/authorized_keys` 同步到其他节点
 
 ```bash
 scp ~/.ssh/authorized_keys node002:~/.ssh/authorized_keys
@@ -129,11 +133,11 @@ ssh 到不同服务器
 ssh node002
 ```
 
-## 7. 配置ntp时钟同步
+## 7. 配置 ntp 时钟同步
 
 选择一台服务器作为 NTP Server，这里选择 node001
 
-将如下配置`vim /etc/ntp.conf`
+将如下配置 `vim /etc/ntp.conf`
 
 ```bash
 # Use public servers from the pool.ntp.org project.
@@ -157,7 +161,7 @@ server 127.127.1.0
 fudge 127.127.1.0 stratum 10
 ```
 
-node002节点做如下配置
+node002 节点做如下配置
 
 ```bash
 vim /etc/ntp.conf
@@ -187,14 +191,14 @@ server 3.centos.pool.ntp.org iburst
 server 192.168.150.106
 ```
 
-在每台服务器上启动ntpd服务，并配置服务开机自启动
+在每台服务器上启动 ntpd 服务，并配置服务开机自启动
 
 ```bash
 systemctl restart ntpd
 systemctl enable ntpd
 ```
 
-## 9. 设置swap(allnode)
+## 9. 设置 swap(allnode)
 
 ```bash
 echo vm.swappiness = 1 >> /etc/sysctl.conf
@@ -202,18 +206,18 @@ sysctl vm.swappiness=1
 sysctl -p
 ```
 
-## 10. 关闭透明大页面(allnode)
+## 10. 关闭透明大页面 (allnode)
 
-由于透明超大页面已知会导致意外的节点重新启动并导致RAC出现性能问题，因此Oracle强烈建议禁用
+由于透明超大页面已知会导致意外的节点重新启动并导致 RAC 出现性能问题，因此 Oracle 强烈建议禁用
 
 ```bash
 echo never > /sys/kernel/mm/transparent_hugepage/defrag
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 ```
 
-## 11. 安装http服务(node001)
+## 11. 安装 http 服务 (node001)
 
-安装apache的httpd服务主要用于搭建OS. Ambari和hdp的yum源。在集群服务器中选择一台服务器来安装httpd服务，命令如下：
+安装 apache 的 httpd 服务主要用于搭建 OS. Ambari 和 hdp 的 yum 源。在集群服务器中选择一台服务器来安装 httpd 服务，命令如下：
 
 ```bash
 yum -y install httpd
@@ -221,13 +225,13 @@ systemctl start httpd
 systemctl enable httpd.service
 ```
 
-验证，在浏览器输入http://192.168.150.106看到如下截图则说明启动成功。
+验证，在浏览器输入<http://192.168.150.106>看到如下截图则说明启动成功。
 
 ![image-20211123141149628](https://image.lvbibir.cn/blog/image-20211123141149628.png)
 
-## 13. 安装Java(allnode)
+## 13. 安装 Java(allnode)
 
-下载地址：https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+下载地址：<https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html>
 
 ```bash
 tar -zxvf jdk-8u271-linux-x64.tar.gz 
@@ -257,7 +261,7 @@ source /root/.bashrc
 java -version
 ```
 
-## 14. 安装maven3.6(node001)
+## 14. 安装 maven3.6(node001)
 
 下载解压
 
@@ -267,7 +271,7 @@ mkdir -p /opt/src/maven
 mv apache-maven-3.6.3/* /opt/src/maven
 ```
 
-配置maven环境变量
+配置 maven 环境变量
 
 ```bash
 vim /root/.bashrc
@@ -281,7 +285,7 @@ export PATH=$PATH:/opt/src/maven/bin
 source /root/.bashrc
 ```
 
-#  安装Ambari&HDP
+# 安装 Ambari&HDP
 
 ## 1. 配置本地源
 
@@ -387,7 +391,7 @@ yum clean all
 yum repolist
 ```
 
-## 2. 安装mariadb(node001)
+## 2. 安装 mariadb(node001)
 
 安装 MariaDB 服务器
 
@@ -449,7 +453,7 @@ systemctl restart mariadb
 mysql -u root -p123456
 ```
 
-## 3. 安装和配置ambari-server (node001)
+## 3. 安装和配置 ambari-server (node001)
 
 安装 ambari-server
 
@@ -573,22 +577,22 @@ GRANT ALL PRIVILEGES ON *.* TO 'oozie'@'node001';
 FLUSH PRIVILEGES;
 ```
 
-## 4. 安装ambari-agent(allnode)
+## 4. 安装 ambari-agent(allnode)
 
 ```bash
 pssh -h /node.list -i 'yum -y install ambari-agent'
 pssh -h /node.list -i 'systemctl start ambari-agent'
 ```
 
-## 5. 安装libtirpc-devel(allnode)
+## 5. 安装 libtirpc-devel(allnode)
 
 ```bash
 pssh -h /node.list -i 'yum -y install libtirpc-devel'
 ```
 
-## 6. 启动ambari服务
+## 6. 启动 ambari 服务
 
-```
+```textile
 ambari-server start
 ```
 
@@ -596,24 +600,30 @@ ambari-server start
 
 ## 1. 登录界面
 
-http://192.168.150.106:8080
+<http://192.168.150.106:8080>
 
 默认管理员账户登录， 账户：admin 密码：admin
 
 ![image-20211123145726406](https://image.lvbibir.cn/blog/image-20211123145726406.png)
 
-## 2. 选择版本，配置yum源
+## 2. 选择版本，配置 yum 源
 
 1）选择 Launch Install Wizard
+
 2）配置集群名称
+
 3）选择版本并修改本地源地址
 
-选HDP-3.1(Default Version Definition);
-选Use Local Repository;
-选redhat7:
+选 HDP-3.1(Default Version Definition);
+
+选 Use Local Repository;
+
+选 redhat7:
 
 HDP-3.1：http://node001/HDP/centos7/3.1.5.0-152/
+
 HDP-3.1-GPL: http://node001/HDP-GPL/centos7/3.1.5.0-152/
+
 HDP-UTILS-1.1.0.22: http://node001/HDP-UTILS/centos7/1.1.0.22/
 
 ![image-20211123150120718](https://image.lvbibir.cn/blog/image-20211123150120718.png)
@@ -630,8 +640,6 @@ HDP-UTILS-1.1.0.22: http://node001/HDP-UTILS/centos7/1.1.0.22/
 
 ![image-20211123150337730](https://image.lvbibir.cn/blog/image-20211123150337730.png)
 
-
-
 ## 4. 勾选需要安装的服务
 
 由于资源有限，这里并没有选择所有服务
@@ -646,28 +654,25 @@ HDP-UTILS-1.1.0.22: http://node001/HDP-UTILS/centos7/1.1.0.22/
 
 ![image-20211123151134172](https://image.lvbibir.cn/blog/image-20211123151134172.png)
 
-
-
 设置相关服务的密码
+
 Grafana Admin: 123456
+
 Hive Database: hive
+
 Activity Explorer’s Admin: admin
 
 ![image-20211123151427030](https://image.lvbibir.cn/blog/image-20211123151427030.png)
-
-
 
 ## 7. 连接数据库
 
 ![image-20211123151525068](https://image.lvbibir.cn/blog/image-20211123151525068.png)
 
-
-
 ## 8. 编辑配置，默认即可
 
 ![image-20211123151547943](https://image.lvbibir.cn/blog/image-20211123151547943.png)
 
-## 9.  开始部署
+## 9. 开始部署
 
 ![image-20211123151705941](https://image.lvbibir.cn/blog/image-20211123151705941.png)
 
@@ -681,9 +686,9 @@ Activity Explorer’s Admin: admin
 
 ## 1. 添加其他系统支持
 
-HDP默认不支持安装到 isoft-serverosv4.2，需手动添加支持
+HDP 默认不支持安装到 isoft-serverosv4.2，需手动添加支持
 
-```
+```textile
 vim /usr/lib/ambari-server/lib/ambari_commons/resources/os_family.json
 ```
 
@@ -693,14 +698,14 @@ vim /usr/lib/ambari-server/lib/ambari_commons/resources/os_family.json
 
 ## 2. YARN Registry DNS 服务启动失败
 
-```
+```textile
 lsof -i:53
 kill -9
 ```
 
 ## 3. 设置初始检测的系统版本
 
-```
+```textile
 vim /etc/ambari-server/conf/ambari.properties
 server.os_family=redhat7
 server.os_type=redhat7
@@ -708,7 +713,4 @@ server.os_type=redhat7
 
 # 参考
 
-https://blog.csdn.net/qq_36048223/article/details/116113987
-
-
-
+<https://blog.csdn.net/qq_36048223/article/details/116113987>

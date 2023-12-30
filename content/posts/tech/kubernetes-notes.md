@@ -11,9 +11,9 @@ cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
 
-# kubectl命令的自动补全
+# kubectl 命令的自动补全
 
-```
+```textile
 yum install bash-completion
 source /usr/share/bash-completion/bash_completion
 source <(kubectl completion bash)
@@ -21,11 +21,11 @@ source <(kubectl completion bash)
 
 # 镜像拉取策略
 
-```
+```textile
 imagePullPolicy: Always|Never|IfNotPresent
 ```
 
-# 修改nodePort范围
+# 修改 nodePort 范围
 
 ```bash
 vim /etc/kubernetes/manifests/kube-apiserver.yaml
@@ -35,15 +35,15 @@ vim /etc/kubernetes/manifests/kube-apiserver.yaml
 
 # command 和 args
 
-`containers.command` 等同于 Dockerfile 中的 `ENTRYPOINT` 
+`containers.command` 等同于 Dockerfile 中的 `ENTRYPOINT`
 
 `containers.args` 等同于 Dockerfile 中的 `CMD`
 
 如果 Dockerfile 中默认的 ENTRYPOINT 被覆盖，则默认的 CMD 指令同时也会被覆盖
 
-# label标签选择运算符
+# label 标签选择运算符
 
-> https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/labels
+> <https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/labels>
 
 1. 基于等值
 
@@ -61,11 +61,11 @@ k8s-node2   Ready    <none>   21d   v1.22.3
 k8s-node3   Ready    <none>   21d   v1.22.3
 ```
 
-2. 基于集合
+1. 基于集合
 
 同样三种运算符 `in` `notin` `exists`
 
-`exists`只用于判断 key 是否存在
+`exists` 只用于判断 key 是否存在
 
 ```bash
 hello in (foo, bar)    # 所有包含了 hello 标签且值等于 foo 或者 bar 的资源
@@ -103,7 +103,7 @@ No resources found
 
 报错：
 
-```
+```textile
 # kubectl describe node k8s-node01
 Events:
   Type    Reason                   Age   From     Message
@@ -120,11 +120,11 @@ Mar 06 09:50:33 k8s-node01 kubelet[45471]: E0306 09:50:33.106476   45471 kubelet
 
 解决：
 
-1. 未部署CNI组件
+1. 未部署 CNI 组件
 
-2. docker镜像或容器未能正确删除导致的
+2. docker 镜像或容器未能正确删除导致的
 
-```
+```textile
 docker system prune
 systemctl stop kubelet
 systemctl stop docker
@@ -132,11 +132,11 @@ systemctl start docker
 systemctl start kubelet
 ```
 
-## node无法ping通pod
+## node 无法 ping 通 pod
 
-所有calico的pod运行都是running状态, 使用`calicoctl node status`看到的网卡绑定也是没问题的.
+所有 calico 的 pod 运行都是 running 状态, 使用 `calicoctl node status` 看到的网卡绑定也是没问题的.
 
-calico的pod有如下报错
+calico 的 pod 有如下报错
 
 ```bash
 [root@k8s-node1 ~]# kubectl logs calico-node-l66pn -n kube-system
@@ -147,16 +147,16 @@ bird: Netlink: Network is down
 bird: Netlink: Network is down
 ```
 
-我这里是通过关闭NetworkManager解决的.关闭后pod日志立即就恢复正常了
+我这里是通过关闭 NetworkManager 解决的.关闭后 pod 日志立即就恢复正常了
 
 ```bash
 [root@k8s-node1 ~]# systemctl stop NetworkManager
 [root@k8s-node1 ~]# systemctl disable NetworkManager
 ```
 
-## 虚拟机挂起导致calico网络不可用
+## 虚拟机挂起导致 calico 网络不可用
 
-出现在我的虚拟机测试机群上，挂起虚拟机过段时间后重新启动虚拟机，发现集群状态是正常的(node 是 ready 状态)，然而 `calico-kube-controllers` `metric-server` `nfs-provisiner` 等功能组件陷入了 `CrashLoopBackOff` 状态，报错基本上都是无法连接到 `api-server` 
+出现在我的虚拟机测试机群上，挂起虚拟机过段时间后重新启动虚拟机，发现集群状态是正常的 (node 是 ready 状态)，然而 `calico-kube-controllers` `metric-server` `nfs-provisiner` 等功能组件陷入了 `CrashLoopBackOff` 状态，报错基本上都是无法连接到 `api-server`
 
 但是 `calicoctl` 看到 calico 集群是没什么问题的，之前遇到几次都是暴躁重启 docker 解决的，后面发现重启 calico 相关容器就可以了，具体原因还没找到，估计与 vmware 虚拟机挂起操作有关。
 
@@ -164,11 +164,11 @@ bird: Netlink: Network is down
 kubectl delete pods -n kube-system -l "k8s-app in (calico-node, calico-kube-controllers)"
 ```
 
-# kubectl命令
+# kubectl 命令
 
 一些常用命令
 
-```
+```textile
 # 查看某个资源的详细信息
 kubectl describe <type> <name> -n <namespace>
 # 查看pod的日志
@@ -292,53 +292,50 @@ IPv4 BGP status
 +--------------+-------------------+-------+----------+-------------+
 ```
 
-
-
 # namespace
 
-k8s与docker的namespace不同
+k8s 与 docker 的 namespace 不同
 
-docker中的namespace用于容器间的资源隔离
+docker 中的 namespace 用于容器间的资源隔离
 
-k8s中的namespace用于
+k8s 中的 namespace 用于
 
-- k8s的抽象资源间的资源隔离，比如pods、控制器、service等
+- k8s 的抽象资源间的资源隔离，比如 pods、控制器、service 等
 
 - 资源隔离后，对这一组资源进行权限控制
 
+# yaml 编写
 
-# yaml编写
+通过创建资源获取 yaml
 
-通过创建资源获取yaml
-
-```
+```textile
 kubectl create deployment web --image=nginx:1.19 --dry-run=client -o yaml > deploy.yaml
 ```
 
-通过已有资源获取yaml
+通过已有资源获取 yaml
 
-```
+```textile
 kubectl get deployment nginx-deployment -o yaml > deploy2.yaml
 ```
 
-查看api中的资源及解释
+查看 api 中的资源及解释
 
-```
+```textile
 kubectl explain pods.spec.container
 kubectl explain deployment
 ```
 
-yaml报错排查
+yaml 报错排查
 
-```
+```textile
 error: error parsing pod-configmap.yaml: error converting YAML to JSON: yaml: line 19: did not find expected '-' indicator
 ```
 
 解决
 
-由于yaml文件列表对齐不统一导致的
+由于 yaml 文件列表对齐不统一导致的
 
-yaml文件格式要对齐，同一级别的对象要放在同一列，几个空格不重要，不要用tab制表符
+yaml 文件格式要对齐，同一级别的对象要放在同一列，几个空格不重要，不要用 tab 制表符
 
 ```yaml
 # 格式1

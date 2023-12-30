@@ -19,7 +19,7 @@ cover:
 
 > 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境
 >
-> cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python
+> cephadm 依赖 python3.6，而此版本的 openeuler 内置版本为 3.7，且不支持 platform-python
 >
 > 参考：[openeuler的gitee社区issue](https://gitee.com/src-openeuler/python3/issues/I4J8RK?from=project-issue)
 
@@ -31,14 +31,13 @@ ceph：v16.2（pacific）
 
 集群角色：
 
-
 | ip             | 主机名             | 角色                   |
 | -------------- | ------------------ | ---------------------- |
 | 192.168.47.133 | ceph-aarch64-node1 | cephadm，mgr，mon，osd |
 | 192.168.47.135 | ceph-aarch64-node2 | osd                    |
 | 192.168.47.130 | ceph-aarch64-node3 | osd                    |
 
-# 基础环境配置(所有节点)
+# 基础环境配置 (所有节点)
 
 ## 关闭 node_exporter
 
@@ -68,6 +67,7 @@ wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos
 yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 sed -i 's/$releasever/8/g' /etc/yum.repos.d/docker-ce.repo
 ```
+
 ## 添加 epel 源
 
 ```bash
@@ -124,7 +124,6 @@ systemctl enable docker
 
 ## 安装 cephadm & ceph-common
 
-
 ```bash
 curl --silent --remote-name --location https://github.com/ceph/ceph/raw/pacific/src/cephadm/cephadm
 chmod +x cephadm
@@ -136,7 +135,7 @@ yum install cephadm
 yum install ceph-common-16.2.9-0.el8
 ```
 
-# ceph集群配置
+# ceph 集群配置
 
 ## 集群初始化
 
@@ -146,9 +145,9 @@ cephadm bootstrap --mon-ip 192.168.47.133
 
 ![image-20220718113317700](https://image.lvbibir.cn/blog/image-20220718113317700.png)
 
-访问：https://192.168.47.133:8443/
+访问：<https://192.168.47.133:8443/>
 
->  第一次访问 dashboard 需要修改初始账号密码
+> 第一次访问 dashboard 需要修改初始账号密码
 
 ## 添加主机
 
@@ -172,7 +171,7 @@ ceph orch apply osd --all-available-devices
 
 # 其他
 
-## 清除ceph集群
+## 清除 ceph 集群
 
 ```bash
 # 暂停集群，避免部署新的 ceph 守护进程
@@ -191,17 +190,16 @@ cephadm run  --name mgr.ceph-aarch64-node3.ipgtzj --fsid 17136806-0735-11ed-9c4f
 ceph orch  apply  mgr label:_admin
 ```
 
-## osd误删除
+## osd 误删除
 
-https://blog.csdn.net/cjfcxf010101/article/details/100411984
+<https://blog.csdn.net/cjfcxf010101/article/details/100411984>
 
 ## 删除 osd 后引起的 cephadm_failed_daemon 错误
 
-https://www.cnblogs.com/st2021/p/15026526.html
+<https://www.cnblogs.com/st2021/p/15026526.html>
 
-## 禁用自动添加osd
+## 禁用自动添加 osd
 
-```
+```textile
 ceph orch apply osd --all-available-devices --unmanaged=true
 ```
-

@@ -19,9 +19,9 @@ cover:
 
 # 1. 简介
 
-[Probe 的 API 文档](https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Probe) 
+[Probe 的 API 文档](https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Probe)
 
-## 1.1 白盒监控vs黑盒监控
+## 1.1 白盒监控 vs 黑盒监控
 
 白盒监控: 我们监控主机的资源用量、容器的运行状态、数据库中间件的运行数据等等，这些都是支持业务和服务的基础设施，通过白盒能够了解其内部的实际运行状态，通过对监控指标的观察能够预判可能出现的问题，从而对潜在的不确定因素进行优化
 
@@ -55,7 +55,7 @@ Probe 支持 `staticConfig` 和 `ingress` 两种配置方式, 使用 ingress 时
 大概步骤:
 
 - 首先，用户创建一个 Probe CRD 对象，对象中指定探测方式、探测目标等参数；
-- 然后，prometheus-operator watch 到 Probe 对象创建，然后生成对应的 prometheus 拉取配置，reload 到prometheus 中；
+- 然后，prometheus-operator watch 到 Probe 对象创建，然后生成对应的 prometheus 拉取配置，reload 到 prometheus 中；
 - 最后，prometheus 使用 url=/probe?target={探测目标}&module={探测方式}，拉取 blackbox-exporter ，此时 blackbox-exporter 会对目标进行探测，并以 metrics 格式返回探测结果；
 
 ![3526046601-63e4a22006154_fix732](https://image.lvbibir.cn/blog/3526046601-63e4a22006154_fix732.png)
@@ -128,7 +128,7 @@ spec:
 现在可以通过:
 
 - `probe_success{job="blackbox-kube-dns"}` 查看服务状态是否可用
-- `probe_dns_lookup_time_seconds{job='blackbox-kube-dns'}` DNS解析耗时
+- `probe_dns_lookup_time_seconds{job='blackbox-kube-dns'}` DNS 解析耗时
 
 查看 blackbox exporter 一次 dns 探测生成的 metrics 指标
 
@@ -200,7 +200,7 @@ spec:
 
 ![image-20230428163153649](https://image.lvbibir.cn/blog/image-20230428163153649.png)
 
-## 2.2 ingress自动发现
+## 2.2 ingress 自动发现
 
 接下来使用 ingrss 自动发现实现集群内的 ingress 并进行黑盒探测
 
@@ -362,7 +362,7 @@ kind: ConfigMap
 
 目前 prometheus operator 只支持 ingress 方式的自动发现, 而且自定义配置其实不是很多, 更推荐使用 `additionalScrapeConfigs` 静态配置的方式实现
 
-## 3.2 service自动发现
+## 3.2 service 自动发现
 
 沿用 2.2 章节中创建的两个 service
 
@@ -439,7 +439,7 @@ kubectl apply -f additional-scrape-configs.yaml
 
 ![image-20230429143126584](https://image.lvbibir.cn/blog/image-20230429143126584.png)
 
-## 3.1 ingress自动发现
+## 3.1 ingress 自动发现
 
 依旧使用 2.2 章节中创建的 ingress
 
@@ -514,4 +514,3 @@ kubectl apply -f additional-scrape-configs.yaml
 查看监测状态, 与预期配置一样
 
 ![image-20230429150518709](https://image.lvbibir.cn/blog/image-20230429150518709.png)
-

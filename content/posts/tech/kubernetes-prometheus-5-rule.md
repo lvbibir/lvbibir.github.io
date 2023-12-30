@@ -20,7 +20,7 @@ cover:
 
 # 1. 告警规则
 
-prometheus 支持两种类型的规则, 记录规则 [recording rule](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) 和告警规则 [alerting rule](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) 
+prometheus 支持两种类型的规则, 记录规则 [recording rule](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) 和告警规则 [alerting rule](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
 
 ## 1.1 recording rule
 
@@ -122,7 +122,7 @@ spec:
 ......        
 ```
 
-对于 prometheusrule 的更新操作(create, delete, update)都会被 `watch` 到, 然后更新到统一的一个 configmap 中, 然后 prometheus 自动重载配置
+对于 prometheusrule 的更新操作 (create, delete, update) 都会被 `watch` 到, 然后更新到统一的一个 configmap 中, 然后 prometheus 自动重载配置
 
 每个 prometheusrule 会作为 configmap `prometheus-k8s-rulefiles-0` 中的一个 `data` , data 的命名规则为 `<namespace>`-`<rulename>`-`ruleuid`
 

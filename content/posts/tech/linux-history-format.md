@@ -10,7 +10,7 @@ keywords:
 description: "" 
 ---
 
-在`/etc/prifile.d`目录下新建一个文件，用户登录系统时自动生效
+在 `/etc/prifile.d` 目录下新建一个文件，用户登录系统时自动生效
 
 ```bash
 vim  /etc/profile.d/history_conf.sh

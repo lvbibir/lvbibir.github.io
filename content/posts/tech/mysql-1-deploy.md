@@ -120,7 +120,7 @@ systemctl enable --now mysqld
 2023-05-07T02:31:54.375626Z 1 [Note] A temporary password is generated for root@localhost: QZFuIayXk0:l
 ```
 
-如果没有返回，找不到root密码，解决方案如下
+如果没有返回，找不到 root 密码，解决方案如下
 
 ```bash
 # 删除原来安装过的mysql残留的数据
@@ -138,5 +138,3 @@ mysql -uroot -p # 输入默认密码
 ALTER USER 'root'@'localhost' IDENTIFIED BY '<pass>'; # 修改密码, 需要有大小写和特殊符号
 exit;
 ```
-
-

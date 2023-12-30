@@ -33,7 +33,7 @@ cover:
 - 将多个 RUN 指令合并为一个
 - 基础镜像的标签不要用 latest
 - 每个 RUN 指令后删除多余文件
-- 选择合适的基础镜像(alpine 版本最好)
+- 选择合适的基础镜像 (alpine 版本最好)
 - 设置 WORKDIR 和 CMD
 - 使用 ENTRYPOINT (可选)
 - 在 entrypoint 脚本中使用 exec
@@ -47,11 +47,11 @@ cover:
 
 参考内容：
 
-- https://blog.fundebug.com/2017/05/15/write-excellent-dockerfile/
+- <https://blog.fundebug.com/2017/05/15/write-excellent-dockerfile/>
 
 ## 容器的优雅退出
 
-众所周知，docker容器本质上是一个个进程，进程的优雅退出需要考虑的是如何正确处理 `SIGTERM` 信号，关于这点在我的另一篇博文中介绍过 [kill命令详解以及linux中的信号](https://www.lvbibir.cn/posts/tech/linux-command-kill)
+众所周知，docker 容器本质上是一个个进程，进程的优雅退出需要考虑的是如何正确处理 `SIGTERM` 信号，关于这点在我的另一篇博文中介绍过 [kill命令详解以及linux中的信号](https://www.lvbibir.cn/posts/tech/linux-command-kill)
 
 无论是 `docker stop` 还是在 `kubernetes` 中使用容器，一般关闭容器都是向容器内的 1 号进程发送 `SIGTERM` 信号，等待容器自行进行资源清理等操作，等待时间 docker 默认 10s，k8s 默认 30s，如果容器仍未退出，则发送 `SIGKILL` 信号强制杀死进程
 
@@ -68,12 +68,11 @@ docker 容器的一号进程是由 `CMD` `ENTRYPOINT` 这两个指令决定的�
 `CMD` 和 `ENTRYPOINT` 分别都有 `exec` 和 `shell` 两种格式：
 
 - 使用 `exec` 格式时，我们执行的命令就是一号进程
-- 使用 `shell` 格式时，实际会以 `/bin/sh -c command arg...` 的方式运行，这种情况下容器的一号进程将会是 `/bin/sh`，当收到信号时 `/bin/sh` 不会将信号转发给我们的应用程序，导致意料之外的错误，所以十分不推荐使用 `shell` 格式
+- 使用 `shell` 格式时，实际会以 `/bin/sh -c command arg…` 的方式运行，这种情况下容器的一号进程将会是 `/bin/sh`，当收到信号时 `/bin/sh` 不会将信号转发给我们的应用程序，导致意料之外的错误，所以十分不推荐使用 `shell` 格式
 
 我们还可以使用 tini 作为 init 系统管理进程
 
-
-> 官方地址：https://github.com/krallin/tini
+> 官方地址：<https://github.com/krallin/tini>
 >
 > Tini (Tiny but Independent) 是一个小型的、可执行的程序，它的主要目的是作为一个 init 系统的替代品，用于在容器中启动应用程序。
 >
@@ -120,7 +119,7 @@ Arch Linux
 pacaur -S tini
 ```
 
-## RUN指令
+## RUN 指令
 
 `RUN` 指令一般用于安装配置软件包等操作，通常需要比较多的步骤，如果每条命令都单独用 `RUN` 指令去跑会导致镜像层数非常多，所以尽可能将所有 `RUN` 指令拼接起来是当前的事实标准
 
@@ -189,7 +188,7 @@ CMD ["./myapp"]
 
 只构建某个阶段
 
-构建镜像时，不一定需要构建整个 Dockerfile，我们可以通过`--target`参数指定某个目标阶段构建，比如我们开发阶段我们只构建builder阶段进行测试。
+构建镜像时，不一定需要构建整个 Dockerfile，我们可以通过 `--target` 参数指定某个目标阶段构建，比如我们开发阶段我们只构建 builder 阶段进行测试。
 
 ```bash
 docker build --target builder -t builder_app:v1 .
@@ -215,4 +214,3 @@ FROM builder as builder_ex
 ADD dest.tar ./
 ...
 ```
-

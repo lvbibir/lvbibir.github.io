@@ -37,4 +37,3 @@ for file in files:
     os.rename(old,new)
     i+=1
 ```
-

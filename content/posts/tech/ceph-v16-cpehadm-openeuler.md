@@ -18,7 +18,7 @@ cover:
 
 > 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境
 >
-> cephadm依赖python3.6，而此版本的openeuler内置版本为3.7，且不支持platform-python
+> cephadm 依赖 python3.6，而此版本的 openeuler 内置版本为 3.7，且不支持 platform-python
 >
 > 参考：[openeuler的gitee社区issue](https://gitee.com/src-openeuler/python3/issues/I4J8RK?from=project-issue)
 
@@ -30,18 +30,17 @@ ceph：v16.2（pacific）
 
 集群角色：
 
-
 | ip        | 主机名     | 角色                |
 | --------- | ---------- | ------------------- |
 | 1.1.1.101 | ceph-node1 | cephadm,mgr,mon,osd |
 | 1.1.1.102 | ceph-node2 | osd,mgr,mon         |
 | 1.1.1.103 | ceph-node3 | osd,mgr,mon         |
 
-# 基础环境配置(所有节点)
+# 基础环境配置 (所有节点)
 
 ## 防火墙
 
-```
+```textile
 systemctl stop firewalld
 systemctl disable firewalld
 ```
@@ -69,6 +68,7 @@ yum install epel-release
 rm -f /etc/yum.repos.d/CentOS-Linux-*
 yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 ```
+
 ## 安装 python3.6
 
 ```bash
@@ -107,7 +107,6 @@ systemctl enable docker
 
 ## 安装 cephadm & ceph-common
 
-
 ```bash
 curl --silent --remote-name --location https://github.com/ceph/ceph/raw/pacific/src/cephadm/cephadm
 chmod +x cephadm
@@ -119,7 +118,7 @@ rpm -e --nodeps libicu-62.1-6.oe1.x86_64
 yum install ceph-common-16.2.9-0.el8
 ```
 
-# ceph集群配置
+# ceph 集群配置
 
 ## 集群初始化
 
@@ -129,7 +128,7 @@ cephadm bootstrap --mon-ip 1.1.1.101
 
 出现如下提示说明安装成功
 
-```
+```textile
 ......
 Generating a dashboard self-signed certificate...
 Creating initial admin user...
@@ -161,9 +160,9 @@ For more information see:
 Bootstrap complete.
 ```
 
-访问：https://1.1.1.101:8443/
+访问：<https://1.1.1.101:8443/>
 
->  第一次访问 dashboard 需要修改初始账号密码
+> 第一次访问 dashboard 需要修改初始账号密码
 
 ## 添加主机
 
@@ -184,4 +183,3 @@ ceph orch device ls
 # 自动添加所有可用设备
 ceph orch apply osd --all-available-devices
 ```
-

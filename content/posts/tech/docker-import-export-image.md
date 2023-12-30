@@ -15,9 +15,10 @@ description: "通过shell | python的方式批量导入导出docker镜像"
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 
 ---
-# python方式
 
-批量导出，运行后所有tar包都在当前目录下
+# python 方式
+
+批量导出，运行后所有 tar 包都在当前目录下
 
 ```python
 # encoding: utf-8
@@ -55,7 +56,7 @@ if __name__ == "__main__":
     retval = p.wait()
 ```
 
-批量导入，同理导入当前目录下的所有的tar包
+批量导入，同理导入当前目录下的所有的 tar 包
 
 ```python
 import  os
@@ -67,7 +68,7 @@ for imagename in images:
         os.system('docker load -i %s'%imagename)
 ```
 
-# bash方式
+# bash 方式
 
 ## 导出
 
@@ -96,7 +97,6 @@ done < tarname.txt
 echo finish
 ```
 
-
 # 参考
 
-https://www.cnblogs.com/ksir16/p/8865525.html
+<https://www.cnblogs.com/ksir16/p/8865525.html>

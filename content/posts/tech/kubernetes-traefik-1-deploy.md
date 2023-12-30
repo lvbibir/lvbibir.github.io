@@ -18,13 +18,13 @@ cover:
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`， `traefik-2.9.10`
 
-参考：https://www.cuiliangblog.cn/detail/section/29427812
+参考：<https://www.cuiliangblog.cn/detail/section/29427812>
 
 # 1. 简介
 
 ## 1.1 Traefik 简介
 
-Traefik 是一个为了让部署微服务更加便捷而诞生的现代HTTP反向代理、负载均衡工具。 它支持多种后台 ([Docker](https://www.docker.com/), [Swarm](https://docs.docker.com/swarm), [Kubernetes](http://kubernetes.io/), [Marathon](https://mesosphere.github.io/marathon/), [Mesos](https://github.com/apache/mesos), [Consul](https://www.consul.io/), [Etcd](https://coreos.com/etcd/), [Zookeeper](https://zookeeper.apache.org/), [BoltDB](https://github.com/boltdb/bolt), Rest API, file…) 来自动化、动态的应用它的配置文件设置。
+Traefik 是一个为了让部署微服务更加便捷而诞生的现代 HTTP 反向代理、负载均衡工具。 它支持多种后台 ([Docker](https://www.docker.com/), [Swarm](https://docs.docker.com/swarm), [Kubernetes](http://kubernetes.io/), [Marathon](https://mesosphere.github.io/marathon/), [Mesos](https://github.com/apache/mesos), [Consul](https://www.consul.io/), [Etcd](https://coreos.com/etcd/), [Zookeeper](https://zookeeper.apache.org/), [BoltDB](https://github.com/boltdb/bolt), Rest API, file…) 来自动化、动态的应用它的配置文件设置。
 
 它是一个边缘路由器，它会拦截外部的请求并根据逻辑规则选择不同的操作方式，这些规则决定着这些请求到底该如何处理。Traefik 提供自动发现能力，会实时检测服务，并自动更新路由规则。
 
@@ -32,37 +32,35 @@ Traefik 是一个为了让部署微服务更加便捷而诞生的现代HTTP反�
 
 ## 1.2 Traefik 核心组件
 
-
-
 ![img](https://image.lvbibir.cn/blog/v2-b67cb6ed0ac457009296459fe974cef4_r.jpg)
 
 从上图可知，当请求 Traefik 时，请求首先到 `entrypoints`，然后分析传入的请求，查看他们是否与定义的 `Routers` 匹配。如果匹配，则会通过一系列 `middlewares` 处理，再到 `traefikServices` 上做流量转发，最后请求到 `kubernetes的services上` 。
 
 这就涉及到以下几个重要的核心组件:
 
-- **[Providers](https://doc.traefik.io/traefik/providers/overview/)** 是基础组件，Traefik 的配置发现是通过它来实现的，它可以是协调器，容器引擎，云提供商或者键值存储。Traefik 通过查询 `Providers` 的 `API` 来查询路由的相关信息，一旦检测到变化，就会动态的更新路由。 
-- **[Entrypoints](https://doc.traefik.io/traefik/routing/entrypoints/)** 是 `Traefik` 的网络入口，它定义接收请求的接口，以及是否监听TCP或者UDP。
-- **[Routers](https://doc.traefik.io/traefik/routing/routers/)** 主要用于分析请求，并负责将这些请求连接到对应的服务上去，在这个过程中，Routers还可以使用Middlewares来更新请求，比如在把请求发到服务之前添加一些Headers。 
-- **[Services](https://doc.traefik.io/traefik/routing/services/)** 负责配置如何到达最终将处理传入请求的实际服务。 
-- **[Middlewares](https://doc.traefik.io/traefik/middlewares/overview/)** 用来修改请求或者根据请求来做出一些判断（authentication, rate limiting, headers, ...），中间件被附件到路由上，是一种在请求发送到你的**服务**之前（或者在服务的响应发送到客户端之前）调整请求的一种方法。
+- **[Providers](https://doc.traefik.io/traefik/providers/overview/)** 是基础组件，Traefik 的配置发现是通过它来实现的，它可以是协调器，容器引擎，云提供商或者键值存储。Traefik 通过查询 `Providers` 的 `API` 来查询路由的相关信息，一旦检测到变化，就会动态的更新路由。
+- **[Entrypoints](https://doc.traefik.io/traefik/routing/entrypoints/)** 是 `Traefik` 的网络入口，它定义接收请求的接口，以及是否监听 TCP 或者 UDP。
+- **[Routers](https://doc.traefik.io/traefik/routing/routers/)** 主要用于分析请求，并负责将这些请求连接到对应的服务上去，在这个过程中，Routers 还可以使用 Middlewares 来更新请求，比如在把请求发到服务之前添加一些 Headers。
+- **[Services](https://doc.traefik.io/traefik/routing/services/)** 负责配置如何到达最终将处理传入请求的实际服务。
+- **[Middlewares](https://doc.traefik.io/traefik/middlewares/overview/)** 用来修改请求或者根据请求来做出一些判断（authentication, rate limiting, headers, …），中间件被附件到路由上，是一种在请求发送到你的**服务**之前（或者在服务的响应发送到客户端之前）调整请求的一种方法。
 
-## 1.3 Traefik CRD资源
+## 1.3 Traefik CRD 资源
 
 [官方文档](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/)
 
-traefik通过自定义资源实现了对traefik资源的创建和管理，支持的crd资源类型如下所示：
+traefik 通过自定义资源实现了对 traefik 资源的创建和管理，支持的 crd 资源类型如下所示：
 
 | kind                                                         | 功能                        |
 | ------------------------------------------------------------ | --------------------------- |
-| [IngressRoute](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroute) | HTTP路由配置                |
-| [Middleware](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-middleware) | HTTP中间件配置              |
-| [TraefikService](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-traefikservice) | HTTP负载均衡/流量复制配置   |
-| [IngressRouteTCP](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroutetcp) | TCP路由配置                 |
-| [MiddlewareTCP](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-middlewaretcp) | TCP中间件配置               |
-| [IngressRouteUDP](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressrouteudp) | UDP路由配置                 |
-| [TLSOptions](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-tlsoption) | TLS连接参数配置             |
-| [TLSStores](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-tlsstore) | TLS存储配置                 |
-| [ServersTransport](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-serverstransport) | traefik与后端之间的传输配置 |
+| [IngressRoute](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroute) | HTTP 路由配置                |
+| [Middleware](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-middleware) | HTTP 中间件配置              |
+| [TraefikService](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-traefikservice) | HTTP 负载均衡/流量复制配置   |
+| [IngressRouteTCP](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroutetcp) | TCP 路由配置                 |
+| [MiddlewareTCP](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-middlewaretcp) | TCP 中间件配置               |
+| [IngressRouteUDP](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressrouteudp) | UDP 路由配置                 |
+| [TLSOptions](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-tlsoption) | TLS 连接参数配置             |
+| [TLSStores](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-tlsstore) | TLS 存储配置                 |
+| [ServersTransport](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-serverstransport) | traefik 与后端之间的传输配置 |
 
 # 2. Traefik 部署
 
@@ -116,7 +114,7 @@ subjects:
     namespace: traefik
 ```
 
-## 2.2 configmap 
+## 2.2 configmap
 
 在 Traefik 中有三种方式定义静态配置：在配置文件中、在命令行参数中、通过环境变量传递，由于 Traefik 配置很多，通过 CLI 定义不是很方便，一般时候选择将其配置选项放到配置文件中，然后存入 ConfigMap，将其挂入 traefik 中。
 
@@ -300,7 +298,7 @@ spec:
             type: File
 ```
 
-service  `kubectl apply -f service.yml`
+service `kubectl apply -f service.yml`
 
 ```yaml
 apiVersion: v1
@@ -369,17 +367,17 @@ service/traefik          NodePort    10.101.142.158   <none>        80:80/TCP,44
 service/traefik-metrics   ClusterIP   10.98.89.13      <none>        9100/TCP                                                          12m
 ```
 
-可以直接通过 http://1.1.1.1:9000 访问到 dashboard
+可以直接通过 <http://1.1.1.1:9000> 访问到 dashboard
 
 ![image-20230426155416528](https://image.lvbibir.cn/blog/image-20230426155416528.png)
 
 ## 2.5 其他配置
 
-### 2.5.1 强制使用TLS v1.2+
+### 2.5.1 强制使用 TLS v1.2+
 
-> 如今，TLS v1.0 和 v1.1 因为存在安全问题，现在已被弃用。为了保障系统安全，所有入口路由都应该强制使用TLS v1.2 或更高版本。
+> 如今，TLS v1.0 和 v1.1 因为存在安全问题，现在已被弃用。为了保障系统安全，所有入口路由都应该强制使用 TLS v1.2 或更高版本。
 >
-> 参考文档：https://doc.traefik.io/traefik/user-guides/crd-acme/#force-tls-v12
+> 参考文档：<https://doc.traefik.io/traefik/user-guides/crd-acme/#force-tls-v12>
 
 ```bash
 [root@k8s-node1 traefik]# tee traefik-tlsoption.yml <<-'EOF'
@@ -437,7 +435,7 @@ crontab -e
 
 ## 2.6 多控制器
 
-有的业务场景下可能需要在一个集群中部署多个 traefik，例如：避免单个traefik配置规则过多导致加载处理缓慢。每个namespace部署一个traefik。或者traefik生产与测试环境区分等场景，需要不同的实例控制不同的 IngressRoute 资源对象，要实现该功能有两种方法
+有的业务场景下可能需要在一个集群中部署多个 traefik，例如：避免单个 traefik 配置规则过多导致加载处理缓慢。每个 namespace 部署一个 traefik。或者 traefik 生产与测试环境区分等场景，需要不同的实例控制不同的 IngressRoute 资源对象，要实现该功能有两种方法
 
 ### 2.6.1 annotations 注解筛选
 
@@ -475,7 +473,7 @@ spec:
 
 ### 2.6.2 label 标签选择器筛选
 
-首先在traefik配置文件中的providers下增加labelSelector参数，指定具体的标签键值。
+首先在 traefik 配置文件中的 providers 下增加 labelSelector 参数，指定具体的标签键值。
 
 ```yaml
     providers:
@@ -486,7 +484,7 @@ spec:
         allowEmptyServices: true    #允许空endpoints的service
 ```
 
-然后在 IngressRoute 资源对象中添加labels标签选择器，选择 `app: traefik-v2.9` 这个标签即可
+然后在 IngressRoute 资源对象中添加 labels 标签选择器，选择 `app: traefik-v2.9` 这个标签即可
 
 ```yaml
 apiVersion: traefik.containo.us/v1alpha1
@@ -508,4 +506,3 @@ spec:
           kind: TraefikService
           namespace: traefik
 ```
-

@@ -15,21 +15,22 @@ description: "介绍kubernetes中组件日志、标准输出类型的应用日�
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
+
 # 前言
 
-基于`centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
+基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
-kubelet logs命令的流程
+kubelet logs 命令的流程
 
-```
+```textile
 kubectl logs --请求--> apiserver --请求--> kubelet --读取--> container日志
 ```
 
-k8s日志包含两大类：
+k8s 日志包含两大类：
 
-- k8s系统的组件日志
+- k8s 系统的组件日志
 
-- k8s集群中部署的应用程序的日志
+- k8s 集群中部署的应用程序的日志
 
   - 标准输出
 
@@ -47,7 +48,7 @@ kubectl logs kube-proxy -n kube-system
 
 ## 标准输出
 
-实时查看pod标准输出日志
+实时查看 pod 标准输出日志
 
 ```bash
 kubectl logs [options] <podname>
@@ -58,7 +59,7 @@ kubectl logs --previous <podname> # 查看pod上次重启的日志
 
 k8s 会将每个 pod 中每个 container 的日志记录到 pod 所在 node 的 `/var/log/pods` 目录中, 日志文件其实是 docker 保存的日志文件的一个软连接.
 
-k8s 会为每个 pod 的每个 container 日志保留 2 份, 一份为 container 当前状态的日志, 另一份是 container 上一次生命周期的日志, 日志保留数量应该是由 k8s 的 gc 机制管控. 
+k8s 会为每个 pod 的每个 container 日志保留 2 份, 一份为 container 当前状态的日志, 另一份是 container 上一次生命周期的日志, 日志保留数量应该是由 k8s 的 gc 机制管控.
 
 ```bash
 # k8s 日志
@@ -103,19 +104,19 @@ lrwxrwxrwx. 1 root root 165 Apr 23 10:23 7.log -> /var/lib/docker/containers/c30
 
 ## 日志文件
 
-比如nginx应用的日志一般保存在accesss.log和error.log日志中，这些日志是不会输出到标准输出的，可以采用如下两种方式进行采集
+比如 nginx 应用的日志一般保存在 accesss.log 和 error.log 日志中，这些日志是不会输出到标准输出的，可以采用如下两种方式进行采集
 
-### emptyDir数据卷
+### emptyDir 数据卷
 
-创建pod时挂载emptyDIr类型的数据卷，用以持久化自定义的日志文件
+创建 pod 时挂载 emptyDIr 类型的数据卷，用以持久化自定义的日志文件
 
-需要先找到pod分配的节点
+需要先找到 pod 分配的节点
 
 ```bash
 Kubectl get pods -o wide
 ```
 
-再查看pod的id
+再查看 pod 的 id
 
 ```bash
 docker ps | grep pod-name 
@@ -123,9 +124,9 @@ docker ps | grep pod-name
 kubectl get pod <podname> -n <namespace> -o jsonpath='{.metadata.uid}'
 ```
 
-pod日志文件路径
+pod 日志文件路径
 
-```
+```textile
 /var/lib/kubelet/pods/<pod-id>/volumes/kubernetes.io~empty-dir
 ```
 
@@ -148,7 +149,7 @@ spec:
     emptyDir: {}
 ```
 
-### sidecar边车容器
+### sidecar 边车容器
 
 通过创建边车容器实现将应用原本的日志文件输出到标准输出
 

@@ -153,7 +153,7 @@ grep "$1" "${LOG_FILE}" | awk '{last_column=$NF} END {print last_column}'
 UserParameter=get_traffic_monitor[*],/opt/zabbix_traffic_monitor.sh $1
 ```
 
-重启 zabbix-agent 
+重启 zabbix-agent
 
 ```bash
 systemctl restart zabbix-agent
@@ -256,4 +256,3 @@ done
 ![image-20230804161124280](https://image.lvbibir.cn/blog/image-20230804161124280.png)
 
 以上
-

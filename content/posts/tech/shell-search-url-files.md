@@ -10,6 +10,7 @@ description: ""
 cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 
 ---
+
 # 前言
 
 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的。
@@ -50,4 +51,3 @@ done < ./list_$version\_cut
 
 echo -e "\033[32m脚本执行完成，结果已保存至当前目录的 result_$version \033[0m"
 ```
-

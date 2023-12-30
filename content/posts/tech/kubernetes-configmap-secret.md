@@ -15,15 +15,15 @@ cover:
 
 # 前言
 
-基于`centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
+基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
 # ConfigMap
 
-创建ConfigMap后，数据实际会存储在k8s中的Etcd中，然后通过创建pod时引用该数据。
+创建 ConfigMap 后，数据实际会存储在 k8s 中的 Etcd 中，然后通过创建 pod 时引用该数据。
 
 应用场景：应用程序配置
 
-pod使用ConfigMap数据有两种方式：
+pod 使用 ConfigMap 数据有两种方式：
 
 - 变量注入
 - 数据卷挂载
@@ -39,7 +39,7 @@ kubectl create configmap <configmap-name> \
 --from-literal=<key>=<value>    \ # 通过指定的键值对创建 configmap
 ```
 
-yaml示例
+yaml 示例
 
 ```yaml
 apiVersion: v1
@@ -102,13 +102,13 @@ password: 123456
 
 # Secret
 
-与ConfigMap类似，区别在于Secret主要存储敏感数据，所有的数据都会经过base64编码。
+与 ConfigMap 类似，区别在于 Secret 主要存储敏感数据，所有的数据都会经过 base64 编码。
 
-Secret支持三种数据类型：
+Secret 支持三种数据类型：
 
 - docker-registry：存储镜像仓库认证信息
 - generic：从文件、目录或者字符串创建，例如存储用户名密码
-- tls：存储证书，例如HTTPS证书
+- tls：存储证书，例如 HTTPS 证书
 
 示例
 
@@ -185,4 +185,3 @@ root@pod-secret-demo:/# echo $PASS
 root@pod-secret-demo:/# cat /config/my-password
 123.com
 ```
-

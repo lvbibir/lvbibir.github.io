@@ -13,18 +13,18 @@ cover:
     image: "" 
 ---
 
-# git命令
+# git 命令
 
 ## submodule
 
-当clone一个含有子模块的git仓库时可以使用如下命令安装所有子模块
+当 clone 一个含有子模块的 git 仓库时可以使用如下命令安装所有子模块
 
 ```bash
 git submodule init
 git submodule update
 ```
 
-# git配置
+# git 配置
 
 查看 git 设置
 
@@ -72,7 +72,7 @@ git config --global http.https://github.com.proxy http://127.0.0.1:7890
 git config --global https.https://github.com.proxy http://127.0.0.1:7890
 ```
 
-## CRLF 和 LF 
+## CRLF 和 LF
 
 ```bash
 # 提交时转换为LF，检出时转换为CRLF
@@ -94,7 +94,7 @@ git config --global core.safecrlf warn
 
 ## git clone 报错
 
-> fatal: early EOF 
+> fatal: early EOF
 >
 > fatal: fetch-pack: invalid index-pack output
 
@@ -105,4 +105,3 @@ git config --global http.sslVerify "false"
 
 git config --global core.compression -1
 ```
-

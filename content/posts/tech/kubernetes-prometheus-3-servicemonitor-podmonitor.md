@@ -21,11 +21,11 @@ cover:
 
 手动添加 job 配置未免过于繁琐, prometheus 支持很多种方式的服务发现, 在 k8s 中是通过 `kubernetes_sd_config` 配置实现的. 通过抓取 `k8s REST API` 自动发现我们部署在 k8s 集群中的 exporter 实例
 
-在 Prometheus Operator 中, 我们无需手动编辑配置文件添加 kubernetes_sd_config 配置, Prometheus Operator 提供了下述资源: 
+在 Prometheus Operator 中, 我们无需手动编辑配置文件添加 kubernetes_sd_config 配置, Prometheus Operator 提供了下述资源:
 
 - `serviceMonitor`: 创建 endpoints 级别的服务发现
 - `podMonitor`: 创建 pod 级别的服务发现
-- `probe`: 创建 ingress 级别的服务发现(用于黑盒监控)
+- `probe`: 创建 ingress 级别的服务发现 (用于黑盒监控)
 
 通过对这三种 CRD 资源的管理实现 prometheus 动态的服务发现.
 
@@ -275,12 +275,12 @@ service 和 pod 级别的标签
 
 可以发现:
 
-- 经过 keep 规则成功从 44 个 target 中筛选到了对应的 node-exporter 
+- 经过 keep 规则成功从 44 个 target 中筛选到了对应的 node-exporter
 - 经过 replace 规则之后 target-labels 有了更好的可读性
 
 ## 2.2 traefik
 
-接下来演示一下通过创建 `serviceMonitor` 实现采集 traefik 的 metrics 指标, traefik 安装请参考 [traefik系列文章](https://www.lvbibir.cn/tags/traefik/) 
+接下来演示一下通过创建 `serviceMonitor` 实现采集 traefik 的 metrics 指标, traefik 安装请参考 [traefik系列文章](https://www.lvbibir.cn/tags/traefik/)
 
 在配置中开启 metric
 
@@ -532,9 +532,9 @@ Targets 界面
 
 ## 3.1 calico-node
 
-以 calico 为例, 使用 podMonitor 资源监控 calico-node 
+以 calico 为例, 使用 podMonitor 资源监控 calico-node
 
-calico 中核心的组件是 Felix，它负责设置路由表和 ACL 规则，同时还负责提供网络健康状况的数据；这些数据会被写入etcd。
+calico 中核心的组件是 Felix，它负责设置路由表和 ACL 规则，同时还负责提供网络健康状况的数据；这些数据会被写入 etcd。
 
 监控 calico 的核心便是监控 felix，felix 相当于 calico 的大脑。
 
@@ -610,8 +610,6 @@ spec:
 查看 prometheus
 
 ![image-20230427100740612](https://image.lvbibir.cn/blog/image-20230427100740612.png)
-
-
 
 # 4. 集群范围的自动发现
 
@@ -785,26 +783,3 @@ spec:
 如下, 我们部署的 node-exporter 已经成功注册, 只要 service 设置了 `annotations` 即可
 
 ![image-20230427171357838](https://image.lvbibir.cn/blog/image-20230427171357838.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

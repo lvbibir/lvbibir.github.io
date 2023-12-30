@@ -15,14 +15,14 @@ cover:
 
 # 1. 简介
 
-kill命令很容易让人产生误解, 以为仅仅是用来终止linux中的进程. 
+kill 命令很容易让人产生误解, 以为仅仅是用来终止 linux 中的进程.
 
-在man手册中对kill命令的解释如下, 不难看出, kill命令是一个用于将指定的signal发送给进程的工具
+在 man 手册中对 kill 命令的解释如下, 不难看出, kill 命令是一个用于将指定的 signal 发送给进程的工具
 
 > DESCRIPTION
->   The command kill sends the specified signal to the specified process or process group.  If no signal is specified, the TERM signal is sent.  The TERM signal will kill processes which do not catch this signal.  For other processes, it may be necessary to use the KILL (9) signal,  since  this signal cannot be caught.
->   Most  modern  shells  have a builtin kill function, with a usage rather similar to that of the command described here.  The '-a' and '-p' options, and the possibility to specify processes by command name are a local extension.
->   If sig is 0, then no signal is sent, but error checking is still performed.
+> The command kill sends the specified signal to the specified process or process group. If no signal is specified, the TERM signal is sent. The TERM signal will kill processes which do not catch this signal. For other processes, it may be necessary to use the KILL (9) signal, since this signal cannot be caught.
+> Most modern shells have a builtin kill function, with a usage rather similar to that of the command described here. The '-a' and '-p' options, and the possibility to specify processes by command name are a local extension.
+> If sig is 0, then no signal is sent, but error checking is still performed.
 
 命令格式
 
@@ -59,7 +59,7 @@ kill -s HUP 和 kill -1 效果一样
 63) SIGRTMAX-1  64) SIGRTMAX
 ```
 
-可以看到kill支持的信号非常多, 在这些信号中只有`9) SIGKILL`可以无条件地终止process, 其他信号都将依照process中定义的信号处理规则来进行忽略或者处理.
+可以看到 kill 支持的信号非常多, 在这些信号中只有 `9) SIGKILL` 可以无条件地终止 process, 其他信号都将依照 process 中定义的信号处理规则来进行忽略或者处理.
 
 上述信号中常用的其实很少, 如下表所示
 
@@ -68,12 +68,12 @@ kill -s HUP 和 kill -1 效果一样
 | 1    | SIGHUP  | 启动被终止的程序, 也可以让进程重新读取自己的配置文件, 类似重新启动 |
 | 2    | SIGINT  | 相当于输入 ctrl-c 来中断一个程序                             |
 | 9    | SIGKILL | 强制中断一个程序, 不会进行资源的清理工作. 如果该程序进行到一半, 可能会有半成品产生, 类似 vim 的 .filename.swp 保留下来 |
-| 15   | SIGTERM | 以正常(优雅)的方式来终止进程, 由程序自身决定该如何终止       |
+| 15   | SIGTERM | 以正常 (优雅) 的方式来终止进程, 由程序自身决定该如何终止       |
 | 19   | SIGSTOP | 相当于输入 ctrl-z 来暂停一个程序                             |
 
 # 3. 常用命令
 
-以正常的方式终止进程, 由于信号15是最常用也是最佳的程序退出方式, 所以 kill 命令不指定信号时, 默认使用的就是信号 15
+以正常的方式终止进程, 由于信号 15 是最常用也是最佳的程序退出方式, 所以 kill 命令不指定信号时, 默认使用的就是信号 15
 
 ```bash
 kill pid
@@ -86,4 +86,3 @@ kill -15 pid
 ```bash
 kill -9 pid
 ```
-

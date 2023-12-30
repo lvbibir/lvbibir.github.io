@@ -24,7 +24,7 @@ cover:
 - 配置：4 cpus / 24G mem / 50G disk
 - 网卡：1.1.1.4/24
 
-我这里采用的是 all-in-one 的配置，即所有操作都在一台主机上，如资源充足可以将 jenkins和gitlab 与后续项目容器分开部署
+我这里采用的是 all-in-one 的配置，即所有操作都在一台主机上，如资源充足可以将 jenkins 和 gitlab 与后续项目容器分开部署
 
 # 1. 系统配置
 
@@ -52,7 +52,7 @@ mkdir /mydata
 
 # 2. docker
 
-先安装docker-compose
+先安装 docker-compose
 
 ```bash
 wget https://github.com/docker/compose/releases/download/v2.16.0/docker-compose-linux-x86_64 -O /usr/local/bin/docker-compose
@@ -61,7 +61,7 @@ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 docker-compose version
 ```
 
-安装docker
+安装 docker
 
 ```bash
 wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
@@ -75,7 +75,7 @@ tee /etc/docker/daemon.json <<-'EOF'
 EOF
 ```
 
-允许docker守护进程的tcp访问，为了后续jenkins构建时调用，以生成docker镜像
+允许 docker 守护进程的 tcp 访问，为了后续 jenkins 构建时调用，以生成 docker 镜像
 
 ```bash
 [root@localhost ~]# vim /usr/lib/systemd/system/docker.service
@@ -128,24 +128,24 @@ bd5b64c7c8c8467985a0faa6fbe1848f
 
 ## 3.2 跳过在线验证
 
-启动成功访问 http://1.1.1.4:8080 ，等出现密码界面后输入密码应该会进入一个离线页面，如下
+启动成功访问 <http://1.1.1.4:8080> ，等出现密码界面后输入密码应该会进入一个离线页面，如下
 
 ![image-20230315161553373](https://image.lvbibir.cn/blog/image-20230315161553373.png)
 
-❗ 这个界面不要关，新开一个窗口访问 http://1.1.1.4:8080/pluginManager/advanced
+❗ 这个界面不要关，新开一个窗口访问 <http://1.1.1.4:8080/pluginManager/advanced>
 
 将 update site 的 url 修改为 `http://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json`，这步是为了加速插件安装
 
 ![image-20230315161635537](https://image.lvbibir.cn/blog/image-20230315161635537.png)
 
-接下来跳过jenkins的在线验证，在终端再执行
+接下来跳过 jenkins 的在线验证，在终端再执行
 
 ```bash
 docker exec -it jenkins /bin/sh -c "echo 127.0.0.1 www.google.com >> /etc/hosts"
 docker exec -it jenkins cat /etc/hosts
 ```
 
-然后回到第一个离线页面刷新一下，应该可以看到离线状态消除了，这里是因为jenkins在 `/mydata/jenkins_home/updates/default.json` 中定义了通过访问 google 来判断 jenkins 节点是否是在线状态
+然后回到第一个离线页面刷新一下，应该可以看到离线状态消除了，这里是因为 jenkins 在 `/mydata/jenkins_home/updates/default.json` 中定义了通过访问 google 来判断 jenkins 节点是否是在线状态
 
 之后选择安装推荐的插件，进入插件安装界面，这个过程耗时会比较长，如果有插件安装失败可以重试
 
@@ -155,7 +155,7 @@ docker exec -it jenkins cat /etc/hosts
 
 ## 3.3 插件配置
 
-dashboard -> 系统管理 -> 插件管理中安装`ssh`插件和`Role-based Authorization Strategy`插件，安装完成后重启jenkins
+dashboard -> 系统管理 -> 插件管理中安装 `ssh` 插件和 `Role-based Authorization Strategy` 插件，安装完成后重启 jenkins
 
 ![image-20230315171029905](https://image.lvbibir.cn/blog/image-20230315171029905.png)
 
@@ -173,9 +173,9 @@ dashboard -> 系统管理 -> 插件管理中安装`ssh`插件和`Role-based Auth
 
 ## 3.4 权限配置
 
-> 我们可以使用Jenkins的角色管理插件来管理Jenkins的用户，比如我们可以给管理员赋予所有权限，运维人员赋予执行任务的相关权限，其他人员只赋予查看权限。
+> 我们可以使用 Jenkins 的角色管理插件来管理 Jenkins 的用户，比如我们可以给管理员赋予所有权限，运维人员赋予执行任务的相关权限，其他人员只赋予查看权限。
 
-在系统管理->全局安全配置中启用基于角色的权限管理：
+在系统管理 ->全局安全配置中启用基于角色的权限管理：
 
 ![image-20230315172813560](https://image.lvbibir.cn/blog/image-20230315172813560.png)
 
@@ -183,7 +183,7 @@ dashboard -> 系统管理 -> 插件管理中安装`ssh`插件和`Role-based Auth
 
 ![image-20230315172855436](https://image.lvbibir.cn/blog/image-20230315172855436.png)
 
-分配管理员、运维和other三个角色，分别配置对应权限
+分配管理员、运维和 other 三个角色，分别配置对应权限
 
 ![image-20230315173418268](https://image.lvbibir.cn/blog/image-20230315173418268.png)
 
@@ -211,7 +211,7 @@ docker run --detach --restart=always\
 docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
 ```
 
-访问http://1.1.1.4:1080/，默认用户为root
+访问<http://1.1.1.4:1080/>，默认用户为 root
 
 ## 4.2 配置
 
@@ -233,11 +233,7 @@ docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
 
 ![image-20230316103923131](https://image.lvbibir.cn/blog/image-20230316103923131.png)
 
-
-
-
-
-clone github上的原项目，我是windows系统，所以这里用的是git-bash
+clone github 上的原项目，我是 windows 系统，所以这里用的是 git-bash
 
 ```bash
 git clone https://github.com/macrozheng/mall-swarm.git
@@ -268,13 +264,13 @@ git push gitlab master
 
 默认配置不合理，修改 docker-compose-env.yml 中 nginx 的配置文件挂载
 
-```
+```textile
       - /data/nginx/nginx.conf:/etc/nginx/nginx.conf #配置文件挂载
 ```
 
 ![image-20230316123226022](https://image.lvbibir.cn/blog/image-20230316123226022.png)
 
-上传到gitlab
+上传到 gitlab
 
 ```bash
 git add .
@@ -284,7 +280,7 @@ git push gitlab master
 
 # 5. 依赖服务部署
 
-需要上传到服务器的配置文件准备，如下图所示，为了方便可以将整个`document`目录传到服务器
+需要上传到服务器的配置文件准备，如下图所示，为了方便可以将整个 `document` 目录传到服务器
 
 ![image-20230316105111389](https://image.lvbibir.cn/blog/image-20230316105111389.png)
 
@@ -309,6 +305,7 @@ Elasticsearch
 Nginx
 
 - 创建目录，上传配置文件
+
   ```bash
   mkdir -p /mydata/nginx/conf/
   cp /mydata/document/docker/nginx.conf /mydata/nginx/conf/
@@ -317,6 +314,7 @@ Nginx
 Logstash
 
 - 创建目录上传配置文件
+
   ```bash
   mkdir /mydata/logstash
   cp /mydata/document/elk/logstash.conf /mydata/logstash/
@@ -357,7 +355,7 @@ mysql
   docker cp /mydata/document/sql/mall.sql mysql:/
   ```
 
-- 进入mysql容器执行如下操作
+- 进入 mysql 容器执行如下操作
 
   ```bash
   # 进入mysql容器
@@ -409,36 +407,36 @@ Logstash
 
 rabbitmq
 
-> 需要创建一个mall用户并设置虚拟host为/mall
+> 需要创建一个 mall 用户并设置虚拟 host 为/mall
 
-- 访问管理页面: http://1.1.1.4:15672/ 
+- 访问管理页面: <http://1.1.1.4:15672/>
   默认账户密码: guest / guest
 
 - 创建管理员用户: mall / mall
 
   ![image-20230316121205905](https://image.lvbibir.cn/blog/image-20230316121205905.png)
 
-- 创建一个新的虚拟host为 /mall
+- 创建一个新的虚拟 host 为 /mall
 
   ![image-20230316121307706](https://image.lvbibir.cn/blog/image-20230316121307706.png)
 
-- 点击mall用户进入用户配置界面
+- 点击 mall 用户进入用户配置界面
 
   ![image-20230316121408922](https://image.lvbibir.cn/blog/image-20230316121408922.png)
 
-- 给mall账户配置虚拟host /mall 的权限
+- 给 mall 账户配置虚拟 host /mall 的权限
 
   ![image-20230316121547316](https://image.lvbibir.cn/blog/image-20230316121547316.png)
 
 nacos
 
-- 由于我们使用Nacos作为配置中心，统一管理配置，所以我们需要将项目`config`目录下的所有配置都添加到Nacos中
-  Nacos访问地址：http://1.1.1.4:8848/nacos/
+- 由于我们使用 Nacos 作为配置中心，统一管理配置，所以我们需要将项目 `config` 目录下的所有配置都添加到 Nacos 中
+  Nacos 访问地址：<http://1.1.1.4:8848/nacos/>
   账号密码：nacos / nacos
 
 - 需要上传的配置
 
-  <img src="https://image.lvbibir.cn/blog/image-20230316124304792.png" alt="image-20230316124304792"  />
+  <img src="https://image.lvbibir.cn/blog/image-20230316124304792.png" alt="image-20230316124304792" />
 
 - 上传配置
 
@@ -448,11 +446,11 @@ nacos
 
   ![image-20230316124828650](https://image.lvbibir.cn/blog/image-20230316124828650.png)
 
-# 6. jenkins手动发布项目
+# 6. jenkins 手动发布项目
 
 ## 6.1 脚本配置
 
-> Jenkins自动化部署是需要依赖Linux执行脚本的
+> Jenkins 自动化部署是需要依赖 Linux 执行脚本的
 
 添加执行权限
 
@@ -460,9 +458,9 @@ nacos
 chmod a+x /mydata/document/sh/*.sh
 ```
 
-> 之前使用的是`Docker Compose`启动所有依赖服务，会默认创建一个网络，所有的依赖服务都会在此网络之中，不同网络内的服务无法互相访问。所以需要指定`sh`脚本中服务运行的的网络，否则启动的应用服务会无法连接到依赖服务。
+> 之前使用的是 `Docker Compose` 启动所有依赖服务，会默认创建一个网络，所有的依赖服务都会在此网络之中，不同网络内的服务无法互相访问。所以需要指定 `sh` 脚本中服务运行的的网络，否则启动的应用服务会无法连接到依赖服务。
 
-修改脚本内容，为每个脚本添加`--network docker_default \`
+修改脚本内容，为每个脚本添加 `--network docker_default \`
 
 ```bash
 sed -i '/^docker run/ a\--network docker_default \\' /mydata/document/sh/*.sh
@@ -472,11 +470,11 @@ sed -i '/^docker run/ a\--network docker_default \\' /mydata/document/sh/*.sh
 
 ![image-20230316125833420](https://image.lvbibir.cn/blog/image-20230316125833420.png)
 
-## 6.2 jenkins配置
+## 6.2 jenkins 配置
 
-### 6.2.1 mall-admin工程配置
+### 6.2.1 mall-admin 工程配置
 
-> 由于各个模块执行任务的创建都大同小异，下面将详细讲解`mall-admin`模块任务的创建，其他模块将简略讲解。
+> 由于各个模块执行任务的创建都大同小异，下面将详细讲解 `mall-admin` 模块任务的创建，其他模块将简略讲解。
 
 ![image-20230316131035301](https://image.lvbibir.cn/blog/image-20230316131035301.png)
 
@@ -484,23 +482,23 @@ sed -i '/^docker run/ a\--network docker_default \\' /mydata/document/sh/*.sh
 
 ![image-20230316131241019](https://image.lvbibir.cn/blog/image-20230316131241019.png)
 
-创建一个构建，构建`mall-swarm`项目中的依赖模块，否则当构建可运行的服务模块时会因为无法找到这些模块而构建失败
+创建一个构建，构建 `mall-swarm` 项目中的依赖模块，否则当构建可运行的服务模块时会因为无法找到这些模块而构建失败
 
 ```bash
 # 只install mall-common,mall-mbg两个模块
 clean install -pl mall-common,mall-mbg -am
 ```
 
-创建一个构建，单独构建并打包`mall-admin`模块
+创建一个构建，单独构建并打包 `mall-admin` 模块
 
-```
+```textile
 clean package
 ${WORKSPACE}/mall-admin/pom.xml
 ```
 
 ![image-20230316131838994](https://image.lvbibir.cn/blog/image-20230316131838994.png)
 
-再创建一个构建，通过SSH去执行`sh`脚本，这里执行的是`mall-admin`的运行脚本：
+再创建一个构建，通过 SSH 去执行 `sh` 脚本，这里执行的是 `mall-admin` 的运行脚本：
 
 ![image-20230316132503984](https://image.lvbibir.cn/blog/image-20230316132503984.png)
 
@@ -522,7 +520,7 @@ ${WORKSPACE}/mall-admin/pom.xml
 
 ![image-20230316134827150](https://image.lvbibir.cn/blog/image-20230316134827150.png)
 
-> 由于作为注册中心和配置中心的Nacos已经启动了，其他模块基本没有启动顺序的限制，但是最好还是按照下面的顺序启动。
+> 由于作为注册中心和配置中心的 Nacos 已经启动了，其他模块基本没有启动顺序的限制，但是最好还是按照下面的顺序启动。
 
 推荐启动顺序：
 

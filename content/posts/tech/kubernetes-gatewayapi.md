@@ -14,7 +14,7 @@ cover:
 
 # 1. 简介
 
-Gateway API（之前叫 Service API）是由 SIG-NETWORK 社区管理的开源项目，项目地址：https://gateway-api.sigs.k8s.io/。
+Gateway API（之前叫 Service API）是由 SIG-NETWORK 社区管理的开源项目，项目地址：<https://gateway-api.sigs.k8s.io/>。
 
 Ingress 资源对象不能很好的满足网络需求，很多场景下 Ingress 控制器都需要通过定义 annotations 或者 crd 来进行功能扩展，这对于使用标准和支持是非常不利的，新推出的 Gateway API 旨在通过可扩展的面向角色的接口来增强服务网络。
 
@@ -26,7 +26,7 @@ Gateway API 是 Kubernetes 中的一个 API 资源集合，包括 GatewayClass�
 
 ## 2.1 crd
 
-内容较长，直接复制[官网yaml](https://doc.traefik.io/traefik/v2.5/reference/dynamic-configuration/kubernetes-gateway/#definitions)
+内容较长，直接复制 [官网yaml](https://doc.traefik.io/traefik/v2.5/reference/dynamic-configuration/kubernetes-gateway/#definitions)
 
 ```bash
 [root@k8s-node1 traefik]# kubectl apply -f  gateway-api-crd.yml
@@ -95,11 +95,10 @@ subjects:
     namespace: default
 ```
 
-应用yaml
+应用 yaml
 
 ```bash
 [root@k8s-node1 traefik]# kubectl apply -f gateway-api-rbac.yml
 clusterrole.rbac.authorization.k8s.io/gateway-role created
 clusterrolebinding.rbac.authorization.k8s.io/gateway-controller created
 ```
-

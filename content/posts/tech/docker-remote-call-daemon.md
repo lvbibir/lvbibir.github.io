@@ -13,48 +13,60 @@ cover:
 ---
 
 # 环境准备
-主机版本为Centos7.4，docker版本为docker-ce-18.09.7-3.el7.x86_64
-node1：192.168.0.111
-node2：192.168.0.107
-1. 两台安装docker的环境
-2. 保证两台主机上的docker的Client API与Server APi版本一致
 
-# 修改daemon.json配置文件，添加label，用于区别两台docker主机
+主机版本为 Centos7.4，docker 版本为 docker-ce-18.09.7-3.el7.x86_64
+
+node1：192.168.0.111
+
+node2：192.168.0.107
+
+1. 两台安装 docker 的环境
+2. 保证两台主机上的 docker 的 Client API 与 Server APi 版本一致
+
+# 修改 daemon.json 配置文件，添加 label，用于区别两台 docker 主机
+
 node1：
 
-```
+```textile
 [root@localhost ~]# vim /etc/docker/daemon.json
 {
 "registry-mirrors": ["http://f1361db2.m.daocloud.io"],    
 "labels": ["-label nodeName=node1"]          #添加label
 }
 ```
+
 查看效果
 
-```
+```textile
 [root@localhost ~]# systemctl restart docker
 [root@localhost ~]# docker info
 ```
+
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20190810222537259.png)
+
 node2;
+
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20190810223150493.png)
 
-# 修改Client与守护进程通信的方式（修改为tcp的方式）
-修改通信方式共有三种方式：
-1. 修改daemon.json文件，添加host键值对
-添加："hosts": ["tcp://0.0.0.0:2375"]
-开放本机ip的2375端口，可以让其他docker主机的client进行连接
-2. 修改/lib/systemd/system/docker.service文件，添加-H启动参数
-修改：ExecStart=/usr/bin/docker -H tcp://0.0.0.0:2375
-3. 使用dokcerd启动docker，添加-H参数
-dockerd -H tcp://0.0.0.0:2375
+# 修改 Client 与守护进程通信的方式（修改为 tcp 的方式）
 
-Centos7中/etc/docker/daemon.json会被docker.service的配置文件覆盖，直接添加daemon.json不起作用
+修改通信方式共有三种方式：
+
+1. 修改 daemon.json 文件，添加 host 键值对
+添加："hosts": ["tcp://0.0.0.0:2375"]
+开放本机 ip 的 2375 端口，可以让其他 docker 主机的 client 进行连接
+2. 修改/lib/systemd/system/docker.service 文件，添加 -H 启动参数
+修改：ExecStart=/usr/bin/docker -H <tcp://0.0.0.0:2375>
+3. 使用 dokcerd 启动 docker，添加 -H 参数
+dockerd -H <tcp://0.0.0.0:2375>
+
+Centos7 中/etc/docker/daemon.json 会被 docker.service 的配置文件覆盖，直接添加 daemon.json 不起作用
+
 所以我使用的是第二种方式
 
 node1：
 
-```
+```textile
 [root@localhost ~]# vim /lib/systemd/system/docker.service
 ExecStart=/usr/bin/docker -H tcp://0.0.0.0:2375 
 [root@localhost ~]# systemctl daemon-reload
@@ -66,47 +78,52 @@ root       5879   3919  0 23:17 pts/1    00:00:00 grep --color=auto docker
 ```
 
 # 远程访问
+
 node2：
 
-```
+```textile
 [root@localhost ~]# curl http://192.168.0.111:2375/info
 ```
+
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20190810232112308.png)
 
-
-```
+```textile
 [root@localhost ~]# docker -H tcp://192.168.0.111:2375 info
 ```
 
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20190810232347323.png)
 
-如果频繁使用-H选项未免太过于麻烦，可以修改DOCKER_HOST这个环境变量的值，node2就可以像使用本地的docker一样来远程连接node1的守护进程
+如果频繁使用 -H 选项未免太过于麻烦，可以修改 DOCKER_HOST 这个环境变量的值，node2 就可以像使用本地的 docker 一样来远程连接 node1 的守护进程
 
-```
+```textile
 [root@localhost ~]# export DOCKER_HOST="tcp://192.168.0.111:2375"
 [root@localhost ~]# docker info
 ```
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190810232828582.png)
-当无需再远程连接node1的守护进程时，将DOCKER_HOST环境变量置空即可
 
-```
+![在这里插入图片描述](https://image.lvbibir.cn/blog/20190810232828582.png)
+
+当无需再远程连接 node1 的守护进程时，将 DOCKER_HOST 环境变量置空即可
+
+```textile
 [root@localhost ~]# export DOCKER_HOST=""
 [root@localhost ~]# docker info
 ```
+
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20190810233039709.png)
 
-
-
 node1：
-因为node1设置了修改Client与守护进程的通信方式，所以本地无法再通过默认的socket进行连接，必须使用-H选项通过tcp来进行连接，也可以通过DOCKER_HOST来修改
-```
+
+因为 node1 设置了修改 Client 与守护进程的通信方式，所以本地无法再通过默认的 socket 进行连接，必须使用 -H 选项通过 tcp 来进行连接，也可以通过 DOCKER_HOST 来修改
+
+```textile
 [root@localhost ~]# docker info
 Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
 [root@localhost ~]# docker -H 0.0.0.0:2375 info
 ```
-如果本机依旧希望使用默认的socket进行连接，可以在/lib/systemd/system/docker.service中再添加一个-H选项
 
-```
+如果本机依旧希望使用默认的 socket 进行连接，可以在/lib/systemd/system/docker.service 中再添加一个 -H 选项
+
+```textile
 [root@localhost ~]# vim /lib/systemd/system/docker.service
 ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
 [root@localhost ~]# systemctl daemon-reload

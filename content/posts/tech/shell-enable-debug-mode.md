@@ -10,15 +10,16 @@ description: ""
 cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 
 ---
+
 # 前言
 
-shell脚本是没有debug模式的，不过可以通过 `set` 指令实现简单的debug功能
+shell 脚本是没有 debug 模式的，不过可以通过 `set` 指令实现简单的 debug 功能
 
-shell脚本中默认每条指令都会从上到下依次执行，但是当某行指令报错时，我们大多数情况下是不希望继续执行后续指令的
+shell 脚本中默认每条指令都会从上到下依次执行，但是当某行指令报错时，我们大多数情况下是不希望继续执行后续指令的
 
-这时可以使用shell脚本中 `set` 指令的四个参数：`-e、-u、-x、-o pipefail`
+这时可以使用 shell 脚本中 `set` 指令的四个参数：`-e、-u、-x、-o pipefail`
 
-> 命令报错即返回值（$?）不为0
+> 命令报错即返回值（$?）不为 0
 
 # set -e
 
@@ -30,7 +31,7 @@ shell脚本中默认每条指令都会从上到下依次执行，但是当某行
 
 脚本内容
 
-foo是一个不存在的命令，用于模拟命令报错
+foo 是一个不存在的命令，用于模拟命令报错
 
 ```bash
 #!/bin/bash
@@ -41,7 +42,7 @@ echo "hello"
 
 执行结果
 
-```
+```textile
 ./test.sh: line 3: foo: command not found
 hello
 ```
@@ -61,7 +62,7 @@ echo "hello"
 
 执行结果
 
-```
+```textile
 ./test.sh: line 5: foo: command not found
 ```
 
@@ -76,7 +77,7 @@ foo || true
 echo "hello"
 ```
 
-```
+```textile
 ./test.sh: line 5: foo: command not found
 hello
 ```
@@ -102,7 +103,7 @@ foo | echo "a"
 echo "hello"
 ```
 
-```
+```textile
 ./test.sh: line 5: foo: command not found
 a
 hello
@@ -119,7 +120,7 @@ foo | echo "a"
 echo "hello"
 ```
 
-```
+```textile
 ./test.sh: line 5: foo: command not found
 a
 ```
@@ -139,14 +140,14 @@ echo $a
 echo "hello"
 ```
 
-```
+```textile
 
 hello
 ```
 
 ## after
 
-```
+```textile
 #!/bin/bash
 
 set -euo pipefail
@@ -155,7 +156,7 @@ echo $a
 echo "hello"
 ```
 
-```
+```textile
 ./test.sh: line 5: a: unbound variable
 ```
 
@@ -165,9 +166,9 @@ echo "hello"
 
 另外，它在打印的时候会先把变量解析出来
 
-纵然 log 可能会乱一些，但也比debug的时候掉头发强
+纵然 log 可能会乱一些，但也比 debug 的时候掉头发强
 
-```
+```textile
 #!/bin/bash
 
 set -euox pipefail
@@ -177,7 +178,7 @@ echo $a
 echo "hello"
 ```
 
-```
+```textile
 + a=2
 + echo 2   # 这里已经将变量 a 解析为 2 了
 2
@@ -187,4 +188,4 @@ hello
 
 # 参考
 
-https://zhuanlan.zhihu.com/p/107135290
+<https://zhuanlan.zhihu.com/p/107135290>

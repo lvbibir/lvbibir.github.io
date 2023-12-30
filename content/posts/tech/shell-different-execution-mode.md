@@ -11,13 +11,12 @@ cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 
 ---
 
-
 shell 脚本通常有 `sh filename`、`bash filename`、`./filename`、`source filename` 这四种执行方式
 
 - `source filename` 可以使用 `. filename` 代替，在当前的 bash 环境下读取并执行脚本文件中的命令，且脚本文件的变量，在脚本执行完成后会保存下来
-- `./filename` 和  `sh filename` 或者  `bash filename`  是等效的，都是开启一个子shell来运行脚本文件，脚本中设置的变量执行完毕后不会保存
+- `./filename` 和 `sh filename` 或者 `bash filename` 是等效的，都是开启一个子 shell 来运行脚本文件，脚本中设置的变量执行完毕后不会保存
 
-> 除`./filename` 外，`source filename` 、`. filename` 、`sh filename`  、`bash filename` 都是不需要执行权限的                                    
+> 除 `./filename` 外，`source filename` 、`. filename` 、`sh filename` 、`bash filename` 都是不需要执行权限的
 
 变量和权限问题示例
 
@@ -82,7 +81,7 @@ lvbibir
 
 关于是否在子 bash 环境运行的区别出了变量问题还会存在一些其他影响，如下测试
 
-已知目前存在一个 mysqld 进程，其 pid 为 29426 ，写一个监控pid的脚本
+已知目前存在一个 mysqld 进程，其 pid 为 29426 ，写一个监控 pid 的脚本
 
 ```bash
 [root@lvbibir ~]# cat test.sh
@@ -127,11 +126,11 @@ sleep 30
 
 ![image-20220630160731914](https://image.lvbibir.cn/blog/image-20220630160731914.png)
 
-- 第一个pid是在子shell中执行监控脚本的进程号
-- 第二个pid不太清楚哪里来的，也grep不到这个进程号，应该是脚本执行一瞬间就释放掉了
-- 第三个pid是mysql实际运行中的进程号
+- 第一个 pid 是在子 shell 中执行监控脚本的进程号
+- 第二个 pid 不太清楚哪里来的，也 grep 不到这个进程号，应该是脚本执行一瞬间就释放掉了
+- 第三个 pid 是 mysql 实际运行中的进程号
 
-实际中脚本的pid和mysqld的pid顺序不太一样，取决于pid的大小
+实际中脚本的 pid 和 mysqld 的 pid 顺序不太一样，取决于 pid 的大小
 
 在脚本再添加个 grep 过滤掉脚本本身的进程来规避这个问题
 
@@ -146,8 +145,6 @@ echo $pid
 29426
 ```
 
-
-
 # 参考
 
-https://blog.csdn.net/houxiaoni01/article/details/105161356
+<https://blog.csdn.net/houxiaoni01/article/details/105161356>

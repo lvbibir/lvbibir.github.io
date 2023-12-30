@@ -19,9 +19,10 @@ description: "介绍kubernetes中的存储使用简介，例如emptydir、hostpa
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
+
 # 前言
 
-基于`centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
+基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
 **为什么需要数据卷**
 
@@ -29,32 +30,32 @@ cover:
 
 2. 启动过程中产生的临时数据，该临时数据需要多个容器间共享
 
-3. 启动过程中产生的持久化数据，例如mysql的data
+3. 启动过程中产生的持久化数据，例如 mysql 的 data
 
 **数据卷概述**
 
-- kubernetes中的volume提供了在容器中挂载外部存储的能力
-- Pod需要设置卷来源（spec.volume）和挂载点（spec.containers.volumeMounts）两个信息后才可以使用相应的Volume
+- kubernetes 中的 volume 提供了在容器中挂载外部存储的能力
+- Pod 需要设置卷来源（spec.volume）和挂载点（spec.containers.volumeMounts）两个信息后才可以使用相应的 Volume
 
 常用的数据卷：
 
-- 本地（hostPath，emptyDir） 
+- 本地（hostPath，emptyDir）
 
-- 网络（NFS，Ceph，GlusterFS） 
+- 网络（NFS，Ceph，GlusterFS）
 
-- 公有云（AWS EBS） 
+- 公有云（AWS EBS）
 
-- K8S资源（configmap，secret）
+- K8S 资源（configmap，secret）
 
 # emptyDir（临时存储卷）
 
-emptyDir卷：是一个临时存储卷，与Pod生命周期绑定一起，如果Pod删除了卷也会被删除。
+emptyDir 卷：是一个临时存储卷，与 Pod 生命周期绑定一起，如果 Pod 删除了卷也会被删除。
 
-应用场景：Pod中容器之间数据共享
+应用场景：Pod 中容器之间数据共享
 
-emptyDir的实际存储路径在pod所在节点的`/var/lib/kubelet/pods/<pod-id>/volumes/kubernetes.io~empty-dir`目录下
+emptyDir 的实际存储路径在 pod 所在节点的 `/var/lib/kubelet/pods/<pod-id>/volumes/kubernetes.io~empty-dir` 目录下
 
-查看pod的uid
+查看 pod 的 uid
 
 ```bash
 kubectl get pod <pod-name> -o jsonpath='{.metadata.uid}'
@@ -101,11 +102,11 @@ spec:
 
 # hostPath（节点存储卷）
 
-hostPath卷：挂载Node文件系统（Pod所在节点）上文件或者目录到Pod中的容器。
+hostPath 卷：挂载 Node 文件系统（Pod 所在节点）上文件或者目录到 Pod 中的容器。
 
-应用场景：Pod中容器需要访问宿主机文件
+应用场景：Pod 中容器需要访问宿主机文件
 
-示例yaml
+示例 yaml
 
 ```yaml
 apiVersion: v1
@@ -131,9 +132,9 @@ spec:
 
 # NFS（网络存储卷）
 
-NFS卷提供对NFS挂载支持，可以自动将NFS共享路径挂载到Pod中
+NFS 卷提供对 NFS 挂载支持，可以自动将 NFS 共享路径挂载到 Pod 中
 
-配置nfs服务端，
+配置 nfs 服务端，
 
 ```bash
 yum install nfs-utils # nfs-utils包每个节点都需安装
@@ -146,16 +147,16 @@ systemctl enable --now rpcbind
 
 - 常用选项：
   - ro：客户端挂载后，其权限为只读，默认选项；
-  - rw:读写权限；
+  - rw: 读写权限；
   - sync：同时将数据写入到内存与硬盘中；
   - async：异步，优先将数据保存到内存，然后再写入硬盘；
-  - Secure：要求请求源的端口小于1024
+  - Secure：要求请求源的端口小于 1024
 - 用户映射：
-  - root_squash:当NFS客户端使用root用户访问时，映射到NFS服务器的匿名用户；
-  - no_root_squash:当NFS客户端使用root用户访问时，映射到NFS服务器的root用户；
-  - all_squash:全部用户都映射为服务器端的匿名用户；
-  - anonuid=UID：将客户端登录用户映射为此处指定的用户uid；
-  - anongid=GID：将客户端登录用户映射为此处指定的用户gid
+  - root_squash: 当 NFS 客户端使用 root 用户访问时，映射到 NFS 服务器的匿名用户；
+  - no_root_squash: 当 NFS 客户端使用 root 用户访问时，映射到 NFS 服务器的 root 用户；
+  - all_squash: 全部用户都映射为服务器端的匿名用户；
+  - anonuid=UID：将客户端登录用户映射为此处指定的用户 uid；
+  - anongid=GID：将客户端登录用户映射为此处指定的用户 gid
 
 客户端测试
 
@@ -165,7 +166,7 @@ systemctl enable --now rpcbind
 k8s-node1:/nfs nfs4       44G  4.0G   41G   9% /mnt
 ```
 
-示例yaml
+示例 yaml
 
 ```yaml
 apiVersion: apps/v1
@@ -229,29 +230,29 @@ kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP        5d2h
 hello, nfs
 ```
 
-# pv和pvc（持久存储卷）
+# pv 和 pvc（持久存储卷）
 
 ## 基础概念
 
 - PersistentVolume（PV）：存储资源创建和使用抽象化，使得存储作为集群中的资源管理
 
-- PersistentVolumeClaim（PVC）：让用户不需要关心具体的Volume实现细节
+- PersistentVolumeClaim（PVC）：让用户不需要关心具体的 Volume 实现细节
 
 ![image-20221006103106669](https://image.lvbibir.cn/blog/image-20221006103106669.png)
 
-pvc如何匹配到pv
+pvc 如何匹配到 pv
 
 - 存储空间的请求
 
-  匹配最接近的pv，如果没有满足条件的pv，则pod处于pending状态
+  匹配最接近的 pv，如果没有满足条件的 pv，则 pod 处于 pending 状态
 
 - 访问模式的设置
 
 存储空间字段能否限制实际可用容量
 
-- 不能，存储空间字段只用于匹配到pv，具体可用容量取决于网络存储
+- 不能，存储空间字段只用于匹配到 pv，具体可用容量取决于网络存储
 
-## pv生命周期
+## pv 生命周期
 
 **AccessModes（访问模式）：**
 
@@ -275,7 +276,7 @@ AccessModes 是用来对 PV 进行访问模式的设置，用于描述用户应�
 
 **STATUS（状态）：**
 
-一个 PV 的生命周期中，可能会处于4中不同的阶段：
+一个 PV 的生命周期中，可能会处于 4 中不同的阶段：
 
 - Available（可用）：表示可用状态，还未被任何 PVC 绑定
 
@@ -285,7 +286,7 @@ AccessModes 是用来对 PV 进行访问模式的设置，用于描述用户应�
 
 - Failed（失败）： 表示该 PV 的自动回收失败
 
-pv示例
+pv 示例
 
 ```yaml
 apiVersion: v1
@@ -302,7 +303,7 @@ spec:
     path: /nfs
 ```
 
-pvc示例
+pvc 示例
 
 ```yaml
 apiVersion: v1
@@ -377,28 +378,28 @@ demo-pvc   ClusterIP   10.97.28.93   <none>        80/TCP    102s
 pvc for NFS is successful
 ```
 
-## pv动态供给
+## pv 动态供给
 
-之前的PV使用方式称为静态供给，需要K8s运维工程师提前创建一堆PV，供开发者使用
+之前的 PV 使用方式称为静态供给，需要 K8s 运维工程师提前创建一堆 PV，供开发者使用
 
-因此，K8s开始支持PV动态供给，使用StorageClass对象实现。
+因此，K8s 开始支持 PV 动态供给，使用 StorageClass 对象实现。
 
-> 查看k8s原生支持的共享存储：https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner
+> 查看 k8s 原生支持的共享存储：<https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner>
 
 ![image-20221006112111133](https://image.lvbibir.cn/blog/image-20221006112111133.png)
 
-**基于NFS实现自动创建pv插件**
+**基于 NFS 实现自动创建 pv 插件**
 
-自动创建的pv挂载路径为`<nfs-path>/<namespace>-<pvc-name>-<pv-name>`
+自动创建的 pv 挂载路径为 `<nfs-path>/<namespace>-<pvc-name>-<pv-name>`
 
-- pvc-name：默认情况下为yaml中自定义的pvc-name，使用statefulset控制器时pvc的名字为`<volumeClaimTemplates-name>-<pod-name>`
-- pv-name：pv的名字为`pvc-<pvc-uid>`
+- pvc-name：默认情况下为 yaml 中自定义的 pvc-name，使用 statefulset 控制器时 pvc 的名字为 `<volumeClaimTemplates-name>-<pod-name>`
+- pv-name：pv 的名字为 `pvc-<pvc-uid>`
 
-k8s-1.20版本后默认禁止使用selfLink，需要打开一下
+k8s-1.20 版本后默认禁止使用 selfLink，需要打开一下
 
-修改k8s的apiserver参数，改完 apiserver 会自动重启
+修改 k8s 的 apiserver 参数，改完 apiserver 会自动重启
 
-```
+```textile
 [root@k8s-node1 ~]#  vi /etc/kubernetes/manifests/kube-apiserver.yaml
 apiVersion: v1
 ···
@@ -406,13 +407,13 @@ apiVersion: v1
     - --feature-gates=RemoveSelfLink=false # 添加这个配置
 ```
 
-### 部署NFS插件
+### 部署 NFS 插件
 
 > 此组件是对 nfs-client-provisioner 的扩展，nfs-client-provisioner 已经不提供更新，且 nfs-client-provisioner 的 Github 仓库已经迁移到 [NFS-Subdir-External-Provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner) 的仓库
 
 #### rbac
 
-创建 `nfs-rbac.yml` 
+创建 `nfs-rbac.yml`
 
 ```yaml
 apiVersion: v1
@@ -525,7 +526,7 @@ spec:
 
 #### storageClass
 
-创建 `nfs-sc.yml` 
+创建 `nfs-sc.yml`
 
 ```yaml
 apiVersion: storage.k8s.io/v1
@@ -622,4 +623,3 @@ persistentvolume/pvc-22b65e10-ab97-47eb-aaa1-6c354a749a55   2Gi        RWO      
 total 4
 drwxrwxrwx. 2 root root  6 Apr 11 17:37 default-pvc-auto-pvc-22b65e10-ab97-47eb-aaa1-6c354a749a55
 ```
-

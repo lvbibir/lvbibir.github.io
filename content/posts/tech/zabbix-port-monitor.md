@@ -63,7 +63,7 @@ fi
 exit 0
 ```
 
-此步可以略过, 如果用 root 用户执行过脚本进行测试, 需要执行一下, 因为 root 用户执行过脚本后, 这个目录的属主将是 root, 而 zabbix 执行脚本使用的是 zabbix 用户, 会导致没有权限写入 
+此步可以略过, 如果用 root 用户执行过脚本进行测试, 需要执行一下, 因为 root 用户执行过脚本后, 这个目录的属主将是 root, 而 zabbix 执行脚本使用的是 zabbix 用户, 会导致没有权限写入
 
 ```bash
 chown zabbix:zabbix /var/log/smslink_monitor
@@ -157,8 +157,6 @@ traceroute to 10.**.**.22 (10.**.**.22), 30 hops max, 60 byte packets
 这里的表达式代表如果连续的两个值的最小值不为 0 则触发告警, 即连续两次值都不为 0 触发告警, 这是考虑到整体网络比较复杂, 网络波动可能会导致误报
 
 ![image-20231207152335550](https://image.lvbibir.cn/blog/image-20231207152335550.png)
-
-
 
 八条链路分别添加一下触发器
 

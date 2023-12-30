@@ -19,7 +19,7 @@ cover:
 
 # 1. 简介
 
-[项目地址](https://github.com/grafana/loki/)  [官方文档](https://grafana.com/docs/loki/latest/)
+[项目地址](https://github.com/grafana/loki/) [官方文档](https://grafana.com/docs/loki/latest/)
 
 Loki 是 Grafana Labs 团队最新的开源项目，是一个水平可扩展，高可用性，多租户的日志聚合系统。它的设计非常经济高效且易于操作，因为它不会为日志内容编制索引，而是为每个日志流编制一组标签，专门为 [Prometheus](https://cloud.tencent.com/product/tmp?from=20065&from_column=20065) 和 Kubernetes 用户做了相关优化。该项目受 Prometheus 启发，官方的介绍就是： `Like Prometheus, But For Logs.`
 
@@ -29,7 +29,7 @@ Loki 是 Grafana Labs 团队最新的开源项目，是一个水平可扩展，�
 
 - 低索引开销
   - 不对日志进行全文索引。通过存储压缩非结构化日志和仅索引元数据，Loki 操作起来会更简单，更省成本。
-  - 这样做可以大幅降低索引资源开销, es无论你查不查，巨大的索引开销必须时刻承担
+  - 这样做可以大幅降低索引资源开销, es 无论你查不查，巨大的索引开销必须时刻承担
 
 - 并发查询
   - 为了弥补没有全文索引带来的查询降速使用，Loki 将把查询分解成较小的分片，可以理解为并发的 grep
@@ -42,7 +42,7 @@ Loki 是 Grafana Labs 团队最新的开源项目，是一个水平可扩展，�
 
 - 服务发现
   - 支持与 prometheus 一样的服务发现功能, 特别适合储存 Kubernetes Pod 日志
-  - 无需使用日志落盘或者 sidecar 
+  - 无需使用日志落盘或者 sidecar
 
 当然, 它也有一定的缺点:
 

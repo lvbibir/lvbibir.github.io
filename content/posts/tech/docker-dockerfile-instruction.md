@@ -14,13 +14,13 @@ cover:
 
 ## 前言
 
-Dockerfile用于构建docker镜像, 实际上就是把在linux下的命令操作写到了Dockerfile中, 通过Dockerfile去执行设置好的操作命令, 保证通过Dockerfile的构建镜像是一致的.
+Dockerfile 用于构建 docker 镜像, 实际上就是把在 linux 下的命令操作写到了 Dockerfile 中, 通过 Dockerfile 去执行设置好的操作命令, 保证通过 Dockerfile 的构建镜像是一致的.
 
-Dockerfile 是一个文本文件，其内包含了一条条的指令(`Instruction`)，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。
+Dockerfile 是一个文本文件，其内包含了一条条的指令 (`Instruction`)，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。
 
 参考内容：
 
-- https://yeasy.gitbook.io/docker_practice/image/dockerfile
+- <https://yeasy.gitbook.io/docker_practice/image/dockerfile>
 
 ## FROM 指定基础镜像
 
@@ -56,16 +56,16 @@ FROM alpine@sha256:b6ca290b6b4cdcca5b3db3ffa338ee0285c11744b4a6abaa9627746ee3291
 FROM alpine:3.17.3@sha256:b6ca290b6b4cdcca5b3db3ffa338ee0285c11744b4a6abaa9627746ee3291d8d
 ```
 
-除了选择现有镜像为基础镜像外，Docker还存在一个特殊的镜像，名为 `scratch`。这个镜像无法从别处拉取, 可以理解为是Docker自 [1.5.0](https://github.com/moby/moby/pull/8827) 版本开始的自带镜像, 它仅包含一个空的文件系统.
+除了选择现有镜像为基础镜像外，Docker 还存在一个特殊的镜像，名为 `scratch`。这个镜像无法从别处拉取, 可以理解为是 Docker 自 [1.5.0](https://github.com/moby/moby/pull/8827) 版本开始的自带镜像, 它仅包含一个空的文件系统.
 
-scratch镜像一般用于构建基础镜像, 比如官方镜像`Ubuntu`
+scratch 镜像一般用于构建基础镜像, 比如官方镜像 `Ubuntu`
 
 ## COPY 复制文件
 
 格式:
 
-- `COPY [--chown=<user>:<group>] <源路径1> [源路径2] ... <目标路径>`
-- `COPY [--chown=<user>:<group>] ["<源路径1>", "[源路径2]", ..., "<目标路径>"]`
+- `COPY [--chown=<user>:<group>] <源路径1> [源路径2] … <目标路径>`
+- `COPY [--chown=<user>:<group>] ["<源路径1>", "[源路径2]", …, "<目标路径>"]`
 
 `COPY` 指令将从构建上下文目录中 `<源路径>` 的文件/目录复制到新的镜像层内的 `<目标路径>` 位置.
 
@@ -106,22 +106,22 @@ COPY --chown=10:11 files* /mydir/
 
 格式:
 
-- shell格式:`RUN [command] <parameter1> <parameter2> ...`, 等价于在linux中执行`/bin/sh -c "command parameter1 parameter2 ..."`
+- shell 格式:`RUN [command] <parameter1> <parameter2> …`, 等价于在 linux 中执行 `/bin/sh -c "command parameter1 parameter2 …"`
 
   ```dockerfile
   RUN ls -l
   ```
 
-- exec格式:`RUN ["command", "parameter1", "parameter2"...]`, 不会通过shell执行, 所以像`$HOME`这样的变量就无法获取.
+- exec 格式:`RUN ["command", "parameter1", "parameter2"…]`, 不会通过 shell 执行, 所以像 `$HOME` 这样的变量就无法获取.
 
   ```dockerfile
   RUN ["ls", "-l"]
   RUN ["/bin/sh", "-c", "ls -l"] # 可以获取环境变量
   ```
 
-RUN指令用于指定构建镜像时执行的命令, Dockerfile允许多个RUN指令, 并且每个RUN指令都会创建一个镜像层.
+RUN 指令用于指定构建镜像时执行的命令, Dockerfile 允许多个 RUN 指令, 并且每个 RUN 指令都会创建一个镜像层.
 
-RUN指令一般用于安装配置软件包等操作, 为避免镜像层数过多, 一般RUN指令使用shell格式且使用换行符来执行多个命令，且尽量将 `RUN` 指令产生的附属物删除以缩小镜像大小
+RUN 指令一般用于安装配置软件包等操作, 为避免镜像层数过多, 一般 RUN 指令使用 shell 格式且使用换行符来执行多个命令，且尽量将 `RUN` 指令产生的附属物删除以缩小镜像大小
 
 如下示例
 
@@ -147,16 +147,16 @@ RUN set -x; buildDeps='gcc libc6-dev make wget' \
 `CMD` 指令的格式和 `RUN` 相似，也是两种格式：
 
 - `shell` 格式：`CMD [command] <parameters>`
-- `exec` 格式：`CMD ["command", "<parameter1>", "parameter2", ...]`
-- 参数列表格式：`CMD ["参数1", "参数2"...]`。在指定了 `ENTRYPOINT` 指令后，用 `CMD` 指定具体的参数。
+- `exec` 格式：`CMD ["command", "<parameter1>", "parameter2", …]`
+- 参数列表格式：`CMD ["参数1", "参数2"…]`。在指定了 `ENTRYPOINT` 指令后，用 `CMD` 指定具体的参数。
 
-`CMD` 指令用于设置容器启动时 <font color="red">默认执行</font> 的指令，一般会设置为应用程序的启动脚本或者工具镜像的`bash`，设置了多条`CMD`指令时，只有最后一条 `CMD` 会被执行。
+`CMD` 指令用于设置容器启动时 <font color="red">默认执行</font> 的指令，一般会设置为应用程序的启动脚本或者工具镜像的 `bash`，设置了多条 `CMD` 指令时，只有最后一条 `CMD` 会被执行。
 
 在运行时可以指定新的命令来替代镜像设置中的这个默认命令，比如，`ubuntu` 镜像默认的 `CMD` 是 `/bin/bash`，如果我们直接 `docker run -it ubuntu` 的话，会直接进入 `bash`。我们也可以在运行时指定运行别的命令，如 `docker run -it ubuntu cat /etc/os-release`。这就是用 `cat /etc/os-release` 命令替换了默认的 `/bin/bash` 命令了，会输出系统版本信息。
 
 在指令格式上，一般推荐使用 `exec` 格式，这类格式在解析时会被解析为 JSON 数组，因此一定要使用双引号 `"`，而不要使用单引号。
 
-例如一般`nginx`容器的`CMD`指令:
+例如一般 `nginx` 容器的 `CMD` 指令:
 
 ```dockerfile
 CMD ["nginx", "-g", "daemon off;"]
@@ -167,7 +167,7 @@ CMD ["nginx", "-g", "daemon off;"]
 `ENTRYPOINT` 的格式和 `RUN` 指令格式一样，分为 `exec` 格式和 `shell` 格式。
 
 - `shell` 格式：`ENTRYPOINT [command] <parameters>`
-- `exec` 格式：`ENTRYPOINT ["command", "<parameter1>", "<parameter2>", ...]`
+- `exec` 格式：`ENTRYPOINT ["command", "<parameter1>", "<parameter2>", …]`
 
 `ENTRYPOINT` 的目的和 `CMD` 一样，都是在指定容器启动程序及参数。`ENTRYPOINT` 在运行时也可以替代，不过比 `CMD` 要略显繁琐，需要通过 `docker run` 的参数 `--entrypoint` 来指定。
 
@@ -266,7 +266,7 @@ uid=0(root) gid=0(root) groups=0(root)
 格式有两种：
 
 - `ENV <key> <value>`
-- `ENV <key1>=<value1> <key2>=<value2>...`
+- `ENV <key1>=<value1> <key2>=<value2>…`
 
 `ENV` 用于设置环境变量，既可以在 Dockerfile 中调用，也可以在构建完的容器运行时中使用。
 
@@ -372,10 +372,10 @@ RUN set -x ; echo ${DOCKER_USERNAME}
 
 格式为：
 
-- `VOLUME ["<路径1>", "<路径2>"...]`
+- `VOLUME ["<路径1>", "<路径2>"…]`
 - `VOLUME <路径>`
 
-容器运行时应该尽量保持容器存储层不发生写操作，对于数据库类需要保存动态数据的应用，其数据库文件应该保存于卷(volume)中。
+容器运行时应该尽量保持容器存储层不发生写操作，对于数据库类需要保存动态数据的应用，其数据库文件应该保存于卷 (volume) 中。
 
 为了防止运行时用户忘记将动态文件所保存目录挂载为卷，在 `Dockerfile` 中，我们可以事先指定某些目录挂载为匿名卷，这样在运行时如果用户不指定挂载，其应用也可以正常运行，不会向容器存储层写入大量数据，从而保证了容器存储层的无状态化。
 
@@ -434,7 +434,7 @@ drwxr-xr-x    2 root     root          4096 Apr 10 05:24 /data
 
 ## EXPOSE 暴露端口
 
-格式为 `EXPOSE <端口1> [端口2] ...`
+格式为 `EXPOSE <端口1> [端口2] …`
 
 `EXPOSE` 指令是声明容器运行时提供服务的端口，这只是一个声明，在容器运行时并不会因为这个声明应用就会开启这个端口的服务
 
@@ -603,7 +603,7 @@ e6f585df60a6  myweb  "/docker-entrypoint.…"   6 minutes ago   Up 5 minutes (un
 }
 ```
 
-恢复文件 
+恢复文件
 
 ```bash
 [root@lvbibir learn]# docker exec -it demo-myweb /bin/bash
@@ -658,7 +658,7 @@ CMD [ "npm", "start" ]
 
 那么我们可不可以做一个基础镜像，然后各个项目使用这个基础镜像呢？这样基础镜像更新，各个项目不用同步 `Dockerfile` 的变化，重新构建后就继承了基础镜像的更新？好吧，可以，让我们看看这样的结果。
 
-基础镜像(my-node) `Dockerfile`
+基础镜像 (my-node) `Dockerfile`
 
 ```dockerfile
 FROM node:slim
@@ -666,7 +666,7 @@ WORKDIR /app
 CMD [ "npm", "start" ]
 ```
 
-应用镜像(my-app1) `Dockerfile`
+应用镜像 (my-app1) `Dockerfile`
 
 ```dockerfile
 FROM my-node
@@ -677,7 +677,7 @@ COPY . /app/
 
 基础镜像变化后，各个项目都用这个 `Dockerfile` 重新构建镜像，会继承基础镜像的更新。
 
-那么，问题解决了么？没有。准确说，只解决了一半。如果这个 `Dockerfile` 里面有些东西需要调整呢？比如 `npm install` 都需要加一些参数，那怎么办？这一行 `RUN` 是不可能放入基础镜像的，因为涉及到了当前项目的 `./package.json`，难道又要一个个修改么？所以说，这样制作基础镜像，只解决了原来的 `Dockerfile` 的前4条指令的变化问题，而后面三条指令的变化则完全没办法处理。
+那么，问题解决了么？没有。准确说，只解决了一半。如果这个 `Dockerfile` 里面有些东西需要调整呢？比如 `npm install` 都需要加一些参数，那怎么办？这一行 `RUN` 是不可能放入基础镜像的，因为涉及到了当前项目的 `./package.json`，难道又要一个个修改么？所以说，这样制作基础镜像，只解决了原来的 `Dockerfile` 的前 4 条指令的变化问题，而后面三条指令的变化则完全没办法处理。
 
 `ONBUILD` 可以解决这个问题。让我们用 `ONBUILD` 重新写一下基础镜像的 `Dockerfile`:
 
@@ -713,9 +713,9 @@ LABEL org.opencontainers.image.authors="yeasy"
 LABEL org.opencontainers.image.documentation="https://yeasy.gitbooks.io"
 ```
 
-具体可以参考 https://github.com/opencontainers/image-spec/blob/master/annotations.md
+具体可以参考 <https://github.com/opencontainers/image-spec/blob/master/annotations.md>
 
-## SHELL 指定shell
+## SHELL 指定 shell
 
 格式：`SHELL ["executable", "parameters"]`
 
@@ -742,6 +742,3 @@ ENTRYPOINT nginx
 # /bin/sh -cex "nginx"
 CMD nginx
 ```
-
-
-

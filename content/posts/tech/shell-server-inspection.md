@@ -644,4 +644,3 @@ echo -e "\033[44;37m 主机巡检结果存放在：$RESULTFILE   \033[0m"
 #curl -F "filename=@$RESULTFILE" "$uploadHostDailyCheckApi" 2>/dev/null
 cat $RESULTFILE
 ```
-

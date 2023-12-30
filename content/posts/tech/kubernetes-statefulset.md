@@ -18,7 +18,7 @@ StatefulSet 应用场景：分布式应用、集群
 
 - 部署有状态应用
 
-- 解决Pod独立生命周期，保持Pod启动顺序和唯一性
+- 解决 Pod 独立生命周期，保持 Pod 启动顺序和唯一性
 
   - 稳定，唯一的网络标识符，持久存储
   - 有序，优雅的部署和扩展、删除和终止
@@ -27,13 +27,13 @@ StatefulSet 应用场景：分布式应用、集群
 StatefulSet 控制器的优势
 
 - 稳定的存储
-  - StatefulSet的存储卷使用VolumeClaimTemplate创建，称为卷申请模板，当StatefulSet使用VolumeClaimTemplate创建一个PersistentVolume时，同样也会为每个Pod分配并创建一个编号的PVC。该PVC和PV不会随着StatefulSet的删除而删除
+  - StatefulSet 的存储卷使用 VolumeClaimTemplate 创建，称为卷申请模板，当 StatefulSet 使用 VolumeClaimTemplate 创建一个 PersistentVolume 时，同样也会为每个 Pod 分配并创建一个编号的 PVC。该 PVC 和 PV 不会随着 StatefulSet 的删除而删除
 
-- 稳定的网络ID
+- 稳定的网络 ID
   - StatefulSet 中的每个 POD 名称固定：`<statefulset-name>-<number>`
   - 通过 serviceName 字段指定 Headless Service ，可以为每个 POD 分配一个固定的 DNS 解析，重启或者重建 POD 时虽然 ip 有所变动，但 DNS 解析会保持稳定
 
-示例yaml
+示例 yaml
 
 ```yaml
 apiVersion: v1
@@ -90,7 +90,7 @@ spec:
 
 ## 稳定的存储
 
-可以看到与deployment不同，statefulset中的每个pod都分配到了独立的pv，且重启pod后存储对应关系不变
+可以看到与 deployment 不同，statefulset 中的每个 pod 都分配到了独立的 pv，且重启 pod 后存储对应关系不变
 
 ```bash
 [root@k8s-node1 ~]# kubectl get pod,pvc,pv | awk  '{print $1}'
@@ -109,9 +109,9 @@ default-www-statefulset-nginx-0-pvc-17751fde-1b23-4535-98bb-a70342ddd6fe
 default-www-statefulset-nginx-1-pvc-b7519f46-b2af-42e4-b66d-d7459be2e87c
 ```
 
-## 稳定的网络ID
+## 稳定的网络 ID
 
-手动删除pod后除了pod的ip会变动，主机名和dns解析都正常
+手动删除 pod 后除了 pod 的 ip 会变动，主机名和 dns 解析都正常
 
 ```bash
 # POD名字固定
@@ -172,4 +172,3 @@ ss-nginx-0   NodePort   10.111.69.1   <none>        80:30003/TCP   3h53m
 NAME         ENDPOINTS           AGE
 ss-nginx-0   10.244.169.188:80   3h53m
 ```
-

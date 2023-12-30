@@ -18,6 +18,7 @@ cover:
   hidden: false
   hiddenInSingle: false
 ---
+
 # 前言
 
 本文内容比较杂乱, 无法保证实时更新, 如果遇到问题, 可以在 [github](https://github.com/lvbibir/lvbibir.github.io) 查看最新的配置
@@ -42,15 +43,15 @@ cover:
 
 [配置文件下载](https://image.lvbibir.cn/files/blog-docker-compose.zip) 下载完将目录上传到自己的服务器, 重命名为 `blog` (当然你可以用其他名字)
 
-1. 确保服务器网络、ssl证书申请、服务器公网ip、服务器安全组权限(80/443)等基础配置已经一应俱全
+1. 确保服务器网络、ssl 证书申请、服务器公网 ip、服务器安全组权限 (80/443) 等基础配置已经一应俱全
 2. 确保服务器安装了 docker 和 docker-compose
 3. 修改 `blog/conf/nginx-hugo/nginx.conf` 和 `blog/conf/nginx-proxy/default.conf`, 需要修改的地方在文件中已经标注出来了
-4. 将你的ssl证书放到 `hugo-blog-dockercompose/ssl/` 目录下
+4. 将你的 ssl 证书放到 `hugo-blog-dockercompose/ssl/` 目录下
 5. 在 `blog` 目录下执行 `docker-compose up -d` 即可启动容器
 6. 将 hugo 生成的 `public` 目录上传到服务器 `blog/data/hugo/` 中, [参考下文](#workflow)
-7. 在域名提供商处为你的域名添加A记录, 指向服务器的公网ip地址(主域名和twikoo域名都要配置)
+7. 在域名提供商处为你的域名添加 A 记录, 指向服务器的公网 ip 地址 (主域名和 twikoo 域名都要配置)
    ![image-20230313142456952](https://image.lvbibir.cn/blog/image-20230313142456952.png)
-8. 都配置完后 [参考下文](#twikoo评论) 配置 twikoo 评论系统
+8. 都配置完后 [参考下文](#twikoo) 配置 twikoo 评论系统
 
 至此已经配置完成, 应该可以通过域名访问 hugo 站点了, 后续更新内容只需要 hugo 生成静态文件上传到服务即可
 
@@ -58,21 +59,25 @@ cover:
 
 # workflow
 
-总体流程: 
-1. obsidian 编辑文章,  图片通过 `Image Auto Upload Plugin` 插件配合 piclist 上传到阿里云 OSS,  具体配置和操作见 [docker 部署 piclist](https://www.lvbibir.cn/posts/blog/docker-deploy-piclist)
+在这里简单介绍一下我从写博客 -> 发布到服务器 -> 归档备份的整个流程
+
+总体流程:
+
+1. obsidian 编辑文章, 图片通过 `Image Auto Upload Plugin` 插件配合 piclist 上传到阿里云 OSS, 具体配置和操作见 [docker 部署 piclist](https://www.lvbibir.cn/posts/blog/docker-deploy-piclist)
 2. 编辑完成后将通过 [此脚本](https://github.com/lvbibir/lvbibir.github.io/blob/master/update-file.sh) 将编辑后的文章同步到本地的 git 仓库
-3. 使用 `hugo server -D` 预览变更,  如有问题重复前两个步骤
-4. 确认无误后通过 [此脚本](https://github.com/lvbibir/lvbibir.github.io/blob/master/upload-file.sh) 生成静态文件,  并将文件远程传输到公网服务器,  完成博客内容变更
+3. 使用 `hugo server -D` 预览变更, 如有问题重复前两个步骤
+4. 确认无误后通过 [此脚本](https://github.com/lvbibir/lvbibir.github.io/blob/master/upload-file.sh) 生成静态文件, 并将文件远程传输到公网服务器, 完成博客内容变更
 5. 最后将 git 仓库的变更提交后同步到 github 远程仓库
 
-其实如果使用 vscode 直接编辑 git 仓库中的博客文章可以让整个流程更加简化,  但是 vscode 的 markdown 编辑体验实在是比不上 typora 或者 obsidian,  工欲善其事必先利其器,  有了好的编辑体验才更愿意输出内容
-# twikoo评论
+其实如果使用 vscode 直接编辑 git 仓库中的博客文章可以让整个流程更加简化, 但是 vscode 的 markdown 编辑体验实在是比不上 typora 或者 obsidian, 工欲善其事必先利其器, 有了好的编辑体验才更愿意输出内容
+
+# twikoo
 
 ## 部署
 
-twikoo 官方提供了 [丰富的部署方式](https://twikoo.js.org/quick-start.html),  考虑到访问速度,  本文使用的是 docker 方式部署到阿里云服务器
+twikoo 官方提供了 [丰富的部署方式](https://twikoo.js.org/quick-start.html), 考虑到访问速度, 本文使用的是 docker 方式部署到阿里云服务器
 
-> 如果是使用 [一键将hugo博客部署到阿里云](#一键将博客部署到阿里云) 中的步骤部署了twikoo, 这步直接忽略, 配置前端代码即可
+> 如果是使用 [一键将hugo博客部署到阿里云](#一键将博客部署到阿里云) 中的步骤部署了 twikoo, 这步直接忽略, 配置前端代码即可
 
 ```bash
 docker run --name twikoo -e TWIKOO_THROTTLE=1000 -p 8080:8080 -v ${PWD}/data:/app/data -d imaegoo/twikoo
@@ -134,7 +139,7 @@ params:
 
 1. 修改 dockerfile.yml 中的镜像 tag
 2. 部署新版本容器 `docker-compose up -d`
-3. 在hugo配置文件 config.yml 中修改 twikoo版本
+3. 在 hugo 配置文件 config.yml 中修改 twikoo 版本
 
 ## 修改数据
 
@@ -142,9 +147,9 @@ params:
 
 ## 修改 smms 图床的 api 地址
 
-> 已于 1.6.12 新版本修复, https://github.com/imaegoo/twikoo/releases/tag/1.6.12
+> 已于 1.6.12 新版本修复, <https://github.com/imaegoo/twikoo/releases/tag/1.6.12>
 
-由于 `sm.ms` 域名国内无法访问, ~~twikoo官方还没有出具体的修改方式~~, 自己修改容器配置文件进行修改
+由于 `sm.ms` 域名国内无法访问, ~~twikoo 官方还没有出具体的修改方式~~, 自己修改容器配置文件进行修改
 
 ```bash
 # 复制配置文件
@@ -164,7 +169,7 @@ params:
       - $PWD/conf/twikoo/image.js:/app/node_modules/twikoo-func/utils/image.js
 ```
 
-# Artitalk说说
+# Artitalk
 
 [官方文档](https://artitalk.js.org/doc.html)
 
@@ -172,19 +177,20 @@ params:
 
 ## leancloud 配置
 
-1. 前往 [LeanCloud 国际版](https://leancloud.app/),  注册账号
+1. 前往 [LeanCloud 国际版](https://leancloud.app/), 注册账号
 2. 注册完成之后根据 LeanCloud 的提示绑定手机号和邮箱
-3. 绑定完成之后点击 `创建应用`,  应用名称随意, 接着在`结构化数据`中创建 `class`, 命名为 `shuoshuo`
-4. 在你新建的应用中找到 `结构化数据` 下的`用户`点击 `添加用户`, 输入想用的用户名及密码
-5. 回到`结构化数据`中, 点击 `class` 下的 `shuoshuo`找到权限, 在 `Class 访问权限` 中将 `add_fields` 以及 `create` 权限设置为指定用户, 输入你刚才输入的用户名会自动匹配为了安全起见, 将 `delete` 和 `update` 也设置为跟它们一样的权限
-6. 然后新建一个名为 `atComment` 的class, 权限什么的使用默认的即可
-7. 点击 `class` 下的 `_User` 添加列, 列名称为 `img`, 默认值填上你这个账号想要用的发布说说的头像url, 这一项不进行配置, 说说头像会显示为默认头像 —— Artitalk 的 logo
-8. 在最菜单栏中找到设置-> 应用 keys, 记下来 `AppID` 和 `AppKey` , 一会会用
+3. 绑定完成之后点击 `创建应用`, 应用名称随意, 接着在 `结构化数据` 中创建 `class`, 命名为 `shuoshuo`
+4. 在你新建的应用中找到 `结构化数据` 下的 `用户` 点击 `添加用户`, 输入想用的用户名及密码
+5. 回到 `结构化数据` 中, 点击 `class` 下的 `shuoshuo` 找到权限, 在 `Class 访问权限` 中将 `add_fields` 以及 `create` 权限设置为指定用户, 输入你刚才输入的用户名会自动匹配为了安全起见, 将 `delete` 和 `update` 也设置为跟它们一样的权限
+6. 然后新建一个名为 `atComment` 的 class, 权限什么的使用默认的即可
+7. 点击 `class` 下的 `_User` 添加列, 列名称为 `img`, 默认值填上你这个账号想要用的发布说说的头像 url, 这一项不进行配置, 说说头像会显示为默认头像 —— Artitalk 的 logo
+8. 在最菜单栏中找到设置 -> 应用 keys, 记下来 `AppID` 和 `AppKey` , 一会会用
 9. 最后将 `_User` 中的权限全部调为指定用户, 或者数据创建者, 为了保证不被篡改用户数据以达到强制发布说说
-10. 在设置->域名绑定中绑定自定义域名
+10. 在设置 ->域名绑定中绑定自定义域名
 
 > ❗ 关于设置权限的这几步
 > 这几步一定要设置好, 才可以保证不被 “闲人” 破解发布说说的验证
+
 ## hugo 配置
 
 新增 `content/talk.md` 页面, 内容如下, 注意修改标注的内容, front-matter 的内容自行修改
@@ -221,17 +227,18 @@ new Artitalk({
 
 输入 leancloud 配置步骤中的第 4 步配置的用户名密码登录后就可以发布说说了
 
-# 自定义footer
+# 自定义 footer
 
 自定义页脚内容
 
 ![image-20220911150229930](https://image.lvbibir.cn/blog/image-20220911150229930.png)
 
 > 添加完下面的页脚内容后要修改 `assets\css\extended\blank.css` 中的 `--footer-height` 的大小, 具体数字需要考虑到行数和字体大小
+
 ## 自定义徽标
 
-> 徽标功能源自：https://shields.io/
-> 考虑到访问速度, 可以在生成完徽标后放到自己的cdn上
+> 徽标功能源自：<https://shields.io/>
+> 考虑到访问速度, 可以在生成完徽标后放到自己的 cdn 上
 
 在 `layouts\partials\footer.html` 中的 `<footer>` 添加如下
 
@@ -254,7 +261,7 @@ new Artitalk({
 
 ## 访问人数统计
 
-> 统计功能源自：http://busuanzi.ibruce.info/
+> 统计功能源自：<http://busuanzi.ibruce.info/>
 
 在 `layouts\partials\footer.html` 中的 `<footer>` 添加如下
 
@@ -272,7 +279,7 @@ new Artitalk({
 
 # 自定义字体
 
-可以使用一些在线的字体, 可能会比较慢, 推荐下载想要的字体放到自己的服务器或者cdn上
+可以使用一些在线的字体, 可能会比较慢, 推荐下载想要的字体放到自己的服务器或者 cdn 上
 
 修改 `assets\css\extended\fonts.css`, 添加 `@font-face`
 
@@ -284,7 +291,7 @@ new Artitalk({
 }
 ```
 
-修改`assets\css\extended\blank.css`, 推荐将英文字体放在前面, 可以实现英文和中文使用不同字体
+修改 `assets\css\extended\blank.css`, 推荐将英文字体放在前面, 可以实现英文和中文使用不同字体
 
 ```css
 .post-content {
@@ -309,8 +316,11 @@ body {
 # shortcode
 
 [ppt、bilibili、youtube、豆瓣阅读和电影卡片](https://www.sulvblog.cn/posts/blog/shortcodes/)
+
 [mermaid](https://www.sulvblog.cn/posts/blog/hugo_mermaid/)
+
 [图片画廊](https://github.com/liwenyip/hugo-easy-gallery/)
+
 # 其他修改
 
-其他 css 样式修改基本都是通过 f12 控制台一点点摸索改的,  不太规范且比较琐碎就不单独记录了,  ~~其实我根本已经忘记还改了哪些东西~~
+其他 css 样式修改基本都是通过 f12 控制台一点点摸索改的, 不太规范且比较琐碎就不单独记录了, ~~其实我根本已经忘记还改了哪些东西~~

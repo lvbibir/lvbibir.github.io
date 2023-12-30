@@ -1,7 +1,7 @@
 ---
 title: docker 部署 piclist
 date: 2023-12-29
-lastmod: 2023-12-29
+lastmod: 2023-12-30
 tags:
   - docker
   - obsidian
@@ -15,6 +15,7 @@ description: 介绍如何使用 docker 部署 piclist 实现 obsidian 远程上�
 cover:
   image: https://image.lvbibir.cn/blog/docker.png
 ---
+
 # 前言
 
 感谢 piclist 作者的 [不吝解答](https://github.com/Kuingsmile/PicList/issues/127)
@@ -90,6 +91,7 @@ docker-compose up -d
 ```bash
 docker restart piclist
 ```
+
 ## nginx 配置
 
 nginx 中添加如下 location 配置
@@ -112,6 +114,7 @@ nginx 中添加如下 location 配置
 执行 `docker restart nginx-proxy` 重启 nginx
 
 最后修改 obsidian 的 `Image auto upload Plugin` 插件的配置
+
 ![](https://image.lvbibir.cn/blog/image-20231229-155939.png)
 
 1. 打开远程服务器模式

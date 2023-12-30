@@ -15,36 +15,36 @@ cover:
 
 # 前言
 
-基于`centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
+基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
-# kubernetes安全框架
+# kubernetes 安全框架
 
-- 客户端要想访问 K8s 集群 `API Server`，一般需要 CA 证书、Token 或者用户名+密码
+- 客户端要想访问 K8s 集群 `API Server`，一般需要 CA 证书、Token 或者用户名 + 密码
 - 如果 Pod 访问，需要 `ServiceAccount`
 
+K8S 安全控制框架主要由下面 3 个阶段进行控制，每一个阶段都支持插件方式，通过 `API Server` 配置来启用插件。
 
-K8S 安全控制框架主要由下面3个阶段进行控制，每一个阶段都支持插件方式，通过 `API Server` 配置来启用插件。
 1. Authentication（鉴权）
 
 2. Authorization（授权）
 
-3. Admission Control（准入控制） 
+3. Admission Control（准入控制）
 
 ![image-20221007174309826](https://image.lvbibir.cn/blog/image-20221007174309826.png)
 
-## 鉴权(Authentication)
+## 鉴权 (Authentication)
 
-三种客户端身份认证： 
+三种客户端身份认证：
 
 - HTTPS 证书认证：基于 CA 证书签名的数字证书认证
-- HTTP Token认证：通过一个 Token 来识别用户
-- HTTP Base认证：用户名+密码的方式认证
+- HTTP Token 认证：通过一个 Token 来识别用户
+- HTTP Base 认证：用户名 + 密码的方式认证
 
-## 授权(Authorization)
+## 授权 (Authorization)
 
 RBAC（Role-Based Access Control，基于角色的访问控制）：负责完成授权（Authorization）工作。
 
-RBAC根据API请求属性，决定允许还是拒绝。
+RBAC 根据 API 请求属性，决定允许还是拒绝。
 
 比较常见的授权维度：
 
@@ -52,25 +52,25 @@ RBAC根据API请求属性，决定允许还是拒绝。
 
 - group：用户分组
 
-- 资源，例如pod、deployment
+- 资源，例如 pod、deployment
 
 - 资源操作方法：get，list，create，update，patch，watch，delete
 
 - 命名空间
 
-- API组
+- API 组
 
-## 准入控制(Admission Control)
+## 准入控制 (Admission Control)
 
-Adminssion Control实际上是一个准入控制器插件列表，发送到API Server的请求都需要经过这个列表中的每个准入控制器插件的检查，检查不通过，则拒绝请求
+Adminssion Control 实际上是一个准入控制器插件列表，发送到 API Server 的请求都需要经过这个列表中的每个准入控制器插件的检查，检查不通过，则拒绝请求
 
 # RBAC
 
-> https://kubernetes.io/zh-cn/docs/reference/access-authn-authz/rbac/
+> <https://kubernetes.io/zh-cn/docs/reference/access-authn-authz/rbac/>
 
 ## 基础概念
 
-RBAC（Role-Based Access Control，基于角色的访问控制），允许通过Kubernetes API动态配置策略。
+RBAC（Role-Based Access Control，基于角色的访问控制），允许通过 Kubernetes API 动态配置策略。
 
 **角色**
 
@@ -80,11 +80,11 @@ RBAC（Role-Based Access Control，基于角色的访问控制），允许通过
 
 **角色绑定**
 
-- RoleBinding：将角色绑定到主体（即subject） 
+- RoleBinding：将角色绑定到主体（即 subject）
 
 - ClusterRoleBinding：将集群角色绑定到主体
 
-**主体（subject）** 
+**主体（subject）**
 
 - User：用户
 
@@ -103,17 +103,17 @@ RBAC（Role-Based Access Control，基于角色的访问控制），允许通过
 新建一个 k8s 用户大概可以分为以下几步：
 
 - 签发用户证书
-  - 生成用户的证书 key 
+  - 生成用户的证书 key
   - 通过用户的证书 key，生成用户的证书请求 (csr)
   - 通过 k8s api 的 ca 证书去签发用户的证书请求，生成用户的证书 (crt)
 - 生成 kubeconfig 配置文件
-  - kubectl config set-cluster      //集群配置
-  - kubectl config set-credentials  //用户配置
-  - kubectl config set-context      //context配置
-  - kubectl config use-context      //使用context
+  - kubectl config set-cluster //集群配置
+  - kubectl config set-credentials //用户配置
+  - kubectl config set-context //context 配置
+  - kubectl config use-context //使用 context
 - 使用新创建的用户
-  - kubectl --kubecofig=`path`  // 通过参数指定
-  - KUBECONFIG=`path` kubectl   // 通过环境变量指定，`path` 可以指定多个，用 `:` 连接，从而将多个配置文件合并在一起使用
+  - kubectl --kubecofig=`path` // 通过参数指定
+  - KUBECONFIG=`path` kubectl // 通过环境变量指定，`path` 可以指定多个，用 `:` 连接，从而将多个配置文件合并在一起使用
 
 #### 签发用户证书
 
@@ -140,7 +140,7 @@ Amadeus.crt  Amadeus.csr  Amadeus.key
 
 ##### cfssl
 
-下载cfssl工具
+下载 cfssl 工具
 
 ```bash
 wget --no-check-certificate https://github.com/cloudflare/cfssl/releases/download/1.2.0/cfssl_linux-amd64
@@ -232,7 +232,7 @@ kubectl config set-cluster kubernetes \
 # --embed-certs=true 表示将证书写入etcd
 ```
 
-为 kubeconfig 配置文件添加用户配置：设置用户证书(crt)和证书key
+为 kubeconfig 配置文件添加用户配置：设置用户证书 (crt) 和证书 key
 
 ```bash
 kubectl config set-credentials Amadeus \
@@ -251,7 +251,7 @@ kubectl config set-context Amadeus@kubernetes \
 --kubeconfig=Amadeus.kubeconfig
 ```
 
-为 kubeconfig 配置文件设置使用的context
+为 kubeconfig 配置文件设置使用的 context
 
 ```bash
 kubectl config use-context Amadeus@kubernetes --kubeconfig=Amadeus.kubeconfig
@@ -282,7 +282,7 @@ users:
     client-key-data: REDACTED
 ```
 
-### 创建RBAC权限策略
+### 创建 RBAC 权限策略
 
 使 Amadeus 用户有权限查看 default 命名空间下的 pod
 
@@ -335,7 +335,7 @@ Error from server (Forbidden): nodes is forbidden: User "Amadeus" cannot list re
 Error from server (Forbidden): deployments.apps is forbidden: User "Amadeus" cannot list resource "deployments" in API group "apps" in the namespace "default"
 ```
 
-给该用户增加查看、创建和删除deployment的权限，但pod的权限依旧只有查看
+给该用户增加查看、创建和删除 deployment 的权限，但 pod 的权限依旧只有查看
 
 ```bash
 [root@k8s-node1 ~]# vim demo-rbac.yml
@@ -360,41 +360,41 @@ my-dep-bc4cb798-lhm8p   1/1     Running   0          15s
 deployment.apps "my-dep" deleted
 ```
 
-# 网络策略(Network Policy)
+# 网络策略 (Network Policy)
 
-> https://kubernetes.io/zh-cn/docs/concepts/services-networking/network-policies/
+> <https://kubernetes.io/zh-cn/docs/concepts/services-networking/network-policies/>
 
 ## 基础概念
 
-网络策略（Network Policy），用于限制Pod出入流量，提供Pod级别和Namespace级别网络访问控制。
+网络策略（Network Policy），用于限制 Pod 出入流量，提供 Pod 级别和 Namespace 级别网络访问控制。
 
 一些应用场景：
 
-- 应用程序间的访问控制。例如微服务A允许访问微服务B，微服务C不能访问微服务A 
+- 应用程序间的访问控制。例如微服务 A 允许访问微服务 B，微服务 C 不能访问微服务 A
 
-- 开发环境命名空间不能访问测试环境命名空间Pod
+- 开发环境命名空间不能访问测试环境命名空间 Pod
 
-- 当Pod暴露到外部时，需要做Pod白名单
+- 当 Pod 暴露到外部时，需要做 Pod 白名单
 
 - 多租户网络环境隔离
 
-Pod网络入口方向隔离：
+Pod 网络入口方向隔离：
 
-- 基于Pod级网络隔离：只允许特定对象访问Pod（使用标签定义），允许白名单上的IP地址或者IP段访问Pod
+- 基于 Pod 级网络隔离：只允许特定对象访问 Pod（使用标签定义），允许白名单上的 IP 地址或者 IP 段访问 Pod
 
-- 基于Namespace级网络隔离：多个命名空间，A和B命名空间Pod完全隔离。
+- 基于 Namespace 级网络隔离：多个命名空间，A 和 B 命名空间 Pod 完全隔离。
 
-Pod网络出口方向隔离：
+Pod 网络出口方向隔离：
 
-- 拒绝某个Namespace上所有Pod访问外部
+- 拒绝某个 Namespace 上所有 Pod 访问外部
 
-- 基于目的IP的网络隔离：只允许Pod访问白名单上的IP地址或者IP段 
+- 基于目的 IP 的网络隔离：只允许 Pod 访问白名单上的 IP 地址或者 IP 段
 
-- 基于目标端口的网络隔离：只允许Pod访问白名单上的端
+- 基于目标端口的网络隔离：只允许 Pod 访问白名单上的端
 
 ## 示例一
 
-只允许default命名空间中携带run=client1标签的Pod访问default命名空间携带app=web标签的Pod的80端口，无法ping通
+只允许 default 命名空间中携带 run=client1 标签的 Pod 访问 default 命名空间携带 app=web 标签的 Pod 的 80 端口，无法 ping 通
 
 ```bash
 [root@k8s-node1 ~]# kubectl create deployment web --image=nginx:1.22.1
@@ -407,7 +407,7 @@ client2                                   1/1     Running   0               62s 
 web-bc7cc9f65-5mg9d                       1/1     Running   0               2m3s   app=web,pod-template-hash=bc7cc9f65
 ```
 
-networkpolicy.yaml示例
+networkpolicy.yaml 示例
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -453,7 +453,7 @@ Connected to 10.244.169.169
 
 ## 示例二
 
-ns1命名空间下所有pod可以互相访问，也可以访问其他命名空间Pod，但其他命名空间不能访问ns1命名空间Pod。
+ns1 命名空间下所有 pod 可以互相访问，也可以访问其他命名空间 Pod，但其他命名空间不能访问 ns1 命名空间 Pod。
 
 ```bash
 [root@k8s-node1 ~]# kubectl create ns ns1
@@ -509,4 +509,3 @@ PING 10.244.169.171 (10.244.169.171): 56 data bytes
 
 [root@k8s-node1 ~]# kubectl delete -f networkpolicy.yaml
 ```
-

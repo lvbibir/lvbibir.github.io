@@ -115,7 +115,7 @@ kube-prometheus 中部署了如下组件:
 - CRD 资源: `manifests/setup` 目录中的内容
 - 实际的组件部署和配置: `manifests` 目录中的内容
   - exporter 数据采集器:
-    - node-exporter 
+    - node-exporter
     - blackbox-exporter 用于黑盒监控
   - prometheus 实例
   - grafana 实例
@@ -225,4 +225,3 @@ grafana 就是一个普通的 deployment 应用, 直接修改 yaml 中的 volume
           server: k8s-node1
           path: /nfs/kubernetes/grafana-data
 ```
-

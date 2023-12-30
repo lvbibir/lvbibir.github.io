@@ -32,59 +32,38 @@ cover:
 
 出现这个问题的原因大致是因为强制安装并未完全成功，lib64 一些相关的库文件软链接丢失
 
-```
+```textile
 [root@localhost ~]# ls -l /lib64/libc.so.6
 lrwxrwxrwx 1 root root 12  7月 14 14:43 /lib64/libc.so.6 -> libc-2.28.so # 恢复前这里是 libc-2.31.so
 ```
 
-在强制安装 glibc-2.28 时， libc-2.31.so 已经被替换成了 libc-2.28.so ，由于安装失败  libc.so.6 链接到的还是 libc-2.31.so，自然会报错 `no such file` 
+在强制安装 glibc-2.28 时， libc-2.31.so 已经被替换成了 libc-2.28.so ，由于安装失败 libc.so.6 链接到的还是 libc-2.31.so，自然会报错 `no such file`
 
 # 恢复
 
-系统绝大部分命令都是依赖 libc.so.6 的，我们可以通过  `export LD_PRELOAD="库文件路径"`  设置优先使用的库
+系统绝大部分命令都是依赖 libc.so.6 的，我们可以通过 `export LD_PRELOAD="库文件路径"` 设置优先使用的库
 
-```
+```textile
 export LD_PRELOAD=/lib64/libc-2.28.so
 ```
 
 此时 ls 、cd、mv 等基础命令以及最重要的 ln 链接命令已经可以使用了，接下来就是恢复软链接
 
-```
+```textile
 rm -f /lib64/libc.so.6
 ln -s /lib64/libc-2.28.so /lib64/libc.so.6
 ```
 
 但是 yum 命令依赖的几个库软链接还没有恢复，按照报错提示跟上述步骤一样，先删除掉依赖的库文件，再重新软链接过去
 
-之后就是重新 yum localinstall 安装一下未安装成功的 glic ，之前强制安装时已经将高版本的 glibc 清理掉了，这里重新安装很顺利 
+之后就是重新 yum localinstall 安装一下未安装成功的 glic ，之前强制安装时已经将高版本的 glibc 清理掉了，这里重新安装很顺利
 
 > 也许之前使用 yum localinstall 安装可能就不会出现这个问题了，rpm --nodeps 也要少用~
 
-```
+```textile
 yum localinstall glibc*
 ```
 
 软件包安装过程中没有报错，经测试系统一切正常，openssh 也可以正常连接了
 
 以上，系统恢复正常
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

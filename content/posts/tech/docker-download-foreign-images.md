@@ -15,15 +15,15 @@ cover:
 
 # 1. 阿里云构建
 
-## 1.1 git仓库设置
+## 1.1 git 仓库设置
 
 ### 1.1.1 创建仓库
 
-用于存放Dockerfile
+用于存放 Dockerfile
 
 ![image-20230309160649438](https://image.lvbibir.cn/blog/image-20230309160649438.png)
 
-### 1.1.2 上传Dockerfile
+### 1.1.2 上传 Dockerfile
 
 ```bash
 #换成自己的仓库地址
@@ -41,7 +41,7 @@ git push origin master
 
 ## 1.2 阿里云设置
 
-登陆阿里云，访问[阿里云容器镜像服务](https://cr.console.aliyun.com/cn-hangzhou/instances)
+登陆阿里云，访问 [阿里云容器镜像服务](https://cr.console.aliyun.com/cn-hangzhou/instances)
 
 ### 1.2.1 创建个人实例
 
@@ -55,7 +55,7 @@ git push origin master
 
 ![image-20230309160252483](https://image.lvbibir.cn/blog/image-20230309160252483.png)
 
-### 1.2.4 绑定github账号
+### 1.2.4 绑定 github 账号
 
 ![image-20230309160359915](https://image.lvbibir.cn/blog/image-20230309160359915.png)
 
@@ -63,7 +63,7 @@ git push origin master
 
 ![image-20230309162613107](https://image.lvbibir.cn/blog/image-20230309162613107.png)
 
-指定刚才创建的github仓库，记得勾选海外机器构建
+指定刚才创建的 github 仓库，记得勾选海外机器构建
 
 ![image-20230309162914840](https://image.lvbibir.cn/blog/image-20230309162914840.png)
 
@@ -85,19 +85,19 @@ git push origin master
 
 [项目地址](https://github.com/anjia0532/gcr.io_mirror/)
 
-该项目通过 `Github Actions` 将 `gcr.io、k8s.gcr.io、registry.k8s.io、quay.io、ghcr.io` 镜像仓库的镜像搬运至dockerhub
+该项目通过 `Github Actions` 将 `gcr.io、k8s.gcr.io、registry.k8s.io、quay.io、ghcr.io` 镜像仓库的镜像搬运至 dockerhub
 
-直接提交issue，在模板issue的`[PORTER]`后面添加想要搬运的镜像tag，也可以直接在关闭的issue列表中检索，可能也会有其他人搬运过，直接用就行了
+直接提交 issue，在模板 issue 的 `[PORTER]` 后面添加想要搬运的镜像 tag，也可以直接在关闭的 issue 列表中检索，可能也会有其他人搬运过，直接用就行了
 
 ![image-20230309164622746](https://image.lvbibir.cn/blog/image-20230309164622746.png)
 
-稍等一小会可以看到镜像已经搬运到dockerhub了
+稍等一小会可以看到镜像已经搬运到 dockerhub 了
 
 ![image-20230309164858625](https://image.lvbibir.cn/blog/image-20230309164858625.png)
 
 # 3. Docker Playground
 
-[Docker Playground](https://labs.play-with-docker.com/) 是一个免费的线上docker环境，由于是外网环境所以下载镜像、推送到dockerhub都很快，也可以直接推到阿里云的仓库
+[Docker Playground](https://labs.play-with-docker.com/) 是一个免费的线上 docker 环境，由于是外网环境所以下载镜像、推送到 dockerhub 都很快，也可以直接推到阿里云的仓库
 
 ![image-20230309170605907](https://image.lvbibir.cn/blog/image-20230309170605907.png)
 
@@ -110,7 +110,7 @@ docker push registry.cn-hangzhou.aliyuncs.com/lvbibir/<image>:<tag>
 
 # 4. http proxy
 
-如果有代理软件可以在docker中配置代理实现
+如果有代理软件可以在 docker 中配置代理实现
 
 ```json
 {
@@ -153,4 +153,3 @@ docker image pull quay.io/kubevirt/virt-api:v0.45.0
 # 换成
 docker pull quay.mirrors.ustc.edu.cn/kubevirt/virt-api:v0.45.0
 ```
-

@@ -14,14 +14,15 @@ description: "记录一下centos7中通过源码构建httpd rpm包的过程"
 cover:
     image: "" 
 ---
+
 系统版本：isoft-serveros-v4.2（centos7）
 
 源码下载链接：
 
-- https://dlcdn.apache.org//apr/apr-1.7.0.tar.bz2
+- <https://dlcdn.apache.org//apr/apr-1.7.0.tar.bz2>
 
-- https://dlcdn.apache.org//apr/apr-util-1.6.1.tar.bz2
-- https://dlcdn.apache.org//httpd/httpd-2.4.52.tar.bz2
+- <https://dlcdn.apache.org//apr/apr-util-1.6.1.tar.bz2>
+- <https://dlcdn.apache.org//httpd/httpd-2.4.52.tar.bz2>
 
 安装依赖
 
@@ -32,9 +33,9 @@ yum install -y libtool doxygen
 yum install -y postgresql-devel mysql-devel sqlite-devel unixODBC-devel nss-devel
 ```
 
-libdb4-devel依赖需要使用epel源安装，这里使用阿里的epel源
+libdb4-devel 依赖需要使用 epel 源安装，这里使用阿里的 epel 源
 
-```
+```textile
 # 添加阿里yum源
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 # 手动修改repo文件中的系统版本，因为本系统检测到的版本号是4
@@ -47,7 +48,7 @@ yum install -y libdb4-devel
 
 编译准备
 
-```
+```textile
 [root@localhost ~]# mkdir -p /root/rpmbuild/{SPECS,SOURCES}
 [root@localhost ~]# cd /root/rpmbuild/SOURCES/
 [root@localhost SOURCES]# wget --no-check-certificate https://dlcdn.apache.org//apr/apr-util-1.6.1.tar.bz2
@@ -61,7 +62,7 @@ yum install -y libdb4-devel
 
 开始编译
 
-```
+```textile
 [root@localhost SOURCES]# cd ../SPECS/
 
 # 修改spec文件
@@ -88,13 +89,8 @@ Release: 1%dist
 
 ![image-20220304112802458](https://image.lvbibir.cn/blog/image-20220304112802458.png)
 
-这里修改%dist是为了修改编译后生成的软件包的名字，dist具体代表什么可以在/etc/rpm/macros.dist文件中看到
+这里修改%dist 是为了修改编译后生成的软件包的名字，dist 具体代表什么可以在/etc/rpm/macros.dist 文件中看到
 
 ![image-20220308100545732](https://image.lvbibir.cn/blog/image-20220308100545732.png)
 
-
-
 ![image-20220304113646615](https://image.lvbibir.cn/blog/image-20220304113646615.png)
-
-
-

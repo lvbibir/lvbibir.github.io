@@ -32,17 +32,15 @@ Alertmanager 收到告警信息后:
 
 ![img](https://image.lvbibir.cn/blog/1302413-20220630105727154-187545105.png)
 
-
-
 ## 1.2 四大功能
 
-分组(Grouping): 将同类型的告警进行分组, 合并多条告警到一个通知中
+分组 (Grouping): 将同类型的告警进行分组, 合并多条告警到一个通知中
 
-抑制(Inhibition): 当某条告警已经发送, 停止重复发送由此告警引起的其他异常或者故障
+抑制 (Inhibition): 当某条告警已经发送, 停止重复发送由此告警引起的其他异常或者故障
 
-静默(Silences): 根据标签快速对告警进行静默处理, 如果告警符合静默的配置, Alertmanager则不会发送告警通知
+静默 (Silences): 根据标签快速对告警进行静默处理, 如果告警符合静默的配置, Alertmanager 则不会发送告警通知
 
-路由(route): 用于配置 Alertmanager 如何处理传入的特定类型的告警通知
+路由 (route): 用于配置 Alertmanager 如何处理传入的特定类型的告警通知
 
 ## 1.3 配置详解
 
@@ -181,10 +179,10 @@ receivers:
 
 ## 1.4 Alertmanager CRD
 
-Prometheus Operator 为 alertmanager 抽象了两个 CRD资源:
+Prometheus Operator 为 alertmanager 抽象了两个 CRD 资源:
 
 - `alertmanager` CRD: 基于 statefulset, 实现 alertmanager 的部署以及扩容缩容
-- `alertmanagerconfig` CRD: 实现模块化修改 alertmanager 的配置 
+- `alertmanagerconfig` CRD: 实现模块化修改 alertmanager 的配置
 
 通过 alertManager CRD 部署的实例配置文件由 `secret/alertmanager-main-generated` 提供
 
@@ -209,7 +207,7 @@ Prometheus Operator 为 alertmanager 抽象了两个 CRD资源:
 ......
 ```
 
-secret `alertmanager-main-generated` 是自动生成的, 基于 secret `alertmanager-main` 和 CRD `alertmanagerConfig` 
+secret `alertmanager-main-generated` 是自动生成的, 基于 secret `alertmanager-main` 和 CRD `alertmanagerConfig`
 
 ```bash
 [root@k8s-node1 manifests]# kubectl explain alertmanager.spec.configSecret
@@ -568,4 +566,3 @@ kubectl apply -f alertmanager-main-secret.yaml
 
 - 恢复邮件
   ![image-20230430223637098](https://image.lvbibir.cn/blog/image-20230430223637098.png)
-

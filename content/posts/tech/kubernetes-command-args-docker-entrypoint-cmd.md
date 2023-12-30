@@ -18,7 +18,7 @@ cover:
 
 - 如果指定了 containers.command，Dockerfile 中的 ENTRYPOINT 会被覆盖且 CMD 指令被忽略
 
-- 如果指定了 containers.args，Dockerfile 中的 ENTRYPOINT 继续执行， CMD指令 被覆盖
+- 如果指定了 containers.args，Dockerfile 中的 ENTRYPOINT 继续执行， CMD 指令 被覆盖
 
 | ENTRYPOINT | CMD            | command   | args           | finally      |
 | ---------- | -------------- | --------- | -------------- | ------------ |
@@ -37,6 +37,6 @@ cover:
 
 还有一点需要注意，如果使用 `docker run --entrypoint` 覆盖了 Dockerfile 中的 ENTRYPOINT , 同时 CMD 指令也会被忽略
 
-真实的情况要远比这三条规律复杂，好在 docker 给出了[官方的解释](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact)，如下图所示：
+真实的情况要远比这三条规律复杂，好在 docker 给出了 [官方的解释](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact)，如下图所示：
 
 ![image-20230410160304323](https://image.lvbibir.cn/blog/image-20230410160304323.png)

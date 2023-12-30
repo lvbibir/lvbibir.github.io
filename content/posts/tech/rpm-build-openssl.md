@@ -14,6 +14,7 @@ description: "记录一下centos7系统中通过源码构建openssh rpm包的过
 cover:
     image: "" 
 ---
+
 # 环境
 
 iSoftserver-v4.2(Centos-7)
@@ -22,7 +23,7 @@ openssl version：1.0.2k
 
 # 编译
 
-从github上看到的编译脚本，本地修改后：
+从 github 上看到的编译脚本，本地修改后：
 
 ```bash
 #!/bin/bash
@@ -123,7 +124,7 @@ cd /root/rpmbuild/SPECS && \
 
 运行脚本
 
-```
+```textile
 chmod 755 install_openssl-1.1.1m.sh
 ./isntall_openssl-1.1.1m.sh
 tree rpmbuild/*RPMS
@@ -133,15 +134,10 @@ tree rpmbuild/*RPMS
 
 # 升级
 
-```
+```textile
 rpm -e openssl --nodeps
 rpm -ivh  openssl-1.1.1m-1.el7.isoft.x86_64.rpm --nodeps
 openssl version
 ```
 
 ![image-20220302154321811](https://image.lvbibir.cn/blog/image-20220302154321811.png)
-
-
-
-
-

@@ -20,11 +20,11 @@ cover:
 
 **代码示例**
 
-> 使用前需要登录harbor
+> 使用前需要登录 harbor
 >
-> 确保镜像的项目名在harbor中已存在
+> 确保镜像的项目名在 harbor 中已存在
 >
-> 格式三类型的镜像会推送到harbor的library项目中
+> 格式三类型的镜像会推送到 harbor 的 library 项目中
 
 ```bash
 #!/bin/bash
@@ -85,4 +85,4 @@ done
 
 **腾讯云搬迁声明**
 
-我的博客即将同步至腾讯云开发者社区，邀请大家一同入驻：https://cloud.tencent.com/developer/support-plan?invite_code=3ielzwnut2qsg
+我的博客即将同步至腾讯云开发者社区，邀请大家一同入驻：<https://cloud.tencent.com/developer/support-plan?invite_code=3ielzwnut2qsg>

@@ -8,7 +8,9 @@ keywords:
   - linux
 description: 记录 linux 系统如文本处理, 进程处理, 网络及其他的常用命令
 ---
+
 # 文本处理
+
 ## sed
 
 截取 rpm 包名
@@ -16,12 +18,14 @@ description: 记录 linux 系统如文本处理, 进程处理, 网络及其他�
 ```bash
 cat rpms | sed -e s/-[[:digit:]]./@/ |  awk -F '@' '{print $1}'
 ```
+
 ## awk
 
 ```bash
 # 打印某列之后的所有列
 awk ‘{ $1=""; print $0 }’ file_name
 ```
+
 ## grep
 
 ```bash
@@ -30,6 +34,7 @@ grep -Ev '^$|#' filename
 ```
 
 # 系统进程
+
 ## ps
 
 ```bash
@@ -72,6 +77,7 @@ find . -type f -exec file "{}" ";" | awk -F ': ' '$2 !~ /ASCII/ {print $1 ": " $
 # 将目录内所有的 crlf 文件转为 lf
 find . -type f -exec file "{}" ";" | awk -F ': ' '$2 !~ /ASCII/ {print $1 ": " $2}' | grep CRLF | awk -F':' '{print $1}' | xargs dos2unix
 ```
+
 ## tar
 
 xz 多核压缩

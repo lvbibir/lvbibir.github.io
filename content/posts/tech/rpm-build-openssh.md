@@ -14,38 +14,39 @@ description: "记录一下不同系统环境下通过源码构建openssh rpm包�
 cover:
     image: "" 
 ---
+
 # openssh-8.7p1
 
 ## 编译环境
 
 编译平台：	vmware workstation
 
-系统版本：	普华服务器操作系统v4.2
+系统版本：	普华服务器操作系统 v4.2
 
 系统内核：	3.10.0-327.el7.isoft.x86_64
 
-软件版本：	
+软件版本：
 
 - openssh-8.7p1.tar.gz
 - x11-ssh-askpass-1.2.4.1.tar.gz
 
 ## 编译步骤
 
-yum安装依赖工具
+yum 安装依赖工具
 
-```
+```textile
 yum install wget vim gdb imake libXt-devel gtk2-devel  rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel  libX11-devel  initscripts -y
 ```
 
 创建编译目录
 
-```
+```textile
 mkdir -p /root/rpmbuild/{SOURCES,SPECS}
 ```
 
-下载openssh编译包和x11-ssh-askpass依赖包并解压修改配置
+下载 openssh 编译包和 x11-ssh-askpass 依赖包并解压修改配置
 
-```
+```textile
 cd /root/rpmbuild/SOURCES
 
 wget https://openbsd.hk/pub/OpenBSD/OpenSSH/portable/openssh-8.7p1.tar.gz
@@ -61,20 +62,20 @@ sed -i -e "s/%define no_gnome_askpass 0/%define no_gnome_askpass 1/g" /root/rpmb
 
 准备编译
 
-```
+```textile
 vim /root/rpmbuild/SPECS/openssh.spec 
 注释掉 BuildRequires: openssl-devel < 1.1 这一行
 ```
 
 开始编译
 
-```
+```textile
 rpmbuild -ba /root/rpmbuild/SPECS/openssh.spec 
 ```
 
 操作验证
 
-```
+```textile
 cd /root/rpmbuild/RPMS/x86_64/
 
 vim run.sh
@@ -99,7 +100,7 @@ ssh -V
 
 打包归档
 
-```
+```textile
 [root@localhost ~]# cd /root/rpmbuild/RPMS/x86_64/
 [root@localhost x86_64]# ls
 
@@ -129,7 +130,7 @@ systemctl restart sshd
 
 ## 使用
 
-```
+```textile
 tar zxf openssh-8.7p1.rpm.x86_64.tar.gz
 ./run.sh
 ```
@@ -140,25 +141,25 @@ tar zxf openssh-8.7p1.rpm.x86_64.tar.gz
 
 编译平台：	vmware workstation
 
-系统版本：	普华服务器操作系统v3.0
+系统版本：	普华服务器操作系统 v3.0
 
-系统内核：	
+系统内核：
 
-- 2.6.32-279.el6.isoft.x86_64  
+- 2.6.32-279.el6.isoft.x86_64
 - 2.6.32-504.el6.isoft.x86_64
 
-软件版本：	
+软件版本：
 
 - openssh-9.0p1.tar.gz
 - x11-ssh-askpass-1.2.4.1.tar.gz
 
-> 这两个内核版本步骤基本一样，区别在于 279 内核需要升级 `openssl` 
+> 这两个内核版本步骤基本一样，区别在于 279 内核需要升级 `openssl`
 
 ## 编译步骤
 
-添加阿里云yum源和本地yum源
+添加阿里云 yum 源和本地 yum 源
 
-```
+```textile
 # 阿里yum源
 curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-6.10.repo
 # 本地yum源
@@ -172,9 +173,9 @@ enabled=1
 EOF
 ```
 
-yum安装依赖工具
+yum 安装依赖工具
 
-```
+```textile
 yum clean all
 yum makecache
 yum install wget vim gdb imake libXt-devel gtk2-devel  rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel  libX11-devel  initscripts 
@@ -182,13 +183,13 @@ yum install wget vim gdb imake libXt-devel gtk2-devel  rpm-build zlib-devel open
 
 创建编译目录
 
-```
+```textile
 mkdir -p /root/rpmbuild/{SOURCES,SPECS}
 ```
 
-下载openssh编译包和x11-ssh-askpass依赖包并解压修改配置
+下载 openssh 编译包和 x11-ssh-askpass 依赖包并解压修改配置
 
-```
+```textile
 cd /root/rpmbuild/SOURCES
 
 wget https://mirrors.aliyun.com/pub/OpenBSD/OpenSSH/portable/openssh-9.0p1.tar.gz
@@ -204,7 +205,7 @@ sed -i -e "s/%define no_gnome_askpass 0/%define no_gnome_askpass 1/g" /root/rpmb
 
 添加缺少的文件
 
-```
+```textile
 cd /root/rpmbuild/SOURCES/openssh-9.0p1/contrib/redhat
 cp sshd.init sshd.init.old
 cp sshd.pam sshd.pam.old
@@ -212,21 +213,21 @@ cp sshd.pam sshd.pam.old
 
 重新打包，否则会报错找不到 sshd.pam.old 和 sshd.init.old
 
-```
+```textile
 cd /root/rpmbuild/SOURCES/
 tar zcf openssh-9.0p1.tar.gz openssh-9.0p1
 ```
 
 准备编译
 
-```
+```textile
 vim /root/rpmbuild/SPECS/openssh.spec 
 注释掉 BuildRequires: openssl-devel < 1.1 这一行
 ```
 
 开始编译
 
-```
+```textile
 rpmbuild -ba /root/rpmbuild/SPECS/openssh.spec 
 ```
 
@@ -236,7 +237,7 @@ rpmbuild -ba /root/rpmbuild/SPECS/openssh.spec
 
 准备目录
 
-```
+```textile
 mkdir -pv /root/openssh-9.0p1-rpms/openssl-1.0.1e-rpms/
 cp /root/rpmbuild/RPMS/x86_64/* /root/openssh-9.0p1-rpms/
 ```
@@ -245,14 +246,14 @@ cp /root/rpmbuild/RPMS/x86_64/* /root/openssh-9.0p1-rpms/
 
 这步由于之前安装编译的依赖的时候已经安装过，可以用全新的系统重新下载 openssl-1.0.1e 的依赖
 
-```
+```textile
 yum install -y yum-plugin-downloadonly
 yum install openssl openssl-devel --downloadonly --downloaddir=/root/openssh-9.0p1-rpms/openssl-1.0.1e-rpms/
 ```
 
 编写升级脚本
 
-```
+```textile
 cat > /root/openssh-9.0p1-rpms/run.sh <<EOF
 #!/bin/bash
 set -e
@@ -273,7 +274,7 @@ chmod 755 /root/openssh-9.0p1-rpms/run.sh
 
 打包
 
-```
+```textile
 tar zcf /root/openssh-9.0p1-rpms.tar.gz /root/openssh-9.0p1-rpms
 ```
 
@@ -281,14 +282,14 @@ tar zcf /root/openssh-9.0p1-rpms.tar.gz /root/openssh-9.0p1-rpms
 
 准备目录
 
-```
+```textile
 mkdir  /root/openssh-9.0p1-rpms/
 cp /root/rpmbuild/RPMS/x86_64/* /root/openssh-9.0p1-rpms/
 ```
 
 编写升级脚本
 
-```
+```textile
 cat > /root/openssh-9.0p1-rpms/run.sh <<EOF
 #!/bin/bash
 set -e
@@ -308,13 +309,13 @@ chmod 755 /root/openssh-9.0p1-rpms/run.sh
 
 打包
 
-```
+```textile
 tar zcf /root/openssh-9.0p1-rpms.tar.gz /root/openssh-9.0p1-rpms
 ```
 
 ## 使用
 
-```
+```textile
 tar zxf openssh-9.0p1-rpms.tar.gz
 cd openssh-9.0p1-rpms
 sh run.sh
@@ -323,32 +324,34 @@ sh run.sh
 # openssh-8.6p1-aarch64
 
 ## 编译环境
-系统版本：普华服务器操作系统openeuler版
+
+系统版本：普华服务器操作系统 openeuler 版
 
 系统内核：4.19.90-2003.4.0.0036.oe1.aarch64
 
 软件版本：
 
-- openssh-8.6p1.tar.gz    
+- openssh-8.6p1.tar.gz
 
 - x11-ssh-askpass-1.2.4.1.tar.gz
 
 ## 编译步骤
-dnf安装依赖工具
 
-```
+dnf 安装依赖工具
+
+```textile
 dnf install gdb imake libXt-devel gtk2-devel  rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel  libX11-devel  initscripts -y
 ```
 
 创建编译目录
 
-```
+```textile
 mkdir -p /root/rpmbuild/{SOURCES,SPECS}
 ```
 
-下载openssh编译包和x11-ssh-askpass依赖包并解压修改配置
+下载 openssh 编译包和 x11-ssh-askpass 依赖包并解压修改配置
 
-```
+```textile
 cd /root/rpmbuild/SOURCES
 wget https://openbsd.hk/pub/OpenBSD/OpenSSH/portable/openssh-8.6p1.tar.gz
 wget https://src.fedoraproject.org/repo/pkgs/openssh/x11-ssh-askpass-1.2.4.1.tar.gz/8f2e41f3f7eaa8543a2440454637f3c3/x11-ssh-askpass-1.2.4.1.tar.gz
@@ -362,7 +365,7 @@ sed -i -e "s/%define no_gnome_askpass 0/%define no_gnome_askpass 1/g" /root/rpmb
 
 准备编译
 
-```
+```textile
 vim /root/rpmbuild/SPECS/openssh.spec 注释掉 BuildRequires: openssl-devel < 1.1 这一行
 修改下面两行 
 %attr(4711,root,root) %{_libexecdir}/openssh/ssh-sk-helper
@@ -371,17 +374,18 @@ vim /root/rpmbuild/SPECS/openssh.spec 注释掉 BuildRequires: openssl-devel < 1
 
 开始编译
 
-```
+```textile
 rpmbuild -ba /root/rpmbuild/SPECS/openssh.spec 
 ```
 
 操作验证
 
-```
+```textile
 cd /root/rpmbuild/RPMS/aarch64
 vim run.sh 
 ```
-```
+
+```textile
 #!/bin/bash
 cp /etc/pam.d/sshd   /etc/pam.d/sshd_bak
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config_bak
@@ -392,44 +396,57 @@ rm -rf /etc/ssh/ssh*key
 systemctl daemon-reload
 systemctl restart sshd
 ```
-```
+
+```textile
 chmod 755 run.sh
 ./run.sh
 ssh -V 
 OpenSSH_8.6p1, OpenSSL 1.1.1d  10 Sep 2019
 ```
-从版本看，ssh已经升级成功。但是每次重启服务都会提示sshd的unit文件发生改变，需要执行systemctl daemon-reload。执行完reload后重启sshd依旧报错Warning: The unit file, source configuration file or drop-ins of sshd.service changed on disk. Run 'systemctl daemon-reload' to reload units.
+
+从版本看，ssh 已经升级成功。但是每次重启服务都会提示 sshd 的 unit 文件发生改变，需要执行 systemctl daemon-reload。执行完 reload 后重启 sshd 依旧报错 Warning: The unit file, source configuration file or drop-ins of sshd.service changed on disk. Run 'systemctl daemon-reload' to reload units.
+
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20210701164624435.png)
 
-先不管这个问题，测试下sshd服务是否正常。
+先不管这个问题，测试下 sshd 服务是否正常。
 
 用终端连接试试
 
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20210701165555515.png)
-一切正常，如果出现PAM unable to dlopen(/usr/lib64/security/pam_stack.so): /usr/lib64/security/pam_stack.so: cannot open shared object file: No such file or directory类似报错，需要还原原先的/etc/pam.d/sshd文件
 
-继续看之前那个报错，一般这种错误为服务的配置文件或者unit文件发生改变，需要执行daemon-reload重新加载一下，逐个排查
+一切正常，如果出现 PAM unable to dlopen(/usr/lib64/security/pam_stack.so): /usr/lib64/security/pam_stack.so: cannot open shared object file: No such file or directory 类似报错，需要还原原先的/etc/pam.d/sshd 文件
+
+继续看之前那个报错，一般这种错误为服务的配置文件或者 unit 文件发生改变，需要执行 daemon-reload 重新加载一下，逐个排查
 
 查看配置文件
+
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20210701170122697.png)
 
-查看unit文件
+查看 unit 文件
+
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/2021070117022510.png)
-没有找到sshd.service的unit文件，find查找一下
+
+没有找到 sshd.service 的 unit 文件，find 查找一下
+
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20210701170414796.png)
-第一个文件是老版本ssh的残留的自启的unit链接文件，已经失效了。第三个和第四个文件都是第二个文件的链接文件。	
-不知为何我们自己编译的ssh安装后unit文件会放到这个位置，后续再研究，尝试自己写一份unit文件，试试能不能恢复sshd。
 
-备份unit文件
+第一个文件是老版本 ssh 的残留的自启的 unit 链接文件，已经失效了。第三个和第四个文件都是第二个文件的链接文件。
 
-```
+不知为何我们自己编译的 ssh 安装后 unit 文件会放到这个位置，后续再研究，尝试自己写一份 unit 文件，试试能不能恢复 sshd。
+
+备份 unit 文件
+
+```textile
 [root@localhost ~]# cp /run/systemd/generator.late/sshd.service /root/sshd.service-20210702
 ```
-查看unit文件中的控制参数和pid文件位置等
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20210702092434815.png)
-自建一个unit文件，放到/usr/lib/systemd/system目录
 
-```
+查看 unit 文件中的控制参数和 pid 文件位置等
+
+![在这里插入图片描述](https://image.lvbibir.cn/blog/20210702092434815.png)
+
+自建一个 unit 文件，放到/usr/lib/systemd/system 目录
+
+```textile
 [root@localhost ~]# vim /usr/lib/systemd/system/sshd.service
 
 [UNIT]
@@ -453,11 +470,12 @@ WantedBy=multi-user.target
 [root@localhost ~]# ssh -V
 OpenSSH_8.6p1, OpenSSL 1.1.1d  10 Sep 2019
 ```
+
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20210702094722872.png)
 
 打包归档
 
-```
+```textile
 [root@localhost ~]# cp  /usr/lib/systemd/system/sshd.service  /root/rpmbuild/RPMS/aarch64/
 [root@localhost ~]# cd /root/rpmbuild/RPMS/aarch64/
 [root@localhost aarch64]# ls
@@ -491,6 +509,3 @@ systemctl enable sshd
 [systemd和sysv的服务管理](https://blog.csdn.net/weixin_30412577/article/details/97964940?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control)
 
 [systemd-sysv-generator 中文手册](https://www.wenjiangs.com/doc/systemd-systemd-sysv-generator)
-
-
-

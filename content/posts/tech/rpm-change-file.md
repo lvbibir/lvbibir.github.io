@@ -11,50 +11,51 @@ description: ""
 cover:
     image: "" 
 ---
+
 # 前言
 
-要修改rpm包中的文件，对于自己编译的rpm包，只需要在源码中修改好然后重新编译即可。而对于并不是自己编译的rpm包，且不熟悉编译环境的情况下，可以使用rpm-build和rpm-rebuild工具反编译来修改rpm中的文件
+要修改 rpm 包中的文件，对于自己编译的 rpm 包，只需要在源码中修改好然后重新编译即可。而对于并不是自己编译的 rpm 包，且不熟悉编译环境的情况下，可以使用 rpm-build 和 rpm-rebuild 工具反编译来修改 rpm 中的文件
 
-这里使用ceph-mgr软件包进行演示
+这里使用 ceph-mgr 软件包进行演示
 
-# 安装rpm-build&rpmrebuild
+# 安装 rpm-build&rpmrebuild
 
-rpmrebuild官网：http://rpmrebuild.sourceforge.net
+rpmrebuild 官网：<http://rpmrebuild.sourceforge.net>
 
-rpmrebuild下载地址：https://sourceforge.net/projects/rpmrebuild/files/rpmrebuild/2.15/rpmrebuild-2.15.tar.gz/download
+rpmrebuild 下载地址：<https://sourceforge.net/projects/rpmrebuild/files/rpmrebuild/2.15/rpmrebuild-2.15.tar.gz/download>
 
-解压rpmrebuild
+解压 rpmrebuild
 
-```
+```textile
 [root@localhost ~]# mkdir -p /data/rpmbuild
 [root@localhost ~]# tar zxf rpmrebuild-2.15.tar.gz  -C /data/rpmbuild/
 [root@localhost ~]# ll /opt/rpmrebuild/
 ```
 
-rpm-build直接使用yum安装即可
+rpm-build 直接使用 yum 安装即可
 
-```
+```textile
 [root@localhost ~]# yum install -y rpm-build
 ```
 
 # 反编译&修改&重新编译
 
-安装准备重新打包的rpm
+安装准备重新打包的 rpm
 
-```
+```textile
 [root@localhost ~]# rpm -ivh ceph-mgr-12.2.13-0.el7.x86_64.rpm
 ```
 
-查看rpm的安装名称
+查看 rpm 的安装名称
 
-```
+```textile
 [root@localhost ~]# rpm -qa |grep mgr
 ceph-mgr-12.2.13-0.el7.x86_64
 ```
 
-配置rpm编译目录
+配置 rpm 编译目录
 
-```
+```textile
 vim ~/.rpmmacros
 
 %_topdir /data/rpmbuild
@@ -69,15 +70,15 @@ mkdir  /data/rpmbuild/SPECS
 
 执行脚本
 
-```
+```textile
 [root@localhost ~]# cd /data/rpmbuild/
 [root@localhost rpmbuild]# ./rpmrebuild.sh -s SPECS/abc.spec ceph-mgr
 [root@localhost rpmbuild]# cd
 ```
 
-解压原版RPM包
+解压原版 RPM 包
 
-```
+```textile
 [root@localhost ~]# rpm2cpio ceph-mgr-12.2.13-0.el7.x86_64.rpm |cpio -idv
 ```
 
@@ -85,20 +86,20 @@ mkdir  /data/rpmbuild/SPECS
 
 ![image-20211206162209187](https://image.lvbibir.cn/blog/image-20211206162209187.png)
 
-根据需求替换修改解压后的文件，这里我替换两个文件`/root/usr/lib64/ceph/mgr/dashboard/static/Ceph_Logo_Standard_RGB_White_120411_fa.png`和`/root/usr/lib64/ceph/mgr/dashboard/static/logo-mini.png`，并给原先的文件做一个备份
+根据需求替换修改解压后的文件，这里我替换两个文件 `/root/usr/lib64/ceph/mgr/dashboard/static/Ceph_Logo_Standard_RGB_White_120411_fa.png` 和 `/root/usr/lib64/ceph/mgr/dashboard/static/logo-mini.png`，并给原先的文件做一个备份
 
-```
+```textile
 [root@localhost static]# mv logo-mini.png logo-mini.png.bak
 [root@localhost static]# mv Ceph_Logo_Standard_RGB_White_120411_fa.png Ceph_Logo_Standard_RGB_White_120411_fa.png.bak
 [root@localhost static]# cp kubernetes-logo.svg logo-mini.png
 [root@localhost static]# cp kubernetes-logo.svg Ceph_Logo_Standard_RGB_White_120411_fa.png
 ```
 
-修改abc.spec文件
+修改 abc.spec 文件
 
 找到原文件所在的行，添加备份文件
 
-```
+```textile
 [root@localhost ~]# vim /data/rpmbuild/SPECS/abc.spec
 ```
 
@@ -106,9 +107,9 @@ mkdir  /data/rpmbuild/SPECS
 
 ![image-20211206164843805](https://image.lvbibir.cn/blog/image-20211206164843805.png)
 
-这里创建的bbb目录是临时使用，编译过程肯定会报错，因为路径不对，根据报错修改路径
+这里创建的 bbb 目录是临时使用，编译过程肯定会报错，因为路径不对，根据报错修改路径
 
-```
+```textile
 [root@localhost ~]# mkdir -p /data/rpmbuild/BUILDROOT/bbb/
 [root@localhost ~]# mv ./usr/ /data/rpmbuild/BUILDROOT/bbb/
 [root@localhost ~]# mv ./var/ /data/rpmbuild/BUILDROOT/bbb/
@@ -121,23 +122,23 @@ mkdir  /data/rpmbuild/SPECS
 
 修改目录名
 
-```
+```textile
 [root@localhost ~]# mv /data/rpmbuild/BUILDROOT/bbb/ /data/rpmbuild/BUILDROOT/ceph-mgr-12.2.13-0.el7.x86_64
 ```
 
 再次编译
 
-```
+```textile
 [root@localhost ~]# rpmbuild -ba /data/rpmbuild/SPECS/abc.spec
 ```
 
-生成的rpm位置在/data/rpmbuild/RPMS/
+生成的 rpm 位置在/data/rpmbuild/RPMS/
 
 ![image-20211206163618292](https://image.lvbibir.cn/blog/image-20211206163618292.png)
 
-查看原rpm包的文件
+查看原 rpm 包的文件
 
-```
+```textile
 [root@localhost ~]# cd /usr/lib64/ceph/mgr/dashboard/static
 [root@localhost static]# ll
 total 16
@@ -148,9 +149,9 @@ drwxr-xr-x 7 root root   94 Dec  6 03:11 libs
 -rw-r--r-- 1 root root 1811 Jan 30  2020 logo-mini.png
 ```
 
-安装新rpm包，查看文件
+安装新 rpm 包，查看文件
 
-```
+```textile
 [root@localhost ~]# cd /data/rpmbuild/RPMS/x86_64
 [root@localhost x86_64]# rpm -e --nodeps ceph-mgr
 [root@localhost x86_64]# rpm -ivh ceph-mgr-12.2.13-0.el7.x86_64.rpm
@@ -166,8 +167,8 @@ drwxr-xr-x 7 root root   94 Dec  6 03:53 libs
 -rw-r--r-- 1 root root 1811 Dec  6 03:41 logo-mini.png.bak
 ```
 
-至此，rpm包中的文件修改以及重新打包的所有步骤都已完成
+至此，rpm 包中的文件修改以及重新打包的所有步骤都已完成
 
 # 参考
 
-https://www.cnblogs.com/felixzh/p/10564895.html
+<https://www.cnblogs.com/felixzh/p/10564895.html>

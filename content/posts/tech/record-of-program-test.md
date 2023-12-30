@@ -14,6 +14,7 @@ description: ""
 cover:
     image: "" 
 ---
+
 # 前言
 
 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向文件中追加内容，程序要能读取到，效果如下：
@@ -57,9 +58,9 @@ int main(int argc, char **argv)
 
 # 故障排查
 
-考虑到影响程序执行结果的几个因素：程序本身，内核版本，gcc版本，glibc版本。
+考虑到影响程序执行结果的几个因素：程序本身，内核版本，gcc 版本，glibc 版本。
 
-程序本身应该是没问题的，内核版本一般对C语言程序的影响也不会很大，还是优先看gcc版本和glibc版本。
+程序本身应该是没问题的，内核版本一般对 C 语言程序的影响也不会很大，还是优先看 gcc 版本和 glibc 版本。
 
 按照思路进行了一些测试，测试结果：
 
@@ -72,9 +73,9 @@ int main(int argc, char **argv)
 - centos8（gcc-8.4.0，kernel-4.18.0，glibc>=2.28）
 - openeuler-20.03-LTS-SP1（gcc-7.3.0，kernel-4.19.90，glibc>=2.28）
 
-按照测试结果，似乎 gcc 版本和内核版本对程序没什么影响，大概率应该是 glibc 版本导致的。由于程序很简单，只是以 rb 方式 fopen 打开文件循环读取文件内容，求证(google)起来也比较轻松，很快就找到了问题在哪：**glibc 2.28修复了 fread 的行为**
+按照测试结果，似乎 gcc 版本和内核版本对程序没什么影响，大概率应该是 glibc 版本导致的。由于程序很简单，只是以 rb 方式 fopen 打开文件循环读取文件内容，求证 (google) 起来也比较轻松，很快就找到了问题在哪：**glibc 2.28 修复了 fread 的行为**
 
-这个 glibc 的 bug 是05年提的，到18年才修复，也是担心 break 之前大量的代码。https://sourceware.org/bugzilla/show_bug.cgi?id=1190
+这个 glibc 的 bug 是 05 年提的，到 18 年才修复，也是担心 break 之前大量的代码。<https://sourceware.org/bugzilla/show_bug.cgi?id=1190>
 
 现在再修改一下代码：
 
@@ -115,4 +116,3 @@ int main(int argc, char **argv)
 添加了一块清除标记的片段，在 glibc>=2.28 的系统上程序也可以正常运行了
 
 ![image-20210910151213242](https://image.lvbibir.cn/blog/image-20210910151213242.png)
-

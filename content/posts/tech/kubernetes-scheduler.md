@@ -17,25 +17,26 @@ description: "介绍kubernetes中影响pod调度的一些因素，比如资源�
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
+
 # 前言
 
-基于`centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
+基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
-# 创建pod的工作流程
+# 创建 pod 的工作流程
 
 1. kubectl run nginx --image=nginx
-2. kubectl将创建pod的请求发送到apiserver
-3. apiserver将请求信息写入etcd
-4. apiserver通知scheduler，收到请求信息后根据调度算法将pod分配到合适节点
-5. scheduler给pod标记调度结果，并返回给apiserver
-6. apiserver收到后写入etcd
-7. 对应节点的kubelet收到创建pod的事件，从apiserver获取到pod的相关信息
-8. kubelet调用docker api创建pod所需的容器
-9. 创建完成之后将pod状态汇报给apiserver
-10. apiserver将收到的pod状态写入apiserver
-11. kubectl get pods即可收到相关信息
+2. kubectl 将创建 pod 的请求发送到 apiserver
+3. apiserver 将请求信息写入 etcd
+4. apiserver 通知 scheduler，收到请求信息后根据调度算法将 pod 分配到合适节点
+5. scheduler 给 pod 标记调度结果，并返回给 apiserver
+6. apiserver 收到后写入 etcd
+7. 对应节点的 kubelet 收到创建 pod 的事件，从 apiserver 获取到 pod 的相关信息
+8. kubelet 调用 docker api 创建 pod 所需的容器
+9. 创建完成之后将 pod 状态汇报给 apiserver
+10. apiserver 将收到的 pod 状态写入 apiserver
+11. kubectl get pods 即可收到相关信息
 
-# 资源限制对pod调度的影响
+# 资源限制对 pod 调度的影响
 
 容器资源限制：
 
@@ -69,9 +70,9 @@ spec:
 
 # nodeSelector
 
-nodeSelector用于将Pod调度到匹配Label的Node上，如果没有匹配的标签会调度失败。
+nodeSelector 用于将 Pod 调度到匹配 Label 的 Node 上，如果没有匹配的标签会调度失败。
 
-先创建pod后打标签，起始出于pending状态，打好标签后，pod会正常分配
+先创建 pod 后打标签，起始出于 pending 状态，打好标签后，pod 会正常分配
 
 给节点打标签：
 
@@ -99,14 +100,14 @@ spec:
     disktype: "ssd"
 ```
 
-#  nodeAffinity
+# nodeAffinity
 
 节点亲和性概念上类似于 `nodeSelector`， 它使你可以根据节点上的标签来约束 Pod 可以调度到哪些节点上。 节点亲和性有两种：
 
 - `requiredDuringSchedulingIgnoredDuringExecution`： 调度器只有在规则被满足的时候才能执行调度。此功能类似于 `nodeSelector`， 但其语法表达能力更强。
 - `preferredDuringSchedulingIgnoredDuringExecution`： 调度器会尝试寻找满足对应规则的节点。如果找不到匹配的节点，调度器仍然会调度该 Pod。
 
-> 先创建pod后打标签起始出于pending状态，打好标签后，pod会正常分配
+> 先创建 pod 后打标签起始出于 pending 状态，打好标签后，pod 会正常分配
 >
 > `IgnoredDuringExecution` 意味着如果节点标签在 Kubernetes 调度 Pod 后发生了变更，Pod 仍将继续运行。
 
@@ -152,13 +153,13 @@ spec:
 
 # Taint(污点)
 
-Taints：避免Pod调度到特定Node上
+Taints：避免 Pod 调度到特定 Node 上
 
 应用场景：
 
 - 专用节点，例如配备了特殊硬件的节点
 
-- 基于Taint的驱逐
+- 基于 Taint 的驱逐
 
 设置污点：
 
@@ -172,7 +173,7 @@ kubectl taint node [node] key=value:[effect]
 
 去掉污点：
 
-```
+```textile
 kubectl taint node [node] key:[effect]-
 ```
 
@@ -189,7 +190,7 @@ Taints:             disktype=ssd:NoSchedule
 
 **Tolerations（污点容忍）**
 
-允许Pod调度到持有Taints的Node上，但不是绝对分配到指定的标签，搭配nodeSelector或者nodeAffinity使用，实现将pod分配到特定污点的节点上
+允许 Pod 调度到持有 Taints 的 Node 上，但不是绝对分配到指定的标签，搭配 nodeSelector 或者 nodeAffinity 使用，实现将 pod 分配到特定污点的节点上
 
 ```yaml
       tolerations:              #设置容忍所有污点，防止节点被设置污点
@@ -228,11 +229,11 @@ spec:
 
 # nodeName
 
-指定节点名称，用于将Pod调度到指定的Node上，不经过调度器scheduler，所以无视污点
+指定节点名称，用于将 Pod 调度到指定的 Node 上，不经过调度器 scheduler，所以无视污点
 
 示例
 
-```
+```textile
 [root@k8s-node1 ~]# kubectl describe node k8s-node2| grep Taint
 Taints:             disktype=ssd:NoSchedule
 [root@k8s-node1 ~]# kubectl apply -f pod-nodename.yaml
@@ -256,19 +257,19 @@ spec:
   nodeName: k8s-node2
 ```
 
-# DaemonSet控制器
+# DaemonSet 控制器
 
-DaemonSet功能：
+DaemonSet 功能：
 
-- 在每一个Node上运行一个Pod
+- 在每一个 Node 上运行一个 Pod
 
-- 新加入的Node也同样会自动运行一个Pod
+- 新加入的 Node 也同样会自动运行一个 Pod
 
-应用场景：网络插件、监控Agent、日志Agent，比如k8s的calico-node和kube-proxy组件
+应用场景：网络插件、监控 Agent、日志 Agent，比如 k8s 的 calico-node 和 kube-proxy 组件
 
 示例
 
-```
+```textile
 [root@k8s-node1 ~]# kubectl apply -f daemonset-filebeat.yaml
 [root@k8s-node1 ~]# kubectl get pods -n kube-system -o wide |grep filebeat
 filebeat-2c6p4       1/1     Running   0               90s    10.244.107.246   k8s-node3   <none>           <none>

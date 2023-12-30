@@ -15,7 +15,7 @@ description: ""
 
 出现这个问题的原因是 onedrive 启动速度要比 clash 快, 导致 onedrive 启动时访问不到 clash. 其实只要将这两个其中一个不设置为开机自启即可解决, 但是这两个都是刚需, 放下任何一个都会不舒服.
 
-一番 google 下来, 大部分的解决方案都是添加 windows 的计划任务, 我尝试了半天也没办法无法成功, 最后终于找到了满足需求的[解决方案](https://meta.appinn.net/t/topic/13337/2), 使用 [EarlyStart](https://github.com/sylveon/EarlyStart) 实现在 windows explorer 启动前就启动自定义的软件.
+一番 google 下来, 大部分的解决方案都是添加 windows 的计划任务, 我尝试了半天也没办法无法成功, 最后终于找到了满足需求的 [解决方案](https://meta.appinn.net/t/topic/13337/2), 使用 [EarlyStart](https://github.com/sylveon/EarlyStart) 实现在 windows explorer 启动前就启动自定义的软件.
 
 同时还能顺便解决之前感觉有点不舒服的两个问题:
 
@@ -24,7 +24,7 @@ description: ""
 
 # 1. 安装 EarlyStart
 
-下载 [EarlyStart.zip](https://github.com/sylveon/EarlyStart/releases/download/1.0.0/EarlyStart.zip) 
+下载 [EarlyStart.zip](https://github.com/sylveon/EarlyStart/releases/download/1.0.0/EarlyStart.zip)
 
 解压后使用管理员打开 powershell 并进入安装目录
 

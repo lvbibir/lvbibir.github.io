@@ -96,7 +96,7 @@ spec:
 
 比如在之前的 node-exporter 的 job 中新增一个 target
 
-修改 `prometheus-additional.yaml` 
+修改 `prometheus-additional.yaml`
 
 ```yaml
 - job_name: "node-exporter"
@@ -120,4 +120,3 @@ prometheus 会自动重载配置
 # 4. 更新失败排查
 
 如果修改了 secret 不生效一定要注意 secret 部署的 namespace 是不是 monitoring
-

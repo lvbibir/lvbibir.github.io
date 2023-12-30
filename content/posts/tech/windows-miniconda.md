@@ -18,6 +18,7 @@ python 虚拟环境的重要性已经无需多言了, 目前所有支持 python 
 Anaconda 比较臃肿, 本文使用无 GUI 的 [miniconda](https://docs.conda.io/en/latest/miniconda.html).
 
 环境:
+
 - win10
 - miniconda3-py11-23.5.2-0
 
@@ -160,7 +161,7 @@ conda env remove -n py37 --all
 
 conda 最为人诟病的点应该是包管理跟 pip 可能会产生一些冲突, conda 官方给出的最佳方案是
 
-1. 全程使用 `conda install` 来安装模块, 实在不行再用 `pip` 
+1. 全程使用 `conda install` 来安装模块, 实在不行再用 `pip`
 
 2. 使用 conda 创建完虚拟环境后, 一直用 `pip` 来管理模块
 
@@ -171,10 +172,3 @@ conda 最为人诟病的点应该是包管理跟 pip 可能会产生一些冲突
 总结一下就是不要来回地用 pip 和 conda.
 
 以上.
-
-
-
-
-
-
-

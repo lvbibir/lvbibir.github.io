@@ -15,35 +15,36 @@ description: "介绍kubernetes中的service和Headless Service，service的两�
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
+
 # 前言
 
-基于`centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
+基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
 # service
 
 ## 基本概念
 
-service存在的意义
+service 存在的意义
 
-- 服务发现：防止Pod失联
+- 服务发现：防止 Pod 失联
 
-- 负载均衡：定义一组Pod的访问策略
+- 负载均衡：定义一组 Pod 的访问策略
 
-service通过label-selector关联pod
+service 通过 label-selector 关联 pod
 
-service的三种类型
+service 的三种类型
 
 - ClusterIP：集群内部使用
 
-  默认**，**分配一个稳定的IP地址，即VIP，只能在集群内部访问（同Namespace内的Pod）
+  默认**，**分配一个稳定的 IP 地址，即 VIP，只能在集群内部访问（同 Namespace 内的 Pod）
 
 - NodePort：对外暴露应用
 
-  在每个节点上启用一个端口(30000-32767)来暴露服务，可以在集群外部访问。也会分配一个稳定内部集群IP地址。
+  在每个节点上启用一个端口 (30000-32767) 来暴露服务，可以在集群外部访问。也会分配一个稳定内部集群 IP 地址。
 
 - LoadBalancer：对外暴露应用，适用公有云
 
-  与NodePort类似，在每个节点上启用一个端口来暴露服务。除此之外，Kubernetes会请求底层云平台上的负载均衡器，将每个Node（[NodeIP]:[NodePort]）作为后端添加进去。
+  与 NodePort 类似，在每个节点上启用一个端口来暴露服务。除此之外，Kubernetes 会请求底层云平台上的负载均衡器，将每个 Node（[NodeIP]:[NodePort]）作为后端添加进去。
 
 示例
 
@@ -89,29 +90,27 @@ spec:
 
 ## 代理模式
 
-Iptables： 
+Iptables：
 
 - 灵活，功能强大
 
 - 规则遍历匹配和更新，呈线性时延
 
-IPVS： 
+IPVS：
 
 - 工作在内核态，有更好的性能
 
-- 调度算法丰富：rr，wrr，lc，wlc，ip hash...
-
-
+- 调度算法丰富：rr，wrr，lc，wlc，ip hash…
 
 ![image-20221005090953888](https://image.lvbibir.cn/blog/image-20221005090953888.png)
 
-### iptables模式
+### iptables 模式
 
 使用 iptables 模式时，根据 iptables 的 `--mode random --probability` 来匹配每一条请求，每个 pod 收到的流量趋近于平衡，不是完全的轮询
 
-这种模式，kube-proxy 会监听 Kubernetes 对 `Service` 对象和 `Endpoints` 对象的添加和移除。对每个 `Service`，它会安装 `iptables` 规则，从而捕获到达该 `Service` 的 `clusterIP` 和端口的请求，进而将请求重定向到 `Service` 任意一组 `backend pod` 中。对于每个 `Endpoints` 对象，它也会安装`iptables`规则，这个规则会选择一个 `backend pod` 组合。
+这种模式，kube-proxy 会监听 Kubernetes 对 `Service` 对象和 `Endpoints` 对象的添加和移除。对每个 `Service`，它会安装 `iptables` 规则，从而捕获到达该 `Service` 的 `clusterIP` 和端口的请求，进而将请求重定向到 `Service` 任意一组 `backend pod` 中。对于每个 `Endpoints` 对象，它也会安装 `iptables` 规则，这个规则会选择一个 `backend pod` 组合。
 
-k8s默认采用的代理模式是iptables，可以通过查看kube-proxy组件的日志可得
+k8s 默认采用的代理模式是 iptables，可以通过查看 kube-proxy 组件的日志可得
 
 ```bash
 [root@k8s-node1 ~]# kubectl logs kube-proxy-8mf2l -n kube-system  | grep Using
@@ -157,9 +156,9 @@ nginx-55f4d8c85-q4gsx   1/1     Running   0          4m57s   10.244.107.203   k8
 
 ```
 
-### ipvs模式
+### ipvs 模式
 
-ipvsadm安装配置(所有节点都要配置)
+ipvsadm 安装配置 (所有节点都要配置)
 
 ```bash
 [root@k8s-node1 ~]# yum install ipvsadm
@@ -222,9 +221,9 @@ Headless Service 几大特点：
 
 - 不分配 clusterIP
 
-- 没有负载均衡的功能(kube-proxy 不会安装 iptables 规则)
+- 没有负载均衡的功能 (kube-proxy 不会安装 iptables 规则)
 
-- 可以通过解析 service 的 DNS，返回所有 Pod 的 IP 和 DNS (statefulSet部署的Pod才有DNS)
+- 可以通过解析 service 的 DNS，返回所有 Pod 的 IP 和 DNS (statefulSet 部署的 Pod 才有 DNS)
 
   ```bash
   [root@k8s-node1 ~]# kubectl run -it --rm --restart=Never --image busybox:1.28  dns-test -- nslookup statefulset-nginx.default.svc.cluster.local
@@ -239,11 +238,11 @@ Headless Service 几大特点：
 
 Headless Services 应用场景
 
-1. 自主选择权，`client` 可以通过查询DNS来获取 `Real Server` 的信息，自己来决定使用哪个`Real Server`
+1. 自主选择权，`client` 可以通过查询 DNS 来获取 `Real Server` 的信息，自己来决定使用哪个 `Real Server`
 
-2. `Headless Service` 的对应的每一个 `Endpoints`，即每一个`Pod`，都会有对应的`DNS域名`，这样Pod之间就可以互相访问
+2. `Headless Service` 的对应的每一个 `Endpoints`，即每一个 `Pod`，都会有对应的 `DNS域名`，这样 Pod 之间就可以互相访问
 
-DNS解析名称：
+DNS 解析名称：
 
 pod：`<pod-name>.<service-name>.<namespace>.svc.cluster.local`
 
@@ -253,46 +252,46 @@ service: `<service-name>.<namespace>.svc.cluster.local`
 
 ## 基本概念
 
-NodePort的不足
+NodePort 的不足
 
 - 一个端口只能一个服务使用，端口需提前规划
-- 只支持4层负载均衡
+- 只支持 4 层负载均衡
 
-**Ingress是什么？**
+**Ingress 是什么？**
 
-Ingress 公开了从集群外部到集群内服务的HTTP和HTTPS路由。流量路由由Ingress资源上定义的规则控制。
+Ingress 公开了从集群外部到集群内服务的 HTTP 和 HTTPS 路由。流量路由由 Ingress 资源上定义的规则控制。
 
-下面是一个将所有流量都发送到同一Service的简单Ingress示例：
+下面是一个将所有流量都发送到同一 Service 的简单 Ingress 示例：
 
 ![image-20221005140153771](https://image.lvbibir.cn/blog/image-20221005140153771.png)
 
 **Ingress Controller**
 
-Ingress管理的负载均衡器，为集群提供全局的负载均衡能力。
+Ingress 管理的负载均衡器，为集群提供全局的负载均衡能力。
 
-**Ingress Contronler怎么工作的？**
+**Ingress Contronler 怎么工作的？**
 
-Ingress Contronler通过与 Kubernetes API 交互，动态的去感知集群中 Ingress 规则变化，然后读取它，按照自定义的规则，规则就是写明了哪个域名对应哪个service，生成一段 Nginx 配置，应用到管理的Nginx服务，然后热加载生效。
+Ingress Contronler 通过与 Kubernetes API 交互，动态的去感知集群中 Ingress 规则变化，然后读取它，按照自定义的规则，规则就是写明了哪个域名对应哪个 service，生成一段 Nginx 配置，应用到管理的 Nginx 服务，然后热加载生效。
 
-以此来达到Nginx负载均衡器配置及动态更新的问题
+以此来达到 Nginx 负载均衡器配置及动态更新的问题
 
 使用流程：
 
-1. 部署Ingress Controller
+1. 部署 Ingress Controller
 
-2. 创建Ingress规则
+2. 创建 Ingress 规则
 
 ![image-20221005141711017](https://image.lvbibir.cn/blog/image-20221005141711017.png)
 
-Ingress Contorller主流控制器：
+Ingress Contorller 主流控制器：
 
 - ingress-nginx-controller: nginx 官方维护的控制器
 
-- Traefik： HTTP反向代理、负载均衡工具
+- Traefik： HTTP 反向代理、负载均衡工具
 
 - Istio：服务治理，控制入口流量
 
-这里使用 Nginx 官方维护的，Github：https://github.com/kubernetes/ingress-nginx
+这里使用 Nginx 官方维护的，Github：<https://github.com/kubernetes/ingress-nginx>
 
 ## 安装部署
 
@@ -339,6 +338,7 @@ spec:
 ```
 
 部署
+
 ```bash
 [root@k8s-node1 ~]# kubectl apply -f deploy.yaml
 
@@ -478,7 +478,7 @@ Annotations:  kubernetes.io/ingress.class: nginx
 Events:       <none>
 ```
 
-修改 index.html 
+修改 index.html
 
 ```bash
 [root@k8s-node1 ~]# echo "test" > /nfs/default-pvc-test-pvc-93a7df14-90f2-4466-8655-6ef42549b760/index.html
@@ -498,4 +498,3 @@ foo
 [root@k8s-node1 ~]# curl http://1.1.1.3/bar/ -H "Host: test.com"
 bar
 ```
-

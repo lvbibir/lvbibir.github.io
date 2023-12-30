@@ -20,8 +20,6 @@ cover:
 
 ![img](https://image.lvbibir.cn/blog/e6803b446f0e875f0ae03f5bf1bd9e3f.jpeg)
 
-
-
 # 1. promtail
 
 ## 1.1 部署
@@ -453,7 +451,7 @@ spec:
 - 未定义 label_name, 定义了 label_app
 - 未定义 label_name & label_app, 由 Daemonset 控制
 - 未定义 label_name & label_app, 由非 Daemonset 控制
-- 未定义 label_name & label_app, 由 kubelet 直接控制 
+- 未定义 label_name & label_app, 由 kubelet 直接控制
 
 对应上述 configmap 中配置的五个 job:
 
@@ -740,9 +738,9 @@ traefik 部署参考 [traefik 系列文章](https://www.lvbibir.cn/tags/traefik)
 
 ![image-20230422145419822](https://image.lvbibir.cn/blog/image-20230422145419822.png)
 
-我们还可以通过 dashboard 实时展示 traefik 的信息, 在 grafana 导入 [13713 号模板](https://grafana.com/grafana/dashboards/13713) 
+我们还可以通过 dashboard 实时展示 traefik 的信息, 在 grafana 导入 [13713 号模板](https://grafana.com/grafana/dashboards/13713)
 
-此 dashboard 默认的  traefik 的采集语句是 `{job="/var/log/traefik.log"}` , 我们需要按照实际情况进行修改, 这里我改成了 `{app="traefik/traefik"}`
+此 dashboard 默认的 traefik 的采集语句是 `{job="/var/log/traefik.log"}` , 我们需要按照实际情况进行修改, 这里我改成了 `{app="traefik/traefik"}`
 
 ![image-20230422150345420](https://image.lvbibir.cn/blog/image-20230422150345420.png)
 
@@ -769,20 +767,3 @@ pod "grafana-78bb4557f5-7rbbq" deleted
 等待重建 pod, 可以看到这里已经可以正常显示了
 
 ![image-20230422153000965](https://image.lvbibir.cn/blog/image-20230422153000965.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

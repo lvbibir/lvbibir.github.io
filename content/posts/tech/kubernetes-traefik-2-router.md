@@ -36,14 +36,14 @@ Traefik 创建路由规则有多种方式，比如：
 
 | 规则                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Headers(`key`, `value`)                                      | 检查headers中是否有一个键为key值为value的键值对              |
-| HeadersRegexp(`key`, `regexp`)                               | 检查headers中是否有一个键位key值为正则表达式匹配的键值对     |
+| Headers(`key`, `value`)                                      | 检查 headers 中是否有一个键为 key 值为 value 的键值对              |
+| HeadersRegexp(`key`, `regexp`)                               | 检查 headers 中是否有一个键位 key 值为正则表达式匹配的键值对     |
 | Host(`example.com`, …)                                       | 检查请求的域名是否包含在特定的域名中                         |
 | HostRegexp(`example.com`, `{subdomain:[a-z]+}.example.com`, …) | 检查请求的域名是否包含在特定的正则表达式域名中               |
-| Method(`GET`, …)                                             | 检查请求方法是否为给定的methods(GET、POST、PUT、DELETE、PATCH)中 |
+| Method(`GET`, …)                                             | 检查请求方法是否为给定的 methods(GET、POST、PUT、DELETE、PATCH) 中 |
 | Path(`/path`, `/articles/{cat:[a-z]+}/{id:[0-9]+}`, …)       | 匹配特定的请求路径，它接受一系列文字和正则表达式路径         |
 | PathPrefix(`/products/`, `/articles/{cat:[a-z]+}/{id:[0-9]+}`) | 匹配特定的前缀路径，它接受一系列文字和正则表达式前缀路径     |
-| Query(`foo=bar`, `bar=baz`)                                  | 匹配查询字符串参数，接受key=value的键值对                    |
+| Query(`foo=bar`, `bar=baz`)                                  | 匹配查询字符串参数，接受 key=value 的键值对                    |
 | ClientIP(`10.0.0.0/16`, `::1`)                               | 如果请求客户端 IP 是给定的 IP/CIDR 之一，则匹配。它接受 IPv4、IPv6 和网段格式。 |
 
 # 2. dashboard 案例
@@ -114,7 +114,7 @@ spec:
   controller: traefik.io/gateway-controller
 ```
 
-创建 gateway 
+创建 gateway
 
 ```yaml
 apiVersion: networking.x-k8s.io/v1alpha1
@@ -267,7 +267,7 @@ Hello MyApp | Version: v2 | <a href="hostname.html">Pod Name</a>
 
 ## 4.1 http 路由
 
-实现目标：集群外部用户通过访问 [http://myapp1.test.com](http://myapp1.test.com) 域名时，将请求代理至myapp1应用。
+实现目标：集群外部用户通过访问 [http://myapp1.test.com](http://myapp1.test.com) 域名时，将请求代理至 myapp1 应用。
 
 创建 ingressRoute
 
@@ -298,8 +298,6 @@ ingressroute.traefik.containo.us/myapp1 created
 访问测试
 
 ![image-20230419131939361](https://image.lvbibir.cn/blog/image-20230419131939361.png)
-
-
 
 ## 4.2 https 路由
 
@@ -349,11 +347,11 @@ ingressroute.traefik.containo.us/myapp2 created
 
 # 5. ingressRouteTCP
 
-[ingreeRouteTCP 官方文档](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroutetcp) 
+[ingreeRouteTCP 官方文档](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroutetcp)
 
 ## 5.1 不带 TLS 证书
 
-部署mysql
+部署 mysql
 
 ```yaml
 apiVersion: v1
@@ -423,7 +421,7 @@ spec:
 
 ingressRouteTCP
 
-> SNI为服务名称标识，是 TLS 协议的扩展。因此，只有 TLS 路由才能使用该规则指定域名。非 TLS 路由使用带有 `*` 的规则来声明每个非 TLS 请求都将由路由进行处理。
+> SNI 为服务名称标识，是 TLS 协议的扩展。因此，只有 TLS 路由才能使用该规则指定域名。非 TLS 路由使用带有 `*` 的规则来声明每个非 TLS 请求都将由路由进行处理。
 
 ```yaml
 apiVersion: traefik.containo.us/v1alpha1
@@ -612,4 +610,3 @@ Hello MyApp | Version: v1 | <a href="hostname.html">Pod Name</a>
 [root@k8s-node1 ~]# curl http://lb.test.com
 Hello MyApp | Version: v2 | <a href="hostname.html">Pod Name</a>
 ```
-

@@ -13,17 +13,18 @@ description: ""
 cover:
     image: "" 
 ---
-# pxe环境
+
+# pxe 环境
 
 dhcp+tftp+http
 
 pxe-server：isoft-serveros-v4.2（3.10.0-957.el7.isoft.x86_64）
 
-引导的iso：isoft-serveros-aarch64-oe1-v5.1（4.19.90-2003.4.0.0036.oe1.aarch64）
+引导的 iso：isoft-serveros-aarch64-oe1-v5.1（4.19.90-2003.4.0.0036.oe1.aarch64）
 
 物理服务器：浪潮 Inspur
 
-# dhcpd.conf配置
+# dhcpd.conf 配置
 
 ```bash
 [root@localhost isoft-5.1-arm]# vim /etc/dhcp/dhcpd.conf
@@ -56,7 +57,7 @@ shared-network works {
 }
 ```
 
-# grub.cfg配置
+# grub.cfg 配置
 
 ```bash
 [root@localhost tftpboot]# vim arm/grub.cfg
@@ -101,7 +102,7 @@ menuentry 'Install iSoftServerOS 5.1 with GUI mode' --class red --class gnu-linu
 #}
 ```
 
-# ks.cfg配置
+# ks.cfg 配置
 
 ```bash
 [root@localhost isoft-5.1-arm]# vim anaconda-ks.cfg
@@ -165,4 +166,3 @@ pwpolicy luks --minlen=8 --minquality=1 --notstrict --nochanges --notempty
 
 reboot
 ```
-

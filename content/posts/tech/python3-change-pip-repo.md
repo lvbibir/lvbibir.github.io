@@ -11,18 +11,19 @@ description: ""
 cover:
     image: "" 
 ---
+
 ## 清单
 
 |                  | 地址                                     |
 | ---------------- | ---------------------------------------- |
-| 中国科学技术大学 | https://pypi.mirrors.ustc.edu.cn/simple  |
-| 清华             | https://pypi.tuna.tsinghua.edu.cn/simple |
-| 豆瓣             | http://pypi.douban.com/simple            |
-| 华中理工大学     | http://pypi.hustunique.com/simple        |
-| 山东理工大学     | http://pypi.sdutlinux.org/simple         |
-| 阿里云           | https://mirrors.aliyun.com/pypi/simple/  |
+| 中国科学技术大学 | <https://pypi.mirrors.ustc.edu.cn/simple>  |
+| 清华             | <https://pypi.tuna.tsinghua.edu.cn/simple> |
+| 豆瓣             | <http://pypi.douban.com/simple>            |
+| 华中理工大学     | <http://pypi.hustunique.com/simple>        |
+| 山东理工大学     | <http://pypi.sdutlinux.org/simple>         |
+| 阿里云           | <https://mirrors.aliyun.com/pypi/simple/>  |
 
-# linux环境
+# linux 环境
 
 ```bash
 mkdir ~/.pip
@@ -33,13 +34,13 @@ index-url=https://mirrors.aliyun.com/pypi/simple/
 EOF
 ```
 
-# windows环境
+# windows 环境
 
-打开 cmd 使用 dos命令 set 找到 userprofile 路径，在该路径下创建 pip文件夹，在 pip文件夹下创建 pip.ini
+打开 cmd 使用 dos 命令 set 找到 userprofile 路径，在该路径下创建 pip 文件夹，在 pip 文件夹下创建 pip.ini
 
 ![image-20211109160017309](https://image.lvbibir.cn/blog/image-20211109160017309.png)
 
-pip.ini具体配置
+pip.ini 具体配置
 
 ```ini
 [global]
@@ -47,4 +48,3 @@ timeout = 6000
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 trusted-host = pypi.tuna.tsinghua.edu.cn
 ```
-
