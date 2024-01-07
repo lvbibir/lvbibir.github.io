@@ -43,5 +43,14 @@
       <description>介绍centos和windows中分别如何配置多网卡时以实现灵活的网络访问</description>
     </item>
     
+    <item>
+      <title>autohotkey 常用脚本</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/autohotkey-scripts/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/autohotkey-scripts/</guid>
+      <description>0.前言 基于 autohotkey v1 版本 使用方法: 安装 autohotkey 后, 将下述代码保存为 .ahk 文件, 双击执行即可 如需开机自启, 在 运行 中执行 shell:startup, 将 .ahk 文件放到自启动目录即可 1.prtsc 改为 shift insert 我的机械键盘是 80 配列, 没有 insert, shift+insert 几乎是所有软件都支持的粘贴方式, 遂将很不常用的 prtsc 键改为 shfit+insert 的组合键 PrintScreen::+Insert 2.typora 快捷修改字体颜色 实现 alt + 数字键快速将光标选</description>
+    </item>
+    
   </channel>
 </rss>

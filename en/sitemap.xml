@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.lvbibir.cn/en/posts/tech/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/blog/hello-hugo/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
@@ -18,7 +18,7 @@
     <lastmod>2023-12-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/</loc>
-    <lastmod>2023-12-31T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/linux/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
@@ -27,10 +27,10 @@
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/</loc>
-    <lastmod>2023-12-31T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/docker/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
@@ -57,7 +57,7 @@
     <lastmod>2023-12-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/windows/</loc>
-    <lastmod>2023-08-14T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/windows-early-auto-start/</loc>
     <lastmod>2023-08-14T00:00:00+00:00</lastmod>
@@ -248,6 +248,12 @@
     <loc>https://www.lvbibir.cn/en/posts/tech/shell-enable-debug-mode/</loc>
     <lastmod>2022-06-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://www.lvbibir.cn/en/tags/vscode/</loc>
+    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/posts/tech/vscode-common-problems/</loc>
+    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/network-priority/</loc>
     <lastmod>2022-06-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -292,6 +298,9 @@
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/centos-too-many-password-attempts/</loc>
     <lastmod>2022-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/posts/tech/autohotkey-scripts/</loc>
+    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/ceph-v12-nautilus-cephdeploy/</loc>
     <lastmod>2021-12-01T00:00:00+00:00</lastmod>
