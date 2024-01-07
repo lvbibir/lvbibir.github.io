@@ -62,7 +62,7 @@ traceroute -n -U -p <port> <ip>
 # tcp
 nc -zvw 5 10.30.214.22 7001
 # udp
-nc -zvwu 5 11.53.89.7 5030
+nc -zvuw 5 11.53.89.7 5030
 ```
 
 # other
