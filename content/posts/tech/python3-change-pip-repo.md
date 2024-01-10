@@ -4,7 +4,7 @@ date: 2021-12-01
 lastmod: 2024-01-10
 tags: 
 - python
-keyword:
+keywords:
 - python
 - pip
 description: "" 

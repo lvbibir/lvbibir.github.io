@@ -4,7 +4,7 @@ date: 2022-07-27
 lastmod: 2022-07-27
 tags: 
 - python
-keywrods:
+keywords:
 - windows
 - python
 description: "将windows中某个目录下的所有文件中的下划线_替换为中划线-" 

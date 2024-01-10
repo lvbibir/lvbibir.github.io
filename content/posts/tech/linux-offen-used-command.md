@@ -33,6 +33,10 @@ awk ‘{ $1=""; print $0 }’ file_name
 ```bash
 # 去除注释和空行
 grep -Ev '^$|#' filename
+# 查找一个目录中不包含 "description" 的文件
+grep -Lr "description" /your/directory/*
+# 查找一个目录中包含 "title" 但是不包含 "description" 的文件
+grep -r -l 'title' /your/directory/* | xargs grep -L 'description'
 ```
 
 # 系统进程
