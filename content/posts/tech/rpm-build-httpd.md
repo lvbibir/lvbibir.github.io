@@ -12,7 +12,7 @@ keywords:
 - rpm构建
 description: "记录一下centos7中通过源码构建httpd rpm包的过程" 
 cover:
-    image: "" 
+    image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
 系统版本：isoft-serveros-v4.2（centos7）

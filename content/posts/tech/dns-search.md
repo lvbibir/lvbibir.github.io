@@ -1,7 +1,7 @@
 ---
 title: "dns配置文件中search和options ndots详解" 
 date: 2023-04-13
-lastmod: 2023-04-13
+lastmod: 2024-01-10
 tags: 
 - linux
 keywords:
@@ -9,6 +9,8 @@ keywords:
 - dns
 - network
 description: ""
+cover:
+    image: "https://source.unsplash.com/random/400x200?code"
 ---
 
 # 简介

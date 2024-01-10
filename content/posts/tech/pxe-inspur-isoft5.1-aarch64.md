@@ -11,7 +11,7 @@ keywords:
 - dhcp
 description: "" 
 cover:
-    image: "" 
+    image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
 # pxe 环境

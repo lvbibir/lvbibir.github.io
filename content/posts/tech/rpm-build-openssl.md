@@ -12,7 +12,7 @@ keywords:
 - rpm构建
 description: "记录一下centos7系统中通过源码构建openssh rpm包的过程" 
 cover:
-    image: "" 
+    image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
 # 环境

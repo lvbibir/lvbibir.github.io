@@ -1,19 +1,17 @@
 ---
-title: docker 部署 piclist
+title: "docker 部署 piclist"
 date: 2023-12-29
 lastmod: 2023-12-30
 tags:
-  - docker
   - obsidian
 keywords:
-  - linux
   - docker
+  - obsidian
   - centos
   - piclist
-  - obsidian
-description: 介绍如何使用 docker 部署 piclist 实现 obsidian 远程上传图片至阿里云 OSS 图床
+description: "介绍如何使用 docker 部署 piclist 实现 obsidian 远程上传图片至阿里云 OSS 图床"
 cover:
-  image: https://image.lvbibir.cn/blog/docker.png
+  image: "https://image.lvbibir.cn/blog/docker.png"
 ---
 
 # 前言

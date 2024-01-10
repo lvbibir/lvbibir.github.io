@@ -6,7 +6,9 @@ tags:
 - windows
 keywords:
 - windows
-description: "" 
+description: ""
+cover:
+    image: "https://source.unsplash.com/random/400x200?code"
 ---
 
 # 0. 前言

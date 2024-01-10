@@ -6,7 +6,7 @@ tags:
 keywords:
 description: ""
 cover:
-  image: ""
+  image: "https://source.unsplash.com/random/400x200?code"
 ---
 
 # 1 前言

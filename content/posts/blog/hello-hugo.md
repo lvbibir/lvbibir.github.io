@@ -1,7 +1,7 @@
 ---
-title: 【置顶】Hello, hugo!
+title: "【置顶】Hello, hugo!"
 date: 2022-07-06
-lastmod: 2023-12-30
+lastmod: 2024-01-10
 tags:
   - 博客搭建
   - docker
@@ -11,10 +11,10 @@ keywords:
   - docker
   - 博客部署
   - 博客优化
-description: 记录 wordpress 迁移至 hugo+papermod 的过程包含环境搭建、博客美化、功能实现、速度优化等……
+description: "记录 wordpress 迁移至 hugo+papermod 的过程, 包含环境搭建、博客美化、功能实现、速度优化等……"
 weight: 1
 cover:
-  image: https://image.lvbibir.cn/blog/hugo-logo-wide.svg
+  image: "https://image.lvbibir.cn/blog/hugo-logo-wide.svg"
   hidden: false
   hiddenInSingle: false
 ---

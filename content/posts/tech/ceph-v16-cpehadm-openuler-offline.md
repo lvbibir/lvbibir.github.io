@@ -3,9 +3,7 @@ title: "cephadm 离线安装 ceph-v16 (Pacific) (openeuler)"
 date: 2022-08-19
 lastmod: 2022-08-19
 tags: 
-- linux
 - ceph
-- docker
 keywords:
 - linux
 - ceph

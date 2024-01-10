@@ -3,7 +3,6 @@ title: "ceph创建pool时pg_num的配置"
 date: 2022-02-01
 lastmod: 2022-02-01
 tags: 
-- linux
 - ceph
 keywords:
 - linux

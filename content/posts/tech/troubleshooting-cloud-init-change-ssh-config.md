@@ -12,7 +12,7 @@ keywords:
 - 故障处理
 description: "" 
 cover:
-    image: "" 
+    image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
 # 前言

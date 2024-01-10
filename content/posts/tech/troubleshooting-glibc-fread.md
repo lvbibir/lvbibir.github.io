@@ -1,9 +1,8 @@
 ---
-title: "记一次程序测试" 
+title: "故障处理 | glibc 的 fread 问题" 
 date: 2021-09-01
 lastmod: 2021-09-01
 tags: 
-- linux
 - 故障处理
 keywords:
 - linux
@@ -12,7 +11,7 @@ keywords:
 - glibc
 description: "" 
 cover:
-    image: "" 
+    image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
 # 前言

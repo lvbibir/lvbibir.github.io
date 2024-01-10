@@ -1,13 +1,15 @@
 ---
-title: linux | set命令详解
+title: "linux | set命令详解"
 date: 2022-09-28
 lastmod: 2022-09-28
 tags:
-  - linux
+- linux
 keywords:
 - linux
 - set
-description:
+description: ""
+cover:
+    image: "https://source.unsplash.com/random/400x200?code"
 ---
 
 Bash 有一个内置的 `set` 命令，可以用来查看、设置、取消 shell 选项

@@ -10,7 +10,7 @@ keywords:
 - shell
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/Zabbix_logo.png" 
+    image: "https://image.lvbibir.cn/blog/Zabbix_logo.png"
 ---
 
 # 0. 前言

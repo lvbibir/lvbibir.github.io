@@ -8,7 +8,9 @@ keywords:
 - windows
 - host
 - cmd
-description: "介绍win10中修复hosts文件的方法" 
+description: "介绍win10中修复hosts文件的方法"
+cover:
+    image: "https://source.unsplash.com/random/400x200?code"
 ---
 
 之前本地做一些测试的时候多次修改过 `hosts` 文件，导致 hosts 文件出现了某些问题，按照网上很多方式自建 hosts 文件、修改编码格式、包括使用一些第三方工具修复都没有作用，记录一下成功修复 hosts 文件的步骤

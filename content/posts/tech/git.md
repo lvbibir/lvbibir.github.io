@@ -3,14 +3,14 @@ title: "git"
 date: 2022-06-01
 lastmod: 2022-11-10
 tags: 
-- linux
+- git
 keywords:
 - git
 - proxy
 - 网络代理
 description: "介绍使用git过程中常用的基础使用、参数设置、常见问题、配置优化等。" 
 cover:
-    image: "" 
+    image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
 # git 命令

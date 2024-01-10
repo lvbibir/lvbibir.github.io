@@ -1,12 +1,14 @@
 ---
-title: linux | 常用命令总结
+title: "linux | 常用命令总结"
 date: 2023-12-30
 lastmod: 2023-12-30
 tags:
-  - linux
+- linux
 keywords:
-  - linux
-description: 记录 linux 系统如文本处理, 进程处理, 网络及其他的常用命令
+- linux
+description: "记录 linux 系统如文本处理, 进程处理, 网络及其他的常用命令"
+cover:
+    image: "https://source.unsplash.com/random/400x200?code"
 ---
 
 # 文本处理

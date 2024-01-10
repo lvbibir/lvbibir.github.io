@@ -4,7 +4,6 @@ date: 2023-12-07
 lastmod: 2023-12-07
 tags: 
 - shell
-- centos
 keywords:
 - shell
 - centos

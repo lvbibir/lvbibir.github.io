@@ -1,7 +1,7 @@
 ---
-title: "逻辑题 | 鬼谷子数学问题" 
+title: "python | 鬼谷子数学问题" 
 date: 2023-02-27
-lastmod: 2023-02-27
+lastmod: 2024-01-10
 tags: 
 - python
 keywords:

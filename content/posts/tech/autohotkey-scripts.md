@@ -1,5 +1,5 @@
 ---
-title: autohotkey 常用脚本
+title: "autohotkey 常用脚本"
 date: 2021-12-01
 lastmod: 2024-01-07
 tags:
@@ -8,9 +8,9 @@ keywords:
   - windows
   - autohotkey
   - ahk
-description: 
+description: ""
 cover:
-    image: "" 
+    image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
 # 0.前言

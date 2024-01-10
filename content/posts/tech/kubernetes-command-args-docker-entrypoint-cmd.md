@@ -1,5 +1,5 @@
 ---
-title: "kubernetes中的command和args 与 dockerfile中的ENTRYPOINT和CMD的关系" 
+title: "kubernetes 中的 command 和 args 与 dockerfile 中的 ENTRYPOINT 和 CMD 的关系" 
 date: 2023-04-12
 lastmod: 2023-04-12
 tags: 

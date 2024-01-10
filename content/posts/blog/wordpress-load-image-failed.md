@@ -1,9 +1,10 @@
 ---
 title: "wordpress加载图片失败" 
 date: 2021-07-01
-lastmod: 2021-07-01
+lastmod: 2024-01-10
 tags: 
 - wordpress
+- 博客搭建
 keywords:
 - wordpress
 - ssl

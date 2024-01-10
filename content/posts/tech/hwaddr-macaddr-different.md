@@ -10,7 +10,7 @@ keywords:
 - macaddr
 description: "" 
 cover:
-    image: "" 
+    image: "https://source.unsplash.com/random/400x200?code" 
 ---
 - 环境：centos7.8
 

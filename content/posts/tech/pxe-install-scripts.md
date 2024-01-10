@@ -11,7 +11,7 @@ keywords:
 - dhcp
 description: "自己整理的一些工作中用到的不同系统对应的pxe配置方法" 
 cover:
-    image: "" 
+    image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
 # 前言

@@ -10,7 +10,7 @@ keywords:
 - elasticsearch-analysis-ik
 description: "" 
 cover:
-    image: "" 
+    image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
 报错详细信息

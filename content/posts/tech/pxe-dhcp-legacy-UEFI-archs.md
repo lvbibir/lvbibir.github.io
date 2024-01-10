@@ -11,7 +11,7 @@ keywords:
 - dhcp
 description: "本文主要探讨如何配置dhcp来使pxe可以应对复杂的服务器环境" 
 cover:
-    image: "" 
+    image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
 # 前言

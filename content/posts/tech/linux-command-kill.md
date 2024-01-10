@@ -1,7 +1,7 @@
 ---
 title: "linux | kill命令详解以及linux中的信号" 
 date: 2023-04-09
-lastmod: 2023-04-09
+lastmod: 2024-01-10
 description: "" 
 tags: 
 - linux
@@ -10,7 +10,7 @@ keywords:
 - kill
 - sig
 cover:
-    image: "https://source.unsplash.com/random/400x200?code" #图片路径例如：posts/tech/123/123.png
+    image: "https://source.unsplash.com/random/400x200?code"
 ---
 
 # 1. 简介
