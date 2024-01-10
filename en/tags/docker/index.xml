@@ -6,27 +6,18 @@
     <description>Recent content in docker on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 29 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello, hugo!</title>
       <link>https://www.lvbibir.cn/en/posts/blog/hello-hugo/</link>
       <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/blog/hello-hugo/</guid>
-      <description>记录 wordpress 迁移至 hugo&#43;papermod 的过程包含环境搭建、博客美化、功能实现、速度优化等……</description>
+      <description>记录 wordpress 迁移至 hugo&#43;papermod 的过程, 包含环境搭建、博客美化、功能实现、速度优化等……</description>
     </item>
     
     <item>
-      <title>docker 部署 piclist</title>
-      <link>https://www.lvbibir.cn/en/posts/blog/docker-deploy-piclist/</link>
-      <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/blog/docker-deploy-piclist/</guid>
-      <description>介绍如何使用 docker 部署 piclist 实现 obsidian 远程上传图片至阿里云 OSS 图床</description>
-    </item>
-    
-    <item>
-      <title>kubernetes中的command和args 与 dockerfile中的ENTRYPOINT和CMD的关系</title>
+      <title>kubernetes 中的 command 和 args 与 dockerfile 中的 ENTRYPOINT 和 CMD 的关系</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-command-args-docker-entrypoint-cmd/</link>
       <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -68,15 +59,6 @@
       
       <guid>https://www.lvbibir.cn/en/posts/tech/shell-push-harbor/</guid>
       <description>经常会下一些外网镜像用于测试，手动修改镜像tag然后推送在镜像较多的情况下比较繁琐，本文采用bash脚本方式批量推送不同格式的镜像</description>
-    </item>
-    
-    <item>
-      <title>cephadm 离线安装 ceph-v16 (Pacific) (openeuler)</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openuler-offline/</link>
-      <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openuler-offline/</guid>
-      <description>前言 适用于 Centos8/openeuler + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有外网的测试机（尽量跟生产系统的环境一致）通过 yum 安装 cephadm、ceph-common、docker 等需要的 rpm 包，注意使用 downloadonly 参数先下载好 rpm</description>
     </item>
     
     <item>

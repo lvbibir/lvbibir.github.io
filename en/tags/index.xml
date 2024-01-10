@@ -6,7 +6,25 @@
     <description>Recent content in 🏷️ 标签 on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>openssh</title>
+      <link>https://www.lvbibir.cn/en/tags/openssh/</link>
+      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/openssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>故障处理</title>
+      <link>https://www.lvbibir.cn/en/tags/%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/</link>
+      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>linux</title>
       <link>https://www.lvbibir.cn/en/tags/linux/</link>
@@ -17,29 +35,11 @@
     </item>
     
     <item>
-      <title>docker</title>
-      <link>https://www.lvbibir.cn/en/tags/docker/</link>
-      <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>obsidian</title>
       <link>https://www.lvbibir.cn/en/tags/obsidian/</link>
       <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/tags/obsidian/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>centos</title>
-      <link>https://www.lvbibir.cn/en/tags/centos/</link>
-      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/tags/centos/</guid>
       <description></description>
     </item>
     
@@ -107,6 +107,15 @@
     </item>
     
     <item>
+      <title>docker</title>
+      <link>https://www.lvbibir.cn/en/tags/docker/</link>
+      <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ceph</title>
       <link>https://www.lvbibir.cn/en/tags/ceph/</link>
       <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
@@ -116,20 +125,20 @@
     </item>
     
     <item>
-      <title>故障处理</title>
-      <link>https://www.lvbibir.cn/en/tags/%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/</link>
-      <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/tags/%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>博客搭建</title>
       <link>https://www.lvbibir.cn/en/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://www.lvbibir.cn/en/tags/git/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/git/</guid>
       <description></description>
     </item>
     
@@ -157,6 +166,15 @@
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/tags/cicd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>centos</title>
+      <link>https://www.lvbibir.cn/en/tags/centos/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/centos/</guid>
       <description></description>
     </item>
     

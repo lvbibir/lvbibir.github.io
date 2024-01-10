@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/openstack/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>cloud-init自动修改ssh配置文件</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/cloud-init-change-ssh-config/</link>
+      <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-cloud-init-change-ssh-config/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/cloud-init-change-ssh-config/</guid>
+      <guid>https://www.lvbibir.cn/en/posts/tech/troubleshooting-cloud-init-change-ssh-config/</guid>
       <description>前言 在 openEuler20.03 (LTS-SP1) 系统上进行一些测试，发现某个东西会自动修改 ssh 配置文件导致系统无法通过密码登录，最后排查是由于安装了 cloud-init 导致的。 以下是大致的排查思路 出现这个问题前做的操作是安装了一些项目组同事指定的包，问题就应该出在这些包上 yum install -y telnet rsync ntpdate zip unzip libaio dos2unix sos vim vim-enhanced net-tools man ftp lrzsz psmisc gzip network-scripts cloud-init cloud-utils-growpart tar libnsl authselect-compat 大致看了下，除了</description>
     </item>
     

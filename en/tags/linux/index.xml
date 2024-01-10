@@ -62,24 +62,6 @@
     </item>
     
     <item>
-      <title>cephadm 安装 ceph-v16 (pacific) (openeuler)</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openeuler/</link>
-      <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openeuler/</guid>
-      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm 依赖 python3.6，而此版本的 openeuler 内置版本为 3.7，且不支持 platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作系统：openEuler-20.03-LTS-SP3 内核</description>
-    </item>
-    
-    <item>
-      <title>cephadm 离线安装 ceph-v16 (Pacific) (openeuler)</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openuler-offline/</link>
-      <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openuler-offline/</guid>
-      <description>前言 适用于 Centos8/openeuler + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有外网的测试机（尽量跟生产系统的环境一致）通过 yum 安装 cephadm、ceph-common、docker 等需要的 rpm 包，注意使用 downloadonly 参数先下载好 rpm</description>
-    </item>
-    
-    <item>
       <title>pxe 如何应对复杂的服务器硬件环境</title>
       <link>https://www.lvbibir.cn/en/posts/tech/pxe-dhcp-legacy-uefi-archs/</link>
       <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
@@ -89,39 +71,12 @@
     </item>
     
     <item>
-      <title>cephadm 安装 ceph-v16 (pacific) (openeuler) (aarch64)</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openeuler-aarch64/</link>
-      <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openeuler-aarch64/</guid>
-      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm 依赖 python3.6，而此版本的 openeuler 内置版本为 3.7，且不支持 platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作系统：icloudos_v1.0_aarch64（ope</description>
-    </item>
-    
-    <item>
-      <title>glibc 误升级后修复</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/glibc-wu-sheng-ji/</link>
-      <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/glibc-wu-sheng-ji/</guid>
-      <description>记录一下在 OpenEuler 20.03 LTS aarch64 系统上误操作升级了 glibc 后紧急修复的步骤</description>
-    </item>
-    
-    <item>
       <title>pxe 安装配置大全</title>
       <link>https://www.lvbibir.cn/en/posts/tech/pxe-install-scripts/</link>
       <pubDate>Tue, 12 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/pxe-install-scripts/</guid>
       <description>自己整理的一些工作中用到的不同系统对应的pxe配置方法</description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/git/</link>
-      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/git/</guid>
-      <description>介绍使用git过程中常用的基础使用、参数设置、常见问题、配置优化等。</description>
     </item>
     
     <item>
@@ -161,15 +116,6 @@
     </item>
     
     <item>
-      <title>ceph创建pool时pg_num的配置</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/ceph-pg-num-config-create-pool/</link>
-      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/ceph-pg-num-config-create-pool/</guid>
-      <description>介绍在ceph集群创建pool时pb_num参数如何配置以及较为通用的取值</description>
-    </item>
-    
-    <item>
       <title>centos7.5 升级内核至 5.10</title>
       <link>https://www.lvbibir.cn/en/posts/tech/centos-update-kernel-to-5.10/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
@@ -194,15 +140,6 @@
       
       <guid>https://www.lvbibir.cn/en/posts/tech/centos-too-many-password-attempts/</guid>
       <description>介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理</description>
-    </item>
-    
-    <item>
-      <title>centos7 部署 ceph-v12 (nautilus) &#43; dashboard</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/ceph-v12-nautilus-cephdeploy/</link>
-      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v12-nautilus-cephdeploy/</guid>
-      <description>介绍在centos7环境中通过ceph-deploy部署ceph集群（nautilus）和可视化的dashboard</description>
     </item>
     
     <item>
@@ -233,39 +170,12 @@
     </item>
     
     <item>
-      <title>shell | 服务器巡检脚本</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/shell-server-inspection/</link>
-      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/shell-server-inspection/</guid>
-      <description>代码如下 #!/bin/bash #参数定义 date=`date +&amp;#34;%Y-%m-%d-%H:%M:%S&amp;#34;` centosVersion=$(awk &amp;#39;{print $(NF-1)}&amp;#39; /etc/redhat-release) VERSION=`date +%F` #日志相关 LOGPATH=&amp;#34;/tmp/awr&amp;#34; [ -e $LOGPATH ] || mkdir -p $LOGPATH RESULTFILE=&amp;#34;$LOGPATH/HostCheck-`hostname`-`date +%Y%m%d`.txt&amp;#34; #调用函数库 [ -f /etc/init.d/functions ] &amp;amp;&amp;amp; source /etc/init.d/functions export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin source /etc/profile #root用户执行脚本 [ $(id -u) -gt 0 ] &amp;amp;&amp;amp; echo &amp;#34;请用root用户执行此脚本！&amp;#34; &amp;amp;&amp;amp; exit 1 function version(){ echo &amp;#34;&amp;#34; echo &amp;#34;&amp;#34; echo &amp;#34;[${date}] &amp;gt;&amp;gt;&amp;gt; `hostname -s` 主机巡检&amp;#34; } function getSystemStatus(){ echo &amp;#34;&amp;#34; echo -e &amp;#34;\033[33m***</description>
-    </item>
-    
-    <item>
-      <title>记一次程序测试</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/record-of-program-test/</link>
-      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/record-of-program-test/</guid>
-      <description>前言 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向文件中追加内容，程序要能读取到，效果如下： 测试程序代码如下： #include&amp;lt;stdlib.h&amp;gt; #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;unistd.h&amp;gt; int main(int argc, char **argv) { FILE *f = fopen(&amp;#34;./Syslog.log&amp;#34;, &amp;#34;rb&amp;#34;); if (f == NULL) return 1; char buffer[1024] = {0}; size_t len = 0; while(1) { len = fread(buffer, 1, sizeof(buffer), f); if (len &amp;gt; 0)</description>
-    </item>
-    
-    <item>
       <title>centos7开启bbr算法</title>
       <link>https://www.lvbibir.cn/en/posts/tech/centos7-open-bbr/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/centos7-open-bbr/</guid>
       <description>前言 介绍在 CentOS7 上部署 BBR 的详细过程 BBR 简介：（Bottleneck Bandwidth and RTT）是一种新的拥塞控制算法，由 Google 开发。有了 BBR，Linux 服务器可以显着提高吞吐量并减少连接延迟 1. 查看当前内核版本 uname -r 显示当前内核为 3.10.0，因此我们需要更新内核 2. 使用 ELRepo RPM 仓库升级内核 rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org //无返回内容 rpm</description>
-    </item>
-    
-    <item>
-      <title>H3C服务器装完系统无法引导</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/h3c-server-can-not-boot-system/</link>
-      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/h3c-server-can-not-boot-system/</guid>
-      <description>记录一下在H3C服务器上系统无法引导的问题的解决</description>
     </item>
     
     <item>

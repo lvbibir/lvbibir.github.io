@@ -6,14 +6,23 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello, hugo!</title>
       <link>https://www.lvbibir.cn/en/posts/blog/hello-hugo/</link>
       <pubDate>Wed, 06 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/blog/hello-hugo/</guid>
-      <description>记录 wordpress 迁移至 hugo&#43;papermod 的过程包含环境搭建、博客美化、功能实现、速度优化等……</description>
+      <description>记录 wordpress 迁移至 hugo&#43;papermod 的过程, 包含环境搭建、博客美化、功能实现、速度优化等……</description>
+    </item>
+    
+    <item>
+      <title>故障处理 | ssh 成功但是 scp 失败</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-ssh-success-but-scp-failed/</link>
+      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/troubleshooting-ssh-success-but-scp-failed/</guid>
+      <description>0. 前言 前段时间在配置 jenkins publish over ssh 时发现 jenkins 无法连接某个服务器, 经测试 ssh 可以正常登录, 但是 scp 时报错 subsystem request failed on channel 0, 记录一下这个问题的排查思路 1. 大致思路 影响到 ssh 的配置无非是以下这些: 网络问题: server 和 client 之间的网络不通或者防火墙配置 认证问题: 账号密码或者密钥错误 配置问题: server 端本身 sshd 服务报错未正常 server 端</description>
     </item>
     
     <item>
@@ -224,7 +233,7 @@
     </item>
     
     <item>
-      <title>kubernetes中的command和args 与 dockerfile中的ENTRYPOINT和CMD的关系</title>
+      <title>kubernetes 中的 command 和 args 与 dockerfile 中的 ENTRYPOINT 和 CMD 的关系</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-command-args-docker-entrypoint-cmd/</link>
       <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -287,11 +296,11 @@
     </item>
     
     <item>
-      <title>逻辑题 | 鬼谷子数学问题</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/logic-problem-guiguzi/</link>
+      <title>python | 鬼谷子数学问题</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/python-logic-problem-guiguzi/</link>
       <pubDate>Mon, 27 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/logic-problem-guiguzi/</guid>
+      <guid>https://www.lvbibir.cn/en/posts/tech/python-logic-problem-guiguzi/</guid>
       <description>一道乍看毫无逻辑，细想却很有趣的逻辑题</description>
     </item>
     
@@ -458,7 +467,7 @@
     </item>
     
     <item>
-      <title>python批量修改目录下文件名</title>
+      <title>python | 批量修改目录下文件名</title>
       <link>https://www.lvbibir.cn/en/posts/tech/python-rename-file/</link>
       <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
       
@@ -485,11 +494,11 @@
     </item>
     
     <item>
-      <title>glibc 误升级后修复</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/glibc-wu-sheng-ji/</link>
+      <title>故障处理 | glibc 误升级后修复</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-glibc-wu-sheng-ji/</link>
       <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/glibc-wu-sheng-ji/</guid>
+      <guid>https://www.lvbibir.cn/en/posts/tech/troubleshooting-glibc-wu-sheng-ji/</guid>
       <description>记录一下在 OpenEuler 20.03 LTS aarch64 系统上误操作升级了 glibc 后紧急修复的步骤</description>
     </item>
     
@@ -702,15 +711,15 @@
     
     <item>
       <title>cloud-init自动修改ssh配置文件</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/cloud-init-change-ssh-config/</link>
+      <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-cloud-init-change-ssh-config/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/cloud-init-change-ssh-config/</guid>
+      <guid>https://www.lvbibir.cn/en/posts/tech/troubleshooting-cloud-init-change-ssh-config/</guid>
       <description>前言 在 openEuler20.03 (LTS-SP1) 系统上进行一些测试，发现某个东西会自动修改 ssh 配置文件导致系统无法通过密码登录，最后排查是由于安装了 cloud-init 导致的。 以下是大致的排查思路 出现这个问题前做的操作是安装了一些项目组同事指定的包，问题就应该出在这些包上 yum install -y telnet rsync ntpdate zip unzip libaio dos2unix sos vim vim-enhanced net-tools man ftp lrzsz psmisc gzip network-scripts cloud-init cloud-utils-growpart tar libnsl authselect-compat 大致看了下，除了</description>
     </item>
     
     <item>
-      <title>python3修改pip源</title>
+      <title>python3 | 修改 pip 源</title>
       <link>https://www.lvbibir.cn/en/posts/tech/python3-change-pip-repo/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -791,11 +800,11 @@
     </item>
     
     <item>
-      <title>记一次程序测试</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/record-of-program-test/</link>
+      <title>故障处理 | glibc 的 fread 问题</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-glibc-fread/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/record-of-program-test/</guid>
+      <guid>https://www.lvbibir.cn/en/posts/tech/troubleshooting-glibc-fread/</guid>
       <description>前言 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向文件中追加内容，程序要能读取到，效果如下： 测试程序代码如下： #include&amp;lt;stdlib.h&amp;gt; #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;unistd.h&amp;gt; int main(int argc, char **argv) { FILE *f = fopen(&amp;#34;./Syslog.log&amp;#34;, &amp;#34;rb&amp;#34;); if (f == NULL) return 1; char buffer[1024] = {0}; size_t len = 0; while(1) { len = fread(buffer, 1, sizeof(buffer), f); if (len &amp;gt; 0)</description>
     </item>
     
@@ -815,15 +824,6 @@
       
       <guid>https://www.lvbibir.cn/en/posts/tech/centos7-open-bbr/</guid>
       <description>前言 介绍在 CentOS7 上部署 BBR 的详细过程 BBR 简介：（Bottleneck Bandwidth and RTT）是一种新的拥塞控制算法，由 Google 开发。有了 BBR，Linux 服务器可以显着提高吞吐量并减少连接延迟 1. 查看当前内核版本 uname -r 显示当前内核为 3.10.0，因此我们需要更新内核 2. 使用 ELRepo RPM 仓库升级内核 rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org //无返回内容 rpm</description>
-    </item>
-    
-    <item>
-      <title>H3C服务器装完系统无法引导</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/h3c-server-can-not-boot-system/</link>
-      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/h3c-server-can-not-boot-system/</guid>
-      <description>记录一下在H3C服务器上系统无法引导的问题的解决</description>
     </item>
     
     <item>
@@ -860,6 +860,15 @@
       
       <guid>https://www.lvbibir.cn/en/posts/blog/wordpress-to-docker/</guid>
       <description>记录从阿里云轻量应用服务器(wordpress应用)迁移到docker部署，并针对博客的一些优化</description>
+    </item>
+    
+    <item>
+      <title>故障处理 | H3C服务器装完系统无法引导</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-h3c-server-can-not-boot-system/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/troubleshooting-h3c-server-can-not-boot-system/</guid>
+      <description>记录一下在H3C服务器上系统无法引导的问题的解决</description>
     </item>
     
     <item>

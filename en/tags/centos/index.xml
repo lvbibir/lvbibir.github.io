@@ -6,25 +6,7 @@
     <description>Recent content in centos on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 07 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/centos/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>shell | 检测网站存活并自动钉钉告警</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/shell-check-website-available/</link>
-      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/shell-check-website-available/</guid>
-      <description>脚本内容如下, 替换钉钉 bot 的 token, 将脚本放至 crontab 执行即可 #!/bin/bash export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin # 设置要检测的网页URL urls=(&amp;#34;https://emp.cnpc.com.cn/index.html&amp;#34; &amp;#34;https://mdm.cnpc.com.cn/&amp;#34;) #urls=(&amp;#34;https://emp.cnpc.com.cn/index.html&amp;#34; &amp;#34;https://mdm.cnpc.com.cn/&amp;#34; &amp;#34;https://www.956100.com&amp;#34; &amp;#34;https://mm.956100.com&amp;#34; &amp;#34;https://app.956100.com&amp;#34;) # 钉钉机器人的 webhook 地址 webhook=&amp;#34;https://oapi.dingtalk.com/robot/send?access_token=******************************&amp;#34; # 最大连续无法访问次数 max_attempts=3 # 设置并发进程数为 URL 数量 max_concurrent=${#urls[@]} # 初始化计数器 completed=0 for url in &amp;#34;${urls[@]}&amp;#34;; do # 在后台启动一个子进程进行测试 ( attempts=0 while [ $attempts -lt $max_attempts ]; do # 使用curl获取网页内容，并保存HTTP</description>
-    </item>
-    
-    <item>
-      <title>shell | centos 初始化</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/shell-centos-init/</link>
-      <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/shell-centos-init/</guid>
-      <description>前言 以 centos7 为例, 通常我们新装完操作系统后需要进行配置 yum 源, iptables, selinux, ntp 以及优化 kernel 等操作, 现分享一些较为通用的配置. 同时博主将这些配置整理成了脚本, 可以一键执行. 常用配置 iptables &amp;amp; selinux sed -i &amp;#39;/SELINUX/s/enforcing/disabled/&amp;#39; /etc/selinux/config setenforce 0 iptables -F systemctl disable --now firewalld PS1 终端美化 cat &amp;gt; /etc/profile.d/PS1_conf.sh &amp;lt;&amp;lt; &amp;#39;EOF&amp;#39; export PS1=&amp;#34;\n[\[\e[31m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]] -\$?- \[\e[33m\]\$(pwd)\[\e[m\] \[\e[34m\]\$(date +&amp;#39;%F %T&amp;#39;)\[\e[m\] \n(\#)$ &amp;#34; EOF source /etc/profile.d/PS1_conf.sh history 格式化 cat &amp;gt; /etc/profile.d/history_conf.sh &amp;lt;&amp;lt; &amp;#39;EOF&amp;#39; export HISTFILE=&amp;#34;$HOME/.bash_history&amp;#34; # 写入文件 export HISTSIZE=1000 # hist</description>
-    </item>
-    
+    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/centos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>centos7 修改网卡名称</title>
       <link>https://www.lvbibir.cn/en/posts/tech/centos7-change-network-card-name/</link>
@@ -50,15 +32,6 @@
       
       <guid>https://www.lvbibir.cn/en/posts/tech/centos-too-many-password-attempts/</guid>
       <description>介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理</description>
-    </item>
-    
-    <item>
-      <title>centos7 部署 ceph-v12 (nautilus) &#43; dashboard</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/ceph-v12-nautilus-cephdeploy/</link>
-      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v12-nautilus-cephdeploy/</guid>
-      <description>介绍在centos7环境中通过ceph-deploy部署ceph集群（nautilus）和可视化的dashboard</description>
     </item>
     
     <item>

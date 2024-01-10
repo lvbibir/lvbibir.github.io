@@ -3,36 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.lvbibir.cn/en/posts/tech/</loc>
-    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/blog/hello-hugo/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/blog/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/read/</loc>
-    <lastmod>2022-10-15T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/life/</loc>
-    <lastmod>2023-12-31T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/</loc>
-    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/en/tags/linux/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/en/posts/tech/linux-offen-used-command/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/</loc>
-    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/tags/openssh/</loc>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/tags/%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/</loc>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/posts/tech/troubleshooting-ssh-success-but-scp-failed/</loc>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/</loc>
-    <lastmod>2024-01-07T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/en/tags/docker/</loc>
+    <loc>https://www.lvbibir.cn/en/tags/linux/</loc>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/posts/tech/linux-offen-used-command/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/blog/docker-deploy-piclist/</loc>
@@ -40,9 +46,6 @@
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/obsidian/</loc>
     <lastmod>2023-12-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/en/tags/centos/</loc>
-    <lastmod>2023-12-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/shell/</loc>
     <lastmod>2023-12-07T00:00:00+00:00</lastmod>
@@ -63,7 +66,7 @@
     <lastmod>2023-08-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/python/</loc>
-    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/windows-miniconda/</loc>
     <lastmod>2023-08-07T00:00:00+00:00</lastmod>
@@ -123,7 +126,10 @@
     <lastmod>2023-04-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/dns-search/</loc>
-    <lastmod>2023-04-13T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/tags/docker/</loc>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/kubernetes-statefulset/</loc>
     <lastmod>2023-04-12T00:00:00+00:00</lastmod>
@@ -138,7 +144,7 @@
     <lastmod>2023-04-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/linux-command-kill/</loc>
-    <lastmod>2023-04-09T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/elasticsearch-plugin-error/</loc>
     <lastmod>2023-03-15T00:00:00+00:00</lastmod>
@@ -149,8 +155,8 @@
     <loc>https://www.lvbibir.cn/en/posts/tech/docker-download-foreign-images/</loc>
     <lastmod>2023-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/en/posts/tech/logic-problem-guiguzi/</loc>
-    <lastmod>2023-02-27T00:00:00+00:00</lastmod>
+    <loc>https://www.lvbibir.cn/en/posts/tech/python-logic-problem-guiguzi/</loc>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/life/steam-guadao/</loc>
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
@@ -213,31 +219,31 @@
     <lastmod>2022-07-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/read/wei-xi-guan/</loc>
-    <lastmod>2022-10-15T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openeuler-aarch64/</loc>
     <lastmod>2022-07-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/en/posts/tech/glibc-wu-sheng-ji/</loc>
-    <lastmod>2022-07-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/en/tags/%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/</loc>
+    <loc>https://www.lvbibir.cn/en/posts/tech/troubleshooting-glibc-wu-sheng-ji/</loc>
     <lastmod>2022-07-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/pxe-install-scripts/</loc>
     <lastmod>2022-07-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/read/ren-jian-shi-ge/</loc>
-    <lastmod>2022-07-09T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/life/running/</loc>
-    <lastmod>2023-12-31T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
-    <lastmod>2023-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/shell-search-url-files/</loc>
     <lastmod>2022-07-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/tags/git/</loc>
+    <lastmod>2022-11-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/git/</loc>
     <lastmod>2022-11-10T00:00:00+00:00</lastmod>
@@ -281,6 +287,9 @@
     <loc>https://www.lvbibir.cn/en/posts/tech/rpm-build-openssl/</loc>
     <lastmod>2022-03-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://www.lvbibir.cn/en/tags/centos/</loc>
+    <lastmod>2022-02-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/centos7-change-network-card-name/</loc>
     <lastmod>2022-02-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -305,20 +314,20 @@
     <loc>https://www.lvbibir.cn/en/posts/tech/ceph-v12-nautilus-cephdeploy/</loc>
     <lastmod>2021-12-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/en/posts/tech/cloud-init-change-ssh-config/</loc>
+    <loc>https://www.lvbibir.cn/en/posts/tech/troubleshooting-cloud-init-change-ssh-config/</loc>
     <lastmod>2021-12-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/openstack/</loc>
     <lastmod>2021-12-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/python3-change-pip-repo/</loc>
-    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/rpm-change-file/</loc>
     <lastmod>2021-12-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/ambari-2.7.5-and-hdp-3.1.5/</loc>
-    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/about/</loc>
     <lastmod>2021-11-06T14:57:28+08:00</lastmod>
@@ -338,16 +347,13 @@
     <loc>https://www.lvbibir.cn/en/posts/tech/shell-server-inspection/</loc>
     <lastmod>2021-09-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/en/posts/tech/record-of-program-test/</loc>
+    <loc>https://www.lvbibir.cn/en/posts/tech/troubleshooting-glibc-fread/</loc>
     <lastmod>2021-09-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/talk/</loc>
     <lastmod>2021-08-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/centos7-open-bbr/</loc>
-    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/en/posts/tech/h3c-server-can-not-boot-system/</loc>
     <lastmod>2021-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/h3c-server-config-raid/</loc>
@@ -360,9 +366,12 @@
     <lastmod>2021-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/tags/wordpress/</loc>
-    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/blog/wordpress-to-docker/</loc>
+    <lastmod>2021-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/en/posts/tech/troubleshooting-h3c-server-can-not-boot-system/</loc>
     <lastmod>2021-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/tech/centos6-deploy-openvpn/</loc>
@@ -375,10 +384,10 @@
     <lastmod>2021-07-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/blog/typora-picgo-qiniu-upload-image/</loc>
-    <lastmod>2021-07-01T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/blog/wordpress-load-image-failed/</loc>
-    <lastmod>2021-07-01T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/en/posts/blog/wordpress-add-icp/</loc>
     <lastmod>2021-07-01T00:00:00+00:00</lastmod>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>openssh on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/en/tags/openssh/</link>
+    <description>Recent content in openssh on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 10 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/openssh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>故障处理 | ssh 成功但是 scp 失败</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-ssh-success-but-scp-failed/</link>
+      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/troubleshooting-ssh-success-but-scp-failed/</guid>
+      <description>0. 前言 前段时间在配置 jenkins publish over ssh 时发现 jenkins 无法连接某个服务器, 经测试 ssh 可以正常登录, 但是 scp 时报错 subsystem request failed on channel 0, 记录一下这个问题的排查思路 1. 大致思路 影响到 ssh 的配置无非是以下这些: 网络问题: server 和 client 之间的网络不通或者防火墙配置 认证问题: 账号密码或者密钥错误 配置问题: server 端本身 sshd 服务报错未正常 server 端</description>
+    </item>
+    
+  </channel>
+</rss>
