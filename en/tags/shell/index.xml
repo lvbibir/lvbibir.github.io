@@ -22,7 +22,7 @@
       <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/zabbix-port-monitor/</guid>
-      <description>0. 前言 本文实现被检测主机到特定 ip 的特定端口的连通性, 通过 nc 命令测试端口可用性, 当 nc 超时时自动执行 traceroute 追踪路由定位网络故障点, 本文的案例是监控我们生产的短信业务服务器到运营商提供的短信接口之间的连通性. 环境信息: CentOS 7.6 Zabbix 3.4 确保需要检测端口连通性的服务器安装了 nc 及 traceroute 1. 服务器配置 每个需要检</description>
+      <description>zabbix 中通过 shell 脚本监控指定 agent 到指定 ip:port 的端口连通性, 不连通时自动触发 traceroute 追踪路由并记录到日志</description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Fri, 04 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/zabbix-ip-traffic-monitor/</guid>
-      <description>0. 前言 分享一下如何监控某个主机上的网卡到指定 ip 的流量大小, 测试环境已安装 tcpdump 并配置了 zabbix_agent 被检测端 ip 为 1.1.1.11, 要检测到 1.1.1.12-17 这些 ip 的出口流量 大致流程为: 创建一个监控脚本, 分析 1 分钟内指定网卡发送到指定 ip 的数据包大小并输出到日志文件 将该脚本放到 crontab 中, 每分钟执行一次 配置 zabbix-agent 创建数据采集脚本, 提取日志文</description>
+      <description>zabbix 中通过 shell 监控定时监控流量, 配置聚合图形, 以及日志输出</description>
     </item>
     
     <item>

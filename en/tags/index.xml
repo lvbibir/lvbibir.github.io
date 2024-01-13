@@ -6,11 +6,29 @@
     <description>Recent content in 🏷️ 标签 on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 10 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python</title>
+      <link>https://www.lvbibir.cn/en/tags/python/</link>
+      <pubDate>Sat, 13 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wsl</title>
+      <link>https://www.lvbibir.cn/en/tags/wsl/</link>
+      <pubDate>Sat, 13 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/tags/wsl/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>openssh</title>
       <link>https://www.lvbibir.cn/en/tags/openssh/</link>
-      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 09 Jan 2024 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/tags/openssh/</guid>
       <description></description>
@@ -19,7 +37,7 @@
     <item>
       <title>故障处理</title>
       <link>https://www.lvbibir.cn/en/tags/%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/</link>
-      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 09 Jan 2024 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/tags/%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86/</guid>
       <description></description>
@@ -67,15 +85,6 @@
       <pubDate>Mon, 14 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/tags/windows/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://www.lvbibir.cn/en/tags/python/</link>
-      <pubDate>Mon, 07 Aug 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/tags/python/</guid>
       <description></description>
     </item>
     

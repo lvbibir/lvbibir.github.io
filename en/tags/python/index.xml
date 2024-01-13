@@ -6,7 +6,16 @@
     <description>Recent content in python on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 07 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>wsl | 安装配置 miniconda 虚拟环境</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/windows-wsl-4-miniconda/</link>
+      <pubDate>Sat, 13 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/windows-wsl-4-miniconda/</guid>
+      <description>wsl 中安装 miniconda python 虚拟环境的步骤, 包含修改 conda 源, pip 源, conda 基础使用, 以及管理 conda 的一些小建议</description>
+    </item>
+    
     <item>
       <title>windows 使用 miniconda 配置 python 虚拟环境</title>
       <link>https://www.lvbibir.cn/en/posts/tech/windows-miniconda/</link>

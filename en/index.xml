@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 10 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello, hugo!</title>
       <link>https://www.lvbibir.cn/en/posts/blog/hello-hugo/</link>
@@ -17,9 +17,45 @@
     </item>
     
     <item>
+      <title>wsl | 安装配置 miniconda 虚拟环境</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/windows-wsl-4-miniconda/</link>
+      <pubDate>Sat, 13 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/windows-wsl-4-miniconda/</guid>
+      <description>wsl 中安装 miniconda python 虚拟环境的步骤, 包含修改 conda 源, pip 源, conda 基础使用, 以及管理 conda 的一些小建议</description>
+    </item>
+    
+    <item>
+      <title>wsl | 自动更新系统代理</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/windows-wsl-3-set-proxy/</link>
+      <pubDate>Fri, 12 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/windows-wsl-3-set-proxy/</guid>
+      <description>wsl 中配置系统代理, 包含 clash 等客户端提供的代理或者使用指定的代理地址</description>
+    </item>
+    
+    <item>
+      <title>wsl | bashrc 环境变量不正确加载的处理方法</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/windows-wsl-2-bashrc/</link>
+      <pubDate>Thu, 11 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/windows-wsl-2-bashrc/</guid>
+      <description>wsl2 使用过程中 .bashrc 无法正确加载的解决办法</description>
+    </item>
+    
+    <item>
+      <title>wsl | win10 安装 wsl2</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/windows-wsl-1-install/</link>
+      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/windows-wsl-1-install/</guid>
+      <description>win10 系统安装 wsl2(ubuntu-20.04) 到 D 盘以及更换系统源到清华源</description>
+    </item>
+    
+    <item>
       <title>故障处理 | ssh 成功但是 scp 失败</title>
       <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-ssh-success-but-scp-failed/</link>
-      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 09 Jan 2024 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/troubleshooting-ssh-success-but-scp-failed/</guid>
       <description>0. 前言 前段时间在配置 jenkins publish over ssh 时发现 jenkins 无法连接某个服务器, 经测试 ssh 可以正常登录, 但是 scp 时报错 subsystem request failed on channel 0, 记录一下这个问题的排查思路 1. 大致思路 影响到 ssh 的配置无非是以下这些: 网络问题: server 和 client 之间的网络不通或者防火墙配置 认证问题: 账号密码或者密钥错误 配置问题: server 端本身 sshd 服务报错未正常 server 端</description>
@@ -58,7 +94,7 @@
       <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/zabbix-port-monitor/</guid>
-      <description>0. 前言 本文实现被检测主机到特定 ip 的特定端口的连通性, 通过 nc 命令测试端口可用性, 当 nc 超时时自动执行 traceroute 追踪路由定位网络故障点, 本文的案例是监控我们生产的短信业务服务器到运营商提供的短信接口之间的连通性. 环境信息: CentOS 7.6 Zabbix 3.4 确保需要检测端口连通性的服务器安装了 nc 及 traceroute 1. 服务器配置 每个需要检</description>
+      <description>zabbix 中通过 shell 脚本监控指定 agent 到指定 ip:port 的端口连通性, 不连通时自动触发 traceroute 追踪路由并记录到日志</description>
     </item>
     
     <item>
@@ -85,7 +121,7 @@
       <pubDate>Fri, 04 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/zabbix-ip-traffic-monitor/</guid>
-      <description>0. 前言 分享一下如何监控某个主机上的网卡到指定 ip 的流量大小, 测试环境已安装 tcpdump 并配置了 zabbix_agent 被检测端 ip 为 1.1.1.11, 要检测到 1.1.1.12-17 这些 ip 的出口流量 大致流程为: 创建一个监控脚本, 分析 1 分钟内指定网卡发送到指定 ip 的数据包大小并输出到日志文件 将该脚本放到 crontab 中, 每分钟执行一次 配置 zabbix-agent 创建数据采集脚本, 提取日志文</description>
+      <description>zabbix 中通过 shell 监控定时监控流量, 配置聚合图形, 以及日志输出</description>
     </item>
     
     <item>
