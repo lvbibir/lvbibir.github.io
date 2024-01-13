@@ -3,14 +3,14 @@ title: "cicd | jenkins部署mall-swarm项目"
 date: 2022-03-15
 lastmod: 2022-03-15
 tags: 
-- cicd
-- docker
+  - cicd
+  - docker
 keywords:
-- devops
-- cicd
-- jenkins
-- gitlab
-- docker
+  - devops
+  - cicd
+  - jenkins
+  - gitlab
+  - docker
 description: "以 mall-swarm 项目为例，部署一套 jenkis + gitlab + docker的一套 CICD 流水线" 
 cover:
     image: "https://image.lvbibir.cn/blog/cicd.png" 
@@ -20,9 +20,9 @@ cover:
 
 基础环境
 
-- 系统：Centos 7.9.2009 minimal
-- 配置：4 cpus / 24G mem / 50G disk
-- 网卡：1.1.1.4/24
+  - 系统：Centos 7.9.2009 minimal
+  - 配置：4 cpus / 24G mem / 50G disk
+  - 网卡：1.1.1.4/24
 
 我这里采用的是 all-in-one 的配置，即所有操作都在一台主机上，如资源充足可以将 jenkins 和 gitlab 与后续项目容器分开部署
 
@@ -288,14 +288,14 @@ git push gitlab master
 
 Elasticsearch
 
-- 设置内核参数，否则会因为内存不足无法启动
+  - 设置内核参数，否则会因为内存不足无法启动
 
   ```bash
   sysctl -w vm.max_map_count=262144
   sysctl -p
   ```
 
-- 创建数据目录并设置权限，否则会报权限错误
+  - 创建数据目录并设置权限，否则会报权限错误
 
   ```bash
   mkdir -p /mydata/elasticsearch/data/
@@ -304,7 +304,7 @@ Elasticsearch
 
 Nginx
 
-- 创建目录，上传配置文件
+  - 创建目录，上传配置文件
 
   ```bash
   mkdir -p /mydata/nginx/conf/
@@ -313,7 +313,7 @@ Nginx
 
 Logstash
 
-- 创建目录上传配置文件
+  - 创建目录上传配置文件
 
   ```bash
   mkdir /mydata/logstash
@@ -349,13 +349,13 @@ mysql
 
 > 需要创建 mall 数据库并授权给 reader 用户
 
-- 将 sql 文件拷贝到容器
+  - 将 sql 文件拷贝到容器
 
   ```bash
   docker cp /mydata/document/sql/mall.sql mysql:/
   ```
 
-- 进入 mysql 容器执行如下操作
+  - 进入 mysql 容器执行如下操作
 
   ```bash
   # 进入mysql容器
@@ -378,18 +378,18 @@ mysql
 
 Elasticsearch
 
-- 需要安装中文分词器 IKAnalyzer [下载地址](https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.17.3/elasticsearch-analysis-ik-7.17.3.zip)
+  - 需要安装中文分词器 IKAnalyzer [下载地址](https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.17.3/elasticsearch-analysis-ik-7.17.3.zip)
 
   注意版本需要与 elasticsearch 的版本一致
 
-- 上传到服务器并解压到 plugins 目录
+  - 上传到服务器并解压到 plugins 目录
 
   ```bash
   mkdir /mydata/elasticsearch/plugins/analysis-ik
   unzip /mydata/elasticsearch-analysis-ik-7.17.3.zip -d /mydata/elasticsearch/plugins/analysis-ik/
   ```
 
-- 重启容器
+  - 重启容器
 
   ```bash
   docker restart elasticsearch
@@ -397,7 +397,7 @@ Elasticsearch
 
 Logstash
 
-- 安装 `json_lines` 插件并重启
+  - 安装 `json_lines` 插件并重启
 
   ```bash
   docker exec -it logstash /bin/bash
@@ -409,40 +409,40 @@ rabbitmq
 
 > 需要创建一个 mall 用户并设置虚拟 host 为/mall
 
-- 访问管理页面: <http://1.1.1.4:15672/>
+  - 访问管理页面: <http://1.1.1.4:15672/>
   默认账户密码: guest / guest
 
-- 创建管理员用户: mall / mall
+  - 创建管理员用户: mall / mall
 
   ![image-20230316121205905](https://image.lvbibir.cn/blog/image-20230316121205905.png)
 
-- 创建一个新的虚拟 host 为 /mall
+  - 创建一个新的虚拟 host 为 /mall
 
   ![image-20230316121307706](https://image.lvbibir.cn/blog/image-20230316121307706.png)
 
-- 点击 mall 用户进入用户配置界面
+  - 点击 mall 用户进入用户配置界面
 
   ![image-20230316121408922](https://image.lvbibir.cn/blog/image-20230316121408922.png)
 
-- 给 mall 账户配置虚拟 host /mall 的权限
+  - 给 mall 账户配置虚拟 host /mall 的权限
 
   ![image-20230316121547316](https://image.lvbibir.cn/blog/image-20230316121547316.png)
 
 nacos
 
-- 由于我们使用 Nacos 作为配置中心，统一管理配置，所以我们需要将项目 `config` 目录下的所有配置都添加到 Nacos 中
+  - 由于我们使用 Nacos 作为配置中心，统一管理配置，所以我们需要将项目 `config` 目录下的所有配置都添加到 Nacos 中
   Nacos 访问地址：<http://1.1.1.4:8848/nacos/>
   账号密码：nacos / nacos
 
-- 需要上传的配置
+  - 需要上传的配置
 
   <img src="https://image.lvbibir.cn/blog/image-20230316124304792.png" alt="image-20230316124304792" />
 
-- 上传配置
+  - 上传配置
 
   ![image-20230316124618771](https://image.lvbibir.cn/blog/image-20230316124618771.png)
 
-- 全部上传完成
+  - 全部上传完成
 
   ![image-20230316124828650](https://image.lvbibir.cn/blog/image-20230316124828650.png)
 
@@ -524,9 +524,9 @@ ${WORKSPACE}/mall-admin/pom.xml
 
 推荐启动顺序：
 
-- mall-auth
-- mall-gateway
-- mall-monitor
-- mall-admin
-- mall-portal
-- mall-search
+  - mall-auth
+  - mall-gateway
+  - mall-monitor
+  - mall-admin
+  - mall-portal
+  - mall-search

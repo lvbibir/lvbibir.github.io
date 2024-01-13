@@ -1,7 +1,7 @@
 ---
 title: "docker 部署 piclist"
 date: 2023-12-29
-lastmod: 2023-12-30
+lastmod: 2024-01-10
 tags:
   - obsidian
 keywords:
@@ -11,10 +11,10 @@ keywords:
   - piclist
 description: "介绍如何使用 docker 部署 piclist 实现 obsidian 远程上传图片至阿里云 OSS 图床"
 cover:
-  image: "https://image.lvbibir.cn/blog/docker.png"
+    image: "https://image.lvbibir.cn/blog/docker.png"
 ---
 
-# 前言
+# 0.前言
 
 感谢 piclist 作者的 [不吝解答](https://github.com/Kuingsmile/PicList/issues/127)
 
@@ -24,9 +24,9 @@ cover:
 
 > 注意本文以已有服务器/ip/域名且 web 服务使用 nginx 为前提, 如果不满足上述前提, 需要将 piclist 的 36677 端口映射到主机, 部署完 piclist 后直接通过 ip 加端口的形式调用即可
 
-# 部署
+# 1.部署
 
-## piclist 配置
+## 1.1 piclist 配置
 
 `docker-compose.yml` 中添加如下配置
 
@@ -90,7 +90,7 @@ docker-compose up -d
 docker restart piclist
 ```
 
-## nginx 配置
+## 1.2 nginx 配置
 
 nginx 中添加如下 location 配置
 
@@ -118,11 +118,21 @@ nginx 中添加如下 location 配置
 1. 打开远程服务器模式
 2. 将接口 url 设置为 `https://<你的域名>/piclist/upload?key=<你的key>`, 这里的 key 就是启动容器时配置的环境变量的值, 需注意如果 key 中有特殊字符需要 url 转义一下
 
-# 常见问题
-
 最后测试一下图片上传即可, 如果有报错可以通过 `docker logs -f piclist` 查看日志
+
+# 2.常见问题
+
+## 2.1 上传失败
 
 1. obsdian 直接提示上传失败, 可能是 key 中有特殊字符没有转义或者没有打开远程服务器模式
 2. 日志中有如下 `Unauthorized access` 报错, 一般是 key 不匹配
+
+## 2.2 忘记 piclist_key
+
+如果已经启动了的容器可以通过如下命令查看
+
+```bash
+docker exec -it piclist ps -ef | grep -v grep | grep node
+```
 
 至此

@@ -3,12 +3,12 @@ title: "pxe 如何应对复杂的服务器硬件环境"
 date: 2022-08-18
 lastmod: 2022-08-18
 tags: 
-- linux
+  - linux
 keywords:
-- linux
-- pxe
-- aarch64
-- dhcp
+  - linux
+  - pxe
+  - aarch64
+  - dhcp
 description: "本文主要探讨如何配置dhcp来使pxe可以应对复杂的服务器环境" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

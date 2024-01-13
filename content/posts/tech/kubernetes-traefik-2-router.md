@@ -3,12 +3,12 @@ title: "traefik (二) 路由(ingressRoute)"
 date: 2023-04-18
 lastmod: 2023-04-18
 tags: 
-- traefik
-- kubernetes
+  - traefik
+  - kubernetes
 keywords:
-- kubernetes
-- traefik
-- ingressroute
+  - kubernetes
+  - traefik
+  - ingressroute
 description: "kubernetes 中使用 Traefik ingress 的 ingressRoute 代理 http、https、tcp、udp" 
 cover:
     image: "https://image.lvbibir.cn/blog/traefik.png"

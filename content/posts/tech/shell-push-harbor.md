@@ -3,12 +3,12 @@ title: "shell | 将本地镜像批量推送到harbor"
 date: 2022-10-12
 lastmod: 2022-10-12
 tags: 
-- shell
-- docker
+  - shell
+  - docker
 keywords:
-- shell
-- docker
-- harbor
+  - shell
+  - docker
+  - harbor
 description: "经常会下一些外网镜像用于测试，手动修改镜像tag然后推送在镜像较多的情况下比较繁琐，本文采用bash脚本方式批量推送不同格式的镜像" 
 cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 

@@ -3,15 +3,15 @@ title: "wordpress迁移到docker"
 date: 2021-08-01
 lastmod: 2021-08-01
 tags: 
-- wordpress
-- docker
-- 博客搭建
+  - wordpress
+  - docker
+  - 博客搭建
 keywords:
-- wordpress
-- docker
-- docker compose
-- 博客搭建
-- 博客迁移
+  - wordpress
+  - docker
+  - docker compose
+  - 博客搭建
+  - 博客迁移
 description: "记录从阿里云轻量应用服务器(wordpress应用)迁移到docker部署，并针对博客的一些优化" 
 cover:
     image: "https://image.lvbibir.cn/blog/wordpress.jpg" 

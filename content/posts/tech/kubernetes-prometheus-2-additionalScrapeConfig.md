@@ -3,11 +3,11 @@ title: "prometheus (二) 静态配置"
 date: 2023-04-25
 lastmod: 2023-04-25
 tags: 
-- kubernetes
-- prometheus
+  - kubernetes
+  - prometheus
 keywords:
-- kubernetes
-- prometheus
+  - kubernetes
+  - prometheus
 description: "prometheus-operator 中使用 additionalScrapeConfig 添加自定义 job 和 target" 
 cover:
     image: "https://image.lvbibir.cn/blog/prometheus.png"

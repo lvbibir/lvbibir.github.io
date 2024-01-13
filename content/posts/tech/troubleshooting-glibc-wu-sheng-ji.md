@@ -3,11 +3,11 @@ title: "故障处理 | glibc 误升级后修复"
 date: 2022-07-14
 lastmod: 2022-07-14
 tags: 
-- 故障处理
+  - 故障处理
 keywords:
-- linux
-- glibc
-- 故障处理
+  - linux
+  - glibc
+  - 故障处理
 description: "记录一下在 OpenEuler 20.03 LTS aarch64 系统上误操作升级了 glibc 后紧急修复的步骤" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

@@ -3,9 +3,9 @@ title: "windows | 自定义开机快速启动项"
 date: 2023-08-14
 lastmod: 2023-08-14
 tags: 
-- windows
+  - windows
 keywords:
-- windows
+  - windows
 description: ""
 cover:
     image: "https://source.unsplash.com/random/400x200?code"

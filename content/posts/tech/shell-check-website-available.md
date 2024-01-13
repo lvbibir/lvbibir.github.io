@@ -3,10 +3,10 @@ title: "shell | 检测网站存活并自动钉钉告警"
 date: 2023-12-07
 lastmod: 2023-12-07
 tags: 
-- shell
+  - shell
 keywords:
-- shell
-- centos
+  - shell
+  - centos
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 

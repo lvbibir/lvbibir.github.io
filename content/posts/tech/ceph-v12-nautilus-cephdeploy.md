@@ -3,11 +3,11 @@ title: "centos7 部署 ceph-v12 (nautilus) + dashboard"
 date: 2021-12-01
 lastmod: 2021-12-01
 tags: 
-- ceph
+  - ceph
 keywords:
-- linux
-- centos
-- ceph
+  - linux
+  - centos
+  - ceph
 description: "介绍在centos7环境中通过ceph-deploy部署ceph集群（nautilus）和可视化的dashboard" 
 cover:
     image: "https://image.lvbibir.cn/blog/ceph.png" 

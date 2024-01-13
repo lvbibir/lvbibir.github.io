@@ -3,11 +3,11 @@ title: "windows | hosts文件修复"
 date: 2022-10-09
 lastmod: 2022-10-09
 tags: 
-- windows
+  - windows
 keywords:
-- windows
-- host
-- cmd
+  - windows
+  - host
+  - cmd
 description: "介绍win10中修复hosts文件的方法"
 cover:
     image: "https://source.unsplash.com/random/400x200?code"

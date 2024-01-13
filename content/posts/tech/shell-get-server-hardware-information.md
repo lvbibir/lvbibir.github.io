@@ -3,9 +3,9 @@ title: "shell | 获取服务器硬件信息（整合为json格式）"
 date: 2019-08-01
 lastmod: 2019-08-01
 tags: 
-- shell
+  - shell
 keywords:
-- shell
+  - shell
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 

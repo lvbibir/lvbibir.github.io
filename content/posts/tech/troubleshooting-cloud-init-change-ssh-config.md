@@ -3,13 +3,13 @@ title: "cloud-init自动修改ssh配置文件"
 date: 2021-12-01
 lastmod: 2021-12-01
 tags: 
-- openstack
-- 故障处理
+  - openstack
+  - 故障处理
 keywords:
-- openstack
-- cloud-init
-- ssh
-- 故障处理
+  - openstack
+  - cloud-init
+  - ssh
+  - 故障处理
 description: "" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

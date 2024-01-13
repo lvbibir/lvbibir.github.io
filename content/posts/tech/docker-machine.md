@@ -3,11 +3,11 @@ title: "docker | 三剑客之machine"
 date: 2019-08-01
 lastmod: 2019-08-01
 tags: 
-- docker
+  - docker
 keywords:
-- linux
-- docker
-- docker machine
+  - linux
+  - docker
+  - docker machine
 description: "docker machine简介以及实战" 
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 

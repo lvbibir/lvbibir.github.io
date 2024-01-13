@@ -3,11 +3,11 @@ title: "docker | 网络简介"
 date: 2019-08-01
 lastmod: 2019-08-01
 tags: 
-- docker
+  - docker
 keywords:
-- linux
-- docker
-- network
+  - linux
+  - docker
+  - network
 description: "docker的网络结构简介 | 同一宿主机的docker容器之间是如何通信的" 
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 

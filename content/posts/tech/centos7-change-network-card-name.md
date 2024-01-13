@@ -3,13 +3,13 @@ title: "centos7 修改网卡名称"
 date: 2022-02-01
 lastmod: 2022-02-01
 tags: 
-- linux
-- centos
+  - linux
+  - centos
 keywords:
-- linux
-- centos
-- network
-- grub
+  - linux
+  - centos
+  - network
+  - grub
 description: "介绍如何在centos7的系统中通过配置网络规则命名文件的方式修改网卡的名称" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

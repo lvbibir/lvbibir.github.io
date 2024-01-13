@@ -3,10 +3,10 @@ title: "python3 | 修改 pip 源"
 date: 2021-12-01
 lastmod: 2024-01-10
 tags: 
-- python
+  - python
 keywords:
-- python
-- pip
+  - python
+  - pip
 description: "" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

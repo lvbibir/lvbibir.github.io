@@ -3,12 +3,12 @@ title: "pxe 安装 isoft-5.1(aarch64)"
 date: 2021-08-01
 lastmod: 2021-08-01
 tags: 
-- linux
+  - linux
 keywords:
-- linux
-- pxe
-- aarch64
-- dhcp
+  - linux
+  - pxe
+  - aarch64
+  - dhcp
 description: "" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

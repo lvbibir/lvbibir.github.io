@@ -3,11 +3,11 @@ title: "kubernetes | configmap & secret"
 date: 2022-10-07
 lastmod: 2023-04-13
 tags: 
-- kubernetes
+  - kubernetes
 keywords:
-- kubernetes
-- configmap
-- secret
+  - kubernetes
+  - configmap
+  - secret
 description: "介绍kubernetes中的configmap和secret应用" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"

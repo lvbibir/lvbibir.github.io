@@ -3,10 +3,10 @@ title: "loki (二) 部署"
 date: 2023-05-01
 lastmod: 2023-05-01
 tags: 
-- kubernetes
+  - kubernetes
 keywords:
-- kubernetes
-- prometheus
+  - kubernetes
+  - prometheus
 description: "Loki 的部署, 对接 Grafana, traefik 采集监控示例" 
 cover:
     image: "https://image.lvbibir.cn/blog/loki.png"

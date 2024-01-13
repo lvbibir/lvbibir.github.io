@@ -14,9 +14,9 @@ keywords:
 description: "记录 wordpress 迁移至 hugo+papermod 的过程, 包含环境搭建、博客美化、功能实现、速度优化等……"
 weight: 1
 cover:
-  image: "https://image.lvbibir.cn/blog/hugo-logo-wide.svg"
-  hidden: false
-  hiddenInSingle: false
+    image: "https://image.lvbibir.cn/blog/hugo-logo-wide.svg"
+    hidden: false
+    hiddenInSingle: false
 ---
 
 # 前言
@@ -26,14 +26,14 @@ cover:
 研究 hugo 建站之初是打算采用 `Github Pages` 来发布静态博客
 
 - 优点
-- - 仅需一个 github 账号和简单配置即可将静态博客发布到 github pages
-  - 没有维护的时间成本, 可以将精力更多的放到博客内容本身上去
-  - 无需备案
-  - 无需 ssl 证书
+    - 仅需一个 github 账号和简单配置即可将静态博客发布到 github pages
+    - 没有维护的时间成本, 可以将精力更多的放到博客内容本身上去
+    - 无需备案
+    - 无需 ssl 证书
 - 缺点
-- - 访问速度较慢
-  - 访问速度较慢
-  - 访问速度较慢
+    - 访问速度较慢
+    - 访问速度较慢
+    - 访问速度较慢
 
 虽说访问速度较慢可以通过各家的 cdn 加速来解决, 但由于刚开始建立 blog 选择的是 wordpress, 域名, 服务器, 备案, 证书等都已经一应俱全, 且之前的架构采用 docker, 添加一台 nginx 来跑 hugo 的静态网站是很方便的
 
@@ -324,3 +324,5 @@ body {
 # 其他修改
 
 其他 css 样式修改基本都是通过 f12 控制台一点点摸索改的, 不太规范且比较琐碎就不单独记录了, ~~其实我根本已经忘记还改了哪些东西~~
+
+以上

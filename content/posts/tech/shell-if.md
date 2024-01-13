@@ -3,11 +3,11 @@ title: "shell | if条件判断"
 date: 2023-03-10
 lastmod: 2023-03-10
 tags: 
-- shell
+  - shell
 keywords:
-- shell
-- if
-- 条件判断
+  - shell
+  - if
+  - 条件判断
 description: "shell中if条件判断详解" 
 cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 

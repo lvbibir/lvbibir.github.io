@@ -3,10 +3,10 @@ title: "ceph创建pool时pg_num的配置"
 date: 2022-02-01
 lastmod: 2022-02-01
 tags: 
-- ceph
+  - ceph
 keywords:
-- linux
-- ceph
+  - linux
+  - ceph
 description: "介绍在ceph集群创建pool时pb_num参数如何配置以及较为通用的取值" 
 cover:
     image: "https://image.lvbibir.cn/blog/ceph.png" 

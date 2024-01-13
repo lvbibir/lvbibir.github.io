@@ -3,12 +3,12 @@ title: "centos7.5 升级内核至 5.10"
 date: 2022-01-01
 lastmod: 2022-01-01
 tags: 
-- linux
-- centos
+  - linux
+  - centos
 keywords:
-- linux
-- centos
-- kernel
+  - linux
+  - centos
+  - kernel
 description: "" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

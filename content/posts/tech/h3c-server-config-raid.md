@@ -3,12 +3,12 @@ title: "H3C服务器配置raid"
 date: 2021-08-01
 lastmod: 2021-08-01
 tags: 
-- linux
+  - linux
 keywords:
-- linux
-- 服务器
-- raid
-- H3C
+  - linux
+  - 服务器
+  - raid
+  - H3C
 description: "记录一下H3C服务器配置raid的过程" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

@@ -4,11 +4,11 @@ date: 2023-04-09
 lastmod: 2024-01-10
 description: "" 
 tags: 
-- linux
+  - linux
 keywords:
-- linux
-- kill
-- sig
+  - linux
+  - kill
+  - sig
 cover:
     image: "https://source.unsplash.com/random/400x200?code"
 ---

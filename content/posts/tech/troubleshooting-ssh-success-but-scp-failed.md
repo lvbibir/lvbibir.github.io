@@ -1,18 +1,18 @@
 ---
 title: "故障处理 | ssh 成功但是 scp 失败"
-date: 2024-01-10
-lastmod: 2024-01-10
+date: 2024-01-09
+lastmod: 2024-01-09
 tags:
-- openssh
-- 故障处理
+  - openssh
+  - 故障处理
 keywords:
-- linux
-- openssh
-- scp
-- 故障处理
+  - linux
+  - openssh
+  - scp
+  - 故障处理
 description: ""
 cover:
-  image: "https://source.unsplash.com/random/400x200?code"
+    image: "https://source.unsplash.com/random/400x200?code"
 ---
 
 # 0. 前言

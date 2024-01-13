@@ -3,10 +3,10 @@ title: "docker | 命令手册"
 date: 2019-08-01
 lastmod: 2023-04-01
 tags: 
-- docker
+  - docker
 keywords:
-- linux
-- docker
+  - linux
+  - docker
 description: "基于docker-18.03.0-ce版本，介绍常见的docker命令及参数的使用方法" 
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 

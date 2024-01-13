@@ -3,12 +3,12 @@ title: "kubernetes 中的 command 和 args 与 dockerfile 中的 ENTRYPOINT 和 
 date: 2023-04-12
 lastmod: 2023-04-12
 tags: 
-- kubernetes
-- docker
+  - kubernetes
+  - docker
 keywords:
-- kubernetes
-- docker
-- entrypoint
+  - kubernetes
+  - docker
+  - entrypoint
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"

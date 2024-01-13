@@ -3,10 +3,10 @@ title: "shell | centos 初始化"
 date: 2023-08-01
 lastmod: 2022-08-01
 tags: 
-- shell
+  - shell
 keywords:
-- shell
-- centos
+  - shell
+  - centos
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 

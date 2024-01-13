@@ -3,13 +3,13 @@ title: "openssh源码打包编译成rpm包"
 date: 2021-09-01
 lastmod: 2022-09-05
 tags: 
-- linux
+  - linux
 keywords:
-- linux
-- rpm
-- openssh
-- 源码
-- rpm构建
+  - linux
+  - rpm
+  - openssh
+  - 源码
+  - rpm构建
 description: "记录一下不同系统环境下通过源码构建openssh rpm包的过程" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

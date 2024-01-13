@@ -1,13 +1,13 @@
 ---
 title: "windows 使用 miniconda 配置 python 虚拟环境" 
 date: 2023-08-07
-lastmod: 2023-08-07
+lastmod: 2024-01-13
 tags: 
-- windows
-- python
+  - windows
+  - python
 keywords:
-- windows
-- python
+  - windows
+  - python
 description: ""
 cover:
     image: "https://source.unsplash.com/random/400x200?code"
@@ -163,14 +163,11 @@ conda env remove -n py37 --all
 
 conda 最为人诟病的点应该是包管理跟 pip 可能会产生一些冲突, conda 官方给出的最佳方案是
 
-1. 全程使用 `conda install` 来安装模块, 实在不行再用 `pip`
+- 全程使用 `conda install` 来安装模块, 实在不行再用 `pip`
+- 使用 conda 创建完虚拟环境后, 一直用 `pip` 来管理模块
+    - pip 应使用 `–upgrade-strategy only-if-needed` 参数运行, 以防止通过 conda 安装的软件包进行不必要的升级. 这是运行 pip 时的默认设置, 不应更改
+    - 不要将 pip 与 `–user` 参数一起使用，避免所有用户安装
 
-2. 使用 conda 创建完虚拟环境后, 一直用 `pip` 来管理模块
+总结一下就是不要来回地用 pip 和 conda, 专一一点 (笑
 
-   pip 应使用 `–upgrade-strategy only-if-needed` 参数运行, 以防止通过 conda 安装的软件包进行不必要的升级. 这是运行 pip 时的默认设置, 不应更改
-
-   不要将 pip 与 `–user` 参数一起使用，避免所有用户安装
-
-总结一下就是不要来回地用 pip 和 conda.
-
-以上.
+以上

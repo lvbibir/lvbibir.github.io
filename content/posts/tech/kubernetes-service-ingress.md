@@ -3,14 +3,14 @@ title: "kubernetes | service & ingress"
 date: 2022-10-07
 lastmod: 2022-10-07
 tags: 
-- kubernetes
+  - kubernetes
 keywords:
-- kubernetes
-- service
-- iptables
-- ipvs
-- ingress
-- nginx
+  - kubernetes
+  - service
+  - iptables
+  - ipvs
+  - ingress
+  - nginx
 description: "介绍kubernetes中的service和Headless Service，service的两种代理模式，以及ingress控制器的使用" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"

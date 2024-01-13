@@ -3,10 +3,10 @@ title: "docker | dockerfile指令详解"
 date: 2023-04-09
 lastmod: 2023-04-11
 tags: 
-- docker
+  - docker
 keywords:
-- docker
-- dockerfile
+  - docker
+  - dockerfile
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 

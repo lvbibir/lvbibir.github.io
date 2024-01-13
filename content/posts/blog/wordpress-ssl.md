@@ -3,16 +3,16 @@ title: "wordpress配置免费ssl证书和https强制跳转"
 date: 2021-07-01
 lastmod: 2021-07-01
 tags: 
-- wordpress
-- 博客搭建
+  - wordpress
+  - 博客搭建
 keywords:
-- wordpress
-- 阿里云
-- ssl
-- https
-- apache
-- 伪静态
-- Rewrite
+  - wordpress
+  - 阿里云
+  - ssl
+  - https
+  - apache
+  - 伪静态
+  - Rewrite
 description: "介绍如何为阿里轻量应用服务器(wordpress应用)配置ssl证书，开启https访问且实现https强制跳转" 
 cover:
     image: "https://image.lvbibir.cn/blog/wordpress.jpg" 

@@ -3,10 +3,10 @@ title: "kubernetes | Gateway API 简介及部署"
 date: 2023-04-16
 lastmod: 2023-04-16
 tags: 
-- kubernetes
+  - kubernetes
 keywords:
-- kubernetes
-- gatewayapi
+  - kubernetes
+  - gatewayapi
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"

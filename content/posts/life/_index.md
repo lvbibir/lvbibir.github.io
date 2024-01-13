@@ -6,7 +6,7 @@ tags:
 keywords:
 description: "人不像动物，人能领略出生活的唯一目的就是享受生活"
 cover:
-  image: ""
+    image: ""
 hidemeta: true 
 weight: 4
 ---

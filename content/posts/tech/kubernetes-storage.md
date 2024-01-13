@@ -3,18 +3,18 @@ title: "kubernetes | 存储"
 date: 2022-10-07
 lastmod: 2023-04-12
 tags: 
-- kubernetes
+  - kubernetes
 keywords:
-- linux
-- centos
-- kubernetes
-- storage
-- emptydir
-- hostpath
-- NFS
-- pv
-- pvc
-- statefulset
+  - linux
+  - centos
+  - kubernetes
+  - storage
+  - emptydir
+  - hostpath
+  - NFS
+  - pv
+  - pvc
+  - statefulset
 description: "介绍kubernetes中的存储使用简介，例如emptydir、hostpath、NFS、pv、pvc、statefulset控制器" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"

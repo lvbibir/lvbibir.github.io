@@ -3,11 +3,11 @@ title: "loki (一) 简介"
 date: 2023-04-30
 lastmod: 2023-04-30
 tags: 
-- kubernetes
+  - kubernetes
 keywords:
-- kubernetes
-- prometheus
-- loki
+  - kubernetes
+  - prometheus
+  - loki
 description: "loki 开源日志的优缺点及架构; loki 的四个角色; prometail 简介; 日志告警" 
 cover:
     image: "https://image.lvbibir.cn/blog/loki.png"

@@ -10,7 +10,7 @@ keywords:
   - prometheus
 description: "kubernetes 中部署配置 prometheus-operator, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系"
 cover:
-  image: "https://image.lvbibir.cn/blog/prometheus.png"
+    image: "https://image.lvbibir.cn/blog/prometheus.png"
 ---
 
 # 0. 前言

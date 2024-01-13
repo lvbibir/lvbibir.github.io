@@ -3,12 +3,12 @@ title: "cephadm 安装 ceph-v16 (pacific) (openeuler) (aarch64)"
 date: 2022-07-22
 lastmod: 2022-07-22
 tags: 
-- ceph
+  - ceph
 keywords:
-- linux
-- ceph
-- aarch64
-- arm
+  - linux
+  - ceph
+  - aarch64
+  - arm
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/ceph.png" 

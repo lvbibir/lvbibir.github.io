@@ -3,9 +3,9 @@ title: "kubernetes | 杂记"
 date: 2022-10-01
 lastmod: 2023-04-08
 tags: 
-- kubernetes
+  - kubernetes
 keywords:
-- kubernetes
+  - kubernetes
 description: "介绍一些常见的报错处理、kubectl命令的一些用法、yaml编写技巧、小优化等" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"

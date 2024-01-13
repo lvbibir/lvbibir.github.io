@@ -13,7 +13,7 @@ keywords:
   - ssl
 description: "在使用 markdown 写作的过程中，图片的存储是困扰很多人的一个问题，分享下我目前采用的 typora+picgo+七牛云的图床配置流程"
 cover:
-  image: "https://source.unsplash.com/random/400x200?code"
+    image: "https://source.unsplash.com/random/400x200?code"
 ---
 
 # 七牛云配置

@@ -3,10 +3,10 @@ title: "shell | 服务器巡检脚本"
 date: 2021-09-01
 lastmod: 2021-09-01
 tags: 
-- shell
+  - shell
 keywords:
-- shell
-- linux
+  - shell
+  - linux
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 

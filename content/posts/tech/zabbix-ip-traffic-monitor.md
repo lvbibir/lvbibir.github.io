@@ -1,14 +1,14 @@
 ---
-title: "Zabbix 监控主机到指定 ip 的流量大小" 
+title: "Zabbix 监控主机到指定 ip 的流量大小"
 date: 2023-08-04
-lastmod: 2023-08-04
-tags: 
-- zabbix
-- shell
+lastmod: 2024-01-13
+tags:
+  - zabbix
+  - shell
 keywords:
-- zabbix
-- shell
-description: "" 
+  - zabbix
+  - shell
+description: "zabbix 中通过 shell 监控定时监控流量, 配置聚合图形, 以及日志输出"
 cover:
     image: "https://image.lvbibir.cn/blog/Zabbix_logo.png"
 ---

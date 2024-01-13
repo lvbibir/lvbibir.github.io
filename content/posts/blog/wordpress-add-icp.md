@@ -3,12 +3,12 @@ title: "wordpress添加icp备案号"
 date: 2021-07-01
 lastmod: 2021-07-01
 tags: 
-- wordpress
-- 博客搭建
+  - wordpress
+  - 博客搭建
 keywords:
-- wordpress
-- icp
-- 备案
+  - wordpress
+  - icp
+  - 备案
 description: "记录wordpress中如何添加icp备案号" 
 cover:
     image: "https://image.lvbibir.cn/blog/wordpress.jpg" 

@@ -3,11 +3,11 @@ title: "elasticsearch 安装插件报错 java.nio.file.NotDirectoryException"
 date: 2023-03-15
 lastmod: 2023-03-15
 tags: 
-- linux
+  - linux
 keywords:
-- elastic
-- elasticsearch
-- elasticsearch-analysis-ik
+  - elastic
+  - elasticsearch
+  - elasticsearch-analysis-ik
 description: "" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

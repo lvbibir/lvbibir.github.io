@@ -3,11 +3,11 @@ title: "docker | dockerfile最佳实践"
 date: 2023-04-11
 lastmod: 2023-04-11
 tags: 
-- docker
+  - docker
 keywords:
-- docker
-- dockerfile
-- tini
+  - docker
+  - dockerfile
+  - tini
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 

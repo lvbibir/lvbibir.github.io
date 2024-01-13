@@ -3,10 +3,10 @@ title: "python | 鬼谷子数学问题"
 date: 2023-02-27
 lastmod: 2024-01-10
 tags: 
-- python
+  - python
 keywords:
-- math
-- python
+  - math
+  - python
 description: "一道乍看毫无逻辑，细想却很有趣的逻辑题"  
 cover:
     image: "https://image.lvbibir.cn/blog/guiguzi.png" 

@@ -3,10 +3,10 @@ title: "lvm基本特性及日常管理"
 date: 2019-08-01
 lastmod: 2019-08-01
 tags: 
-- linux
+  - linux
 keywords:
-- linux
-- lvm
+  - linux
+  - lvm
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/20190818145125498.png" 

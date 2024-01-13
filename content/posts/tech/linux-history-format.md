@@ -3,10 +3,10 @@ title: "linux中history命令的格式化输出"
 date: 2022-11-07
 lastmod: 2022-11-07
 tags: 
-- linux
+  - linux
 keywords:
-- linux
-- history
+  - linux
+  - history
 description: ""
 cover:
     image: "https://source.unsplash.com/random/400x200?code"

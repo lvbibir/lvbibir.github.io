@@ -3,10 +3,10 @@ title: "通过反编译修改rpm包内的文件"
 date: 2021-12-01
 lastmod: 2021-12-01
 tags: 
-- linux
+  - linux
 keywords:
-- linux
-- rpm
+  - linux
+  - rpm
 description: "" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

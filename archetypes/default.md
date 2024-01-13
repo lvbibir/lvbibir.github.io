@@ -2,11 +2,19 @@
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 lastmod: {{ .Date }}
-author: ["lvbibir"]
-series: [""] # 系列
-categories: ["",""]
-tags: ["",""]
-keywords: ["",""]
+author: "lvbibir"
+series:
+  - series1
+  - series2
+categories:
+  - category1
+  - category2
+tags:
+  - tag1
+  - tag2
+keywords:
+  - keyword1
+  - keyword2
 description: ""
 weight:
 slug: "" # 使用 slug属性 来作为当前文章的有效 url 的末尾部分 ；如果没有提供 slug 则使用 title 代替。
@@ -20,7 +28,7 @@ hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
 disableShare: true # 底部不显示分享栏
 showbreadcrumbs: true #顶部显示路径
 cover:
-    image: "https://source.unsplash.com/random/940x400?sunshine" #图片路径例如：posts/tech/123/123.png
+    image: "https://source.unsplash.com/random/400x200?code" #图片路径例如：posts/tech/123/123.png
     caption: "" #图片底部描述
     alt: ""
     relative: false
@@ -28,7 +36,3 @@ cover:
     hiddenInList: false   # 在列表页和文章内容页隐藏cover图片
     hiddenInSingle: false # 只在文章内容页隐藏cover图片
 ---
-
-
-
-

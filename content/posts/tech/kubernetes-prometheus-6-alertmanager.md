@@ -3,12 +3,12 @@ title: "prometheus (六) Alertmanager"
 date: 2023-04-29
 lastmod: 2023-04-29
 tags: 
-- kubernetes
-- prometheus
+  - kubernetes
+  - prometheus
 keywords:
-- kubernetes
-- prometheus
-- alertmanager
+  - kubernetes
+  - prometheus
+  - alertmanager
 description: "prometheus 架构中的 Alertmanager 介绍, 以及使用 alertmanagerconfig CRD 资源配置 Alertmanager" 
 cover:
     image: "https://image.lvbibir.cn/blog/prometheus.png"

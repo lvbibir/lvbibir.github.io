@@ -3,11 +3,11 @@ title: "docker | 容器的跨主机连接"
 date: 2019-08-01
 lastmod: 2019-08-01
 tags: 
-- docker
+  - docker
 keywords:
-- linux
-- docker
-- network
+  - linux
+  - docker
+  - network
 description: "介绍docker容器在不同宿主机下实现通信的几种方案" 
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 

@@ -3,11 +3,11 @@ title: "cephadm 安装 ceph-v16 (pacific) (openeuler)"
 date: 2022-09-24
 lastmod: 2022-09-24
 tags: 
-- ceph
+  - ceph
 keywords:
-- linux
-- ceph
-- openeuler
+  - linux
+  - ceph
+  - openeuler
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/ceph.png" 

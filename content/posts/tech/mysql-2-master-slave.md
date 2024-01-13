@@ -3,9 +3,9 @@ title: "mysql (二) 主从复制原理 GTID 并行复制"
 date: 2022-05-03
 lastmod: 2022-05-03
 tags: 
-- mysql
+  - mysql
 keywords:
-- mysql
+  - mysql
 description: "mysql 主从复制的详细原理, 主从复制模式, 主从复制方式, 以及 GTID 复制和并行复制" 
 cover:
     image: "https://image.lvbibir.cn/blog/mysql.png" 

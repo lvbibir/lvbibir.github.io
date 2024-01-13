@@ -5,9 +5,9 @@ lastmod: 2023-04-13
 tags: 
 - kubernetes
 keywords:
-- kubernetes
-- RBAC
-- networkPolicy
+  - kubernetes
+  - RBAC
+  - networkPolicy
 description: "介绍kubernetes中的安全框架、RBAC鉴权和网络策略（Pod ACL)" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"

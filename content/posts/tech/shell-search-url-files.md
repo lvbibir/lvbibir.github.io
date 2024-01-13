@@ -3,9 +3,9 @@ title: "shell | 检索某url中所有文件的内容"
 date: 2022-07-01
 lastmod: 2022-07-01
 tags: 
-- shell
+  - shell
 keywords:
-- shell
+  - shell
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 

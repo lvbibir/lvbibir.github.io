@@ -3,11 +3,11 @@ title: "hwaddr和macaddr的区别"
 date: 2021-07-01
 lastmod: 2021-07-01
 tags: 
-- linux
+  - linux
 keywords:
-- linux
-- hwaddr
-- macaddr
+  - linux
+  - hwaddr
+  - macaddr
 description: "" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

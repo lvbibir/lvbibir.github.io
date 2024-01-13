@@ -3,11 +3,11 @@ title: "prometheus (四) 黑盒监控"
 date: 2023-04-27
 lastmod: 2023-04-27
 tags: 
-- kubernetes
-- prometheus
+  - kubernetes
+  - prometheus
 keywords:
-- kubernetes
-- prometheus
+  - kubernetes
+  - prometheus
 description: "prometheus-operator 中使用 probe CRD 资源和 blackbox 添加黑盒监控项" 
 cover:
     image: "https://image.lvbibir.cn/blog/prometheus.png"

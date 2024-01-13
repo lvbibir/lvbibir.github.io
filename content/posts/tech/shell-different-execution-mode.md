@@ -3,9 +3,9 @@ title: "shell | 不同执行方式的区别"
 date: 2022-06-01
 lastmod: 2022-06-01
 tags: 
-- shell
+  - shell
 keywords:
-- shell
+  - shell
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 

@@ -3,13 +3,13 @@ title: "traefik (四) 服务(TraefikService)"
 date: 2023-04-19
 lastmod: 2023-04-19
 tags: 
-- traefik
-- kubernetes
+  - traefik
+  - kubernetes
 keywords:
-- kubernetes
-- traefik
-- service
-- traefikservice
+  - kubernetes
+  - traefik
+  - service
+  - traefikservice
 description: "kubernetes 中使用 Traefik ingress 的 TraefikService 实现加权轮询、灰度发布、流量复制、会话保持(粘性会话)等功能" 
 cover:
     image: "https://image.lvbibir.cn/blog/traefik.png"

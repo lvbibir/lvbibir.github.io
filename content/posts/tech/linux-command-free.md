@@ -3,10 +3,10 @@ title: "linux | free命令详解"
 date: 2021-08-01
 lastmod: 2021-08-01
 tags: 
-- linux
+  - linux
 keywords:
-- linux
-- free
+  - linux
+  - free
 description: "centos中free命令详解，以及centos6和centos7中free命令的不同" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code"

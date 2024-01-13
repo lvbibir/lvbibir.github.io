@@ -3,10 +3,10 @@ title: "docker | 简介以及基础概念"
 date: 2019-08-01
 lastmod: 2019-08-01
 tags: 
-- docker
+  - docker
 keywords:
-- linux
-- docker
+  - linux
+  - docker
 description: "介绍docker的一些基础概念和优势" 
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 

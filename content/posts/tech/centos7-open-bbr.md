@@ -3,13 +3,13 @@ title: "centos7开启bbr算法"
 date: 2021-08-01
 lastmod: 2021-08-01
 tags: 
-- linux
-- centos
+  - linux
+  - centos
 keywords:
-- linux
-- centos
-- bbr
-- kernel
+  - linux
+  - centos
+  - bbr
+  - kernel
 description: "" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

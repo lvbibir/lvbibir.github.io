@@ -3,13 +3,13 @@ title: "centos6 部署 openvpn"
 date: 2021-07-01
 lastmod: 2021-07-01
 tags: 
-- linux
-- centos
+  - linux
+  - centos
 keywords:
-- linux
-- openvpn
-- centos
-- 内网穿透
+  - linux
+  - openvpn
+  - centos
+  - 内网穿透
 description: "介绍如何在centos6的环境中部署openvpn服务实现内网穿透" 
 cover:
     image: "https://image.lvbibir.cn/blog/OpenVPN_logo.png" 

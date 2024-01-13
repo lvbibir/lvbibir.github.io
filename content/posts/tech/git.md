@@ -1,19 +1,19 @@
 ---
 title: "git" 
 date: 2022-06-01
-lastmod: 2022-11-10
+lastmod: 2024-01-12
 tags: 
-- git
+  - git
 keywords:
-- git
-- proxy
-- 网络代理
+  - git
+  - proxy
+  - 网络代理
 description: "介绍使用git过程中常用的基础使用、参数设置、常见问题、配置优化等。" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
-# git 命令
+# git
 
 ## submodule
 
@@ -22,6 +22,42 @@ cover:
 ```bash
 git submodule init
 git submodule update
+```
+
+## branch 管理
+
+查看分支
+
+```bash
+git branch -a
+```
+
+创建分支
+
+```bash
+# 以当前分支为模板创建并切换分支
+git checkout -b dev
+# 以 master 为模板创建并切换分支, master 可以是哈希值或者 origin/master 这种远程地址
+git checkout -b dev master
+
+# 推送分支, 如远端不存在则自动创建
+git checkout dev
+git push origin dev
+```
+
+删除分支
+
+```bash
+# 本地删除
+git checkout master
+git branch -d dev
+# 如果分支包含未合并的更改，使用 `-D` 强制删除
+git branch -D dev
+
+# 远端删除
+git push origin --delete dev
+# 或
+git push origin :dev
 ```
 
 # git 配置

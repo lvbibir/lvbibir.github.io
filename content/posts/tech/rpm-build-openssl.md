@@ -3,13 +3,13 @@ title: "openssl源码打包编译成rpm包"
 date: 2022-03-01
 lastmod: 2022-03-01
 tags: 
-- linux
+  - linux
 keywords:
-- linux
-- rpm
-- openssh
-- 源码
-- rpm构建
+  - linux
+  - rpm
+  - openssh
+  - 源码
+  - rpm构建
 description: "记录一下centos7系统中通过源码构建openssh rpm包的过程" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

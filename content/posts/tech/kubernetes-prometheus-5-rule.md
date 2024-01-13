@@ -3,12 +3,12 @@ title: "prometheus (五) 记录规则与告警规则"
 date: 2023-04-28
 lastmod: 2023-04-28
 tags: 
-- kubernetes
-- prometheus
+  - kubernetes
+  - prometheus
 keywords:
-- kubernetes
-- prometheus
-- alertmanager
+  - kubernetes
+  - prometheus
+  - alertmanager
 description: "prometheus 的 recording rule 和 alerting rule 介绍, 以及使用 prometheusrule CRD 资源配置规则" 
 cover:
     image: "https://image.lvbibir.cn/blog/prometheus.png"

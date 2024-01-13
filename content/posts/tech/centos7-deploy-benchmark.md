@@ -3,13 +3,13 @@ title: "centos7基线检查（benchmark）平台部署"
 date: 2021-07-01
 lastmod: 2021-07-01
 tags: 
-- linux
-- centos
+  - linux
+  - centos
 keywords:
-- linux
-- centos
-- benchmark
-- 基线检查
+  - linux
+  - centos
+  - benchmark
+  - 基线检查
 description: "介绍在centos7环境中部署开源的benchmark基线检查平台，并通过web界面可视化展示" 
 cover:
     image: "https://image.lvbibir.cn/blog/image-20210719165252503.png" 

@@ -3,12 +3,12 @@ title: "windows & linux 多网卡时设置默认路由以及添加静态路由"
 date: 2022-06-01
 lastmod: 2022-06-01
 tags: 
-- linux
-- windows
+  - linux
+  - windows
 keywords:
-- linux
-- windows
-- network
+  - linux
+  - windows
+  - network
 description: "介绍centos和windows中分别如何配置多网卡时以实现灵活的网络访问" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

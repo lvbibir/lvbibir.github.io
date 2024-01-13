@@ -3,12 +3,12 @@ title: "Zabbix 监控端口连通性并自动追踪 TCP 路由"
 date: 2023-12-07
 lastmod: 2023-12-07
 tags: 
-- zabbix
-- shell
+  - zabbix
+  - shell
 keywords:
-- zabbix
-- shell
-description: "" 
+  - zabbix
+  - shell
+description: "zabbix 中通过 shell 脚本监控指定 agent 到指定 ip:port 的端口连通性, 不连通时自动触发 traceroute 追踪路由并记录到日志" 
 cover:
     image: "https://image.lvbibir.cn/blog/Zabbix_logo.png"
 ---

@@ -3,17 +3,17 @@ title: "kubernetes | 控制器"
 date: 2022-10-04
 lastmod: 2022-10-04
 tags: 
-- kubernetes
+  - kubernetes
 keywords:
-- linux
-- centos
-- kubernetes
-- controller
-- daemonset
-- ingress
-- statefulset
-- replicaset
-- deployment
+  - linux
+  - centos
+  - kubernetes
+  - controller
+  - daemonset
+  - ingress
+  - statefulset
+  - replicaset
+  - deployment
 description: "介绍kubernetes中几种常用的控制器的使用场景和示例" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"

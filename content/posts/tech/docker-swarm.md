@@ -3,11 +3,11 @@ title: "docker | 三剑客之swarm"
 date: 2019-08-01
 lastmod: 2019-08-01
 tags: 
-- docker
+  - docker
 keywords:
-- linux
-- docker
-- docker swarm
+  - linux
+  - docker
+  - docker swarm
 description: "介绍docker-swarm集群的概述、使用和集群管理" 
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 

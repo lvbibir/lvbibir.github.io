@@ -3,12 +3,12 @@ title: "密码尝试次数过多"
 date: 2022-01-01
 lastmod: 2022-01-01
 tags: 
-- linux
-- centos
+  - linux
+  - centos
 keywords:
-- linux
-- centos
-- pam
+  - linux
+  - centos
+  - pam
 description: "介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

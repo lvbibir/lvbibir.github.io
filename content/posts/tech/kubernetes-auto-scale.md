@@ -3,12 +3,12 @@ title: "kubernetes | 滚动升级和自动伸缩"
 date: 2022-10-05
 lastmod: 2023-04-08
 tags: 
-- kubernetes
+  - kubernetes
 keywords:
-- linux
-- centos
-- kubernetes
-- update
+  - linux
+  - centos
+  - kubernetes
+  - update
 description: "介绍kubernetes中滚动升级的实现机制，如何手动伸缩pod，以及基于hpa实现自动伸缩" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"

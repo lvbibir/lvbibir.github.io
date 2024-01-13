@@ -3,10 +3,10 @@ title: "kubernetes | statefulset控制器详解"
 date: 2023-04-12
 lastmod: 2023-04-12
 tags: 
-- kubernetes
+  - kubernetes
 keywords:
-- kubernetes
-- statefulset
+  - kubernetes
+  - statefulset
 description: ""
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"

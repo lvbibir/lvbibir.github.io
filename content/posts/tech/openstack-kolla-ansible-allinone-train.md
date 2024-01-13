@@ -3,11 +3,11 @@ title: "kolla-ansible 部署 Train版 openstack（all-in-one）"
 date: 2021-10-01
 lastmod: 2021-10-01
 tags: 
-- openstack
+  - openstack
 keywords:
-- linux
-- openstack
-- ansible
+  - linux
+  - openstack
+  - ansible
 description: "介绍cenots中使用kolla-ansible+docker的方式快速部署openstack(all-in-one)单节点" 
 cover:
     image: "https://image.lvbibir.cn/blog/20200613094347844.png" 

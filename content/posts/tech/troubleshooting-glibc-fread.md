@@ -3,12 +3,12 @@ title: "故障处理 | glibc 的 fread 问题"
 date: 2021-09-01
 lastmod: 2021-09-01
 tags: 
-- 故障处理
+  - 故障处理
 keywords:
-- linux
-- openeuler
-- C
-- glibc
+  - linux
+  - openeuler
+  - C
+  - glibc
 description: "" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

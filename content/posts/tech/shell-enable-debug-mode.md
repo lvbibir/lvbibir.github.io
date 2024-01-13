@@ -3,9 +3,9 @@ title: "shell | 开启debug模式"
 date: 2022-06-01
 lastmod: 2022-06-01
 tags: 
-- shell
+  - shell
 keywords:
-- shell
+  - shell
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 

@@ -3,11 +3,11 @@ title: "docker | 数据卷（data volume）"
 date: 2019-08-01
 lastmod: 2019-08-01
 tags: 
-- docker
+  - docker
 keywords:
-- linux
-- docker
-- docker volume
+  - linux
+  - docker
+  - docker volume
 description: "介绍如何使用docker的数据卷和数据卷容器" 
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 

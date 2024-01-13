@@ -3,12 +3,12 @@ title: "traefik (三) 中间件(Middleware)"
 date: 2023-04-18
 lastmod: 2023-04-18
 tags: 
-- traefik
-- kubernetes
+  - traefik
+  - kubernetes
 keywords:
-- kubernetes
-- traefik
-- ingressroute
+  - kubernetes
+  - traefik
+  - ingressroute
 description: "kubernetes 中使用 Traefik ingress 的 Middleware 实现重定向、白名单、用户认证、限流、熔断、压缩、自定义error页等操作" 
 cover:
     image: "https://image.lvbibir.cn/blog/traefik.png"

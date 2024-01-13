@@ -3,10 +3,10 @@ title: "linux | set命令详解"
 date: 2022-09-28
 lastmod: 2022-09-28
 tags:
-- linux
+  - linux
 keywords:
-- linux
-- set
+  - linux
+  - set
 description: ""
 cover:
     image: "https://source.unsplash.com/random/400x200?code"

@@ -3,9 +3,9 @@ title: "mysql (一) 部署"
 date: 2022-05-02
 lastmod: 2022-05-02
 tags: 
-- mysql
+  - mysql
 keywords:
-- mysql
+  - mysql
 description: "在 centos7 中部署 mysql-5.7 " 
 cover:
     image: "https://image.lvbibir.cn/blog/mysql.png" 

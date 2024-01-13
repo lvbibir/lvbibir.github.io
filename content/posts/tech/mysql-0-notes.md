@@ -3,9 +3,9 @@ title: "mysql 杂记"
 date: 2022-05-01
 lastmod: 2022-05-01
 tags: 
-- mysql
+  - mysql
 keywords:
-- mysql
+  - mysql
 description: "" 
 cover:
     image: "https://image.lvbibir.cn/blog/mysql.png" 

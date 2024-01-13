@@ -3,13 +3,13 @@ title: "httpd源码打包编译成rpm包"
 date: 2022-03-01
 lastmod: 2022-03-01
 tags: 
-- linux
+  - linux
 keywords:
-- linux
-- rpm
-- httpd
-- 源码
-- rpm构建
+  - linux
+  - rpm
+  - httpd
+  - 源码
+  - rpm构建
 description: "记录一下centos7中通过源码构建httpd rpm包的过程" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

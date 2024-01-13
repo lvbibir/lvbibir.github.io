@@ -3,12 +3,12 @@ title: "故障处理 | H3C服务器装完系统无法引导"
 date: 2021-08-01
 lastmod: 2021-08-01
 tags: 
-- 故障处理
+  - 故障处理
 keywords:
-- linux
-- 服务器
-- raid
-- H3C
+  - linux
+  - 服务器
+  - raid
+  - H3C
 description: "记录一下在H3C服务器上系统无法引导的问题的解决" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 

@@ -3,12 +3,12 @@ title: "traefik (一) 简介、部署和配置"
 date: 2023-04-17
 lastmod: 2023-04-17
 tags: 
-- traefik
-- kubernetes
+  - traefik
+  - kubernetes
 keywords:
-- kubernetes
-- traefik
-- ingress
+  - kubernetes
+  - traefik
+  - ingress
 description: "kubernetes 中 Traefik ingress 的简介、部署及配置。" 
 cover:
     image: "https://image.lvbibir.cn/blog/traefik.png"

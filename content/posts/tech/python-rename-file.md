@@ -3,10 +3,10 @@ title: "python | 批量修改目录下文件名"
 date: 2022-07-27
 lastmod: 2022-07-27
 tags: 
-- python
+  - python
 keywords:
-- windows
-- python
+  - windows
+  - python
 description: "将windows中某个目录下的所有文件中的下划线_替换为中划线-" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 
