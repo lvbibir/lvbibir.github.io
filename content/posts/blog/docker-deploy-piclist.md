@@ -1,7 +1,7 @@
 ---
 title: "docker 部署 piclist"
 date: 2023-12-29
-lastmod: 2024-01-10
+lastmod: 2024-01-13
 tags:
   - obsidian
 keywords:
@@ -58,14 +58,18 @@ networks:
 添加环境变量并启动 piclist 容器, 此环境变量用于 client(obsidian) 和 piclist server 之间的鉴权
 
 ```bash
-echo "export piclist_key='123456'" >> ${HOME}/.bash_profile # 将 123456 设置为自定义的密码
+# 将 123456 设置为自定义的密码
+cat >> ${HOME}/.bash_profile <<-'EOF'
+export piclist_key='123456'
+EOF
+
 source ${HOME}/.bash_profile
 docker-compose up -d
 ```
 
-修改 `data/piclist/config.json` 的配置, 以阿里云 OSS 为例添加图床配置, 内容自行修改, 官方没有配置文件的详细文档, 可以折中一下, 先 windows 安装 piclist 后修改配置, 测试后导出配置
+修改 `data/piclist/config.json` 的配置, 以阿里云 OSS 为例添加图床配置, 内容自行修改, 官方没有配置文件的详细文档, 可以折中一下, 先 windows 安装 piclist, 测试无误后导出配置
 
-```bash
+```json
 {
   "picBed": {
     "current": "aliyun",

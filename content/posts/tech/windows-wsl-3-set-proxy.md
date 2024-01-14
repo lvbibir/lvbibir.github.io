@@ -11,7 +11,7 @@ keywords:
   - clash
 description: "wsl 中配置系统代理, 包含 clash 等客户端提供的代理或者使用指定的代理地址"
 cover:
-    image: "https://source.unsplash.com/random/400x200?code" 
+    image: "https://image.lvbibir.cn/blog/logo-wsl.png"
 ---
 
 # 0.前言

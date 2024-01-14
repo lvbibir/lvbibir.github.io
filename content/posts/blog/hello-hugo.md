@@ -1,10 +1,9 @@
 ---
 title: "【置顶】Hello, hugo!"
 date: 2022-07-06
-lastmod: 2024-01-10
+lastmod: 2024-01-13
 tags:
   - 博客搭建
-  - docker
 keywords:
   - hugo
   - papermod
@@ -21,7 +20,10 @@ cover:
 
 # 前言
 
-本文内容比较杂乱, 无法保证实时更新, 如果遇到问题, 可以在 [github](https://github.com/lvbibir/lvbibir.github.io) 查看最新的配置
+本文内容比较杂乱, 无法保证实时更新, 如果遇到问题, 可以在 github 查看最新的配置:
+
+- [hugo 相关配置](https://github.com/lvbibir/lvbibir.github.io)
+- [docker 相关配置](https://github.com/lvbibir/blog-bak)
 
 研究 hugo 建站之初是打算采用 `Github Pages` 来发布静态博客
 
@@ -37,23 +39,23 @@ cover:
 
 虽说访问速度较慢可以通过各家的 cdn 加速来解决, 但由于刚开始建立 blog 选择的是 wordpress, 域名, 服务器, 备案, 证书等都已经一应俱全, 且之前的架构采用 docker, 添加一台 nginx 来跑 hugo 的静态网站是很方便的
 
-# 一键将博客部署到阿里云
+# 将博客部署到阿里云
 
-> 虽说标题带有一键, 但还是有一定的门槛的, 需要对 dokcer docker-compose nginx 有一定了解
+整个步骤最难的地方可能就是 docker-compose 和 nginx 的配置了, 如果之前没有接触过可能会比较吃力, 因此我打包了一份开袋即食的配置文件, 只需要修改一些必要配置, [点此链接下载](https://image.lvbibir.cn/files/blog-docker-compose.zip)
 
-[配置文件下载](https://image.lvbibir.cn/files/blog-docker-compose.zip) 下载完将目录上传到自己的服务器, 重命名为 `blog` (当然你可以用其他名字)
+下载完将压缩包上传到自己的服务器, 解压后重命名为 `blog` (当然你可以用其他名字)
 
-1. 确保服务器网络、ssl 证书申请、服务器公网 ip、服务器安全组权限 (80/443) 等基础配置已经一应俱全
+下面正式开始部署:
+
+1. 确保服务器公网 ip、安全组权限 (80/443), 域名绑定, ssl 证书等基础配置已经一应俱全
 2. 确保服务器安装了 docker 和 docker-compose
 3. 修改 `blog/conf/nginx-hugo/nginx.conf` 和 `blog/conf/nginx-proxy/default.conf`, 需要修改的地方在文件中已经标注出来了
-4. 将你的 ssl 证书放到 `hugo-blog-dockercompose/ssl/` 目录下
+4. 将你的 ssl 证书放到 `blog/ssl/` 目录下
 5. 在 `blog` 目录下执行 `docker-compose up -d` 即可启动容器
-6. 将 hugo 生成的 `public` 目录上传到服务器 `blog/data/hugo/` 中, [参考下文](#workflow)
-7. 在域名提供商处为你的域名添加 A 记录, 指向服务器的公网 ip 地址 (主域名和 twikoo 域名都要配置)
-   ![image-20230313142456952](https://image.lvbibir.cn/blog/image-20230313142456952.png)
-8. 都配置完后 [参考下文](#twikoo) 配置 twikoo 评论系统
+6. 配置 twikoo 的前端代码, [参考下文](#twikoo)
+7. 将 hugo 生成的静态文件上传到 `blog/data/hugo/` 目录, [参考下文](#workflow)
 
-至此已经配置完成, 应该可以通过域名访问 hugo 站点了, 后续更新内容只需要 hugo 生成静态文件上传到服务即可
+至此已经配置完成, 应该可以通过域名访问 hugo 站点了, 后续更新内容只需要重复最后一步, 将 hugo 生成的静态文件上传到服务器即可
 
 所有的配置、应用数据、日志都保存在 blog 目录下, 你可以在不同的服务器上快速迁移 hugo 环境, 无需担心后续想要迁移新服务器时遇到的各种问题
 
@@ -64,10 +66,10 @@ cover:
 总体流程:
 
 1. obsidian 编辑文章, 图片通过 `Image Auto Upload Plugin` 插件配合 piclist 上传到阿里云 OSS, 具体配置和操作见 [docker 部署 piclist](https://www.lvbibir.cn/posts/blog/docker-deploy-piclist)
-2. 编辑完成后将通过 [此脚本](https://github.com/lvbibir/lvbibir.github.io/blob/master/update-file.sh) 将编辑后的文章同步到本地的 git 仓库
+2. 编辑完成后将通过 [此脚本](https://github.com/lvbibir/lvbibir.github.io/blob/master/update-file.sh) 将编辑后的文章更新到 hugo site 目录, 同时也是 git 仓库
 3. 使用 `hugo server -D` 预览变更, 如有问题重复前两个步骤
-4. 确认无误后通过 [此脚本](https://github.com/lvbibir/lvbibir.github.io/blob/master/upload-file.sh) 生成静态文件, 并将文件远程传输到公网服务器, 完成博客内容变更
-5. 最后将 git 仓库的变更提交后同步到 github 远程仓库
+4. 确认无误后通过 [此脚本](https://github.com/lvbibir/lvbibir.github.io/blob/master/upload-file.sh) 生成静态文件, 并将文件远程同步到公网服务器, 完成博客内容变更
+5. 最后将 git 仓库的变更提交后同步到 github 远程仓库, 完成归档备份
 
 其实如果使用 vscode 直接编辑 git 仓库中的博客文章可以让整个流程更加简化, 但是 vscode 的 markdown 编辑体验实在是比不上 typora 或者 obsidian, 工欲善其事必先利其器, 有了好的编辑体验才更愿意输出内容
 
@@ -77,7 +79,7 @@ cover:
 
 twikoo 官方提供了 [丰富的部署方式](https://twikoo.js.org/quick-start.html), 考虑到访问速度, 本文使用的是 docker 方式部署到阿里云服务器
 
-> 如果是使用 [一键将hugo博客部署到阿里云](#一键将博客部署到阿里云) 中的步骤部署了 twikoo, 这步直接忽略, 配置前端代码即可
+> 如果是使用 [将博客部署到阿里云](#将博客部署到阿里云) 步骤中的配置文件部署了 twikoo, 这步直接忽略, 配置前端代码即可
 
 ```bash
 docker run --name twikoo -e TWIKOO_THROTTLE=1000 -p 8080:8080 -v ${PWD}/data:/app/data -d imaegoo/twikoo

@@ -9,7 +9,7 @@ keywords:
   - wsl
 description: "win10 系统安装 wsl2(ubuntu-20.04) 到 D 盘以及更换系统源到清华源"
 cover:
-    image: "https://source.unsplash.com/random/400x200?code"
+    image: "https://image.lvbibir.cn/blog/logo-wsl.png"
 ---
 
 # 0.前言

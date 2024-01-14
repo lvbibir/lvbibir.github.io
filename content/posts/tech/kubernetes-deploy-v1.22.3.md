@@ -116,7 +116,7 @@ ntpdate time.windows.com
 
 Kubernetes 默认 CRI（容器运行时）为 Docker，因此先安装 Docker。
 
-```textile
+```bash
 wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
 yum list docker-ce --show-duplicates
 yum install docker-ce-20.10.23-3.el7.x86_64
@@ -124,7 +124,7 @@ yum install docker-ce-20.10.23-3.el7.x86_64
 
 配置镜像下载加速器，同时修改 docker 的 cgroupdriver 为 systemd
 
-```textile
+```bash
 mkdir /etc/docker
 cat > /etc/docker/daemon.json << EOF
 {
