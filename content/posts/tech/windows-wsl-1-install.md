@@ -1,7 +1,7 @@
 ---
 title: "wsl | win10 安装 wsl2"
 date: 2024-01-10
-lastmod: 2024-01-13
+lastmod: 2024-01-23
 tags:
   - wsl
 keywords:
@@ -30,10 +30,17 @@ cover:
 ```powershell
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-wsl --set-default-version 2
 ```
 
-执行完成后重启
+然后在 `Microsoft Store` 中安装 `Windows Subsystem for Linux`
+
+安装好之后重启
+
+重启完成后在 powershell 执行
+
+```powershell
+wsl --set-default-version 2
+```
 
 ## 1.2 安装内核更新包
 

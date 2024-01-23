@@ -64,6 +64,8 @@ EOF
 为了不搞坏 conda 的默认 base 环境, 我们创建一个虚拟环境, 每次默认进这个虚拟环境
 
 ```bash
+conda create -n py37 python=3.7
+
 cat >> ${HOME}/.bash_profile <<- 'EOF'
 conda activate py37
 EOF
