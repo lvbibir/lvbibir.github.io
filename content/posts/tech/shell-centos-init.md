@@ -122,31 +122,6 @@ cat >> /etc/security/limits.conf << 'EOF'
 EOF
 ```
 
-## proxy
-
-```bash
-cat > /root/proxy << 'EOF'
-#!/bin/bash
-case "$1" in
-set)
-    export http_proxy="http://1.1.1.1:7890"
-    export https_proxy="http://1.1.1.1:7890"
-	export all_proxy="socks5://1.1.1.1:7890"
-	export ALL_PROXY="socks5://1.1.1.1:7890"
-	;;
-unset)
-    unset http_proxy
-    unset https_proxy
-	unset all_proxy
-	unset ALL_PROXY
-    ;;
-*)
-    echo "Usage: source $0 {set|unset}"
-    ;;
-esac
-EOF
-```
-
 ## kernel
 
 ```bash
@@ -239,19 +214,19 @@ fi
 
 echo "========start============="
 
-function disable_selinux_firewalld() {
+function setup_selinux_firewalld() {
 
     echo "========selinux==========="
     sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config
     setenforce 0
-    
+
     echo "========firewalld========="
     iptables -F
     systemctl disable --now firewalld
 
 }
 
-function format_history() {
+function setup_format_history() {
 
     echo "========history format========"
     cat > /etc/profile.d/history_conf.sh << 'EOF'
@@ -279,8 +254,8 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCeQZmPg93SNx6zzR/l4RiPnHtFPbDTSOL7AtJOIvrl
 EOF
     chmod 600 /root/.ssh/authorized_keys
 
-	echo "=========setup ssh========"
-	echo "UseDNS no" >> /etc/ssh/sshd_config
+    echo "=========setup ssh========"
+    echo "UseDNS no" >> /etc/ssh/sshd_config
 
 }
 
@@ -318,40 +293,18 @@ EOF
 
 }
 
-function time_limit_proxy() {
+function setup_time_limit() {
 
     echo "=======setup timezone and ntp======"
     timedatectl set-timezone Asia/Shanghai
     ntpdate time.windows.com
-    
+
     echo "=======modify limit========="
     cat >> /etc/security/limits.conf << 'EOF'
 * soft nofile 65535
 * hard nofile 65535
 * soft nproc 65535
 * hard nproc 65535
-EOF
-
-    echo "========http proxy=========="
-    cat > /root/proxy << 'EOF'
-#!/bin/bash
-case "$1" in
-set)
-    export http_proxy="http://1.1.1.1:7890"
-    export https_proxy="http://1.1.1.1:7890"
-	export all_proxy="socks5://1.1.1.1:7890"
-	export ALL_PROXY="socks5://1.1.1.1:7890"
-	;;
-unset)
-    unset http_proxy
-    unset https_proxy
-	unset all_proxy
-	unset ALL_PROXY
-    ;;
-*)
-    echo "Usage: source $0 {set|unset}"
-    ;;
-esac
 EOF
 
 }
@@ -435,11 +388,11 @@ EOF
 
 }
 
-disable_selinux_firewalld
-format_history
+setup_selinux_firewalld
+setup_format_history
 setup_ssh
 setup_yum
-time_limit_proxy
+setup_time_limit
 setup_kernel
 
 echo "=========finish============"

@@ -33,16 +33,17 @@ wsl 中添加如下脚本
 cat > ${HOME}/proxy <<- 'EOF'
 #!/bin/bash
 
+# normal proxy
+# 指定 url 的方式
 proxy_type="http"
+proxy_ip="proxy1.bj.petrochina"
+proxy_port="8080"
 
-# 配置使用 windows 主机提供的代理, 如 clash
+# 使用 windows 主机上运行的代理程序, 例如 clash
 # wsl 中的地址是不固定的, 这里通过脚本获取, 每次启动 wsl 都可以实时更新
-proxy_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
-proxy_port="7890"
-
-# 配置使用指定的代理
-# proxy_ip="proxy1.bj.petrochina"
-# proxy_port="8080"
+# proxy_type="http"
+# proxy_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
+# proxy_port="7890"
 
 proxy="${proxy_type}://${proxy_ip}:${proxy_port}"
 
@@ -53,6 +54,11 @@ export https_proxy="${proxy}"
 
 git config --global http.https://github.com.proxy ${proxy}
 git config --global https.https://github.com.proxy ${proxy}
+
+# 如果不加 sudo, 会导致用 sudo 执行 apt 等命令时无法识别 alias
+alias sudo='sudo '
+alias apt="apt -o Acquire::http::proxy=${proxy}"
+alias apt-get="apt-get -o Acquire::http::proxy=${proxy}"
 EOF
 ```
 

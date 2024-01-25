@@ -76,8 +76,18 @@ cd D:\ubuntu
 cmd 或者 powershell 中执行 wsl 进入 ubuntu, 更换系统源
 
 ```bash
-wget https://gitee.com/lin-xi-269/tools/raw/master/os/QHubuntu20.04 
-bash QHubuntu20.04
+sudo apt-get install --only-upgrade ca-certificates
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.origin
+
+sudo cat > /etc/apt/sources.list <<- 'EOF'
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+
+deb http://security.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse
+EOF
+
+sudo apt-get update
 ```
 
 以上
