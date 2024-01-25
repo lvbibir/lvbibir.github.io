@@ -6,7 +6,16 @@
     <description>Recent content in docker on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 12 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>wsl | 原生 linux 方式安装 docker</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/windows-wsl-6-docker/</link>
+      <pubDate>Thu, 25 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/windows-wsl-6-docker/</guid>
+      <description>wsl2 使用原生 linux 方式安装 docker 和 docker-compose, 以及修改 docker 镜像加速地址</description>
+    </item>
+    
     <item>
       <title>kubernetes 中的 command 和 args 与 dockerfile 中的 ENTRYPOINT 和 CMD 的关系</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-command-args-docker-entrypoint-cmd/</link>

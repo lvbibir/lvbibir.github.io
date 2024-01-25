@@ -6,7 +6,16 @@
     <description>Recent content in wsl on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/wsl/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/wsl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>wsl | 原生 linux 方式安装 docker</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/windows-wsl-6-docker/</link>
+      <pubDate>Thu, 25 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/windows-wsl-6-docker/</guid>
+      <description>wsl2 使用原生 linux 方式安装 docker 和 docker-compose, 以及修改 docker 镜像加速地址</description>
+    </item>
+    
     <item>
       <title>wsl | 安装配置 nodejs 环境</title>
       <link>https://www.lvbibir.cn/en/posts/tech/windows-wsl-5-node/</link>
