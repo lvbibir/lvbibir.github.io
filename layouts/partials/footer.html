@@ -259,8 +259,8 @@
 {{- end }}
 
 <!-- 代码块自动扩展 -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 {{- if .Site.Params.extendCodeBackground }}
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
     $("code[class^=language] ").on("mouseover", function () {
         if ($(window).width() > 768 && this.clientWidth < this.scrollWidth) {
