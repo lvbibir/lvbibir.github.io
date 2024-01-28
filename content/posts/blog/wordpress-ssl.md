@@ -1,8 +1,8 @@
 ---
-title: "wordpress配置免费ssl证书和https强制跳转" 
+title: "wordpress | 配置免费 ssl 证书和 https 强制跳转" 
 date: 2021-07-01
-lastmod: 2021-07-01
-tags: 
+lastmod: 2024-01-28
+tags:
   - wordpress
   - 博客搭建
 keywords:
@@ -13,12 +13,19 @@ keywords:
   - apache
   - 伪静态
   - Rewrite
-description: "介绍如何为阿里轻量应用服务器(wordpress应用)配置ssl证书，开启https访问且实现https强制跳转" 
+description: "介绍如何为阿里轻量应用服务器 (wordpress 应用) 配置 ssl 证书，开启 https 访问且实现https 强制跳转" 
 cover:
     image: "https://image.lvbibir.cn/blog/wordpress.jpg" 
 ---
 
-# 配置 ssl 证书
+# 0 前言
+
+本文参考以下链接:
+
+- [在 Apache 服务器上安装 SSL 证书](https://help.aliyun.com/zh/ssl-certificate/user-guide/install-ssl-certificates-on-apache-servers)
+- [WordPress 强制跳转 https 教程](https://blog.csdn.net/weixin_39037804/article/details/102801202)
+
+# 1 配置 ssl 证书
 
 1、登录阿里云，选择产品中的 ssl 证书
 
@@ -62,13 +69,13 @@ cover:
 
 大功告成
 
-# 配置 https 强制跳转
+# 2 配置 https 强制跳转
 
 一般站点需要在 httpd.conf 中的 `<VirtualHost *:80> </VirtualHost>` 中配置重定向
 
 wordpress 不同，需要在伪静态文件（.htaccess）中配置重定向，无需在 httpd.conf 中配置
 
-## 修改伪静态文件（.htaccess）
+## 2.1 修改伪静态文件（.htaccess）
 
 伪静态文件一般在网页根目录，是一个隐藏文件
 
@@ -76,7 +83,7 @@ wordpress 不同，需要在伪静态文件（.htaccess）中配置重定向，�
 
 在 `#END Wordpress` 前添加如下重定向代码，**记得把域名修改成自己的**
 
-```textile
+```plaintext
 RewriteEngine On
 RewriteCond %{HTTPS} !on
 RewriteRule ^(.*)$ https://lvbibir.cn/%{REQUEST_URI} [L,R=301]
@@ -91,9 +98,9 @@ RewriteRule ^(.*)$ https://lvbibir.cn/%{REQUEST_URI} [L,R=301]
 
 ![image-20210730152548351](https://image.lvbibir.cn/blog/image-20210730152548351.png)
 
-## 测试
+## 2.2 测试
 
-```textile
+```bash
 curl -I http://lvbibir.cn
 ```
 
@@ -101,8 +108,4 @@ curl -I http://lvbibir.cn
 
 使用 http 访问站点的 80 端口成功通过 301 跳转到了 https
 
-# 参考
-
-<https://help.aliyun.com/document_detail/98727.html?spm=5176.smartservice_service_chat.0.0.1508709aJMmZwg>
-
-<https://blog.csdn.net/weixin_39037804/article/details/102801202>
+以上

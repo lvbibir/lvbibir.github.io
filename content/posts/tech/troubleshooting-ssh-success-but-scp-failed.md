@@ -1,25 +1,25 @@
 ---
-title: "故障处理 | ssh 成功但是 scp 失败"
+title: "troubleshooting | ssh 成功但是 scp 失败"
 date: 2024-01-09
-lastmod: 2024-01-09
+lastmod: 2024-01-28
 tags:
   - openssh
-  - 故障处理
+  - troubleshooting
 keywords:
   - linux
   - openssh
   - scp
-  - 故障处理
+  - troubleshooting
 description: ""
 cover:
     image: "https://source.unsplash.com/random/400x200?code"
 ---
 
-# 0. 前言
+# 0 前言
 
 前段时间在配置 jenkins publish over ssh 时发现 jenkins 无法连接某个服务器, 经测试 ssh 可以正常登录, 但是 scp 时报错 `subsystem request failed on channel 0`, 记录一下这个问题的排查思路
 
-# 1. 大致思路
+# 1 大致思路
 
 影响到 ssh 的配置无非是以下这些:
 
@@ -41,13 +41,13 @@ cover:
 
 经测试, 除了上述故障, 所有 client 对所有 server 执行 ssh 或者 scp 都是没有问题的, 能 ssh 成功其实就代表出现问题的地方并不是我们之前预想的那些
 
-# 2. debug
+# 2 debug
 
 那就纳闷了, 幸好 scp 命令提供了 `-v` 参数, 可以展示出更多的 debug 信息, 于是着手将异常 scp 的 debug 信息与正常 scp 的 debug 信息进行对比, 开始愉快的 `找不同` 环节
 
 (正常情况) client-1 scp server-1 的 debug 信息
 
-```textile
+```plaintext
 # scp -v test app@server-1:/home/app/
 ......
 debug1: Authentication succeeded (password).
@@ -74,7 +74,7 @@ debug1: Exit status 0
 
 (正常情况) client-docker scp server-2 的 debug 信息
 
-```textile
+```plaintext
 # scp -v test app@server-2:/home/app/
 ......
 Authenticated to 11.53.57.74 ([11.53.57.74]:22) using "password".
@@ -103,7 +103,7 @@ debug1: Exit status 0
 
 (异常情况) client-docker scp server-1 的 debug 信息
 
-```textile
+```plaintext
 # scp -v test app@server-1:/home/app/
 ......
 Authenticated to 11.53.57.80 ([11.53.57.80]:22) using "password".
@@ -133,13 +133,13 @@ scp: Connection closed
 
 可以推断出问题点在于 scp 的流程中调用了 sftp, 但由于 sftp 的某些原因导致出现了问题
 
-# 3. sftp
+# 3 sftp
 
 遂去对比一下两个 server 的 ssh 配置中关于 sftp 的配置
 
 正常 server 的配置
 
-```textile
+```plaintext
 # grep -i 'sftp' /etc/ssh/sshd_config
 
 #Subsystem      sftp    /usr/libexec/openssh/sftp-server
@@ -151,7 +151,7 @@ ForceCommand internal-sftp
 
 异常 server 的配置
 
-```textile
+```plaintext
 # grep -i 'sftp' /etc/ssh/sshd_config
 
 #Subsystem      sftp    /usr/libexec/openssh/sftp-server
@@ -161,7 +161,7 @@ ForceCommand internal-sftp
 
 去掉 sftp 的注释后重启 sshd, 再次进行尝试后不出意料地恢复正常了
 
-# 4. 总结
+# 4 总结
 
 至此, 我们可以确定问题点是由于 scp 中使用 sftp 协议进行传输, 而 server 端未开启 sftp 导致 scp 失败
 

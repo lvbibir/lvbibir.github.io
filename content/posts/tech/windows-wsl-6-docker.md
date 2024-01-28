@@ -1,7 +1,7 @@
 ---
 title: "wsl | 原生 linux 方式安装 docker"
 date: 2024-01-25
-lastmod: 2024-01-25
+lastmod: 2024-01-28
 tags:
   - wsl
   - docker
@@ -15,11 +15,11 @@ cover:
     image: "https://image.lvbibir.cn/blog/logo-wsl.png"
 ---
 
-# 0.前言
+# 0 前言
 
 记录一下 wsl2 原生 linux 方式安装 docker 的过程
 
-# 1.安装
+# 1 安装
 
 安装过程中会提示建议使用 `docker desktop`, 等待 20s 即可
 
@@ -36,12 +36,13 @@ sudo docker info
 sudo systemctl stop|start|restart docker
 ```
 
-# 2.配置
+# 2 配置
 
 ## 2.1 修改镜像源
 
 ```bash
-sudo cat > /etc/docker/daemon.json <<- 'EOF'
+sudo vim /etc/docker/daemon.json
+# 添加如下内容
 {
   "registry-mirrors": [
     "https://docker.mirrors.ustc.edu.cn",
@@ -49,11 +50,10 @@ sudo cat > /etc/docker/daemon.json <<- 'EOF'
     "http://hub-mirror.c.163.com"
   ]
 }
-EOF
 
 sudo systemctl daemon-reload
 sudo systemctl restart docker
-sudo systemctl docker info
+sudo docker info
 ```
 
 ## 2.2 docker-compose
@@ -65,7 +65,7 @@ sudo ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/sbin/docker-compo
 sudo docker-compose --version
 ```
 
-# 3.测试
+# 3 测试
 
 最后简单测试一下
 

@@ -1,8 +1,8 @@
 ---
 title: "kubernetes | 日志" 
 date: 2022-10-03
-lastmod: 2022-10-03
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
 keywords:
   - linux
@@ -11,32 +11,29 @@ keywords:
   - log
   - emptydir
   - sidebar
-description: "介绍kubernetes中组件日志、标准输出类型的应用日志、文件类型的应用日志如何收集分析" 
+description: "介绍 kubernetes 中组件日志、标准输出类型的应用日志、文件类型的应用日志如何收集分析" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
 
-# 前言
+# 0 前言
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
 kubelet logs 命令的流程
 
-```textile
+```plaintext
 kubectl logs --请求--> apiserver --请求--> kubelet --读取--> container日志
 ```
 
 k8s 日志包含两大类：
 
 - k8s 系统的组件日志
-
 - k8s 集群中部署的应用程序的日志
+    - 标准输出
+    - 日志文件
 
-  - 标准输出
-
-  - 日志文件
-
-# 组件日志
+# 1 组件日志
 
 ```bash
 journalctl -u kubelet
@@ -44,9 +41,9 @@ kubectl logs kube-proxy -n kube-system
 /var/log/messages
 ```
 
-# pod 日志
+# 2 pod 日志
 
-## 标准输出
+## 2.1 标准输出
 
 实时查看 pod 标准输出日志
 
@@ -102,11 +99,11 @@ lrwxrwxrwx. 1 root root 165 Apr 23 10:23 7.log -> /var/lib/docker/containers/c30
 }
 ```
 
-## 日志文件
+## 2.2 日志文件
 
 比如 nginx 应用的日志一般保存在 accesss.log 和 error.log 日志中，这些日志是不会输出到标准输出的，可以采用如下两种方式进行采集
 
-### emptyDir 数据卷
+### 2.2.1 emptyDir 数据卷
 
 创建 pod 时挂载 emptyDIr 类型的数据卷，用以持久化自定义的日志文件
 
@@ -126,7 +123,7 @@ kubectl get pod <podname> -n <namespace> -o jsonpath='{.metadata.uid}'
 
 pod 日志文件路径
 
-```textile
+```plaintext
 /var/lib/kubelet/pods/<pod-id>/volumes/kubernetes.io~empty-dir
 ```
 
@@ -149,7 +146,7 @@ spec:
     emptyDir: {}
 ```
 
-### sidecar 边车容器
+### 2.2.2 sidecar 边车容器
 
 通过创建边车容器实现将应用原本的日志文件输出到标准输出
 
@@ -179,3 +176,5 @@ spec:
   - name: logs
     emptyDir: {}
 ```
+
+以上

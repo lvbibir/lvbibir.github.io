@@ -1,23 +1,23 @@
 ---
-title: "kubernetes | RBAC鉴权和NetworkPolicy" 
+title: "kubernetes | RBAC 鉴权和 NetworkPolicy" 
 date: 2022-10-07
-lastmod: 2023-04-13
-tags: 
-- kubernetes
+lastmod: 2024-01-28
+tags:
+  - kubernetes
 keywords:
   - kubernetes
   - RBAC
   - networkPolicy
-description: "介绍kubernetes中的安全框架、RBAC鉴权和网络策略（Pod ACL)" 
+description: "介绍 kubernetes 中的安全框架、RBAC 鉴权和网络策略（Pod ACL)" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
 
-# 前言
+# 0 前言
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
-# kubernetes 安全框架
+# 1 kubernetes 安全框架
 
 - 客户端要想访问 K8s 集群 `API Server`，一般需要 CA 证书、Token 或者用户名 + 密码
 - 如果 Pod 访问，需要 `ServiceAccount`
@@ -25,14 +25,12 @@ cover:
 K8S 安全控制框架主要由下面 3 个阶段进行控制，每一个阶段都支持插件方式，通过 `API Server` 配置来启用插件。
 
 1. Authentication（鉴权）
-
 2. Authorization（授权）
-
 3. Admission Control（准入控制）
 
 ![image-20221007174309826](https://image.lvbibir.cn/blog/image-20221007174309826.png)
 
-## 鉴权 (Authentication)
+## 1.1 鉴权 (Authentication)
 
 三种客户端身份认证：
 
@@ -40,7 +38,7 @@ K8S 安全控制框架主要由下面 3 个阶段进行控制，每一个阶段�
 - HTTP Token 认证：通过一个 Token 来识别用户
 - HTTP Base 认证：用户名 + 密码的方式认证
 
-## 授权 (Authorization)
+## 1.2 授权 (Authorization)
 
 RBAC（Role-Based Access Control，基于角色的访问控制）：负责完成授权（Authorization）工作。
 
@@ -49,56 +47,47 @@ RBAC 根据 API 请求属性，决定允许还是拒绝。
 比较常见的授权维度：
 
 - user：用户名
-
 - group：用户分组
-
 - 资源，例如 pod、deployment
-
 - 资源操作方法：get，list，create，update，patch，watch，delete
-
 - 命名空间
-
 - API 组
 
-## 准入控制 (Admission Control)
+## 1.3 准入控制 (Admission Control)
 
 Adminssion Control 实际上是一个准入控制器插件列表，发送到 API Server 的请求都需要经过这个列表中的每个准入控制器插件的检查，检查不通过，则拒绝请求
 
-# RBAC
+# 2 RBAC
 
 > <https://kubernetes.io/zh-cn/docs/reference/access-authn-authz/rbac/>
 
-## 基础概念
+## 2.1 基础概念
 
 RBAC（Role-Based Access Control，基于角色的访问控制），允许通过 Kubernetes API 动态配置策略。
 
-**角色**
+角色
 
 - Role：授权特定命名空间的访问权限
-
 - ClusterRole：授权所有命名空间的访问权限
 
-**角色绑定**
+角色绑定
 
 - RoleBinding：将角色绑定到主体（即 subject）
-
 - ClusterRoleBinding：将集群角色绑定到主体
 
-**主体（subject）**
+主体（subject）
 
 - User：用户
-
 - Group：用户组
-
 - ServiceAccount：服务账号
 
 ![2022年10月7日184036](https://image.lvbibir.cn/blog/2022%E5%B9%B410%E6%9C%887%E6%97%A5184036.png)
 
-## 示例 新建用户并授权
+## 2.2 示例
 
 为 Amadeus 用户授权 default 命名空间 Pod 读取权限
 
-### 新建用户
+### 2.2.1 新建用户
 
 新建一个 k8s 用户大概可以分为以下几步：
 
@@ -115,7 +104,7 @@ RBAC（Role-Based Access Control，基于角色的访问控制），允许通过
   - kubectl --kubecofig=`path` // 通过参数指定
   - KUBECONFIG=`path` kubectl // 通过环境变量指定，`path` 可以指定多个，用 `:` 连接，从而将多个配置文件合并在一起使用
 
-#### 签发用户证书
+### 2.2.2 签发用户证书
 
 可以使用 `openssl` 或者 `cfssl` 进行签发，任选一种
 
@@ -124,7 +113,7 @@ RBAC（Role-Based Access Control，基于角色的访问控制），允许通过
 [root@k8s-node1 ~]# cd /etc/kubernetes/users/Amadeus/
 ```
 
-##### openssl
+openssl
 
 ```bash
 # 创建用户证书 key
@@ -138,7 +127,7 @@ RBAC（Role-Based Access Control，基于角色的访问控制），允许通过
 Amadeus.crt  Amadeus.csr  Amadeus.key
 ```
 
-##### cfssl
+cfssl
 
 下载 cfssl 工具
 
@@ -218,7 +207,7 @@ Amadeus-key.pem  # key
 Amadeus.pem      # crt
 ```
 
-#### 配置 kubeconfig 配置文件
+配置 kubeconfig 配置文件
 
 生成 kubeconfig 文件，并将 cluster 信息添加进去
 
@@ -282,7 +271,7 @@ users:
     client-key-data: REDACTED
 ```
 
-### 创建 RBAC 权限策略
+### 2.2.3 创建 RBAC 权限策略
 
 使 Amadeus 用户有权限查看 default 命名空间下的 pod
 
@@ -312,7 +301,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-### 测试验证
+### 2.2.4 测试验证
 
 ```bash
 [root@k8s-node1 ~]# kubectl apply -f demo-rbac.yml
@@ -360,39 +349,33 @@ my-dep-bc4cb798-lhm8p   1/1     Running   0          15s
 deployment.apps "my-dep" deleted
 ```
 
-# 网络策略 (Network Policy)
+# 3 网络策略 (Network Policy)
 
-> <https://kubernetes.io/zh-cn/docs/concepts/services-networking/network-policies/>
+[官方文档](https://kubernetes.io/zh-cn/docs/concepts/services-networking/network-policies/)
 
-## 基础概念
+## 3.1 基础概念
 
 网络策略（Network Policy），用于限制 Pod 出入流量，提供 Pod 级别和 Namespace 级别网络访问控制。
 
 一些应用场景：
 
 - 应用程序间的访问控制。例如微服务 A 允许访问微服务 B，微服务 C 不能访问微服务 A
-
 - 开发环境命名空间不能访问测试环境命名空间 Pod
-
 - 当 Pod 暴露到外部时，需要做 Pod 白名单
-
 - 多租户网络环境隔离
 
 Pod 网络入口方向隔离：
 
 - 基于 Pod 级网络隔离：只允许特定对象访问 Pod（使用标签定义），允许白名单上的 IP 地址或者 IP 段访问 Pod
-
 - 基于 Namespace 级网络隔离：多个命名空间，A 和 B 命名空间 Pod 完全隔离。
 
 Pod 网络出口方向隔离：
 
 - 拒绝某个 Namespace 上所有 Pod 访问外部
-
 - 基于目的 IP 的网络隔离：只允许 Pod 访问白名单上的 IP 地址或者 IP 段
-
 - 基于目标端口的网络隔离：只允许 Pod 访问白名单上的端
 
-## 示例一
+## 3.2 示例一
 
 只允许 default 命名空间中携带 run=client1 标签的 Pod 访问 default 命名空间携带 app=web 标签的 Pod 的 80 端口，无法 ping 通
 
@@ -451,7 +434,7 @@ Connected to 10.244.169.169
 [root@k8s-node1 ~]# kubectl delete -f networkpolicy.yaml
 ```
 
-## 示例二
+## 3.3 示例二
 
 ns1 命名空间下所有 pod 可以互相访问，也可以访问其他命名空间 Pod，但其他命名空间不能访问 ns1 命名空间 Pod。
 
@@ -509,3 +492,5 @@ PING 10.244.169.171 (10.244.169.171): 56 data bytes
 
 [root@k8s-node1 ~]# kubectl delete -f networkpolicy.yaml
 ```
+
+以上

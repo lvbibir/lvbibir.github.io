@@ -1,8 +1,9 @@
 ---
 title: "docker 部署 piclist"
 date: 2023-12-29
-lastmod: 2024-01-13
+lastmod: 2024-01-28
 tags:
+  - docker
   - obsidian
 keywords:
   - docker
@@ -14,7 +15,7 @@ cover:
     image: "https://image.lvbibir.cn/blog/docker.png"
 ---
 
-# 0.前言
+# 0 前言
 
 感谢 piclist 作者的 [不吝解答](https://github.com/Kuingsmile/PicList/issues/127)
 
@@ -24,7 +25,7 @@ cover:
 
 > 注意本文以已有服务器/ip/域名且 web 服务使用 nginx 为前提, 如果不满足上述前提, 需要将 piclist 的 36677 端口映射到主机, 部署完 piclist 后直接通过 ip 加端口的形式调用即可
 
-# 1.部署
+# 1 部署
 
 ## 1.1 piclist 配置
 
@@ -124,7 +125,7 @@ nginx 中添加如下 location 配置
 
 最后测试一下图片上传即可, 如果有报错可以通过 `docker logs -f piclist` 查看日志
 
-# 2.常见问题
+# 2 常见问题
 
 ## 2.1 上传失败
 
@@ -139,4 +140,4 @@ nginx 中添加如下 location 配置
 docker exec -it piclist ps -ef | grep -v grep | grep node
 ```
 
-至此
+以上

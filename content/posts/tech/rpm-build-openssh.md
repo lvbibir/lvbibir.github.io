@@ -1,8 +1,8 @@
 ---
-title: "openssh源码打包编译成rpm包" 
+title: "openssh 源码打包编译成 rpm 包" 
 date: 2021-09-01
-lastmod: 2022-09-05
-tags: 
+lastmod: 2024-01-28
+tags:
   - linux
 keywords:
   - linux
@@ -10,14 +10,21 @@ keywords:
   - openssh
   - 源码
   - rpm构建
-description: "记录一下不同系统环境下通过源码构建openssh rpm包的过程" 
+description: "记录一下不同系统环境下通过源码构建 openssh rpm 包的过程" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
-# openssh-8.7p1
+# 0 前言
 
-## 编译环境
+本文参考以下链接:
+
+- [systemd和sysv的服务管理](https://blog.csdn.net/weixin_30412577/article/details/97964940?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control)
+- [systemd-sysv-generator 中文手册](https://www.wenjiangs.com/doc/systemd-systemd-sysv-generator)
+
+# 1 openssh-8.7p1
+
+## 1.1 编译环境
 
 编译平台：	vmware workstation
 
@@ -30,23 +37,23 @@ cover:
 - openssh-8.7p1.tar.gz
 - x11-ssh-askpass-1.2.4.1.tar.gz
 
-## 编译步骤
+## 1.2 编译步骤
 
 yum 安装依赖工具
 
-```textile
+```bash
 yum install wget vim gdb imake libXt-devel gtk2-devel  rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel  libX11-devel  initscripts -y
 ```
 
 创建编译目录
 
-```textile
+```bash
 mkdir -p /root/rpmbuild/{SOURCES,SPECS}
 ```
 
 下载 openssh 编译包和 x11-ssh-askpass 依赖包并解压修改配置
 
-```textile
+```bash
 cd /root/rpmbuild/SOURCES
 
 wget https://openbsd.hk/pub/OpenBSD/OpenSSH/portable/openssh-8.7p1.tar.gz
@@ -62,20 +69,20 @@ sed -i -e "s/%define no_gnome_askpass 0/%define no_gnome_askpass 1/g" /root/rpmb
 
 准备编译
 
-```textile
+```bash
 vim /root/rpmbuild/SPECS/openssh.spec 
 注释掉 BuildRequires: openssl-devel < 1.1 这一行
 ```
 
 开始编译
 
-```textile
+```bash
 rpmbuild -ba /root/rpmbuild/SPECS/openssh.spec 
 ```
 
 操作验证
 
-```textile
+```bash
 cd /root/rpmbuild/RPMS/x86_64/
 
 vim run.sh
@@ -100,7 +107,7 @@ ssh -V
 
 打包归档
 
-```textile
+```bash
 [root@localhost ~]# cd /root/rpmbuild/RPMS/x86_64/
 [root@localhost x86_64]# ls
 
@@ -128,16 +135,16 @@ systemctl restart sshd
 [root@localhost x86_64]# mv openssh-8.7p1.rpm.x86_64.tar.gz /root
 ```
 
-## 使用
+## 1.3 使用
 
-```textile
+```bash
 tar zxf openssh-8.7p1.rpm.x86_64.tar.gz
 ./run.sh
 ```
 
-# openssh-9.0p1
+# 2 openssh-9.0p1
 
-## 编译环境
+## 2.1 编译环境
 
 编译平台：	vmware workstation
 
@@ -155,11 +162,11 @@ tar zxf openssh-8.7p1.rpm.x86_64.tar.gz
 
 > 这两个内核版本步骤基本一样，区别在于 279 内核需要升级 `openssl`
 
-## 编译步骤
+## 2.2 编译步骤
 
 添加阿里云 yum 源和本地 yum 源
 
-```textile
+```bash
 # 阿里yum源
 curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-vault-6.10.repo
 # 本地yum源
@@ -175,7 +182,7 @@ EOF
 
 yum 安装依赖工具
 
-```textile
+```bash
 yum clean all
 yum makecache
 yum install wget vim gdb imake libXt-devel gtk2-devel  rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel  libX11-devel  initscripts 
@@ -183,13 +190,13 @@ yum install wget vim gdb imake libXt-devel gtk2-devel  rpm-build zlib-devel open
 
 创建编译目录
 
-```textile
+```bash
 mkdir -p /root/rpmbuild/{SOURCES,SPECS}
 ```
 
 下载 openssh 编译包和 x11-ssh-askpass 依赖包并解压修改配置
 
-```textile
+```bash
 cd /root/rpmbuild/SOURCES
 
 wget https://mirrors.aliyun.com/pub/OpenBSD/OpenSSH/portable/openssh-9.0p1.tar.gz
@@ -205,7 +212,7 @@ sed -i -e "s/%define no_gnome_askpass 0/%define no_gnome_askpass 1/g" /root/rpmb
 
 添加缺少的文件
 
-```textile
+```bash
 cd /root/rpmbuild/SOURCES/openssh-9.0p1/contrib/redhat
 cp sshd.init sshd.init.old
 cp sshd.pam sshd.pam.old
@@ -213,31 +220,31 @@ cp sshd.pam sshd.pam.old
 
 重新打包，否则会报错找不到 sshd.pam.old 和 sshd.init.old
 
-```textile
+```bash
 cd /root/rpmbuild/SOURCES/
 tar zcf openssh-9.0p1.tar.gz openssh-9.0p1
 ```
 
 准备编译
 
-```textile
+```bash
 vim /root/rpmbuild/SPECS/openssh.spec 
 注释掉 BuildRequires: openssl-devel < 1.1 这一行
 ```
 
 开始编译
 
-```textile
+```bash
 rpmbuild -ba /root/rpmbuild/SPECS/openssh.spec 
 ```
 
 > 注意，从这步开始两个内核版本的后续操作不太相同
 
-### 2.6.32-279.el6.isoft.x86_64
+### 2.2.1 2.6.32-279.el6.isoft.x86_64
 
 准备目录
 
-```textile
+```bash
 mkdir -pv /root/openssh-9.0p1-rpms/openssl-1.0.1e-rpms/
 cp /root/rpmbuild/RPMS/x86_64/* /root/openssh-9.0p1-rpms/
 ```
@@ -246,14 +253,14 @@ cp /root/rpmbuild/RPMS/x86_64/* /root/openssh-9.0p1-rpms/
 
 这步由于之前安装编译的依赖的时候已经安装过，可以用全新的系统重新下载 openssl-1.0.1e 的依赖
 
-```textile
+```bash
 yum install -y yum-plugin-downloadonly
 yum install openssl openssl-devel --downloadonly --downloaddir=/root/openssh-9.0p1-rpms/openssl-1.0.1e-rpms/
 ```
 
 编写升级脚本
 
-```textile
+```bash
 cat > /root/openssh-9.0p1-rpms/run.sh <<EOF
 #!/bin/bash
 set -e
@@ -274,22 +281,22 @@ chmod 755 /root/openssh-9.0p1-rpms/run.sh
 
 打包
 
-```textile
+```bash
 tar zcf /root/openssh-9.0p1-rpms.tar.gz /root/openssh-9.0p1-rpms
 ```
 
-### 2.6.32-504.el6.isoft.x86_64
+### 2.2.2 2.6.32-504.el6.isoft.x86_64
 
 准备目录
 
-```textile
+```bash
 mkdir  /root/openssh-9.0p1-rpms/
 cp /root/rpmbuild/RPMS/x86_64/* /root/openssh-9.0p1-rpms/
 ```
 
 编写升级脚本
 
-```textile
+```bash
 cat > /root/openssh-9.0p1-rpms/run.sh <<EOF
 #!/bin/bash
 set -e
@@ -309,49 +316,45 @@ chmod 755 /root/openssh-9.0p1-rpms/run.sh
 
 打包
 
-```textile
+```bash
 tar zcf /root/openssh-9.0p1-rpms.tar.gz /root/openssh-9.0p1-rpms
 ```
 
-## 使用
+## 2.3 使用
 
-```textile
+```bash
 tar zxf openssh-9.0p1-rpms.tar.gz
 cd openssh-9.0p1-rpms
 sh run.sh
 ```
 
-# openssh-8.6p1-aarch64
+# 3 openssh-8.6p1-aarch64
 
-## 编译环境
+## 3.1 编译环境
 
-系统版本：普华服务器操作系统 openeuler 版
+- 系统版本：普华服务器操作系统 openeuler 版
+- 系统内核：4.19.90-2003.4.0.0036.oe1.aarch64
+- 软件版本：
+    - openssh-8.6p1.tar.gz
+    - x11-ssh-askpass-1.2.4.1.tar.gz
 
-系统内核：4.19.90-2003.4.0.0036.oe1.aarch64
-
-软件版本：
-
-- openssh-8.6p1.tar.gz
-
-- x11-ssh-askpass-1.2.4.1.tar.gz
-
-## 编译步骤
+## 3.2 编译步骤
 
 dnf 安装依赖工具
 
-```textile
+```bash
 dnf install gdb imake libXt-devel gtk2-devel  rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel  libX11-devel  initscripts -y
 ```
 
 创建编译目录
 
-```textile
+```bash
 mkdir -p /root/rpmbuild/{SOURCES,SPECS}
 ```
 
 下载 openssh 编译包和 x11-ssh-askpass 依赖包并解压修改配置
 
-```textile
+```bash
 cd /root/rpmbuild/SOURCES
 wget https://openbsd.hk/pub/OpenBSD/OpenSSH/portable/openssh-8.6p1.tar.gz
 wget https://src.fedoraproject.org/repo/pkgs/openssh/x11-ssh-askpass-1.2.4.1.tar.gz/8f2e41f3f7eaa8543a2440454637f3c3/x11-ssh-askpass-1.2.4.1.tar.gz
@@ -365,7 +368,7 @@ sed -i -e "s/%define no_gnome_askpass 0/%define no_gnome_askpass 1/g" /root/rpmb
 
 准备编译
 
-```textile
+```bash
 vim /root/rpmbuild/SPECS/openssh.spec 注释掉 BuildRequires: openssl-devel < 1.1 这一行
 修改下面两行 
 %attr(4711,root,root) %{_libexecdir}/openssh/ssh-sk-helper
@@ -374,18 +377,18 @@ vim /root/rpmbuild/SPECS/openssh.spec 注释掉 BuildRequires: openssl-devel < 1
 
 开始编译
 
-```textile
+```bash
 rpmbuild -ba /root/rpmbuild/SPECS/openssh.spec 
 ```
 
 操作验证
 
-```textile
+```bash
 cd /root/rpmbuild/RPMS/aarch64
 vim run.sh 
 ```
 
-```textile
+```bash
 #!/bin/bash
 cp /etc/pam.d/sshd   /etc/pam.d/sshd_bak
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config_bak
@@ -397,7 +400,7 @@ systemctl daemon-reload
 systemctl restart sshd
 ```
 
-```textile
+```bash
 chmod 755 run.sh
 ./run.sh
 ssh -V 
@@ -436,7 +439,7 @@ OpenSSH_8.6p1, OpenSSL 1.1.1d  10 Sep 2019
 
 备份 unit 文件
 
-```textile
+```bash
 [root@localhost ~]# cp /run/systemd/generator.late/sshd.service /root/sshd.service-20210702
 ```
 
@@ -446,7 +449,7 @@ OpenSSH_8.6p1, OpenSSL 1.1.1d  10 Sep 2019
 
 自建一个 unit 文件，放到/usr/lib/systemd/system 目录
 
-```textile
+```bash
 [root@localhost ~]# vim /usr/lib/systemd/system/sshd.service
 
 [UNIT]
@@ -475,7 +478,7 @@ OpenSSH_8.6p1, OpenSSL 1.1.1d  10 Sep 2019
 
 打包归档
 
-```textile
+```bash
 [root@localhost ~]# cp  /usr/lib/systemd/system/sshd.service  /root/rpmbuild/RPMS/aarch64/
 [root@localhost ~]# cd /root/rpmbuild/RPMS/aarch64/
 [root@localhost aarch64]# ls
@@ -504,8 +507,4 @@ systemctl enable sshd
 [root@localhost aarch64]# mv openssh-8.6p1-rpm-aarch64.tar.gz /root
 ```
 
-## 参考
-
-[systemd和sysv的服务管理](https://blog.csdn.net/weixin_30412577/article/details/97964940?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control)
-
-[systemd-sysv-generator 中文手册](https://www.wenjiangs.com/doc/systemd-systemd-sysv-generator)
+以上

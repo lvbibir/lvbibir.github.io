@@ -1,8 +1,8 @@
 ---
 title: "python | 鬼谷子数学问题" 
 date: 2023-02-27
-lastmod: 2024-01-10
-tags: 
+lastmod: 2024-01-28
+tags:
   - python
 keywords:
   - math
@@ -121,3 +121,5 @@ if __name__ == '__main__':
             abList.append(i)
     print(abList)
 ```
+
+以上

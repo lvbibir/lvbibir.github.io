@@ -1,19 +1,19 @@
 ---
-title: "linux | kill命令详解以及linux中的信号" 
+title: "linux | kill 命令详解以及 linux 中的信号"
 date: 2023-04-09
-lastmod: 2024-01-10
-description: "" 
-tags: 
+lastmod: 2024-01-28
+tags:
   - linux
 keywords:
   - linux
   - kill
   - sig
+description: ""
 cover:
     image: "https://source.unsplash.com/random/400x200?code"
 ---
 
-# 1. 简介
+# 1 简介
 
 kill 命令很容易让人产生误解, 以为仅仅是用来终止 linux 中的进程.
 
@@ -40,7 +40,7 @@ kill [-s signal|-p] [-q sigval] [-a] [--] pid...
 kill -s HUP 和 kill -1 效果一样
 ```
 
-# 2. 支持的信号
+# 2 支持的信号
 
 ```bash
 [root@lvbibir ~]# kill -l
@@ -71,7 +71,7 @@ kill -s HUP 和 kill -1 效果一样
 | 15   | SIGTERM | 以正常 (优雅) 的方式来终止进程, 由程序自身决定该如何终止       |
 | 19   | SIGSTOP | 相当于输入 ctrl-z 来暂停一个程序                             |
 
-# 3. 常用命令
+# 3 常用命令
 
 以正常的方式终止进程, 由于信号 15 是最常用也是最佳的程序退出方式, 所以 kill 命令不指定信号时, 默认使用的就是信号 15
 
@@ -86,3 +86,5 @@ kill -15 pid
 ```bash
 kill -9 pid
 ```
+
+以上

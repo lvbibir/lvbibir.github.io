@@ -1,8 +1,8 @@
 ---
-title: "cicd | jenkins部署mall-swarm项目" 
+title: "cicd | jenkins 部署 mall-swarm 项目" 
 date: 2022-03-15
-lastmod: 2022-03-15
-tags: 
+lastmod: 2024-01-27
+tags:
   - cicd
   - docker
 keywords:
@@ -16,7 +16,7 @@ cover:
     image: "https://image.lvbibir.cn/blog/cicd.png" 
 ---
 
-# 前言
+# 0 前言
 
 基础环境
 
@@ -26,7 +26,7 @@ cover:
 
 我这里采用的是 all-in-one 的配置，即所有操作都在一台主机上，如资源充足可以将 jenkins 和 gitlab 与后续项目容器分开部署
 
-# 1. 系统配置
+# 1 系统配置
 
 防火墙、selinux、yum
 
@@ -50,7 +50,7 @@ yum install -y wget net-tools vim bash-completion unzip
 mkdir /mydata
 ```
 
-# 2. docker
+# 2 docker
 
 先安装 docker-compose
 
@@ -96,7 +96,7 @@ LISTEN   0   128  [::]:2375   [::]:*  users:(("dockerd",pid=1124,fd=4))
 
 安装一系列后续需要的镜像，镜像文件比较大，这步比较耗时
 
-```bash
+```plaintext
 docker pull jenkins/jenkins:lts
 docker pull gitlab/gitlab-ce:latest
 docker pull mysql:5.7
@@ -110,7 +110,7 @@ docker pull mongo:4
 docker pull nacos/nacos-server:v2.1.0
 ```
 
-# 3. jenkins
+# 3 jenkins
 
 ## 3.1 启动容器
 
@@ -175,7 +175,7 @@ dashboard -> 系统管理 -> 插件管理中安装 `ssh` 插件和 `Role-based A
 
 > 我们可以使用 Jenkins 的角色管理插件来管理 Jenkins 的用户，比如我们可以给管理员赋予所有权限，运维人员赋予执行任务的相关权限，其他人员只赋予查看权限。
 
-在系统管理 ->全局安全配置中启用基于角色的权限管理：
+在系统管理 -> 全局安全配置中启用基于角色的权限管理：
 
 ![image-20230315172813560](https://image.lvbibir.cn/blog/image-20230315172813560.png)
 
@@ -193,7 +193,7 @@ dashboard -> 系统管理 -> 插件管理中安装 `ssh` 插件和 `Role-based A
 
 ![image-20230315173353689](https://image.lvbibir.cn/blog/image-20230315173353689.png)
 
-# 4. gitlab
+# 4 gitlab
 
 ## 4.1 启动容器
 
@@ -211,7 +211,7 @@ docker run --detach --restart=always\
 docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
 ```
 
-访问<http://1.1.1.4:1080/>，默认用户为 root
+访问 <http://1.1.1.4:1080/>, 默认用户为 root
 
 ## 4.2 配置
 
@@ -264,7 +264,7 @@ git push gitlab master
 
 默认配置不合理，修改 docker-compose-env.yml 中 nginx 的配置文件挂载
 
-```textile
+```yaml
       - /data/nginx/nginx.conf:/etc/nginx/nginx.conf #配置文件挂载
 ```
 
@@ -278,7 +278,7 @@ git commit -m "update nginx volume config in document/docker/docker-compose.env.
 git push gitlab master
 ```
 
-# 5. 依赖服务部署
+# 5 依赖服务部署
 
 需要上传到服务器的配置文件准备，如下图所示，为了方便可以将整个 `document` 目录传到服务器
 
@@ -409,9 +409,7 @@ rabbitmq
 
 > 需要创建一个 mall 用户并设置虚拟 host 为/mall
 
-  - 访问管理页面: <http://1.1.1.4:15672/>
-  默认账户密码: guest / guest
-
+  - 访问管理页面: <http://1.1.1.4:15672/> 默认账户密码: guest / guest
   - 创建管理员用户: mall / mall
 
   ![image-20230316121205905](https://image.lvbibir.cn/blog/image-20230316121205905.png)
@@ -446,7 +444,7 @@ nacos
 
   ![image-20230316124828650](https://image.lvbibir.cn/blog/image-20230316124828650.png)
 
-# 6. jenkins 手动发布项目
+# 6 jenkins 手动发布项目
 
 ## 6.1 脚本配置
 
@@ -491,7 +489,7 @@ clean install -pl mall-common,mall-mbg -am
 
 创建一个构建，单独构建并打包 `mall-admin` 模块
 
-```textile
+```plaintext
 clean package
 ${WORKSPACE}/mall-admin/pom.xml
 ```
@@ -530,3 +528,5 @@ ${WORKSPACE}/mall-admin/pom.xml
   - mall-admin
   - mall-portal
   - mall-search
+
+以上

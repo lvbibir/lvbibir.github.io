@@ -1,8 +1,8 @@
 ---
 title: "traefik (一) 简介、部署和配置" 
 date: 2023-04-17
-lastmod: 2023-04-17
-tags: 
+lastmod: 2024-01-28
+tags:
   - traefik
   - kubernetes
 keywords:
@@ -14,13 +14,15 @@ cover:
     image: "https://image.lvbibir.cn/blog/traefik.png"
 ---
 
-# 0. 前言
+# 0 前言
+
+本文参考以下链接:
+
+- <https://www.cuiliangblog.cn/detail/section/29427812>
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`， `traefik-2.9.10`
 
-参考：<https://www.cuiliangblog.cn/detail/section/29427812>
-
-# 1. 简介
+# 1 简介
 
 ## 1.1 Traefik 简介
 
@@ -62,7 +64,7 @@ traefik 通过自定义资源实现了对 traefik 资源的创建和管理，支
 | [TLSStores](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-tlsstore) | TLS 存储配置                 |
 | [ServersTransport](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-serverstransport) | traefik 与后端之间的传输配置 |
 
-# 2. Traefik 部署
+# 2 Traefik 部署
 
 traefik 是支持 helm 部署的，但是查看 helm 包的 value.yaml 配置发现总共有 500 多行配置，当需要修改配置项或者对 traefik 做一下自定义配置时，并不灵活。如果只是使用 traefik 的基础功能，推荐使用 helm 部署。如果想深入研究使用 traefik 的话，推荐使用自定义方式部署。
 
@@ -375,9 +377,9 @@ service/traefik-metrics   ClusterIP   10.98.89.13      <none>        9100/TCP   
 
 ### 2.5.1 强制使用 TLS v1.2+
 
-> 如今，TLS v1.0 和 v1.1 因为存在安全问题，现在已被弃用。为了保障系统安全，所有入口路由都应该强制使用 TLS v1.2 或更高版本。
->
-> 参考文档：<https://doc.traefik.io/traefik/user-guides/crd-acme/#force-tls-v12>
+[官方文档](https://doc.traefik.io/traefik/user-guides/crd-acme/#force-tls-v12)
+
+如今，TLS v1.0 和 v1.1 因为存在安全问题，现在已被弃用。为了保障系统安全，所有入口路由都应该强制使用 TLS v1.2 或更高版本。
 
 ```bash
 [root@k8s-node1 traefik]# tee traefik-tlsoption.yml <<-'EOF'
@@ -506,3 +508,5 @@ spec:
           kind: TraefikService
           namespace: traefik
 ```
+
+以上

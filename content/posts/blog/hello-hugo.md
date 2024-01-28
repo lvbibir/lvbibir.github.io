@@ -1,7 +1,7 @@
 ---
 title: "【置顶】Hello, hugo!"
 date: 2022-07-06
-lastmod: 2024-01-13
+lastmod: 2024-01-28
 tags:
   - 博客搭建
 keywords:
@@ -18,7 +18,7 @@ cover:
     hiddenInSingle: false
 ---
 
-# 前言
+# 0 前言
 
 本文内容比较杂乱, 无法保证实时更新, 如果遇到问题, 可以在 github 查看最新的配置:
 
@@ -39,7 +39,7 @@ cover:
 
 虽说访问速度较慢可以通过各家的 cdn 加速来解决, 但由于刚开始建立 blog 选择的是 wordpress, 域名, 服务器, 备案, 证书等都已经一应俱全, 且之前的架构采用 docker, 添加一台 nginx 来跑 hugo 的静态网站是很方便的
 
-# 将博客部署到阿里云
+# 1 将博客部署到阿里云
 
 整个步骤最难的地方可能就是 docker-compose 和 nginx 的配置了, 如果之前没有接触过可能会比较吃力, 因此我打包了一份开袋即食的配置文件, 只需要修改一些必要配置, [点此链接下载](https://image.lvbibir.cn/files/blog-docker-compose.zip)
 
@@ -52,14 +52,14 @@ cover:
 3. 修改 `blog/conf/nginx-hugo/nginx.conf` 和 `blog/conf/nginx-proxy/default.conf`, 需要修改的地方在文件中已经标注出来了
 4. 将你的 ssl 证书放到 `blog/ssl/` 目录下
 5. 在 `blog` 目录下执行 `docker-compose up -d` 即可启动容器
-6. 配置 twikoo 的前端代码, [参考下文](#twikoo)
-7. 将 hugo 生成的静态文件上传到 `blog/data/hugo/` 目录, [参考下文](#workflow)
+6. 配置 twikoo 的前端代码, 见本文章节 3.2
+7. 将 hugo 生成的静态文件上传到 `blog/data/hugo/` 目录, 见本文章节 2
 
 至此已经配置完成, 应该可以通过域名访问 hugo 站点了, 后续更新内容只需要重复最后一步, 将 hugo 生成的静态文件上传到服务器即可
 
 所有的配置、应用数据、日志都保存在 blog 目录下, 你可以在不同的服务器上快速迁移 hugo 环境, 无需担心后续想要迁移新服务器时遇到的各种问题
 
-# workflow
+# 2 workflow
 
 在这里简单介绍一下我从写博客 -> 发布到服务器 -> 归档备份的整个流程
 
@@ -73,13 +73,13 @@ cover:
 
 其实如果使用 vscode 直接编辑 git 仓库中的博客文章可以让整个流程更加简化, 但是 vscode 的 markdown 编辑体验实在是比不上 typora 或者 obsidian, 工欲善其事必先利其器, 有了好的编辑体验才更愿意输出内容
 
-# twikoo
+# 3 twikoo
 
-## 部署
+## 3.1 部署
 
 twikoo 官方提供了 [丰富的部署方式](https://twikoo.js.org/quick-start.html), 考虑到访问速度, 本文使用的是 docker 方式部署到阿里云服务器
 
-> 如果是使用 [将博客部署到阿里云](#将博客部署到阿里云) 步骤中的配置文件部署了 twikoo, 这步直接忽略, 配置前端代码即可
+> 如果是使用本文章节 1 步骤中的配置文件部署了 twikoo, 这步直接忽略, 配置前端代码即可
 
 ```bash
 docker run --name twikoo -e TWIKOO_THROTTLE=1000 -p 8080:8080 -v ${PWD}/data:/app/data -d imaegoo/twikoo
@@ -94,7 +94,7 @@ docker run --name twikoo -e TWIKOO_THROTTLE=1000 -p 8080:8080 -v ${PWD}/data:/ap
 
 后续最好套上反向代理, 加上域名和证书
 
-## 前端代码
+## 3.2 前端代码
 
 创建或者修改 `layouts\partials\comments.html`
 
@@ -137,17 +137,17 @@ params:
       version: 1.6.7
 ```
 
-## 更新
+## 3.3 更新
 
 1. 修改 dockerfile.yml 中的镜像 tag
 2. 部署新版本容器 `docker-compose up -d`
 3. 在 hugo 配置文件 config.yml 中修改 twikoo 版本
 
-## 修改数据
+## 3.4 修改数据
 
 直接修改 `blog/data/twikoo/` 目录下的文件后重启容器, ❗慎重修改
 
-## 修改 smms 图床的 api 地址
+## 3.5 修改 smms 图床的 api 地址
 
 > 已于 1.6.12 新版本修复, <https://github.com/imaegoo/twikoo/releases/tag/1.6.12>
 
@@ -171,13 +171,13 @@ params:
       - $PWD/conf/twikoo/image.js:/app/node_modules/twikoo-func/utils/image.js
 ```
 
-# Artitalk
+# 4 Artitalk
 
 [官方文档](https://artitalk.js.org/doc.html)
 
 需要注意的是如果使用的是国际版的 LeadCloud, 需要绑定自定义域名后才能正常访问
 
-## leancloud 配置
+## 4.1 leancloud 配置
 
 1. 前往 [LeanCloud 国际版](https://leancloud.app/), 注册账号
 2. 注册完成之后根据 LeanCloud 的提示绑定手机号和邮箱
@@ -193,7 +193,7 @@ params:
 > ❗ 关于设置权限的这几步
 > 这几步一定要设置好, 才可以保证不被 “闲人” 破解发布说说的验证
 
-## hugo 配置
+## 4.2 hugo 配置
 
 新增 `content/talk.md` 页面, 内容如下, 注意修改标注的内容, front-matter 的内容自行修改
 
@@ -229,7 +229,7 @@ new Artitalk({
 
 输入 leancloud 配置步骤中的第 4 步配置的用户名密码登录后就可以发布说说了
 
-# 自定义 footer
+# 5 自定义 footer
 
 自定义页脚内容
 
@@ -237,7 +237,7 @@ new Artitalk({
 
 > 添加完下面的页脚内容后要修改 `assets\css\extended\blank.css` 中的 `--footer-height` 的大小, 具体数字需要考虑到行数和字体大小
 
-## 自定义徽标
+## 5.1 自定义徽标
 
 > 徽标功能源自：<https://shields.io/>
 > 考虑到访问速度, 可以在生成完徽标后放到自己的 cdn 上
@@ -250,7 +250,7 @@ new Artitalk({
 </a>
 ```
 
-## 网站运行时间
+## 5.2 网站运行时间
 
 在 `layouts\partials\footer.html` 中的 `<footer>` 添加如下
 
@@ -261,7 +261,7 @@ new Artitalk({
     <script type="text/javascript">function show_runtime(){window.setTimeout("show_runtime()", 1000);X=new Date("7/13/2021 1:00:00");Y=new Date();T=(Y.getTime()-X.getTime());M=24*60*60*1000;a=T/M;A=Math.floor(a);b=(a-A)*24;B=Math.floor(b);c=(b-B)*60;C=Math.floor((b-B)*60);D=Math.floor((c-C)*60);runtime_span.innerHTML="网站已运行"+A+"天"+B+"小时"+C+"分"+D+"秒"}show_runtime();</script>
 ```
 
-## 访问人数统计
+## 5.3 访问人数统计
 
 > 统计功能源自：<http://busuanzi.ibruce.info/>
 
@@ -279,7 +279,7 @@ new Artitalk({
 </span>
 ```
 
-# 自定义字体
+# 6 自定义字体
 
 可以使用一些在线的字体, 可能会比较慢, 推荐下载想要的字体放到自己的服务器或者 cdn 上
 
@@ -305,7 +305,7 @@ body {
 }
 ```
 
-# 修改链接颜色
+# 7 修改链接颜色
 
 在 hugo+papermod 默认配置下, 链接颜色是黑色字体带下划线的组合, 个人非常喜欢 [typora-vue](https://github.com/blinkfox/typora-vue-theme) 的渲染风格 [hugo官方文档](https://gohugo.io/templates/render-hooks/#link-with-title-markdown-example) 给出了通过 `render hooks` 覆盖默认的 markdown 渲染 link 的方式
 
@@ -315,7 +315,7 @@ body {
 <a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener" style="color:#42b983";{{ end }}>{{ .Text | safeHTML }}</a>
 ```
 
-# shortcode
+# 8 shortcode
 
 [ppt、bilibili、youtube、豆瓣阅读和电影卡片](https://www.sulvblog.cn/posts/blog/shortcodes/)
 
@@ -323,7 +323,7 @@ body {
 
 [图片画廊](https://github.com/liwenyip/hugo-easy-gallery/)
 
-# 其他修改
+# 9 其他修改
 
 其他 css 样式修改基本都是通过 f12 控制台一点点摸索改的, 不太规范且比较琐碎就不单独记录了, ~~其实我根本已经忘记还改了哪些东西~~
 

@@ -1,7 +1,7 @@
 ---
 title: "wsl | 自动更新系统代理"
 date: 2024-01-12
-lastmod: 2024-01-13
+lastmod: 2024-01-28
 tags:
   - wsl
 keywords:
@@ -9,12 +9,12 @@ keywords:
   - wsl
   - proxy
   - clash
-description: "wsl 中配置系统代理, 包含 clash 等客户端提供的代理或者使用指定的代理地址"
+description: "wsl 中配置系统代理, apt 代理, git 代理, 以及 docker 代理, 包含 clash 等客户端提供的代理或者使用指定的代理地址"
 cover:
     image: "https://image.lvbibir.cn/blog/logo-wsl.png"
 ---
 
-# 0.前言
+# 0 前言
 
 目前我使用 wsl 过程中有以下两个场景需要使用到代理:
 
@@ -25,9 +25,9 @@ cover:
 
 针对场景二, 直接设置公司提供的代理地址即可
 
-# 1.脚本
+# 1 配置
 
-wsl 中添加如下脚本
+wsl 中添加如下脚本, 实现常规的系统代理, git 仓库代理以及 apt 的代理
 
 ```bash
 cat > ${HOME}/proxy <<- 'EOF'
@@ -70,6 +70,23 @@ source ${HOME}/proxy
 EOF
 
 source ${HOME}/.bash_profile
+```
+
+# 2 docker 代理
+
+修改 docker pull 等操作的代理需要修改 docker 的 service 文件
+
+```bash
+sudo vim /lib/systemd/system/docker.service
+
+# 在 [Service] 下添加如下三行
+Environment=HTTP_PROXY=http://proxy1.bj.petrochina:8080
+Environment=HTTPS_PROXY=http://proxy1.bj.petrochina:8080
+Environment=NO_PROXY=localhost,127.0.0.1
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+sudo docker info | grep Proxy
 ```
 
 以上

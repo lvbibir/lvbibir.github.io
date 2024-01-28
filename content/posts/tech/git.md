@@ -1,21 +1,21 @@
 ---
 title: "git" 
 date: 2022-06-01
-lastmod: 2024-01-12
-tags: 
+lastmod: 2024-01-28
+tags:
   - git
 keywords:
   - git
   - proxy
   - 网络代理
-description: "介绍使用git过程中常用的基础使用、参数设置、常见问题、配置优化等。" 
+description: "介绍使用 git 过程中常用的基础使用、参数设置、常见问题、配置优化等。" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
-# git
+# 1 git
 
-## submodule
+## 1.1 submodule
 
 当 clone 一个含有子模块的 git 仓库时可以使用如下命令安装所有子模块
 
@@ -24,7 +24,7 @@ git submodule init
 git submodule update
 ```
 
-## branch 管理
+## 1.2 branch 管理
 
 查看分支
 
@@ -60,7 +60,7 @@ git push origin --delete dev
 git push origin :dev
 ```
 
-# git 配置
+# 2 git 配置
 
 查看 git 设置
 
@@ -71,7 +71,7 @@ git config --list
 git config --global --list
 ```
 
-## 设置代理
+## 2.1 设置代理
 
 设置全局代理，使用 http 代理
 
@@ -108,7 +108,7 @@ git config --global http.https://github.com.proxy http://127.0.0.1:7890
 git config --global https.https://github.com.proxy http://127.0.0.1:7890
 ```
 
-## CRLF 和 LF
+## 2.2 CRLF 和 LF
 
 ```bash
 # 提交时转换为LF，检出时转换为CRLF
@@ -126,9 +126,9 @@ git config --global core.safecrlf false
 git config --global core.safecrlf warn
 ```
 
-# 常见问题
+# 3 常见问题
 
-## git clone 报错
+## 3.1 git clone 报错
 
 > fatal: early EOF
 >
@@ -141,3 +141,5 @@ git config --global http.sslVerify "false"
 
 git config --global core.compression -1
 ```
+
+以上

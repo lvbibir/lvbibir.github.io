@@ -1,9 +1,9 @@
 ---
-title: "故障处理 | glibc 的 fread 问题" 
+title: "troubleshooting | glibc 的 fread 问题" 
 date: 2021-09-01
-lastmod: 2021-09-01
-tags: 
-  - 故障处理
+lastmod: 2024-01-28
+tags:
+  - troubleshooting
 keywords:
   - linux
   - openeuler
@@ -14,7 +14,7 @@ cover:
     image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
-# 前言
+# 0 前言
 
 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向文件中追加内容，程序要能读取到，效果如下：
 
@@ -55,7 +55,7 @@ int main(int argc, char **argv)
 
 ![dfaaeee2427fbc2fb21f825c9350cf9](https://image.lvbibir.cn/blog/dfaaeee2427fbc2fb21f825c9350cf9.png)
 
-# 故障排查
+# 1 故障排查
 
 考虑到影响程序执行结果的几个因素：程序本身，内核版本，gcc 版本，glibc 版本。
 
@@ -115,3 +115,5 @@ int main(int argc, char **argv)
 添加了一块清除标记的片段，在 glibc>=2.28 的系统上程序也可以正常运行了
 
 ![image-20210910151213242](https://image.lvbibir.cn/blog/image-20210910151213242.png)
+
+以上

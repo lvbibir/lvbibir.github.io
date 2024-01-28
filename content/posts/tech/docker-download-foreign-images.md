@@ -1,8 +1,8 @@
 ---
 title: "docker | 下载外网镜像的几种方式" 
 date: 2023-03-09
-lastmod: 2023-03-09
-tags: 
+lastmod: 2024-01-27
+tags:
   - docker
 keywords:
   - linux
@@ -13,7 +13,7 @@ cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 
 ---
 
-# 1. 阿里云构建
+# 1 阿里云构建
 
 ## 1.1 git 仓库设置
 
@@ -81,7 +81,7 @@ git push origin master
 
 ![image-20230309163731277](https://image.lvbibir.cn/blog/image-20230309163731277.png)
 
-# 2. gcr.io_mirror
+# 2 gcr.io_mirror
 
 [项目地址](https://github.com/anjia0532/gcr.io_mirror/)
 
@@ -95,7 +95,7 @@ git push origin master
 
 ![image-20230309164858625](https://image.lvbibir.cn/blog/image-20230309164858625.png)
 
-# 3. Docker Playground
+# 3 Docker Playground
 
 [Docker Playground](https://labs.play-with-docker.com/) 是一个免费的线上 docker 环境，由于是外网环境所以下载镜像、推送到 dockerhub 都很快，也可以直接推到阿里云的仓库
 
@@ -108,7 +108,7 @@ dokcer tag <image>:<tag> registry.cn-hangzhou.aliyuncs.com/lvbibir/<image>:<tag>
 docker push registry.cn-hangzhou.aliyuncs.com/lvbibir/<image>:<tag>
 ```
 
-# 4. http proxy
+# 4 http proxy
 
 如果有代理软件可以在 docker 中配置代理实现
 
@@ -126,7 +126,7 @@ docker push registry.cn-hangzhou.aliyuncs.com/lvbibir/<image>:<tag>
 }
 ```
 
-# 5. 使用国内现成的镜像站
+# 5 使用国内现成的镜像站
 
 这种方式的问题主要是镜像不全，且没有统一的管理，建议使用之前的四种方式
 
@@ -153,3 +153,5 @@ docker image pull quay.io/kubevirt/virt-api:v0.45.0
 # 换成
 docker pull quay.mirrors.ustc.edu.cn/kubevirt/virt-api:v0.45.0
 ```
+
+以上

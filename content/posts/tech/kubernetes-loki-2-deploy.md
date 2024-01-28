@@ -1,8 +1,8 @@
 ---
 title: "loki (二) 部署" 
 date: 2023-05-01
-lastmod: 2023-05-01
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
 keywords:
   - kubernetes
@@ -12,7 +12,7 @@ cover:
     image: "https://image.lvbibir.cn/blog/loki.png"
 ---
 
-# 0. 前言
+# 0 前言
 
 基于 `centos7.9` `docker-ce-20.10.18` `kubelet-1.22.3-0` `loki-2.3.0` `promtail-2.3.0`
 
@@ -20,7 +20,7 @@ cover:
 
 ![img](https://image.lvbibir.cn/blog/e6803b446f0e875f0ae03f5bf1bd9e3f.jpeg)
 
-# 1. promtail
+# 1 promtail
 
 ## 1.1 部署
 
@@ -441,7 +441,7 @@ spec:
             path: /var/log/pods
 ```
 
-## 1.2 scrape_config 配置详解
+## 1.2 配置详解
 
 主要解释一下 promtail 中的匹配规则, 因为采集的日志可以说非常地杂乱, 如何将应用日志分类就尤为重要, 可以说匹配规则是 `promtail` 的核心所在
 
@@ -472,7 +472,7 @@ spec:
 
 再加上指标数据本身携带的一些 label, 我们就可以对 pod 日志做一个十分细致的区分
 
-# 2. loki
+# 2 loki
 
 rbac
 
@@ -704,9 +704,9 @@ NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
 loki         ClusterIP   10.105.115.178   <none>        3100/TCP         4m26s
 ```
 
-# 3. Grafana
+# 3 Grafana
 
-grafana 部署请参考 [prometheus 系列文章](https://www.lvbibir.cn/tags/prometheus/)
+grafana 部署请参考博主的 [prometheus 系列文章](https://www.lvbibir.cn/tags/prometheus/)
 
 ## 3.1 配置
 
@@ -728,11 +728,11 @@ document.querySelectorAll(".slate-query-field > div")[0]['style'].removeProperty
 
 ![image-20230501182103342](https://image.lvbibir.cn/blog/image-20230501182103342.png)
 
-# 4. dashboard 示例
+# 4 dashboard 示例
 
 ## 4.1 traefik
 
-traefik 部署参考 [traefik 系列文章](https://www.lvbibir.cn/tags/traefik)
+traefik 部署参考博主的 [traefik 系列文章](https://www.lvbibir.cn/tags/traefik)
 
 如下图所示, 已经可以看到收集到的 traefik 日志
 
@@ -767,3 +767,5 @@ pod "grafana-78bb4557f5-7rbbq" deleted
 等待重建 pod, 可以看到这里已经可以正常显示了
 
 ![image-20230422153000965](https://image.lvbibir.cn/blog/image-20230422153000965.png)
+
+以上

@@ -1,8 +1,8 @@
 ---
-title: "linux中history命令的格式化输出" 
+title: "linux | history 命令的格式化输出" 
 date: 2022-11-07
-lastmod: 2022-11-07
-tags: 
+lastmod: 2024-01-28
+tags:
   - linux
 keywords:
   - linux
@@ -38,3 +38,5 @@ shopt -s histappend  # 防止会话退出时覆盖其他会话写到HISTFILE的�
 效果如下
 
 ![image-20221107142133035](https://image.lvbibir.cn/blog/image-20221107142133035.png)
+
+以上

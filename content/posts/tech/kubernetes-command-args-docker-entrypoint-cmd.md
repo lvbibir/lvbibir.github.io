@@ -1,8 +1,8 @@
 ---
-title: "kubernetes 中的 command 和 args 与 dockerfile 中的 ENTRYPOINT 和 CMD 的关系" 
+title: "kubernetes |  command args 和 dockerfile 中的 ENTRYPOINT CMD" 
 date: 2023-04-12
-lastmod: 2023-04-12
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
   - docker
 keywords:
@@ -14,10 +14,9 @@ cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
 
-# command args
+# 1 command args
 
 - 如果指定了 containers.command，Dockerfile 中的 ENTRYPOINT 会被覆盖且 CMD 指令被忽略
-
 - 如果指定了 containers.args，Dockerfile 中的 ENTRYPOINT 继续执行， CMD 指令 被覆盖
 
 | ENTRYPOINT | CMD            | command   | args           | finally      |
@@ -27,7 +26,7 @@ cover:
 | ["/ep1"]   | ["foo", "bar"] | <not set> | ["zoo", "boo"] | ep-1 zoo boo |
 | ["/ep1"]   | ["foo", "bar"] | ["/ep-2"] | ["zoo", "boo"] | ep-2 zoo boo |
 
-# CMD ENTRYPOINT
+# 2 CMD ENTRYPOINT
 
 我们大概可以总结出下面几条规律：
 
@@ -40,3 +39,5 @@ cover:
 真实的情况要远比这三条规律复杂，好在 docker 给出了 [官方的解释](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact)，如下图所示：
 
 ![image-20230410160304323](https://image.lvbibir.cn/blog/image-20230410160304323.png)
+
+以上

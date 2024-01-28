@@ -1,21 +1,21 @@
 ---
 title: "《人间失格》"
 date: 2022-07-09
-lastmod: 2024-01-10
-tags:
+lastmod: 2024-01-28
+tags: []
 keywords:
-description: "《人间失格》（又名《丧失为人的资格》）日本小说家太宰治创作的中篇小说，发表于1948年，是一部半自传体的小说。"
+description: "《人间失格》（又名《丧失为人的资格》）日本小说家太宰治创作的中篇小说，发表于 1948 年，是一部半自传体的小说。"
 cover:
     image: "https://image.lvbibir.cn/blog/renjianshige.jpg" 
 ---
 
-# 前言
+# 0 前言
 
 书名《人间失格》，北京燕山出版社，译者高艳
 
 <!-- {{< douban src="https://book.douban.com/subject/30422167/" >}} -->
 
-# 语句摘录
+# 1 语句摘录
 
 > 人是不可能一边笑还一边紧紧攥着拳头的，只有猴子才会这样
 

@@ -1,23 +1,23 @@
 ---
 title: "prometheus (三) 服务发现" 
 date: 2023-04-26
-lastmod: 2023-04-26
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
   - prometheus
 keywords:
   - kubernetes
   - prometheus
-description: "prometheus-operator 中的服务发现(serviceMonitor)机制, kubernetes_sd_config 配置, 以及 serviceMonitor 和 podMonitor 自定义资源的使用." 
+description: "prometheus-operator 中的服务发现 (serviceMonitor) 机制, kubernetes_sd_config 配置, 以及 serviceMonitor 和 podMonitor 自定义资源的使用." 
 cover:
     image: "https://image.lvbibir.cn/blog/prometheus.png"
 ---
 
-# 0. 前言
+# 0 前言
 
 基于 `centos7.9` `docker-ce-20.10.18` `kubelet-1.22.3-0` `kube-prometheus-0.10` `prometheus-v2.32.1`
 
-# 1. 简介
+# 1 简介
 
 手动添加 job 配置未免过于繁琐, prometheus 支持很多种方式的服务发现, 在 k8s 中是通过 `kubernetes_sd_config` 配置实现的. 通过抓取 `k8s REST API` 自动发现我们部署在 k8s 集群中的 exporter 实例
 
@@ -55,7 +55,7 @@ endpoints ===> pods ===> pod-ip+port
 
 ![image-20230425093636652](https://image.lvbibir.cn/blog/image-20230425093636652.png)
 
-# 2. serviceMonitor CRD
+# 2 serviceMonitor CRD
 
 ## 2.1 node-exporter
 
@@ -528,7 +528,7 @@ Targets 界面
 
 ![image-20230426161849710](https://image.lvbibir.cn/blog/image-20230426161849710.png)
 
-# 3. podMonitor CRD
+# 3 podMonitor CRD
 
 ## 3.1 calico-node
 
@@ -611,7 +611,7 @@ spec:
 
 ![image-20230427100740612](https://image.lvbibir.cn/blog/image-20230427100740612.png)
 
-# 4. 集群范围的自动发现
+# 4 集群范围的自动发现
 
 当我们的 k8s 集群中 service 和 pod 达到一定规模后手动一个一个创建 serviceMonitor 和 podMonitor 不免又麻烦了起来, 我们可以使用不限制 namespace 的 kubernetes_sd_configs 实现集群范围内自动发现所有的 exporter 实例
 
@@ -783,3 +783,5 @@ spec:
 如下, 我们部署的 node-exporter 已经成功注册, 只要 service 设置了 `annotations` 即可
 
 ![image-20230427171357838](https://image.lvbibir.cn/blog/image-20230427171357838.png)
+
+以上

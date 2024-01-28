@@ -1,8 +1,8 @@
 ---
-title: "shell | 获取服务器硬件信息（整合为json格式）" 
+title: "shell | 获取服务器硬件信息整合为 json 格式 " 
 date: 2019-08-01
-lastmod: 2019-08-01
-tags: 
+lastmod: 2024-01-28
+tags:
   - shell
 keywords:
   - shell
@@ -11,17 +11,17 @@ cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 
 ---
 
-# 前言
+# 0 前言
 
 查看硬件信息，并将信息整合成 json 数值，然后传给前段进行分析，最后再进行相应的处理。在装系统的时候，或是进行监控时，都是一个标准的自动化运维流程。使用 shell 直接生成好 json 数据再进行传输，会变得非常方便。
 
-# 环境
+# 1 环境
 
-```textile
+```bash
 [root@sys-idc-pxe01 ~]# yum install jq lsscsi MegaCli
 ```
 
-# 脚本内容
+# 2 脚本内容
 
 ```bash
 #!/bin/sh
@@ -389,3 +389,5 @@ function main()
 #-------------------------------------------------
 main
 ```
+
+以上

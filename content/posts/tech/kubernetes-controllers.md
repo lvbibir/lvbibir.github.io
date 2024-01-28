@@ -1,8 +1,8 @@
 ---
 title: "kubernetes | 控制器" 
 date: 2022-10-04
-lastmod: 2022-10-04
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
 keywords:
   - linux
@@ -14,12 +14,12 @@ keywords:
   - statefulset
   - replicaset
   - deployment
-description: "介绍kubernetes中几种常用的控制器的使用场景和示例" 
+description: "介绍 kubernetes 中几种常用的控制器的使用场景和示例" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
 
-# 前言
+# 0 前言
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
@@ -31,13 +31,13 @@ controllers 作用：
 
 ![Snipaste_2022-10-03_09-06-24](https://image.lvbibir.cn/blog/Snipaste_2022-10-03_09-06-24.png)
 
-# daemonset
+# 1 daemonset
 
-# ingress
+# 2 ingress
 
-# statefulset
+# 3 statefulset
 
-# replicaset
+# 4 replicaset
 
 ReplicaSet：副本集
 
@@ -49,7 +49,7 @@ ReplicaSet：副本集
 
 ![image-20221003113534541](https://image.lvbibir.cn/blog/image-20221003113534541.png)
 
-# deployment
+# 5 deployment
 
 deployment 用于网站、API、微服务等，功能特性：
 
@@ -84,3 +84,5 @@ spec:
         ports:
         - containerPort: 80
 ```
+
+以上

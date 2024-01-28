@@ -1,7 +1,7 @@
 ---
 title: "wsl | bashrc 环境变量不正确加载的处理方法"
 date: 2024-01-11
-lastmod: 2024-01-13
+lastmod: 2024-01-28
 tags:
   - wsl
 keywords:
@@ -14,11 +14,11 @@ cover:
     image: "https://image.lvbibir.cn/blog/logo-wsl.png"
 ---
 
-# 0.前言
+# 0 前言
 
 装完 wsl 后发现用户目录下的 `.bashrc` 文件总是无法正常读取, github 上关于此问题的 [讨论](https://github.com/microsoft/WSL/issues/3279) 也没有比较好的解决方法
 
-# 1.解决办法
+# 1 解决办法
 
 我这里取巧了一下, 在 `.bash_profile` 中再调用一下 `.bashrc`, 如下
 

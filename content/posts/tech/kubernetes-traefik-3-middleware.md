@@ -1,26 +1,26 @@
 ---
-title: "traefik (三) 中间件(Middleware)" 
+title: "traefik (三) Middleware 中间件" 
 date: 2023-04-18
-lastmod: 2023-04-18
-tags: 
+lastmod: 2024-01-28
+tags:
   - traefik
   - kubernetes
 keywords:
   - kubernetes
   - traefik
   - ingressroute
-description: "kubernetes 中使用 Traefik ingress 的 Middleware 实现重定向、白名单、用户认证、限流、熔断、压缩、自定义error页等操作" 
+description: "kubernetes 中使用 Traefik ingress 的 Middleware 实现重定向、白名单、用户认证、限流、熔断、压缩、自定义 error 页等操作" 
 cover:
     image: "https://image.lvbibir.cn/blog/traefik.png"
 ---
 
-# 0. 前言
+# 0 前言
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`， `traefik-2.9.10`
 
 示例中用到的 `myapp` 和 `secret` 资源请查看系列文章第二篇中的演示
 
-# 1. 简介
+# 1 简介
 
 [官方文档](https://doc.traefik.io/traefik/middlewares/overview/ )
 
@@ -606,3 +606,5 @@ html 文件小于 1024 字节，未开启压缩
 图片资源大于 1024 字节，开启了压缩
 
 ![image-20230419175324586](https://image.lvbibir.cn/blog/image-20230419175324586.png)
+
+以上

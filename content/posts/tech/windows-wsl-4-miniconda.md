@@ -1,7 +1,7 @@
 ---
 title: "wsl | 安装配置 miniconda 虚拟环境"
 date: 2024-01-13
-lastmod: 2024-01-14
+lastmod: 2024-01-28
 tags:
   - wsl
   - python
@@ -15,11 +15,11 @@ cover:
     image: "https://image.lvbibir.cn/blog/logo-wsl.png"
 ---
 
-# 0.前言
+# 0 前言
 
 之前写过一篇 [windows 安装 miniconda](https://www.lvbibir.cn/posts/tech/windows-miniconda/) 的文章, 后面在接触了 wsl 后发现用起来要比在原生 windows 上舒服很多, 毕竟我写 python 多是为了在 linux 服务器上跑, 用 wsl 会更顺滑一些, 虚拟环境同样选择更轻量的 miniconda
 
-# 1.安装
+# 1 安装
 
 下载并安装, 一路 yes 即可
 
@@ -28,7 +28,7 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 sh Miniconda3-latest-Linux-x86_64.sh
 ```
 
-# 2.配置
+# 2 配置
 
 修改 conda 配置文件
 
@@ -93,7 +93,7 @@ pip config list
 pip install paramiko
 ```
 
-# 3.虚拟环境
+# 3 虚拟环境
 
 创建虚拟环境
 
@@ -128,7 +128,7 @@ conda env list
 conda env remove -n py37
 ```
 
-# 4.其他
+# 4 其他
 
 conda 最为人诟病的点应该是包管理跟 pip 可能会产生一些冲突, conda 官方给出的最佳方案是
 

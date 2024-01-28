@@ -1,8 +1,8 @@
 ---
 title: "shell | centos 初始化" 
 date: 2023-08-01
-lastmod: 2022-08-01
-tags: 
+lastmod: 2024-01-28
+tags:
   - shell
 keywords:
   - shell
@@ -12,13 +12,13 @@ cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 
 ---
 
-# 前言
+# 0 前言
 
 以 centos7 为例, 通常我们新装完操作系统后需要进行配置 yum 源, iptables, selinux, ntp 以及优化 kernel 等操作, 现分享一些较为通用的配置. 同时博主将这些配置整理成了脚本, 可以一键执行.
 
-# 常用配置
+# 1 常用配置
 
-## iptables & selinux
+## 1.1 iptables & selinux
 
 ```bash
 sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config
@@ -28,7 +28,7 @@ iptables -F
 systemctl disable --now firewalld
 ```
 
-## PS1 终端美化
+## 1.2 PS1 终端美化
 
 ```bash
 cat > /etc/profile.d/PS1_conf.sh << 'EOF'
@@ -38,7 +38,7 @@ EOF
 source /etc/profile.d/PS1_conf.sh
 ```
 
-## history 格式化
+## 1.3 history 格式化
 
 ```bash
 cat > /etc/profile.d/history_conf.sh << 'EOF'
@@ -55,7 +55,7 @@ EOF
 source /etc/profile.d/history_conf.sh
 ```
 
-## ssh 公钥
+## 1.4 ssh 公钥
 
 ```bash
 mkdir /root/.ssh || true
@@ -67,13 +67,13 @@ EOF
 chmod 600 /root/.ssh/authorized_keys
 ```
 
-## 加速 ssh 连接
+## 1.5 加速 ssh 连接
 
 ```bash
 echo "UseDNS no" >> /etc/ssh/sshd_config
 ```
 
-## 配置 yum 源
+## 1.6 配置 yum 源
 
 以实测最快的清华源为例
 
@@ -104,14 +104,14 @@ yum makecache fast
 yum install -y wget net-tools vim bash-completion ntpdate
 ```
 
-## 时间配置
+## 1.7 时间配置
 
 ```bash
 timedatectl set-timezone Asia/Shanghai
 ntpdate time.windows.com
 ```
 
-## limit
+## 1.8 limit
 
 ```bash
 cat >> /etc/security/limits.conf << 'EOF'
@@ -122,7 +122,7 @@ cat >> /etc/security/limits.conf << 'EOF'
 EOF
 ```
 
-## kernel
+## 1.9 kernel
 
 ```bash
 cat >> /etc/sysctl.d/99-sysctl.conf << 'EOF'
@@ -200,7 +200,7 @@ EOF
 sysctl -p
 ```
 
-# 一键脚本
+# 2 一键脚本
 
 ```bash
 #!/bin/bash
@@ -399,3 +399,5 @@ echo "=========finish============"
 
 exit 0
 ```
+
+以上

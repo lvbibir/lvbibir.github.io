@@ -1,8 +1,8 @@
 ---
 title: "kubernetes | 存储" 
 date: 2022-10-07
-lastmod: 2023-04-12
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
 keywords:
   - linux
@@ -15,24 +15,22 @@ keywords:
   - pv
   - pvc
   - statefulset
-description: "介绍kubernetes中的存储使用简介，例如emptydir、hostpath、NFS、pv、pvc、statefulset控制器" 
+description: "介绍 kubernetes 中的存储使用简介，例如 emptydir、hostpath、NFS、pv、pvc、statefulset 控制器" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
 
-# 前言
+# 0 前言
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
-**为什么需要数据卷**
+为什么需要数据卷
 
 1. 启动时需要的初始数据，录入配置文件
-
 2. 启动过程中产生的临时数据，该临时数据需要多个容器间共享
-
 3. 启动过程中产生的持久化数据，例如 mysql 的 data
 
-**数据卷概述**
+数据卷概述
 
 - kubernetes 中的 volume 提供了在容器中挂载外部存储的能力
 - Pod 需要设置卷来源（spec.volume）和挂载点（spec.containers.volumeMounts）两个信息后才可以使用相应的 Volume
@@ -40,14 +38,11 @@ cover:
 常用的数据卷：
 
 - 本地（hostPath，emptyDir）
-
 - 网络（NFS，Ceph，GlusterFS）
-
 - 公有云（AWS EBS）
-
 - K8S 资源（configmap，secret）
 
-# emptyDir（临时存储卷）
+# 1 emptyDir（临时存储卷）
 
 emptyDir 卷：是一个临时存储卷，与 Pod 生命周期绑定一起，如果 Pod 删除了卷也会被删除。
 
@@ -100,7 +95,7 @@ spec:
 ...
 ```
 
-# hostPath（节点存储卷）
+# 2 hostPath（节点存储卷）
 
 hostPath 卷：挂载 Node 文件系统（Pod 所在节点）上文件或者目录到 Pod 中的容器。
 
@@ -130,7 +125,7 @@ spec:
       type: Directory
 ```
 
-# NFS（网络存储卷）
+# 3 NFS（网络存储卷）
 
 NFS 卷提供对 NFS 挂载支持，可以自动将 NFS 共享路径挂载到 Pod 中
 
@@ -230,12 +225,11 @@ kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP        5d2h
 hello, nfs
 ```
 
-# pv 和 pvc（持久存储卷）
+# 4 pv 和 pvc（持久存储卷）
 
-## 基础概念
+## 4.1 基础概念
 
 - PersistentVolume（PV）：存储资源创建和使用抽象化，使得存储作为集群中的资源管理
-
 - PersistentVolumeClaim（PVC）：让用户不需要关心具体的 Volume 实现细节
 
 ![image-20221006103106669](https://image.lvbibir.cn/blog/image-20221006103106669.png)
@@ -243,47 +237,38 @@ hello, nfs
 pvc 如何匹配到 pv
 
 - 存储空间的请求
-
-  匹配最接近的 pv，如果没有满足条件的 pv，则 pod 处于 pending 状态
-
+    - 匹配最接近的 pv，如果没有满足条件的 pv，则 pod 处于 pending 状态
 - 访问模式的设置
 
 存储空间字段能否限制实际可用容量
 
 - 不能，存储空间字段只用于匹配到 pv，具体可用容量取决于网络存储
 
-## pv 生命周期
+## 4.2 pv 生命周期
 
-**AccessModes（访问模式）：**
+AccessModes（访问模式）：
 
 AccessModes 是用来对 PV 进行访问模式的设置，用于描述用户应用对存储资源的访问权限，访问权限包括下面几种方式：
 
 - ReadWriteOnce（RWO）：可被一个 node 读写挂载
-
 - ReadOnlyMany（ROX）：可被多个 node 只读挂载
-
 - ReadWriteMany（RWX）：可被多个 node 读写挂载
 
-**RECLAIM POLICY（回收策略）：**
+RECLAIM POLICY（回收策略）：
 
 目前 PV 支持的策略有三种：
 
 - Retain（保留）： 保留数据，需要管理员手工清理数据
-
 - Recycle（回收）：清除 PV 中的数据，效果相当于执行 rm -rf /ifs/kuberneres/*
-
 - Delete（删除）：与 PV 相连的后端存储同时删除
 
-**STATUS（状态）：**
+STATUS（状态）：
 
 一个 PV 的生命周期中，可能会处于 4 中不同的阶段：
 
 - Available（可用）：表示可用状态，还未被任何 PVC 绑定
-
 - Bound（已绑定）：表示 PV 已经被 PVC 绑定
-
 - Released（已释放）：PVC 被删除，但是资源还未被集群重新声明
-
 - Failed（失败）： 表示该 PV 的自动回收失败
 
 pv 示例
@@ -378,13 +363,13 @@ demo-pvc   ClusterIP   10.97.28.93   <none>        80/TCP    102s
 pvc for NFS is successful
 ```
 
-## pv 动态供给
+## 4.3 pv 动态供给
 
 之前的 PV 使用方式称为静态供给，需要 K8s 运维工程师提前创建一堆 PV，供开发者使用
 
 因此，K8s 开始支持 PV 动态供给，使用 StorageClass 对象实现。
 
-> 查看 k8s 原生支持的共享存储：<https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner>
+[查看 k8s 原生支持的共享存储](https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner)
 
 ![image-20221006112111133](https://image.lvbibir.cn/blog/image-20221006112111133.png)
 
@@ -399,7 +384,7 @@ k8s-1.20 版本后默认禁止使用 selfLink，需要打开一下
 
 修改 k8s 的 apiserver 参数，改完 apiserver 会自动重启
 
-```textile
+```plaintext
 [root@k8s-node1 ~]#  vi /etc/kubernetes/manifests/kube-apiserver.yaml
 apiVersion: v1
 ···
@@ -407,11 +392,11 @@ apiVersion: v1
     - --feature-gates=RemoveSelfLink=false # 添加这个配置
 ```
 
-### 部署 NFS 插件
+### 4.3.1 部署 NFS 插件
 
 > 此组件是对 nfs-client-provisioner 的扩展，nfs-client-provisioner 已经不提供更新，且 nfs-client-provisioner 的 Github 仓库已经迁移到 [NFS-Subdir-External-Provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner) 的仓库
 
-#### rbac
+rbac
 
 创建 `nfs-rbac.yml`
 
@@ -478,7 +463,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-#### nfs-subdir-external-provisioner
+nfs-subdir-external-provisioner
 
 创建 `nfs-provisioner-deploy.yml`
 
@@ -524,7 +509,7 @@ spec:
           path: /nfs/kubernetes      # NFS服务器数据存储目录
 ```
 
-#### storageClass
+storageClass
 
 创建 `nfs-sc.yml`
 
@@ -557,7 +542,7 @@ rolebinding.rbac.authorization.k8s.io/leader-locking-nfs-client-provisioner crea
 storageclass.storage.k8s.io/nfs created
 ```
 
-### 示例
+### 4.3.2 示例
 
 ```yaml
 apiVersion: apps/v1
@@ -623,3 +608,5 @@ persistentvolume/pvc-22b65e10-ab97-47eb-aaa1-6c354a749a55   2Gi        RWO      
 total 4
 drwxrwxrwx. 2 root root  6 Apr 11 17:37 default-pvc-auto-pvc-22b65e10-ab97-47eb-aaa1-6c354a749a55
 ```
+
+以上

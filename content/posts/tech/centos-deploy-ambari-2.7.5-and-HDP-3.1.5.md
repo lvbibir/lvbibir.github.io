@@ -1,7 +1,7 @@
 ---
 title: "部署 Ambari 2.7.5 + HDP 3.1.5"
 date: 2021-12-01
-lastmod: 2024-01-10
+lastmod: 2024-01-27
 tags:
   - linux
 keywords:
@@ -12,37 +12,45 @@ cover:
     image: "https://image.lvbibir.cn/blog/apache-ambari-project.png"
 ---
 
-# 前期准备
+# 0 前言
 
-## 1. 安装包准备
+基于 isoft-serveros-v4.2
 
-**Ambari2.7.5. HDP3.1.5. libtirpc-devel:**
+本文参考以下链接:
+
+- [安装Ambari 2.7.5 + HDP3.1.5（附安装包）](https://blog.csdn.net/qq_36048223/article/details/116113987)
+
+# 1 前期准备
+
+## 1.1 安装包准备
+
+Ambari-2.7.5 HDP-3.1.5 libtirpc-devel:
 
 链接：<https://pan.baidu.com/s/1eteZ2jGkSq4Pz5YFfHyJgQ>
 
 提取码：6hq3
 
-## 2. 服务器配置
+## 1.2 服务器配置
 
 | 主机名  | cpu  | 内存 | 硬盘 | 系统版本           | ip 地址          |
 | ------- | ---- | ---- | ---- | ------------------ | --------------- |
 | node001 | 4c   | 10g  | 50g  | isoft-serveros-4.2 | 192.168.150.106 |
 | node002 | 2c   | 4g   | 20g  | isoft-serveros-4.2 | 192.168.150.107 |
 
-## 3. 修改系统版本文件 (allnode)
+## 1.3 修改系统版本文件 (allnode)
 
-```textile
+```plaintext
 sed -i 's/4/7/g' /etc/redhat-release
 sed -i 's/4/7/g' /etc/os-release
 ```
 
-## 4. 配置主机名 (allnode)
+## 1.4 配置主机名 (allnode)
 
 2 台服务器的 hosts 都需要做如下修改
 
 - 修改主机名
 
-```textile
+```plaintext
 hostnamectl set-hostname node001
 bash
 ```
@@ -57,7 +65,7 @@ vim /etc/hosts
 192.168.150.107 node002
 ```
 
-## 5. 关闭防火墙及 selinux(allnode)
+## 1.5 关闭防火墙及 selinux (allnode)
 
 **2 台服务器上分别执行以下操作，关闭防火墙并配置开机不自动启动**
 
@@ -72,11 +80,11 @@ setenforce 0
 ```bash
 vim /etc/sysconfig/selinux
 
-修改
+# 修改
 SELINUX=disabled
 ```
 
-## 6. 配置 ssh 互信 (allnode)
+## 1.6 配置 ssh 互信 (allnode)
 
 **方法一**
 
@@ -133,7 +141,7 @@ ssh 到不同服务器
 ssh node002
 ```
 
-## 7. 配置 ntp 时钟同步
+## 1.7 配置 ntp 时钟同步
 
 选择一台服务器作为 NTP Server，这里选择 node001
 
@@ -198,7 +206,7 @@ systemctl restart ntpd
 systemctl enable ntpd
 ```
 
-## 9. 设置 swap(allnode)
+## 1.8 设置 swap(allnode)
 
 ```bash
 echo vm.swappiness = 1 >> /etc/sysctl.conf
@@ -206,7 +214,7 @@ sysctl vm.swappiness=1
 sysctl -p
 ```
 
-## 10. 关闭透明大页面 (allnode)
+## 1.9 关闭透明大页面 (allnode)
 
 由于透明超大页面已知会导致意外的节点重新启动并导致 RAC 出现性能问题，因此 Oracle 强烈建议禁用
 
@@ -215,7 +223,7 @@ echo never > /sys/kernel/mm/transparent_hugepage/defrag
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 ```
 
-## 11. 安装 http 服务 (node001)
+## 1.10 安装 http 服务 (node001)
 
 安装 apache 的 httpd 服务主要用于搭建 OS. Ambari 和 hdp 的 yum 源。在集群服务器中选择一台服务器来安装 httpd 服务，命令如下：
 
@@ -229,7 +237,7 @@ systemctl enable httpd.service
 
 ![image-20211123141149628](https://image.lvbibir.cn/blog/image-20211123141149628.png)
 
-## 13. 安装 Java(allnode)
+## 1.11 安装 Java(allnode)
 
 下载地址：<https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html>
 
@@ -261,7 +269,7 @@ source /root/.bashrc
 java -version
 ```
 
-## 14. 安装 maven3.6(node001)
+## 1.12 安装 maven3.6(node001)
 
 下载解压
 
@@ -285,9 +293,9 @@ export PATH=$PATH:/opt/src/maven/bin
 source /root/.bashrc
 ```
 
-# 安装 Ambari&HDP
+# 2 安装 Ambari & HDP
 
-## 1. 配置本地源
+## 2.1 配置本地源
 
 解压
 
@@ -391,7 +399,7 @@ yum clean all
 yum repolist
 ```
 
-## 2. 安装 mariadb(node001)
+## 2.2 安装 mariadb(node001)
 
 安装 MariaDB 服务器
 
@@ -453,7 +461,7 @@ systemctl restart mariadb
 mysql -u root -p123456
 ```
 
-## 3. 安装和配置 ambari-server (node001)
+## 2.3 安装和配置 ambari-server (node001)
 
 安装 ambari-server
 
@@ -577,28 +585,28 @@ GRANT ALL PRIVILEGES ON *.* TO 'oozie'@'node001';
 FLUSH PRIVILEGES;
 ```
 
-## 4. 安装 ambari-agent(allnode)
+## 2.4 安装 ambari-agent(allnode)
 
 ```bash
 pssh -h /node.list -i 'yum -y install ambari-agent'
 pssh -h /node.list -i 'systemctl start ambari-agent'
 ```
 
-## 5. 安装 libtirpc-devel(allnode)
+## 2.5 安装 libtirpc-devel(allnode)
 
 ```bash
 pssh -h /node.list -i 'yum -y install libtirpc-devel'
 ```
 
-## 6. 启动 ambari 服务
+## 2.6 启动 ambari 服务
 
-```textile
+```plaintext
 ambari-server start
 ```
 
-# 部署集群
+# 3 部署集群
 
-## 1. 登录界面
+## 3.1 登录界面
 
 <http://192.168.150.106:8080>
 
@@ -606,7 +614,7 @@ ambari-server start
 
 ![image-20211123145726406](https://image.lvbibir.cn/blog/image-20211123145726406.png)
 
-## 2. 选择版本，配置 yum 源
+## 3.2 选择版本，配置 yum 源
 
 1）选择 Launch Install Wizard
 
@@ -628,7 +636,7 @@ HDP-UTILS-1.1.0.22: http://node001/HDP-UTILS/centos7/1.1.0.22/
 
 ![image-20211123150120718](https://image.lvbibir.cn/blog/image-20211123150120718.png)
 
-## 3. 配置节点和密钥
+## 3.3 配置节点和密钥
 
 下载主节点的 /root/.ssh/id_rsa，并上传！点击下一步，进入确认主机界面
 
@@ -640,17 +648,17 @@ HDP-UTILS-1.1.0.22: http://node001/HDP-UTILS/centos7/1.1.0.22/
 
 ![image-20211123150337730](https://image.lvbibir.cn/blog/image-20211123150337730.png)
 
-## 4. 勾选需要安装的服务
+## 3.4 勾选需要安装的服务
 
 由于资源有限，这里并没有选择所有服务
 
 ![image-20211123151238695](https://image.lvbibir.cn/blog/image-20211123151238695.png)
 
-## 5. 分配服务 master
+## 3.5 分配服务 master
 
 ![image-20211123151312856](https://image.lvbibir.cn/blog/image-20211123151312856.png)
 
-## 6. 分配服务 slaves
+## 3.6 分配服务 slaves
 
 ![image-20211123151134172](https://image.lvbibir.cn/blog/image-20211123151134172.png)
 
@@ -664,31 +672,31 @@ Activity Explorer’s Admin: admin
 
 ![image-20211123151427030](https://image.lvbibir.cn/blog/image-20211123151427030.png)
 
-## 7. 连接数据库
+## 3.7 连接数据库
 
 ![image-20211123151525068](https://image.lvbibir.cn/blog/image-20211123151525068.png)
 
-## 8. 编辑配置，默认即可
+## 3.8 编辑配置，默认即可
 
 ![image-20211123151547943](https://image.lvbibir.cn/blog/image-20211123151547943.png)
 
-## 9. 开始部署
+## 3.9 开始部署
 
 ![image-20211123151705941](https://image.lvbibir.cn/blog/image-20211123151705941.png)
 
-## 10. 安装成功
+## 3.10 安装成功
 
 右上角两个警告是磁盘使用率警告，虚机分配的磁盘较小
 
 ![image-20211123163439475](https://image.lvbibir.cn/blog/image-20211123163439475.png)
 
-# 其他
+# 4 其他
 
-## 1. 添加其他系统支持
+## 4.1 添加其他系统支持
 
 HDP 默认不支持安装到 isoft-serverosv4.2，需手动添加支持
 
-```textile
+```plaintext
 vim /usr/lib/ambari-server/lib/ambari_commons/resources/os_family.json
 ```
 
@@ -696,21 +704,17 @@ vim /usr/lib/ambari-server/lib/ambari_commons/resources/os_family.json
 
 ![image-20211123145525458](https://image.lvbibir.cn/blog/image-20211123145525458.png)
 
-## 2. YARN Registry DNS 服务启动失败
+## 4.2 YARN Registry DNS 服务启动失败
 
-```textile
+```plaintext
 lsof -i:53
 kill -9
 ```
 
-## 3. 设置初始检测的系统版本
+## 4.3 设置初始检测的系统版本
 
-```textile
+```plaintext
 vim /etc/ambari-server/conf/ambari.properties
 server.os_family=redhat7
 server.os_type=redhat7
 ```
-
-# 参考
-
-<https://blog.csdn.net/qq_36048223/article/details/116113987>

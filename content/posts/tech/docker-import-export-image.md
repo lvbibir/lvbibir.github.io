@@ -1,8 +1,8 @@
 ---
 title: "docker | 脚本方式批量导出/导入镜像" 
 date: 2022-02-01
-lastmod: 2021-02-01
-tags: 
+lastmod: 2024-01-27
+tags:
   - docker
   - python
   - shell
@@ -11,12 +11,18 @@ keywords:
   - docker
   - python
   - shell
-description: "通过shell | python的方式批量导入导出docker镜像" 
+description: "通过 shell 或者 python 的方式批量导入导出 docker 镜像" 
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 
 ---
 
-# python 方式
+# 0 前言
+
+本文参考以下链接:
+
+- [小工具: 批量导入导出主机上的 docker 镜像](https://www.cnblogs.com/ksir16/p/8865525.html)
+
+# 1 python
 
 批量导出，运行后所有 tar 包都在当前目录下
 
@@ -68,9 +74,9 @@ for imagename in images:
         os.system('docker load -i %s'%imagename)
 ```
 
-# bash 方式
+# 2 bash
 
-## 导出
+## 2.1 导出
 
 ```bash
 #!/bin/bash
@@ -85,7 +91,7 @@ done < images_cut.txt
 echo finish
 ```
 
-## 导入
+## 2.2 导入
 
 ```bash
 #!/bin/bash
@@ -97,6 +103,4 @@ done < tarname.txt
 echo finish
 ```
 
-# 参考
-
-<https://www.cnblogs.com/ksir16/p/8865525.html>
+以上

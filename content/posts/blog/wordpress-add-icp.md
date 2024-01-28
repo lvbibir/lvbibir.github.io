@@ -1,8 +1,8 @@
 ---
-title: "wordpress添加icp备案号" 
+title: "wordpress | 添加 icp 备案号" 
 date: 2021-07-01
-lastmod: 2021-07-01
-tags: 
+lastmod: 2024-01-28
+tags:
   - wordpress
   - 博客搭建
 keywords:
@@ -33,3 +33,5 @@ dux 主题修改方式：在后台管理→dux 主题编辑器→网站底部信
 ```php
 <a href="http://beian.miit.gov.cn/" rel="external nofollow" target="_blank">你的备案号</a>
 ```
+
+以上

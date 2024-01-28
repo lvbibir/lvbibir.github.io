@@ -1,8 +1,8 @@
 ---
-title: "shell | 将本地镜像批量推送到harbor" 
+title: "shell | 将本地镜像批量推送到 harbor" 
 date: 2022-10-12
-lastmod: 2022-10-12
-tags: 
+lastmod: 2024-01-28
+tags:
   - shell
   - docker
 keywords:
@@ -14,7 +14,7 @@ cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 
 ---
 
-**流程图**
+流程图
 
 ![](https://image.lvbibir.cn/blog/harbor_push.png.png)
 
@@ -86,3 +86,5 @@ done
 **腾讯云搬迁声明**
 
 我的博客即将同步至腾讯云开发者社区，邀请大家一同入驻：<https://cloud.tencent.com/developer/support-plan?invite_code=3ielzwnut2qsg>
+
+以上

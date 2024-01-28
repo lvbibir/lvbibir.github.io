@@ -1,8 +1,8 @@
 ---
-title: "traefik (二) 路由(ingressRoute)" 
+title: "traefik (二) ingressRoute 路由" 
 date: 2023-04-18
-lastmod: 2023-04-18
-tags: 
+lastmod: 2024-01-28
+tags:
   - traefik
   - kubernetes
 keywords:
@@ -14,11 +14,11 @@ cover:
     image: "https://image.lvbibir.cn/blog/traefik.png"
 ---
 
-# 0. 前言
+# 0 前言
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`， `traefik-2.9.10`
 
-# 1. 简介
+# 1 简介
 
 [官方文档](https://doc.traefik.io/traefik/routing/overview/)
 
@@ -46,7 +46,7 @@ Traefik 创建路由规则有多种方式，比如：
 | Query(`foo=bar`, `bar=baz`)                                  | 匹配查询字符串参数，接受 key=value 的键值对                    |
 | ClientIP(`10.0.0.0/16`, `::1`)                               | 如果请求客户端 IP 是给定的 IP/CIDR 之一，则匹配。它接受 IPv4、IPv6 和网段格式。 |
 
-# 2. dashboard 案例
+# 2 dashboard 案例
 
 之前的部署章节中我们是以 nodePort 和 service nodePort 的方式访问的 traefik 的 dashboard，接下来以三种方式演示通过域名访问 dashboard
 
@@ -162,7 +162,7 @@ spec:
 
 访问：[http://gateway.test.com](http://gateway.test.com)
 
-# 3. myapp 环境准备
+# 3 myapp 环境准备
 
 myapp1
 
@@ -263,7 +263,7 @@ Hello MyApp | Version: v1 | <a href="hostname.html">Pod Name</a>
 Hello MyApp | Version: v2 | <a href="hostname.html">Pod Name</a>
 ```
 
-# 4. ingressRoute
+# 4 ingressRoute
 
 ## 4.1 http 路由
 
@@ -345,7 +345,7 @@ ingressroute.traefik.containo.us/myapp2 created
 
 ![image-20230419132537993](https://image.lvbibir.cn/blog/image-20230419132537993.png)
 
-# 5. ingressRouteTCP
+# 5 ingressRouteTCP
 
 [ingreeRouteTCP 官方文档](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroutetcp)
 
@@ -490,7 +490,7 @@ spec:
     secretName: redis-tls
 ```
 
-# 6. ingressRouteUDP
+# 6 ingressRouteUDP
 
 创建应用
 
@@ -570,7 +570,7 @@ IP: 10.244.107.243
 Received: test
 ```
 
-# 7. 负载均衡
+# 7 负载均衡
 
 ```yaml
 apiVersion: traefik.containo.us/v1alpha1
@@ -610,3 +610,5 @@ Hello MyApp | Version: v1 | <a href="hostname.html">Pod Name</a>
 [root@k8s-node1 ~]# curl http://lb.test.com
 Hello MyApp | Version: v2 | <a href="hostname.html">Pod Name</a>
 ```
+
+以上

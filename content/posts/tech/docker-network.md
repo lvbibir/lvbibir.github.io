@@ -1,31 +1,30 @@
 ---
 title: "docker | 网络简介" 
 date: 2019-08-01
-lastmod: 2019-08-01
-tags: 
+lastmod: 2024-01-28
+tags:
   - docker
 keywords:
   - linux
   - docker
   - network
-description: "docker的网络结构简介 | 同一宿主机的docker容器之间是如何通信的" 
+description: "简单介绍 docker 的网络结构以及同一宿主机的 docker 容器之间是如何通信的" 
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 
 ---
 
-# 概述
+# 1 网络概述
 
 1. 独立容器网络：none host
-none 网络最为安全，只有 localback 接口
-host 网络只和物理机相连，保证跟物理机相连的网络效率	跟物理机完全一样（网络协议栈与主机名）
+    - none 网络最为安全，只有 localback 接口
+    - host 网络只和物理机相连，保证跟物理机相连的网络效率	跟物理机完全一样（网络协议栈与主机名）
 2. 容器间的网络：bridge [docker bridge详解](https://blog.csdn.net/qq_27068845/article/details/80893318)
-docker 启动时默认会有一个 docker0 网桥，该网桥就是桥接模式的体现
-用户也可以自建 bridge 网络，建立后 dokcer 也会创建一个网桥
-
+    - docker 启动时默认会有一个 docker0 网桥，该网桥就是桥接模式的体现
+    - 用户也可以自建 bridge 网络，建立后 dokcer 也会创建一个网桥
 3. 跨主机的容器间的网络：macvlan overlay
 4. 第三方网络：flannel weave calic
 
-# docker0
+# 2 docker0
 
 安装了 docker 的系统，使用 ifconfig 可以查看到 docker0 设备，docker 守护进程就是通过 docker0 为容器提供网络连接的各种服务
 
@@ -54,7 +53,7 @@ docker0 的地址划分：
 
 查看网桥设备需要预先安装 bridge-utils 软件包
 
-```textile
+```bash
 [root@localhost ~]# yum install -y bridge-utils
 [root@localhost ~]# brctl show
 bridge name     bridge id               STP enabled     interfaces
@@ -64,7 +63,7 @@ virbr0          8000.525400b76fd4       yes             virbr0-nic
 
 开启一个容器，查看网络设置：
 
-```textile
+```bash
 [root@localhost ~]# docker run -it --name nwt1 centos /bin/bash
 [root@0ef32e882bcf /]# ifconfig
 bash: ifconfig: command not found
@@ -74,38 +73,33 @@ bash: ifconfig: command not found
 
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20190811133220548.png)
 
-ctrl+p，ctrl+q 让这个人继续后台运行
-
 再查看一下网桥
 
-```textile
+```bash
 [root@localhost ~]# brctl show
 ```
 
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20190811133457224.png)
 
-```textile
+```bash
 [root@localhost ~]# ifconfig
 ```
 
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20190811133611993.png)
 
-## 自定义 docker0
+## 2.1 自定义 docker0
 
 当默认 docker0 的 ip 或者网段与主机环境发生冲突时，可以修改 docker0 的地址和网段来进行自定义
 
-```textile
-ifconfig docker0 IP netmask NETMASK
-```
-
-```textile
+```bash
+# ifconfig docker0 IP netmask NETMASK
 [root@localhost ~]# ifconfig docker0 192.168.200.1 netmask 255.255.255.0
 [root@localhost ~]# ifconfig
 ```
 
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20190811134011802.png)
 
-```textile
+```bash
 [root@localhost ~]# systemctl restart docker
 [root@localhost ~]# docker run -it centos /bin/bash
 [root@a5c6ebf79340 /]# yum install -y net-tools
@@ -114,18 +108,11 @@ ifconfig docker0 IP netmask NETMASK
 
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20190811135908809.png)
 
-## 自定义虚拟网桥
+## 2.2 自定义虚拟网桥
 
-添加虚拟网桥：
+添加虚拟网桥
 
-1. brctl addbr br0
-2. ifconfig br0 IP netmask NETMASK
-
-更改 docker 守护进程的启动配置
-
-1. /lib/systemd/system/docker.service 中添加 -b=br0
-
-```textile
+```bash
 [root@localhost ~]# brctl addbr br0
 [root@localhost ~]# ifconfig br0 192.168.100.1 netmask 255.255.255.0
 [root@localhost ~]# ifconfig
@@ -133,7 +120,9 @@ ifconfig docker0 IP netmask NETMASK
 
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20190811140448102.png)
 
-```textile
+修改 docker 守护进程的配置
+
+```bash
 [root@localhost ~]# vim /lib/systemd/system/docker.service
 ExecStart=/usr/bin/dockerd -b=br0
 [root@localhost ~]# systemctl daemon-reload
@@ -144,9 +133,9 @@ root       4161   4156  0 14:06 ?        00:00:00 docker-containerd --config /va
 root       4263   1558  0 14:06 pts/0    00:00:00 grep --color=auto docker
 ```
 
-开启一个容器
+启动一个测试容器
 
-```textile
+```bash
 [root@localhost ~]# docker run -it --name nwt3 centos /bin/bash
 [root@d70269c9557e /]# yum install -y net-tools
 [root@d70269c9557e /]# ifconfig
@@ -154,17 +143,17 @@ root       4263   1558  0 14:06 pts/0    00:00:00 grep --color=auto docker
 
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20190811141504468.png)
 
-# 同一宿主机间容器的连接
+# 3 同一宿主机间容器的连接
 
 1. 允许单台主机内所有容器互联（默认情况）
 2. 拒绝容器间连接
 3. 允许特定容器间的连接
 
-## 允许单台主机内所有容器互联（默认情况）
+## 3.1 允许容器互联
 
 --icc=true 默认为 true，即允许同一宿主机下所有容器之间网络连通
 
-```textile
+```bash
 [root@localhost ~]# docker run -itd --name test1 busybox /bin/sh
 7ec641b21b66b6472f4e92cfaa7f9c0674c4322a5265a05e272ae180b0d4687c
 [root@localhost ~]# docker exec test1 ifconfig eth0
@@ -194,7 +183,7 @@ round-trip min/avg/max = 0.133/0.174/0.264 ms
 
 可以使用 --link 选项来连接两个容器
 
-```textile
+```bash
 docker run --link=[CONTAINER_NAME]:[ALIAS] [IMAGE] [COMMAND]
 ```
 
@@ -202,7 +191,7 @@ docker run --link=[CONTAINER_NAME]:[ALIAS] [IMAGE] [COMMAND]
 
 新建两个容器进行测试
 
-```textile
+```bash
 [root@localhost ~]# docker run -itd --name test3 busybox /bin/sh
 1fd4e373dba17fdf1fa93121e08ea2f1f32d8f4116339c072a72a73574b0926f
 [root@localhost ~]# docker run -itd --name test4 --link=test3:nt  busybox /bin/sh
@@ -225,7 +214,7 @@ round-trip min/avg/max = 0.148/0.191/0.256 ms
 1. 修改了 env 环境变量
 2. 修改了 hosts 文件
 
-```textile
+```bash
 [root@localhost ~]# docker exec test4 env
 [root@localhost ~]# docker exec test4 cat /etc/hosts
 ```
@@ -234,7 +223,7 @@ round-trip min/avg/max = 0.148/0.191/0.256 ms
 
 删除之前使用的 test1 与 test2 容器，这两个容器占用的 ip 释放，重启 test3 后，使用最新的 ip 地址
 
-```textile
+```bash
 [root@localhost ~]# docker rm -f test1
 test1
 [root@localhost ~]# docker rm -f test2
@@ -253,17 +242,17 @@ eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:02
 
 可以看到随着 test3 的 ip 地址发生改变，test4 容器中的 hosts 文件也随之改变
 
-```textile
+```bash
 [root@localhost ~]# docker exec test4 cat /etc/hosts
 ```
 
 ![在这里插入图片描述](https://image.lvbibir.cn/blog/20190811183004484.png)
 
-## 拒绝容器间连接
+## 3.2 拒绝容器互联
 
 修改守护进程的启动选项：--icc=false
 
-```textile
+```bash
 [root@localhost ~]# vim /lib/systemd/system/docker.service
 ExecStart=/usr/bin/dockerd   --icc=false
 [root@localhost ~]# systemctl daemon-reload
@@ -272,7 +261,7 @@ ExecStart=/usr/bin/dockerd   --icc=false
 
 新建两个容器进行测试，可以看到无法 ping 通
 
-```textile
+```bash
 [root@localhost ~]# docker run -itd --name test10 busybox /bin/sh
 700f026459206531b0fda811a43bc12af2f0815dc695f317a1f52939bfada2a1
 [root@localhost ~]# docker run -itd --name test11 busybox /bin/sh
@@ -290,7 +279,7 @@ eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:06
 ^C
 ```
 
-## 允许特定容器间的连接
+## 3.3 允许特定容器间的连接
 
 修改守护进程选项：
 
@@ -300,7 +289,7 @@ eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:06
 
 只有设置了 --link 的两个容器间才可以互通
 
-```textile
+```bash
 [root@localhost ~]# vim /lib/systemd/system/docker.service
 ExecStart=/usr/bin/dockerd   --icc=false --iptables=true
 [root@localhost ~]# systemctl daemon-reload
@@ -309,7 +298,7 @@ ExecStart=/usr/bin/dockerd   --icc=false --iptables=true
 
 新建两个容器进行验证
 
-```textile
+```bash
 [root@localhost ~]# docker run -itd --name test21  busybox /bin/sh
 77f56db227acaa590f729c12a4852d3131f1729851ea8c613a670effbfa512ad
 
@@ -347,3 +336,5 @@ PING 172.17.0.3 (172.17.0.3): 56 data bytes
 4 packets transmitted, 4 packets received, 0% packet loss
 round-trip min/avg/max = 0.109/0.171/0.226 ms
 ```
+
+以上

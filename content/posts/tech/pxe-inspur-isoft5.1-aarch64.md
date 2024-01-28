@@ -1,8 +1,8 @@
 ---
 title: "pxe 安装 isoft-5.1(aarch64)" 
 date: 2021-08-01
-lastmod: 2021-08-01
-tags: 
+lastmod: 2024-01-28
+tags:
   - linux
 keywords:
   - linux
@@ -14,7 +14,7 @@ cover:
     image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
-# pxe 环境
+# 1 pxe 环境
 
 dhcp+tftp+http
 
@@ -24,7 +24,7 @@ pxe-server：isoft-serveros-v4.2（3.10.0-957.el7.isoft.x86_64）
 
 物理服务器：浪潮 Inspur
 
-# dhcpd.conf 配置
+# 2 dhcpd.conf 配置
 
 ```bash
 [root@localhost isoft-5.1-arm]# vim /etc/dhcp/dhcpd.conf
@@ -57,7 +57,7 @@ shared-network works {
 }
 ```
 
-# grub.cfg 配置
+# 3 grub.cfg 配置
 
 ```bash
 [root@localhost tftpboot]# vim arm/grub.cfg
@@ -102,7 +102,7 @@ menuentry 'Install iSoftServerOS 5.1 with GUI mode' --class red --class gnu-linu
 #}
 ```
 
-# ks.cfg 配置
+# 4 ks.cfg 配置
 
 ```bash
 [root@localhost isoft-5.1-arm]# vim anaconda-ks.cfg
@@ -166,3 +166,5 @@ pwpolicy luks --minlen=8 --minquality=1 --notstrict --nochanges --notempty
 
 reboot
 ```
+
+以上

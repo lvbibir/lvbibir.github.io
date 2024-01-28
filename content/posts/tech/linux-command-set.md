@@ -1,7 +1,7 @@
 ---
-title: "linux | set命令详解"
+title: "linux | set 命令详解"
 date: 2022-09-28
-lastmod: 2022-09-28
+lastmod: 2024-01-28
 tags:
   - linux
 keywords:
@@ -48,3 +48,5 @@ himBH
 [root@lvbibir ~]# set -o | grep braceexpand
 braceexpand     on
 ```
+
+以上

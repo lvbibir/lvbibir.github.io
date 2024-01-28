@@ -1,8 +1,8 @@
 ---
-title: "docker | dockerfile最佳实践" 
+title: "docker | dockerfile 最佳实践" 
 date: 2023-04-11
-lastmod: 2023-04-11
-tags: 
+lastmod: 2024-01-27
+tags:
   - docker
 keywords:
   - docker
@@ -13,7 +13,11 @@ cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 
 ---
 
-## 前言
+# 0 前言
+
+本文参考以下内容:
+
+- [如何编写最佳的 Dockerfile](https://blog.fundebug.com/2017/05/15/write-excellent-dockerfile/)
 
 在使用 Docker 的过程中，编写 Dockerfile 是非常重要的一部分工作。合理编写 Dockerfile 会使我们构建出来的 Docker image 拥有更佳的性能和健壮性
 
@@ -45,11 +49,7 @@ cover:
 
 可以说每条 Dockerfile 指令都有相关的优化项，这里就不一一赘述了，下面仅列举一些常见且重要的设置
 
-参考内容：
-
-- <https://blog.fundebug.com/2017/05/15/write-excellent-dockerfile/>
-
-## 容器的优雅退出
+# 1 容器的优雅退出
 
 众所周知，docker 容器本质上是一个个进程，进程的优雅退出需要考虑的是如何正确处理 `SIGTERM` 信号，关于这点在我的另一篇博文中介绍过 [kill命令详解以及linux中的信号](https://www.lvbibir.cn/posts/tech/linux-command-kill)
 
@@ -59,9 +59,9 @@ cover:
 
 1. 应用程序如何处理信号
 
-   这就需要在应用程序中定义对信号的处理逻辑了，包括对每个信号如何处理如何转发给子进程等。
+这就需要在应用程序中定义对信号的处理逻辑了，包括对每个信号如何处理如何转发给子进程等。
 
-2. 应用程序如何获取信号
+1. 应用程序如何获取信号
 
 docker 容器的一号进程是由 `CMD` `ENTRYPOINT` 这两个指令决定的，所以正确使用这两个指令十分关键
 
@@ -119,7 +119,7 @@ Arch Linux
 pacaur -S tini
 ```
 
-## RUN 指令
+# 2 RUN 指令
 
 `RUN` 指令一般用于安装配置软件包等操作，通常需要比较多的步骤，如果每条命令都单独用 `RUN` 指令去跑会导致镜像层数非常多，所以尽可能将所有 `RUN` 指令拼接起来是当前的事实标准
 
@@ -144,7 +144,7 @@ RUN set -x; buildDeps='gcc libc6-dev make wget' \
     && apt-get purge -y --auto-remove $buildDeps
 ```
 
-## 多阶段构建
+# 3 多阶段构建
 
 很多时候我们的应用容器会包含 `构建` 和 `运行` 两大功能，而运行所需要的依赖数量明显少于构建时的依赖，我们最终的 image 交付物有运行环境就足够了
 
@@ -214,3 +214,5 @@ FROM builder as builder_ex
 ADD dest.tar ./
 ...
 ```
+
+以上

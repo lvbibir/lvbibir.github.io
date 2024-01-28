@@ -1,8 +1,8 @@
 ---
-title: "windows 使用 miniconda 配置 python 虚拟环境" 
+title: "windows | miniconda 配置 python 虚拟环境" 
 date: 2023-08-07
-lastmod: 2024-01-13
-tags: 
+lastmod: 2024-01-28
+tags:
   - windows
   - python
 keywords:
@@ -13,7 +13,7 @@ cover:
     image: "https://source.unsplash.com/random/400x200?code"
 ---
 
-# 0. 前言
+# 0 前言
 
 python 虚拟环境的重要性已经无需多言了, 目前所有支持 python 虚拟环境的工具中最好用的应该就是 conda 了, 最重要的一点是可以一键创建不同版本的 python 环境以适应不同的需求.
 
@@ -24,7 +24,7 @@ Anaconda 比较臃肿, 本文使用无 GUI 的 [miniconda](https://docs.conda.io
 - win10
 - miniconda3-py11-23.5.2-0
 
-# 1. 安装
+# 1 安装
 
 安装前需要确认一下系统及用户的环境变量中不要存在中文, 在 CMD 中直接执行 `path` 或者 git-bash 中执行 `echo $PATH` 进行确认, 这个问题当时被折磨疯了, 还给 conda 项目提了 [issue](https://github.com/conda/conda/issues/12968).
 
@@ -32,7 +32,7 @@ Anaconda 比较臃肿, 本文使用无 GUI 的 [miniconda](https://docs.conda.io
 
 选好路径直接下一步即可, 没有需要注意的自定义配置项
 
-# 2. 配置
+# 2 配置
 
 ## 2.1 环境变量
 
@@ -159,7 +159,7 @@ conda env list
 conda env remove -n py37 --all
 ```
 
-# 3. 其他
+# 3 其他
 
 conda 最为人诟病的点应该是包管理跟 pip 可能会产生一些冲突, conda 官方给出的最佳方案是
 

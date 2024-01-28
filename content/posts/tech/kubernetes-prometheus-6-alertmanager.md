@@ -1,8 +1,8 @@
 ---
 title: "prometheus (六) Alertmanager" 
 date: 2023-04-29
-lastmod: 2023-04-29
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
   - prometheus
 keywords:
@@ -14,11 +14,11 @@ cover:
     image: "https://image.lvbibir.cn/blog/prometheus.png"
 ---
 
-# 0. 前言
+# 0 前言
 
 基于 `centos7.9` `docker-ce-20.10.18` `kubelet-1.22.3-0` `kube-prometheus-0.10` `prometheus-v2.32.1`
 
-# 1. alertmanager
+# 1 alertmanager
 
 prometheus 架构中采集数据和发送告警是独立出来的, 告警触发后将信息转发到独立的组件 `alertmanager`, 由 alertmanager 对报警进行统一处理, 最后通过接收器 `recevier` 发送给指定用户
 
@@ -34,13 +34,10 @@ Alertmanager 收到告警信息后:
 
 ## 1.2 四大功能
 
-分组 (Grouping): 将同类型的告警进行分组, 合并多条告警到一个通知中
-
-抑制 (Inhibition): 当某条告警已经发送, 停止重复发送由此告警引起的其他异常或者故障
-
-静默 (Silences): 根据标签快速对告警进行静默处理, 如果告警符合静默的配置, Alertmanager 则不会发送告警通知
-
-路由 (route): 用于配置 Alertmanager 如何处理传入的特定类型的告警通知
+- 分组 (Grouping): 将同类型的告警进行分组, 合并多条告警到一个通知中
+- 抑制 (Inhibition): 当某条告警已经发送, 停止重复发送由此告警引起的其他异常或者故障
+- 静默 (Silences): 根据标签快速对告警进行静默处理, 如果告警符合静默的配置, Alertmanager 则不会发送告警通知
+- 路由 (route): 用于配置 Alertmanager 如何处理传入的特定类型的告警通知
 
 ## 1.3 配置详解
 
@@ -220,7 +217,7 @@ DESCRIPTION:
 
 综上, 修改 alertmanager 配置可以修改 secret `alertmanager-main` 或者 CRD `alertmanagerconfig`
 
-# 2. 示例
+# 2 示例
 
 ## 2.1 secret
 
@@ -566,3 +563,5 @@ kubectl apply -f alertmanager-main-secret.yaml
 
 - 恢复邮件
   ![image-20230430223637098](https://image.lvbibir.cn/blog/image-20230430223637098.png)
+
+以上

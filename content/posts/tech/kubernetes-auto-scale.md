@@ -1,30 +1,34 @@
 ---
 title: "kubernetes | 滚动升级和自动伸缩" 
 date: 2022-10-05
-lastmod: 2023-04-08
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
 keywords:
   - linux
   - centos
   - kubernetes
   - update
-description: "介绍kubernetes中滚动升级的实现机制，如何手动伸缩pod，以及基于hpa实现自动伸缩" 
+description: "介绍 kubernetes 中滚动升级的实现机制，如何手动伸缩 pod，以及基于 hpa 实现自动伸缩" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
 
-# 0. 前言
+# 0 前言
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
-# 1. 滚动升级
+# 1 滚动升级
+
+## 1.1 实现机制
 
 滚动升级的实现机制
 
 两个 replicaset 控制器分别控制旧版本的 pod 和新版本 pod，replicaset2 启动一个新版版本 pod，相应的 replicaset1 停止一个旧版本 pod，从而实现滚动升级。在这过程中，无法保证业务流量完全不丢失。
 
 ![image-20221003113645777](https://image.lvbibir.cn/blog/image-20221003113645777.png)
+
+## 1.2 简单示例
 
 升级
 
@@ -48,7 +52,7 @@ kubectl rollout undo deployment demo-rollout
 kubectl rollout undo deployment demo-rollout --to-revision=2
 ```
 
-## 1.1 升级
+## 1.3 升级
 
 在所有 work 节点先创建几个 busybox 镜像的 tag 用于升级演示
 
@@ -120,7 +124,7 @@ REVISION  CHANGE-CAUSE
     Image:      busybox:v3
 ```
 
-## 1.2 回滚
+## 1.4 回滚
 
 回滚至 v1 版本
 
@@ -154,9 +158,9 @@ REVISION  CHANGE-CAUSE
 5         kubectl set image deployment/demo-rollout busybox=busybox:v2 --record=true
 ```
 
-# 2. 自动伸缩
+# 2 自动伸缩
 
-1. 手动扩容
+手动扩容
 
 ```bash
  kubectl scale [--resource-version=version] [--current-replicas=count] --replicas=COUNT (-f FILENAME | TYPE NAME) [options]
@@ -164,12 +168,11 @@ REVISION  CHANGE-CAUSE
  kubectl scale deployment demo-rollout --replicas=10
 ```
 
-1. 自动扩容
+自动扩容
 
 实现自动扩容需满足两个条件：
 
 - 运行了 [metric-server](https://www.lvbibir.cn/posts/tech/kubernetes-deploy-v1.22.3/#5-metric-server)
-
 - pod 设置了 request 资源
 
 `Horizontal Pod Autoscaling`: pod 水平扩容，k8s 中的一个 api 资源，使用 autoscale 时会创建一个 hpa 资源
@@ -383,4 +386,6 @@ hpa-mem   Deployment/hpa-mem   80%/60%   1         10        2          4m16s
 
 ## 2.3 基于自定义指标
 
-待续…..
+待续……
+
+以上

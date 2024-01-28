@@ -1,15 +1,15 @@
 ---
-title: "故障处理 | H3C服务器装完系统无法引导" 
+title: "troubleshooting | H3C 服务器装完系统无法引导" 
 date: 2021-08-01
-lastmod: 2021-08-01
-tags: 
-  - 故障处理
+lastmod: 2024-01-28
+tags:
+  - troubleshooting
 keywords:
   - linux
   - 服务器
   - raid
   - H3C
-description: "记录一下在H3C服务器上系统无法引导的问题的解决" 
+description: "记录一下在 H3C 服务器上系统无法引导的问题的解决" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 
 ---
@@ -37,3 +37,5 @@ cover:
 2. 系统无需重装：删除掉 raid1 ，保存后重新创建 raid1。这时，raid6 的顺位会比 raid1 高，系统就可以正常启动了
 
 最终我们这边采取的是第二种方案
+
+以上

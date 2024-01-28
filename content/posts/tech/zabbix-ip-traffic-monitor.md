@@ -1,7 +1,7 @@
 ---
-title: "Zabbix 监控主机到指定 ip 的流量大小"
+title: "Zabbix | 监控主机到指定 ip 的流量大小"
 date: 2023-08-04
-lastmod: 2024-01-13
+lastmod: 2024-01-28
 tags:
   - zabbix
   - shell
@@ -13,7 +13,7 @@ cover:
     image: "https://image.lvbibir.cn/blog/Zabbix_logo.png"
 ---
 
-# 0. 前言
+# 0 前言
 
 分享一下如何监控某个主机上的网卡到指定 ip 的流量大小, 测试环境已安装 tcpdump 并配置了 zabbix_agent
 
@@ -22,17 +22,16 @@ cover:
 大致流程为:
 
 - 创建一个监控脚本, 分析 1 分钟内指定网卡发送到指定 ip 的数据包大小并输出到日志文件
-
 - 将该脚本放到 crontab 中, 每分钟执行一次
 - 配置 zabbix-agent
-  - 创建数据采集脚本, 提取日志文件中的内容
-  - 添加自定义配置, 创建采集的键值
+    - 创建数据采集脚本, 提取日志文件中的内容
+    - 添加自定义配置, 创建采集的键值
 - 配置 zabbix-server
-  - 添加监控项
-  - 添加触发器
-  - 添加仪表盘
+    - 添加监控项
+    - 添加触发器
+    - 添加仪表盘
 
-# 1. 监控脚本
+# 1 监控脚本
 
 添加 /opt/traffic_monitor.sh
 
@@ -112,13 +111,13 @@ exit 0
 
 放到 crontab 中
 
-```normal
+```plaintext
 * * * * * /bin/bash /opt/traffic_monitor.sh >/dev/null 2>&1
 ```
 
 日志文件应有类似如下输出
 
-```normal
+```plaintext
 $ tail -12 /var/log/traffic_monitor/traffic_monitor.log
 1.1.1.14 ==== 20230804-154601 ----> 20230804-154701 ===== (KB) 1964.99
 1.1.1.12 ==== 20230804-154601 ----> 20230804-154701 ===== (KB) 0.23
@@ -134,7 +133,7 @@ $ tail -12 /var/log/traffic_monitor/traffic_monitor.log
 1.1.1.17 ==== 20230804-154701 ----> 20230804-154801 ===== (KB) 3086.44
 ```
 
-# 2. 配置 zabbix-agent
+# 2 配置 zabbix-agent
 
 添加 /opt/zabbix_traffic_monitor.sh, 根据 ip 筛选最后一个匹配项的数值
 
@@ -149,7 +148,7 @@ grep "$1" "${LOG_FILE}" | awk '{last_column=$NF} END {print last_column}'
 
 添加 /etc/zabbix/zabbix_agentd.d/get_traffic_monitor.conf 配置文件
 
-```normal
+```plaintext
 UserParameter=get_traffic_monitor[*],/opt/zabbix_traffic_monitor.sh $1
 ```
 
@@ -159,7 +158,7 @@ UserParameter=get_traffic_monitor[*],/opt/zabbix_traffic_monitor.sh $1
 systemctl restart zabbix-agent
 ```
 
-# 3. 配置 zabbix-server
+# 3 配置 zabbix-server
 
 创建监控项, 有几个 ip 创建几个监控项
 
@@ -177,11 +176,11 @@ systemctl restart zabbix-agent
 
 ![image-20230804160014573](https://image.lvbibir.cn/blog/image-20230804160014573.png)
 
-# 4. 测试
+# 4 测试
 
 找一台服务器配置多 ip
 
-```normal
+```plaintext
 IPADDR=1.1.1.12
 NETMASK=255.255.255.0
 GATEWAY=1.1.1.254

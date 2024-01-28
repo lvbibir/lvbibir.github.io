@@ -1,5 +1,5 @@
 ---
-title: "密码尝试次数过多" 
+title: "centos 密码尝试次数过多问题处理" 
 date: 2022-01-01
 lastmod: 2022-01-01
 tags: 
@@ -20,7 +20,7 @@ pam 模块
 
 查看密码失败次数
 
-```textile
+```plaintext
 pam_tally2 -u root
 # 或者
 faillock --user root
@@ -38,7 +38,7 @@ faillock --user root --reset
 
 例：
 
-```textile
+```plaintext
 cat /etc/pam.d/system-auth
 ```
 

@@ -1,8 +1,8 @@
 ---
-title: "openssl源码打包编译成rpm包" 
+title: "openssl 源码打包编译成 rpm 包" 
 date: 2022-03-01
-lastmod: 2022-03-01
-tags: 
+lastmod: 2024-01-28
+tags:
   - linux
 keywords:
   - linux
@@ -10,18 +10,18 @@ keywords:
   - openssh
   - 源码
   - rpm构建
-description: "记录一下centos7系统中通过源码构建openssh rpm包的过程" 
+description: "记录一下 centos7 系统中通过源码构建 openssh rpm 包的过程" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
-# 环境
+# 1 环境
 
 iSoftserver-v4.2(Centos-7)
 
 openssl version：1.0.2k
 
-# 编译
+# 2 编译
 
 从 github 上看到的编译脚本，本地修改后：
 
@@ -124,7 +124,7 @@ cd /root/rpmbuild/SPECS && \
 
 运行脚本
 
-```textile
+```bash
 chmod 755 install_openssl-1.1.1m.sh
 ./isntall_openssl-1.1.1m.sh
 tree rpmbuild/*RPMS
@@ -132,12 +132,14 @@ tree rpmbuild/*RPMS
 
 ![image-20220302154139155](https://image.lvbibir.cn/blog/image-20220302154139155.png)
 
-# 升级
+# 3 升级
 
-```textile
+```bash
 rpm -e openssl --nodeps
 rpm -ivh  openssl-1.1.1m-1.el7.isoft.x86_64.rpm --nodeps
 openssl version
 ```
 
 ![image-20220302154321811](https://image.lvbibir.cn/blog/image-20220302154321811.png)
+
+以上

@@ -1,31 +1,31 @@
 ---
 title: "kubernetes | 杂记" 
 date: 2022-10-01
-lastmod: 2023-04-08
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
 keywords:
   - kubernetes
-description: "介绍一些常见的报错处理、kubectl命令的一些用法、yaml编写技巧、小优化等" 
+description: "介绍一些常见的报错处理、kubectl 命令的一些用法、yaml 编写技巧、小优化等" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
 
-# kubectl 命令的自动补全
+# 1 kubectl 命令的自动补全
 
-```textile
+```bash
 yum install bash-completion
 source /usr/share/bash-completion/bash_completion
 source <(kubectl completion bash)
 ```
 
-# 镜像拉取策略
+# 2 镜像拉取策略
 
-```textile
+```plaintext
 imagePullPolicy: Always|Never|IfNotPresent
 ```
 
-# 修改 nodePort 范围
+# 3 修改 nodePort 范围
 
 ```bash
 vim /etc/kubernetes/manifests/kube-apiserver.yaml
@@ -33,7 +33,7 @@ vim /etc/kubernetes/manifests/kube-apiserver.yaml
 - --service-node-port-range=1-65535
 ```
 
-# command 和 args
+# 3 command 和 args
 
 `containers.command` 等同于 Dockerfile 中的 `ENTRYPOINT`
 
@@ -41,13 +41,11 @@ vim /etc/kubernetes/manifests/kube-apiserver.yaml
 
 如果 Dockerfile 中默认的 ENTRYPOINT 被覆盖，则默认的 CMD 指令同时也会被覆盖
 
-# label 标签选择运算符
+# 4 label 标签选择运算符
 
-> <https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/labels>
+[官方文档](https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/labels)
 
-1. 基于等值
-
-有三种运算符 `=` `==` `!=`
+基于等值, 有三种运算符 `=` `==` `!=`
 
 前两种是等效的，示例
 
@@ -61,9 +59,7 @@ k8s-node2   Ready    <none>   21d   v1.22.3
 k8s-node3   Ready    <none>   21d   v1.22.3
 ```
 
-1. 基于集合
-
-同样三种运算符 `in` `notin` `exists`
+基于集合, 同样三种运算符 `in` `notin` `exists`
 
 `exists` 只用于判断 key 是否存在
 
@@ -93,17 +89,17 @@ k8s-node3   Ready    <none>                 21d   v1.22.3
 No resources found
 ```
 
-# 常见报错
+# 5 常见报错
 
-## NodeNotReady
+## 5.1 NodeNotReady
 
-### Image garbage collection failed once
+### 5.1.1 Image garbage collection failed once
 
 [参考地址](https://stackoverflow.com/questions/62020493/kubernetes-1-18-warning-imagegcfailed-error-failed-to-get-imagefs-info-unable-t?newreg=6012e8d3a8494d7d816cf2d6606ed1b2)
 
 报错：
 
-```textile
+```plaintext
 # kubectl describe node k8s-node01
 Events:
   Type    Reason                   Age   From     Message
@@ -124,7 +120,7 @@ Mar 06 09:50:33 k8s-node01 kubelet[45471]: E0306 09:50:33.106476   45471 kubelet
 
 2. docker 镜像或容器未能正确删除导致的
 
-```textile
+```plaintext
 docker system prune
 systemctl stop kubelet
 systemctl stop docker
@@ -132,7 +128,7 @@ systemctl start docker
 systemctl start kubelet
 ```
 
-## node 无法 ping 通 pod
+## 5.2 node 无法 ping 通 pod
 
 所有 calico 的 pod 运行都是 running 状态, 使用 `calicoctl node status` 看到的网卡绑定也是没问题的.
 
@@ -154,9 +150,9 @@ bird: Netlink: Network is down
 [root@k8s-node1 ~]# systemctl disable NetworkManager
 ```
 
-## 虚拟机挂起导致 calico 网络不可用
+## 5.3 虚拟机挂起导致 calico 网络不可用
 
-出现在我的虚拟机测试机群上，挂起虚拟机过段时间后重新启动虚拟机，发现集群状态是正常的 (node 是 ready 状态)，然而 `calico-kube-controllers` `metric-server` `nfs-provisiner` 等功能组件陷入了 `CrashLoopBackOff` 状态，报错基本上都是无法连接到 `api-server`
+出现在我的虚拟机测试集群上，挂起虚拟机过段时间后重新启动虚拟机，发现集群状态是正常的 (node 是 ready 状态)，然而 `calico-kube-controllers` `metric-server` `nfs-provisiner` 等功能组件陷入了 `CrashLoopBackOff` 状态，报错基本上都是无法连接到 `api-server`
 
 但是 `calicoctl` 看到 calico 集群是没什么问题的，之前遇到几次都是暴躁重启 docker 解决的，后面发现重启 calico 相关容器就可以了，具体原因还没找到，估计与 vmware 虚拟机挂起操作有关。
 
@@ -164,11 +160,11 @@ bird: Netlink: Network is down
 kubectl delete pods -n kube-system -l "k8s-app in (calico-node, calico-kube-controllers)"
 ```
 
-# kubectl 命令
+# 6 kubectl 命令
 
 一些常用命令
 
-```textile
+```plaintext
 # 查看某个资源的详细信息
 kubectl describe <type> <name> -n <namespace>
 # 查看pod的日志
@@ -177,7 +173,7 @@ kubectl logs <pod> -n <namespace>
 kubectl api-versions
 ```
 
-## get
+## 6.1 get
 
 options:
 
@@ -204,7 +200,7 @@ kubectl get pod <podname> -n <namespace>
 kubectl get events --field-selector involvedObject.name=demo-probes
 ```
 
-## create
+## 6.2 create
 
 ```bash
 kubectl create <resource> [Options]
@@ -234,7 +230,7 @@ NAME             TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
 service/my-dep   NodePort   10.110.205.138   <none>        80:31890/TCP   17s
 ```
 
-## expose
+## 6.3 expose
 
 ```bash
 kubectl expose deployment my-dep --port=80 --target-port=8080 --type=NodePort -n test
@@ -242,7 +238,7 @@ kubectl expose deployment my-dep --port=80 --target-port=8080 --type=NodePort -n
 # --target-port 表示后端镜像实际提供服务的端口
 ```
 
-## label
+## 6.4 label
 
 ```bash
 kubectl label nodes [node] key=value # 打lable, value可以是空
@@ -251,13 +247,13 @@ kubectl get nodes -l key=value # 根据label筛选
 kubectl get nodes --show-labesl # 显示资源的所有标签
 ```
 
-## run
+## 6.5 run
 
 ```bash
 kubectl run -it  test --image busybox --rm -- ping 10.244.107.207
 ```
 
-# calicoctl
+# 7 calicoctl
 
 [下载地址](https://github.com/projectcalico/calicoctl/releases)
 
@@ -292,7 +288,7 @@ IPv4 BGP status
 +--------------+-------------------+-------+----------+-------------+
 ```
 
-# namespace
+# 8 namespace
 
 k8s 与 docker 的 namespace 不同
 
@@ -301,33 +297,32 @@ docker 中的 namespace 用于容器间的资源隔离
 k8s 中的 namespace 用于
 
 - k8s 的抽象资源间的资源隔离，比如 pods、控制器、service 等
-
 - 资源隔离后，对这一组资源进行权限控制
 
-# yaml 编写
+# 9 yaml 编写
 
 通过创建资源获取 yaml
 
-```textile
+```bash
 kubectl create deployment web --image=nginx:1.19 --dry-run=client -o yaml > deploy.yaml
 ```
 
 通过已有资源获取 yaml
 
-```textile
+```bash
 kubectl get deployment nginx-deployment -o yaml > deploy2.yaml
 ```
 
 查看 api 中的资源及解释
 
-```textile
+```bash
 kubectl explain pods.spec.container
 kubectl explain deployment
 ```
 
 yaml 报错排查
 
-```textile
+```plaintext
 error: error parsing pod-configmap.yaml: error converting YAML to JSON: yaml: line 19: did not find expected '-' indicator
 ```
 
@@ -346,3 +341,5 @@ ports:
 ports:
 - port: 80
 ```
+
+以上

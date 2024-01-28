@@ -1,8 +1,8 @@
 ---
 title: "shell | 检测网站存活并自动钉钉告警" 
 date: 2023-12-07
-lastmod: 2023-12-07
-tags: 
+lastmod: 2024-01-28
+tags:
   - shell
 keywords:
   - shell
@@ -74,3 +74,5 @@ wait
 
 exit 0
 ```
+
+以上

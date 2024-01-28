@@ -1,8 +1,8 @@
 ---
-title: "wordpress加载图片失败" 
+title: "wordpress | 加载图片失败" 
 date: 2021-07-01
-lastmod: 2024-01-10
-tags: 
+lastmod: 2024-01-28
+tags:
   - wordpress
   - 博客搭建
 keywords:
@@ -14,7 +14,7 @@ cover:
     image: "https://image.lvbibir.cn/blog/wordpress.jpg" 
 ---
 
-# 现象
+# 1 现象
 
 - 博客加载不出来我在七牛云的图片资源
 - 使用浏览器直接访问图片 url 却是可以成功的
@@ -32,7 +32,7 @@ cover:
 
 ![image-20210722141709373](https://image.lvbibir.cn/blog/image-20210722141709373.png)
 
-# 排查
+# 2 排查
 
 1、由于浏览器直接访问七牛云图床的 url 地址是可以访问的，证明地址并没错，有没有可能是 referer 防盗链的配置问题
 
@@ -54,6 +54,8 @@ cover:
 
 访问成功了！
 
-# 解决
+# 3 解决
 
 给图床服务器安装 ssl 证书，开启 https 访问，参考：[typora-picgo-qiniu-upload-image](https://www.lvbibir.cn/posts/blog/typora-picgo-qiniu-upload-image/)
+
+以上

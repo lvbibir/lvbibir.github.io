@@ -1,8 +1,8 @@
 ---
-title: "traefik (四) 服务(TraefikService)" 
+title: "traefik (四) TraefikService 服务" 
 date: 2023-04-19
-lastmod: 2023-04-19
-tags: 
+lastmod: 2024-01-28
+tags:
   - traefik
   - kubernetes
 keywords:
@@ -15,19 +15,19 @@ cover:
     image: "https://image.lvbibir.cn/blog/traefik.png"
 ---
 
-# 0. 前言
+# 0 前言
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`， `traefik-2.9.10`
 
 示例中用到的 `myapp` 和 `secret` 资源请查看系列文章第二篇中的演示
 
-# 1. 简介
+# 1 简介
 
 traefik 的路由规则就可以实现 4 层和 7 层的基本负载均衡操作，使用 [IngressRoute](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroute) [IngressRouteTCP](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressroutetcp) [IngressRouteUDP](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressrouteudp) 资源即可。但是如果想要实现 `加权轮询、流量复制` 等高级操作，traefik 抽象出了一个 [TraefikService](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-traefikservice) 资源。此时整体流量走向为：外部流量先通过 entryPoints 端口进入 traefik，然后由 IngressRoute/IngressRouteTCP/IngressRouteUDP 匹配后进入 `TraefikService`，在 `TraefikService` 这一层实现加权轮循和流量复制，最后将请求转发至 kubernetes 的 service。
 
 除此之外 traefik 还支持 7 层的粘性会话、健康检查、传递请求头、响应转发、故障转移等操作。
 
-# 2. 灰度发布 (加权轮询)
+# 2 灰度发布 (加权轮询)
 
 [官方文档](https://doc.traefik.io/traefik/routing/services/#weighted-round-robin-service)
 
@@ -84,7 +84,7 @@ Hello MyApp | Version: v2 | <a href="hostname.html">Pod Name</a>
 Hello MyApp | Version: v2 | <a href="hostname.html">Pod Name</a>
 ```
 
-# 3. 会话保持 (粘性会话)
+# 3 会话保持 (粘性会话)
 
 [官方文档](https://doc.traefik.io/traefik/routing/services/#servers)
 
@@ -148,7 +148,7 @@ Hello MyApp | Version: v1 | <a href="hostname.html">Pod Name</a>
 Hello MyApp | Version: v1 | <a href="hostname.html">Pod Name</a>
 ```
 
-# 4. 流量复制
+# 4 流量复制
 
 [官方文档](https://doc.traefik.io/traefik/routing/services/#mirroring-service)
 
@@ -206,3 +206,5 @@ Hello MyApp | Version: v1 | <a href="hostname.html">Pod Name</a>
 10.244.36.64 - - [20/Apr/2023:07:04:33 +0000] "GET / HTTP/1.1" 200 65 "-" "curl/7.29.0" "1.1.1.1"
 10.244.36.64 - - [20/Apr/2023:07:04:43 +0000] "GET / HTTP/1.1" 200 65 "-" "curl/7.29.0" "1.1.1.1"
 ```
+
+以上

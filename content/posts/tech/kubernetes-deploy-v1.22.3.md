@@ -1,19 +1,19 @@
 ---
-title: "kubernetes | kubeadm 搭建 K8s集群v1.22.3" 
+title: "kubernetes | kubeadm 搭建 K8s 集群 v1.22.3" 
 date: 2021-10-01
-lastmod: 2023-04-04
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
 keywords:
   - linux
   - centos
   - kubernetes
-description: "介绍kubernetes，并在centos中使用kubeadm快速搭建k8s集群v1.22.3、安装cni组件" 
+description: "介绍 kubernetes, 并在 centos 中使用 kubeadm 快速搭建 k8s 集群 v1.22.3、安装cni组件" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
 
-# Kubernetes 概述
+# 1 Kubernetes 概述
 
 kubernetes 是什么
 
@@ -25,44 +25,29 @@ kubernetes 是什么
 Kubernetes 特性
 
 - 自我修复
-
-  在节点故障时重新启动失败的容器，替换和重新部署，保证预期的副本数量；杀死健康检查失败的容器，并且在未准备好之前不会处理客户端请求，确保线上服务不中断。
-
+    - 在节点故障时重新启动失败的容器，替换和重新部署，保证预期的副本数量；杀死健康检查失败的容器，并且在未准备好之前不会处理客户端请求，确保线上服务不中断。
 - 伸缩性
-
-  使用命令、UI 或者基于 CPU 使用情况自动快速扩容和缩容应用程序实例，保证应用业务高峰并发时的高可用性；业务低峰时回收资源，以最小成本运行服务。
-
+    - 使用命令、UI 或者基于 CPU 使用情况自动快速扩容和缩容应用程序实例，保证应用业务高峰并发时的高可用性；业务低峰时回收资源，以最小成本运行服务。
 - 自动部署和回滚
-
-  K8S 采用滚动更新策略更新应用，一次更新一个 Pod，而不是同时删除所有 Pod，如果更新过程中出现问题，将回滚更改，确保升级不受影响业务。
-
+    - K8S 采用滚动更新策略更新应用，一次更新一个 Pod，而不是同时删除所有 Pod，如果更新过程中出现问题，将回滚更改，确保升级不受影响业务。
 - 服务发现和负载均衡
-
-  K8S 为多个容器提供一个统一访问入口（内部 IP 地址和一个 DNS 名称），并且负载均衡关联的所有容器，使得用户无需考虑容器 IP 问题。
-
+    - K8S 为多个容器提供一个统一访问入口（内部 IP 地址和一个 DNS 名称），并且负载均衡关联的所有容器，使得用户无需考虑容器 IP 问题。
 - 机密和配置管理
-
-  管理机密数据和应用程序配置，而不需要把敏感数据暴露在镜像里，提高敏感数据安全性。并可以将一些常用的配置存储在 K8S 中，方便应用程序使用。
-
+    - 管理机密数据和应用程序配置，而不需要把敏感数据暴露在镜像里，提高敏感数据安全性。并可以将一些常用的配置存储在 K8S 中，方便应用程序使用。
 - 存储编排
-
-  挂载外部存储系统，无论是来自本地存储，公有云（如 AWS），还是网络存储（如 NFS、GlusterFS、Ceph）都作为集群资源的一部分使用，极大提高存储使用灵活性。
-
+    - 挂载外部存储系统，无论是来自本地存储，公有云（如 AWS），还是网络存储（如 NFS、GlusterFS、Ceph）都作为集群资源的一部分使用，极大提高存储使用灵活性。
 - 批处理
-
-  提供一次性任务，定时任务；满足批量数据处理和分析的场景。
+    - 提供一次性任务，定时任务；满足批量数据处理和分析的场景。
 
 Kubeadm 概述
 
 - `kubeadm` 是 `Kubernetes` 项目自带的及集群构建工具，负责执行构建一个最小化的可用集群以及将其启动等的必要基本步骤，`kubeadm` 是 `Kubernetes` 集群全生命周期的管理工具，可用于实现集群的部署、升级、降级及拆除。`kubeadm` 部署 `Kubernetes` 集群是将大部分资源以 `pod` 的方式运行，例如（`kube-proxy`、`kube-controller-manager`、`kube-scheduler`、`kube-apiserver`、`flannel`) 都是以 `pod` 方式运行。
-
 - `Kubeadm` 仅关心如何初始化并启动集群，余下的其他操作，例如安装 `Kubernetes Dashboard`、监控系统、日志系统等必要的附加组件则不在其考虑范围之内，需要管理员自行部署。
-
 - `Kubeadm` 集成了 `Kubeadm init` 和 `kubeadm join` 等工具程序，其中 `kubeadm init` 用于集群的快速初始化，其核心功能是部署 Master 节点的各个组件，而 `kubeadm join` 则用于将节点快速加入到指定集群中，它们是创建 `Kubernetes` 集群最佳实践的“快速路径”。另外，`kubeadm token` 可于集群构建后管理用于加入集群时使用的认证令牌（`token`)，而 `kubeadm reset` 命令的功能则是删除集群构建过程中生成的文件以重置回初始状态。
 
 ![img](https://image.lvbibir.cn/blog/828019-20201006171931291-1034333699.png)
 
-# 1. 环境准备
+# 2 环境准备
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
@@ -74,7 +59,7 @@ Kubeadm 概述
 | k8s-node2 | 1.1.1.2 |
 | k8s-node3 | 1.1.1.3 |
 
-## 1.1 基础配置
+## 2.1 基础配置
 
 ```bash
 # 关闭防火墙
@@ -112,7 +97,7 @@ yum install ntpdate -y
 ntpdate time.windows.com
 ```
 
-## 1.2 安装 Docker
+## 2.2 安装 Docker
 
 Kubernetes 默认 CRI（容器运行时）为 Docker，因此先安装 Docker。
 
@@ -142,7 +127,7 @@ systemctl enable docker && systemctl start docker
 docker info
 ```
 
-## 1.3 kubeadm/kubelet/kubectl
+## 2.3 kubeadm/kubelet/kubectl
 
 添加阿里云 YUM 软件源
 
@@ -166,13 +151,11 @@ systemctl enable kubelet
 systemctl start kubelet
 ```
 
-# 2. 部署 Kubernetes Master
+# 3 部署 Kubernetes Master
 
-<https://kubernetes.io/zh/docs/reference/setup-tools/kubeadm/kubeadm-init/#config-file>
+[官方文档 1](https://kubernetes.io/zh/docs/reference/setup-tools/kubeadm/kubeadm-init/#config-file) [官方文档 2](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#initializing-your-control-plane-node)
 
-<https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#initializing-your-control-plane-node>
-
-在 1.1.1.1（Master）执行。
+在 1.1.1.1（Master）执行
 
 ```bash
 kubeadm init \
@@ -234,9 +217,9 @@ controller-manager   Healthy   ok
 etcd-0               Healthy   {"health":"true","reason":""}
 ```
 
-# 3. 加入 Kubernetes Node
+# 4 加入 Kubernetes Node
 
-<https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-join/>
+[官方文档](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-join/)
 
 在 192.168.150.102/103（Node）执行。
 
@@ -262,7 +245,7 @@ sha256:63bca849e0e01691ae14eab449570284f0c3ddeea590f8da988c07fe2729e924
 
 或者直接命令快捷生成: `kubeadm token create --print-join-command`
 
-# 4. 部署容器网络 (cni)
+# 5 部署容器网络 (cni)
 
 Calico 是一个纯三层的数据中心网络方案，Calico 支持广泛的平台，包括 Kubernetes、OpenStack 等。
 
@@ -302,7 +285,7 @@ k8s-node2   Ready    <none>                 151m   v1.22.3
 k8s-node3   Ready    <none>                 151m   v1.22.3
 ```
 
-# 5. metric-server
+# 6 metric-server
 
 cadvisor 负责提供数据，已集成到 k8s 中
 
@@ -332,13 +315,10 @@ mv components.yaml metrics-server.yaml
         imagePullPolicy: IfNotPresent
 ```
 
-**--kubelet-insecure-tls**
-
-不验证 kubelet 自签的证书
-
-**--kubelet-preferred-address-types=InternalIP**
-
-Metrics-server 连接 cadvisor 默认通过主机名即 node 的名称进行连接，而 Metric-server 作为 pod 运行在集群中默认是无法解析的，所以这里修改成通过节点 ip 连接
+- `--kubelet-insecure-tls`
+    - 不验证 kubelet 自签的证书
+- `--kubelet-preferred-address-types=InternalIP
+    - Metrics-server 连接 cadvisor 默认通过主机名即 node 的名称进行连接，而 Metric-server 作为 pod 运行在集群中默认是无法解析的，所以这里修改成通过节点 ip 连接
 
 部署 metrics-server
 
@@ -354,7 +334,7 @@ k8s-node2   97m          4%     1047Mi          28%
 k8s-node3   98m          4%     1096Mi          29%
 ```
 
-# 6. 测试 kubernetes 集群
+# 7 测试 kubernetes 集群
 
 - 验证 Pod 工作
 - 验证 Pod 网络通信
@@ -379,7 +359,7 @@ service/nginx        NodePort    10.102.188.108   <none>        80:30954/TCP   2
 
 访问地址：<http://1.1.1.1:30954>，端口是固定的，ip 可以是集群内任一节点的 ip
 
-# 7. 部署 Dashboard
+# 8 部署 Dashboard
 
 ```bash
 wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.4.0/aio/deploy/recommended.yaml
@@ -419,7 +399,7 @@ kubernetes-dashboard-7f99b75bf4-89cds        1/1     Running   0          13m
 
 创建 service account 并绑定默认 cluster-admin 管理员集群角色：
 
-```textile
+```bash
 # 创建用户
 kubectl create serviceaccount dashboard-admin -n kube-system
 # 用户授权
@@ -429,3 +409,5 @@ kubectl describe secrets -n kube-system $(kubectl -n kube-system get secret | aw
 ```
 
 使用输出的 token 登录 Dashboard。
+
+以上

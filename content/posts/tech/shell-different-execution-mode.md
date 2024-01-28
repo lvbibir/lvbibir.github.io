@@ -1,8 +1,8 @@
 ---
 title: "shell | 不同执行方式的区别" 
 date: 2022-06-01
-lastmod: 2022-06-01
-tags: 
+lastmod: 2024-01-28
+tags:
   - shell
 keywords:
   - shell
@@ -10,6 +10,14 @@ description: ""
 cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 
 ---
+
+# 0 前言
+
+本文参考以下链接:
+
+- [详解 shell 中 source、sh、bash、./ 执行脚本的区别](https://blog.csdn.net/houxiaoni01/article/details/105161356)
+
+# 1 不同的执行方式
 
 shell 脚本通常有 `sh filename`、`bash filename`、`./filename`、`source filename` 这四种执行方式
 
@@ -77,7 +85,7 @@ lvbibir
 [root@lvbibir ~]#
 ```
 
-# 其他问题
+# 2 其他问题
 
 关于是否在子 bash 环境运行的区别出了变量问题还会存在一些其他影响，如下测试
 
@@ -145,6 +153,4 @@ echo $pid
 29426
 ```
 
-# 参考
-
-<https://blog.csdn.net/houxiaoni01/article/details/105161356>
+以上

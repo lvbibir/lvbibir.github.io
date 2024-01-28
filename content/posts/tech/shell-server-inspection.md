@@ -1,8 +1,8 @@
 ---
 title: "shell | 服务器巡检脚本" 
 date: 2021-09-01
-lastmod: 2021-09-01
-tags: 
+lastmod: 2024-01-28
+tags:
   - shell
 keywords:
   - shell
@@ -643,3 +643,5 @@ echo -e "\033[44;37m 主机巡检结果存放在：$RESULTFILE   \033[0m"
 #curl -F "filename=@$RESULTFILE" "$uploadHostDailyCheckApi" 2>/dev/null
 cat $RESULTFILE
 ```
+
+以上

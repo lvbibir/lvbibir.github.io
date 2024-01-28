@@ -1,7 +1,7 @@
 ---
 title: "wsl | win10 安装 wsl2"
 date: 2024-01-10
-lastmod: 2024-01-23
+lastmod: 2024-01-28
 tags:
   - wsl
 keywords:
@@ -12,16 +12,16 @@ cover:
     image: "https://image.lvbibir.cn/blog/logo-wsl.png"
 ---
 
-# 0.前言
-
-今天不小心把我电脑的 wsl 误删了, 刚好重装记录一下安装步骤
+# 0 前言
 
 本文内容参考以下链接:
 
 - <https://zhuanlan.zhihu.com/p/466001838>
 - <https://learn.microsoft.com/zh-cn/windows/wsl/install-manual>
 
-# 1.安装
+今天不小心把我电脑的 wsl 误删了, 刚好重装记录一下安装步骤
+
+# 1 安装
 
 ## 1.1 打开系统功能
 

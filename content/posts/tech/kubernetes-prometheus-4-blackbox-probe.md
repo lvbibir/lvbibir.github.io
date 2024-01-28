@@ -1,8 +1,8 @@
 ---
 title: "prometheus (四) 黑盒监控" 
 date: 2023-04-27
-lastmod: 2023-04-27
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
   - prometheus
 keywords:
@@ -13,11 +13,11 @@ cover:
     image: "https://image.lvbibir.cn/blog/prometheus.png"
 ---
 
-# 0. 前言
+# 0 前言
 
 基于 `centos7.9` `docker-ce-20.10.18` `kubelet-1.22.3-0` `kube-prometheus-0.10` `prometheus-v2.32.1`
 
-# 1. 简介
+# 1 简介
 
 [Probe 的 API 文档](https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Probe)
 
@@ -60,7 +60,7 @@ Probe 支持 `staticConfig` 和 `ingress` 两种配置方式, 使用 ingress 时
 
 ![3526046601-63e4a22006154_fix732](https://image.lvbibir.cn/blog/3526046601-63e4a22006154_fix732.png)
 
-# 2. probe 示例
+# 2 probe 示例
 
 ## 2.1 staticConfig
 
@@ -358,7 +358,7 @@ kind: ConfigMap
 
 ![image-20230429150029851](https://image.lvbibir.cn/blog/image-20230429150029851.png)
 
-# 3. additionalScrapeConfigs
+# 3 additionalScrapeConfigs
 
 目前 prometheus operator 只支持 ingress 方式的自动发现, 而且自定义配置其实不是很多, 更推荐使用 `additionalScrapeConfigs` 静态配置的方式实现
 
@@ -514,3 +514,5 @@ kubectl apply -f additional-scrape-configs.yaml
 查看监测状态, 与预期配置一样
 
 ![image-20230429150518709](https://image.lvbibir.cn/blog/image-20230429150518709.png)
+
+以上

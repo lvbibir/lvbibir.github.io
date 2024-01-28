@@ -1,8 +1,8 @@
 ---
-title: "shell | 检索某url中所有文件的内容" 
+title: "shell | 检索某 url 中所有文件的内容" 
 date: 2022-07-01
-lastmod: 2022-07-01
-tags: 
+lastmod: 2024-01-28
+tags:
   - shell
 keywords:
   - shell
@@ -11,13 +11,13 @@ cover:
     image: "https://image.lvbibir.cn/blog/shell.png" 
 ---
 
-# 前言
+# 0 前言
 
 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的。
 
 可以通过检索 kernel.org 中所有内核版本的 ChangeLog 文件中是否包含该 commit 来判断漏洞影响的内核版本（仅针对 linux 的 kernel 相关的漏洞）
 
-# 脚本
+# 1 脚本
 
 ```bash
 #!/bin/bash
@@ -51,3 +51,5 @@ done < ./list_$version\_cut
 
 echo -e "\033[32m脚本执行完成，结果已保存至当前目录的 result_$version \033[0m"
 ```
+
+以上

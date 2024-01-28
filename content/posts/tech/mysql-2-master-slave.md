@@ -1,8 +1,8 @@
 ---
 title: "mysql (二) 主从复制原理 GTID 并行复制" 
 date: 2022-05-03
-lastmod: 2022-05-03
-tags: 
+lastmod: 2024-01-28
+tags:
   - mysql
 keywords:
   - mysql
@@ -11,17 +11,17 @@ cover:
     image: "https://image.lvbibir.cn/blog/mysql.png" 
 ---
 
-# 0. 前言
+# 0 前言
+
+本文参考以下链接:
+
+- [【MySQL】主从复制实现原理详解](https://blog.nowcoder.net/n/b90c959437734a8583fddeaa6d102e43)
 
 基于 `centos-7.9` `mysql-5.7.42`
 
 mysql 安装参考 [mysql 系列文章](https://www.lvbibir.cn/tags/mysql)
 
-参考:
-
-- [【MySQL】主从复制实现原理详解](https://blog.nowcoder.net/n/b90c959437734a8583fddeaa6d102e43)
-
-# 1. 主从复制原理
+# 1 主从复制原理
 
 主从复制涉及到 3 个线程, 4 个文件
 
@@ -66,7 +66,7 @@ slave:
 - SQL 线程会按照上次的位置点回放最新的 relaylog, 再次更新 relaylog.info 信息
 - slave 会自动 purge 应用过的 relaylog 进行定期清理
 
-# 2. 主从复制模式
+# 2 主从复制模式
 
 mysql 默认一般为异步同步数据
 
@@ -82,7 +82,7 @@ mysql 默认一般为异步同步数据
 
 master 不会主动推送 binlog 到 slave, master 在执行完客户端提交的事务后会立即将结果返给给客户端, 并不关心 slave 是否已经接收并处理, 这样就会有一个问题, master 如果崩溃掉了, 此时 master 上已经提交的事务可能并没有传到 slave 上, 如果此时, 强行将 slave 提升为 master, 可能导致新 master 节点上的数据不完整.
 
-# 3. 主从复制方式
+# 3 主从复制方式
 
 MySQL 主从复制有三种方式: 基于 SQL 语句的复制 (statement-based replication, SBR), 基于行的复制 (row-based replication, RBR), 混合模式复制 (mixed-based replication, MBR). 对应的 bin-log 文件的格式也有三种: STATEMENT, ROW, MIXED
 
@@ -104,7 +104,7 @@ mysql master 将 SQL 语句分解为基于 Row 更改的语句并记录在 bin-l
 
 MySQL NDB cluster 7.3 和 7.4 使用的 MBR. 是以上两种模式的混合, 对于一般的复制使用 STATEMENT 模式保存到 bin-log, 对于 STATEMENT 模式无法复制的操作则使用 ROW 模式来保存, MySQL 会根据执行的 SQL 语句选择日志保存方式.
 
-# 4. GTID 复制
+# 4 GTID 复制
 
 在原来基于日志的复制中, slave 需要告知 master 要从哪个偏移量进行增量同步, 如果指定错误会造成数据的遗漏, 从而造成数据的不一致.
 
@@ -114,7 +114,7 @@ GTID 是由 server_uuid 和事物 id 组成, 格式为: GTID=server_uuid:transac
 
 master 更新数据时, 会在事务前产生 GTID, 一起记录到 binlog 日志中. slave 的 IO 线程将变更的 binlog 写入到本地的 relaylog 中. SQL 线程从 relaylog 中获取 GTID, 然后对比本地 binlog 是否有记录 (所以 slave 必须要开启 binlog, 并且将 `log_slave_updates` 设置为 ON). 如果有记录，说明该 GTID 的事务已经执行, slave 会忽略. 如果没有记录, slave 就会从 relaylog 中执行该 GTID 的事务, 并记录到 binlog. 在解析过程中会判断是否有主键, 如果没有就用二级索引, 如果有就用全部扫描.
 
-# 5. 并行复制
+# 5 并行复制
 
 master 大多数情况下都是多线程多客户端去写, 而 slave 只有一个 SQL 线程进行写, 无法避免地会出现主从复制的延迟问题, 并行复制可以指定线程数量, 从而提高 slave 写的速度.
 
@@ -140,3 +140,5 @@ start slave
 # 查看线程数
 show full processlist;
 ```
+
+以上

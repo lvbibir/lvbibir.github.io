@@ -1,31 +1,31 @@
 ---
-title: "cloud-init自动修改ssh配置文件" 
+title: "troubleshooting | 安装 cloud-init 后导致 ssh 连接失败" 
 date: 2021-12-01
-lastmod: 2021-12-01
-tags: 
+lastmod: 2024-01-28
+tags:
   - openstack
-  - 故障处理
+  - troubleshooting
 keywords:
   - openstack
   - cloud-init
   - ssh
-  - 故障处理
+  - troubleshooting
 description: "" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
-# 前言
+# 0 前言
 
 在 openEuler20.03 (LTS-SP1) 系统上进行一些测试，发现某个东西会自动修改 ssh 配置文件导致系统无法通过密码登录，最后排查是由于安装了 cloud-init 导致的。
 
 ![image-20211217152941463](https://image.lvbibir.cn/blog/image-20211217152941463.png)
 
-以下是大致的排查思路
+# 排查思路
 
 出现这个问题前做的操作是安装了一些项目组同事指定的包，问题就应该出在这些包上
 
-```textile
+```bash
 yum install -y telnet rsync ntpdate zip unzip libaio dos2unix sos vim vim-enhanced net-tools man ftp lrzsz psmisc gzip network-scripts cloud-init cloud-utils-growpart tar libnsl authselect-compat
 ```
 
@@ -33,7 +33,7 @@ yum install -y telnet rsync ntpdate zip unzip libaio dos2unix sos vim vim-enhanc
 
 直接检索这两个包的所有文件中的配置，是否与 PasswordAuthentication 有关
 
-```textile
+```bash
 [root@localhost ~]# grep -nr PasswordAuthentication `rpm -ql cloud-utils-growpart`
 [root@localhost ~]# grep -nr PasswordAuthentication `rpm -ql cloud-init`
 ```
@@ -44,7 +44,7 @@ yum install -y telnet rsync ntpdate zip unzip libaio dos2unix sos vim vim-enhanc
 
 查看该文件
 
-```textile
+```bash
 [root@localhost ~]# vim +98 /usr/lib/python3.7/site-packages/cloudinit/config/cc_set_passwords.py
 ```
 
@@ -65,7 +65,7 @@ python 引用的模块路径如下，否则会抛出错误
 
 并没有在同级目录下
 
-```textile
+```bash
 [root@localhost ~]# ll /usr/lib/python3.7/site-packages/cloudinit/config/ | grep cloudinit
 ```
 
@@ -112,3 +112,5 @@ cfg.get() 这个函数 get 的东西是 `/etc/cloud/cloud.cfg` 配置文件下�
 3. 上述两个函数执行完后 cfg_val 的值最终为 no
 4. 调用 update_ssh_config({cfg_name: cfg_val}) 函数，cfg_name=PasswordAuthentication，cfg_val=no
 5. 即将 sshd 的配置文件的 PasswordAuthentication 值改为 no
+
+以上

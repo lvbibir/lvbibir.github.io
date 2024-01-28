@@ -1,43 +1,40 @@
 ---
-title: "kolla-ansible 部署 Train版 openstack（all-in-one）" 
+title: "kolla-ansible 部署 openstack (Train) (all-in-one)" 
 date: 2021-10-01
-lastmod: 2021-10-01
-tags: 
+lastmod: 2024-01-28
+tags:
   - openstack
 keywords:
   - linux
   - openstack
   - ansible
-description: "介绍cenots中使用kolla-ansible+docker的方式快速部署openstack(all-in-one)单节点" 
+description: "介绍 cenots 中使用 kolla-ansible+docker 的方式快速部署 openstack(all-in-one) 单节点" 
 cover:
     image: "https://image.lvbibir.cn/blog/20200613094347844.png" 
 ---
 
-# kolla ansible 简介
+# 0 前言
+
+本文参考以下链接:
+
+- [官方文档](https://docs.openstack.org/kolla-ansible/train/reference/index.html)
+- [kolla-ansible 部署 all-in-one 单节点 openstack](https://blog.csdn.net/networken/article/details/106728002)
+- [kolla-ansible 添加新节点 (nova 和 cinder 服务)](https://blog.csdn.net/qq_33316576/article/details/107457111)
+- [kolla ansible 部署 openstack 高可用集群](https://blog.csdn.net/networken/article/details/106745167)
+
+# 1 kolla ansible 简介
 
 kolla 的使命是为 openstack 云平台提供生产级别的、开箱即用的交付能力。kolla 的基本思想是一切皆容器，将所有服务基于 Docker 运行，并且保证一个容器只跑一个服务（进程），做到最小粒度的运行 docker。
 
 kolla 要实现 openetack 部署总体上分为两步，第一步是制作 docker 镜像，第二步是编排部署。因此，kolla 项目又被分为两个小项目：kolla、kolla-ansible 。
 
-kolla-ansible 项目
+[kolla-ansible 项目](https://github.com/openstack/kolla-ansible) [kolla 项目](https://tarballs.opendev.org/openstack/kolla/) [dockerhub 镜像地址](https://hub.docker.com/u/kolla/)
 
-<https://github.com/openstack/kolla-ansible>
+# 2 部署 openstack 集群
 
-kolla 项目
+## 2.1 安装环境准备
 
-<https://tarballs.opendev.org/openstack/kolla/>
-
-dockerhub 镜像地址
-
-<https://hub.docker.com/u/kolla/>
-
-# 部署 openstack 集群
-
-## 安装环境准备
-
-官方部署文档：
-
-<https://docs.openstack.org/kolla-ansible/train/user/quickstart.html>
+[官方部署文档](https://docs.openstack.org/kolla-ansible/train/user/quickstart.html)
 
 本次部署 train 版 all-in-one 单节点，使用一台 centos7.8 minimal 节点进行部署，该节点同时作为控制节点、计算节点、网络节点和 cinder 存储节点使用，同时也是 kolla ansible 的部署节点。
 
@@ -49,7 +46,7 @@ kolla 安装节点要求：
 
 如果是 vmware workstation 环境，勾选处理器选项的虚拟化引擎相关功能，否则后面需要配置 `nova_compute_virt_type=qemu` 参数，这里选择勾选，跳过以下步骤。
 
-```textile
+```bash
 cat /etc/kolla/globals.yml
 nova_compute_virt_type: "qemu"
 
@@ -66,11 +63,9 @@ kolla 的安装要求目标机器至少两块网卡，本次安装使用 2 块�
 > ens32，NAT 模式，管理网络，正常配置静态 IP 即可。租户网络与该网络复用，租户 vm 网络不单独创建网卡
 > ens34，桥接模式，外部网络，无需配置 IP 地址，这个其实是让 neutron 的 br-ex 绑定使用，虚拟机通过这块网卡访问外网。
 
-ens34 网卡配置参考：
+ens34 网卡 [配置参考](https://docs.openstack.org/install-guide/environment-networking-controller.html)
 
-<https://docs.openstack.org/install-guide/environment-networking-controller.html>
-
-```textile
+```bash
 cat > /etc/sysconfig/network-scripts/ifcfg-ens34 <<EOF
 NAME=ens34
 DEVICE=ens34
@@ -85,35 +80,35 @@ nmcli con reload && nmcli con up ens34
 
 如果启用 cinder 还需要额外添加磁盘，这里以添加一块/dev/sdb 磁盘为例，创建为物理卷并加入卷组。
 
-```textile
+```bash
 pvcreate /dev/sdb
 vgcreate cinder-volumes /dev/sdb
 ```
 
 注意卷组名称为 cinder-volumes，默认与后面的 globals.yml 中定义一致。
 
-```textile
+```bash
 [root@kolla ~]# cat /etc/kolla/globals.yml | grep cinder_volume_group
 #cinder_volume_group: "cinder-volumes"
 ```
 
-## 部署 kolla ansible
+## 2.2 部署 kolla ansible
 
 配置主机名,kolla 预检查时 rabbitmq 可能需要能够进行主机名解析
 
-```textile
+```bash
 hostnamectl set-hostname kolla
 ```
 
 安装依赖
 
-```textile
+```bash
 yum install -y python-devel libffi-devel gcc openssl-devel libselinux-python python2-pip  python-pbr epel-release ansible
 ```
 
 配置阿里云 pip 源，否则 pip 安装时会很慢
 
-```textile
+```bash
 mkdir ~/.pip
 cat > ~/.pip/pip.conf << EOF 
 [global]
@@ -124,9 +119,9 @@ EOF
 
 安装 kolla-ansible
 
-kolla 版本与 openstack 版本对应关系：<https://releases.openstack.org/teams/kolla.html>
+kolla 版本与 openstack [版本对应关系](https://releases.openstack.org/teams/kolla.html)
 
-```textile
+```bash
 pip install setuptools==22.0.5
 pip install pip==20.3.4
 pip install wheel
@@ -135,7 +130,7 @@ pip install kolla-ansible==9.1.0 --ignore-installed PyYAML
 
 复制 kolla-ansible 配置文件到当前环境
 
-```textile
+```bash
 mkdir -p /etc/kolla
 chown $USER:$USER /etc/kolla
 
@@ -146,7 +141,7 @@ cp /usr/share/kolla-ansible/ansible/inventory/* .
 
 修改 ansible 配置文件
 
-```textile
+```bash
 cat << EOF | sed -i '/^\[defaults\]$/ r /dev/stdin' /etc/ansible/ansible.cfg
 host_key_checking=False
 pipelining=True
@@ -156,25 +151,25 @@ EOF
 
 默认有 all-in-one 和 multinode 两个 inventory 文件，这里使用 all-in-one，来规划集群角色，配置默认即可
 
-```textile
+```bash
 [root@kolla ~]# cat all-in-one | more
 ```
 
 检查 inventory 配置是否正确，执行：
 
-```textile
+```bash
 ansible -i all-in-one all -m ping
 ```
 
 生成 openstack 组件用到的密码，该操作会填充/etc/kolla/passwords.yml，该文件中默认参数为空。
 
-```textile
+```bash
 kolla-genpwd
 ```
 
 修改 keystone_admin_password，可以修改为自定义的密码方便后续 horizon 登录，这里改为 kolla。
 
-```textile
+```bash
 $ sed -i 's#keystone_admin_password:.*#keystone_admin_password: kolla#g' /etc/kolla/passwords.yml 
 
 $ cat /etc/kolla/passwords.yml | grep keystone_admin_password
@@ -183,7 +178,7 @@ keystone_admin_password: kolla
 
 修改全局配置文件 globals.yml，该文件用来控制安装哪些组件，以及如何配置组件，由于全部是注释，这里直接追加进去，也可以逐个找到对应项进行修改。
 
-```textile
+```bash
 cp /etc/kolla/globals.yml{,.bak}
 
 cat >> /etc/kolla/globals.yml <<EOF
@@ -213,24 +208,24 @@ EOF
 
 参数说明：
 
-> kolla_base_distro: kolla 镜像基于不同 linux 发型版构建，主机使用 centos 这里对应使用 centos 类型的 docker 镜像即可。
-> kolla_install_type: kolla 镜像基于 binary 二进制和 source 源码两种类型构建，实际部署使用 binary 即可。
-> openstack_release: openstack 版本可自定义，会从 dockerhub 拉取对应版本的镜像
-> kolla_internal_vip_address: 单节点部署 kolla 也会启用 haproxy 和 keepalived，方便后续扩容为高可用集群，该地址是 ens32 网卡网络中的一个可用 IP。
-> docker_registry: 默认从 dockerhub 拉取镜像，也可以本地搭建仓库，提前推送镜像上去。
-> docker_namespace: 阿里云 kolla 镜像仓库所在的命名空间，dockerhub 官网默认是 kolla。
-> network_interface: 管理网络的网卡
-> neutron_external_interface: 外部网络的网卡
-> neutron_plugin_agent: 默认启用 openvswitch
-> enable_neutron_provider_networks: 启用外部网络
-> enable_cinder: 启用 cinder
-> enable_cinder_backend_lvm: 指定 cinder 后端存储为 lvm
+- kolla_base_distro: kolla 镜像基于不同 linux 发型版构建，主机使用 centos 这里对应使用 centos 类型的 docker 镜像即可。
+- kolla_install_type: kolla 镜像基于 binary 二进制和 source 源码两种类型构建，实际部署使用 binary 即可。
+- openstack_release: openstack 版本可自定义，会从 dockerhub 拉取对应版本的镜像
+- kolla_internal_vip_address: 单节点部署 kolla 也会启用 haproxy 和 keepalived，方便后续扩容为高可用集群，该地址是 ens32 网卡网络中的一个可用 IP。
+- docker_registry: 默认从 dockerhub 拉取镜像，也可以本地搭建仓库，提前推送镜像上去。
+- docker_namespace: 阿里云 kolla 镜像仓库所在的命名空间，dockerhub 官网默认是 kolla。
+- network_interface: 管理网络的网卡
+- neutron_external_interface: 外部网络的网卡
+- neutron_plugin_agent: 默认启用 openvswitch
+- enable_neutron_provider_networks: 启用外部网络
+- enable_cinder: 启用 cinder
+- enable_cinder_backend_lvm: 指定 cinder 后端存储为 lvm
 
-## 部署 openstack 组件
+## 2.3 部署 openstack 组件
 
 部署 openstack
 
-```textile
+```bash
 # 预配置，安装docker、docker sdk、关闭防火墙、配置时间同步等
 kolla-ansible -i ./all-in-one bootstrap-servers
 
@@ -249,26 +244,26 @@ kolla-ansible post-deploy
 
 以上部署没有报错中断说明部署成功，所有 openstack 组件以容器方式运行，查看容器
 
-```textile
+```bash
 [root@kolla ~]# docker ps -a
 ```
 
 确认没有 Exited 等异常状态的容器
 
-```textile
+```bash
 [root@kolla ~]# docker ps -a  | grep -v Up
 ```
 
 本次部署运行了 38 个容器
 
-```textile
+```bash
 [root@localhost kolla-env]# docker ps -a | wc -l
 39
 ```
 
 查看拉取的镜像
 
-```textile
+```bash
 [root@kolla ~]# docker images | wc -l
 39
 [root@kolla ~]# docker images
@@ -280,7 +275,7 @@ kolla/centos-binary-heat-engine  train     e19de6feec32   10 months ago   1.11GB
 
 查看 cinder 使用的卷，自动创建了 lvm
 
-```textile
+```bash
 [root@kolla ~]# lsblk | grep cinder
 ├─cinder--volumes-cinder--volumes--pool_tmeta 253:3    0   20M  0 lvm  
 │ └─cinder--volumes-cinder--volumes--pool     253:5    0   19G  0 lvm  
@@ -293,7 +288,7 @@ kolla/centos-binary-heat-engine  train     e19de6feec32   10 months ago   1.11GB
 
 另外需要注意，不要在该节点安装 libvirt 等工具，这些工具安装后可能会启用 libvirtd 和 iscsid.sock 等服务，kolla 已经在容器中运行了这些服务，这些服务会调用节点上的 sock 文件，如果节点上也启用这些服务去抢占这些文件，会导致容器异常。默认 kolla 在预配置时也会主动禁用节点上的相关服务。
 
-## 安装 openStack 客户端
+## 2.4 安装 openStack 客户端
 
 > 可以直接安装到服务器上或者使用 docker 安装容器
 >
@@ -301,7 +296,7 @@ kolla/centos-binary-heat-engine  train     e19de6feec32   10 months ago   1.11GB
 
 使用 docker 容器作为客户端
 
-```textile
+```bash
 docker run -d --name client \
   --restart always \
   -v /etc/kolla/admin-openrc.sh:/admin-openrc.sh:ro \
@@ -315,7 +310,7 @@ openstack service list
 
 yum 安装 openstack 客户端
 
-```textile
+```bash
 #启用openstack存储库
 yum install -y centos-release-openstack-train
 
@@ -330,13 +325,13 @@ pip uninstall urllib3
 yum install -y python2-urllib3
 ```
 
-## 运行 cirros 实例
+## 2.5 运行 cirros 实例
 
 kolla ansible 提供了一个快速创建 cirros demo 实例的脚本/usr/share/kolla-ansible/init-runonce。
 
 脚本需要 cirros 镜像，如果网络较慢可以使用浏览器下载放在/opt/cache/files 目录下：
 
-```textile
+```bash
 wget https://github.com/cirros-dev/cirros/releases/download/0.4.0/cirros-0.4.0-x86_64-disk.img
 mkdir -p /opt/cache/files/
 mv cirros-0.4.0-x86_64-disk.img /opt/cache/files/
@@ -344,7 +339,7 @@ mv cirros-0.4.0-x86_64-disk.img /opt/cache/files/
 
 定义 init-runonce 示例脚本外部网络配置：
 
-```textile
+```bash
 #定义init-runonce示例脚本外部网络配置
 vim /usr/share/kolla-ansible/init-runonce
 EXT_NET_CIDR=${EXT_NET_CIDR:-'192.168.35/24'}
@@ -364,7 +359,7 @@ source /etc/kolla/admin-openrc.sh
 
 根据最终提示运行实例
 
-```textile
+```bash
 openstack server create \
     --image cirros \
     --flavor m1.tiny \
@@ -373,11 +368,11 @@ openstack server create \
     demo1
 ```
 
-## 访问 openstack horizon
+## 2.6 访问 openstack horizon
 
 访问 openstack horizon 需要使用 vip 地址，节点上可以看到由 keepalived 容器生成的 vip
 
-```textile
+```bash
 [root@kolla ~]# ip a |grep ens32
 2: ens32: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     inet 192.168.150.101/24 brd 192.168.150.255 scope global noprefixroute dynamic ens32
@@ -390,7 +385,7 @@ openstack server create \
 
 我这里的用户名密码为 admin/kolla，信息可以从 admin-openrc.sh 中获取
 
-```textile
+```bash
 [root@kolla ~]# cat /etc/kolla/admin-openrc.sh
 # Clear any old environment that may conflict.
 for key in $( set | awk '{FS="="}  /^OS_/ {print $1}' ); do unset $key ; done
@@ -432,42 +427,34 @@ export OS_AUTH_PLUGIN=password
 
 ![image-20211029143343691](https://image.lvbibir.cn/blog/image-20211029143343691.png)
 
-在 kolla 节点上或者在集群外部使用 SecureCRT 等 ssh 工具连接到实例。cirros 镜像默认用户密码为 cirros/gocubsgo，该镜像信息官网有介绍：
+在 kolla 节点上或者在集群外部使用 SecureCRT 等 ssh 工具连接到实例。cirros 镜像默认用户密码为 cirros/gocubsgo，该镜像信息官网有 [介绍](https://docs.openstack.org/image-guide/obtain-images.html#cirros-test)
 
-<https://docs.openstack.org/image-guide/obtain-images.html#cirros-test>
-
-```textile
+```bash
 [root@kolla ~]# ssh cirros@192.168.35.183
 cirros@192.168.35.183's password: 
 ```
 
-## 运行 centos 实例
+## 2.7 运行 centos 实例
 
-centos 官方维护有相关 cloud image，如果不需要进行定制，可以直接下载来运行实例。
+centos 官方维护有相关 cloud image，如果不需要进行定制，可以直接下载来运行实例 [参考](https://docs.openstack.org/image-guide/obtain-images.html)
 
-参考：<https://docs.openstack.org/image-guide/obtain-images.html>
-
-CentOS 官方维护的镜像下载地址：
-
-<http://cloud.centos.org/centos/7/images/>
+CentOS 官方维护的镜像 [下载地址](http://cloud.centos.org/centos/7/images/)
 
 也可以使用命令直接下载镜像，但是下载可能较慢，建议下载好在进行上传。以 centos7.8 为例：
 
-```textile
+```bash
 wget http://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud-2003.qcow2c
 ```
 
 下载完成后上传镜像到 openstack，直接在 horizon 上传即可。也可以使用命令上传。
 
-注意：默认该镜像运行的实例只能使用 ssh key 以 centos 用户身份登录，如果需要使用 root 远程 ssh 连接到实例需要在上传前为镜像配置 root 免密并开启 ssh 访问。
-
-参考：<https://blog.csdn.net/networken/article/details/106713658>
+注意：默认该镜像运行的实例只能使用 ssh key 以 centos 用户身份登录，如果需要使用 root 远程 ssh 连接到实例需要在上传前为镜像配置 root 免密并开启 ssh 访问, [参考](https://blog.csdn.net/networken/article/details/106713658)
 
 另外我们的命令客户端在容器中，所有这里有些不方便，首先要将镜像复制到容器中，然后使用 openstack 命令上传。
 
 这里复制到 client 容器的根目录下。
 
-```textile
+```bash
 [root@kolla ~]# docker cp CentOS-7-x86_64-GenericCloud-2003.qcow2c client:/
 
 [root@kolla ~]# docker exec -it client bash
@@ -480,7 +467,7 @@ CentOS-7-x86_64-GenericCloud-2003.qcow2c
 
 执行以下 openstack 命令上传镜像
 
-```textile
+```bash
 openstack image create "CentOS78-image" \
   --file CentOS-7-x86_64-GenericCloud-2003.qcow2c \
   --disk-format qcow2 --container-format bare \
@@ -489,7 +476,7 @@ openstack image create "CentOS78-image" \
 
 创建实例
 
-```textile
+```bash
 openstack server create \
     --image CentOS78-image \
     --flavor m1.small \
@@ -504,13 +491,13 @@ openstack server create \
 
 如果实例创建失败可以查看相关组件报错日志
 
-```textile
+```bash
 [root@kolla ~]# tail -100f /var/log/kolla/nova/nova-compute.log 
 ```
 
 如果没有提前定制镜像修改 root 密码，只能使用 centos 用户及 sshkey 登录，由于是在容器中运行的 demo 示例，ssh 私钥也保存在容器的默认目录下，在容器中连接实例浮动 IP 测试
 
-```textile
+```bash
 [root@kolla ~]# docker exec -it client bash
 ()[root@b86f87f7f101 ~]# ssh -i /root/.ssh/id_rsa centos@192.168.35.186
 Last login: Fri Oct 29 08:10:42 2021 from 192.168.35.188
@@ -518,18 +505,18 @@ Last login: Fri Oct 29 08:10:42 2021 from 192.168.35.188
 [root@demo-centos ~]# 
 ```
 
-## 运行 ubuntu 实例
+## 2.8 运行 ubuntu 实例
 
 下载镜像
 
-```textile
+```bash
 wget https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img
 docker cp bionic-server-cloudimg-amd64.img client:/
 ```
 
 上传镜像
 
-```textile
+```bash
 openstack image create "Ubuntu1804" \
   --file bionic-server-cloudimg-amd64.img \
   --disk-format qcow2 --container-format bare \
@@ -538,7 +525,7 @@ openstack image create "Ubuntu1804" \
 
 创建实例
 
-```textile
+```bash
 openstack server create \
     --image Ubuntu1804 \
     --flavor m1.small \
@@ -553,20 +540,20 @@ openstack server create \
 
 ![image-20211029162258334](https://image.lvbibir.cn/blog/image-20211029162258334.png)
 
-# 调整集群配置
+# 3 调整集群配置
 
-## 新增 magnum & ironic 组件
+## 3.1 新增 magnum & ironic 组件
 
 `magnum` 和 `ironic` 默认状态下是没有安装的，在 `/etc/kolla/globals.yml` 可以看到默认配置
 
-```textile
+```bash
 #enable_magnum: "no"
 #enable_ironic: "no"
 ```
 
 在 `/etc/kolla/globals.yml` 之前的配置下面新增如下，参数的具体含义查看 [官方文档](https://docs.openstack.org/kolla-ansible/train/reference/index.html)
 
-```textile
+```bash
 # ironic
 enable_ironic: true
 ironic_dnsmasq_interface: "enp11s0f1"
@@ -589,17 +576,17 @@ curl https://tarballs.openstack.org/ironic-python-agent/dib/files/ipa-centos7-ma
 
 在现有集群中新增组件
 
-```textile
+```bash
 kolla-ansible -i all-in-one deploy --tags horizon,magnum,ironic
 ```
 
-## 修改组件配置
+## 3.2 修改组件配置
 
 集群部署完成后需要开启新的组件或者扩容，可以修改/etc/kolla/global.yml 调整参数。
 
 或者在/etc/kolla/config 目录下创建自定义配置文件，例如
 
-```textile
+```bash
 # mkdir -p /etc/kolla/config/nova
 
 # vim /etc/kolla/config/nova/nova.conf
@@ -611,18 +598,18 @@ block_device_allocate_retries_interval = 3
 
 重新配置 openstack，kolla 会自动重建配置变动的容器组件。
 
-```textile
+```bash
 kolla-ansible -i all-in-one reconfigure -t nova
 ```
 
-## kolla 配置和日志文件
+## 3.3 kolla 配置和日志文件
 
 - 各个组件配置文件目录： /etc/kolla/
 - 各个组件日志文件目录：/var/log/kolla/
 
-## 清理 kolla ansilbe 集群
+## 3.4 清理 kolla ansilbe 集群
 
-```textile
+```bash
 kolla-ansible destroy --include-images --yes-i-really-really-mean-it
 # 或者
 [root@kolla ~]# cd /usr/share/kolla-ansible/tools/
@@ -632,9 +619,9 @@ kolla-ansible destroy --include-images --yes-i-really-really-mean-it
 vgremove cinder-volumes
 ```
 
-## 重新部署 kolla ansible 集群
+## 3.5 重新部署 kolla ansible 集群
 
-```textile
+```bash
 ## 清除操作
 
 先关闭所有运行的实例，再进行下面操作
@@ -652,36 +639,24 @@ kolla-ansible -i ./all-in-one deploy
 kolla-ansible post-deploy
 ```
 
-# 可能遇到的问题
+# 4 可能遇到的问题
 
-## 虚拟 ip 分配失败
+## 4.1 虚拟 ip 分配失败
 
 ![image-20211130161356609](https://image.lvbibir.cn/blog/image-20211130161356609.png)
 
 这种情况多半是由于虚拟 ip 没有分配到，并不是端口问题
 
-- 解决方法 1
+- [解决方法 1](https://www.bianchengquan.com/article/506138.html)
 
 在全局的配置中添加/修改这个 id 值，必须是 0-255 之间的数字，并且确保在整个二层网络中是唯一的
 
-```textile
+```bash
 vim /etc/kolla/globals.yml
 
 keepalived_virtual_router_id: "199"
 ```
 
-<https://www.bianchengquan.com/article/506138.html>
+- [解决方法 2](https://www.nuomiphp.com/serverfault/en/5fff3e4524544316281a16b0.html)
 
-- 解决方法 2
-
-<https://www.nuomiphp.com/serverfault/en/5fff3e4524544316281a16b0.html>
-
-# 参考
-
-[官方文档](https://docs.openstack.org/kolla-ansible/train/reference/index.html)
-
-<https://blog.csdn.net/networken/article/details/106728002>
-
-<https://blog.csdn.net/qq_33316576/article/details/107457111>
-
-<https://blog.csdn.net/networken/article/details/106745167>
+以上

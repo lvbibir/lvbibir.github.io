@@ -1,8 +1,8 @@
 ---
 title: "kubernetes | configmap & secret" 
 date: 2022-10-07
-lastmod: 2023-04-13
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
 keywords:
   - kubernetes
@@ -13,11 +13,11 @@ cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
 
-# 前言
+# 0 前言
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
-# ConfigMap
+# 1 ConfigMap
 
 创建 ConfigMap 后，数据实际会存储在 k8s 中的 Etcd 中，然后通过创建 pod 时引用该数据。
 
@@ -100,7 +100,7 @@ host: 1.1.1.4
 password: 123456
 ```
 
-# Secret
+# 2 Secret
 
 与 ConfigMap 类似，区别在于 Secret 主要存储敏感数据，所有的数据都会经过 base64 编码。
 
@@ -185,3 +185,5 @@ root@pod-secret-demo:/# echo $PASS
 root@pod-secret-demo:/# cat /config/my-password
 123.com
 ```
+
+以上

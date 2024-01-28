@@ -1,8 +1,8 @@
 ---
 title: "prometheus (二) 静态配置" 
 date: 2023-04-25
-lastmod: 2023-04-25
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
   - prometheus
 keywords:
@@ -13,11 +13,11 @@ cover:
     image: "https://image.lvbibir.cn/blog/prometheus.png"
 ---
 
-# 0. 前言
+# 0 前言
 
 基于 `centos7.9` `docker-ce-20.10.18` `kubelet-1.22.3-0` `kube-prometheus-0.10` `prometheus-v2.32.1`
 
-# 1. 简介
+# 1 简介
 
 使用原生的 prometheus 时, 我们创建 job 直接修改配置文件即可, 然而在 prometheus-operator 中所有的配置都抽象成了 k8s `CRD` 资源, 手动配置 job 需要:
 
@@ -26,7 +26,7 @@ cover:
 
 [additional-scrape-config 官方示例](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/additional-scrape-config.md)
 
-# 2. 示例
+# 2 示例
 
 ## 2.1 node-exporter
 
@@ -90,7 +90,7 @@ spec:
 
 ![image-20230427151927477](https://image.lvbibir.cn/blog/image-20230427151927477.png)
 
-# 3. 动态更新
+# 3 动态更新
 
 后续所有的自定义配置直接更新现有的 secret 即可
 
@@ -117,6 +117,8 @@ prometheus 会自动重载配置
 
 ![image-20230427152718192](https://image.lvbibir.cn/blog/image-20230427152718192.png)
 
-# 4. 更新失败排查
+# 4 更新失败排查
 
 如果修改了 secret 不生效一定要注意 secret 部署的 namespace 是不是 monitoring
+
+以上

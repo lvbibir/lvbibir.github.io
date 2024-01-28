@@ -1,8 +1,8 @@
 ---
 title: "kubernetes | service & ingress" 
 date: 2022-10-07
-lastmod: 2022-10-07
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
 keywords:
   - kubernetes
@@ -11,23 +11,22 @@ keywords:
   - ipvs
   - ingress
   - nginx
-description: "介绍kubernetes中的service和Headless Service，service的两种代理模式，以及ingress控制器的使用" 
+description: "介绍 kubernetes 中的 service 和 Headless Service，service 的两种代理模式，以及ingress 控制器的使用" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
 
-# 前言
+# 0 前言
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
-# service
+# 1 service
 
-## 基本概念
+## 1.1 基本概念
 
 service 存在的意义
 
 - 服务发现：防止 Pod 失联
-
 - 负载均衡：定义一组 Pod 的访问策略
 
 service 通过 label-selector 关联 pod
@@ -35,13 +34,9 @@ service 通过 label-selector 关联 pod
 service 的三种类型
 
 - ClusterIP：集群内部使用
-
-  默认**，**分配一个稳定的 IP 地址，即 VIP，只能在集群内部访问（同 Namespace 内的 Pod）
-
+    - 默认，分配一个稳定的 IP 地址，即 VIP，只能在集群内部访问（同 Namespace 内的 Pod）
 - NodePort：对外暴露应用
-
-  在每个节点上启用一个端口 (30000-32767) 来暴露服务，可以在集群外部访问。也会分配一个稳定内部集群 IP 地址。
-
+    - 在每个节点上启用一个端口 (30000-32767) 来暴露服务，可以在集群外部访问。也会分配一个稳定内部集群 IP 地址。
 - LoadBalancer：对外暴露应用，适用公有云
 
   与 NodePort 类似，在每个节点上启用一个端口来暴露服务。除此之外，Kubernetes 会请求底层云平台上的负载均衡器，将每个 Node（[NodeIP]:[NodePort]）作为后端添加进去。
@@ -88,23 +83,21 @@ spec:
         - containerPort: 80
 ```
 
-## 代理模式
+## 1.2 代理模式
 
 Iptables：
 
 - 灵活，功能强大
-
 - 规则遍历匹配和更新，呈线性时延
 
 IPVS：
 
 - 工作在内核态，有更好的性能
-
 - 调度算法丰富：rr，wrr，lc，wlc，ip hash…
 
 ![image-20221005090953888](https://image.lvbibir.cn/blog/image-20221005090953888.png)
 
-### iptables 模式
+### 1.2.1 iptables 模式
 
 使用 iptables 模式时，根据 iptables 的 `--mode random --probability` 来匹配每一条请求，每个 pod 收到的流量趋近于平衡，不是完全的轮询
 
@@ -156,7 +149,7 @@ nginx-55f4d8c85-q4gsx   1/1     Running   0          4m57s   10.244.107.203   k8
 
 ```
 
-### ipvs 模式
+### 1.2.2 ipvs 模式
 
 ipvsadm 安装配置 (所有节点都要配置)
 
@@ -213,16 +206,14 @@ TCP  10.109.98.33:80 rr
   -> 10.244.169.136:80            Masq    1      0          0
 ```
 
-# Headless Service
+# 2 Headless Service
 
 Headless Service 相比普通 Service 只是将 spec.clusterIP 定义为 None
 
 Headless Service 几大特点：
 
 - 不分配 clusterIP
-
 - 没有负载均衡的功能 (kube-proxy 不会安装 iptables 规则)
-
 - 可以通过解析 service 的 DNS，返回所有 Pod 的 IP 和 DNS (statefulSet 部署的 Pod 才有 DNS)
 
   ```bash
@@ -239,18 +230,16 @@ Headless Service 几大特点：
 Headless Services 应用场景
 
 1. 自主选择权，`client` 可以通过查询 DNS 来获取 `Real Server` 的信息，自己来决定使用哪个 `Real Server`
-
 2. `Headless Service` 的对应的每一个 `Endpoints`，即每一个 `Pod`，都会有对应的 `DNS域名`，这样 Pod 之间就可以互相访问
 
 DNS 解析名称：
 
-pod：`<pod-name>.<service-name>.<namespace>.svc.cluster.local`
+- pod：`<pod-name>.<service-name>.<namespace>.svc.cluster.local`
+- service: `<service-name>.<namespace>.svc.cluster.local`
 
-service: `<service-name>.<namespace>.svc.cluster.local`
+# 3 Ingress
 
-# Ingress
-
-## 基本概念
+## 3.1 基本概念
 
 NodePort 的不足
 
@@ -265,11 +254,11 @@ Ingress 公开了从集群外部到集群内服务的 HTTP 和 HTTPS 路由。�
 
 ![image-20221005140153771](https://image.lvbibir.cn/blog/image-20221005140153771.png)
 
-**Ingress Controller**
+Ingress Controller
 
 Ingress 管理的负载均衡器，为集群提供全局的负载均衡能力。
 
-**Ingress Contronler 怎么工作的？**
+Ingress Contronler 怎么工作的？
 
 Ingress Contronler 通过与 Kubernetes API 交互，动态的去感知集群中 Ingress 规则变化，然后读取它，按照自定义的规则，规则就是写明了哪个域名对应哪个 service，生成一段 Nginx 配置，应用到管理的 Nginx 服务，然后热加载生效。
 
@@ -278,7 +267,6 @@ Ingress Contronler 通过与 Kubernetes API 交互，动态的去感知集群中
 使用流程：
 
 1. 部署 Ingress Controller
-
 2. 创建 Ingress 规则
 
 ![image-20221005141711017](https://image.lvbibir.cn/blog/image-20221005141711017.png)
@@ -286,14 +274,12 @@ Ingress Contronler 通过与 Kubernetes API 交互，动态的去感知集群中
 Ingress Contorller 主流控制器：
 
 - ingress-nginx-controller: nginx 官方维护的控制器
-
 - Traefik： HTTP 反向代理、负载均衡工具
-
 - Istio：服务治理，控制入口流量
 
-这里使用 Nginx 官方维护的，Github：<https://github.com/kubernetes/ingress-nginx>
+这里使用 Nginx 官方维护的，[项目地址](https://github.com/kubernetes/ingress-nginx)
 
-## 安装部署
+## 3.2 安装部署
 
 下载 yaml 文件
 
@@ -355,7 +341,7 @@ ingress-nginx-controller-z2782            1/1     Running     0          12m   1
 [root@k8s-node1 ~]# kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 ```
 
-## 测试
+## 3.3 测试
 
 测试 url 跳转，创建三套 nginx 应用 : `test | foo | bar`
 
@@ -498,3 +484,5 @@ foo
 [root@k8s-node1 ~]# curl http://1.1.1.3/bar/ -H "Host: test.com"
 bar
 ```
+
+以上

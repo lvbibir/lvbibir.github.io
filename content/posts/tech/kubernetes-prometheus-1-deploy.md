@@ -1,7 +1,7 @@
 ---
 title: "prometheus (一) 简介及部署"
 date: 2023-04-22
-lastmod: 2023-04-22
+lastmod: 2024-01-28
 tags:
   - kubernetes
   - prometheus
@@ -13,11 +13,11 @@ cover:
     image: "https://image.lvbibir.cn/blog/prometheus.png"
 ---
 
-# 0. 前言
+# 0 前言
 
 基于 `centos7.9` `docker-ce-20.10.18` `kubelet-1.22.3-0` `kube-prometheus-0.10` `prometheus-v2.32.1`
 
-# 1. 简介
+# 1 简介
 
 ## 1.1 prometheus operator
 
@@ -35,7 +35,6 @@ Prometheus Operator 的核心特性是 `watch` Kubernetes API 服务器对特定
   - `PodMonitor`: 用于对 Pod 进行监控，推荐首选 `ServiceMonitor`. `PodMonitor` 声明性地指定了应该如何监视一组 pod。
   - `Probe`: 它声明性地指定了应该如何监视 ingress 或静态目标组. 一般用于黑盒监控.
   - `PrometheusRule`: 用于管理 Prometheus 告警规则；它定义了一套所需的 Prometheus 警报和/或记录规则。可以被 Prometheus 实例挂载使用。
-
 - Alertmanager 相关
   - `Alertmanager`: 配置 AlertManager statefulset 及 AlertManager 的一些配置。
   - `AlertmanagerConfig`: 用于管理 AlertManager 配置文件；它声明性地指定 Alertmanager 配置的子部分，允许将警报路由到自定义接收器，并设置禁止规则。
@@ -46,7 +45,7 @@ Prometheus Operator 的核心特性是 `watch` Kubernetes API 服务器对特定
 
 [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) 提供了一个基于 Prometheus 和 Prometheus Operator 的完整集群监控堆栈的示例配置。这包括部署多个 Prometheus 和 Alertmanager 实例、用于收集节点指标的指标导出器（如 node_exporters)、将 Prometheus 链接到各种指标端点的目标配置，以及用于通知集群中潜在问题的示例警报规则。
 
-# 2. 部署
+# 2 部署
 
 kubernets 与 kube-prometheus 的兼容性关系如下
 
@@ -122,7 +121,7 @@ kube-prometheus 中部署了如下组件:
   - alertmanager 实例
   - adapter 实例, 替代原始 metrics-server 组件, 实现自定义 HPA 指标, [参考](https://docs.ucloud.cn/uk8s/monitor/prometheus/autoscale_on_custom_metrics)
 
-# 3. 数据持久化
+# 3 数据持久化
 
 ## 3.1 prometheus
 
@@ -225,3 +224,5 @@ grafana 就是一个普通的 deployment 应用, 直接修改 yaml 中的 volume
           server: k8s-node1
           path: /nfs/kubernetes/grafana-data
 ```
+
+以上

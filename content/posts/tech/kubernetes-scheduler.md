@@ -1,8 +1,8 @@
 ---
 title: "kubernetes | 调度" 
 date: 2022-10-03
-lastmod: 2022-10-03
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
 keywords:
   - linux
@@ -13,16 +13,16 @@ keywords:
   - nodeAffinity
   - nodeName
   - DaemonSet
-description: "介绍kubernetes中影响pod调度的一些因素，比如资源限制、nodeSelector、nodeAffinity、Taint、nodeName、DaemonSet控制器" 
+description: "介绍 kubernetes 中影响 pod 调度的一些因素，比如资源限制、nodeSelector、nodeAffinity、Taint、nodeName、DaemonSet 控制器" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
 
-# 前言
+# 0 前言
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
-# 创建 pod 的工作流程
+# 1 创建 pod 的工作流程
 
 1. kubectl run nginx --image=nginx
 2. kubectl 将创建 pod 的请求发送到 apiserver
@@ -36,18 +36,16 @@ cover:
 10. apiserver 将收到的 pod 状态写入 apiserver
 11. kubectl get pods 即可收到相关信息
 
-# 资源限制对 pod 调度的影响
+# 2 资源限制对 pod 调度的影响
 
 容器资源限制：
 
 - resources.limits.cpu
-
 - resources.limits.memory
 
 容器使用的最小资源需求，并不是实际占用，是预留资源：
 
 - resources.requests.cpu
-
 - resources.requests.memory
 
 ```yaml
@@ -68,7 +66,7 @@ spec:
         cpu: "500m"
 ```
 
-# nodeSelector
+# 3 nodeSelector
 
 nodeSelector 用于将 Pod 调度到匹配 Label 的 Node 上，如果没有匹配的标签会调度失败。
 
@@ -100,7 +98,7 @@ spec:
     disktype: "ssd"
 ```
 
-# nodeAffinity
+# 4 nodeAffinity
 
 节点亲和性概念上类似于 `nodeSelector`， 它使你可以根据节点上的标签来约束 Pod 可以调度到哪些节点上。 节点亲和性有两种：
 
@@ -151,14 +149,13 @@ spec:
     image: registry.k8s.io/pause:2.0
 ```
 
-# Taint(污点)
+# 5 Taint(污点)
 
 Taints：避免 Pod 调度到特定 Node 上
 
 应用场景：
 
 - 专用节点，例如配备了特殊硬件的节点
-
 - 基于 Taint 的驱逐
 
 设置污点：
@@ -173,7 +170,7 @@ kubectl taint node [node] key=value:[effect]
 
 去掉污点：
 
-```textile
+```plaintext
 kubectl taint node [node] key:[effect]-
 ```
 
@@ -227,13 +224,13 @@ spec:
     effect: "NoSchedule"
 ```
 
-# nodeName
+# 6 nodeName
 
 指定节点名称，用于将 Pod 调度到指定的 Node 上，不经过调度器 scheduler，所以无视污点
 
 示例
 
-```textile
+```plaintext
 [root@k8s-node1 ~]# kubectl describe node k8s-node2| grep Taint
 Taints:             disktype=ssd:NoSchedule
 [root@k8s-node1 ~]# kubectl apply -f pod-nodename.yaml
@@ -257,19 +254,18 @@ spec:
   nodeName: k8s-node2
 ```
 
-# DaemonSet 控制器
+# 7 DaemonSet 控制器
 
 DaemonSet 功能：
 
 - 在每一个 Node 上运行一个 Pod
-
 - 新加入的 Node 也同样会自动运行一个 Pod
 
 应用场景：网络插件、监控 Agent、日志 Agent，比如 k8s 的 calico-node 和 kube-proxy 组件
 
 示例
 
-```textile
+```plaintext
 [root@k8s-node1 ~]# kubectl apply -f daemonset-filebeat.yaml
 [root@k8s-node1 ~]# kubectl get pods -n kube-system -o wide |grep filebeat
 filebeat-2c6p4       1/1     Running   0               90s    10.244.107.246   k8s-node3   <none>           <none>
@@ -310,3 +306,5 @@ spec:
         operator: "Exists"
         effect: "NoSchedule"
 ```
+
+以上

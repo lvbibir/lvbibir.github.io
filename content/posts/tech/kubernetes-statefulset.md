@@ -1,8 +1,8 @@
 ---
-title: "kubernetes | statefulset控制器详解" 
+title: "kubernetes | statefulset 控制器详解" 
 date: 2023-04-12
-lastmod: 2023-04-12
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
 keywords:
   - kubernetes
@@ -12,26 +12,23 @@ cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
 
-## 基础概念
+## 1 基础概念
 
 StatefulSet 应用场景：分布式应用、集群
 
 - 部署有状态应用
-
 - 解决 Pod 独立生命周期，保持 Pod 启动顺序和唯一性
-
-  - 稳定，唯一的网络标识符，持久存储
-  - 有序，优雅的部署和扩展、删除和终止
-  - 有序，滚动更新
+    - 稳定，唯一的网络标识符，持久存储
+    - 有序，优雅的部署和扩展、删除和终止
+    - 有序，滚动更新
 
 StatefulSet 控制器的优势
 
 - 稳定的存储
-  - StatefulSet 的存储卷使用 VolumeClaimTemplate 创建，称为卷申请模板，当 StatefulSet 使用 VolumeClaimTemplate 创建一个 PersistentVolume 时，同样也会为每个 Pod 分配并创建一个编号的 PVC。该 PVC 和 PV 不会随着 StatefulSet 的删除而删除
-
+    - StatefulSet 的存储卷使用 VolumeClaimTemplate 创建，称为卷申请模板，当 StatefulSet 使用 VolumeClaimTemplate 创建一个 PersistentVolume 时，同样也会为每个 Pod 分配并创建一个编号的 PVC。该 PVC 和 PV 不会随着 StatefulSet 的删除而删除
 - 稳定的网络 ID
-  - StatefulSet 中的每个 POD 名称固定：`<statefulset-name>-<number>`
-  - 通过 serviceName 字段指定 Headless Service ，可以为每个 POD 分配一个固定的 DNS 解析，重启或者重建 POD 时虽然 ip 有所变动，但 DNS 解析会保持稳定
+    - StatefulSet 中的每个 POD 名称固定：`<statefulset-name>-<number>`
+    - 通过 serviceName 字段指定 Headless Service ，可以为每个 POD 分配一个固定的 DNS 解析，重启或者重建 POD 时虽然 ip 有所变动，但 DNS 解析会保持稳定
 
 示例 yaml
 
@@ -88,7 +85,7 @@ spec:
           storage: 1Gi
 ```
 
-## 稳定的存储
+## 2 稳定的存储
 
 可以看到与 deployment 不同，statefulset 中的每个 pod 都分配到了独立的 pv，且重启 pod 后存储对应关系不变
 
@@ -109,7 +106,7 @@ default-www-statefulset-nginx-0-pvc-17751fde-1b23-4535-98bb-a70342ddd6fe
 default-www-statefulset-nginx-1-pvc-b7519f46-b2af-42e4-b66d-d7459be2e87c
 ```
 
-## 稳定的网络 ID
+## 3 稳定的网络 ID
 
 手动删除 pod 后除了 pod 的 ip 会变动，主机名和 dns 解析都正常
 
@@ -136,7 +133,7 @@ Address 2: 10.244.169.157 statefulset-nginx-0.statefulset-nginx.default.svc.clus
 pod "dns-test" deleted
 ```
 
-## 暴露应用
+## 4 暴露应用
 
 由于使用的是 Headless Service ，无法使用 NodePort 的方式暴露应用端口，我们可以单独创建 service 来暴露特定 pod 应用
 
@@ -172,3 +169,5 @@ ss-nginx-0   NodePort   10.111.69.1   <none>        80:30003/TCP   3h53m
 NAME         ENDPOINTS           AGE
 ss-nginx-0   10.244.169.188:80   3h53m
 ```
+
+以上

@@ -1,20 +1,26 @@
 ---
 title: "pxe 安装配置大全" 
 date: 2022-07-12
-lastmod: 2022-07-12
-tags: 
+lastmod: 2024-01-28
+tags:
   - linux
 keywords:
   - linux
   - pxe
   - aarch64
   - dhcp
-description: "自己整理的一些工作中用到的不同系统对应的pxe配置方法" 
+description: "自己整理的一些工作中用到的不同系统对应的 pxe 配置方法" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
-# 前言
+# 0 前言
+
+本文参考以下链接
+
+- [openEuler 官方文档](https://docs.openeuler.org/zh/docs/20.03_LTS_SP1/docs/Installation/%E4%BD%BF%E7%94%A8kickstart%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E8%A3%85.html)
+- [PXE 自动化安装 CentOS 8](https://blog.csdn.net/weixin_45651006/article/details/103067283)
+- [PXE 网络引导系统之服务器 arm64](https://blog.csdn.net/qq_44839276/article/details/106980334)
 
 测试环境：
 
@@ -28,9 +34,9 @@ aarch64（kunpeng 920）： kvm-2.12
 >
 > 注意 `ks.cfg` 尽量在当前环境先手动安装一台模板机，使用模板机生成的 ks 文件来进行修改，否则可能会有一些清理磁盘分区的破坏性操作，基本只需要将安装方式从 `cdrom` 修改成 `install` 和 `url --url=http://……`
 
-# 服务端配置
+# 1 服务端配置
 
-## 基础环境
+## 1.1 基础环境
 
 系统版本：iSoft-ServerOS-V6.0-rc1
 
@@ -40,7 +46,7 @@ ip 地址：1.1.1.21
 
 ![](https://image.lvbibir.cn/blog/image-20220712100835390.png)
 
-## 	关闭防火墙及 selinux
+## 1.2 关闭防火墙及 selinux
 
 ```bash
 iptables -F
@@ -50,11 +56,11 @@ setenforce 0
 sed -i '/SELINUX/s/enforcing/disabled/' /etc/selinux/config
 ```
 
-## 安装相关的软件包
+## 1.3 安装相关的软件包
 
 这里由于 HW 行动的原因，外网 yum 源暂不可用，使用本地 yum 源安装相关软件包
 
-```textile
+```bash
 mount -o loop /root/iSoft-Taiji-Server-OS-6.0-x86_64-rc1-202112311623.iso /mnt
 mkdir /etc/yum.repos.d/bak
 mv /etc/yum.repos.d/isoft* /etc/yum.repos.d/bak/
@@ -75,15 +81,15 @@ dnf makecache
 
 cenots8 安装 syslinux 时需要加 --nonlinux 后缀，centos7 则不需要
 
-```textile
+```bash
  dnf install  dhcp-server tftp-server httpd syslinux-nonlinux
 ```
 
 ![image-20220712141810455](https://image.lvbibir.cn/blog/image-20220712141810455.png)
 
-## http 服务配置
+## 1.4 http 服务配置
 
-```textile
+```bash
 mkdir /var/www/html/ks/
 chmod 755 -R /var/www/html/
 systemctl start httpd
@@ -92,30 +98,30 @@ systemctl enable httpd
 
 能访问到 httpd 即可
 
-## tftp 服务配置
+## 1.5 tftp 服务配置
 
-```textile
+```bash
 systemctl start tftp
 systemctl enable tftp
 ```
 
-## dhcp 服务配置
+## 1.6 dhcp 服务配置
 
 > x86_64 架构和 aarch64 架构的 dhcp 的配置略有不同，按照下文分别配置
 
-```textile
+```bash
 systemctl enable dhcpd
 ```
 
-# x86_64
+# 2 x86_64
 
-## 服务端配置
+## 2.1 服务端配置
 
-### dhcp 服务配置
+### 2.1.1 dhcp 服务配置
 
 vim /etc/dhcp/dhcpd.conf
 
-```textile
+```bash
 option domain-name "example.org";
 option domain-name-servers 8.8.8.8, 114.114.114.114;
 
@@ -132,17 +138,17 @@ subnet 1.1.1.0 netmask 255.255.255.0 {
 }
 ```
 
-```textile
+```bash
 systemctl restart dhcpd
 ```
 
-## isoft_4.2_x86
+## 2.2 isoft_4.2_x86
 
-### http 服务配置
+### 2.2.1 http 服务配置
 
 创建目录
 
-```textile
+```bash
 # 创建目录
 mkdir -p /var/www/html/isoft_4.2/isos/x86_64/
 
@@ -156,7 +162,7 @@ chmod -R 755 /var/www/html
 
 ks.cfg 文件内容
 
-```textile
+```bash
 #version=DEVEL
 # System authorization information
 auth --enableshadow --passalgo=sha512
@@ -228,9 +234,9 @@ pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 reboot
 ```
 
-### tftp 服务配置
+### 2.2.2 tftp 服务配置
 
-```textile
+```bash
 rm -rf /var/lib/tftpboot/*
 rm -rf /root/usr
 mkdir /var/lib/tftpboot/pxelinux.cfg
@@ -256,7 +262,7 @@ systemctl restart tftp
 
 vim /var/lib/tftpboot/pxelinux.cfg/default
 
-```textile
+```bash
 default vesamenu.c32
 timeout 30
 
@@ -269,13 +275,13 @@ label linux
   append initrd=initrd.img ks=http://1.1.1.21/ks/ks-isoft-6.0-x86.cfg
 ```
 
-## isoft_6.0-rc1_x86
+## 2.3 isoft_6.0-rc1_x86
 
-### http 服务配置
+### 2.3.1 http 服务配置
 
 创建目录
 
-```textile
+```bash
 # 创建目录
 mkdir -p /var/www/html/isoft_6.0/isos/x86_64/
 
@@ -289,7 +295,7 @@ chmod -R 755 /var/www/html
 
 ks.cfg 文件内容
 
-```textile
+```bash
 # Use graphical install
 graphical
 
@@ -337,9 +343,9 @@ pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 reboot
 ```
 
-### tftp 服务配置
+### 2.3.2 tftp 服务配置
 
-```textile
+```bash
 rm -rf /var/lib/tftpboot/*
 rm -rf /root/usr
 mkdir /var/lib/tftpboot/pxelinux.cfg
@@ -369,7 +375,7 @@ systemctl restart tftp
 
 vim /var/lib/tftpboot/pxelinux.cfg/default
 
-```textile
+```bash
 default vesamenu.c32
 timeout 30
 
@@ -382,11 +388,11 @@ label linux
   append initrd=initrd.img ks=http://1.1.1.21/ks/ks-isoft-6.0-x86.cfg
 ```
 
-## icloud_1.0_x86
+## 2.4 icloud_1.0_x86
 
-### http 服务配置
+### 2.4.1 http 服务配置
 
-```textile
+```bash
 mkdir -p /var/www/html/icloud_1.0/isos/x86_64/
 
 # 挂载镜像
@@ -399,7 +405,7 @@ chmod -R 755 /var/www/html
 
 ks-icloud-1.0-x86.cfg 文件内容
 
-```textile
+```bash
 #version=RHEL8
 ignoredisk --only-use=sda
 autopart --type=lvm
@@ -439,9 +445,9 @@ pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 reboot
 ```
 
-### tftp 服务配置
+### 2.4.2 tftp 服务配置
 
-```textile
+```bash
 rm -rf /var/lib/tftpboot/*
 rm -rf /root/usr
 mkdir /var/lib/tftpboot/pxelinux.cfg
@@ -472,7 +478,7 @@ systemctl restart tftp
 
 vim /var/lib/tftpboot/pxelinux.cfg/default
 
-```textile
+```bash
 default menu.c32
 timeout 30
 menu title i-CloudOS 1.0
@@ -484,13 +490,13 @@ label linux
   append initrd=initrd.img ks=http://1.1.1.21/icloud_1.0/isos/x86_64/ks-icloud-1.0-x86.cfg
 ```
 
-## openeuler_20.03-LTS-SP1_x86
+## 2.5 openeuler_20.03-LTS-SP1_x86
 
-### http 服务配置
+### 2.5.1 http 服务配置
 
 创建目录
 
-```textile
+```bash
 # 创建目录
 mkdir -p /var/www/html/openeuler_20.03-LTS-SP1/isos/x86_64/
 
@@ -504,7 +510,7 @@ chmod -R 755 /var/www/html
 
 /var/www/html/ks/ks-openeuler-20.03-LTS-x86.cfg 文件内容
 
-```textile
+```bash
 # Use graphical install
 graphical
 
@@ -552,9 +558,9 @@ pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 reboot
 ```
 
-### tftp 服务配置
+### 2.5.2 tftp 服务配置
 
-```textile
+```bash
 rm -rf /var/lib/tftpboot/*
 rm -rf /root/usr
 mkdir /var/lib/tftpboot/pxelinux.cfg
@@ -584,7 +590,7 @@ systemctl restart tftp
 
 vim /var/lib/tftpboot/pxelinux.cfg/default
 
-```textile
+```bash
 default vesamenu.c32
 timeout 30
 
@@ -597,15 +603,15 @@ label linux
   append initrd=initrd.img ks=http://1.1.1.21/ks/ks-isoft-6.0-x86.cfg
 ```
 
-# aarch64
+# 3 aarch64
 
-## 服务端配置
+## 3.1 服务端配置
 
-### dhcp 服务配置
+### 3.1.1 dhcp 服务配置
 
 vim /etc/dhcp/dhcpd.conf
 
-```textile
+```bash
 option domain-name "example.org";
 option domain-name-servers 8.8.8.8, 114.114.114.114;
 
@@ -622,17 +628,17 @@ subnet 1.1.1.0 netmask 255.255.255.0 {
 }
 ```
 
-```textile
+```bash
 systemctl restart dhcpd
 ```
 
-## isoft_6.0_aarch64
+## 3.2 isoft_6.0_aarch64
 
-### http 服务配置
+### 3.2.1 http 服务配置
 
 创建目录
 
-```textile
+```bash
 # 创建目录
 mkdir -p /var/www/html/isoft_6.0/isos/aarch64/
 
@@ -646,7 +652,7 @@ chmod -R 755 /var/www/html
 
 ks-isoft-6.0-aarch64.cfg 文件内容
 
-```textile
+```bash
 #version=DEVEL
 ignoredisk --only-use=vda
 autopart --type=lvm
@@ -691,7 +697,7 @@ pwpolicy luks --minlen=8 --minquality=1 --notstrict --nochanges --notempty
 reboot
 ```
 
-### tftp 服务配置
+### 3.2.2 tftp 服务配置
 
 ```bash
 rm -rf /var/lib/tftpboot/*
@@ -707,7 +713,7 @@ systemctl restart tftp
 
 vim /var/lib/tftpboot/grub.cfg
 
-```textile
+```bash
 set default="1"
 
 function load_video {
@@ -744,15 +750,15 @@ menuentry 'Install iSoft-Taiji-Server-OS 6.0 with GUI mode' --class red --class 
 }
 ```
 
-## icloud_1.0_aarch64
+## 3.3 icloud_1.0_aarch64
 
 > 这里 iso 没有直接挂载到 apache 目录，是因为该 iso 文件 Packages 目录中有个别软件包没有读取权限，直接挂载无法修改权限
 
-### http 服务配置
+### 3.3.1 http 服务配置
 
 创建目录
 
-```textile
+```bash
 # 创建目录
 mkdir -p /var/www/html/icloud_1.0/isos/aarch64/
 
@@ -767,7 +773,7 @@ chmod -R 755 /var/www/html
 
 ks-icloud-1.0-aarch64.cfg 文件内容
 
-```textile
+```bash
 #version=RHEL8
 ignoredisk --only-use=vda
 autopart --type=lvm
@@ -807,9 +813,9 @@ pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
 reboot
 ```
 
-### tftp 服务配置
+### 3.3.2 tftp 服务配置
 
-```textile
+```bash
 rm -rf /var/lib/tftpboot/*
 
 cp /var/www/html/icloud_1.0/isos/aarch64/EFI/BOOT/grub.cfg /var/lib/tftpboot/
@@ -823,7 +829,7 @@ systemctl restart tftp
 
 vim /var/lib/tftpboot/grub.cfg
 
-```textile
+```bash
 set default="1"
 
 function load_video {
@@ -859,13 +865,13 @@ menuentry 'Install iCloudOS 1.0 with GUI mode' --class red --class gnu-linux --c
 }
 ```
 
-## openeuler_20.03-LTS_aarch64
+## 3.4 openeuler_20.03-LTS_aarch64
 
-### http 服务配置
+### 3.4.1 http 服务配置
 
 创建目录
 
-```textile
+```bash
 # 创建目录
 mkdir -p /var/www/html/openeuler_20.03-LTS/isos/aarch64/
 
@@ -879,7 +885,7 @@ chmod -R 755 /var/www/html
 
 ks-openeuler-20.03-LTS-aarch64.cfg 文件内容
 
-```textile
+```bash
 #version=DEVEL
 ignoredisk --only-use=vda
 autopart --type=lvm
@@ -924,7 +930,7 @@ pwpolicy luks --minlen=8 --minquality=1 --notstrict --nochanges --notempty
 reboot
 ```
 
-### tftp 服务配置
+### 3.4.2 tftp 服务配置
 
 ```bash
 rm -rf /var/lib/tftpboot/*
@@ -940,7 +946,7 @@ systemctl restart tftp
 
 vim /var/lib/tftpboot/grub.cfg
 
-```textile
+```bash
 set default="1"
 
 function load_video {
@@ -977,10 +983,4 @@ menuentry 'Install openEuler 20.03 LTS' --class red --class gnu-linux --class gn
 }
 ```
 
-# 参考
-
-<https://docs.openeuler.org/zh/docs/20.03_LTS_SP1/docs/Installation/>%E4%BD%BF%E7%94%A8kickstart%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AE%89%E8%A3%85.html
-
-<https://blog.csdn.net/weixin_45651006/article/details/103067283>
-
-<https://blog.csdn.net/qq_44839276/article/details/106980334>
+以上

@@ -1,8 +1,8 @@
 ---
 title: "windows | 自定义开机快速启动项" 
 date: 2023-08-14
-lastmod: 2023-08-14
-tags: 
+lastmod: 2024-01-28
+tags:
   - windows
 keywords:
   - windows
@@ -11,7 +11,7 @@ cover:
     image: "https://source.unsplash.com/random/400x200?code"
 ---
 
-# 0. 前言
+# 0 前言
 
 最近注意到 windows 系统中当 onedrive 和 clash 同时开机自启时会导致 onedrive 无法自动登录, 需要退出 onedrive 重新启动一下才能正常登录.
 
@@ -24,7 +24,7 @@ cover:
 - [TranslucentTB](https://github.com/TranslucentTB/TranslucentTB): 自启动时会慢一拍, 刚进系统时任务栏没有透明, 等个几秒启动后才能正常
 - [utools](https://www.u.tools/): 同样的, 进系统后第一时间不能使用, 得等几秒启动后才行
 
-# 1. 安装 EarlyStart
+# 1 安装 EarlyStart
 
 下载 [EarlyStart.zip](https://github.com/sylveon/EarlyStart/releases/download/1.0.0/EarlyStart.zip)
 
@@ -40,7 +40,7 @@ C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /u .\EarlyStart.ex
 
 ![image-20230815025246249](https://image.lvbibir.cn/blog/image-20230815025246249.png)
 
-# 2. 配置启动项
+# 2 配置启动项
 
 首先将要配置快速启动的应用默认的开机自启给关掉
 
@@ -54,4 +54,4 @@ C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /u .\EarlyStart.ex
 
 配置完成之后重启系统即可
 
-以上.
+以上

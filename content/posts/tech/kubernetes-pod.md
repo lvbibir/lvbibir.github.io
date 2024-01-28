@@ -1,33 +1,30 @@
 ---
 title: "kubernetes | pod" 
 date: 2022-10-02
-lastmod: 2022-10-02
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
 keywords:
   - linux
   - centos
   - kubernetes
   - pod
-description: "介绍kubernetes中pod的基础概念、存在意义、pod中容器的分类、静态pod、重启策略、健康检查等" 
+description: "介绍 kubernetes 中 pod 的基础概念、存在意义、pod 中容器的分类、静态 pod、重启策略、健康检查等" 
 cover:
     image: "https://image.lvbibir.cn/blog/kubernetes.png"
 ---
 
-# 0. 前言
+# 0 前言
 
 基于 `centos7.9`，`docker-ce-20.10.18`，`kubelet-1.22.3-0`
 
-# 1. 简介
+# 1 简介
 
 基本概念
 
 - 最小部署单元
-
 - 一组容器的集合
-
 - 一个 Pod 中的容器共享网络命名空间
-
 - Pod 是短暂的
 
 存在意义
@@ -37,43 +34,34 @@ Pod 为亲密性应用而存在。
 亲密性应用场景：
 
 - 两个应用之间发生文件交互
-
 - 两个应用需要通过 127.0.0.1 或者 socket 通信（典型组合：nginx+php）
-
 - 两个应用需要发生频繁的调用
 
-# 2. pod 中的容器分类
+# 2 pod 中的容器分类
 
 - Infrastructure Container：基础容器，维护整个 Pod 网络空间
-
 - InitContainers：初始化容器，先于业务容器开始执行
-
 - Containers：业务容器，并行启动
 
-**Infrastructure Container**
+Infrastructure Container
 
 pod 中总会多一个 pause 容器，这个容器就是实现将 pod 中的所有容器的网络命名空间进行统一，a 容器在 localhost 或者 127.0.0.1 的某个端口提供了服务，b 容器访问 localhost 或者 127.0.0.1 加端口也可以访问到
 
-**pause 容器主要为每个业务容器提供以下功能：**
+pause 容器主要为每个业务容器提供以下功能：
 
 - PID 命名空间：Pod 中的不同应用程序可以看到其他应用程序的进程 ID。
-
 - 网络命名空间：Pod 中的多个容器能够访问同一个 IP 和端口范围。
-
 - IPC 命名空间：Pod 中的多个容器能够使用 SystemV IPC 或 POSIX 消息队列进行通信。
-
 - UTS 命名空间：Pod 中的多个容器共享一个主机名；Volumes（共享存储卷）。
 
-**Init container：**
+Init container：
 
 - 基本支持所有普通容器特征
-
 - 优先普通容器执行
 
 应用场景：
 
 - 控制普通容器启动，初始容器完成后才会启动业务容器
-
 - 初始化配置，例如下载应用配置文件、注册信息等
 
 示例
@@ -104,14 +92,12 @@ spec:
     emptyDir: {}
 ```
 
-# 3. 静态 pod
+# 3 静态 pod
 
 静态 Pod 特点：
 
 - Pod 由特定节点上的 kubelet 管理
-
 - 不能使用控制器
-
 - Pod 名称标识当前节点名称
 
 在 kubelet 配置文件启用静态 Pod：
@@ -125,19 +111,17 @@ staticPodPath: /etc/kubernetes/manifests
 
 将部署的 pod yaml 放到该目录会由 kubelet 自动创建
 
-# 4. 重启策略
+# 4 重启策略
 
 Pod 的 `spec` 中包含一个 `restartPolicy` 字段，其可能取值包括 Always、OnFailure 和 Never。默认值是 Always。
 
 `restartPolicy` 适用于 Pod 中的所有容器。
 
 - Always：当容器终止退出后，总是重启容器，默认策略。
-
 - OnFailure：当容器异常退出（退出状态码非 0）时，才重启容器。
-
 - Never：当容器终止退出，从不重启容器。
 
-# 5. 健康检查
+# 5 健康检查
 
 ## 5.1 三种探针
 
@@ -162,7 +146,6 @@ kubernetes 包含以下三种探针
 
 - Success(成功)
 - Failure(失败)
-
 - Unknown(未知): 不会执行任何操作.
 
 ### 5.1.3 探针配置
@@ -258,7 +241,7 @@ spec:
 5. 第 50 秒 liveness 探针第三次失败, 触发重启, 等待容器优雅退出
 6. 第 60 秒强制重启 container
 
-# 6. lifecycle
+# 6 lifecycle
 
 ![112gasgs81](https://image.lvbibir.cn/blog/112gasgs81.png)
 
@@ -314,3 +297,5 @@ Hello initContainers
 Hello from the postStart handler
 Hello from the preStop handler
 ```
+
+以上

@@ -1,8 +1,8 @@
 ---
 title: "prometheus (五) 记录规则与告警规则" 
 date: 2023-04-28
-lastmod: 2023-04-28
-tags: 
+lastmod: 2024-01-28
+tags:
   - kubernetes
   - prometheus
 keywords:
@@ -14,11 +14,11 @@ cover:
     image: "https://image.lvbibir.cn/blog/prometheus.png"
 ---
 
-# 0. 前言
+# 0 前言
 
 基于 `centos7.9` `docker-ce-20.10.18` `kubelet-1.22.3-0` `kube-prometheus-0.10` `prometheus-v2.32.1`
 
-# 1. 告警规则
+# 1 告警规则
 
 prometheus 支持两种类型的规则, 记录规则 [recording rule](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) 和告警规则 [alerting rule](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
 
@@ -156,7 +156,7 @@ prometheus 的配置中定义了 rule_files 路径
 
 ![image-20230430161801657](https://image.lvbibir.cn/blog/image-20230430161801657.png)
 
-# 2. 示例
+# 2 示例
 
 ## 2.1 磁盘使用率
 
@@ -222,3 +222,5 @@ Filesystem                  Type      Size  Used Avail Use% Mounted on
 我们去 alertmanager 看一下, 成功收到了告警, 且 `$labels` 和 `$value` 也已经正常解析了
 
 ![image-20230430165209018](https://image.lvbibir.cn/blog/image-20230430165209018.png)
+
+以上

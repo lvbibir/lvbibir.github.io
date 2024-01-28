@@ -1,8 +1,8 @@
 ---
-title: "httpd源码打包编译成rpm包" 
+title: "httpd 源码打包编译成 rpm 包" 
 date: 2022-03-01
-lastmod: 2022-03-01
-tags: 
+lastmod: 2024-01-28
+tags:
   - linux
 keywords:
   - linux
@@ -10,7 +10,7 @@ keywords:
   - httpd
   - 源码
   - rpm构建
-description: "记录一下centos7中通过源码构建httpd rpm包的过程" 
+description: "记录一下 centos7 中通过源码构建 httpd rpm 包的过程" 
 cover:
     image: "https://source.unsplash.com/random/400x200?code" 
 ---
@@ -20,7 +20,6 @@ cover:
 源码下载链接：
 
 - <https://dlcdn.apache.org//apr/apr-1.7.0.tar.bz2>
-
 - <https://dlcdn.apache.org//apr/apr-util-1.6.1.tar.bz2>
 - <https://dlcdn.apache.org//httpd/httpd-2.4.52.tar.bz2>
 
@@ -35,7 +34,7 @@ yum install -y postgresql-devel mysql-devel sqlite-devel unixODBC-devel nss-deve
 
 libdb4-devel 依赖需要使用 epel 源安装，这里使用阿里的 epel 源
 
-```textile
+```plaintext
 # 添加阿里yum源
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 # 手动修改repo文件中的系统版本，因为本系统检测到的版本号是4
@@ -48,7 +47,7 @@ yum install -y libdb4-devel
 
 编译准备
 
-```textile
+```plaintext
 [root@localhost ~]# mkdir -p /root/rpmbuild/{SPECS,SOURCES}
 [root@localhost ~]# cd /root/rpmbuild/SOURCES/
 [root@localhost SOURCES]# wget --no-check-certificate https://dlcdn.apache.org//apr/apr-util-1.6.1.tar.bz2
@@ -62,7 +61,7 @@ yum install -y libdb4-devel
 
 开始编译
 
-```textile
+```plaintext
 [root@localhost SOURCES]# cd ../SPECS/
 
 # 修改spec文件
@@ -94,3 +93,5 @@ Release: 1%dist
 ![image-20220308100545732](https://image.lvbibir.cn/blog/image-20220308100545732.png)
 
 ![image-20220304113646615](https://image.lvbibir.cn/blog/image-20220304113646615.png)
+
+以上

@@ -1,7 +1,7 @@
 ---
-title: "centos7基线检查（benchmark）平台部署" 
+title: "centos7 | benchmark 平台部署" 
 date: 2021-07-01
-lastmod: 2021-07-01
+lastmod: 2024-01-26
 tags: 
   - linux
   - centos
@@ -10,12 +10,12 @@ keywords:
   - centos
   - benchmark
   - 基线检查
-description: "介绍在centos7环境中部署开源的benchmark基线检查平台，并通过web界面可视化展示" 
+description: "介绍在 centos7 环境中部署开源的 benchmark 基线检查平台，并通过 web 界面可视化展示" 
 cover:
     image: "https://image.lvbibir.cn/blog/image-20210719165252503.png" 
 ---
 
-# 介绍
+# 0 介绍
 
 [项目地址](https://github.com/chroblert/SecurityBaselineCheck)
 
@@ -37,15 +37,15 @@ Agent 用到的技术：
 
 - sqlite3
 
-# 前端页面部署
+# 1 前端页面部署
 
-## 环境
+## 1.1 环境
 
 - 系统 centos7.8(最小化安装)
 - 前端：192.168.150.101
 - client 端：192.168.150.102
 
-## 安装 python3.6
+## 1.2 安装 python3.6
 
 [源码包下载地址](https://www.python.org/downloads/source/)
 
@@ -60,11 +60,11 @@ make install
 python3 -V
 ```
 
-## 安装 pip3+django
+## 1.3 安装 pip3+django
 
 [源码包下载地址](https://github.com/pypa/pip/releases/tag/21.0.1)
 
-```textile
+```bash
 tar zxvf pip-21.0.1.tar.gz
 cd pip-21.0.1/
 python3 setup.py build
@@ -74,25 +74,25 @@ pip3 install django==2.2.15
 
 ![image-20210719164840514](https://image.lvbibir.cn/blog/image-20210719164840514.png)
 
-## git clone 项目到本地
+## 1.4 clone 项目到本地
 
-```textile
+```bash
 yum install -y git
 git clone https://github.com/chroblert/assetmanage.git
 ```
 
 ![image-20210719162320356](https://image.lvbibir.cn/blog/image-20210719162320356.png)
 
-## 部署 server 端项目
+## 1.5 部署 server 端
 
-```textile
+```bash
 cd assetManage
-# 使用python3安装依赖包
+# 使用 python3 安装依赖包
 python3 -m pip install -r requirements.txt
 python3 manage.py makemigrations
 python3 manage.py migrate
 python3 manage.py runserver 0.0.0.0:8888
-# 假定该服务器的IP未112.112.112.112
+# 假定该服务器的 IP 为 112.112.112.112
 ```
 
 ![image-20210719165032945](https://image.lvbibir.cn/blog/image-20210721093225342.png)
@@ -101,17 +101,17 @@ python3 manage.py runserver 0.0.0.0:8888
 
 ![image-20210719165252503](https://image.lvbibir.cn/blog/image-20210719165252503.png)
 
-# 客户端进行检查
+# 2 客户端进行检查
 
 - 将项目目录中的 Agent 目录 copy 到需要进行基线检查的客户端
 
-```textile
+```bash
 scp -r assetmanage/Agent/ 192.168.150.102:/root/
 ```
 
 ![image-20210721092835125](https://image.lvbibir.cn/blog/image-20210721092835125.png)
 
-```textile
+```bash
 cd Agent/
 chmod a+x ./*.sh
 ```
@@ -129,3 +129,5 @@ chmod a+x ./*.sh
 ![image-20210721094411728](https://image.lvbibir.cn/blog/image-20210721094423226.png)
 
 ![image-20210721094423226](https://image.lvbibir.cn/blog/image-20210721094411728.png)
+
+以上

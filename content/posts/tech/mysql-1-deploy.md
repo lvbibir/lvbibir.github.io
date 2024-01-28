@@ -1,8 +1,8 @@
 ---
 title: "mysql (一) 部署" 
 date: 2022-05-02
-lastmod: 2022-05-02
-tags: 
+lastmod: 2024-01-28
+tags:
   - mysql
 keywords:
   - mysql
@@ -11,11 +11,11 @@ cover:
     image: "https://image.lvbibir.cn/blog/mysql.png" 
 ---
 
-# 0. 前言
+# 0 前言
 
 基于 `centos-7.9` `mysql-5.7.42`
 
-# 1. 基础环境
+# 1 基础环境
 
 配置 hostname
 
@@ -58,7 +58,7 @@ ntpdate time.windows.com
 yum remove -y $(rpm -qa | grep mariadb)
 ```
 
-# 2. 配置 yum 源
+# 2 配置 yum 源
 
 提供清华源和官方源两种方式, 任选其一, 前者速度稍快一些
 
@@ -98,7 +98,7 @@ wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm
 yum localinstall mysql57-community-release-el7-8.noarch.rpm
 ```
 
-# 3. 安装 mysql
+# 3 安装 mysql
 
 执行安装
 
@@ -138,3 +138,5 @@ mysql -uroot -p # 输入默认密码
 ALTER USER 'root'@'localhost' IDENTIFIED BY '<pass>'; # 修改密码, 需要有大小写和特殊符号
 exit;
 ```
+
+以上

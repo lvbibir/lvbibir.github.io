@@ -1,7 +1,7 @@
 ---
 title: "wsl | 安装配置 nodejs 环境"
 date: 2024-01-23
-lastmod: 2024-01-23
+lastmod: 2024-01-28
 tags:
   - wsl
 keywords:
@@ -14,11 +14,11 @@ cover:
     image: "https://image.lvbibir.cn/blog/logo-wsl.png"
 ---
 
-# 0.前言
+# 0 前言
 
 在 wsl2 中安装配置 nodejs 环境
 
-# 1.安装
+# 1 安装
 
 在 [此页面](https://nodejs.org/en/download/) 选择 linux x64 版本的链接, 复制链接地址
 
@@ -43,7 +43,7 @@ node -v
 npm -v
 ```
 
-# 2.配置
+# 2 配置
 
 ## 2.1 修改默认源地址
 
@@ -51,3 +51,5 @@ npm -v
 npm config set registry https://registry.npmmirror.com
 npm config get registry
 ```
+
+以上

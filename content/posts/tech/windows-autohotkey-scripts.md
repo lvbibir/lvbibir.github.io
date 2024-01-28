@@ -1,7 +1,7 @@
 ---
-title: "autohotkey 常用脚本"
+title: "windows | autohotkey 常用脚本"
 date: 2021-12-01
-lastmod: 2024-01-07
+lastmod: 2024-01-28
 tags:
   - windows
 keywords:
@@ -13,7 +13,7 @@ cover:
     image: "https://source.unsplash.com/random/400x200?code" 
 ---
 
-# 0.前言
+# 0 前言
 
 基于 autohotkey v1 版本
 
@@ -21,19 +21,19 @@ cover:
 
 如需开机自启, 在 `运行` 中执行 `shell:startup`, 将 `.ahk` 文件放到自启动目录即可
 
-# 1.prtsc 改为 shift insert
+# 1 prtsc 改为 shift insert
 
 我的机械键盘是 80 配列, 没有 insert, `shift+insert` 几乎是所有软件都支持的粘贴方式, 遂将很不常用的 `prtsc` 键改为 `shfit+insert` 的组合键
 
-```textile
+```plaintext
 PrintScreen::+Insert
 ```
 
-# 2.typora 快捷修改字体颜色
+# 2 typora 快捷修改字体颜色
 
 实现 `alt` + 数字键快速将光标选中的文本改为对应的颜色
 
-```textile
+```plaintext
 ; 分号以及分号后的内容代表注释，以下为代码解释
 #IfWinActive ahk_exe Typora.exe
 {
@@ -69,3 +69,5 @@ addFontColor(color){
     }
 }
 ```
+
+以上

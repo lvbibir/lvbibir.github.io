@@ -1,8 +1,8 @@
 ---
-title: "Zabbix 监控端口连通性并自动追踪 TCP 路由" 
+title: "Zabbix | 监控端口连通性并自动追踪 TCP 路由" 
 date: 2023-12-07
-lastmod: 2023-12-07
-tags: 
+lastmod: 2024-01-28
+tags:
   - zabbix
   - shell
 keywords:
@@ -13,7 +13,7 @@ cover:
     image: "https://image.lvbibir.cn/blog/Zabbix_logo.png"
 ---
 
-# 0. 前言
+# 0 前言
 
 本文实现被检测主机到特定 ip 的特定端口的连通性, 通过 `nc` 命令测试端口可用性, 当 `nc` 超时时自动执行 `traceroute` 追踪路由定位网络故障点, 本文的案例是监控我们生产的短信业务服务器到运营商提供的短信接口之间的连通性.
 
@@ -24,7 +24,7 @@ cover:
 
 确保需要检测端口连通性的服务器安装了 `nc` 及 `traceroute`
 
-# 1. 服务器配置
+# 1 服务器配置
 
 > 每个需要检测的服务器都要做如下操作
 
@@ -128,7 +128,7 @@ traceroute to 10.**.**.22 (10.**.**.22), 30 hops max, 60 byte packets
 
 可以看到中断的点, 这里中断是因为我们集团广域网没开 `7002` 端口的策略, 所以到广域网直接断掉了
 
-# 2. zabbix 配置
+# 2 zabbix 配置
 
 ## 2.1 创建模板
 
@@ -194,4 +194,4 @@ traceroute to 10.**.**.22 (10.**.**.22), 30 hops max, 60 byte packets
 
 最后将此聚合图形通过右上角的按钮添加到常用, 就可以在首页直接点击进来了
 
-至此
+以上
