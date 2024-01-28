@@ -18,10 +18,10 @@
     
     <item>
       <title>wsl | 安装配置 nodejs 环境</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/windows-wsl-5-node/</link>
+      <link>https://www.lvbibir.cn/en/posts/tech/windows-wsl-5-nodejs/</link>
       <pubDate>Tue, 23 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/windows-wsl-5-node/</guid>
+      <guid>https://www.lvbibir.cn/en/posts/tech/windows-wsl-5-nodejs/</guid>
       <description>wsl 中安装 nodejs 环境, 以及修改默认源等配置</description>
     </item>
     
@@ -40,7 +40,7 @@
       <pubDate>Fri, 12 Jan 2024 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/windows-wsl-3-set-proxy/</guid>
-      <description>wsl 中配置系统代理, 包含 clash 等客户端提供的代理或者使用指定的代理地址</description>
+      <description>wsl 中配置系统代理, apt 代理, git 代理, 以及 docker 代理, 包含 clash 等客户端提供的代理或者使用指定的代理地址</description>
     </item>
     
     <item>
@@ -62,12 +62,12 @@
     </item>
     
     <item>
-      <title>故障处理 | ssh 成功但是 scp 失败</title>
+      <title>troubleshooting | ssh 成功但是 scp 失败</title>
       <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-ssh-success-but-scp-failed/</link>
       <pubDate>Tue, 09 Jan 2024 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/troubleshooting-ssh-success-but-scp-failed/</guid>
-      <description>0. 前言 前段时间在配置 jenkins publish over ssh 时发现 jenkins 无法连接某个服务器, 经测试 ssh 可以正常登录, 但是 scp 时报错 subsystem request failed on channel 0, 记录一下这个问题的排查思路 1. 大致思路 影响到 ssh 的配置无非是以下这些: 网络问题: server 和 client 之间的网络不通或者防火墙配置 认证问题: 账号密码或者密钥错误 配置问题: server 端本身 sshd 服务报错未正常 server 端</description>
+      <description>0 前言 前段时间在配置 jenkins publish over ssh 时发现 jenkins 无法连接某个服务器, 经测试 ssh 可以正常登录, 但是 scp 时报错 subsystem request failed on channel 0, 记录一下这个问题的排查思路 1 大致思路 影响到 ssh 的配置无非是以下这些: 网络问题: server 和 client 之间的网络不通或者防火墙配置 认证问题: 账号密码或者密钥错误 配置问题: server 端本身 sshd 服务报错未正常 server 端</description>
     </item>
     
     <item>
@@ -89,7 +89,7 @@
     </item>
     
     <item>
-      <title>Zabbix 监控端口连通性并自动追踪 TCP 路由</title>
+      <title>Zabbix | 监控端口连通性并自动追踪 TCP 路由</title>
       <link>https://www.lvbibir.cn/en/posts/tech/zabbix-port-monitor/</link>
       <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
       
@@ -103,20 +103,20 @@
       <pubDate>Mon, 14 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/windows-early-auto-start/</guid>
-      <description>0. 前言 最近注意到 windows 系统中当 onedrive 和 clash 同时开机自启时会导致 onedrive 无法自动登录, 需要退出 onedrive 重新启动一下才能正常登录. 出现这个问题的原因是 onedrive 启动速度要比 clash 快, 导致 onedrive 启动时访问不到 clash. 其实只要将这两个其中一个不设置为开机自启即可解决, 但是这两个都是刚需, 放下任何一个都会不舒服. 一番 google 下来, 大部分的</description>
+      <description>0 前言 最近注意到 windows 系统中当 onedrive 和 clash 同时开机自启时会导致 onedrive 无法自动登录, 需要退出 onedrive 重新启动一下才能正常登录. 出现这个问题的原因是 onedrive 启动速度要比 clash 快, 导致 onedrive 启动时访问不到 clash. 其实只要将这两个其中一个不设置为开机自启即可解决, 但是这两个都是刚需, 放下任何一个都会不舒服. 一番 google 下来, 大部分的</description>
     </item>
     
     <item>
-      <title>windows 使用 miniconda 配置 python 虚拟环境</title>
+      <title>windows | miniconda 配置 python 虚拟环境</title>
       <link>https://www.lvbibir.cn/en/posts/tech/windows-miniconda/</link>
       <pubDate>Mon, 07 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/windows-miniconda/</guid>
-      <description>0. 前言 python 虚拟环境的重要性已经无需多言了, 目前所有支持 python 虚拟环境的工具中最好用的应该就是 conda 了, 最重要的一点是可以一键创建不同版本的 python 环境以适应不同的需求. Anaconda 比较臃肿, 本文使用无 GUI 的 miniconda. 环境: win10 miniconda3-py11-23.5.2-0 1. 安装 安装前需要确认一下系统及用户的环境变量中不要存在中文, 在 CMD 中直接执行 path 或者 git-bash 中执行 echo</description>
+      <description>0 前言 python 虚拟环境的重要性已经无需多言了, 目前所有支持 python 虚拟环境的工具中最好用的应该就是 conda 了, 最重要的一点是可以一键创建不同版本的 python 环境以适应不同的需求. Anaconda 比较臃肿, 本文使用无 GUI 的 miniconda. 环境: win10 miniconda3-py11-23.5.2-0 1 安装 安装前需要确认一下系统及用户的环境变量中不要存在中文, 在 CMD 中直接执行 path 或者 git-bash 中执行 echo</description>
     </item>
     
     <item>
-      <title>Zabbix 监控主机到指定 ip 的流量大小</title>
+      <title>Zabbix | 监控主机到指定 ip 的流量大小</title>
       <link>https://www.lvbibir.cn/en/posts/tech/zabbix-ip-traffic-monitor/</link>
       <pubDate>Fri, 04 Aug 2023 00:00:00 +0000</pubDate>
       
@@ -130,7 +130,7 @@
       <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/shell-centos-init/</guid>
-      <description>前言 以 centos7 为例, 通常我们新装完操作系统后需要进行配置 yum 源, iptables, selinux, ntp 以及优化 kernel 等操作, 现分享一些较为通用的配置. 同时博主将这些配置整理成了脚本, 可以一键执行. 常用配置 iptables &amp;amp; selinux sed -i &amp;#39;/SELINUX/s/enforcing/disabled/&amp;#39; /etc/selinux/config setenforce 0 iptables -F systemctl disable --now firewalld PS1 终端美化 cat &amp;gt; /etc/profile.d/PS1_conf.sh &amp;lt;&amp;lt; &amp;#39;EOF&amp;#39; export PS1=&amp;#34;\n[\[\e[31m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]] -\$?- \[\e[33m\]\$(pwd)\[\e[m\] \[\e[34m\]\$(date +&amp;#39;%F %T&amp;#39;)\[\e[m\] \n(\#)$ &amp;#34; EOF source /etc/profile.d/PS1_conf.sh history 格式化 cat &amp;gt; /etc/profile.d/history_conf.sh &amp;lt;&amp;lt; &amp;#39;EOF&amp;#39; export HISTFILE=&amp;#34;$HOME/.bash_history&amp;#34; # 写入文件 export HISTSIZE=1000 # hist</description>
+      <description>0 前言 以 centos7 为例, 通常我们新装完操作系统后需要进行配置 yum 源, iptables, selinux, ntp 以及优化 kernel 等操作, 现分享一些较为通用的配置. 同时博主将这些配置整理成了脚本, 可以一键执行. 1 常用配置 1.1 iptables &amp;amp; selinux sed -i &amp;#39;/SELINUX/s/enforcing/disabled/&amp;#39; /etc/selinux/config setenforce 0 iptables -F systemctl disable --now firewalld 1.2 PS1 终端美化 cat &amp;gt; /etc/profile.d/PS1_conf.sh &amp;lt;&amp;lt; &amp;#39;EOF&amp;#39; export PS1=&amp;#34;\n[\[\e[31m\]\u\[\e[m\]@\[\e[32m\]\h\[\e[m\]] -\$?- \[\e[33m\]\$(pwd)\[\e[m\] \[\e[34m\]\$(date +&amp;#39;%F %T&amp;#39;)\[\e[m\] \n(\#)$ &amp;#34; EOF source /etc/profile.d/PS1_conf.sh 1.3 history 格式化 cat &amp;gt; /etc/profile.d/history_conf.sh &amp;lt;&amp;lt; &amp;#39;EOF&amp;#39; export HISTFILE=&amp;#34;$HOME/.bash_history&amp;#34; # 写入文件 export HISTSIZE=1000</description>
     </item>
     
     <item>
@@ -184,7 +184,7 @@
       <pubDate>Wed, 26 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-prometheus-3-servicemonitor-podmonitor/</guid>
-      <description>prometheus-operator 中的服务发现(serviceMonitor)机制, kubernetes_sd_config 配置, 以及 serviceMonitor 和 podMonitor 自定义资源的使用.</description>
+      <description>prometheus-operator 中的服务发现 (serviceMonitor) 机制, kubernetes_sd_config 配置, 以及 serviceMonitor 和 podMonitor 自定义资源的使用.</description>
     </item>
     
     <item>
@@ -206,7 +206,7 @@
     </item>
     
     <item>
-      <title>traefik (四) 服务(TraefikService)</title>
+      <title>traefik (四) TraefikService 服务</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-4-traefikservice/</link>
       <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -215,16 +215,16 @@
     </item>
     
     <item>
-      <title>traefik (三) 中间件(Middleware)</title>
+      <title>traefik (三) Middleware 中间件</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-3-middleware/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-3-middleware/</guid>
-      <description>kubernetes 中使用 Traefik ingress 的 Middleware 实现重定向、白名单、用户认证、限流、熔断、压缩、自定义error页等操作</description>
+      <description>kubernetes 中使用 Traefik ingress 的 Middleware 实现重定向、白名单、用户认证、限流、熔断、压缩、自定义 error 页等操作</description>
     </item>
     
     <item>
-      <title>traefik (二) 路由(ingressRoute)</title>
+      <title>traefik (二) ingressRoute 路由</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-2-router/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -247,79 +247,79 @@
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-gatewayapi/</guid>
-      <description>1. 简介 Gateway API（之前叫 Service API）是由 SIG-NETWORK 社区管理的开源项目，项目地址：https://gateway-api.sigs.k8s.io/。 Ingress 资源对象不能很好的满足网络需求，很多场景下 Ingress 控制器都需要通过定义 annotations 或者 crd 来进行功能扩展，这对于使用标准和支持是非常不利的，新推出的 Gateway API 旨在通过可</description>
+      <description>1 简介 Gateway API（之前叫 Service API）是由 SIG-NETWORK 社区管理的开源项目，项目地址 Ingress 资源对象不能很好的满足网络需求，很多场景下 Ingress 控制器都需要通过定义 annotations 或者 crd 来进行功能扩展，这对于使用标准和支持是非常不利的，新推出的 Gateway API 旨在通过可扩展的面向角色的接口来增强服务网络。 Gateway API 是 Kubernetes 中的一个 API 资源集合，包括</description>
     </item>
     
     <item>
-      <title>dns配置文件中search和options ndots详解</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/dns-search/</link>
+      <title>linux | dns 配置文件中 search 和 options ndots 详解</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/linux-dns-search/</link>
       <pubDate>Thu, 13 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/dns-search/</guid>
-      <description>简介 dns 配置文件 /etc/resolv.conf 中常看到有 search 设置，以前以为是根据 search 中的域去指定 nameserver，其实不是这样用的。它的一个用处是程序只需要知道主机名就可以解析到 ip，不必知道域名后缀 domain 是什么 FQDN (Fully Qualified Domain Name) 含义是完整的域名. 例如, 一台机器主机名 (hostname) 是 www, 域名后缀 (domain) 是 baidu.com, 那么该主机的 FQDN 应该是 www.baidu.com. 最后是以 . 来</description>
+      <guid>https://www.lvbibir.cn/en/posts/tech/linux-dns-search/</guid>
+      <description>linux 中 dns 配置文件中的 search 和 options ndots 详解</description>
     </item>
     
     <item>
-      <title>kubernetes | statefulset控制器详解</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-statefulset/</link>
-      <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-statefulset/</guid>
-      <description>基础概念 StatefulSet 应用场景：分布式应用、集群 部署有状态应用 解决 Pod 独立生命周期，保持 Pod 启动顺序和唯一性 稳定，唯一的网络标识符，持久存储 有序，优雅的部署和扩展、删除和终止 有序，滚动更新 StatefulSet 控制器的优势 稳定的存储 StatefulSet 的存储卷使用 VolumeClaimTemplate 创建，称为卷申请模板，当 StatefulSet 使用 VolumeClaimTemplate 创建一个 PersistentVolume 时，同样也会为每个 Pod 分配并</description>
-    </item>
-    
-    <item>
-      <title>kubernetes 中的 command 和 args 与 dockerfile 中的 ENTRYPOINT 和 CMD 的关系</title>
+      <title>kubernetes |  command args 和 dockerfile 中的 ENTRYPOINT CMD</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-command-args-docker-entrypoint-cmd/</link>
       <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-command-args-docker-entrypoint-cmd/</guid>
-      <description>command args 如果指定了 containers.command，Dockerfile 中的 ENTRYPOINT 会被覆盖且 CMD 指令被忽略 如果指定了 containers.args，Dockerfile 中的 ENTRYPOINT 继续执行， CMD 指令 被覆盖 ENTRYPOINT CMD command args finally [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] ep-1 foo bar [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] ep-2 [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-1 zoo boo [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-2 zoo boo CMD ENTRYPOINT 我们大概可以总结出下</description>
+      <description>1 command args 如果指定了 containers.command，Dockerfile 中的 ENTRYPOINT 会被覆盖且 CMD 指令被忽略 如果指定了 containers.args，Dockerfile 中的 ENTRYPOINT 继续执行， CMD 指令 被覆盖 ENTRYPOINT CMD command args finally [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] ep-1 foo bar [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] ep-2 [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-1 zoo boo [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-2 zoo boo 2 CMD ENTRYPOINT 我们大概可以总结</description>
     </item>
     
     <item>
-      <title>docker | dockerfile最佳实践</title>
+      <title>kubernetes | statefulset 控制器详解</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-statefulset/</link>
+      <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-statefulset/</guid>
+      <description>1 基础概念 StatefulSet 应用场景：分布式应用、集群 部署有状态应用 解决 Pod 独立生命周期，保持 Pod 启动顺序和唯一性 稳定，唯一的网络标识符，持久存储 有序，优雅的部署和扩展、删除和终止 有序，滚动更新 StatefulSet 控制器的优势 稳定的存储 StatefulSet 的存储卷使用 VolumeClaimTemplate 创建，称为卷申请模板，当 StatefulSet 使用 VolumeClaimTemplate 创建一个 PersistentVolume 时，同样也会为每个 Pod 分配</description>
+    </item>
+    
+    <item>
+      <title>docker | dockerfile 最佳实践</title>
       <link>https://www.lvbibir.cn/en/posts/tech/docker-dockerfile-optimization/</link>
       <pubDate>Tue, 11 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/docker-dockerfile-optimization/</guid>
-      <description>前言 在使用 Docker 的过程中，编写 Dockerfile 是非常重要的一部分工作。合理编写 Dockerfile 会使我们构建出来的 Docker image 拥有更佳的性能和健壮性 目标: 更快的构建速度 更小的 Docker 镜像大小 更少的 Docker 镜像层 充分利用镜像缓存 增加 Dockerfile 可读性 让 Docker 容器使用起来更简单 总结 编写.dockerignore 文件 容器只运行单个应用 将多个 RUN 指令合并为</description>
+      <description>0 前言 本文参考以下内容: 如何编写最佳的 Dockerfile 在使用 Docker 的过程中，编写 Dockerfile 是非常重要的一部分工作。合理编写 Dockerfile 会使我们构建出来的 Docker image 拥有更佳的性能和健壮性 目标: 更快的构建速度 更小的 Docker 镜像大小 更少的 Docker 镜像层 充分利用镜像缓存 增加 Dockerfile 可读性 让 Docker 容器使用起来更简单 总结 编写.dockerignore 文件</description>
     </item>
     
     <item>
-      <title>docker | dockerfile指令详解</title>
+      <title>docker | dockerfile 指令详解</title>
       <link>https://www.lvbibir.cn/en/posts/tech/docker-dockerfile-instruction/</link>
       <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/docker-dockerfile-instruction/</guid>
-      <description>前言 Dockerfile 用于构建 docker 镜像, 实际上就是把在 linux 下的命令操作写到了 Dockerfile 中, 通过 Dockerfile 去执行设置好的操作命令, 保证通过 Dockerfile 的构建镜像是一致的. Dockerfile 是一个文本文件，其内包含了一条条的指令 (Instruction)，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。 参考内容： https://yeasy.gitbook.io/docker_practice/image/dockerfile FROM 指定基础</description>
+      <description>0 前言 本文参考以下链接： Dockerfile 指令详解 Dockerfile 用于构建 docker 镜像, 实际上就是把在 linux 下的命令操作写到了 Dockerfile 中, 通过 Dockerfile 去执行设置好的操作命令, 保证通过 Dockerfile 的构建镜像是一致的. Dockerfile 是一个文本文件, 其内包含了一条条的指令 (Instruction), 每一条指令构建一层, 因此每一条指令的内容, 就是描述该层应当如何构建. 1 FROM 指定基础镜像 命</description>
     </item>
     
     <item>
-      <title>linux | kill命令详解以及linux中的信号</title>
+      <title>linux | kill 命令详解以及 linux 中的信号</title>
       <link>https://www.lvbibir.cn/en/posts/tech/linux-command-kill/</link>
       <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/linux-command-kill/</guid>
-      <description>1. 简介 kill 命令很容易让人产生误解, 以为仅仅是用来终止 linux 中的进程. 在 man 手册中对 kill 命令的解释如下, 不难看出, kill 命令是一个用于将指定的 signal 发送给进程的工具 DESCRIPTION The command kill sends the specified signal to the specified process or process group. If no signal is specified, the TERM signal is sent. The TERM signal will kill processes which do not catch this signal. For other processes, it may be necessary to use the KILL (9) signal, since this signal cannot be caught. Most modern shells have a builtin kill function, with a usage rather</description>
+      <description>1 简介 kill 命令很容易让人产生误解, 以为仅仅是用来终止 linux 中的进程. 在 man 手册中对 kill 命令的解释如下, 不难看出, kill 命令是一个用于将指定的 signal 发送给进程的工具 DESCRIPTION The command kill sends the specified signal to the specified process or process group. If no signal is specified, the TERM signal is sent. The TERM signal will kill processes which do not catch this signal. For other processes, it may be necessary to use the KILL (9) signal, since this signal cannot be caught. Most modern shells have a builtin kill function, with a usage rather</description>
     </item>
     
     <item>
-      <title>elasticsearch 安装插件报错 java.nio.file.NotDirectoryException</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/elasticsearch-plugin-error/</link>
+      <title>troubleshooting | elasticsearch 安装插件报错</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-elasticsearch-plugin-error/</link>
       <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/elasticsearch-plugin-error/</guid>
-      <description>报错详细信息 Exception in thread &amp;#34;main&amp;#34; java.nio.file.NotDirectoryException: /usr/share/elasticsearch/plugins/plugin-descriptor.properties at java.base/sun.nio.fs.UnixFileSystemProvider.newDirectoryStream(UnixFileSystemProvider.java:439) at java.base/java.nio.file.Files.newDirectoryStream(Files.java:482) at java.base/java.nio.file.Files.list(Files.java:3793) at org.elasticsearch.tools.launchers.BootstrapJvmOptions.getPluginInfo(BootstrapJvmOptions.java:49) at org.elasticsearch.tools.launchers.BootstrapJvmOptions.bootstrapJvmOptions(BootstrapJvmOptions.java:34) at org.elasticsearch.tools.launchers.JvmOptionsParser.jvmOptions(JvmOptionsParser.java:137) at org.elasticsearch.tools.launchers.JvmOptionsParser.main(JvmOptionsParser.java:86) 安装插件时直接将插件的 zip 解压到了 plugins 目录 导致的，每个插件应以目录的形式存放在 plugins 目录 中 [root@21-centos-7 ~]# ls /data/elasticsearch/plugins/ commons-codec-1.9.jar commons-logging-1.2.jar config elasticsearch-analysis-ik-7.17.3.jar httpclient-4.5.2.jar httpcore-4.4.4.jar plugin-descriptor.properties plugin-security.policy 只需要为每个插件创建一个目录，并把插件解压到对应目录即可 mkdir /data/elasticsearch/plugins/elasticsearch-analysis-ik/ unzip elasticsearch-analysis-ik-7.17.3.zip -d /data/elasticsearch/plugins/elasticsearch-analysis-ik/ 参考: https://github.com/medcl/elasticsearch-analysis-ik/issues/638</description>
+      <guid>https://www.lvbibir.cn/en/posts/tech/troubleshooting-elasticsearch-plugin-error/</guid>
+      <description>0 前言 本文参考以下链接: github issue # 638 1 报错信息 报错详细信息 Exception in thread &amp;#34;main&amp;#34; java.nio.file.NotDirectoryException: /usr/share/elasticsearch/plugins/plugin-descriptor.properties at java.base/sun.nio.fs.UnixFileSystemProvider.newDirectoryStream(UnixFileSystemProvider.java:439) at java.base/java.nio.file.Files.newDirectoryStream(Files.java:482) at java.base/java.nio.file.Files.list(Files.java:3793) at org.elasticsearch.tools.launchers.BootstrapJvmOptions.getPluginInfo(BootstrapJvmOptions.java:49) at org.elasticsearch.tools.launchers.BootstrapJvmOptions.bootstrapJvmOptions(BootstrapJvmOptions.java:34) at org.elasticsearch.tools.launchers.JvmOptionsParser.jvmOptions(JvmOptionsParser.java:137) at org.elasticsearch.tools.launchers.JvmOptionsParser.main(JvmOptionsParser.java:86) 安装插件时直接将插件的 zip 解压到了 plugins 目录 导致的，每个插件应以目录的形式存放在 plugins 目录 中 [root@21-centos-7 ~]# ls /data/elasticsearch/plugins/ commons-codec-1.9.jar commons-logging-1.2.jar config elasticsearch-analysis-ik-7.17.3.jar httpclient-4.5.2.jar httpcore-4.4.4.jar plugin-descriptor.properties plugin-security.policy 2 解决 只需要为每个插件创建一个目录，并把插件解压到对应目录即可 mkdir /data/elasticsearch/plugins/elasticsearch-analysis-ik/ unzip elasticsearch-analysis-ik-7.17.3.zip -d /data/elasticsearch/plugins/elasticsearch-analysis-ik/ 以上</description>
     </item>
     
     <item>
-      <title>shell | if条件判断</title>
+      <title>shell | if 条件判断</title>
       <link>https://www.lvbibir.cn/en/posts/tech/shell-if/</link>
       <pubDate>Fri, 10 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/shell-if/</guid>
-      <description>shell中if条件判断详解</description>
+      <description>shell 中 if 条件判断详解</description>
     </item>
     
     <item>
@@ -341,7 +341,7 @@
     </item>
     
     <item>
-      <title>linux中history命令的格式化输出</title>
+      <title>linux | history 命令的格式化输出</title>
       <link>https://www.lvbibir.cn/en/posts/tech/linux-history-format/</link>
       <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
       
@@ -350,7 +350,7 @@
     </item>
     
     <item>
-      <title>shell | 将本地镜像批量推送到harbor</title>
+      <title>shell | 将本地镜像批量推送到 harbor</title>
       <link>https://www.lvbibir.cn/en/posts/tech/shell-push-harbor/</link>
       <pubDate>Wed, 12 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -359,12 +359,12 @@
     </item>
     
     <item>
-      <title>windows | hosts文件修复</title>
+      <title>windows | hosts 文件修复</title>
       <link>https://www.lvbibir.cn/en/posts/tech/windows-fix-hosts/</link>
       <pubDate>Sun, 09 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/windows-fix-hosts/</guid>
-      <description>介绍win10中修复hosts文件的方法</description>
+      <description>介绍 win10 中修复 hosts 文件的方法</description>
     </item>
     
     <item>
@@ -377,12 +377,12 @@
     </item>
     
     <item>
-      <title>kubernetes | RBAC鉴权和NetworkPolicy</title>
+      <title>kubernetes | RBAC 鉴权和 NetworkPolicy</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-rbac-networkpolicy/</link>
       <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-rbac-networkpolicy/</guid>
-      <description>介绍kubernetes中的安全框架、RBAC鉴权和网络策略（Pod ACL)</description>
+      <description>介绍 kubernetes 中的安全框架、RBAC 鉴权和网络策略（Pod ACL)</description>
     </item>
     
     <item>
@@ -391,7 +391,7 @@
       <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-service-ingress/</guid>
-      <description>介绍kubernetes中的service和Headless Service，service的两种代理模式，以及ingress控制器的使用</description>
+      <description>介绍 kubernetes 中的 service 和 Headless Service，service 的两种代理模式，以及ingress 控制器的使用</description>
     </item>
     
     <item>
@@ -400,7 +400,7 @@
       <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-storage/</guid>
-      <description>介绍kubernetes中的存储使用简介，例如emptydir、hostpath、NFS、pv、pvc、statefulset控制器</description>
+      <description>介绍 kubernetes 中的存储使用简介，例如 emptydir、hostpath、NFS、pv、pvc、statefulset 控制器</description>
     </item>
     
     <item>
@@ -409,7 +409,7 @@
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-auto-scale/</guid>
-      <description>介绍kubernetes中滚动升级的实现机制，如何手动伸缩pod，以及基于hpa实现自动伸缩</description>
+      <description>介绍 kubernetes 中滚动升级的实现机制，如何手动伸缩 pod，以及基于 hpa 实现自动伸缩</description>
     </item>
     
     <item>
@@ -418,7 +418,7 @@
       <pubDate>Tue, 04 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-controllers/</guid>
-      <description>介绍kubernetes中几种常用的控制器的使用场景和示例</description>
+      <description>介绍 kubernetes 中几种常用的控制器的使用场景和示例</description>
     </item>
     
     <item>
@@ -427,7 +427,7 @@
       <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-logs/</guid>
-      <description>介绍kubernetes中组件日志、标准输出类型的应用日志、文件类型的应用日志如何收集分析</description>
+      <description>介绍 kubernetes 中组件日志、标准输出类型的应用日志、文件类型的应用日志如何收集分析</description>
     </item>
     
     <item>
@@ -436,7 +436,7 @@
       <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-scheduler/</guid>
-      <description>介绍kubernetes中影响pod调度的一些因素，比如资源限制、nodeSelector、nodeAffinity、Taint、nodeName、DaemonSet控制器</description>
+      <description>介绍 kubernetes 中影响 pod 调度的一些因素，比如资源限制、nodeSelector、nodeAffinity、Taint、nodeName、DaemonSet 控制器</description>
     </item>
     
     <item>
@@ -445,7 +445,7 @@
       <pubDate>Sun, 02 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-pod/</guid>
-      <description>介绍kubernetes中pod的基础概念、存在意义、pod中容器的分类、静态pod、重启策略、健康检查等</description>
+      <description>介绍 kubernetes 中 pod 的基础概念、存在意义、pod 中容器的分类、静态 pod、重启策略、健康检查等</description>
     </item>
     
     <item>
@@ -454,11 +454,11 @@
       <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-notes/</guid>
-      <description>介绍一些常见的报错处理、kubectl命令的一些用法、yaml编写技巧、小优化等</description>
+      <description>介绍一些常见的报错处理、kubectl 命令的一些用法、yaml 编写技巧、小优化等</description>
     </item>
     
     <item>
-      <title>linux | set命令详解</title>
+      <title>linux | set 命令详解</title>
       <link>https://www.lvbibir.cn/en/posts/tech/linux-command-set/</link>
       <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate>
       
@@ -467,21 +467,21 @@
     </item>
     
     <item>
-      <title>cephadm 安装 ceph-v16 (pacific) (openeuler)</title>
+      <title>ceph | openeuler 部署 ceph-v16</title>
       <link>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openeuler/</link>
       <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openeuler/</guid>
-      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm 依赖 python3.6，而此版本的 openeuler 内置版本为 3.7，且不支持 platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作系统：openEuler-20.03-LTS-SP3 内核</description>
+      <description>在 openeuler 2003 系统中使用 cephadm 部署 ceph-v16 (pacific) 集群</description>
     </item>
     
     <item>
-      <title>cephadm 离线安装 ceph-v16 (Pacific) (openeuler)</title>
+      <title>ceph | ceph-v16 离线安装解决方案</title>
       <link>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openuler-offline/</link>
       <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openuler-offline/</guid>
-      <description>前言 适用于 Centos8/openeuler + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 一、离线 rpm 包和 docker 镜像的获取 找一台有外网的测试机（尽量跟生产系统的环境一致）通过 yum 安装 cephadm、ceph-common、docker 等需要的 rpm 包，注意使用 downloadonly 参数先下载好 rpm</description>
+      <description>0 前言 适用于 Centos8/openeuler + docker 安装 cephadm、ceph-common 的过程就不赘述了，主要探讨如何实现 cephadm 离线安装 ceph v16.2.8 1 离线包的获取 离线包主要指 rpm 包和 ceph 的 docker 镜像 找一台有外网的测试机（尽量跟生产系统的环境一致）通过 yum 安装 cephadm、ceph-common、docker 等需要的 rpm 包，注意使</description>
     </item>
     
     <item>
@@ -499,20 +499,20 @@
       <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/python-rename-file/</guid>
-      <description>将windows中某个目录下的所有文件中的下划线_替换为中划线-</description>
+      <description>将 windows 中某个目录下的所有文件中的下划线_替换为中划线-</description>
     </item>
     
     <item>
-      <title>cephadm 安装 ceph-v16 (pacific) (openeuler) (aarch64)</title>
+      <title>ceph | openeuler (aarch64) 部署 ceph-v16</title>
       <link>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openeuler-aarch64/</link>
       <pubDate>Fri, 22 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v16-cpehadm-openeuler-aarch64/</guid>
-      <description>前言 安装过程中会替换相当一部分系统内置的软件包，不建议用于生产环境 cephadm 依赖 python3.6，而此版本的 openeuler 内置版本为 3.7，且不支持 platform-python 参考：openeuler的gitee社区issue ceph：v16.2（pacific） 操作系统：icloudos_v1.0_aarch64（ope</description>
+      <description>在 openeuler 2003 aarch64 系统中使用 cephadm 部署 ceph-v16 (pacific) 集群</description>
     </item>
     
     <item>
-      <title>故障处理 | glibc 误升级后修复</title>
+      <title>troubleshooting | glibc 误升级后修复</title>
       <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-glibc-wu-sheng-ji/</link>
       <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
       
@@ -526,16 +526,16 @@
       <pubDate>Tue, 12 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/pxe-install-scripts/</guid>
-      <description>自己整理的一些工作中用到的不同系统对应的pxe配置方法</description>
+      <description>自己整理的一些工作中用到的不同系统对应的 pxe 配置方法</description>
     </item>
     
     <item>
-      <title>shell | 检索某url中所有文件的内容</title>
+      <title>shell | 检索某 url 中所有文件的内容</title>
       <link>https://www.lvbibir.cn/en/posts/tech/shell-search-url-files/</link>
       <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/shell-search-url-files/</guid>
-      <description>前言 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的。 可以通过检索 kernel.org 中所有内核版本的 ChangeLog 文件中是否包含该 commit 来判断漏洞影响的内核版本（仅针对 linux 的 kernel 相关的漏洞） 脚本 #!/bin/bash # author: lvbibir # date: 2022-06-23 # 检索 kernel.org 下的所有 ChangeLog 文件，是否包含某项特定的 commit 号 commit=&amp;#39;520778042ccca019f3ffa136dd0ca565c486cedd&amp;#39; version=4 number=0 curl -ks https://cdn.kernel.org/pub/linux/kernel/v$version\.x/ &amp;gt; list_$version cat list_$version | grep Change | grep -v sign | awk</description>
+      <description>0 前言 cve 官网或者工信部会发布一些 cve 漏洞，可以看到该漏洞在某次 commit 提交代码后修复的。 可以通过检索 kernel.org 中所有内核版本的 ChangeLog 文件中是否包含该 commit 来判断漏洞影响的内核版本（仅针对 linux 的 kernel 相关的漏洞） 1 脚本 #!/bin/bash # author: lvbibir # date: 2022-06-23 # 检索 kernel.org 下的所有 ChangeLog 文件，是否包含某项特定的 commit 号 commit=&amp;#39;520778042ccca019f3ffa136dd0ca565c486cedd&amp;#39; version=4 number=0 curl -ks https://cdn.kernel.org/pub/linux/kernel/v$version\.x/ &amp;gt; list_$version cat list_$version | grep Change | grep -v sign</description>
     </item>
     
     <item>
@@ -544,7 +544,7 @@
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/git/</guid>
-      <description>介绍使用git过程中常用的基础使用、参数设置、常见问题、配置优化等。</description>
+      <description>介绍使用 git 过程中常用的基础使用、参数设置、常见问题、配置优化等。</description>
     </item>
     
     <item>
@@ -553,20 +553,20 @@
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/shell-different-execution-mode/</guid>
-      <description>shell 脚本通常有 sh filename、bash filename、./filename、source filename 这四种执行方式 source filename 可以使用 . filename 代替，在当前的 bash 环境下读取并执行脚本文件中的命令，且脚本文件的变量，在脚本执行完成后会保存下来 ./filename 和 sh filename 或者 bash filename 是等效的，都是开启一个子 shell 来运行脚本文件，脚本</description>
+      <description>0 前言 本文参考以下链接: 详解 shell 中 source、sh、bash、./ 执行脚本的区别 1 不同的执行方式 shell 脚本通常有 sh filename、bash filename、./filename、source filename 这四种执行方式 source filename 可以使用 . filename 代替，在当前的 bash 环境下读取并执行脚本文件中的命令，且脚本文件</description>
     </item>
     
     <item>
-      <title>shell | 开启debug模式</title>
+      <title>shell | 开启 debug 模式</title>
       <link>https://www.lvbibir.cn/en/posts/tech/shell-enable-debug-mode/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/shell-enable-debug-mode/</guid>
-      <description>前言 shell 脚本是没有 debug 模式的，不过可以通过 set 指令实现简单的 debug 功能 shell 脚本中默认每条指令都会从上到下依次执行，但是当某行指令报错时，我们大多数情况下是不希望继续执行后续指令的 这时可以使用 shell 脚本中 set 指令的四个参数：-e、-u、-x、-o pipefail 命令报错即返回值（$?）不为 0 set -e set -e 选项可以在脚本</description>
+      <description>0 前言 本文参考以下链接: Bash 脚本中的 set -euxo pipefail shell 脚本是没有 debug 模式的，不过可以通过 set 指令实现简单的 debug 功能 shell 脚本中默认每条指令都会从上到下依次执行，但是当某行指令报错时，我们大多数情况下是不希望继续执行后续指令的 这时可以使用 shell 脚本中 set 指令的四个参数：-e、-u、-x、-o pipefail 命令报错即返回值</description>
     </item>
     
     <item>
-      <title>vscode 常见问题</title>
+      <title>vscode | 常见问题</title>
       <link>https://www.lvbibir.cn/en/posts/tech/vscode-common-problems/</link>
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
@@ -580,7 +580,7 @@
       <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/network-priority/</guid>
-      <description>介绍centos和windows中分别如何配置多网卡时以实现灵活的网络访问</description>
+      <description>介绍 centos 和 windows 中分别如何配置多网卡时以实现灵活的网络访问</description>
     </item>
     
     <item>
@@ -602,16 +602,16 @@
     </item>
     
     <item>
-      <title>mysql 杂记</title>
+      <title>mysql | 杂记</title>
       <link>https://www.lvbibir.cn/en/posts/tech/mysql-0-notes/</link>
       <pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/mysql-0-notes/</guid>
-      <description>0. 前言 基于 centos-7.9 mysql-5.7.42</description>
+      <description>0 前言 基于 centos-7.9 mysql-5.7.42</description>
     </item>
     
     <item>
-      <title>cicd | jenkins部署mall-swarm项目</title>
+      <title>cicd | jenkins 部署 mall-swarm 项目</title>
       <link>https://www.lvbibir.cn/en/posts/tech/cicd-mall-swarm/</link>
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -620,39 +620,39 @@
     </item>
     
     <item>
-      <title>httpd源码打包编译成rpm包</title>
+      <title>httpd 源码打包编译成 rpm 包</title>
       <link>https://www.lvbibir.cn/en/posts/tech/rpm-build-httpd/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/rpm-build-httpd/</guid>
-      <description>记录一下centos7中通过源码构建httpd rpm包的过程</description>
+      <description>记录一下 centos7 中通过源码构建 httpd rpm 包的过程</description>
     </item>
     
     <item>
-      <title>openssl源码打包编译成rpm包</title>
+      <title>openssl 源码打包编译成 rpm 包</title>
       <link>https://www.lvbibir.cn/en/posts/tech/rpm-build-openssl/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/rpm-build-openssl/</guid>
-      <description>记录一下centos7系统中通过源码构建openssh rpm包的过程</description>
+      <description>记录一下 centos7 系统中通过源码构建 openssh rpm 包的过程</description>
     </item>
     
     <item>
-      <title>centos7 修改网卡名称</title>
+      <title>centos7 | 修改网卡名称</title>
       <link>https://www.lvbibir.cn/en/posts/tech/centos7-change-network-card-name/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/centos7-change-network-card-name/</guid>
-      <description>介绍如何在centos7的系统中通过配置网络规则命名文件的方式修改网卡的名称</description>
+      <description>介绍如何在 centos7 的系统中通过配置网络规则命名文件的方式修改网卡的名称</description>
     </item>
     
     <item>
-      <title>ceph创建pool时pg_num的配置</title>
+      <title>ceph | pool pg_num 配置</title>
       <link>https://www.lvbibir.cn/en/posts/tech/ceph-pg-num-config-create-pool/</link>
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/ceph-pg-num-config-create-pool/</guid>
-      <description>介绍在ceph集群创建pool时pb_num参数如何配置以及较为通用的取值</description>
+      <description>介绍在 ceph 集群创建 pool 时 pg_num 参数如何配置以及较为通用的取值</description>
     </item>
     
     <item>
@@ -661,16 +661,25 @@
       <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/docker-import-export-image/</guid>
-      <description>通过shell | python的方式批量导入导出docker镜像</description>
+      <description>通过 shell 或者 python 的方式批量导入导出 docker 镜像</description>
     </item>
     
     <item>
-      <title>centos7.5 升级内核至 5.10</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/centos-update-kernel-to-5.10/</link>
+      <title>centos 密码尝试次数过多问题处理</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/centos-too-many-password-attempts/</link>
       <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/centos-update-kernel-to-5.10/</guid>
-      <description>查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 下载内核 https://elrepo.org/linux/kernel/el7/x86_64/RPMS/ 下载自己所需的内核 更新版本：5.10.81 内核版本介绍： lt longterm 的缩写 长期维护版 ml mainline 的缩写 最新稳定版 使用 wget 命令下载内核 RPM 包 [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-5.10.81-1.el7.x86_64.rpm [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 安装内核 yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 查看所有可用内核启动项 [dpl@test1 ~] awk -F\&amp;#39; &amp;#39;$1==&amp;#34;menuentry &amp;#34; {print i++ &amp;#34; : &amp;#34; $2}&amp;#39; /etc/grub2.cfg 0 : CentOS Linux (5.10.81-1.el7.x86_64) 7 (Core) 1 : CentOS Linux (3.10.0-1160.21.1.el7.x86_64) 7 (Core) 2 : CentOS</description>
+      <guid>https://www.lvbibir.cn/en/posts/tech/centos-too-many-password-attempts/</guid>
+      <description>介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理</description>
+    </item>
+    
+    <item>
+      <title>centos7 | 升级内核至 5.10</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/centos7-update-kernel-to-5.10/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/centos7-update-kernel-to-5.10/</guid>
+      <description>0 前言 内核版本介绍： lt longterm 的缩写 长期维护版 ml mainline 的缩写 最新稳定版 本文参考以下链接: Linux 离线升级内核 elrepo kernel rpm packge directory 1 升级内核 查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 使用 wget 命令下载内核 RPM 包 [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-5.10.81-1.el7.x86_64.rpm [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 安装内核 yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 查看所有可用内核启动项 [dpl@test1 ~] awk -F\&amp;#39; &amp;#39;$1==&amp;#34;menuentry &amp;#34; {print i++ &amp;#34; : &amp;#34; $2}&amp;#39; /etc/grub2.cfg 0 : CentOS Linux (5.10.81-1.el7.x86_64) 7 (Core) 1 : CentOS Linux (3.10.0-1160.21.1.el7.x86_64) 7 (Core)</description>
     </item>
     
     <item>
@@ -683,93 +692,84 @@
     </item>
     
     <item>
-      <title>密码尝试次数过多</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/centos-too-many-password-attempts/</link>
-      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/centos-too-many-password-attempts/</guid>
-      <description>介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理</description>
-    </item>
-    
-    <item>
-      <title>autohotkey 常用脚本</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/autohotkey-scripts/</link>
-      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/autohotkey-scripts/</guid>
-      <description>0.前言 基于 autohotkey v1 版本 使用方法: 安装 autohotkey 后, 将下述代码保存为 .ahk 文件, 双击执行即可 如需开机自启, 在 运行 中执行 shell:startup, 将 .ahk 文件放到自启动目录即可 1.prtsc 改为 shift insert 我的机械键盘是 80 配列, 没有 insert, shift+insert 几乎是所有软件都支持的粘贴方式, 遂将很不常用的 prtsc 键改为 shfit+insert 的组合键 PrintScreen::+Insert 2.typora 快捷修改字体颜色 实现 alt + 数字键快速将光标选</description>
-    </item>
-    
-    <item>
-      <title>centos7 部署 ceph-v12 (nautilus) &#43; dashboard</title>
+      <title>ceph | centos7 部署 ceph-v12</title>
       <link>https://www.lvbibir.cn/en/posts/tech/ceph-v12-nautilus-cephdeploy/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/ceph-v12-nautilus-cephdeploy/</guid>
-      <description>介绍在centos7环境中通过ceph-deploy部署ceph集群（nautilus）和可视化的dashboard</description>
+      <description>介绍在 centos7 环境中通过 ceph-deploy 部署 ceph-v12 (natuilus) 集群和可视化的 dashboard</description>
     </item>
     
     <item>
-      <title>cloud-init自动修改ssh配置文件</title>
+      <title>python | 修改 pip 源</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/python-change-pip-repo/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/python-change-pip-repo/</guid>
+      <description>1 清单 地址 中国科学技术大学 https://pypi.mirrors.ustc.edu.cn/simple 清华 https://pypi.tuna.tsinghua.edu.cn/simple 豆瓣 http://pypi.douban.com/simple 华中理工大学 http://pypi.hustunique.com/simple 山东理工大学 http://pypi.sdutlinux.org/simple 阿里云 https://mirrors.aliyun.com/pypi/simple/ 2 linux 环境 mkdir ~/.pip cat &amp;gt; ~/.pip/pip.conf &amp;lt;&amp;lt; EOF [global] trusted-host=mirrors.aliyun.com index-url=https://mirrors.aliyun.com/pypi/simple/ EOF 3 windows 环境 打开 cmd 使用 dos 命令 set 找到 userprofile 路径，在该路径下创建 pip 文件夹，在 pip 文件夹下创建 pip.ini pip.ini 具体配置 [global] timeout = 6000 index-url = https://pypi.tuna.tsinghua.edu.cn/simple trusted-host = pypi.tuna.tsinghua.edu.cn 以上</description>
+    </item>
+    
+    <item>
+      <title>troubleshooting | 安装 cloud-init 后导致 ssh 连接失败</title>
       <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-cloud-init-change-ssh-config/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/troubleshooting-cloud-init-change-ssh-config/</guid>
-      <description>前言 在 openEuler20.03 (LTS-SP1) 系统上进行一些测试，发现某个东西会自动修改 ssh 配置文件导致系统无法通过密码登录，最后排查是由于安装了 cloud-init 导致的。 以下是大致的排查思路 出现这个问题前做的操作是安装了一些项目组同事指定的包，问题就应该出在这些包上 yum install -y telnet rsync ntpdate zip unzip libaio dos2unix sos vim vim-enhanced net-tools man ftp lrzsz psmisc gzip network-scripts cloud-init cloud-utils-growpart tar libnsl authselect-compat 大致看了下，除了</description>
+      <description>0 前言 在 openEuler20.03 (LTS-SP1) 系统上进行一些测试，发现某个东西会自动修改 ssh 配置文件导致系统无法通过密码登录，最后排查是由于安装了 cloud-init 导致的。 排查思路 出现这个问题前做的操作是安装了一些项目组同事指定的包，问题就应该出在这些包上 yum install -y telnet rsync ntpdate zip unzip libaio dos2unix sos vim vim-enhanced net-tools man ftp lrzsz psmisc gzip network-scripts cloud-init cloud-utils-growpart tar libnsl authselect-compat 大致看了下，除了 cloud-Init 和 cloud-utils-growpart 这两</description>
     </item>
     
     <item>
-      <title>python3 | 修改 pip 源</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/python3-change-pip-repo/</link>
+      <title>windows | autohotkey 常用脚本</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/windows-autohotkey-scripts/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/python3-change-pip-repo/</guid>
-      <description>清单 地址 中国科学技术大学 https://pypi.mirrors.ustc.edu.cn/simple 清华 https://pypi.tuna.tsinghua.edu.cn/simple 豆瓣 http://pypi.douban.com/simple 华中理工大学 http://pypi.hustunique.com/simple 山东理工大学 http://pypi.sdutlinux.org/simple 阿里云 https://mirrors.aliyun.com/pypi/simple/ linux 环境 mkdir ~/.pip cat &amp;gt; ~/.pip/pip.conf &amp;lt;&amp;lt; EOF [global] trusted-host=mirrors.aliyun.com index-url=https://mirrors.aliyun.com/pypi/simple/ EOF windows 环境 打开 cmd 使用 dos 命令 set 找到 userprofile 路径，在该路径下创建 pip 文件夹，在 pip 文件夹下创建 pip.ini pip.ini 具体配置 [global] timeout = 6000 index-url = https://pypi.tuna.tsinghua.edu.cn/simple trusted-host = pypi.tuna.tsinghua.edu.cn</description>
+      <guid>https://www.lvbibir.cn/en/posts/tech/windows-autohotkey-scripts/</guid>
+      <description>0 前言 基于 autohotkey v1 版本 使用方法: 安装 autohotkey 后, 将下述代码保存为 .ahk 文件, 双击执行即可 如需开机自启, 在 运行 中执行 shell:startup, 将 .ahk 文件放到自启动目录即可 1 prtsc 改为 shift insert 我的机械键盘是 80 配列, 没有 insert, shift+insert 几乎是所有软件都支持的粘贴方式, 遂将很不常用的 prtsc 键改为 shfit+insert 的组合键 PrintScreen::+Insert 2 typora 快捷修改字体颜色 实现 alt + 数字键快速将光标</description>
     </item>
     
     <item>
-      <title>通过反编译修改rpm包内的文件</title>
+      <title>通过反编译修改 rpm 包内的文件</title>
       <link>https://www.lvbibir.cn/en/posts/tech/rpm-change-file/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/rpm-change-file/</guid>
-      <description>前言 要修改 rpm 包中的文件，对于自己编译的 rpm 包，只需要在源码中修改好然后重新编译即可。而对于并不是自己编译的 rpm 包，且不熟悉编译环境的情况下，可以使用 rpm-build 和 rpm-rebuild 工具反编译来修改 rpm 中的文件 这里使用 ceph-mgr 软件包进行演示 安装 rpm-build&amp;amp;rpmrebuild rpmrebuild 官网：http://rpmrebuild.sourceforge.net</description>
+      <description>0 前言 本文参考以下链接: 修改 rpm 中的文件重新打包 要修改 rpm 包中的文件，对于自己编译的 rpm 包，只需要在源码中修改好然后重新编译即可。而对于并不是自己编译的 rpm 包，且不熟悉编译环境的情况下，可以使用 rpm-build 和 rpm-rebuild 工具反编译来修改 rpm 中的文件 这里使用 ceph-mgr 软件包进行演示 1 安装 rpm-build&amp;amp;rpmrebuild rpmrebuild 官网 rpmrebuild 下载地址 解压 rpmrebuild [root@localhost ~]# mkdir -p</description>
     </item>
     
     <item>
       <title>部署 Ambari 2.7.5 &#43; HDP 3.1.5</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/ambari-2.7.5-and-hdp-3.1.5/</link>
+      <link>https://www.lvbibir.cn/en/posts/tech/centos-deploy-ambari-2.7.5-and-hdp-3.1.5/</link>
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/ambari-2.7.5-and-hdp-3.1.5/</guid>
+      <guid>https://www.lvbibir.cn/en/posts/tech/centos-deploy-ambari-2.7.5-and-hdp-3.1.5/</guid>
       <description>记录通过 Ambari 部署 hadoop 集群的过程</description>
     </item>
     
     <item>
-      <title>kolla-ansible 部署 Train版 openstack（all-in-one）</title>
+      <title>kolla-ansible 部署 openstack (Train) (all-in-one)</title>
       <link>https://www.lvbibir.cn/en/posts/tech/openstack-kolla-ansible-allinone-train/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/openstack-kolla-ansible-allinone-train/</guid>
-      <description>介绍cenots中使用kolla-ansible&#43;docker的方式快速部署openstack(all-in-one)单节点</description>
+      <description>介绍 cenots 中使用 kolla-ansible&#43;docker 的方式快速部署 openstack(all-in-one) 单节点</description>
     </item>
     
     <item>
-      <title>kubernetes | kubeadm 搭建 K8s集群v1.22.3</title>
+      <title>kubernetes | kubeadm 搭建 K8s 集群 v1.22.3</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-deploy-v1.22.3/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-deploy-v1.22.3/</guid>
-      <description>介绍kubernetes，并在centos中使用kubeadm快速搭建k8s集群v1.22.3、安装cni组件</description>
+      <description>介绍 kubernetes, 并在 centos 中使用 kubeadm 快速搭建 k8s 集群 v1.22.3、安装cni组件</description>
     </item>
     
     <item>
-      <title>openssh源码打包编译成rpm包</title>
+      <title>openssh 源码打包编译成 rpm 包</title>
       <link>https://www.lvbibir.cn/en/posts/tech/rpm-build-openssh/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/rpm-build-openssh/</guid>
-      <description>记录一下不同系统环境下通过源码构建openssh rpm包的过程</description>
+      <description>记录一下不同系统环境下通过源码构建 openssh rpm 包的过程</description>
     </item>
     
     <item>
@@ -782,39 +782,39 @@
     </item>
     
     <item>
-      <title>故障处理 | glibc 的 fread 问题</title>
+      <title>troubleshooting | glibc 的 fread 问题</title>
       <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-glibc-fread/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/troubleshooting-glibc-fread/</guid>
-      <description>前言 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向文件中追加内容，程序要能读取到，效果如下： 测试程序代码如下： #include&amp;lt;stdlib.h&amp;gt; #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;unistd.h&amp;gt; int main(int argc, char **argv) { FILE *f = fopen(&amp;#34;./Syslog.log&amp;#34;, &amp;#34;rb&amp;#34;); if (f == NULL) return 1; char buffer[1024] = {0}; size_t len = 0; while(1) { len = fread(buffer, 1, sizeof(buffer), f); if (len &amp;gt; 0)</description>
+      <description>0 前言 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向文件中追加内容，程序要能读取到，效果如下： 测试程序代码如下： #include&amp;lt;stdlib.h&amp;gt; #include&amp;lt;stdio.h&amp;gt; #include&amp;lt;unistd.h&amp;gt; int main(int argc, char **argv) { FILE *f = fopen(&amp;#34;./Syslog.log&amp;#34;, &amp;#34;rb&amp;#34;); if (f == NULL) return 1; char buffer[1024] = {0}; size_t len = 0; while(1) { len = fread(buffer, 1, sizeof(buffer), f); if (len &amp;gt;</description>
     </item>
     
     <item>
-      <title>centos7开启bbr算法</title>
+      <title>centos7 | 开启 bbr 算法</title>
       <link>https://www.lvbibir.cn/en/posts/tech/centos7-open-bbr/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/centos7-open-bbr/</guid>
-      <description>前言 介绍在 CentOS7 上部署 BBR 的详细过程 BBR 简介：（Bottleneck Bandwidth and RTT）是一种新的拥塞控制算法，由 Google 开发。有了 BBR，Linux 服务器可以显着提高吞吐量并减少连接延迟 1. 查看当前内核版本 uname -r 显示当前内核为 3.10.0，因此我们需要更新内核 2. 使用 ELRepo RPM 仓库升级内核 rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org //无返回内容 rpm</description>
+      <description>介绍在 CentOS7 上部署 BBR 的详细过程</description>
     </item>
     
     <item>
-      <title>H3C服务器配置raid</title>
+      <title>H3C 服务器配置 raid</title>
       <link>https://www.lvbibir.cn/en/posts/tech/h3c-server-config-raid/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/h3c-server-config-raid/</guid>
-      <description>记录一下H3C服务器配置raid的过程</description>
+      <description>记录一下 H3C 服务器配置 raid 的过程</description>
     </item>
     
     <item>
-      <title>linux | free命令详解</title>
+      <title>linux | free 命令详解</title>
       <link>https://www.lvbibir.cn/en/posts/tech/linux-command-free/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/linux-command-free/</guid>
-      <description>centos中free命令详解，以及centos6和centos7中free命令的不同</description>
+      <description>centos 中 free 命令详解，以及 centos6 和 centos7 中 free 命令的不同</description>
     </item>
     
     <item>
@@ -823,16 +823,16 @@
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/pxe-inspur-isoft5.1-aarch64/</guid>
-      <description>pxe 环境 dhcp+tftp+http pxe-server：isoft-serveros-v4.2（3.10.0-957.el7.isoft.x86_64） 引导的 iso：isoft-serveros-aarch64-oe1-v5.1（4.19.90-2003.4.0.0036.oe1.aarch64） 物理服务</description>
+      <description>1 pxe 环境 dhcp+tftp+http pxe-server：isoft-serveros-v4.2（3.10.0-957.el7.isoft.x86_64） 引导的 iso：isoft-serveros-aarch64-oe1-v5.1（4.19.90-2003.4.0.0036.oe1.aarch64） 物理服</description>
     </item>
     
     <item>
-      <title>故障处理 | H3C服务器装完系统无法引导</title>
+      <title>troubleshooting | H3C 服务器装完系统无法引导</title>
       <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-h3c-server-can-not-boot-system/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/troubleshooting-h3c-server-can-not-boot-system/</guid>
-      <description>记录一下在H3C服务器上系统无法引导的问题的解决</description>
+      <description>记录一下在 H3C 服务器上系统无法引导的问题的解决</description>
     </item>
     
     <item>
@@ -841,52 +841,43 @@
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/centos6-deploy-openvpn/</guid>
-      <description>介绍如何在centos6的环境中部署openvpn服务实现内网穿透</description>
+      <description>介绍如何在 centos6 的环境中部署 openvpn 服务实现内网穿透</description>
     </item>
     
     <item>
-      <title>centos7基线检查（benchmark）平台部署</title>
+      <title>centos7 | benchmark 平台部署</title>
       <link>https://www.lvbibir.cn/en/posts/tech/centos7-deploy-benchmark/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/centos7-deploy-benchmark/</guid>
-      <description>介绍在centos7环境中部署开源的benchmark基线检查平台，并通过web界面可视化展示</description>
+      <description>介绍在 centos7 环境中部署开源的 benchmark 基线检查平台，并通过 web 界面可视化展示</description>
     </item>
     
     <item>
-      <title>hwaddr和macaddr的区别</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/hwaddr-macaddr-different/</link>
+      <title>linux | hwaddr 和 macaddr 的区别</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/linux-hwaddr-macaddr-different/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/hwaddr-macaddr-different/</guid>
-      <description>环境：centos7.8 在 centos 中可以在如下文件中查看一个 NIC 的配置 ： /etc/sysconfig/network-scripts/ifcfg-N HWADDR=, 其中 以 AA:BB:CC:DD:EE:FF 形式的以太网设备的硬件地址.在有多个网卡设备的机器上，这个字段是非常有用的，它保证设备接口被分配了正确的设备名 ，而不考虑每个网卡模块被配置的加载顺序.这个字段不能和 MACADDR 一起使用. MACADDR=, 其中 以 AA:BB:CC:DD:EE:FF 形式的以太网设备的</description>
+      <guid>https://www.lvbibir.cn/en/posts/tech/linux-hwaddr-macaddr-different/</guid>
+      <description>0 前言 本文参考以下链接: 网卡的 HWADDR 和 MACADDR 的区别 LINUX 系统中 HWaddr 和 macaddr 什么区别 Linux 永久生效 MAC 1 详解 环境：centos7.8 在 centos 中可以在如下文件中查看一个 NIC 的配置 ： /etc/sysconfig/network-scripts/ifcfg-N HWADDR=, 其中 以 AA:BB:CC:DD:EE:FF 形式的以太网设备的硬件地址.在有多个网卡设备的机器上，这个字段是非常有用的，它保证设备接口被分配了正确的设备名 ，而不考虑每</description>
     </item>
     
     <item>
-      <title>docker | 三剑客之machine</title>
+      <title>docker | 三剑客之 machine</title>
       <link>https://www.lvbibir.cn/en/posts/tech/docker-machine/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/docker-machine/</guid>
-      <description>docker machine简介以及实战</description>
+      <description>docker machine 简介以及实战</description>
     </item>
     
     <item>
-      <title>docker | 三剑客之swarm</title>
+      <title>docker | 三剑客之 swarm</title>
       <link>https://www.lvbibir.cn/en/posts/tech/docker-swarm/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/docker-swarm/</guid>
-      <description>介绍docker-swarm集群的概述、使用和集群管理</description>
-    </item>
-    
-    <item>
-      <title>docker | 命令手册</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/docker-command/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/docker-command/</guid>
-      <description>基于docker-18.03.0-ce版本，介绍常见的docker命令及参数的使用方法</description>
+      <description>介绍 docker swarm 集群的概述、使用和集群管理</description>
     </item>
     
     <item>
@@ -895,7 +886,7 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/docker-remote-call-daemon/</guid>
-      <description>实现docker客户端与另一台主机上的docker守护进程进行通信</description>
+      <description>实现 docker 客户端与另一台主机上的 docker 守护进程进行通信</description>
     </item>
     
     <item>
@@ -904,16 +895,25 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/docker-rong-qi-kua-zhu-ji-lian-jie/</guid>
-      <description>介绍docker容器在不同宿主机下实现通信的几种方案</description>
+      <description>介绍 docker 容器在不同宿主机下实现通信的几种方案</description>
     </item>
     
     <item>
-      <title>docker | 数据卷（data volume）</title>
+      <title>docker | 常见命令</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-commands/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-commands/</guid>
+      <description>基于 docker-18.03.0-ce 版本，介绍常见的 docker 命令及参数的使用方法</description>
+    </item>
+    
+    <item>
+      <title>docker | 数据卷 volume</title>
       <link>https://www.lvbibir.cn/en/posts/tech/docker-data-volume/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/docker-data-volume/</guid>
-      <description>介绍如何使用docker的数据卷和数据卷容器</description>
+      <description>介绍如何使用 docker 的数据卷和数据卷容器</description>
     </item>
     
     <item>
@@ -922,7 +922,7 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/docker-jian-jie/</guid>
-      <description>介绍docker的一些基础概念和优势</description>
+      <description>介绍 docker 的一些基础概念和优势</description>
     </item>
     
     <item>
@@ -931,25 +931,16 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/docker-network/</guid>
-      <description>docker的网络结构简介 | 同一宿主机的docker容器之间是如何通信的</description>
+      <description>简单介绍 docker 的网络结构以及同一宿主机的 docker 容器之间是如何通信的</description>
     </item>
     
     <item>
-      <title>lvm基本特性及日常管理</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/lvm-characteristic-management/</link>
-      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/lvm-characteristic-management/</guid>
-      <description>LVM 基本特性：（可以通过插件 CLVM，实现群集逻辑卷管理） PV 物理卷 LV 逻辑卷（逻辑卷管理：会在物理存储上生成抽象层，以便创建逻辑存储卷，方便设备命名）（下面是逻辑卷的分类） Linear 线性卷 (这是默认的 lvm 形式，即按顺序占用磁盘，一块写完了再写另一块) Stripe 条带逻辑卷 RAID raid 逻辑卷 Mirror 镜像卷 Thinly-Provision 精简配置逻辑</description>
-    </item>
-    
-    <item>
-      <title>shell | 获取服务器硬件信息（整合为json格式）</title>
+      <title>shell | 获取服务器硬件信息整合为 json 格式 </title>
       <link>https://www.lvbibir.cn/en/posts/tech/shell-get-server-hardware-information/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/shell-get-server-hardware-information/</guid>
-      <description>前言 查看硬件信息，并将信息整合成 json 数值，然后传给前段进行分析，最后再进行相应的处理。在装系统的时候，或是进行监控时，都是一个标准的自动化运维流程。使用 shell 直接生成好 json 数据再进行传输，会变得非常方便。 环境 [root@sys-idc-pxe01 ~]# yum install jq lsscsi MegaCli 脚本内容 #!/bin/sh #description: get server hardware info #author: lvbibir #date: 20180122 #需要安装jq工具 yum install jq #用于存放该服</description>
+      <description>0 前言 查看硬件信息，并将信息整合成 json 数值，然后传给前段进行分析，最后再进行相应的处理。在装系统的时候，或是进行监控时，都是一个标准的自动化运维流程。使用 shell 直接生成好 json 数据再进行传输，会变得非常方便。 1 环境 [root@sys-idc-pxe01 ~]# yum install jq lsscsi MegaCli 2 脚本内容 #!/bin/sh #description: get server hardware info #author: lvbibir #date: 20180122 #需要安装jq工具 yum install jq #用于存</description>
     </item>
     
   </channel>

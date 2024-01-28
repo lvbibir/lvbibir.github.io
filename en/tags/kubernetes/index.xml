@@ -58,7 +58,7 @@
       <pubDate>Wed, 26 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-prometheus-3-servicemonitor-podmonitor/</guid>
-      <description>prometheus-operator 中的服务发现(serviceMonitor)机制, kubernetes_sd_config 配置, 以及 serviceMonitor 和 podMonitor 自定义资源的使用.</description>
+      <description>prometheus-operator 中的服务发现 (serviceMonitor) 机制, kubernetes_sd_config 配置, 以及 serviceMonitor 和 podMonitor 自定义资源的使用.</description>
     </item>
     
     <item>
@@ -80,7 +80,7 @@
     </item>
     
     <item>
-      <title>traefik (四) 服务(TraefikService)</title>
+      <title>traefik (四) TraefikService 服务</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-4-traefikservice/</link>
       <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -89,16 +89,16 @@
     </item>
     
     <item>
-      <title>traefik (三) 中间件(Middleware)</title>
+      <title>traefik (三) Middleware 中间件</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-3-middleware/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-3-middleware/</guid>
-      <description>kubernetes 中使用 Traefik ingress 的 Middleware 实现重定向、白名单、用户认证、限流、熔断、压缩、自定义error页等操作</description>
+      <description>kubernetes 中使用 Traefik ingress 的 Middleware 实现重定向、白名单、用户认证、限流、熔断、压缩、自定义 error 页等操作</description>
     </item>
     
     <item>
-      <title>traefik (二) 路由(ingressRoute)</title>
+      <title>traefik (二) ingressRoute 路由</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-2-router/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -121,25 +121,25 @@
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-gatewayapi/</guid>
-      <description>1. 简介 Gateway API（之前叫 Service API）是由 SIG-NETWORK 社区管理的开源项目，项目地址：https://gateway-api.sigs.k8s.io/。 Ingress 资源对象不能很好的满足网络需求，很多场景下 Ingress 控制器都需要通过定义 annotations 或者 crd 来进行功能扩展，这对于使用标准和支持是非常不利的，新推出的 Gateway API 旨在通过可</description>
+      <description>1 简介 Gateway API（之前叫 Service API）是由 SIG-NETWORK 社区管理的开源项目，项目地址 Ingress 资源对象不能很好的满足网络需求，很多场景下 Ingress 控制器都需要通过定义 annotations 或者 crd 来进行功能扩展，这对于使用标准和支持是非常不利的，新推出的 Gateway API 旨在通过可扩展的面向角色的接口来增强服务网络。 Gateway API 是 Kubernetes 中的一个 API 资源集合，包括</description>
     </item>
     
     <item>
-      <title>kubernetes | statefulset控制器详解</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-statefulset/</link>
-      <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-statefulset/</guid>
-      <description>基础概念 StatefulSet 应用场景：分布式应用、集群 部署有状态应用 解决 Pod 独立生命周期，保持 Pod 启动顺序和唯一性 稳定，唯一的网络标识符，持久存储 有序，优雅的部署和扩展、删除和终止 有序，滚动更新 StatefulSet 控制器的优势 稳定的存储 StatefulSet 的存储卷使用 VolumeClaimTemplate 创建，称为卷申请模板，当 StatefulSet 使用 VolumeClaimTemplate 创建一个 PersistentVolume 时，同样也会为每个 Pod 分配并</description>
-    </item>
-    
-    <item>
-      <title>kubernetes 中的 command 和 args 与 dockerfile 中的 ENTRYPOINT 和 CMD 的关系</title>
+      <title>kubernetes |  command args 和 dockerfile 中的 ENTRYPOINT CMD</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-command-args-docker-entrypoint-cmd/</link>
       <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-command-args-docker-entrypoint-cmd/</guid>
-      <description>command args 如果指定了 containers.command，Dockerfile 中的 ENTRYPOINT 会被覆盖且 CMD 指令被忽略 如果指定了 containers.args，Dockerfile 中的 ENTRYPOINT 继续执行， CMD 指令 被覆盖 ENTRYPOINT CMD command args finally [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] ep-1 foo bar [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] ep-2 [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-1 zoo boo [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-2 zoo boo CMD ENTRYPOINT 我们大概可以总结出下</description>
+      <description>1 command args 如果指定了 containers.command，Dockerfile 中的 ENTRYPOINT 会被覆盖且 CMD 指令被忽略 如果指定了 containers.args，Dockerfile 中的 ENTRYPOINT 继续执行， CMD 指令 被覆盖 ENTRYPOINT CMD command args finally [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] ep-1 foo bar [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] ep-2 [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-1 zoo boo [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-2 zoo boo 2 CMD ENTRYPOINT 我们大概可以总结</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | statefulset 控制器详解</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-statefulset/</link>
+      <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-statefulset/</guid>
+      <description>1 基础概念 StatefulSet 应用场景：分布式应用、集群 部署有状态应用 解决 Pod 独立生命周期，保持 Pod 启动顺序和唯一性 稳定，唯一的网络标识符，持久存储 有序，优雅的部署和扩展、删除和终止 有序，滚动更新 StatefulSet 控制器的优势 稳定的存储 StatefulSet 的存储卷使用 VolumeClaimTemplate 创建，称为卷申请模板，当 StatefulSet 使用 VolumeClaimTemplate 创建一个 PersistentVolume 时，同样也会为每个 Pod 分配</description>
     </item>
     
     <item>
@@ -152,12 +152,12 @@
     </item>
     
     <item>
-      <title>kubernetes | RBAC鉴权和NetworkPolicy</title>
+      <title>kubernetes | RBAC 鉴权和 NetworkPolicy</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-rbac-networkpolicy/</link>
       <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-rbac-networkpolicy/</guid>
-      <description>介绍kubernetes中的安全框架、RBAC鉴权和网络策略（Pod ACL)</description>
+      <description>介绍 kubernetes 中的安全框架、RBAC 鉴权和网络策略（Pod ACL)</description>
     </item>
     
     <item>
@@ -166,7 +166,7 @@
       <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-service-ingress/</guid>
-      <description>介绍kubernetes中的service和Headless Service，service的两种代理模式，以及ingress控制器的使用</description>
+      <description>介绍 kubernetes 中的 service 和 Headless Service，service 的两种代理模式，以及ingress 控制器的使用</description>
     </item>
     
     <item>
@@ -175,7 +175,7 @@
       <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-storage/</guid>
-      <description>介绍kubernetes中的存储使用简介，例如emptydir、hostpath、NFS、pv、pvc、statefulset控制器</description>
+      <description>介绍 kubernetes 中的存储使用简介，例如 emptydir、hostpath、NFS、pv、pvc、statefulset 控制器</description>
     </item>
     
     <item>
@@ -184,7 +184,7 @@
       <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-auto-scale/</guid>
-      <description>介绍kubernetes中滚动升级的实现机制，如何手动伸缩pod，以及基于hpa实现自动伸缩</description>
+      <description>介绍 kubernetes 中滚动升级的实现机制，如何手动伸缩 pod，以及基于 hpa 实现自动伸缩</description>
     </item>
     
     <item>
@@ -193,7 +193,7 @@
       <pubDate>Tue, 04 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-controllers/</guid>
-      <description>介绍kubernetes中几种常用的控制器的使用场景和示例</description>
+      <description>介绍 kubernetes 中几种常用的控制器的使用场景和示例</description>
     </item>
     
     <item>
@@ -202,7 +202,7 @@
       <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-logs/</guid>
-      <description>介绍kubernetes中组件日志、标准输出类型的应用日志、文件类型的应用日志如何收集分析</description>
+      <description>介绍 kubernetes 中组件日志、标准输出类型的应用日志、文件类型的应用日志如何收集分析</description>
     </item>
     
     <item>
@@ -211,7 +211,7 @@
       <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-scheduler/</guid>
-      <description>介绍kubernetes中影响pod调度的一些因素，比如资源限制、nodeSelector、nodeAffinity、Taint、nodeName、DaemonSet控制器</description>
+      <description>介绍 kubernetes 中影响 pod 调度的一些因素，比如资源限制、nodeSelector、nodeAffinity、Taint、nodeName、DaemonSet 控制器</description>
     </item>
     
     <item>
@@ -220,7 +220,7 @@
       <pubDate>Sun, 02 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-pod/</guid>
-      <description>介绍kubernetes中pod的基础概念、存在意义、pod中容器的分类、静态pod、重启策略、健康检查等</description>
+      <description>介绍 kubernetes 中 pod 的基础概念、存在意义、pod 中容器的分类、静态 pod、重启策略、健康检查等</description>
     </item>
     
     <item>
@@ -229,16 +229,16 @@
       <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-notes/</guid>
-      <description>介绍一些常见的报错处理、kubectl命令的一些用法、yaml编写技巧、小优化等</description>
+      <description>介绍一些常见的报错处理、kubectl 命令的一些用法、yaml 编写技巧、小优化等</description>
     </item>
     
     <item>
-      <title>kubernetes | kubeadm 搭建 K8s集群v1.22.3</title>
+      <title>kubernetes | kubeadm 搭建 K8s 集群 v1.22.3</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-deploy-v1.22.3/</link>
       <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-deploy-v1.22.3/</guid>
-      <description>介绍kubernetes，并在centos中使用kubeadm快速搭建k8s集群v1.22.3、安装cni组件</description>
+      <description>介绍 kubernetes, 并在 centos 中使用 kubeadm 快速搭建 k8s 集群 v1.22.3、安装cni组件</description>
     </item>
     
   </channel>

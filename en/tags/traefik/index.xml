@@ -8,7 +8,7 @@
     <language>en</language>
     <lastBuildDate>Wed, 19 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/traefik/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>traefik (四) 服务(TraefikService)</title>
+      <title>traefik (四) TraefikService 服务</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-4-traefikservice/</link>
       <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -17,16 +17,16 @@
     </item>
     
     <item>
-      <title>traefik (三) 中间件(Middleware)</title>
+      <title>traefik (三) Middleware 中间件</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-3-middleware/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-3-middleware/</guid>
-      <description>kubernetes 中使用 Traefik ingress 的 Middleware 实现重定向、白名单、用户认证、限流、熔断、压缩、自定义error页等操作</description>
+      <description>kubernetes 中使用 Traefik ingress 的 Middleware 实现重定向、白名单、用户认证、限流、熔断、压缩、自定义 error 页等操作</description>
     </item>
     
     <item>
-      <title>traefik (二) 路由(ingressRoute)</title>
+      <title>traefik (二) ingressRoute 路由</title>
       <link>https://www.lvbibir.cn/en/posts/tech/kubernetes-traefik-2-router/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
       

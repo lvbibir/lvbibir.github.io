@@ -40,7 +40,7 @@
       <pubDate>Wed, 26 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/kubernetes-prometheus-3-servicemonitor-podmonitor/</guid>
-      <description>prometheus-operator 中的服务发现(serviceMonitor)机制, kubernetes_sd_config 配置, 以及 serviceMonitor 和 podMonitor 自定义资源的使用.</description>
+      <description>prometheus-operator 中的服务发现 (serviceMonitor) 机制, kubernetes_sd_config 配置, 以及 serviceMonitor 和 podMonitor 自定义资源的使用.</description>
     </item>
     
     <item>

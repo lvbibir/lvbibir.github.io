@@ -18,10 +18,10 @@
     
     <item>
       <title>wsl | 安装配置 nodejs 环境</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/windows-wsl-5-node/</link>
+      <link>https://www.lvbibir.cn/en/posts/tech/windows-wsl-5-nodejs/</link>
       <pubDate>Tue, 23 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/windows-wsl-5-node/</guid>
+      <guid>https://www.lvbibir.cn/en/posts/tech/windows-wsl-5-nodejs/</guid>
       <description>wsl 中安装 nodejs 环境, 以及修改默认源等配置</description>
     </item>
     
@@ -40,7 +40,7 @@
       <pubDate>Fri, 12 Jan 2024 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/windows-wsl-3-set-proxy/</guid>
-      <description>wsl 中配置系统代理, 包含 clash 等客户端提供的代理或者使用指定的代理地址</description>
+      <description>wsl 中配置系统代理, apt 代理, git 代理, 以及 docker 代理, 包含 clash 等客户端提供的代理或者使用指定的代理地址</description>
     </item>
     
     <item>

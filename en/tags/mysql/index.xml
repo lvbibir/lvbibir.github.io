@@ -26,12 +26,12 @@
     </item>
     
     <item>
-      <title>mysql 杂记</title>
+      <title>mysql | 杂记</title>
       <link>https://www.lvbibir.cn/en/posts/tech/mysql-0-notes/</link>
       <pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/en/posts/tech/mysql-0-notes/</guid>
-      <description>0. 前言 基于 centos-7.9 mysql-5.7.42</description>
+      <description>0 前言 基于 centos-7.9 mysql-5.7.42</description>
     </item>
     
   </channel>
