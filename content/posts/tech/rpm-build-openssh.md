@@ -1,7 +1,7 @@
 ---
 title: "openssh 源码打包编译成 rpm 包" 
 date: 2021-09-01
-lastmod: 2024-01-28
+lastmod: 2024-02-01
 tags:
   - linux
 keywords:
@@ -19,25 +19,159 @@ cover:
 
 本文参考以下链接:
 
-- [systemd和sysv的服务管理](https://blog.csdn.net/weixin_30412577/article/details/97964940?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control)
+- [systemd 和 sysv 的服务管理](https://blog.csdn.net/weixin_30412577/article/details/97964940)
 - [systemd-sysv-generator 中文手册](https://www.wenjiangs.com/doc/systemd-systemd-sysv-generator)
+- [openssh 编译 rpm](https://www.zhihu.com/question/434396809/answer/3186833677)
 
-# 1 openssh-8.7p1
+# 1 openssh-9.5p1
 
 ## 1.1 编译环境
 
-编译平台：	vmware workstation
+- 编译平台: 华为私有云
+- 系统版本: 麒麟 v7.4
+- 系统内核: 3.10.0-693.43.1.el7.x86_64
 
-系统版本：	普华服务器操作系统 v4.2
+软件版本:
 
-系统内核：	3.10.0-327.el7.isoft.x86_64
+- openssh-9.5p1.tar.gz
+- openssl-3.0.11.tar.gz
+- x11-ssh-askpass-1.2.4.1.tar.gz
+
+[编译脚本项目地址](https://github.com/boypt/openssh-rpms)
+
+## 1.2 编译步骤
+
+添加 yum 源略, 云平台自带 yum 源
+
+创建工作目录
+
+```bash
+mkdir -p /opt/openssh-9.5/openssh-9.5p1-update-script/resource
+```
+
+下载 [编译脚本](https://codeload.github.com/boypt/openssh-rpms/zip/refs/heads/main), 上传至服务器 `/opt/openssh-9.5` 目录并解压
+
+```bash
+cd /opt/openssh-9.5; unzip openssh-rpms-main.zip
+```
+
+yum 安装依赖工具
+
+```bash
+yum clean all; yum makecache
+yum install wget vim gdb imake libXt-devel gtk2-devel  rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel  libX11-devel  initscripts --downloadonly --downloaddir=/opt/openssh-9.5/openssh-9.5p1-update-script/resource
+rpm -Uvh /opt/openssh-9.5/openssh-9.5p1-update-script/resource/*.rpm
+```
+
+默认 openssh 源码中是没有 ssh-copy-id 相关参数的，如果直接编译安装，会发现安装后没有 ssh-copy-id 命令，因此如果需要用到该命令，需要修改编译参数控制文件 openssh.spec, 本次安装使用的操作系统是 el7 系列的
+
+```bash
+vim /opt/openssh-9.5/openssh-rpms-main/el7/SPECS/openssh.spec
+```
+
+如下位置添加一行
+
+```plaintext
+install -m755 contrib/ssh-copy-id $RPM_BUILD_ROOT/usr/bin/ssh-copy-id
+```
+
+![image-20231114160828131](https://image.lvbibir.cn/blog/image-20231114-160828.png)
+
+第二处添加
+
+```plaintext
+%attr(0755,root,root) %{_bindir}/ssh-copy-id
+```
+
+![image-20231114161012601](https://image.lvbibir.cn/blog/image-20231114-161012.png)
+
+下载各源码包上传至服务器 `/opt/openssh-9.5/openssh-rpms-main/downloads`
+
+- [openssh](https://mirrors.aliyun.com/pub/OpenBSD/OpenSSH/portable/openssh-9.5p1.tar.gz)
+- [openssl](https://www.openssl.org/source/openssl-3.0.11.tar.gz)
+- [x11-ssh-askpass](https://src.fedoraproject.org/repo/pkgs/openssh/x11-ssh-askpass-1.2.4.1.tar.gz/8f2e41f3f7eaa8543a2440454637f3c3/x11-ssh-askpass-1.2.4.1.tar.gz)
+
+![image-20231114161838284](https://image.lvbibir.cn/blog/image-20231114-161838.png)
+
+执行编译打包脚本
+
+```bash
+cd /opt/openssh-9.5/openssh-rpms-main/; bash compile.sh
+```
+
+脚本应正常运行, 查看编译后的 rpm 包
+
+```bash
+cd /opt/openssh-9.5/openssh-rpms-main/el7/RPMS/x86_64/; ls
+```
+
+![image-20231114162423846](https://image.lvbibir.cn/blog/image-20231114-162423.png)
+
+## 1.3 升级脚本
+
+拷贝编译后的包到 resource 目录
+
+```bash
+cp /opt/openssh-9.5/openssh-rpms-main/el7/RPMS/x86_64/*.rpm /opt/openssh-9.5/openssh-9.5p1-update-script/resource/
+```
+
+编写升级脚本
+
+```bash
+cat > /opt/openssh-9.5/openssh-9.5p1-update-script/run.sh <<EOF
+#!/bin/bash
+#
+# Author  : lvbibir
+# Email   : lvbibir@gmail.com
+# Version : V1.0
+# Time    : 2023-11-14 16:48:30
+# Desc    : A script for update ssh
+
+set -e
+ssh -V
+/bin/cp /etc/pam.d/sshd /etc/pam.d/sshd_bak
+/bin/cp /etc/ssh/sshd_config /etc/ssh/sshd_config_bak
+yum localinstall -y resource/openssh-*.rpm
+/bin/cp /etc/pam.d/sshd_bak /etc/pam.d/sshd
+/bin/cp /etc/ssh/sshd_config_bak /etc/ssh/sshd_config
+rm -rf /etc/ssh/ssh*key
+systemctl daemon-reload
+systemctl restart sshd
+ssh -V
+
+EOF
+
+chmod 755 /opt/openssh-9.5/openssh-9.5p1-update-script/run.sh
+```
+
+打包
+
+```bash
+cd /opt/openssh-9.5/
+tar zcf openssh-9.5p1-update-script.tar.gz openssh-9.5p1-update-script
+```
+
+上传压缩包至服务器 `/opt/` 目录
+
+```bash
+cd /opt; tar zxf openssh-9.5p1-update-script.tar.gz
+cd /opt/openssh-9.5p1-update-script/; sh run.sh
+```
+
+# 2 openssh-8.7p1
+
+## 2.1 编译环境
+
+- 编译平台：	vmware workstation
+- 系统版本：	普华服务器操作系统 v4.2
+- 系统内核：	3.10.0-327.el7.isoft.x86_64
 
 软件版本：
 
 - openssh-8.7p1.tar.gz
 - x11-ssh-askpass-1.2.4.1.tar.gz
 
-## 1.2 编译步骤
+## 2.2 编译步骤
 
 yum 安装依赖工具
 
@@ -105,7 +239,7 @@ chmod 755 run.sh
 ssh -V 
 ```
 
-打包归档
+## 2.3 升级脚本
 
 ```bash
 [root@localhost ~]# cd /root/rpmbuild/RPMS/x86_64/
@@ -135,16 +269,16 @@ systemctl restart sshd
 [root@localhost x86_64]# mv openssh-8.7p1.rpm.x86_64.tar.gz /root
 ```
 
-## 1.3 使用
+使用
 
 ```bash
 tar zxf openssh-8.7p1.rpm.x86_64.tar.gz
 ./run.sh
 ```
 
-# 2 openssh-9.0p1
+# 3 openssh-9.0p1
 
-## 2.1 编译环境
+## 3.1 编译环境
 
 编译平台：	vmware workstation
 
@@ -162,7 +296,7 @@ tar zxf openssh-8.7p1.rpm.x86_64.tar.gz
 
 > 这两个内核版本步骤基本一样，区别在于 279 内核需要升级 `openssl`
 
-## 2.2 编译步骤
+## 3.2 编译步骤
 
 添加阿里云 yum 源和本地 yum 源
 
@@ -240,7 +374,7 @@ rpmbuild -ba /root/rpmbuild/SPECS/openssh.spec
 
 > 注意，从这步开始两个内核版本的后续操作不太相同
 
-### 2.2.1 2.6.32-279.el6.isoft.x86_64
+### 3.2.1 2.6.32-279.el6.isoft.x86_64
 
 准备目录
 
@@ -285,7 +419,7 @@ chmod 755 /root/openssh-9.0p1-rpms/run.sh
 tar zcf /root/openssh-9.0p1-rpms.tar.gz /root/openssh-9.0p1-rpms
 ```
 
-### 2.2.2 2.6.32-504.el6.isoft.x86_64
+### 3.2.2 2.6.32-504.el6.isoft.x86_64
 
 准备目录
 
@@ -320,7 +454,7 @@ chmod 755 /root/openssh-9.0p1-rpms/run.sh
 tar zcf /root/openssh-9.0p1-rpms.tar.gz /root/openssh-9.0p1-rpms
 ```
 
-## 2.3 使用
+## 3.3 使用
 
 ```bash
 tar zxf openssh-9.0p1-rpms.tar.gz
@@ -328,9 +462,9 @@ cd openssh-9.0p1-rpms
 sh run.sh
 ```
 
-# 3 openssh-8.6p1-aarch64
+# 4 openssh-8.6p1-aarch64
 
-## 3.1 编译环境
+## 4.1 编译环境
 
 - 系统版本：普华服务器操作系统 openeuler 版
 - 系统内核：4.19.90-2003.4.0.0036.oe1.aarch64
@@ -338,7 +472,7 @@ sh run.sh
     - openssh-8.6p1.tar.gz
     - x11-ssh-askpass-1.2.4.1.tar.gz
 
-## 3.2 编译步骤
+## 4.2 编译步骤
 
 dnf 安装依赖工具
 

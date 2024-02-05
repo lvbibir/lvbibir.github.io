@@ -1,7 +1,7 @@
 ---
 title: "wsl | 原生 linux 方式安装 docker"
 date: 2024-01-25
-lastmod: 2024-01-28
+lastmod: 2024-02-02
 tags:
   - wsl
   - docker
@@ -16,6 +16,11 @@ cover:
 ---
 
 # 0 前言
+
+本文参考以下链接:
+
+- [docker 文档 - 使用便利性脚本进行安装 docker engine](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script)
+- [docker 文档 - 配置 http proxy](https://docs.docker.com/config/daemon/systemd/)
 
 记录一下 wsl2 原生 linux 方式安装 docker 的过程
 
@@ -40,6 +45,8 @@ sudo systemctl stop|start|restart docker
 
 ## 2.1 修改镜像源
 
+proxies 部分可以不用配置, 因为我这里环境特殊, 必须走代理才能访问互联网
+
 ```bash
 sudo vim /etc/docker/daemon.json
 # 添加如下内容
@@ -48,12 +55,17 @@ sudo vim /etc/docker/daemon.json
     "https://docker.mirrors.ustc.edu.cn",
     "https://jc0srqak.mirror.aliyuncs.com",
     "http://hub-mirror.c.163.com"
-  ]
+  ],
+  "proxies": {
+    "http-proxy": "http://proxy1.bj.petrochina:8080",
+    "https-proxy": "http://proxy1.bj.petrochina:8080",
+    "no-proxy": "localhost,127.0.0.0/8"
+  }
 }
 
 sudo systemctl daemon-reload
 sudo systemctl restart docker
-sudo docker info
+sudo docker info # 应看到镜像仓库信息和代理信息
 ```
 
 ## 2.2 docker-compose

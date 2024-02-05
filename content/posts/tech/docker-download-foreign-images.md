@@ -1,7 +1,7 @@
 ---
 title: "docker | 下载外网镜像的几种方式" 
 date: 2023-03-09
-lastmod: 2024-01-27
+lastmod: 2024-02-02
 tags:
   - docker
 keywords:
@@ -110,19 +110,17 @@ docker push registry.cn-hangzhou.aliyuncs.com/lvbibir/<image>:<tag>
 
 # 4 http proxy
 
-如果有代理软件可以在 docker 中配置代理实现
+如果有代理软件可以在 docker 中配置代理实现, 参考 [docker 文档 - 配置 http proxy](https://docs.docker.com/config/daemon/systemd/)
 
 ```json
 {
- "proxies":
- {
-   "default":
-   {
-     "httpProxy": "http://127.0.0.1:1080",
-     "httpsProxy": "http://127.0.0.1:1080",
-     "noProxy": "*.test.example.com,.example2.com"
-   }
- }
+  "proxies": {
+    "default": {
+      "httpProxy": "http://127.0.0.1:1080",
+      "httpsProxy": "http://127.0.0.1:1080",
+      "noProxy": "*.test.example.com,.example2.com"
+    }
+  }
 }
 ```
 
