@@ -6,7 +6,16 @@
     <description>Recent content in shell on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 07 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>shell | sshpass 批量传输文件及执行命令</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/shell-sshpass-batch-execcute/</link>
+      <pubDate>Thu, 01 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/shell-sshpass-batch-execcute/</guid>
+      <description>介绍一下使用 sshpass 通过读取配置文件的方式批量下发文件和执行命令</description>
+    </item>
+    
     <item>
       <title>shell | 检测网站存活并自动钉钉告警</title>
       <link>https://www.lvbibir.cn/en/posts/tech/shell-check-website-available/</link>

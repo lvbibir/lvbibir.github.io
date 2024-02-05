@@ -6,7 +6,16 @@
     <description>Recent content in windows on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 14 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>windows | rime 输入法 &amp; 雾凇方案</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/windowns-rime-input-method/</link>
+      <pubDate>Sun, 04 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/windowns-rime-input-method/</guid>
+      <description>介绍一下 windows 下安装 rime 小狼毫输入法使用雾凇方案, 以及一些好用的配置</description>
+    </item>
+    
     <item>
       <title>windows | 自定义开机快速启动项</title>
       <link>https://www.lvbibir.cn/en/posts/tech/windows-early-auto-start/</link>
