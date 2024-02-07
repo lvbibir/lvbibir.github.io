@@ -9,10 +9,10 @@
     <lastBuildDate>Thu, 07 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/zabbix/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Zabbix | 监控端口连通性并自动追踪 TCP 路由</title>
-      <link>https://www.lvbibir.cn/en/posts/tech/zabbix-port-monitor/</link>
+      <link>https://www.lvbibir.cn/en/posts/tech/zabbix-tcp-port-monitor/</link>
       <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/en/posts/tech/zabbix-port-monitor/</guid>
+      <guid>https://www.lvbibir.cn/en/posts/tech/zabbix-tcp-port-monitor/</guid>
       <description>zabbix 中通过 shell 脚本监控指定 agent 到指定 ip:port 的端口连通性, 不连通时自动触发 traceroute 追踪路由并记录到日志</description>
     </item>
     
