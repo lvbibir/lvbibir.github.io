@@ -220,6 +220,13 @@ body {
     align-content: center;
 }
 
+/* 首页 cover 图小屏不展示 */
+@media (max-width: 640px) {
+    .entry-cover {
+      display: none;
+    }
+}
+
 .post-info {
     display: inline-block;
     overflow: hidden;
