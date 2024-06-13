@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Suse on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/en/tags/suse/</link>
+    <description>Recent content in Suse on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 15 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/suse/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>suse 12sp5 升级 openssh 及 openssl</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/suse-12sp5-update-openssl-openssh/</link>
+      <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/suse-12sp5-update-openssl-openssh/</guid>
+      <description>以源码编译的方式, 将 suse12sp5 默认的 openssl 从 1.0.2j 升级到 1.1.1i, openssh 从 7.2p2 升级至 9.7p1.</description>
+    </item>
+    
+    <item>
+      <title>suse 12sp5 部署 mysql 5.7</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/suse-12sp5-deploy-mysql57/</link>
+      <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/suse-12sp5-deploy-mysql57/</guid>
+      <description>0 前言 系统使用 Gnome 环境 1 安装 安装依赖 zypper in libatomic1 zypper in perl-JSON 下载 mysql 安装包, 链接 tar xf mysql-5.7.44-1.sles12.x86_64.rpm-bundle.tar rpm -ivh mysql-community-common-5.7.44-1.sles12.x86_64.rpm rpm -ivh mysql-community-libs-5.7.44-1.sles12.x86_64.rpm rpm -ivh mysql-community-client-5.7.44-1.sles12.x86_64.rpm rpm -ivh mysql-community-server-5.7.44-1.sles12.x86_64.rpm mkdir -p /data/mysql/{data,tmp} chown -R mysql /data/mysql mysqld --initialize --datadir=/data/mysql/data/ --user=mysql 修改 /etc/my.cnf 配置文件 [client] port = 3306 socket = /data/mysql/mysql.sock default-character-set=utf8 [mysqld] port = 3306 skip-grant-tables datadir = /data/mysql/data tmpdir = /data/mysql/tmp socket = /data/mysql/mysql.sock character-set-server = utf8 collation-server = utf8_general_ci pid-file = /data/mysql/mysql.pid user = mysql explicit_defaults_for_timestamp lower_case_table_names = 1 max_connections = 1000 back_log = 1024 open_files_limit = 10240 table_open_cache = 5120 skip-external-locking local-infile = 1 key_buffer_size = 32M max_allowed_packet = 1M table_open_cache = 64 sort_buffer_size = 512K net_buffer_length = 8K read_buffer_size = 256K read_rnd_buffer_size = 512K</description>
+    </item>
+    
+  </channel>
+</rss>

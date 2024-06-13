@@ -6,7 +6,16 @@
     <description>Recent content in Docker on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 01 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker | centos7 部署 docker</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/docker-deploy/</link>
+      <pubDate>Wed, 07 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/docker-deploy/</guid>
+      <description>本文介绍一下 centos7 安装部署 docker 的步骤</description>
+    </item>
+    
     <item>
       <title>shell | sshpass 批量传输文件及执行命令</title>
       <link>https://www.lvbibir.cn/en/posts/tech/shell-sshpass-batch-execcute/</link>

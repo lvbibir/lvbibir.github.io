@@ -6,7 +6,16 @@
     <description>Recent content in Openssh on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 09 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/openssh/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 15 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/en/tags/openssh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>suse 12sp5 升级 openssh 及 openssl</title>
+      <link>https://www.lvbibir.cn/en/posts/tech/suse-12sp5-update-openssl-openssh/</link>
+      <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/en/posts/tech/suse-12sp5-update-openssl-openssh/</guid>
+      <description>以源码编译的方式, 将 suse12sp5 默认的 openssl 从 1.0.2j 升级到 1.1.1i, openssh 从 7.2p2 升级至 9.7p1.</description>
+    </item>
+    
     <item>
       <title>troubleshooting | ssh 成功但是 scp 失败</title>
       <link>https://www.lvbibir.cn/en/posts/tech/troubleshooting-ssh-success-but-scp-failed/</link>
