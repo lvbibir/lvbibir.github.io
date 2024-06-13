@@ -1,7 +1,7 @@
 ---
 title: "跑步日常"
 date: 2022-07-07
-lastmod: 2024-01-28
+lastmod: 2024-06-13
 tags: []
 keywords:
 description: "记录一下本跑渣的跑步日常，一点一滴见证自己成长~"
@@ -10,6 +10,16 @@ cover:
 ---
 
 > 标题说明: 月份 _ 当月跑步次数 _ 当月跑步距离
+
+# 2024
+
+## 02_04_20
+
+![](https://image.lvbibir.cn/blog/running-2024-02.png)
+
+## 01_05_25
+
+![](https://image.lvbibir.cn/blog/running-2024-01.png)
 
 # 2023
 
