@@ -105,4 +105,11 @@ rsync -avuzc test1/* test2/
 rsync -avzc --delete test1/* test2/
 ```
 
+## 4.4 du
+
+```bash
+# 查看目录内文件和子目录的大小并按照大小排序
+du -sh ./* | sort -rh | head
+```
+
 以上
