@@ -67,6 +67,7 @@ EOF
 conda create -n py37 python=3.7
 
 cat >> ${HOME}/.bash_profile <<- 'EOF'
+conda deactivate
 conda activate py37
 EOF
 ```
