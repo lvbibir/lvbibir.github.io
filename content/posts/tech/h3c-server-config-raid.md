@@ -11,7 +11,7 @@ keywords:
   - H3C
 description: "记录一下 H3C 服务器配置 raid 的过程" 
 cover:
-    image: "https://source.unsplash.com/random/400x200?code" 
+    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
 ---
 
 1. 进入 bios 修改启动模式，将 UEFI 改为 Legacy bios

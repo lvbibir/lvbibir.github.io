@@ -11,7 +11,7 @@ keywords:
   - network
 description: "介绍 centos 和 windows 中分别如何配置多网卡时以实现灵活的网络访问" 
 cover:
-    image: "https://source.unsplash.com/random/400x200?code" 
+    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
 ---
 
 # 0 前言

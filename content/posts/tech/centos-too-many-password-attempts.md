@@ -11,7 +11,7 @@ keywords:
   - pam
 description: "介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理" 
 cover:
-    image: "https://source.unsplash.com/random/400x200?code" 
+    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
 ---
 
 pam 模块

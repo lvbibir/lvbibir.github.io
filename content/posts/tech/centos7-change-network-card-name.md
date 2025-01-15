@@ -12,7 +12,7 @@ keywords:
   - grub
 description: "介绍如何在 centos7 的系统中通过配置网络规则命名文件的方式修改网卡的名称" 
 cover:
-    image: "https://source.unsplash.com/random/400x200?code" 
+    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
 ---
 
 # 0 前言

@@ -12,7 +12,7 @@ keywords:
   - rpm构建
 description: "记录一下不同系统环境下通过源码构建 openssh rpm 包的过程" 
 cover:
-    image: "https://source.unsplash.com/random/400x200?code" 
+    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
 ---
 
 # 0 前言

@@ -10,7 +10,7 @@ keywords:
   - rime-ice
 description: "介绍一下 windows 下安装 rime 小狼毫输入法使用雾凇方案, 以及一些好用的配置"
 cover:
-    image: "https://source.unsplash.com/random/400x200?code"
+    image: "https://image.lvbibir.cn/blog/default-cover.webp"
 ---
 
 # 0 前言

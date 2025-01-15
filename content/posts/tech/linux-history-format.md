@@ -9,7 +9,7 @@ keywords:
   - history
 description: ""
 cover:
-    image: "https://source.unsplash.com/random/400x200?code"
+    image: "https://image.lvbibir.cn/blog/default-cover.webp"
 ---
 
 在 `/etc/prifile.d` 目录下新建一个文件，用户登录系统时自动生效

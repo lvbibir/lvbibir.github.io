@@ -6,7 +6,7 @@ tags: []
 keywords:
 description: ""
 cover:
-    image: "https://source.unsplash.com/random/400x200?code"
+    image: "https://image.lvbibir.cn/blog/default-cover.webp"
 ---
 
 # 0 前言
