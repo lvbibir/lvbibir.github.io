@@ -13,7 +13,7 @@ showbreadcrumbs: false
 <body>
 <!-- 引用 artitalk -->
 <!-- <script type="text/javascript" src="https://unpkg.com/artitalk"></script> -->
-<script type="text/javascript" src="https://www.lvbibir.cn/js/artitalk.js"></script>
+<script type="text/javascript" src="https://image.lvbibir.cn/js/artitalk/3.3.4/artitalk.js"></script>
 <!-- 存放说说的容器 -->
 <div id="artitalk_main"></div>
 <script>
