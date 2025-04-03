@@ -82,6 +82,10 @@ find . -type f -name '*flac' -print0| xargs -0 rm -f
 find . -type f -exec file "{}" ";" | awk -F ': ' '$2 !~ /ASCII/ {print $1 ": " $2}'
 # 将目录内所有的 crlf 文件转为 lf
 find . -type f -exec file "{}" ";" | awk -F ': ' '$2 !~ /ASCII/ {print $1 ": " $2}' | grep CRLF | awk -F':' '{print $1}' | xargs dos2unix
+# 查看目录下30天内未改动的文件
+find /var/log -type f -mtime +30
+# 删除目录下30天内未改动的文件
+find /var/log -type f -mtime +30 -delete
 ```
 
 ## 4.2 tar
