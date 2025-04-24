@@ -1,7 +1,7 @@
 ---
 title: "openssh 源码打包编译成 rpm 包" 
 date: 2021-09-01
-lastmod: 2025-04-03
+lastmod: 2025-04-24
 tags:
   - linux
 keywords:
@@ -59,7 +59,7 @@ yum 安装依赖工具
 
 ```bash
 yum clean all; yum makecache
-yum install wget vim gdb imake libXt-devel gtk2-devel  rpm-build zlib-devel openssl-devel gcc perl-devel pam-devel unzip krb5-devel  libX11-devel  initscripts
+yum install wget vim gdb imake libXt-devel gtk2-devel  rpm-build zlib-devel openssl-devel gcc perl perl-IPC-Cmd perl-devel pam-devel unzip krb5-devel  libX11-devel  initscripts
 ```
 
 默认 openssh 源码中是没有 ssh-copy-id 相关参数的，如果直接编译安装，会发现安装后没有 ssh-copy-id 命令，因此如果需要用到该命令，需要修改编译参数控制文件 openssh.spec, 本次安装使用的操作系统是 el7 系列的
@@ -95,7 +95,10 @@ install -m755 contrib/ssh-copy-id $RPM_BUILD_ROOT/usr/bin/ssh-copy-id
 执行编译打包脚本
 
 ```bash
-cd /opt/openssh-9.5/openssh-rpms-main/; bash compile.sh
+cd /opt/openssh-9.5/openssh-rpms-main/
+# 修改 version.env 文件, 使版本号对应
+cat version.env
+bash compile.sh
 ```
 
 脚本应正常运行, 查看编译后的 rpm 包

@@ -44,8 +44,10 @@ grep -r -l 'title' /your/directory/* | xargs grep -L 'description'
 ## 2.1 ps
 
 ```bash
-# 查看获取服务器内占用内存较高的10个进程
+# 查看获取服务器内存占用内存较高的10个进程
 ps aux | head -1; ps aux | grep -v PID | sort -rn -k +4 | head -10
+# 查看获取服务器 CPU 占用内存较高的10个进程
+ps aux | head -1; ps aux | grep -v PID | sort -rn -k +3 | head -10
 # 查看进程启动时间
 ps -eo pid,lstart,etime,cmd | grep java | grep 8082
 ```
