@@ -75,28 +75,61 @@ echo "UseDNS no" >> /etc/ssh/sshd_config
 
 ## 1.6 配置 yum 源
 
-以实测最快的清华源为例
+以实测最快的中科大源为例
 
 ```bash
 mkdir /etc/yum.repos.d/bak || true
 mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/bak/ || true
 
-cat > /etc/yum.repos.d/centos-tuna.repo << 'EOF'
+cat > /etc/yum.repos.d/centos-ustc.repo << 'EOF'
 [base]
 name=CentOS-$releasever - Base
-baseurl=http://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/os/$basearch/
-gpgcheck=0
+baseurl=https://mirrors.ustc.edu.cn/centos-vault/centos/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
 [updates]
 name=CentOS-$releasever - Updates
-baseurl=http://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/updates/$basearch/
-gpgcheck=0
+baseurl=https://mirrors.ustc.edu.cn/centos-vault/centos/$releasever/updates/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
 [extras]
 name=CentOS-$releasever - Extras
-baseurl=http://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/extras/$basearch/
-gpgcheck=0
+baseurl=https://mirrors.ustc.edu.cn/centos-vault/centos/$releasever/extras/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
+[centosplus]
+name=CentOS-$releasever - Plus
+baseurl=https://mirrors.ustc.edu.cn/centos-vault/centos/$releasever/centosplus/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+EOF
+
+cat > /etc/yum.repos.d/epel-ustc.repo << 'EOF'
+[epel]
+name=Extra Packages for Enterprise Linux $releasever - $basearch
+baseurl=https://mirrors.ustc.edu.cn/epel-archive/7/x86_64/
+enabled=1
+gpgcheck=1
+countme=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever
+
+[epel-debuginfo]
+name=Extra Packages for Enterprise Linux $releasever - $basearch - Debug
+baseurl=https://mirrors.ustc.edu.cn/epel-archive/7/x86_64/debug/
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever
+gpgcheck=1
+
+[epel-source]
+name=Extra Packages for Enterprise Linux $releasever - $basearch - Source
+baseurl=https://mirrors.ustc.edu.cn/epel-archive/7/source/tree/
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever
+gpgcheck=1
 EOF
 
 yum clean all
@@ -269,20 +302,57 @@ function setup_yum() {
     cat > /etc/yum.repos.d/centos-tuna.repo << 'EOF'
 [base]
 name=CentOS-$releasever - Base
-baseurl=http://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/os/$basearch/
-gpgcheck=0
+baseurl=https://mirrors.ustc.edu.cn/centos-vault/centos/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
 [updates]
 name=CentOS-$releasever - Updates
-baseurl=http://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/updates/$basearch/
-gpgcheck=0
+baseurl=https://mirrors.ustc.edu.cn/centos-vault/centos/$releasever/updates/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
 [extras]
 name=CentOS-$releasever - Extras
-baseurl=http://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/extras/$basearch/
-gpgcheck=0
+baseurl=https://mirrors.ustc.edu.cn/centos-vault/centos/$releasever/extras/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+[centosplus]
+name=CentOS-$releasever - Plus
+baseurl=https://mirrors.ustc.edu.cn/centos-vault/centos/$releasever/centosplus/$basearch/
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
 EOF
+
+
+    cat > /etc/yum.repos.d/epel-ustc.repo << 'EOF'
+[epel]
+name=Extra Packages for Enterprise Linux $releasever - $basearch
+baseurl=https://mirrors.ustc.edu.cn/epel-archive/7/x86_64/
+enabled=1
+gpgcheck=1
+countme=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever
+
+[epel-debuginfo]
+name=Extra Packages for Enterprise Linux $releasever - $basearch - Debug
+baseurl=https://mirrors.ustc.edu.cn/epel-archive/7/x86_64/debug/
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever
+gpgcheck=1
+
+[epel-source]
+name=Extra Packages for Enterprise Linux $releasever - $basearch - Source
+baseurl=https://mirrors.ustc.edu.cn/epel-archive/7/source/tree/
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever
+gpgcheck=1
+EOF
+
+
 
     echo "====upgrade yum============"
     yum clean all

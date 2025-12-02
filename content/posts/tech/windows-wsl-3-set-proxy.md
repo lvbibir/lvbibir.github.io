@@ -1,7 +1,7 @@
 ---
 title: "wsl | 自动更新系统代理"
 date: 2024-01-12
-lastmod: 2024-01-28
+lastmod: 2025-05-28
 tags:
   - wsl
 keywords:
@@ -33,6 +33,7 @@ wsl 中添加如下脚本, 实现常规的系统代理, git 仓库代理以及 a
 cat > ~/proxy 
 
 #!/bin/bash
+
 # normal proxy
 # 指定 url 的方式
 # proxy_type="http"
@@ -53,6 +54,19 @@ export all_proxy="${proxy}"
 export http_proxy="${proxy}"
 export https_proxy="${proxy}"
 
+# docker 代理
+sudo tee /etc/docker/daemon.json > /dev/null <<- EOF
+{
+  "insecure-registries" : ["http://11.14.1.40"],
+  "proxies": {
+    "http-proxy": "${proxy}",
+    "https-proxy": "${proxy}",
+    "no-proxy": "localhost,127.0.0.0/8"
+  }
+}
+EOF
+sudo systemctl restart docker
+
 # apt 代理
 # 如果不加 sudo, 会导致用 sudo 执行 apt 等命令时无法识别 alias
 alias sudo='sudo '
@@ -60,15 +74,16 @@ alias apt="apt -o Acquire::http::proxy=${proxy}"
 alias apt-get="apt-get -o Acquire::http::proxy=${proxy}"
 
 # git 的 http 或者 https 代理
-git config --global http.https://github.com.proxy ${proxy}
-git config --global https.https://github.com.proxy ${proxy}
+sudo git config --global http.https://github.com.proxy ${proxy}
+sudo git config --global https.https://github.com.proxy ${proxy}
 
 # git 的 ssh 代理
-cat > ~/.ssh/config <<- EOF
-# git-bash 环境: 注意替换 connect.exe 的路径
+sudo tee ~/.ssh/config > /dev/null <<- EOF
+
+# git-bash 环境: 注意替换端口号和 connect.exe 的路径
 # ProxyCommand "C:\\APP\\Git\\mingw64\\bin\\connect" -S ${proxy_ip}:${proxy_port} -a none %h %p
 
-# linux 环境
+# linux 环境: 注意替换你的端口号
 # ProxyCommand nc -v -x ${proxy_ip}:${proxy_port} %h %p
 
 Host github.com

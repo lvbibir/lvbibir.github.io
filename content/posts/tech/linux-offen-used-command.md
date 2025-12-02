@@ -1,7 +1,7 @@
 ---
 title: "linux | 常用命令总结"
 date: 2023-12-30
-lastmod: 2024-01-28
+lastmod: 2025-09-01
 tags:
   - linux
 keywords:
@@ -37,6 +37,20 @@ grep -Ev '^$|#' filename
 grep -Lr "description" /your/directory/*
 # 查找一个目录中包含 "title" 但是不包含 "description" 的文件
 grep -r -l 'title' /your/directory/* | xargs grep -L 'description'
+```
+
+## 1.4 tee
+
+```bash
+# << EOF 要求结束符 EOF 必须顶格写且单独一行
+# <<- EOF 允许结束符 EOF 之前存在制表符
+# EOF 不加引号, 会进行变量扩展
+# 'EOF' 加引号, 不会进行变量扩展
+
+tee test.txt <<- 'EOF'
+line 1
+line 2
+EOF
 ```
 
 # 2 系统进程
@@ -88,6 +102,8 @@ find . -type f -exec file "{}" ";" | awk -F ': ' '$2 !~ /ASCII/ {print $1 ": " $
 find /var/log -type f -mtime +30
 # 删除目录下30天内未改动的文件
 find /var/log -type f -mtime +30 -delete
+# 查找一级目录下的二级目录包含的三级目录数量
+for dir in $(ls /home/media/media/500509/servicerecord); do echo $dir $(find $dir  -maxdepth 1 -type d | wc -l); done | sort -nk2
 ```
 
 ## 4.2 tar
@@ -116,6 +132,12 @@ rsync -avzc --delete test1/* test2/
 ```bash
 # 查看目录内文件和子目录的大小并按照大小排序
 du -sh ./* | sort -rh | head
+```
+
+## 4.5 置空 docker 容器日志
+
+```bash
+container_name_or_id="acs-admin-web" && cid=$(docker inspect --format='{{.Id}}' $container_name_or_id 2>/dev/null) && sudo truncate -s 0 /var/lib/docker/containers/$cid/$cid-json.log
 ```
 
 以上

@@ -1,4 +1,4 @@
----
+    ---
 title: "kubernetes | service & ingress" 
 date: 2022-10-07
 lastmod: 2024-01-28

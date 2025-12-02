@@ -1,7 +1,7 @@
 ---
 title: "kubernetes | 杂记" 
 date: 2022-10-01
-lastmod: 2024-01-28
+lastmod: 2025-06-05
 tags:
   - kubernetes
 keywords:
@@ -200,6 +200,23 @@ kubectl get pod <podname> -n <namespace>
 kubectl get events --field-selector involvedObject.name=demo-probes
 ```
 
+#### 6.1.1 获取所有 pod 的 cpu request 并排序
+
+```bash
+kubectl get pods --all-namespaces -o jsonpath='{range .items[*]}{.metadata.namespace}{"\t"}{.metadata.name}{"\t"}{.spec.containers[*].resources.requests.cpu}{"\n"}{end}' | awk -F'\t' '{            sum = 0
+  split($3, containers, ",")
+  for (i in containers) {
+    val = containers[i]
+    if (val ~ /m/) {
+      sum += val + 0
+    } else {
+      sum += val * 1000
+    }
+  }
+  print $1 "\t" $2 "\t" sum
+}' | sort -k3 -nr | head -n 20
+```
+
 ## 6.2 create
 
 ```bash
@@ -342,4 +359,4 @@ ports:
 - port: 80
 ```
 
-以上
+以上.
