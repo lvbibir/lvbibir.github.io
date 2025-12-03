@@ -110,6 +110,9 @@ outputs:
     - RSS
     - JSON
 
+frontmatter:
+  lastmod: ["lastmod", "date"]
+
 # 这里的参数会被代码以 .Site.Params 的形式读取
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.

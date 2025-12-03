@@ -30,6 +30,12 @@
 {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{- end }}
 
+{{/* 1. 先按更新时间倒序排列 (作为次要排序规则) */}}
+{{- $pages = $pages.ByLastmod.Reverse }}
+
+{{/* 2. 再按 Weight 倒序 (权重大的排在最前面) */}}
+{{- $pages = sort $pages "Weight" "desc" }}
+
 {{- $paginator := .Paginate $pages }}
 
 {{- if and .IsHome .Site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
