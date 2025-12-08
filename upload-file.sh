@@ -6,4 +6,4 @@ set -e
 hugo -F --cleanDestinationDir
 
 # 同步静态文件至服务器
-rsync -avzc --progress --delete public/* root@lvbibir.cn:/root/blog/data/hugo/
+rsync -az --info=progress2 --delete public/ root@lvbibir.cn:/root/blog/data/hugo/
