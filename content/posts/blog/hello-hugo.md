@@ -1,7 +1,7 @@
 ---
 title: "【置顶】Hello, hugo!"
 date: 2022-07-06
-lastmod: 2024-01-28
+lastmod: 2025-12-08
 tags:
   - 博客搭建
 keywords:
@@ -229,7 +229,111 @@ new Artitalk({
 
 输入 leancloud 配置步骤中的第 4 步配置的用户名密码登录后就可以发布说说了
 
-# 5 自定义 footer
+# 5 自建不蒜子统计平台
+
+[原版不蒜子](https://busuanzi.ibruce.info/) 是一个独立开发者免费提供给所有人使用的平台, 随着使用人数越来越多, 访问速度不尽如人意, 遂决定自建不蒜子平台
+
+[自建不蒜子项目](https://github.com/soxft/busuanzi) [不蒜子迁移项目](https://github.com/soxft/busuanzi-sync)
+
+## 5.1 部署
+
+使用 docker compose 部署
+
+```yaml
+services:
+  busuanzi-redis:
+    image: "docker.1ms.run/library/redis:8.4.0-alpine3.22"
+    container_name: busuanzi-redis
+    restart: always
+    ports:
+      - "6379:6379" # 数据迁移完之后可以关闭端口
+    volumes:
+      - ./data/busuanzi-redis:/data
+
+  busuanzi:
+    image: "docker.1ms.run/xcsoft/busuanzi:v2.8.8"
+    container_name: busuanzi
+    restart: always
+    ports:
+      - "8080:8080"  # 我通过 Nginx 前端代理的, 所以数据迁移完之后直接关闭端口了
+    links:
+      - busuanzi-redis
+    depends_on:
+      - busuanzi-redis
+    environment:
+      WEB_LOG: true      # 是否开启日志
+      WEB_DEBUG: false   # 是否开启debug模式
+      WEB_CORS: "*"      # 跨域访问
+      BSZ_EXPIRE: 0      # 统计数据过期时间 单位秒, 请输入整数 (无任何访问, 超过这个时间后, 统计数据将被清空, 0为不过期)
+      BSZ_SECRET: "bsz"   # 签名密钥 // 请设置为任意长度的随机值
+      API_SERVER: https://lvbibir.cn/busuanzi   # 填写你的 API 地址
+      REDIS_ADDRESS: busuanzi-redis:6379  # redis 地址
+      BSZ_PATHSTYLE: true
+      BSZ_ENCRYPT: MD516
+```
+
+## 5.2 同步数据
+
+```bash
+wget https://github.com/soxft/busuanzi-sync/releases/download/v0.0.5/busuanzi-sync-linux-amd64-v0.0.5
+chmod a+x busuanzi-sync-linux-amd64-v0.0.5
+
+cat > .env <<-'EOF'
+# 在此处指定您的博客 sitemap 地址
+SITEMAP_URL: https://lvbibir.cn/sitemap.xml
+
+# 线程数 避免过高导致 QPS 限制 / 不要超过5
+THREADS: 2
+# 单 URL 最大重试次数
+MAX_RETRY: 10
+
+REDIS_ADDR: 127.0.0.1:6379
+REDIS_DB: 0
+REDIS_PWD: ""
+REDIS_PREFIX: bsz
+REDIS_TLS: false
+
+# 路径样式 与加密方案
+BSZ_PATH_STYLE: true
+BSZ_ENCRYPT: MD516
+EOF
+
+./busuanzi-sync-linux-amd64-v0.0.5
+```
+
+## 5.3 升级数据
+
+```bash
+wget https://github.com/soxft/busuanzi-transfer/releases/download/v0.0.4/busuanzi-transfer-linux-amd64-v0.0.4
+
+cat > config.yaml <<-'EOF'
+Redis:  
+  Address: 127.0.0.1:6379  
+  Password: ""  
+  Database: 0  
+  Prefix: "bsz"  
+  ToPrefix: "bsz_transfer"
+EOF
+
+./busuanzi-transfer-linux-amd64-v0.0.4
+```
+
+## 5.4 手动更新站点数据
+
+按理说这一步是不需要的, 但是我升级完数据之后文章页的访问数据是正常的, 站点的 pv 和 uv 还是没有, 所以这里手动更新一下数据, pv 和 uv 的数据手动从原版不蒜子获取.
+
+```bash
+docker exec -it busuanzi-redis /bin/sh
+redis-cli -h 127.0.0.1 -p 6379
+SET bsz:site_pv:f4a42bbb359a9e01 "91750"
+EVAL "redis.call('DEL', KEYS[1]); for i=1,tonumber(ARGV[1]) do redis.call('PFADD', KEYS[1], 'u-'..i) end; return redis.call('PFCOUNT', KEYS[1])" 1 bsz:site_uv:f4a42bbb359a9e01 55649
+```
+
+## 5.4 使用
+
+见 6.3
+
+# 6 自定义 footer
 
 自定义页脚内容
 
@@ -237,7 +341,7 @@ new Artitalk({
 
 > 添加完下面的页脚内容后要修改 `assets\css\extended\blank.css` 中的 `--footer-height` 的大小, 具体数字需要考虑到行数和字体大小
 
-## 5.1 自定义徽标
+## 6.1 自定义徽标
 
 > 徽标功能源自：<https://shields.io/>
 > 考虑到访问速度, 可以在生成完徽标后放到自己的 cdn 上
@@ -250,7 +354,7 @@ new Artitalk({
 </a>
 ```
 
-## 5.2 网站运行时间
+## 6.2 网站运行时间
 
 在 `layouts\partials\footer.html` 中的 `<footer>` 添加如下
 
@@ -261,25 +365,36 @@ new Artitalk({
     <script type="text/javascript">function show_runtime(){window.setTimeout("show_runtime()", 1000);X=new Date("7/13/2021 1:00:00");Y=new Date();T=(Y.getTime()-X.getTime());M=24*60*60*1000;a=T/M;A=Math.floor(a);b=(a-A)*24;B=Math.floor(b);c=(b-B)*60;C=Math.floor((b-B)*60);D=Math.floor((c-C)*60);runtime_span.innerHTML="网站已运行"+A+"天"+B+"小时"+C+"分"+D+"秒"}show_runtime();</script>
 ```
 
-## 5.3 访问人数统计
+## 6.3 访问人数统计
 
-> 统计功能源自：<http://busuanzi.ibruce.info/>
+统计数据源于自建的不蒜子平台, 见 章节 5
 
-在 `layouts\partials\footer.html` 中的 `<footer>` 添加如下
+全站数据统计, 修改 `layouts\partials\footer.html`
 
 ```html
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<span id="busuanzi_container">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    总访客数: <i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span>
-    |
-    总访问量: <i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span>
-    |
-    本页访问量: <i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span>
-</span>
+<footer>
+    <!-- 添加如下行 -->
+    <script defer src="https://lvbibir.cn/busuanzi/js"></script>
+    <span id="busuanzi_container">
+        总访客数: <span id="busuanzi_site_uv"></span>
+        |
+        总访问量: <span id="busuanzi_site_pv"></span>
+    </span>
+</footer>
 ```
 
-# 6 自定义字体
+文章页数据统计
+
+```html
+<div class="post-meta">
+    <!-- 添加如下三行 -->
+    <span id="busuanzi_container_page_pv">
+        &nbsp;|&nbsp;访问:&nbsp;<span id="busuanzi_page_pv"></span>
+    </span>
+<div class="post-meta">
+```
+
+# 7 自定义字体
 
 可以使用一些在线的字体, 可能会比较慢, 推荐下载想要的字体放到自己的服务器或者 cdn 上
 
@@ -305,7 +420,7 @@ body {
 }
 ```
 
-# 7 修改链接颜色
+# 8 修改链接颜色
 
 在 hugo+papermod 默认配置下, 链接颜色是黑色字体带下划线的组合, 个人非常喜欢 [typora-vue](https://github.com/blinkfox/typora-vue-theme) 的渲染风格 [hugo官方文档](https://gohugo.io/templates/render-hooks/#link-with-title-markdown-example) 给出了通过 `render hooks` 覆盖默认的 markdown 渲染 link 的方式
 
@@ -315,7 +430,7 @@ body {
 <a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener" style="color:#42b983";{{ end }}>{{ .Text | safeHTML }}</a>
 ```
 
-# 8 shortcode
+# 9 shortcode
 
 [ppt、bilibili、youtube、豆瓣阅读和电影卡片](https://www.sulvblog.cn/posts/blog/shortcodes/)
 
@@ -323,7 +438,7 @@ body {
 
 [图片画廊](https://github.com/liwenyip/hugo-easy-gallery/)
 
-# 9 其他修改
+# 10 其他修改
 
 其他 css 样式修改基本都是通过 f12 控制台一点点摸索改的, 不太规范且比较琐碎就不单独记录了, ~~其实我根本已经忘记还改了哪些东西~~
 
