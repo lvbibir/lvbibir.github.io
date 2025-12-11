@@ -1,7 +1,7 @@
 ---
 title: "wsl | 自动更新系统代理"
 date: 2024-01-12
-lastmod: 2025-05-28
+lastmod: 2025-12-11
 tags:
   - wsl
 keywords:
@@ -25,9 +25,9 @@ cover:
 
 针对场景二, 直接设置公司提供的代理地址即可
 
-# 1 配置
+# 1 配置代理
 
-wsl 中添加如下脚本, 实现常规的系统代理, git 仓库代理以及 apt 的代理
+wsl 中添加如下脚本, 实现全局的系统代理, git 的 http(s) 代理和 ssh 代理, apt 代理, docker 镜像的代理按需开启, 使用国内的加速站也可
 
 ```bash
 cat > ~/proxy 
@@ -36,12 +36,13 @@ cat > ~/proxy
 
 # normal proxy
 # 指定 url 的方式
-# proxy_type="http"
-# proxy_ip="proxy1.bj.petrochina"
-# proxy_port="8080"
+proxy_type="http"
+proxy_ip="proxy1.bj.petrochina"
+proxy_port="8080"
 
 # 使用 windows 主机上运行的代理程序, 例如 clash
 # wsl 中的地址是不固定的, 这里通过脚本获取, 每次启动 wsl 都可以实时更新
+
 proxy_type="http"
 proxy_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
 proxy_port="7890"
@@ -65,6 +66,7 @@ sudo tee /etc/docker/daemon.json > /dev/null <<- EOF
   }
 }
 EOF
+sudo systemctl reset-failed docker
 sudo systemctl restart docker
 
 # apt 代理
@@ -74,11 +76,11 @@ alias apt="apt -o Acquire::http::proxy=${proxy}"
 alias apt-get="apt-get -o Acquire::http::proxy=${proxy}"
 
 # git 的 http 或者 https 代理
-sudo git config --global http.https://github.com.proxy ${proxy}
-sudo git config --global https.https://github.com.proxy ${proxy}
+git config --global http.https://github.com.proxy ${proxy}
+git config --global https.https://github.com.proxy ${proxy}
 
 # git 的 ssh 代理
-sudo tee ~/.ssh/config > /dev/null <<- EOF
+tee ~/.ssh/config > /dev/null <<- EOF
 
 # git-bash 环境: 注意替换端口号和 connect.exe 的路径
 # ProxyCommand "C:\\APP\\Git\\mingw64\\bin\\connect" -S ${proxy_ip}:${proxy_port} -a none %h %p
@@ -112,47 +114,48 @@ cat >> ~/.bashrc <<- 'EOF'
 source ${HOME}/proxy
 EOF
 
-source ~/.bashrc
+
+# 手动调用
+source ~/proxy
 ```
 
-# 2 docker 代理
+# 2 取消代理
 
-修改 docker pull 等操作的代理可以通过 docker 的 daemon.json 文件或者 service 两种方式进行修改, 推荐使用第一种
+```bash
+cat ~/proxy-unset
 
-- 修改 `/etc/docker/daemon.json`
+#!/bin/bash
 
-```json
+unset http_proxy
+unset https_proxy
+unset all_proxy
+unset ALL_PROXY
+
+# docker 代理
+sudo tee /etc/docker/daemon.json > /dev/null <<- 'EOF'
 {
-  "registry-mirrors": [
-    "https://docker.mirrors.ustc.edu.cn",
-    "https://jc0srqak.mirror.aliyuncs.com",
-    "http://hub-mirror.c.163.com"
-  ],
-  "proxies": {
-    "http-proxy": "http://proxy1.bj.petrochina:8080",
-    "https-proxy": "http://proxy1.bj.petrochina:8080",
-    "no-proxy": "localhost,127.0.0.0/8"
-  }
+  "insecure-registries" : ["http://11.14.1.40"]
 }
-```
-
-- 修改 docker service
-
-```bash
-sudo vim /lib/systemd/system/docker.service
-
-# 在 [Service] 下添加如下三行
-Environment=HTTP_PROXY=http://proxy1.bj.petrochina:8080
-Environment=HTTPS_PROXY=http://proxy1.bj.petrochina:8080
-Environment=NO_PROXY=localhost,127.0.0.1
-```
-
-上述两种方式任意一种修改完成后重启 docker 即可
-
-```bash
-sudo systemctl daemon-reload
+EOF
+sudo systemctl reset-failed docker
 sudo systemctl restart docker
-sudo docker info | grep proxy
+
+unalias sudo
+unalias apt
+unalias apt-get
+
+git config --global --unset http.https://github.com.proxy
+git config --global --unset https.https://github.com.proxy
+
+# git 的 ssh 代理
+truncate -s 0 ~/.ssh/config
+
+tee ~/.ssh/config > /dev/null <<- EOF
+# 默认配置
+EOF
+
+# 手动调用
+source ~/proxy-unset
 ```
 
 以上

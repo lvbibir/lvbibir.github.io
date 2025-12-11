@@ -1,7 +1,7 @@
 ---
 title: "windows | 自定义开机快速启动项" 
 date: 2023-08-14
-lastmod: 2024-01-28
+lastmod: 2025-12-11
 tags:
   - windows
 keywords:
@@ -44,9 +44,15 @@ C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /u .\EarlyStart.ex
 
 首先将要配置快速启动的应用默认的开机自启给关掉
 
-在用户目录 `C:\Users\<username>` 创建一个名为 `.earlystart` 的文件, 每一行输入一个 exe 的路径
+在你自己的用户目录 `%USERPROFILE%` 创建一个名为 `.earlystart` 的文件, 每一行输入一个 exe 的路径
 
 ![image-20230815025643880](https://image.lvbibir.cn/blog/image-20230815025643880.png)
+
+如果要运行 ps1 等脚本程序, 参考我下面的写法, `-File` 后面就是你的 ps1 脚本的文件了, 最后的 `start` 是给 ps1 传的参数
+
+```plaintext
+"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -ExecutionPolicy Bypass -NoProfile -WindowStyle Hidden -File "D:\software\1-portable\mihomo\mihomo-manager.ps1" start
+```
 
 然后还需要修改一下账户配置
 
@@ -54,4 +60,4 @@ C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /u .\EarlyStart.ex
 
 配置完成之后重启系统即可
 
-以上
+以上.

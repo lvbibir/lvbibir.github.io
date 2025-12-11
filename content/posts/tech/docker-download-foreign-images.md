@@ -1,7 +1,7 @@
 ---
 title: "docker | 下载外网镜像的几种方式" 
 date: 2023-03-09
-lastmod: 2024-02-02
+lastmod: 2025-12-11
 tags:
   - docker
 keywords:
@@ -12,6 +12,10 @@ description: "介绍几种方式用于构建平常无法下载的 gcr.io 或者 
 cover:
     image: "https://image.lvbibir.cn/blog/docker.png" 
 ---
+
+# 0 前言
+
+目前最推荐使用 章节 4 以及 5 中的方法, 前三种都挺折腾
 
 # 1 阿里云构建
 
@@ -110,18 +114,39 @@ docker push registry.cn-hangzhou.aliyuncs.com/lvbibir/<image>:<tag>
 
 # 4 http proxy
 
-如果有代理软件可以在 docker 中配置代理实现, 参考 [docker 文档 - 配置 http proxy](https://docs.docker.com/config/daemon/systemd/)
+如果有代理软件可以在 docker 中配置代理实现, 参考 [官方文档](https://docs.docker.com/config/daemon/systemd/)
+
+修改 docker pull 等操作的代理可以通过 docker 的 daemon.json 文件或者 service 两种方式进行修改, 推荐使用第一种
+
+- 修改 `/etc/docker/daemon.json`
 
 ```json
 {
   "proxies": {
-    "default": {
-      "httpProxy": "http://127.0.0.1:1080",
-      "httpsProxy": "http://127.0.0.1:1080",
-      "noProxy": "*.test.example.com,.example2.com"
-    }
+    "http-proxy": "http://proxy1.bj.petrochina:8080",
+    "https-proxy": "http://proxy1.bj.petrochina:8080",
+    "no-proxy": "localhost,127.0.0.0/8"
   }
 }
+```
+
+- 修改 docker service
+
+```bash
+sudo vim /lib/systemd/system/docker.service
+
+# 在 [Service] 下添加如下三行
+Environment=HTTP_PROXY=http://proxy1.bj.petrochina:8080
+Environment=HTTPS_PROXY=http://proxy1.bj.petrochina:8080
+Environment=NO_PROXY=localhost,127.0.0.1
+```
+
+上述两种方式任意一种修改完成后重启 docker 即可
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+sudo docker info | grep proxy
 ```
 
 # 5 使用国内现成的镜像站

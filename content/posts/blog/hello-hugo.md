@@ -1,7 +1,7 @@
 ---
-title: "【置顶】Hello, hugo!"
+title: hello-hugo
 date: 2022-07-06
-lastmod: 2025-12-08
+lastmod: 2025-12-11
 tags:
   - 博客搭建
 keywords:
@@ -329,7 +329,7 @@ SET bsz:site_pv:f4a42bbb359a9e01 "91750"
 EVAL "redis.call('DEL', KEYS[1]); for i=1,tonumber(ARGV[1]) do redis.call('PFADD', KEYS[1], 'u-'..i) end; return redis.call('PFCOUNT', KEYS[1])" 1 bsz:site_uv:f4a42bbb359a9e01 55649
 ```
 
-## 5.4 使用
+## 5.5 使用
 
 见 6.3
 
