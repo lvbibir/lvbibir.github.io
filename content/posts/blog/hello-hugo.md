@@ -1,5 +1,5 @@
 ---
-title: hello-hugo
+title: "【置顶】Hello, hugo!"
 date: 2022-07-06
 lastmod: 2025-12-11
 tags:
