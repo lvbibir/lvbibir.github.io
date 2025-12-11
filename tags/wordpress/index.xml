@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>wordpress on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/wordpress/</link>
+    <description>Recent content in wordpress on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>wordpress | 迁移到 docker</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress-to-docker/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress-to-docker/</guid>
+      <description>记录从阿里云轻量应用服务器 (wordpress 应用) 迁移到 docker 部署，并针对博客的一些优化</description>
+    </item>
+    
+    <item>
+      <title>wordpress | 加载图片失败</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress-load-image-failed/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress-load-image-failed/</guid>
+      <description>1 现象 博客加载不出来我在七牛云的图片资源 使用浏览器直接访问图片 url 却是可以成功的 我将之前 csdn 的博客迁移到了 wordpress，图片外链地址就是 csdn 的，都可以正常加载。 使用浏览器直接访问图片 url 却是可以成功的 我将之前 csdn 的博客迁移到了 wordpress，图片外链地址就是 csdn 的，都可以正常加载。</description>
+    </item>
+    
+    <item>
+      <title>wordpress | 添加 icp 备案号</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress-add-icp/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress-add-icp/</guid>
+      <description>记录wordpress中如何添加icp备案号</description>
+    </item>
+    
+    <item>
+      <title>wordpress | 配置免费 ssl 证书和 https 强制跳转</title>
+      <link>https://www.lvbibir.cn/posts/blog/wordpress-ssl/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/blog/wordpress-ssl/</guid>
+      <description>介绍如何为阿里轻量应用服务器 (wordpress 应用) 配置 ssl 证书，开启 https 访问且实现https 强制跳转</description>
+    </item>
+    
+  </channel>
+</rss>

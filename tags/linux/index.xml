@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>linux on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/linux/</link>
+    <description>Recent content in linux on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 24 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux | 磁盘扩容</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-expand-disk/</link>
+      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-expand-disk/</guid>
+      <description>介绍一下 Linux 系统中扩容磁盘的几种方式, 涵盖大部分生产环境中需要对服务器进行磁盘扩容的操作</description>
+    </item>
+    
+    <item>
+      <title>linux | 常用命令总结</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-offen-used-command/</link>
+      <pubDate>Sat, 30 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-offen-used-command/</guid>
+      <description>记录 linux 系统如文本处理, 进程处理, 网络及其他的常用命令</description>
+    </item>
+    
+    <item>
+      <title>linux | dns 配置文件中 search 和 options ndots 详解</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-dns-search/</link>
+      <pubDate>Thu, 13 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-dns-search/</guid>
+      <description>linux 中 dns 配置文件中的 search 和 options ndots 详解</description>
+    </item>
+    
+    <item>
+      <title>linux | kill 命令详解以及 linux 中的信号</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-command-kill/</link>
+      <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-command-kill/</guid>
+      <description>1 简介 kill 命令很容易让人产生误解, 以为仅仅是用来终止 linux 中的进程. 在 man 手册中对 kill 命令的解释如下, 不难看出, kill 命令是一个用于将指定的 signal 发送给进程的工具 DESCRIPTION The command kill sends the specified signal to the specified process or process group. If no signal is specified, the TERM signal is sent. The TERM signal will kill processes which do not catch this signal. For other processes, it may be necessary to use the KILL (9) signal, since this signal cannot be caught. Most modern shells have a builtin kill function, with a usage rather</description>
+    </item>
+    
+    <item>
+      <title>troubleshooting | elasticsearch 安装插件报错</title>
+      <link>https://www.lvbibir.cn/posts/tech/troubleshooting-elasticsearch-plugin-error/</link>
+      <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/troubleshooting-elasticsearch-plugin-error/</guid>
+      <description>0 前言 本文参考以下链接: github issue # 638 1 报错信息 报错详细信息 Exception in thread &amp;#34;main&amp;#34; java.nio.file.NotDirectoryException: /usr/share/elasticsearch/plugins/plugin-descriptor.properties at java.base/sun.nio.fs.UnixFileSystemProvider.newDirectoryStream(UnixFileSystemProvider.java:439) at java.base/java.nio.file.Files.newDirectoryStream(Files.java:482) at java.base/java.nio.file.Files.list(Files.java:3793) at org.elasticsearch.tools.launchers.BootstrapJvmOptions.getPluginInfo(BootstrapJvmOptions.java:49) at org.elasticsearch.tools.launchers.BootstrapJvmOptions.bootstrapJvmOptions(BootstrapJvmOptions.java:34) at org.elasticsearch.tools.launchers.JvmOptionsParser.jvmOptions(JvmOptionsParser.java:137) at org.elasticsearch.tools.launchers.JvmOptionsParser.main(JvmOptionsParser.java:86) 安装插件时直接将插件的 zip 解压到了 plugins 目录 导致的，每个插件应以目录的形式存放在 plugins 目录 中 [root@21-centos-7 ~]# ls /data/elasticsearch/plugins/ commons-codec-1.9.jar commons-logging-1.2.jar config elasticsearch-analysis-ik-7.17.3.jar httpclient-4.5.2.jar httpcore-4.4.4.jar plugin-descriptor.properties plugin-security.policy 2 解决 只需要为每个插件创建一个目录，并把插件解压到对应目录即可 mkdir /data/elasticsearch/plugins/elasticsearch-analysis-ik/ unzip elasticsearch-analysis-ik-7.17.3.zip -d /data/elasticsearch/plugins/elasticsearch-analysis-ik/ 以上</description>
+    </item>
+    
+    <item>
+      <title>linux | history 命令的格式化输出</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-history-format/</link>
+      <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-history-format/</guid>
+      <description>在 /etc/prifile.d 目录下新建一个文件，用户登录系统时自动生效 vim /etc/profile.d/history_conf.sh source /etc/profile.d/history_conf.sh # 手动生效 文件内容 export HISTFILE=&amp;#34;$HOME/.bash_history&amp;#34; # 指定命令写入文件(默认~/.bash_history) export HISTSIZE=1000 # history输出记录数 export HISTFILESIZE=10000 # HISTFILE文件记录数 export HISTIGNORE=&amp;#34;cmd1:cmd2:...&amp;#34; # 忽略指定cmd1,cmd2...的命令不被记录到文件；(加参数时会记录) export HISTCONTOL=ignoredups # ignoredups</description>
+    </item>
+    
+    <item>
+      <title>linux | set 命令详解</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-command-set/</link>
+      <pubDate>Wed, 28 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-command-set/</guid>
+      <description>Bash 有一个内置的 set 命令，可以用来查看、设置、取消 shell 选项 set 设置的选项无法被继承，仅对当前的 bash 环境有效，bash 命令也可以直接使用 set 的单字符选项来开启一个自定义参数的子 bash 环境，比如执行的脚本 查看： echo $- 和 set -o 和 echo ${SHELLOPTS} 设置： set -abefhkmnptuvxBCHP 和 set -o options-name 取消： set +abefhkmnptuvxBCHP 和 set +o options-name set - 和 set + 设置单字符选项，使用 echo $- 查看</description>
+    </item>
+    
+    <item>
+      <title>pxe 如何应对复杂的服务器硬件环境</title>
+      <link>https://www.lvbibir.cn/posts/tech/pxe-dhcp-legacy-uefi-archs/</link>
+      <pubDate>Thu, 18 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/pxe-dhcp-legacy-uefi-archs/</guid>
+      <description>本文主要探讨如何配置dhcp来使pxe可以应对复杂的服务器环境</description>
+    </item>
+    
+    <item>
+      <title>pxe 安装配置大全</title>
+      <link>https://www.lvbibir.cn/posts/tech/pxe-install-scripts/</link>
+      <pubDate>Tue, 12 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/pxe-install-scripts/</guid>
+      <description>自己整理的一些工作中用到的不同系统对应的 pxe 配置方法</description>
+    </item>
+    
+    <item>
+      <title>windows &amp; linux 多网卡时设置默认路由以及添加静态路由</title>
+      <link>https://www.lvbibir.cn/posts/tech/network-priority/</link>
+      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/network-priority/</guid>
+      <description>介绍 centos 和 windows 中分别如何配置多网卡时以实现灵活的网络访问</description>
+    </item>
+    
+    <item>
+      <title>httpd 源码打包编译成 rpm 包</title>
+      <link>https://www.lvbibir.cn/posts/tech/rpm-build-httpd/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/rpm-build-httpd/</guid>
+      <description>记录一下 centos7 中通过源码构建 httpd rpm 包的过程</description>
+    </item>
+    
+    <item>
+      <title>openssl 源码打包编译成 rpm 包</title>
+      <link>https://www.lvbibir.cn/posts/tech/rpm-build-openssl/</link>
+      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/rpm-build-openssl/</guid>
+      <description>记录一下 centos7 系统中通过源码构建 openssh rpm 包的过程</description>
+    </item>
+    
+    <item>
+      <title>centos7 | 修改网卡名称</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7-change-network-card-name/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7-change-network-card-name/</guid>
+      <description>介绍如何在 centos7 的系统中通过配置网络规则命名文件的方式修改网卡的名称</description>
+    </item>
+    
+    <item>
+      <title>centos 密码尝试次数过多问题处理</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</guid>
+      <description>介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理</description>
+    </item>
+    
+    <item>
+      <title>centos7 | 升级内核至 5.10</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7-update-kernel-to-5.10/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7-update-kernel-to-5.10/</guid>
+      <description>0 前言 内核版本介绍： lt longterm 的缩写 长期维护版 ml mainline 的缩写 最新稳定版 本文参考以下链接: Linux 离线升级内核 elrepo kernel rpm packge directory 1 升级内核 查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 使用 wget 命令下载内核 RPM 包 [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-5.10.81-1.el7.x86_64.rpm [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 安装内核 yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 查看所有可用内核启动项 [dpl@test1 ~] awk -F\&amp;#39; &amp;#39;$1==&amp;#34;menuentry &amp;#34; {print i++ &amp;#34; : &amp;#34; $2}&amp;#39; /etc/grub2.cfg 0 : CentOS Linux (5.10.81-1.el7.x86_64) 7 (Core) 1 : CentOS Linux (3.10.0-1160.21.1.el7.x86_64) 7 (Core)</description>
+    </item>
+    
+    <item>
+      <title>CVE-1999-0526</title>
+      <link>https://www.lvbibir.cn/posts/tech/cve-1999-0526/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/cve-1999-0526/</guid>
+      <description>介绍如何在 centos6 中修复 CVE-1999-0526 披露的漏洞</description>
+    </item>
+    
+    <item>
+      <title>通过反编译修改 rpm 包内的文件</title>
+      <link>https://www.lvbibir.cn/posts/tech/rpm-change-file/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/rpm-change-file/</guid>
+      <description>0 前言 本文参考以下链接: 修改 rpm 中的文件重新打包 要修改 rpm 包中的文件，对于自己编译的 rpm 包，只需要在源码中修改好然后重新编译即可。而对于并不是自己编译的 rpm 包，且不熟悉编译环境的情况下，可以使用 rpm-build 和 rpm-rebuild 工具反编译来修改 rpm 中的文件 这里使用 ceph-mgr 软件包进行演示 1 安装 rpm-build&amp;amp;rpmrebuild rpmrebuild 官网 rpmrebuild 下载地址 解压 rpmrebuild [root@localhost ~]# mkdir -p</description>
+    </item>
+    
+    <item>
+      <title>部署 Ambari 2.7.5 &#43; HDP 3.1.5</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos-deploy-ambari-2.7.5-and-hdp-3.1.5/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos-deploy-ambari-2.7.5-and-hdp-3.1.5/</guid>
+      <description>记录通过 Ambari 部署 hadoop 集群的过程</description>
+    </item>
+    
+    <item>
+      <title>openssh 源码打包编译成 rpm 包</title>
+      <link>https://www.lvbibir.cn/posts/tech/rpm-build-openssh/</link>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/rpm-build-openssh/</guid>
+      <description>记录一下不同系统环境下通过源码构建 openssh rpm 包的过程</description>
+    </item>
+    
+    <item>
+      <title>centos7 | 开启 bbr 算法</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7-open-bbr/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7-open-bbr/</guid>
+      <description>介绍在 CentOS7 上部署 BBR 的详细过程</description>
+    </item>
+    
+    <item>
+      <title>H3C 服务器配置 raid</title>
+      <link>https://www.lvbibir.cn/posts/tech/h3c-server-config-raid/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/h3c-server-config-raid/</guid>
+      <description>记录一下 H3C 服务器配置 raid 的过程</description>
+    </item>
+    
+    <item>
+      <title>linux | free 命令详解</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-command-free/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-command-free/</guid>
+      <description>centos 中 free 命令详解，以及 centos6 和 centos7 中 free 命令的不同</description>
+    </item>
+    
+    <item>
+      <title>pxe 安装 isoft-5.1(aarch64)</title>
+      <link>https://www.lvbibir.cn/posts/tech/pxe-inspur-isoft5.1-aarch64/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/pxe-inspur-isoft5.1-aarch64/</guid>
+      <description>1 pxe 环境 dhcp+tftp+http pxe-server：isoft-serveros-v4.2（3.10.0-957.el7.isoft.x86_64） 引导的 iso：isoft-serveros-aarch64-oe1-v5.1（4.19.90-2003.4.0.0036.oe1.aarch64） 物理服</description>
+    </item>
+    
+    <item>
+      <title>centos6 部署 openvpn</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos6-deploy-openvpn/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos6-deploy-openvpn/</guid>
+      <description>介绍如何在 centos6 的环境中部署 openvpn 服务实现内网穿透</description>
+    </item>
+    
+    <item>
+      <title>centos7 | benchmark 平台部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7-deploy-benchmark/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7-deploy-benchmark/</guid>
+      <description>介绍在 centos7 环境中部署开源的 benchmark 基线检查平台，并通过 web 界面可视化展示</description>
+    </item>
+    
+    <item>
+      <title>linux | hwaddr 和 macaddr 的区别</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-hwaddr-macaddr-different/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-hwaddr-macaddr-different/</guid>
+      <description>0 前言 本文参考以下链接: 网卡的 HWADDR 和 MACADDR 的区别 LINUX 系统中 HWaddr 和 macaddr 什么区别 Linux 永久生效 MAC 1 详解 环境：centos7.8 在 centos 中可以在如下文件中查看一个 NIC 的配置 ： /etc/sysconfig/network-scripts/ifcfg-N HWADDR=, 其中 以 AA:BB:CC:DD:EE:FF 形式的以太网设备的硬件地址.在有多个网卡设备的机器上，这个字段是非常有用的，它保证设备接口被分配了正确的设备名 ，而不考虑每</description>
+    </item>
+    
+  </channel>
+</rss>

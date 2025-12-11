@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>zabbix on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/zabbix/</link>
+    <description>Recent content in zabbix on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 07 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/zabbix/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zabbix | 监控端口连通性并自动追踪 TCP 路由</title>
+      <link>https://www.lvbibir.cn/posts/tech/zabbix-tcp-port-monitor/</link>
+      <pubDate>Thu, 07 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/zabbix-tcp-port-monitor/</guid>
+      <description>zabbix 中通过 shell 脚本监控指定 agent 到指定 ip:port 的端口连通性, 不连通时自动触发 traceroute 追踪路由并记录到日志</description>
+    </item>
+    
+    <item>
+      <title>Zabbix | 监控主机到指定 ip 的流量大小</title>
+      <link>https://www.lvbibir.cn/posts/tech/zabbix-ip-traffic-monitor/</link>
+      <pubDate>Fri, 04 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/zabbix-ip-traffic-monitor/</guid>
+      <description>zabbix 中通过 shell 监控定时监控流量, 配置聚合图形, 以及日志输出</description>
+    </item>
+    
+  </channel>
+</rss>

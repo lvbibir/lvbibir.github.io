@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>kubernetes on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/kubernetes/</link>
+    <description>Recent content in kubernetes on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 01 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>loki (二) 部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-loki-2-deploy/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-loki-2-deploy/</guid>
+      <description>Loki 的部署, 对接 Grafana, traefik 采集监控示例</description>
+    </item>
+    
+    <item>
+      <title>loki (一) 简介</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-loki-1-jianjie/</link>
+      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-loki-1-jianjie/</guid>
+      <description>loki 开源日志的优缺点及架构; loki 的四个角色; prometail 简介; 日志告警</description>
+    </item>
+    
+    <item>
+      <title>prometheus (六) Alertmanager</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-6-alertmanager/</link>
+      <pubDate>Sat, 29 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-6-alertmanager/</guid>
+      <description>prometheus 架构中的 Alertmanager 介绍, 以及使用 alertmanagerconfig CRD 资源配置 Alertmanager</description>
+    </item>
+    
+    <item>
+      <title>prometheus (五) 记录规则与告警规则</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-5-rule/</link>
+      <pubDate>Fri, 28 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-5-rule/</guid>
+      <description>prometheus 的 recording rule 和 alerting rule 介绍, 以及使用 prometheusrule CRD 资源配置规则</description>
+    </item>
+    
+    <item>
+      <title>prometheus (四) 黑盒监控</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-4-blackbox-probe/</link>
+      <pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-4-blackbox-probe/</guid>
+      <description>prometheus-operator 中使用 probe CRD 资源和 blackbox 添加黑盒监控项</description>
+    </item>
+    
+    <item>
+      <title>prometheus (三) 服务发现</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-3-servicemonitor-podmonitor/</link>
+      <pubDate>Wed, 26 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-3-servicemonitor-podmonitor/</guid>
+      <description>prometheus-operator 中的服务发现 (serviceMonitor) 机制, kubernetes_sd_config 配置, 以及 serviceMonitor 和 podMonitor 自定义资源的使用.</description>
+    </item>
+    
+    <item>
+      <title>prometheus (二) 静态配置</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-2-additionalscrapeconfig/</link>
+      <pubDate>Tue, 25 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-2-additionalscrapeconfig/</guid>
+      <description>prometheus-operator 中使用 additionalScrapeConfig 添加自定义 job 和 target</description>
+    </item>
+    
+    <item>
+      <title>prometheus (一) 简介及部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-1-deploy/</link>
+      <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-prometheus-1-deploy/</guid>
+      <description>kubernetes 中部署配置 prometheus-operator, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系</description>
+    </item>
+    
+    <item>
+      <title>traefik (四) TraefikService 服务</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-4-traefikservice/</link>
+      <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-4-traefikservice/</guid>
+      <description>kubernetes 中使用 Traefik ingress 的 TraefikService 实现加权轮询、灰度发布、流量复制、会话保持(粘性会话)等功能</description>
+    </item>
+    
+    <item>
+      <title>traefik (三) Middleware 中间件</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-3-middleware/</link>
+      <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-3-middleware/</guid>
+      <description>kubernetes 中使用 Traefik ingress 的 Middleware 实现重定向、白名单、用户认证、限流、熔断、压缩、自定义 error 页等操作</description>
+    </item>
+    
+    <item>
+      <title>traefik (二) ingressRoute 路由</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-2-router/</link>
+      <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-2-router/</guid>
+      <description>kubernetes 中使用 Traefik ingress 的 ingressRoute 代理 http、https、tcp、udp</description>
+    </item>
+    
+    <item>
+      <title>traefik (一) 简介、部署和配置</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-1-deploy/</link>
+      <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-traefik-1-deploy/</guid>
+      <description>kubernetes 中 Traefik ingress 的简介、部署及配置。</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | Gateway API 简介及部署</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-gatewayapi/</link>
+      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-gatewayapi/</guid>
+      <description>1 简介 Gateway API（之前叫 Service API）是由 SIG-NETWORK 社区管理的开源项目，项目地址 Ingress 资源对象不能很好的满足网络需求，很多场景下 Ingress 控制器都需要通过定义 annotations 或者 crd 来进行功能扩展，这对于使用标准和支持是非常不利的，新推出的 Gateway API 旨在通过可扩展的面向角色的接口来增强服务网络。 Gateway API 是 Kubernetes 中的一个 API 资源集合，包括</description>
+    </item>
+    
+    <item>
+      <title>kubernetes |  command args 和 dockerfile 中的 ENTRYPOINT CMD</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-command-args-docker-entrypoint-cmd/</link>
+      <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-command-args-docker-entrypoint-cmd/</guid>
+      <description>1 command args 如果指定了 containers.command，Dockerfile 中的 ENTRYPOINT 会被覆盖且 CMD 指令被忽略 如果指定了 containers.args，Dockerfile 中的 ENTRYPOINT 继续执行， CMD 指令 被覆盖 ENTRYPOINT CMD command args finally [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] ep-1 foo bar [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] ep-2 [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-1 zoo boo [&amp;quot;/ep1&amp;quot;] [&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;] [&amp;quot;/ep-2&amp;quot;] [&amp;ldquo;zoo&amp;rdquo;, &amp;ldquo;boo&amp;rdquo;] ep-2 zoo boo 2 CMD ENTRYPOINT 我们大概可以总结</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | statefulset 控制器详解</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-statefulset/</link>
+      <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-statefulset/</guid>
+      <description>1 基础概念 StatefulSet 应用场景：分布式应用、集群 部署有状态应用 解决 Pod 独立生命周期，保持 Pod 启动顺序和唯一性 稳定，唯一的网络标识符，持久存储 有序，优雅的部署和扩展、删除和终止 有序，滚动更新 StatefulSet 控制器的优势 稳定的存储 StatefulSet 的存储卷使用 VolumeClaimTemplate 创建，称为卷申请模板，当 StatefulSet 使用 VolumeClaimTemplate 创建一个 PersistentVolume 时，同样也会为每个 Pod 分配</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | configmap &amp; secret</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-configmap-secret/</link>
+      <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-configmap-secret/</guid>
+      <description>介绍kubernetes中的configmap和secret应用</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | RBAC 鉴权和 NetworkPolicy</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-rbac-networkpolicy/</link>
+      <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-rbac-networkpolicy/</guid>
+      <description>介绍 kubernetes 中的安全框架、RBAC 鉴权和网络策略（Pod ACL)</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | service &amp; ingress</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-service-ingress/</link>
+      <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-service-ingress/</guid>
+      <description>介绍 kubernetes 中的 service 和 Headless Service，service 的两种代理模式，以及ingress 控制器的使用</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | 存储</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-storage/</link>
+      <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-storage/</guid>
+      <description>介绍 kubernetes 中的存储使用简介，例如 emptydir、hostpath、NFS、pv、pvc、statefulset 控制器</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | 滚动升级和自动伸缩</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-auto-scale/</link>
+      <pubDate>Wed, 05 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-auto-scale/</guid>
+      <description>介绍 kubernetes 中滚动升级的实现机制，如何手动伸缩 pod，以及基于 hpa 实现自动伸缩</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | 控制器</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-controllers/</link>
+      <pubDate>Tue, 04 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-controllers/</guid>
+      <description>介绍 kubernetes 中几种常用的控制器的使用场景和示例</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | 日志</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-logs/</link>
+      <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-logs/</guid>
+      <description>介绍 kubernetes 中组件日志、标准输出类型的应用日志、文件类型的应用日志如何收集分析</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | 调度</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-scheduler/</link>
+      <pubDate>Mon, 03 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-scheduler/</guid>
+      <description>介绍 kubernetes 中影响 pod 调度的一些因素，比如资源限制、nodeSelector、nodeAffinity、Taint、nodeName、DaemonSet 控制器</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | pod</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-pod/</link>
+      <pubDate>Sun, 02 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-pod/</guid>
+      <description>介绍 kubernetes 中 pod 的基础概念、存在意义、pod 中容器的分类、静态 pod、重启策略、健康检查等</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | 杂记</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-notes/</link>
+      <pubDate>Sat, 01 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-notes/</guid>
+      <description>介绍一些常见的报错处理、kubectl 命令的一些用法、yaml 编写技巧、小优化等</description>
+    </item>
+    
+    <item>
+      <title>kubernetes | kubeadm 搭建 K8s 集群 v1.22.3</title>
+      <link>https://www.lvbibir.cn/posts/tech/kubernetes-deploy-v1.22.3/</link>
+      <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/kubernetes-deploy-v1.22.3/</guid>
+      <description>介绍 kubernetes, 并在 centos 中使用 kubeadm 快速搭建 k8s 集群 v1.22.3、安装cni组件</description>
+    </item>
+    
+  </channel>
+</rss>
