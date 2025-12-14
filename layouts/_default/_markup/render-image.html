@@ -1,0 +1,11 @@
+<img
+  class="lazyload"
+  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+  data-src="{{ .Destination | safeURL }}"
+  alt="{{ .Text }}"
+  {{ with .Title }}title="{{ . }}"{{ end }}
+  decoding="async"
+/>
+<noscript>
+  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title }}title="{{ . }}"{{ end }} />
+</noscript>

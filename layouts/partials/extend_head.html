@@ -19,3 +19,36 @@ var _hmt = _hmt || [];
 
 <!-- font awesome 字体库 -->
 <!-- <script src="https://kit.fontawesome.com/2e34783cd8.js" crossorigin="anonymous"></script> -->
+
+<!-- 图片懒加载 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const lazyImages = document.querySelectorAll('img.lazyload');
+  
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazyload');
+          img.classList.add('lazyloaded');
+          imageObserver.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '50px 0px',  // 提前 50px 开始加载
+      threshold: 0.01
+    });
+
+    lazyImages.forEach(function(img) {
+      imageObserver.observe(img);
+    });
+  } else {
+    // 不支持 IntersectionObserver 的浏览器直接加载所有图片
+    lazyImages.forEach(function(img) {
+      img.src = img.dataset.src;
+    });
+  }
+});
+</script>
