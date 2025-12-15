@@ -8,6 +8,15 @@
     <language>zh-cn</language>
     <lastBuildDate>Fri, 29 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>windows | mihomo 内核独立部署指南</title>
+      <link>https://www.lvbibir.cn/posts/tech/mihomo-core-only-setup/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/mihomo-core-only-setup/</guid>
+      <description>在 Windows 系统上使用 mihomo 内核独立部署代理服务, 无需依赖 GUI 客户端, 轻量高效</description>
+    </item>
+    
+    <item>
       <title>linux | 磁盘扩容</title>
       <link>https://www.lvbibir.cn/posts/tech/linux-expand-disk/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>

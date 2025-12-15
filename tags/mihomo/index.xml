@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>mihomo on lvbibir&#39;s Blog</title>
+    <link>https://www.lvbibir.cn/tags/mihomo/</link>
+    <description>Recent content in mihomo on lvbibir&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/mihomo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>windows | mihomo 内核独立部署指南</title>
+      <link>https://www.lvbibir.cn/posts/tech/mihomo-core-only-setup/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/mihomo-core-only-setup/</guid>
+      <description>在 Windows 系统上使用 mihomo 内核独立部署代理服务, 无需依赖 GUI 客户端, 轻量高效</description>
+    </item>
+    
+  </channel>
+</rss>

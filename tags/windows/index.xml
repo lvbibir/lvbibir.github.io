@@ -6,7 +6,16 @@
     <description>Recent content in windows on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 04 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>windows | mihomo 内核独立部署指南</title>
+      <link>https://www.lvbibir.cn/posts/tech/mihomo-core-only-setup/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/mihomo-core-only-setup/</guid>
+      <description>在 Windows 系统上使用 mihomo 内核独立部署代理服务, 无需依赖 GUI 客户端, 轻量高效</description>
+    </item>
+    
     <item>
       <title>windows | rime 输入法 &amp; 雾凇方案</title>
       <link>https://www.lvbibir.cn/posts/tech/windowns-rime-input-method/</link>

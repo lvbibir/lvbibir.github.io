@@ -6,7 +6,7 @@
     <description>Recent content on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 24 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【置顶】Hello, hugo!</title>
       <link>https://www.lvbibir.cn/posts/blog/hello-hugo/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://www.lvbibir.cn/posts/blog/hello-hugo/</guid>
       <description>记录 wordpress 迁移至 hugo&#43;papermod 的过程, 包含环境搭建、博客美化、功能实现、速度优化等……</description>
+    </item>
+    
+    <item>
+      <title>windows | mihomo 内核独立部署指南</title>
+      <link>https://www.lvbibir.cn/posts/tech/mihomo-core-only-setup/</link>
+      <pubDate>Wed, 10 Dec 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/mihomo-core-only-setup/</guid>
+      <description>在 Windows 系统上使用 mihomo 内核独立部署代理服务, 无需依赖 GUI 客户端, 轻量高效</description>
     </item>
     
     <item>
