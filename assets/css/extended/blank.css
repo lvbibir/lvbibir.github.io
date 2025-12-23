@@ -146,9 +146,9 @@ img:active {
 }
 
 
-/* .post-content {
+.post-content {
     font-family: Consolas, "LXGW WenKai Screen";
-} */
+}
 
 .dark .post-content {
     color: rgba(180, 181, 182, 0.8);
@@ -157,7 +157,7 @@ img:active {
 body {
     font-size: 18px;
     line-height: 1.6;
-    /* font-family: Consolas, "LXGW WenKai Screen"; */
+    font-family: Consolas, "LXGW WenKai Screen";
 }
 
 /*引言*/
