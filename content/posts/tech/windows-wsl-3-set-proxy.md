@@ -1,7 +1,7 @@
 ---
 title: "wsl | 自动更新系统代理"
 date: 2024-01-12
-lastmod: 2025-12-11
+lastmod: 2025-12-19
 tags:
   - wsl
 keywords:
@@ -34,11 +34,18 @@ cat > ~/proxy
 
 #!/bin/bash
 
+# 提示用户必须使用 source 执行
+if [ "$0" = "$BASH_SOURCE" ]; then
+    echo "错误: 请使用 'source ~/proxy-unset' 或 '. ~/proxy-unset' 来执行此脚本"
+    echo "直接执行无法清除当前 shell 的环境变量和 alias"
+    exit 1
+fi
+
 # normal proxy
 # 指定 url 的方式
-proxy_type="http"
-proxy_ip="proxy1.bj.petrochina"
-proxy_port="8080"
+# proxy_type="http"
+# proxy_ip="proxy1.bj.petrochina"
+# proxy_port="8080"
 
 # 使用 windows 主机上运行的代理程序, 例如 clash
 # wsl 中的地址是不固定的, 这里通过脚本获取, 每次启动 wsl 都可以实时更新
@@ -56,7 +63,8 @@ export http_proxy="${proxy}"
 export https_proxy="${proxy}"
 
 # docker 代理
-sudo tee /etc/docker/daemon.json > /dev/null <<- EOF
+# 只在配置变化时才更新并重启 docker
+docker_config=$(cat <<- EOF
 {
   "insecure-registries" : ["http://11.14.1.40"],
   "proxies": {
@@ -66,8 +74,18 @@ sudo tee /etc/docker/daemon.json > /dev/null <<- EOF
   }
 }
 EOF
-sudo systemctl reset-failed docker
-sudo systemctl restart docker
+)
+
+current_config=""
+if [ -f /etc/docker/daemon.json ]; then
+    current_config=$(sudo cat /etc/docker/daemon.json 2>/dev/null)
+fi
+
+if [ "$docker_config" != "$current_config" ]; then
+    echo "$docker_config" | sudo tee /etc/docker/daemon.json > /dev/null
+    sudo systemctl reset-failed docker 2>/dev/null
+    sudo systemctl restart docker
+fi
 
 # apt 代理
 # 如果不加 sudo, 会导致用 sudo 执行 apt 等命令时无法识别 alias
@@ -114,7 +132,6 @@ cat >> ~/.bashrc <<- 'EOF'
 source ${HOME}/proxy
 EOF
 
-
 # 手动调用
 source ~/proxy
 ```
@@ -126,33 +143,71 @@ cat ~/proxy-unset
 
 #!/bin/bash
 
+# 提示用户必须使用 source 执行
+if [ "$0" = "$BASH_SOURCE" ]; then
+    echo "错误: 请使用 'source ~/proxy-unset' 或 '. ~/proxy-unset' 来执行此脚本"
+    echo "直接执行无法清除当前 shell 的环境变量和 alias"
+    exit 1
+fi
+
+# 清除环境变量
 unset http_proxy
 unset https_proxy
 unset all_proxy
 unset ALL_PROXY
 
 # docker 代理
-sudo tee /etc/docker/daemon.json > /dev/null <<- 'EOF'
+# 只在配置变化时才更新并重启 docker
+docker_config=$(cat <<- 'EOF'
 {
   "insecure-registries" : ["http://11.14.1.40"]
 }
 EOF
-sudo systemctl reset-failed docker
-sudo systemctl restart docker
+)
 
-unalias sudo
-unalias apt
-unalias apt-get
+current_config=""
+if [ -f /etc/docker/daemon.json ]; then
+    current_config=$(sudo cat /etc/docker/daemon.json 2>/dev/null)
+fi
 
-git config --global --unset http.https://github.com.proxy
-git config --global --unset https.https://github.com.proxy
+if [ "$docker_config" != "$current_config" ]; then
+    echo "$docker_config" | sudo tee /etc/docker/daemon.json > /dev/null
+    sudo systemctl reset-failed docker 2>/dev/null
+    sudo systemctl restart docker
+    echo "Docker 配置已更新并重启"
+fi
+
+# 清除 alias
+unalias sudo 2>/dev/null
+unalias apt 2>/dev/null
+unalias apt-get 2>/dev/null
+
+# 清除 git 的 http/https 代理
+git config --global --unset http.https://github.com.proxy 2>/dev/null
+git config --global --unset https.https://github.com.proxy 2>/dev/null
 
 # git 的 ssh 代理
-truncate -s 0 ~/.ssh/config
-
 tee ~/.ssh/config > /dev/null <<- EOF
-# 默认配置
+
+Host github.com
+  User git
+  Port 22
+  Hostname github.com
+  IdentityFile "/home/lvbibir/.ssh/id_rsa"
+  TCPKeepAlive yes
+
+Host ssh.github.com
+  User git
+  Port 443
+  Hostname ssh.github.com
+  IdentityFile "/home/lvbibir/.ssh/id_rsa"
+  TCPKeepAlive yes
+
 EOF
+
+echo "代理配置已清除 (当前 shell 会话)"
+echo "注意: 新开的 shell 会话仍会通过 .bashrc 加载 proxy"
+
 
 # 手动调用
 source ~/proxy-unset

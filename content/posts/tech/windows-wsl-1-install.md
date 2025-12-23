@@ -1,7 +1,7 @@
 ---
 title: "wsl | win10 安装 wsl2"
 date: 2024-01-10
-lastmod: 2024-01-28
+lastmod: 2025-12-19
 tags:
   - wsl
 keywords:
@@ -20,6 +20,12 @@ cover:
 - <https://learn.microsoft.com/zh-cn/windows/wsl/install-manual>
 
 今天不小心把我电脑的 wsl 误删了, 刚好重装记录一下安装步骤
+
+```bash
+# 这种方式似乎也可以, 未验证
+# https://linux.do/t/topic/1015067
+wsl --install ubuntu-24.04 --name ubuntu-24.04 --location D:\ubuntu
+```
 
 # 1 安装
 

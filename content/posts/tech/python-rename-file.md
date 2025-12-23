@@ -9,7 +9,7 @@ keywords:
   - python
 description: "将 windows 中某个目录下的所有文件中的下划线_替换为中划线-" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "https://image.lvbibir.cn/blog/logo-python.png" 
 ---
 
 示例代码

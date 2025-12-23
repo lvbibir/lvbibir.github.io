@@ -9,7 +9,7 @@ keywords:
   - pip
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "https://image.lvbibir.cn/blog/logo-python.png" 
 ---
 
 ## 1 清单
