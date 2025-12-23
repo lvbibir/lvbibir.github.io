@@ -11,24 +11,23 @@
 }
 
 .toc-container.wide {
-    position: absolute;
-    height: 100%;
-    /* border-right: 1px solid var(--border); */
-    left: calc((var(--toc-width) + var(--gap)) * -0.85);
-    top: calc(var(--gap) * 1);
+    position: fixed;
+    left: 16px;
+    top: 80px;
     width: var(--toc-width);
+    max-height: calc(100vh - 100px);
+    z-index: 50;
 }
 
 .wide .toc {
-    position: sticky;
-    top: var(--gap);
-    /*top: 0;*/
-    /*top: 15px;*/
-    border: unset;
-    background: unset;
-    border-radius: unset;
+    position: relative;
+    top: 0;
+    border: 1.2px solid var(--border);
+    background: var(--entry);
+    border-radius: var(--radius);
     width: 100%;
-    margin: 0 2px 40px 2px;
+    margin: 0;
+    padding: 0.4em;
 }
 
 .toc details summary {
@@ -100,4 +99,160 @@
 .dark .toc li a:hover {
     /* font-weight: 600; */
     color: var(--content);
+}
+
+/* ==================== TOC 弹出样式 ==================== */
+
+/* TOC 切换按钮 - 始终可见 */
+/* 样式参考 .top-link 回到顶部按钮 */
+.toc-toggle-btn {
+    visibility: visible;
+    opacity: 1;
+    display: flex;
+    position: fixed;
+    right: 30px;
+    bottom: 110px; /* 在回到顶部按钮(bottom: 60px + height: 42px)上方 */
+    z-index: 99;
+    width: 42px;
+    height: 42px;
+    padding: 10px;
+    border-radius: 64px;
+    background: var(--entry);
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+    font-size: 12px;
+    
+    -webkit-transition: box-shadow 0.4s ease, transform 0.4s ease;
+    -moz-transition: box-shadow 0.4s ease, transform 0.4s ease;
+    -o-transition: box-shadow 0.4s ease, transform 0.4s ease;
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+    box-shadow: 0px 2px 4px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
+}
+
+.toc-toggle-btn:hover {
+    color: var(--primary);
+    
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+    
+    box-shadow: 0px 4px 8px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
+}
+
+.toc-toggle-btn:focus {
+    outline: 0;
+}
+
+.toc-toggle-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+}
+
+/* 按钮激活状态（TOC 显示时） */
+.toc-toggle-btn.active {
+    color: var(--primary);
+    background: var(--tertiary);
+}
+
+/* 遮罩层 */
+.toc-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 199;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.toc-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* 移动端弹出 TOC 容器 */
+.toc-container.mobile-popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 280px;
+    max-width: 80vw;
+    z-index: 200;
+    background: var(--theme);
+    border-right: 1px solid var(--border);
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.15);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    margin: 0;
+    height: 100%;
+}
+
+.toc-container.mobile-popup.active {
+    transform: translateX(0);
+}
+
+.toc-container.mobile-popup .toc {
+    margin: 0;
+    padding: 16px;
+    border: none;
+    background: transparent;
+    border-radius: 0;
+}
+
+.toc-container.mobile-popup .toc details {
+    margin: 0;
+}
+
+.toc-container.mobile-popup .toc details summary {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+}
+
+.toc-container.mobile-popup .toc .inner {
+    margin: 0;
+    max-height: calc(100vh - 80px);
+}
+
+/* 移动端弹出时的关闭按钮 */
+.toc-close-btn {
+    display: none;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    z-index: 201;
+}
+
+.toc-close-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--primary);
+}
+
+.toc-container.mobile-popup .toc-close-btn {
+    display: flex;
+}
+
+/* TOC 隐藏状态 */
+.toc-container.collapsed {
+    display: none;
 }
