@@ -6,7 +6,16 @@
     <description>Recent content in python on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 13 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python | 使用 uv 管理你的 python 环境</title>
+      <link>https://www.lvbibir.cn/posts/tech/python-uv-manager/</link>
+      <pubDate>Tue, 23 Dec 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/python-uv-manager/</guid>
+      <description>介绍使用 uv 管理 Python 版本, 第三方模块和项目依赖</description>
+    </item>
+    
     <item>
       <title>wsl | 安装配置 miniconda 虚拟环境</title>
       <link>https://www.lvbibir.cn/posts/tech/windows-wsl-4-miniconda/</link>
