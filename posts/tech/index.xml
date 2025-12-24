@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>Claude Code CLI 常用功能和操作</title>
+      <link>https://www.lvbibir.cn/posts/tech/claude-code-cli/</link>
+      <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/claude-code-cli/</guid>
+      <description>介绍 Claude Code CLI 交互界面的常用功能和操作, 包含斜杠命令、快捷键、命令行参数、多行输入等实用技巧</description>
+    </item>
+    
+    <item>
       <title>windows | mihomo 内核独立部署指南</title>
       <link>https://www.lvbibir.cn/posts/tech/mihomo-core-only-setup/</link>
       <pubDate>Wed, 10 Dec 2025 00:00:00 +0000</pubDate>
