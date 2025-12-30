@@ -21,7 +21,8 @@ cover:
 # 1 安装
 
 ```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+# 自动获取最新版本的 nvm 并安装
+curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')/install.sh" | bash
 source ~/.bashrc # 或者重新进一下终端
 nvm -v
 ```

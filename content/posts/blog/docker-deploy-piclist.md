@@ -45,7 +45,9 @@ services:
         ipv4_address: 172.19.0.5
     volumes:
       - '$PWD/data/piclist:/root/.piclist'
-    # 需要设置 piclist_key 环境变量
+    # 需要在 .env 文件中配置环境变量
+    env_file:
+      - .env
     command: node /usr/local/bin/picgo-server -k ${piclist_key}
 
 networks:
@@ -56,15 +58,16 @@ networks:
        - subnet: 172.19.0.0/16
 ```
 
-添加环境变量并启动 piclist 容器, 此环境变量用于 client(obsidian) 和 piclist server 之间的鉴权
+添加 `.env` 环境变量文件并启动 piclist 容器, 此环境变量用于 client(obsidian) 和 piclist server 之间的鉴权
 
 ```bash
 # 将 123456 设置为自定义的密码
-cat >> ${HOME}/.bash_profile <<-'EOF'
-export piclist_key='123456'
+cat > .env <<-'EOF'
+# PicList 配置
+# 请修改为你的实际 key 值
+piclist_key='123456'
 EOF
 
-source ${HOME}/.bash_profile
 docker-compose up -d
 ```
 

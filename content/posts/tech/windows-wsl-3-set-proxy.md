@@ -100,24 +100,14 @@ git config --global https.https://github.com.proxy ${proxy}
 # git 的 ssh 代理
 tee ~/.ssh/config > /dev/null <<- EOF
 
-# git-bash 环境: 注意替换端口号和 connect.exe 的路径
-# ProxyCommand "C:\\APP\\Git\\mingw64\\bin\\connect" -S ${proxy_ip}:${proxy_port} -a none %h %p
-
-# linux 环境: 注意替换你的端口号
-# ProxyCommand nc -v -x ${proxy_ip}:${proxy_port} %h %p
+# git-bash 环境: ProxyCommand "C:\\APP\\Git\\mingw64\\bin\\connect" -S ${proxy_ip}:${proxy_port} -a none %h %p
+# Centos7 环境: ProxyCommand ncat --proxy ${proxy_ip}:${proxy_port} --proxy-type ${proxy_type} %h %p
+# Ubuntu 环境: ProxyCommand nc -v -x ${proxy_ip}:${proxy_port} -X ${proxy_type} %h %p
 
 Host github.com
   User git
   Port 22
   Hostname github.com
-  ProxyCommand nc -v -x ${proxy_ip}:${proxy_port} %h %p
-  IdentityFile "/home/lvbibir/.ssh/id_rsa"
-  TCPKeepAlive yes
-
-Host ssh.github.com
-  User git
-  Port 443
-  Hostname ssh.github.com
   ProxyCommand nc -v -x ${proxy_ip}:${proxy_port} %h %p
   IdentityFile "/home/lvbibir/.ssh/id_rsa"
   TCPKeepAlive yes
@@ -196,18 +186,10 @@ Host github.com
   IdentityFile "/home/lvbibir/.ssh/id_rsa"
   TCPKeepAlive yes
 
-Host ssh.github.com
-  User git
-  Port 443
-  Hostname ssh.github.com
-  IdentityFile "/home/lvbibir/.ssh/id_rsa"
-  TCPKeepAlive yes
-
 EOF
 
 echo "代理配置已清除 (当前 shell 会话)"
 echo "注意: 新开的 shell 会话仍会通过 .bashrc 加载 proxy"
-
 
 # 手动调用
 source ~/proxy-unset

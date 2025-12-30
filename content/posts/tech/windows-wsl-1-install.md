@@ -1,7 +1,7 @@
 ---
 title: "wsl | win10 安装 wsl2"
 date: 2024-01-10
-lastmod: 2025-12-19
+lastmod: 2025-12-25
 tags:
   - wsl
 keywords:
@@ -96,4 +96,36 @@ EOF
 sudo apt-get update
 ```
 
+# 2 配置
+
+## 2.1 后台保活
+
+如果没有任何活动的 wsl 终端, 每过一段时间 windows 会将 wsl 关闭, 导致想要使用的时候需要等它启动一段时间以及一些其他的问题
+
+可以通过 vbs 脚本简单实现这个功能
+
+```VBScript
+Set shell = CreateObject("WScript.Shell")
+' 这里的 Ubuntu 替换成你实际的发行版名称
+' 0 代表隐藏运行，False 代表不需要等待进程结束
+shell.Run "wsl.exe -d Ubuntu-20.04 -u root -- sleep infinity", 0, False
+```
+
+直接双击运行就可以了, 后台会跑一个无感的 wsl 进程
+
+如果需要开机运行可以把这个 vbs 脚本放到开机自启目录中, 通过 `windows + r` 调出运行控制台, 然后输入 `shell:startup` 回车即可打开 windows 自启动目录.
+
+## 2.2 alias 配置
+
+```bash
+cat .bashrc
+alias ll='ls -l'
+alias di='sudo docker images'
+alias dp='sudo docker ps'
+alias dc='sudo docker compose'
+alias python='echo "dont use python! use uv run"'
+alias pip='echo "dont use pip! use uv pip or uv add"'
+```
+
 以上
+
