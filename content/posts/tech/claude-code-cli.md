@@ -1,7 +1,7 @@
 ---
 title: "Claude Code 食用指南"
 date: 2025-12-17
-lastmod: 2025-12-30
+lastmod: 2025-12-31
 tags:
   - AI
   - 工具
@@ -21,13 +21,38 @@ Claude Code 是 Anthropic 官方推出的 CLI 工具, 可以在终端中与 Clau
 
 # 1 mcp 和 skill 安装
 
+## 1.1 plugin
+
 ```bash
 claude
 /plugin marketplace add iamzhihuix/happy-claude-skills 
 /plugin marketplace add anthropics/skills
-/plugin # 安装 context7 frontend-design browser
+/plugin # 直接搜索安装 context7 frontend-design browser
+```
 
-# 安装 exa 和 augment-context-engine mcp
+## 1.2 mcp
+
+访问 [Exa Dashboard](https://dashboard.exa.ai/), 创建一个 API key
+
+```bash
+# 将 YOUR_EXA_API_KEY 替换为你实际获取的 Key
+claude mcp add-json --scope user exa \
+'{"command":"npx","args":["-y","exa-mcp-server"],"env":{"EXA_API_KEY":"YOUR_EXA_API_KEY"}}'
+```
+
+[参考文档](https://linux.do/t/topic/1360514) [ACE 中转站](https://acemcp.heroman.wtf/)
+
+```bash
+npm install -g ace-tool
+
+claude mcp add-json --scope user augment-context-engine \
+'{"command":"ace-tool","args":["--base-url","https://acemcp.heroman.wtf/relay/","--token","YOU_API_KEY"]}'
+
+# 替代方案, ripgrep+code-index
+claude mcp add-json --scope user ripgrep \
+'{"command":"npx","args":["-y","mcp-ripgrep@latest"]}'
+claude mcp add-json --scope user code-index \
+'{"command":"uvx","args":["code-index-mcp"]}'
 ```
 
 # 2 CLAUDE.md
@@ -50,7 +75,7 @@ claude
 全局用户级 → 项目级 → 项目本地级
 ```
 
-所有 CLAUDE.md 文件是**叠加**的，冲突时后加载的优先。
+所有 CLAUDE.md 文件是叠加的，冲突时后加载的优先。
 
 ### 2.1.3 目录层级支持
 
@@ -81,186 +106,6 @@ claude
 | 个人代码风格偏好        | `~/.claude/CLAUDE.md`               |
 | 项目架构说明、编码标准     | `./CLAUDE.md` (提交到 git)             |
 | 个人私有配置（如测试 URL） | `./CLAUDE.local.md` (加入 .gitignore) |
-
-## 2.2 配置示例
-
-````markdown
-# CLAUDE.md
-
-## Defaults
-- Reply in **Chinese** unless I explicitly ask for English.
-- Always use **English punctuation** (e.g., `,` `.` `:` `;` `()` `""`), even when writing Chinese text or generating files with Chinese content.
-- No emojis.
-- Do not truncate important outputs (logs, diffs, stack traces, commands, or critical reasoning that affects safety/correctness).
-
-## Refactor policy (legacy code)
-- When existing code is a "big ball of mud" (hard to maintain, clearly bad design, full of hacks), prefer a **clean, full refactor** over stacking more patches on top of it.
-- A refactor may completely replace internal structure (functions, modules, classes, data flow).
-- By default, try to preserve externally observable behaviour.
-  If you intentionally change behaviour or protocols, you MUST:
-  - Call out clearly that this is a **behaviour/protocol change**.
-  - Explain why the change is necessary and which code paths/consumers are affected.
-  - Update or add tests to cover the new behaviour.
-
-## Before touching code (mandatory)
-1) Find reuse opportunities
-   - Use semantic code search first via the Augment MCP server `augment-context-engine`, using its `codebase-retrieval` tool for repository/code search.
-   - Confirm understanding with LSP: `goToDefinition`, `findReferences`.
-   - Use Grep/Glob only for exact matches or filename patterns.
-
-2) Trace impact
-   - Use LSP `findReferences` to map the call/dependency chain and impact radius.
-
-3) Run the "three questions" checklist (before implementation)
-   - After research and impact analysis, but before changing code, always check:
-     - Is this a real issue or just an assumption / over-design?
-     - What existing code can be reused?
-     - What might break, and who depends on this?
-   - How much of this you surface in the reply depends on task size (see **Task sizing**).
-
-## Red lines
-- No copy-paste duplication.
-- Do not break existing externally observable behaviour **unless**:
-  - It is part of a deliberate refactor as described in the refactor policy, and
-  - You clearly document the behavioural change and its impact.
-- Do not proceed with a known-wrong approach.
-- Critical paths must have explicit error handling.
-- Never implement "blindly": always confirm understanding via code reading + references.
-
-## Web research (no guessing)
-If something is unfamiliar or likely version-sensitive, you MUST search the web instead of guessing:
-- Use Exa: `mcp__exa__web_search_exa`.
-
-Source priority:
-1) Official docs / API reference.
-2) Official changelog / release notes.
-3) Upstream GitHub repository docs (README, `/docs`).
-4) Community posts only if necessary to fill gaps.
-
-Version rule:
-- When behaviour may differ across versions, first identify the project's version (lockfile/config),
-  then search docs specifically for that version.
-
-## Task sizing
-- **Simple**
-  - Criteria — single file, clear requirement, < 20 lines changed, clearly local impact.
-  - Handling — after doing the "Before touching code" steps (research + impact analysis + internal three-question checklist), you may execute directly with minimal explanation.
-    A very short context line is enough; a full breakdown of the checklist is not required.
-
-- **Medium**
-  - Criteria — 2–5 files, or requires some research, or impact is not obviously local.
-  - Handling — write a short plan (bullet points) → then implement.
-  - Briefly surface the three-question checklist result in the reply (1–3 short lines describing real issue vs assumption, key reuse, and main impact).
-
-- **Complex**
-  - Criteria — architecture changes, multiple modules, high uncertainty or risk.
-  - Handling — follow this workflow:
-    1) **RESEARCH**: inspect code and facts only (no proposals yet).
-    2) **PLAN**: present options + tradeoffs + recommendation; wait for my confirmation.
-    3) **EXECUTE**: implement exactly the approved plan.
-    4) **REVIEW**: self-check (tests, edge cases, cleanup).
-  - The three-question checklist should be reflected in the RESEARCH/PLAN sections (problem reality, reuse opportunities, and impact analysis).
-
-## Tool selection
-- Semantic code search & understanding: MCP server `augment-context-engine`, tool `codebase-retrieval`.
-- Definitions/references/impact: LSP (`goToDefinition`, `findReferences`).
-- Exact string/regex search: Grep.
-- Filename patterns: Glob.
-- Docs & open-source lookup: `mcp__exa__web_search_exa`.
-
-## Git
-- Do not commit unless I explicitly ask.
-- Do not push unless I explicitly ask.
-- Before writing a commit message, glance at a few recent commits and match the repo's style:
-  - `git log -n 5 --oneline`
-- If there is no obvious existing style, use this default format:
-  - `<type>(<scope>): <description>`
-- Before any commit: run `git diff` and confirm the exact scope of changes.
-- Never force-push to `main` / `master`.
-- Do not add attribution lines in commit messages.
-
-## Security
-- Never hardcode secrets (keys/passwords/tokens).
-- Never commit `.env` files or any credentials.
-- Validate user input at trust boundaries (APIs, CLIs, external data sources).
-
-## Quality & cleanup
-- Prefer clarity and simplicity first (KISS); apply DRY to remove obvious copy-paste duplication when it does not hurt readability.
-- If you change a function signature, update **all** call sites.
-- After changes:
-  - Remove temporary files.
-  - Remove dead/commented-out code.
-  - Remove unused imports.
-  - Remove debug logging that is no longer needed.
-- Run the smallest meaningful verification (lint/test/build) for the parts you touched.
-
-## Python environment
-Always use **uv** for Python environment and package management. Never use raw `pip`, `python -m venv`, or `virtualenv`.
-
-Virtual environment priority (highest to lowest):
-1) **Project-level**: If inside a project directory, use `uv init` to create `.venv` in project root. All dependencies install here.
-2) **User-level**: If outside any project but need persistent Python, use `~/.venv`:
-   ```bash
-   uv venv ~/.venv
-   source ~/.venv/bin/activate
-   ```
-3) **Temporary**: If a throwaway environment is acceptable, create in `/tmp`:
-   ```bash
-   uv venv /tmp/.venv-$(date +%s)
-   ```
-
-Common commands:
-- Create project: `uv init`
-- Add dependency: `uv add <package>`
-- Run script: `uv run python script.py`
-- Sync deps: `uv sync`
-
-## Node.js environment
-Always use **pnpm** for package management. Avoid npm/yarn unless explicitly required by the project.
-
-Environment priority (highest to lowest):
-1) **Project-level**: If inside a project with `package.json`, install locally:
-   ```bash
-   pnpm install
-   ```
-2) **User-level global**: For CLI tools needed across projects:
-   ```bash
-   pnpm add -g <package>
-   ```
-3) **Temporary execution**: For one-off scripts without polluting global:
-   ```bash
-   pnpm dlx <package>   # like npx but uses pnpm cache
-   ```
-
-Version management:
-- Use **nvm** for Node.js version switching.
-- Respect `.nvmrc` or `.node-version` if present in project.
-
-## Shell / Platform
-Auto-detect the runtime environment and adapt accordingly:
-
-**Detection order:**
-1) Check if running inside WSL: `grep -qi microsoft /proc/version`
-2) Check if native Linux: `uname -s` returns `Linux` without WSL markers
-3) Check if macOS: `uname -s` returns `Darwin`
-4) Check if Windows (PowerShell/cmd): `$env:OS` or `%OS%` equals `Windows_NT`
-
-**Default assumption:** If detection is unclear or fails, assume **WSL2 on Windows**.
-
-**Platform-specific rules:**
-
-| Platform | Shell syntax | Command chaining | Path format |
-|----------|--------------|------------------|-------------|
-| WSL2 / Linux / macOS | Bash/Zsh | `&&` or `;` | `/path/to/file` |
-| Windows PowerShell | PowerShell | `;` (no `&&`) | `C:\path\to\file` |
-| Windows cmd | cmd | `&&` or `&` | `C:\path\to\file` |
-
-**Cross-platform notes:**
-- In WSL2, access Windows paths via `/mnt/c/...`
-- Quote paths containing spaces or non-ASCII characters on all platforms.
-- When calling Windows executables from WSL2, use full path: `/mnt/c/Windows/System32/...`
-
-````
 
 # 3 修复 wsl2 运行卡顿的问题
 
@@ -319,3 +164,27 @@ echo "修复完成！请执行以下命令使配置生效："
 echo "  source $CONFIG_FILE"
 )
 ```
+
+# 4 状态栏美化
+
+[项目文档](https://github.com/Haleclipse/CCometixLine/blob/master/README.zh.md)
+
+```bash
+npm install -g @cometix/ccline
+ccline --patch ~/.nvm/versions/node/v24.12.0/lib/node_modules/@anthropic-ai/claude-code/cli.js
+```
+
+cc-switch 写入通用配置文件
+
+```yaml
+{
+  "includeCoAuthoredBy": false,
+  "statusLine": {
+    "type": "command", 
+    "command": "~/.claude/ccline/ccline",
+    "padding": 0
+  }
+}
+```
+
+**测试一下test**

@@ -1,5 +1,5 @@
 .post-content code {
-    font-family: Consolas, "LXGWWenKaiLite-Bold";
+    font-family: JetBrainsLxgwNerdMono;
     margin: 0px;
     padding: 2px 5px;
     font-size: 0.92rem;
@@ -9,7 +9,7 @@
     max-height: 40em;
     margin-bottom: 2%;
     font-size: 0.75em;
-    font-family: Consolas, "LXGW WenKai Screen";
+    font-family: JetBrainsLxgwNerdMono;
     /*border-radius: unset unset var(--radius) var(--radius) !important;*/
     border-top-left-radius: unset;
     border-top-right-radius: unset;
