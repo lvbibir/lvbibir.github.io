@@ -160,8 +160,9 @@ body {
     font-family: JetBrainsLxgwNerdMono;
 }
 
-/* 有序列表缩进修复 */
-.post-content ol {
+/* 有序/无序列表缩进修复 */
+.post-content ol,
+.post-content ul {
     padding-inline-start: 2em;
 }
 
