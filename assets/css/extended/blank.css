@@ -160,6 +160,11 @@ body {
     font-family: JetBrainsLxgwNerdMono;
 }
 
+/* 有序列表缩进修复 */
+.post-content ol {
+    padding-inline-start: 2em;
+}
+
 /*引言*/
 .post-content blockquote {
     border-left: 4px solid #42b983;

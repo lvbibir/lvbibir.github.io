@@ -4,3 +4,4 @@ themes/PaperMod/.git
 .idea
 .DS_Store
 upload.sh
+.ace-tool/
