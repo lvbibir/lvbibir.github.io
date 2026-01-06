@@ -161,15 +161,27 @@ body {
 }
 
 /* 有序/无序列表缩进修复 */
-.post-content ol,
 .post-content ul {
     padding-inline-start: 30px;
 }
 
+.post-content ol {
+    padding-inline-start: 40px;
+}
+
 /* 二级列表缩进 */
-.post-content ul ul,
-.post-content ol ol,
-.post-content ul ol,
+.post-content ul ul {
+    padding-inline-start: 20px;
+}
+
+.post-content ol ol {
+    padding-inline-start: 30px;
+}
+
+.post-content ul ol {
+    padding-inline-start: 30px;
+}
+
 .post-content ol ul {
     padding-inline-start: 20px;
 }
