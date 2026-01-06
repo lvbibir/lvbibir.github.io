@@ -9,7 +9,7 @@ keywords:
   - dockerfile
 description: "" 
 cover:
-    image: "images/docker.png" 
+    image: "images/logo-docker.png" 
 ---
 
 ## 0 前言

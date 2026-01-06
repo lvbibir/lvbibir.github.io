@@ -16,7 +16,7 @@ keywords:
   - deployment
 description: "介绍 kubernetes 中几种常用的控制器的使用场景和示例" 
 cover:
-    image: "images/kubernetes.png"
+    image: "images/logo-kubernetes.png"
 ---
 
 # 0 前言

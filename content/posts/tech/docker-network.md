@@ -10,7 +10,7 @@ keywords:
   - network
 description: "简单介绍 docker 的网络结构以及同一宿主机的 docker 容器之间是如何通信的" 
 cover:
-    image: "images/docker.png" 
+    image: "images/logo-docker.png" 
 ---
 
 # 1 网络概述

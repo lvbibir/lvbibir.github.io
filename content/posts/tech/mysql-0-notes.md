@@ -8,7 +8,7 @@ keywords:
   - mysql
 description: "" 
 cover:
-    image: "images/mysql.png" 
+    image: "images/logo-mysql.png" 
 ---
 
 # 0 下载地址

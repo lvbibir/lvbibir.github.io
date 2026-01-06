@@ -13,7 +13,7 @@ keywords:
   - nginx
 description: "介绍 kubernetes 中的 service 和 Headless Service，service 的两种代理模式，以及ingress 控制器的使用" 
 cover:
-    image: "images/kubernetes.png"
+    image: "images/logo-kubernetes.png"
 ---
 
 # 0 前言

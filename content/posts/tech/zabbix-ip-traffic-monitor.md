@@ -10,7 +10,7 @@ keywords:
   - shell
 description: "zabbix 中通过 shell 监控定时监控流量, 配置聚合图形, 以及日志输出"
 cover:
-    image: "images/Zabbix_logo.png"
+    image: "images/logo-zabbix.png"
 ---
 
 # 0 前言

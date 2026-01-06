@@ -11,7 +11,7 @@ keywords:
   - 备案
 description: "记录wordpress中如何添加icp备案号" 
 cover:
-    image: "images/wordpress.jpg" 
+    image: "images/logo-wordpress.jpg" 
 ---
 
 默认主题下在后台设置里修改即可

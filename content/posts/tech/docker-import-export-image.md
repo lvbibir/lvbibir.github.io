@@ -13,7 +13,7 @@ keywords:
   - shell
 description: "通过 shell 或者 python 的方式批量导入导出 docker 镜像" 
 cover:
-    image: "images/docker.png" 
+    image: "images/logo-docker.png" 
 ---
 
 # 0 前言

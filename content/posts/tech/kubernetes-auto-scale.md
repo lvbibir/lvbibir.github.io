@@ -11,7 +11,7 @@ keywords:
   - update
 description: "介绍 kubernetes 中滚动升级的实现机制，如何手动伸缩 pod，以及基于 hpa 实现自动伸缩" 
 cover:
-    image: "images/kubernetes.png"
+    image: "images/logo-kubernetes.png"
 ---
 
 # 0 前言

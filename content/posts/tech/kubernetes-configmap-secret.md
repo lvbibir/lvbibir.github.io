@@ -10,7 +10,7 @@ keywords:
   - secret
 description: "介绍kubernetes中的configmap和secret应用" 
 cover:
-    image: "images/kubernetes.png"
+    image: "images/logo-kubernetes.png"
 ---
 
 # 0 前言

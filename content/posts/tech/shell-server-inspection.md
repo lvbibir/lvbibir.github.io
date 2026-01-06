@@ -9,7 +9,7 @@ keywords:
   - linux
 description: "" 
 cover:
-    image: "images/shell.png" 
+    image: "images/logo-shell.png" 
 ---
 
 代码如下

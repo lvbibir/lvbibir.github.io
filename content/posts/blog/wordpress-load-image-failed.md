@@ -11,7 +11,7 @@ keywords:
   - https
 description: "" 
 cover:
-    image: "images/wordpress.jpg" 
+    image: "images/logo-wordpress.jpg" 
 ---
 
 # 1 现象

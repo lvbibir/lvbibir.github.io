@@ -11,7 +11,7 @@ keywords:
   - harbor
 description: "经常会下一些外网镜像用于测试，手动修改镜像tag然后推送在镜像较多的情况下比较繁琐，本文采用bash脚本方式批量推送不同格式的镜像" 
 cover:
-    image: "images/shell.png" 
+    image: "images/logo-shell.png" 
 ---
 
 流程图

@@ -14,7 +14,7 @@ keywords:
   - 博客迁移
 description: "记录从阿里云轻量应用服务器 (wordpress 应用) 迁移到 docker 部署，并针对博客的一些优化" 
 cover:
-    image: "images/wordpress.jpg" 
+    image: "images/logo-wordpress.jpg" 
 ---
 
 # 0 前言

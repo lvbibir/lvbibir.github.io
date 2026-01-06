@@ -10,7 +10,7 @@ keywords:
   - docker swarm
 description: "介绍 docker swarm 集群的概述、使用和集群管理" 
 cover:
-    image: "images/docker.png" 
+    image: "images/logo-docker.png" 
 ---
 
 # 0 前言

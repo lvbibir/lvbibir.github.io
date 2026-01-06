@@ -10,7 +10,7 @@ keywords:
   - docker
 description: "" 
 cover:
-    image: "images/ceph.png" 
+    image: "images/logo-ceph.png" 
 ---
 
 # 0 前言

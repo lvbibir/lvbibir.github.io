@@ -11,7 +11,7 @@ keywords:
   - entrypoint
 description: "" 
 cover:
-    image: "images/kubernetes.png"
+    image: "images/logo-kubernetes.png"
 ---
 
 # 1 command args

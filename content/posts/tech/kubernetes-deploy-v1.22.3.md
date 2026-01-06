@@ -10,7 +10,7 @@ keywords:
   - kubernetes
 description: "介绍 kubernetes, 并在 centos 中使用 kubeadm 快速搭建 k8s 集群 v1.22.3、安装cni组件" 
 cover:
-    image: "images/kubernetes.png"
+    image: "images/logo-kubernetes.png"
 ---
 
 # 1 Kubernetes 概述

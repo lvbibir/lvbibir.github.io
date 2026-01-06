@@ -10,7 +10,7 @@ keywords:
   - image
 description: "介绍几种方式用于构建平常无法下载的 gcr.io 或者 quay.io 等仓库的镜像，比如阿里云免费的容器镜像服务、开源项目、Docker Playground等" 
 cover:
-    image: "images/docker.png" 
+    image: "images/logo-docker.png" 
 ---
 
 # 0 前言

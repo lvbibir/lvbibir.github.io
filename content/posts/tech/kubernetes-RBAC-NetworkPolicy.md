@@ -10,7 +10,7 @@ keywords:
   - networkPolicy
 description: "介绍 kubernetes 中的安全框架、RBAC 鉴权和网络策略（Pod ACL)" 
 cover:
-    image: "images/kubernetes.png"
+    image: "images/logo-kubernetes.png"
 ---
 
 # 0 前言

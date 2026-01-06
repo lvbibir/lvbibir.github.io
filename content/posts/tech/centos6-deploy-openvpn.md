@@ -12,7 +12,7 @@ keywords:
   - 内网穿透
 description: "介绍如何在 centos6 的环境中部署 openvpn 服务实现内网穿透" 
 cover:
-    image: "images/OpenVPN_logo.png" 
+    image: "images/logo-openvpn.png" 
 ---
 
 # 0 前言

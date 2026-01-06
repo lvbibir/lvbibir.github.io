@@ -9,7 +9,7 @@ keywords:
   - gatewayapi
 description: "" 
 cover:
-    image: "images/kubernetes.png"
+    image: "images/logo-kubernetes.png"
 ---
 
 # 1 简介

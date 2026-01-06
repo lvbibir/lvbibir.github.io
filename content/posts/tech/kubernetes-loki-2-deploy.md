@@ -9,7 +9,7 @@ keywords:
   - prometheus
 description: "Loki 的部署, 对接 Grafana, traefik 采集监控示例" 
 cover:
-    image: "images/loki.png"
+    image: "images/logo-loki.png"
 ---
 
 # 0 前言

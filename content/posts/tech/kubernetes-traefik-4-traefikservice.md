@@ -12,7 +12,7 @@ keywords:
   - traefikservice
 description: "kubernetes 中使用 Traefik ingress 的 TraefikService 实现加权轮询、灰度发布、流量复制、会话保持(粘性会话)等功能" 
 cover:
-    image: "images/traefik.png"
+    image: "images/logo-traefik.png"
 ---
 
 # 0 前言

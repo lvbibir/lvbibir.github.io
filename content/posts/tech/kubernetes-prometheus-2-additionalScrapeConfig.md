@@ -10,7 +10,7 @@ keywords:
   - prometheus
 description: "prometheus-operator 中使用 additionalScrapeConfig 添加自定义 job 和 target" 
 cover:
-    image: "images/prometheus.png"
+    image: "images/logo-prometheus.png"
 ---
 
 # 0 前言

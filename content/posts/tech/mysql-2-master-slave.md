@@ -8,7 +8,7 @@ keywords:
   - mysql
 description: "mysql 主从复制的详细原理, 主从复制模式, 主从复制方式, 以及 GTID 复制和并行复制" 
 cover:
-    image: "images/mysql.png" 
+    image: "images/logo-mysql.png" 
 ---
 
 # 0 前言

@@ -13,7 +13,7 @@ keywords:
   - docker
 description: "以 mall-swarm 项目为例，部署一套 jenkis + gitlab + docker的一套 CICD 流水线" 
 cover:
-    image: "images/cicd.png" 
+    image: "images/logo-cicd.png" 
 ---
 
 # 0 前言

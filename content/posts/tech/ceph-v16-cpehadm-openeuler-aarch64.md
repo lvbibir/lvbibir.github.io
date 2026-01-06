@@ -11,7 +11,7 @@ keywords:
   - arm
 description:  "在 openeuler 2003 aarch64 系统中使用 cephadm 部署 ceph-v16 (pacific) 集群" 
 cover: 
-    image:  "/images/blog/ceph.png" 
+    image: "/images/ceph.png" 
 ---
 
 # 0 前言

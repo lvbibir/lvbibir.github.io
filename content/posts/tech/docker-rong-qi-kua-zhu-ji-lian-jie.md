@@ -10,7 +10,7 @@ keywords:
   - network
 description: "介绍 docker 容器在不同宿主机下实现通信的几种方案" 
 cover:
-    image: "images/docker.png" 
+    image: "images/logo-docker.png" 
 ---
 
 # 0 前言

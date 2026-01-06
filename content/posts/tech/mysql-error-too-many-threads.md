@@ -9,7 +9,7 @@ keywords:
   - thread
 description: "由于系统 systemd 限制导致 mysql 可创建的线程数达到上限, 出现无法登陆等问题" 
 cover:
-    image: "images/mysql.png" 
+    image: "images/logo-mysql.png" 
 ---
 
 # 0 前言

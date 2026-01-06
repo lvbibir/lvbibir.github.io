@@ -10,7 +10,7 @@ keywords:
   - loki
 description: "loki 开源日志的优缺点及架构; loki 的四个角色; prometail 简介; 日志告警" 
 cover:
-    image: "images/loki.png"
+    image: "images/logo-loki.png"
 ---
 
 # 0 前言

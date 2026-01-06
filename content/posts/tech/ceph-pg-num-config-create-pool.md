@@ -9,7 +9,7 @@ keywords:
   - ceph
 description: "介绍在 ceph 集群创建 pool 时 pg_num 参数如何配置以及较为通用的取值" 
 cover:
-    image: "images/ceph.png" 
+    image: "images/logo-ceph.png" 
 ---
 
 # 0 前言

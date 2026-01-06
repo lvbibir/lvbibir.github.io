@@ -11,7 +11,7 @@ keywords:
   - alertmanager
 description: "prometheus 的 recording rule 和 alerting rule 介绍, 以及使用 prometheusrule CRD 资源配置规则" 
 cover:
-    image: "images/prometheus.png"
+    image: "images/logo-prometheus.png"
 ---
 
 # 0 前言

@@ -10,7 +10,7 @@ keywords:
   - docker volume
 description: "介绍如何使用 docker 的数据卷和数据卷容器" 
 cover:
-    image: "images/docker.png" 
+    image: "images/logo-docker.png" 
 ---
 
 # 0 什么是数据卷

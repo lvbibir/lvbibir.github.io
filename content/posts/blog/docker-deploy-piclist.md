@@ -12,7 +12,7 @@ keywords:
   - piclist
 description: "介绍如何使用 docker 部署 piclist 实现 obsidian 远程上传图片至阿里云 OSS 图床"
 cover:
-    image: "images/docker.png"
+    image: "images/logo-docker.png"
 ---
 
 # 0 前言
@@ -84,7 +84,7 @@ docker-compose up -d
       "bucket": "lvbibir-image",
       "area": "oss-cn-beijing",
       "path": "blog/",
-      "customUrl": "https://image.lvbibir.cn",
+      "customUrl": "https://img.lvbibir.cn",
       "options": ""
     }
   },

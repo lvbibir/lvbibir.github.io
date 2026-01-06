@@ -10,7 +10,7 @@ keywords:
   - 条件判断
 description: "shell 中 if 条件判断详解" 
 cover:
-    image: "images/shell.png" 
+    image: "images/logo-shell.png" 
 ---
 
 # 1 基本语法

@@ -10,7 +10,7 @@ keywords:
   - ceph
 description: "介绍在 centos7 环境中通过 ceph-deploy 部署 ceph-v12 (natuilus) 集群和可视化的 dashboard" 
 cover:
-    image: "images/ceph.png" 
+    image: "images/logo-ceph.png" 
 ---
 
 # 0 前言

@@ -11,7 +11,7 @@ keywords:
   - alertmanager
 description: "prometheus 架构中的 Alertmanager 介绍, 以及使用 alertmanagerconfig CRD 资源配置 Alertmanager" 
 cover:
-    image: "images/prometheus.png"
+    image: "images/logo-prometheus.png"
 ---
 
 # 0 前言

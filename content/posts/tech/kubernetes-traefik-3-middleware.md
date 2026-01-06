@@ -11,7 +11,7 @@ keywords:
   - ingressroute
 description: "kubernetes 中使用 Traefik ingress 的 Middleware 实现重定向、白名单、用户认证、限流、熔断、压缩、自定义 error 页等操作" 
 cover:
-    image: "images/traefik.png"
+    image: "images/logo-traefik.png"
 ---
 
 # 0 前言

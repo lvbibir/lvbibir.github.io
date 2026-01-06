@@ -9,7 +9,7 @@ keywords:
   - docker
 description: "介绍 docker 的一些基础概念和优势" 
 cover:
-    image: "images/docker.png" 
+    image: "images/logo-docker.png" 
 ---
 
 # 1 docker 简介

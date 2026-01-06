@@ -10,7 +10,7 @@ keywords:
   - shell
 description: "zabbix 中通过 shell 脚本监控指定 agent 到指定 ip:port 的端口连通性, 不连通时自动触发 traceroute 追踪路由并记录到日志" 
 cover:
-    image: "images/Zabbix_logo.png"
+    image: "images/logo-zabbix.png"
 ---
 
 # 0 前言

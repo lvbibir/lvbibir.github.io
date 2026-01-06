@@ -15,7 +15,7 @@ keywords:
   - Rewrite
 description: "介绍如何为阿里轻量应用服务器 (wordpress 应用) 配置 ssl 证书，开启 https 访问且实现https 强制跳转" 
 cover:
-    image: "images/wordpress.jpg" 
+    image: "images/logo-wordpress.jpg" 
 ---
 
 # 0 前言

@@ -11,7 +11,7 @@ keywords:
   - ingress
 description: "kubernetes 中 Traefik ingress 的简介、部署及配置。" 
 cover:
-    image: "images/traefik.png"
+    image: "images/logo-traefik.png"
 ---
 
 # 0 前言

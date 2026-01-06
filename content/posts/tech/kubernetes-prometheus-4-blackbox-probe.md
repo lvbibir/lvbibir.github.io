@@ -10,7 +10,7 @@ keywords:
   - prometheus
 description: "prometheus-operator 中使用 probe CRD 资源和 blackbox 添加黑盒监控项" 
 cover:
-    image: "images/prometheus.png"
+    image: "images/logo-prometheus.png"
 ---
 
 # 0 前言

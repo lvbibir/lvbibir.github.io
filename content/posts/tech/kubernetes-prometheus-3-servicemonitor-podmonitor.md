@@ -10,7 +10,7 @@ keywords:
   - prometheus
 description: "prometheus-operator 中的服务发现 (serviceMonitor) 机制, kubernetes_sd_config 配置, 以及 serviceMonitor 和 podMonitor 自定义资源的使用." 
 cover:
-    image: "images/prometheus.png"
+    image: "images/logo-prometheus.png"
 ---
 
 # 0 前言

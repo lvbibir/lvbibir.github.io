@@ -9,7 +9,7 @@ keywords:
   - ambari
 description: "记录通过 Ambari 部署 hadoop 集群的过程"
 cover:
-    image: "images/apache-ambari-project.png"
+    image: "images/logo-ambari.png"
 ---
 
 # 0 前言

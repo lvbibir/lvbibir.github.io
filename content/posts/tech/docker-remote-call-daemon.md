@@ -9,7 +9,7 @@ keywords:
   - docker
 description: "实现 docker 客户端与另一台主机上的 docker 守护进程进行通信" 
 cover:
-    image: "images/docker.png" 
+    image: "images/logo-docker.png" 
 ---
 
 # 1 环境准备

@@ -9,7 +9,7 @@ keywords:
   - centos
 description: "" 
 cover:
-    image: "images/shell.png" 
+    image: "images/logo-shell.png" 
 ---
 
 # 0 前言
