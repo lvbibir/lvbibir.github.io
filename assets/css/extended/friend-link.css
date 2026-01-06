@@ -106,12 +106,12 @@
     color: rgba(180, 181, 182, 0.8);
 }
 
-details summary::marker {
+.friend details summary::marker {
     font-size: 20px;
     content: '👉';
 }
 
-details[open] summary::marker {
+.friend details[open] summary::marker {
     font-size: 20px;
     content: '👇';
 }
