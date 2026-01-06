@@ -10,7 +10,7 @@ keywords:
   - image
 description: "介绍几种方式用于构建平常无法下载的 gcr.io 或者 quay.io 等仓库的镜像，比如阿里云免费的容器镜像服务、开源项目、Docker Playground等" 
 cover:
-    image: "images/logo-docker.png" 
+    image: "images/cover-docker.png" 
 ---
 
 # 0 前言
@@ -25,7 +25,7 @@ cover:
 
 用于存放 Dockerfile
 
-![image-20230309160649438](/images/image-20230309160649438.png)
+![image-20230309160649438](/images/image-20230309-160649.png)
 
 ### 1.1.2 上传 Dockerfile
 
@@ -41,7 +41,7 @@ git commit -m 'new image: k8s.gcr.io/pause:3.2'
 git push origin master
 ```
 
-![image-20230309163259040](/images/image-20230309163259040.png)
+![image-20230309163259040](/images/image-20230309-163259.png)
 
 ## 1.2 阿里云设置
 
@@ -49,41 +49,41 @@ git push origin master
 
 ### 1.2.1 创建个人实例
 
-![image-20230309160101014](/images/image-20230309160101014.png)
+![image-20230309160101014](/images/image-20230309-160101.png)
 
 ### 1.2.2 进入个人实例创建命名空间
 
-![image-20230309160146287](/images/image-20230309160146287.png)
+![image-20230309160146287](/images/image-20230309-160146.png)
 
 ### 1.2.3 创建访问凭证
 
-![image-20230309160252483](/images/image-20230309160252483.png)
+![image-20230309160252483](/images/image-20230309-160252.png)
 
 ### 1.2.4 绑定 github 账号
 
-![image-20230309160359915](/images/image-20230309160359915.png)
+![image-20230309160359915](/images/image-20230309-160359.png)
 
 ### 1.2.5 新建镜像仓库
 
-![image-20230309162613107](/images/image-20230309162613107.png)
+![image-20230309162613107](/images/image-20230309-162613.png)
 
 指定刚才创建的 github 仓库，记得勾选海外机器构建
 
-![image-20230309162914840](/images/image-20230309162914840.png)
+![image-20230309162914840](/images/image-20230309-162914.png)
 
 ### 1.2.6 新建构建
 
-![image-20230309163430105](/images/image-20230309163430105.png)
+![image-20230309163430105](/images/image-20230309-163430.png)
 
 手动触发构建，正常状况应该可以看到构建成功
 
-![image-20230309163539554](/images/image-20230309163539554.png)
+![image-20230309163539554](/images/image-20230309-163539.png)
 
 ### 1.2.7 镜像下载
 
 操作指南里可以看到如何下载镜像，标签即刚才**新建构建**时指定的**镜像版本**
 
-![image-20230309163731277](/images/image-20230309163731277.png)
+![image-20230309163731277](/images/image-20230309-163731.png)
 
 # 2 gcr.io_mirror
 
@@ -93,17 +93,17 @@ git push origin master
 
 直接提交 issue，在模板 issue 的 `[PORTER]` 后面添加想要搬运的镜像 tag，也可以直接在关闭的 issue 列表中检索，可能也会有其他人搬运过，直接用就行了
 
-![image-20230309164622746](/images/image-20230309164622746.png)
+![image-20230309164622746](/images/image-20230309-164622.png)
 
 稍等一小会可以看到镜像已经搬运到 dockerhub 了
 
-![image-20230309164858625](/images/image-20230309164858625.png)
+![image-20230309164858625](/images/image-20230309-164858.png)
 
 # 3 Docker Playground
 
 [Docker Playground](https://labs.play-with-docker.com/) 是一个免费的线上 docker 环境，由于是外网环境所以下载镜像、推送到 dockerhub 都很快，也可以直接推到阿里云的仓库
 
-![image-20230309170605907](/images/image-20230309170605907.png)
+![image-20230309170605907](/images/image-20230309-170605.png)
 
 ```bash
 docker login --username=lvbibir registry.cn-hangzhou.aliyuncs.com

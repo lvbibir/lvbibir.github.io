@@ -11,12 +11,12 @@ keywords:
   - harbor
 description: "经常会下一些外网镜像用于测试，手动修改镜像tag然后推送在镜像较多的情况下比较繁琐，本文采用bash脚本方式批量推送不同格式的镜像" 
 cover:
-    image: "images/logo-shell.png" 
+    image: "images/cover-shell.png" 
 ---
 
 流程图
 
-![](/images/harbor_push.png.png)
+![](/images/image-20260106-211319-5.png)
 
 **代码示例**
 

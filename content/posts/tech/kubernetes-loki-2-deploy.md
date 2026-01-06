@@ -9,7 +9,7 @@ keywords:
   - prometheus
 description: "Loki 的部署, 对接 Grafana, traefik 采集监控示例" 
 cover:
-    image: "images/logo-loki.png"
+    image: "images/cover-loki.png"
 ---
 
 # 0 前言
@@ -18,7 +18,7 @@ cover:
 
 这次部署的 loki 整体架构如下, loki 使用 statefulset 的方式运行, promtail 以 daemonset 的方式运行在 k8s 集群的每个节点.
 
-![img](/images/e6803b446f0e875f0ae03f5bf1bd9e3f.jpeg)
+![img](/images/image-20260106-211318.jpeg)
 
 # 1 promtail
 
@@ -712,11 +712,11 @@ grafana 部署请参考博主的 [prometheus 系列文章](https://www.lvbibir.c
 
 在 grafana 中添加 loki 作为 data source, 这里我的 grafana 是直接部署在 k8s 中的, 所以可以通过 `<svc-name>.<namespace>` 访问到 loki
 
-![image-20230422144554668](/images/image-20230422144554668.png)
+![image-20230422144554668](/images/image-20230422-144554.png)
 
 在 Explore => loki => `{job="kube-system/kube-apiserver"}` 可以看到 k8s 的 api-server 相关日志
 
-![image-20230423164457090](/images/image-20230423164457090.png)
+![image-20230423164457090](/images/image-20230423-164457.png)
 
 ## 3.1 光标跳动问题
 
@@ -726,7 +726,7 @@ grafana 部署请参考博主的 [prometheus 系列文章](https://www.lvbibir.c
 document.querySelectorAll(".slate-query-field > div")[0]['style'].removeProperty('-webkit-user-modify');
 ```
 
-![image-20230501182103342](/images/image-20230501182103342.png)
+![image-20230501182103342](/images/image-20230501-182103.png)
 
 # 4 dashboard 示例
 
@@ -736,21 +736,21 @@ traefik 部署参考博主的 [traefik 系列文章](https://www.lvbibir.cn/tags
 
 如下图所示, 已经可以看到收集到的 traefik 日志
 
-![image-20230422145419822](/images/image-20230422145419822.png)
+![image-20230422145419822](/images/image-20230422-145419.png)
 
 我们还可以通过 dashboard 实时展示 traefik 的信息, 在 grafana 导入 [13713 号模板](https://grafana.com/grafana/dashboards/13713)
 
 此 dashboard 默认的 traefik 的采集语句是 `{job="/var/log/traefik.log"}` , 我们需要按照实际情况进行修改, 这里我改成了 `{app="traefik/traefik"}`
 
-![image-20230422150345420](/images/image-20230422150345420.png)
+![image-20230422150345420](/images/image-20230422-150345.png)
 
 导入修改好的 yaml, 选择数据源
 
-![image-20230422145730804](/images/image-20230422145730804.png)
+![image-20230422145730804](/images/image-20230422-145730.png)
 
 可以看到已经可以正常展示数据了
 
-![image-20230422150456882](/images/image-20230422150456882.png)
+![image-20230422150456882](/images/image-20230422-150456.png)
 
 但是还有一个小报错, 是因为这个 dashboard 依赖 `grafana-piechart-panel` 这个插件, 我们在 grafana 容器内执行安装插件
 
@@ -766,6 +766,6 @@ pod "grafana-78bb4557f5-7rbbq" deleted
 
 等待重建 pod, 可以看到这里已经可以正常显示了
 
-![image-20230422153000965](/images/image-20230422153000965.png)
+![image-20230422153000965](/images/image-20230422-153000.png)
 
 以上

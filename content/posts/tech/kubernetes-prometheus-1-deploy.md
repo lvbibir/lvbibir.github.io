@@ -10,7 +10,7 @@ keywords:
   - prometheus
 description: "kubernetes 中部署配置 prometheus-operator, 快速搭建一套包含 node_exporter prometheus grafana alertmanager 的监控体系"
 cover:
-    image: "images/logo-prometheus.png"
+    image: "images/cover-prometheus.png"
 ---
 
 # 0 前言
@@ -105,7 +105,7 @@ prometheus-operator     ClusterIP   None             <none>        8443/TCP     
 
 grafana 默认用户名密码为 admin/admin
 
-![image-20230422131028713](/images/image-20230422131028713.png)
+![image-20230422131028713](/images/image-20230422-131028.png)
 
 ## 2.1 组件介绍
 

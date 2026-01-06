@@ -10,7 +10,7 @@ keywords:
   - shell
 description: "zabbix 中通过 shell 监控定时监控流量, 配置聚合图形, 以及日志输出"
 cover:
-    image: "images/logo-zabbix.png"
+    image: "images/cover-zabbix.png"
 ---
 
 # 0 前言
@@ -162,19 +162,19 @@ systemctl restart zabbix-agent
 
 创建监控项, 有几个 ip 创建几个监控项
 
-![image-20230804155344575](/images/image-20230804155344575.png)
+![image-20230804155344575](/images/image-20230804-155344.png)
 
 监控项测试, 此处应有值
 
-![image-20230804155732762](/images/image-20230804155732762.png)
+![image-20230804155732762](/images/image-20230804-155732.png)
 
 创建触发器, 同样的, 有几个 ip 创建几个
 
-![image-20230804155851395](/images/image-20230804155851395.png)
+![image-20230804155851395](/images/image-20230804-155851.png)
 
 仪表盘添加图形
 
-![image-20230804160014573](/images/image-20230804160014573.png)
+![image-20230804160014573](/images/image-20230804-160014.png)
 
 # 4 测试
 
@@ -201,7 +201,7 @@ NETMASK5=255.255.255.0
 
 重启 network
 
-![image-20230804160238120](/images/image-20230804160238120.png)
+![image-20230804160238120](/images/image-20230804-160238.png)
 
 配置 1.1.1.11 到 1.1.1.12-17 的免密登录
 
@@ -244,14 +244,14 @@ done
 
 运行脚本, 应有如下输出
 
-![image-20230804160852278](/images/image-20230804160852278.png)
+![image-20230804160852278](/images/image-20230804-160852.png)
 
 过段时间后查看仪表盘, 能看到流量数据
 
-![image-20230804161027483](/images/image-20230804161027483.png)
+![image-20230804161027483](/images/image-20230804-161027.png)
 
 触发器也应正常工作
 
-![image-20230804161124280](/images/image-20230804161124280.png)
+![image-20230804161124280](/images/image-20230804-161124.png)
 
 以上

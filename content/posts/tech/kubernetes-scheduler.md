@@ -15,7 +15,7 @@ keywords:
   - DaemonSet
 description: "介绍 kubernetes 中影响 pod 调度的一些因素，比如资源限制、nodeSelector、nodeAffinity、Taint、nodeName、DaemonSet 控制器" 
 cover:
-    image: "images/logo-kubernetes.png"
+    image: "images/cover-kubernetes.png"
 ---
 
 # 0 前言

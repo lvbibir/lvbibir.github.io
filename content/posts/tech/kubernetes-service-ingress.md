@@ -13,7 +13,7 @@ keywords:
   - nginx
 description: "介绍 kubernetes 中的 service 和 Headless Service，service 的两种代理模式，以及ingress 控制器的使用" 
 cover:
-    image: "images/logo-kubernetes.png"
+    image: "images/cover-kubernetes.png"
 ---
 
 # 0 前言
@@ -95,7 +95,7 @@ IPVS：
 - 工作在内核态，有更好的性能
 - 调度算法丰富：rr，wrr，lc，wlc，ip hash…
 
-![image-20221005090953888](/images/image-20221005090953888.png)
+![image-20221005090953888](/images/image-20221005-090953.png)
 
 ### 1.2.1 iptables 模式
 
@@ -252,7 +252,7 @@ Ingress 公开了从集群外部到集群内服务的 HTTP 和 HTTPS 路由。�
 
 下面是一个将所有流量都发送到同一 Service 的简单 Ingress 示例：
 
-![image-20221005140153771](/images/image-20221005140153771.png)
+![image-20221005140153771](/images/image-20221005-140153.png)
 
 Ingress Controller
 
@@ -269,7 +269,7 @@ Ingress Contronler 通过与 Kubernetes API 交互，动态的去感知集群中
 1. 部署 Ingress Controller
 2. 创建 Ingress 规则
 
-![image-20221005141711017](/images/image-20221005141711017.png)
+![image-20221005141711017](/images/image-20221005-141711.png)
 
 Ingress Contorller 主流控制器：
 

@@ -10,7 +10,7 @@ keywords:
   - tini
 description: "" 
 cover:
-    image: "images/logo-docker.png" 
+    image: "images/cover-docker.png" 
 ---
 
 # 0 前言

@@ -9,7 +9,7 @@ keywords:
   - python
 description: "一道乍看毫无逻辑，细想却很有趣的逻辑题"  
 cover:
-    image: "images/logo-python.png" 
+    image: "images/cover-python.png" 
 ---
 
 原题如下

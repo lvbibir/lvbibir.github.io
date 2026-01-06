@@ -12,7 +12,7 @@ keywords:
   - ai assistant
 description: "介绍 Claude Code CLI 交互界面的常用功能和操作, 包含斜杠命令、快捷键、命令行参数、多行输入等实用技巧"
 cover:
-    image: "images/logo-claude.png" 
+    image: "images/cover-claude.png" 
 ---
 
 # 0 前言

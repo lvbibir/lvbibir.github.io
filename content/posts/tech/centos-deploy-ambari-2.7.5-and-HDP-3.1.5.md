@@ -9,7 +9,7 @@ keywords:
   - ambari
 description: "记录通过 Ambari 部署 hadoop 集群的过程"
 cover:
-    image: "images/logo-ambari.png"
+    image: "images/cover-ambari.png"
 ---
 
 # 0 前言
@@ -235,7 +235,7 @@ systemctl enable httpd.service
 
 验证，在浏览器输入<http://192.168.150.106>看到如下截图则说明启动成功。
 
-![image-20211123141149628](/images/image-20211123141149628.png)
+![image-20211123141149628](/images/image-20211123-141149.png)
 
 ## 1.11 安装 Java(allnode)
 
@@ -612,7 +612,7 @@ ambari-server start
 
 默认管理员账户登录， 账户：admin 密码：admin
 
-![image-20211123145726406](/images/image-20211123145726406.png)
+![image-20211123145726406](/images/image-20211123-145726.png)
 
 ## 3.2 选择版本，配置 yum 源
 
@@ -634,7 +634,7 @@ HDP-3.1-GPL: http://node001/HDP-GPL/centos7/3.1.5.0-152/
 
 HDP-UTILS-1.1.0.22: http://node001/HDP-UTILS/centos7/1.1.0.22/
 
-![image-20211123150120718](/images/image-20211123150120718.png)
+![image-20211123150120718](/images/image-20211123-150120.png)
 
 ## 3.3 配置节点和密钥
 
@@ -642,25 +642,25 @@ HDP-UTILS-1.1.0.22: http://node001/HDP-UTILS/centos7/1.1.0.22/
 
 也可直接 cat /root/.ssh/id_rsa 粘贴即可
 
-![image-20211123150255012](/images/image-20211123150255012.png)
+![image-20211123150255012](/images/image-20211123-150255.png)
 
 验证通过
 
-![image-20211123150337730](/images/image-20211123150337730.png)
+![image-20211123150337730](/images/image-20211123-150337.png)
 
 ## 3.4 勾选需要安装的服务
 
 由于资源有限，这里并没有选择所有服务
 
-![image-20211123151238695](/images/image-20211123151238695.png)
+![image-20211123151238695](/images/image-20211123-151238.png)
 
 ## 3.5 分配服务 master
 
-![image-20211123151312856](/images/image-20211123151312856.png)
+![image-20211123151312856](/images/image-20211123-151312.png)
 
 ## 3.6 分配服务 slaves
 
-![image-20211123151134172](/images/image-20211123151134172.png)
+![image-20211123151134172](/images/image-20211123-151134.png)
 
 设置相关服务的密码
 
@@ -670,25 +670,25 @@ Hive Database: hive
 
 Activity Explorer’s Admin: admin
 
-![image-20211123151427030](/images/image-20211123151427030.png)
+![image-20211123151427030](/images/image-20211123-151427.png)
 
 ## 3.7 连接数据库
 
-![image-20211123151525068](/images/image-20211123151525068.png)
+![image-20211123151525068](/images/image-20211123-151525.png)
 
 ## 3.8 编辑配置，默认即可
 
-![image-20211123151547943](/images/image-20211123151547943.png)
+![image-20211123151547943](/images/image-20211123-151547.png)
 
 ## 3.9 开始部署
 
-![image-20211123151705941](/images/image-20211123151705941.png)
+![image-20211123151705941](/images/image-20211123-151705.png)
 
 ## 3.10 安装成功
 
 右上角两个警告是磁盘使用率警告，虚机分配的磁盘较小
 
-![image-20211123163439475](/images/image-20211123163439475.png)
+![image-20211123163439475](/images/image-20211123-163439.png)
 
 # 4 其他
 
@@ -702,7 +702,7 @@ vim /usr/lib/ambari-server/lib/ambari_commons/resources/os_family.json
 
 添加如下两行，注意缩进和逗号
 
-![image-20211123145525458](/images/image-20211123145525458.png)
+![image-20211123145525458](/images/image-20211123-145525.png)
 
 ## 4.2 YARN Registry DNS 服务启动失败
 

@@ -11,7 +11,7 @@ keywords:
   - kernel
 description: "" 
 cover:
-    image: "images/default-cover.webp" 
+    image: "images/cover-default.webp" 
 ---
 
 # 0 前言

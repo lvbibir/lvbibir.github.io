@@ -10,7 +10,7 @@ keywords:
   - prometheus
 description: "prometheus-operator 中使用 additionalScrapeConfig 添加自定义 job 和 target" 
 cover:
-    image: "images/logo-prometheus.png"
+    image: "images/cover-prometheus.png"
 ---
 
 # 0 前言
@@ -88,7 +88,7 @@ spec:
 
 查看结果
 
-![image-20230427151927477](/images/image-20230427151927477.png)
+![image-20230427151927477](/images/image-20230427-151927.png)
 
 # 3 动态更新
 
@@ -115,7 +115,7 @@ kubectl apply -f additional-scrape-configs.yaml
 
 prometheus 会自动重载配置
 
-![image-20230427152718192](/images/image-20230427152718192.png)
+![image-20230427152718192](/images/image-20230427-152718.png)
 
 # 4 更新失败排查
 

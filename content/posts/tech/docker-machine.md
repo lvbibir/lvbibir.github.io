@@ -10,7 +10,7 @@ keywords:
   - docker machine
 description: "docker machine 简介以及实战" 
 cover:
-    image: "images/logo-docker.png" 
+    image: "images/cover-docker.png" 
 ---
 
 # 0 前言

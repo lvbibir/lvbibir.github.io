@@ -10,7 +10,7 @@ keywords:
   - ceph
 description: "介绍在 centos7 环境中通过 ceph-deploy 部署 ceph-v12 (natuilus) 集群和可视化的 dashboard" 
 cover:
-    image: "images/logo-ceph.png" 
+    image: "images/cover-ceph.png" 
 ---
 
 # 0 前言
@@ -119,7 +119,7 @@ chronyc sources
 
 这里使用阿里云的 ntp 服务器
 
-![image-20211206142640253](/images/image-20211206142640253.png)
+![image-20211206142640253](/images/image-20211206-142640.png)
 
 ceph-node1、ceph-node2
 
@@ -131,7 +131,7 @@ chronyc sources
 
 这里指定 ceph-admin 节点的 ip 即可
 
-![image-20211206142908590](/images/image-20211206142908590.png)
+![image-20211206142908590](/images/image-20211206-142908.png)
 
 添加 ceph 源
 
@@ -393,9 +393,9 @@ HEALTH_OK
 
 测试访问
 
-![image-20220228164616847](/images/image-20220228164616847.png)
+![image-20220228164616847](/images/image-20220228-164616.png)
 
-![image-20220228164746181](/images/image-20220228164746181.png)
+![image-20220228164746181](/images/image-20220228-164746.png)
 
 上图中测试环境是 win10+chrome，同事反应 mac+chrome 会出现无法访问的情况，原因是我们使用的自签证书，浏览器并不信任此证书，可以通过以下两种方式解决
 
@@ -418,13 +418,13 @@ HEALTH_OK
 
 测试访问
 
-![image-20220228171237208](/images/image-20220228171237208.png)
+![image-20220228171237208](/images/image-20220228-171237.png)
 
 ## 5.2 开启 rgw
 
 默认 object gateway 功能没有开启
 
-![](/images/image-20220302111303281.png)
+![](/images/image-20220302-111303.png)
 
 创建 rgw 实例
 
@@ -434,9 +434,9 @@ ceph-deploy rgw create ceph-admin
 
 默认运行端口是 7480
 
-![image-20220302112418486](/images/image-20220302112418486.png)
+![image-20220302112418486](/images/image-20220302-112418.png)
 
-![image-20220302112515398](/images/image-20220302112515398.png)
+![image-20220302112515398](/images/image-20220302-112515.png)
 
 创建 rgw 用户
 
@@ -444,7 +444,7 @@ ceph-deploy rgw create ceph-admin
 [root@ceph-admin my-ceph]# radosgw-admin user create --uid=rgw --display-name=rgw --system
 ```
 
-![image-20220302111512864](/images/image-20220302111512864.png)
+![image-20220302111512864](/images/image-20220302-111512.png)
 
 提供 dashboard 证书
 
@@ -482,11 +482,11 @@ Option RGW_API_USER_ID updated
 
 目前 object gateway 功能已成功开启
 
-![image-20220302112635543](/images/image-20220302112635543.png)
+![image-20220302112635543](/images/image-20220302-112635.png)
 
-![image-20220302112655052](/images/image-20220302112655052.png)
+![image-20220302112655052](/images/image-20220302-112655.png)
 
-![image-20220302112707308](/images/image-20220302112707308.png)
+![image-20220302112707308](/images/image-20220302-112707.png)
 
 # 6 其他
 
@@ -535,7 +535,7 @@ ls /dev/mapper/ceph-* | xargs -I% -- dmsetup remove %
 
 日志报错：
 
-![image-20220302105649313](/images/image-20220302105649313.png)
+![image-20220302105649313](/images/image-20220302-105649.png)
 
 ## 6.3 同步配置文件
 
@@ -552,7 +552,7 @@ ceph-deploy mgr create ceph-node{1,2,3,4}
 
 记得修改配置文件
 
-![image-20220420102326624](/images/image-20220420102326624.png)
+![image-20220420102326624](/images/image-20220420-102326.png)
 
 之后同步配置文件
 

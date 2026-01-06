@@ -9,7 +9,7 @@ keywords:
   - wsl
 description: "wsl 运行一段时间后, windows 系统中的虚拟磁盘文件占用空间越来越大, 在 wsl 中删除文件也无法释放这部分空间, 几步操作轻松释放"
 cover:
-    image: "images/logo-wsl.png"
+    image: "images/cover-wsl.png"
 ---
 
 # 0 前言

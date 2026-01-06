@@ -10,7 +10,7 @@ keywords:
   - obsidian
 description: "本文介绍一下 vim 常用的操作, vimrc 常用配置, vscode 中 vim 插件的额外功能等"
 cover:
-    image: "images/default-cover.webp"
+    image: "images/cover-default.webp"
 ---
 
 # 0 前言

@@ -17,7 +17,7 @@ keywords:
   - statefulset
 description: "介绍 kubernetes 中的存储使用简介，例如 emptydir、hostpath、NFS、pv、pvc、statefulset 控制器" 
 cover:
-    image: "images/logo-kubernetes.png"
+    image: "images/cover-kubernetes.png"
 ---
 
 # 0 前言
@@ -232,7 +232,7 @@ hello, nfs
 - PersistentVolume（PV）：存储资源创建和使用抽象化，使得存储作为集群中的资源管理
 - PersistentVolumeClaim（PVC）：让用户不需要关心具体的 Volume 实现细节
 
-![image-20221006103106669](/images/image-20221006103106669.png)
+![image-20221006103106669](/images/image-20221006-103106.png)
 
 pvc 如何匹配到 pv
 
@@ -371,7 +371,7 @@ pvc for NFS is successful
 
 [查看 k8s 原生支持的共享存储](https://kubernetes.io/docs/concepts/storage/storage-classes/#provisioner)
 
-![image-20221006112111133](/images/image-20221006112111133.png)
+![image-20221006112111133](/images/image-20221006-112111.png)
 
 **基于 NFS 实现自动创建 pv 插件**
 

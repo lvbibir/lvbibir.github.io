@@ -9,7 +9,7 @@ keywords:
   - rpm
 description: "" 
 cover:
-    image: "images/default-cover.webp" 
+    image: "images/cover-default.webp" 
 ---
 
 # 0 前言
@@ -86,14 +86,14 @@ mkdir  /data/rpmbuild/SPECS
 
 这里软件包解压后是两个目录
 
-![image-20211206162209187](/images/image-20211206162209187.png)
+![image-20211206162209187](/images/image-20211206-162209.png)
 
-根据需求替换修改解压后的文件，这里我替换两个文件 `/root/usr/lib64/ceph/mgr/dashboard/static/Ceph_Logo_Standard_RGB_White_120411_fa.png` 和 `/root/usr/lib64/ceph/mgr/dashboard/static/logo-mini.png`，并给原先的文件做一个备份
+根据需求替换修改解压后的文件，这里我替换两个文件 `/root/usr/lib64/ceph/mgr/dashboard/static/Ceph_Logo_Standard_RGB_White_120411_fa.png` 和 `/root/usr/lib64/ceph/mgr/dashboard/static/cover-mini.png`，并给原先的文件做一个备份
 
 ```bash
-[root@localhost static]# mv logo-mini.png logo-mini.png.bak
+[root@localhost static]# mv cover-mini.png cover-mini.png.bak
 [root@localhost static]# mv Ceph_Logo_Standard_RGB_White_120411_fa.png Ceph_Logo_Standard_RGB_White_120411_fa.png.bak
-[root@localhost static]# cp kubernetes-logo.svg logo-mini.png
+[root@localhost static]# cp kubernetes-logo.svg cover-mini.png
 [root@localhost static]# cp kubernetes-logo.svg Ceph_Logo_Standard_RGB_White_120411_fa.png
 ```
 
@@ -105,9 +105,9 @@ mkdir  /data/rpmbuild/SPECS
 [root@localhost ~]# vim /data/rpmbuild/SPECS/abc.spec
 ```
 
-![image-20211206164745856](/images/image-20211206164745856.png)
+![image-20211206164745856](/images/image-20211206-164745.png)
 
-![image-20211206164843805](/images/image-20211206164843805.png)
+![image-20211206164843805](/images/image-20211206-164843.png)
 
 这里创建的 bbb 目录是临时使用，编译过程肯定会报错，因为路径不对，根据报错修改路径
 
@@ -120,7 +120,7 @@ mkdir  /data/rpmbuild/SPECS
 
 这里可以看到他请求的路径
 
-![image-20211206163921954](/images/image-20211206163921954.png)
+![image-20211206163921954](/images/image-20211206-163921.png)
 
 修改目录名
 
@@ -136,7 +136,7 @@ mkdir  /data/rpmbuild/SPECS
 
 生成的 rpm 位置在/data/rpmbuild/RPMS/
 
-![image-20211206163618292](/images/image-20211206163618292.png)
+![image-20211206163618292](/images/image-20211206-163618.png)
 
 查看原 rpm 包的文件
 
@@ -148,7 +148,7 @@ drwxr-xr-x 5 root root  117 Dec  6 03:11 AdminLTE-2.3.7
 -rw-r--r-- 1 root root 4801 Jan 30  2020 Ceph_Logo_Standard_RGB_White_120411_fa.png
 -rw-r--r-- 1 root root 1150 Jan 30  2020 favicon.ico
 drwxr-xr-x 7 root root   94 Dec  6 03:11 libs
--rw-r--r-- 1 root root 1811 Jan 30  2020 logo-mini.png
+-rw-r--r-- 1 root root 1811 Jan 30  2020 cover-mini.png
 ```
 
 安装新 rpm 包，查看文件
@@ -165,8 +165,8 @@ drwxr-xr-x 5 root root  117 Dec  6 03:53 AdminLTE-2.3.7
 -rw-r--r-- 1 root root 4801 Dec  6 03:41 Ceph_Logo_Standard_RGB_White_120411_fa.png.bak
 -rw-r--r-- 1 root root 1150 Dec  6 03:41 favicon.ico
 drwxr-xr-x 7 root root   94 Dec  6 03:53 libs
--rw-r--r-- 1 root root 1877 Dec  6 03:44 logo-mini.png
--rw-r--r-- 1 root root 1811 Dec  6 03:41 logo-mini.png.bak
+-rw-r--r-- 1 root root 1877 Dec  6 03:44 cover-mini.png
+-rw-r--r-- 1 root root 1811 Dec  6 03:41 cover-mini.png.bak
 ```
 
 至此，rpm 包中的文件修改以及重新打包的所有步骤都已完成

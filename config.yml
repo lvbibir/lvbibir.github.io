@@ -151,9 +151,9 @@ params:
     # - name: instagram
     #   url: "img/instagram.png"
     - name: QQ
-      url: "/images/other-qq.png"
+      url: "/images/blog-qq.png"
     - name: WeChat
-      url: "/images/other-wechat.png"
+      url: "/images/blog-wechat.png"
     - name: bilibili
       url: "https://space.bilibili.com/280428279"
     - name: email
@@ -200,8 +200,8 @@ params:
   # 打赏
   Reward: true 
   # 可用绝对和相对地址，相对地址的图片需放在static/img下
-  WechatPay: /images/other-wechatpay.png
-  Alipay: /images/other-alipay.png #打赏支付宝图片地址
+  WechatPay: /images/blog-wechatpay.png
+  Alipay: /images/blog-alipay.png #打赏支付宝图片地址
 
   # twkioo评论
   twikoo:

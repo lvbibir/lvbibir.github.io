@@ -8,7 +8,7 @@ keywords:
   - windows
 description: ""
 cover:
-    image: "images/default-cover.webp"
+    image: "images/cover-default.webp"
 ---
 
 # 0 前言
@@ -38,7 +38,7 @@ C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe .\EarlyStart.exe
 C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /u .\EarlyStart.exe
 ```
 
-![image-20230815025246249](/images/image-20230815025246249.png)
+![image-20230815025246249](/images/image-20230815-025246.png)
 
 # 2 配置启动项
 
@@ -46,7 +46,7 @@ C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /u .\EarlyStart.ex
 
 在你自己的用户目录 `%USERPROFILE%` 创建一个名为 `.earlystart` 的文件, 每一行输入一个 exe 的路径
 
-![image-20230815025643880](/images/image-20230815025643880.png)
+![image-20230815025643880](/images/image-20230815-025643.png)
 
 如果要运行 ps1 等脚本程序, 参考我下面的写法, `-File` 后面就是你的 ps1 脚本的文件了, 最后的 `start` 是给 ps1 传的参数
 
@@ -56,7 +56,7 @@ C:\Windows\Microsoft.NET\Framework\v4.0.30319\InstallUtil.exe /u .\EarlyStart.ex
 
 然后还需要修改一下账户配置
 
-![image-20230815025823228](/images/image-20230815025823228.png)
+![image-20230815025823228](/images/image-20230815-025823.png)
 
 配置完成之后重启系统即可
 

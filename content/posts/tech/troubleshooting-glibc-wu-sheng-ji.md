@@ -10,7 +10,7 @@ keywords:
   - troubleshooting
 description: "记录一下在 OpenEuler 20.03 LTS aarch64 系统上误操作升级了 glibc 后紧急修复的步骤" 
 cover:
-    image: "images/default-cover.webp" 
+    image: "images/cover-default.webp" 
 ---
 
 # 1 起因
@@ -19,7 +19,7 @@ cover:
 
 > 在没有十分把握的情况下不要用 yum install -y，使用 yum install 先判断好依赖安装带来的影响
 
-![image-20220714155604727](/images/image-20220714155604727.png)
+![image-20220714155604727](/images/image-20220714-155604.png)
 
 升级过程未出任何问题，便没在意，可是后续 openssh 由于 glibc 的升级导致连接失败，一番 baidu 加 google 未解决 openssh 连接问题，于是便着手开始降级 glibc 至系统默认版本，从系统镜像中找到 glibc 相关的三个软件包
 
@@ -27,7 +27,7 @@ cover:
 
 系统几乎所有命令都无法使用，报错如下
 
-![image-20220714162721479](/images/image-20220714162721479.png)
+![image-20220714162721479](/images/image-20220714-162721.png)
 
 出现这个问题的原因大致是因为强制安装并未完全成功，lib64 一些相关的库文件软链接丢失
 

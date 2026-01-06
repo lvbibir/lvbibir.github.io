@@ -9,7 +9,7 @@ keywords:
   - centos
 description: "本文介绍一下 centos7 安装部署 docker 的步骤" 
 cover:
-    image: "images/logo-docker.png"
+    image: "images/cover-docker.png"
 ---
 
 # 0 前言

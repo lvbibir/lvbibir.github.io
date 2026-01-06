@@ -10,7 +10,7 @@ keywords:
   - sig
 description: ""
 cover:
-    image: "images/default-cover.webp"
+    image: "images/cover-default.webp"
 ---
 
 # 1 简介

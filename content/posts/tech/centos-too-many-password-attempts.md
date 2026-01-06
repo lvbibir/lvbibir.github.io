@@ -11,7 +11,7 @@ keywords:
   - pam
 description: "介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理" 
 cover:
-    image: "images/default-cover.webp" 
+    image: "images/cover-default.webp" 
 ---
 
 pam 模块
@@ -42,4 +42,4 @@ faillock --user root --reset
 cat /etc/pam.d/system-auth
 ```
 
-![image-20220127100540162](/images/image-20220127100540162.png)
+![image-20220127100540162](/images/image-20220127-100540.png)

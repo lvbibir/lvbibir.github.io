@@ -12,7 +12,7 @@ keywords:
   - 依赖管理
 description: "介绍使用 uv 管理 Python 版本, 第三方模块和项目依赖"
 cover:
-    image: "images/logo-python.png" 
+    image: "images/cover-python.png" 
 ---
 
 # 0 前言

@@ -405,27 +405,27 @@ export OS_AUTH_PLUGIN=password
 
 默认登录后如下
 
-![image-20211027141126853](/images/image-20211027141126853.png)
+![image-20211027141126853](/images/image-20211027-141126.png)
 
 在 horizion 查看创建的网络和实例
 
-![image-20211029133654821](/images/image-20211029133654821.png)
+![image-20211029133654821](/images/image-20211029-133654.png)
 
 登录实例控制台，验证实例与外网的连通性，cirros 用户密码在初次登录时有提示：
 
-![image-20211029143245929](/images/image-20211029143245929.png)
+![image-20211029143245929](/images/image-20211029-143245.png)
 
 为实例绑定浮动 IP 地址，方便从外部 ssh 远程连接到实例
 
 点击 + 随机分配一个浮动 IP
 
-![image-20211029142830822](/images/image-20211029142830822.png)
+![image-20211029142830822](/images/image-20211029-142830.png)
 
-![image-20211029142911908](/images/image-20211029142911908.png)
+![image-20211029142911908](/images/image-20211029-142911.png)
 
 在实例界面可以看到绑定的浮动 ip
 
-![image-20211029143343691](/images/image-20211029143343691.png)
+![image-20211029143343691](/images/image-20211029-143343.png)
 
 在 kolla 节点上或者在集群外部使用 SecureCRT 等 ssh 工具连接到实例。cirros 镜像默认用户密码为 cirros/gocubsgo，该镜像信息官网有 [介绍](https://docs.openstack.org/image-guide/obtain-images.html#cirros-test)
 
@@ -487,7 +487,7 @@ openstack server create \
 
 创建完成后为实例绑定浮动 IP。
 
-![image-20211029160645697](/images/image-20211029160645697.png)
+![image-20211029160645697](/images/image-20211029-160645.png)
 
 如果实例创建失败可以查看相关组件报错日志
 
@@ -536,9 +536,9 @@ openstack server create \
 
 绑定浮动 ip
 
-![image-20211029162115403](/images/image-20211029162115403.png)ubuntu 镜像默认用户为 ubuntu，首次登陆使用 sshkey 方式
+![image-20211029162115403](/images/image-20211029-162115.png)ubuntu 镜像默认用户为 ubuntu，首次登陆使用 sshkey 方式
 
-![image-20211029162258334](/images/image-20211029162258334.png)
+![image-20211029162258334](/images/image-20211029-162258.png)
 
 # 3 调整集群配置
 
@@ -643,7 +643,7 @@ kolla-ansible post-deploy
 
 ## 4.1 虚拟 ip 分配失败
 
-![image-20211130161356609](/images/image-20211130161356609.png)
+![image-20211130161356609](/images/image-20211130-161356.png)
 
 这种情况多半是由于虚拟 ip 没有分配到，并不是端口问题
 

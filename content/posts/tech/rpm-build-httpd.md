@@ -12,7 +12,7 @@ keywords:
   - rpm构建
 description: "记录一下 centos7 中通过源码构建 httpd rpm 包的过程" 
 cover:
-    image: "images/default-cover.webp" 
+    image: "images/cover-default.webp" 
 ---
 
 系统版本：isoft-serveros-v4.2（centos7）
@@ -86,12 +86,12 @@ Release: 1%dist
 [root@localhost ~]# tar zcf httpd-2.4.25.tar.gz x86_64/
 ```
 
-![image-20220304112802458](/images/image-20220304112802458.png)
+![image-20220304112802458](/images/image-20220304-112802.png)
 
 这里修改%dist 是为了修改编译后生成的软件包的名字，dist 具体代表什么可以在/etc/rpm/macros.dist 文件中看到
 
-![image-20220308100545732](/images/image-20220308100545732.png)
+![image-20220308100545732](/images/image-20220308-100545.png)
 
-![image-20220304113646615](/images/image-20220304113646615.png)
+![image-20220304113646615](/images/image-20220304-113646.png)
 
 以上

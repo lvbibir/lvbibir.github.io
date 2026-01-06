@@ -10,7 +10,7 @@ keywords:
   - network
 description: "linux 中 dns 配置文件中的 search 和 options ndots 详解"
 cover:
-    image: "images/default-cover.webp"
+    image: "images/cover-default.webp"
 ---
 
 # 0 前言

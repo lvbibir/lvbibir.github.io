@@ -9,7 +9,7 @@ keywords:
   - docker
 description: "介绍 docker 的一些基础概念和优势" 
 cover:
-    image: "images/logo-docker.png" 
+    image: "images/cover-docker.png" 
 ---
 
 # 1 docker 简介
@@ -24,9 +24,9 @@ Docker 项目的目标是实现轻量级的操作系统虚拟化解决方案。 
 
 下面的图片比较了 Docker 和传统虚拟化方式的不同之处，可见容器是在操作系统层面上实现虚拟化，直接复用本地主机的操作系统，而传统方式则是在硬件层面实现。
 
-![在这里插入图片描述](/images/20190801171754742.png)
+![在这里插入图片描述](/images/image-20190801-171754.png)
 
-![在这里插入图片描述](/images/20190801171806881.png)
+![在这里插入图片描述](/images/image-20190801-171806.png)
 
 ## 1.1 为什么要使用 docker
 
@@ -50,7 +50,7 @@ Docker 项目的目标是实现轻量级的操作系统虚拟化解决方案。 
 
 ## 1.2 对比传统虚拟机
 
-![miaoshu](/images/20190801172821208.png)
+![miaoshu](/images/image-20190801-172821.png)
 
 ## 1.3 应用场景
 
@@ -83,7 +83,7 @@ Linux 操作系统分别由两部分组成
 
 /var/lib/docker(可以使用 docker info 来进行查看)
 
-![在这里插入图片描述](/images/20190805132020599.png)
+![在这里插入图片描述](/images/image-20190805-132020.png)
 
 # 3 写时复制（copy on write）
 
@@ -97,9 +97,9 @@ Registry：镜像的仓库，比如官方的是 Docker Hub，它是开源的，�
 
 # 5 docker 的 C/S 模式
 
-![在这里插入图片描述](/images/20190807212649783.png)
+![在这里插入图片描述](/images/image-20190807-212649.png)
 
-![在这里插入图片描述](/images/20190807212705313.png)
+![在这里插入图片描述](/images/image-20190807-212705.png)
 
 用户在 Docker Client 中运行 Docker 的各种命令，这些命令会传送给在 docker 宿主机上运行的 docker 守护进程，docker 的守护进程来实现 docker 的各种功能
 
@@ -113,7 +113,7 @@ docker 命令行接口是 docker 最常用的与守护进程进行通信的接�
 
  - RESTful 风格的 API：与大多数程序的 API 风格类似
  - STDIN、STDOUT、STDERR：Remote API 在某些复杂的情况下，也支持这三种方式来与 docker 守护进程进行通信
-    ![如图就是使用自定义程序调用RemoteAPI与docker守护进程通信的C/S模式](/images/20190807214053413.png)
+    ![如图就是使用自定义程序调用RemoteAPI与docker守护进程通信的C/S模式](/images/image-20190807-214053.png)
 
 ## 5.2 Client 与守护进程的连接方式
 
@@ -122,7 +122,7 @@ docker 命令行接口是 docker 最常用的与守护进程进行通信的接�
  1. unix:///var/run/docker.sock
  2. tcp://host:port
  3. fd://socketfd
-    ![jianjie](/images/20190807215138905.png)
+    ![jianjie](/images/image-20190807-215138.png)
     用户可以通过 dokcer 的二进制命令接口或者自定义程序，自定义程序通过 Remote API 来调用 docker 守护进程，Client 与 Server 之间通过 Socket 来进行连接，这种连接意味着 Client 与 Server 既可以在同一台机器上运行，也可以在不同机器上运行，Client 可以通过远程的方式来连接 Server
 
 以上

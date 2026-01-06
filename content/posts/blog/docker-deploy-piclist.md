@@ -12,7 +12,7 @@ keywords:
   - piclist
 description: "介绍如何使用 docker 部署 piclist 实现 obsidian 远程上传图片至阿里云 OSS 图床"
 cover:
-    image: "images/logo-docker.png"
+    image: "images/cover-docker.png"
 ---
 
 # 0 前言

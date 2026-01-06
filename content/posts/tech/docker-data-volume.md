@@ -10,7 +10,7 @@ keywords:
   - docker volume
 description: "介绍如何使用 docker 的数据卷和数据卷容器" 
 cover:
-    image: "images/logo-docker.png" 
+    image: "images/cover-docker.png" 
 ---
 
 # 0 什么是数据卷
@@ -20,7 +20,7 @@ docker 的理念之一就是将应用与其运行的环境打包。通常 docker
 - 数据卷是经过特殊设计的目录，可以绕过联合文件系统（UFS），为一个或者过个容器提供服务
 - 数据卷设计的目的，在于数据的持久化，他完全独立于容器的生存周期，因此，docker 不会在容器删除时删除其挂载的数据卷，也不会存在类似的垃圾收集机制，对容器引用的数据卷进行处理
 
-![在这里插入图片描述](/images/20190814222305662.png)
+![在这里插入图片描述](/images/image-20190814-222305.png)
 
 从图片中：
 
@@ -63,9 +63,9 @@ be3fad8d789e        busybox             "/bin/sh"           6 minutes ago       
 [root@localhost ~]# docker inspect elastic_boyd
 ```
 
-![在这里插入图片描述](/images/20190814225150794.png)
+![在这里插入图片描述](/images/image-20190814-225150.png)
 
-![在这里插入图片描述](/images/20190814225229862.png)
+![在这里插入图片描述](/images/image-20190814-225229.png)
 
 ## 2.2 访问权限
 
@@ -90,7 +90,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 [root@localhost ~]# docker inspect confident_hopper
 ```
 
-![在这里插入图片描述](/images/20190814230039492.png)
+![在这里插入图片描述](/images/image-20190814-230039.png)
 
 ## 2.3 dockerfile
 
@@ -120,7 +120,7 @@ drwxr-xr-x    2 root     root             6 Aug 14 15:20 data_volume2
 [root@localhost ~]# docker inspect test_data_volume_1
 ```
 
-![在这里插入图片描述](/images/2019081423235318.png)
+![在这里插入图片描述](/images/image-20260106-211318-2.png)
 
 ```bash
 [root@localhost ~]# docker run -itd --name test_data_volume_2 test/data_volume /bin/sh
@@ -131,7 +131,7 @@ drwxr-xr-x    2 root     root             6 Aug 14 15:24 data_volume2
 [root@localhost ~]# docker inspect test_data_volume_2
 ```
 
-![在这里插入图片描述](/images/20190814232550103.png)
+![在这里插入图片描述](/images/image-20190814-232550.png)
 
 # 3 数据卷容器
 
@@ -139,7 +139,7 @@ drwxr-xr-x    2 root     root             6 Aug 14 15:24 data_volume2
  - 使用数据卷容器而不是用数据卷直接挂载，可以不暴露宿主机的实际目录
  - 删除数据卷容器对于已经挂载了该容器的容器没有影响，因为数据卷容器只是传递了挂载信息，任何对于目录的更改都不需要通过数据卷容器
 
-![在这里插入图片描述](/images/20190814233143592.png)
+![在这里插入图片描述](/images/image-20190814-233143.png)
 
 从图片中：
 
@@ -212,13 +212,13 @@ test2
 [root@localhost ~]# docker inspect test_dvc_1
 ```
 
-![在这里插入图片描述](/images/20190814235937849.png)
+![在这里插入图片描述](/images/image-20190814-235937.png)
 
 ```bash
 [root@localhost ~]# docker inspect test_dvc_2
 ```
 
-![在这里插入图片描述](/images/20190815000004723.png)
+![在这里插入图片描述](/images/image-20190815-000004.png)
 
 ## 3.2 删除数据卷容器
 
@@ -239,7 +239,7 @@ docker run --volumes-from [container] -v $(pwd):/backup [image] tar cvf /backup/
  - -v $(pwd):/backup：挂载一个数据卷用于存放备份文件
  - tar 命令：将数据卷容器挂载的目录进行压缩，备份到/backup 目录
 
-![在这里插入图片描述](/images/20190815123643835.png)
+![在这里插入图片描述](/images/image-20190815-123643.png)
 
 ## 4.2 数据还原
 

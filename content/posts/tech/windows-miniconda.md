@@ -10,7 +10,7 @@ keywords:
   - python
 description: ""
 cover:
-    image: "images/default-cover.webp"
+    image: "images/cover-default.webp"
 ---
 
 # 0 前言
@@ -46,7 +46,7 @@ D:\software\miniconda\Library\bin
 
 添加完后重启系统, 让系统重新读取一下环境变量
 
-![image-20230807100025219](/images/image-20230807100025219.png)
+![image-20230807100025219](/images/image-20230807-100025.png)
 
 ## 2.2 conda 配置
 

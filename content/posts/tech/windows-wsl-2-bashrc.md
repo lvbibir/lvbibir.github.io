@@ -11,7 +11,7 @@ keywords:
   - environment
 description: "wsl2 使用过程中 .bashrc 无法正确加载的解决办法"
 cover:
-    image: "images/logo-wsl.png"
+    image: "images/cover-wsl.png"
 ---
 
 # 0 前言

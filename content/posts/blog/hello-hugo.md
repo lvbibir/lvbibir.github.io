@@ -13,7 +13,7 @@ keywords:
 description: "记录 wordpress 迁移至 hugo+papermod 的过程, 包含环境搭建、博客美化、功能实现、速度优化等……"
 weight: 1
 cover:
-    image: "images/hugo-logo-wide.svg"
+    image: "images/cover-hugo.svg"
     hidden: false
     hiddenInSingle: false
 ---
@@ -337,7 +337,7 @@ EVAL "redis.call('DEL', KEYS[1]); for i=1,tonumber(ARGV[1]) do redis.call('PFADD
 
 自定义页脚内容
 
-![image-20220911150229930](/images/image-20220911150229930.png)
+![image-20220911150229930](/images/image-20220911-150229.png)
 
 > 添加完下面的页脚内容后要修改 `assets\css\extended\blank.css` 中的 `--footer-height` 的大小, 具体数字需要考虑到行数和字体大小
 

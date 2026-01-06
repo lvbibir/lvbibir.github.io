@@ -12,7 +12,7 @@ keywords:
   - 基线检查
 description: "介绍在 centos7 环境中部署开源的 benchmark 基线检查平台，并通过 web 界面可视化展示" 
 cover:
-    image: "images/image-20210719165252503.png" 
+    image: "images/cover-default.webp"
 ---
 
 # 0 介绍
@@ -72,7 +72,7 @@ python3 setup.py install
 pip3 install django==2.2.15
 ```
 
-![image-20210719164840514](/images/image-20210719164840514.png)
+![image-20210719164840514](/images/image-20210719-164840.png)
 
 ## 1.4 clone 项目到本地
 
@@ -81,7 +81,7 @@ yum install -y git
 git clone https://github.com/chroblert/assetmanage.git
 ```
 
-![image-20210719162320356](/images/image-20210719162320356.png)
+![image-20210719162320356](/images/image-20210719-162320.png)
 
 ## 1.5 部署 server 端
 
@@ -95,11 +95,11 @@ python3 manage.py runserver 0.0.0.0:8888
 # 假定该服务器的 IP 为 112.112.112.112
 ```
 
-![image-20210719165032945](/images/image-20210721093225342.png)
+![image-20210719165032945](/images/image-20210721-093225.png)
 
 访问测试：<http://192.168.150.101:8888/>
 
-![image-20210719165252503](/images/image-20210719165252503.png)
+![image-20210719165252503](/images/image-20210719-165252.png)
 
 # 2 客户端进行检查
 
@@ -109,7 +109,7 @@ python3 manage.py runserver 0.0.0.0:8888
 scp -r assetmanage/Agent/ 192.168.150.102:/root/
 ```
 
-![image-20210721092835125](/images/image-20210721092835125.png)
+![image-20210721092835125](/images/image-20210721-092835.png)
 
 ```bash
 cd Agent/
@@ -118,16 +118,16 @@ chmod a+x ./*.sh
 
 - 修改 linux_baseline_check.sh 文件的最后一行，配置前端 django 项目的 ip 和端口
 
-![image-20210721093225342](/images/image-20210721093304920.png)
+![image-20210721093225342](/images/image-20210721-093304.png)
 
 - 运行脚本即可，终端会有检查结果的输出，前端页面相应也会有数据
 
-![image-20210721093304920](/images/image-20210719165252503.png)
+![image-20210721093304920](/images/image-20210719-165252.png)
 
-![image-20210721094328627](/images/image-20210719165032945.png)
+![image-20210721094328627](/images/image-20210719-165032.png)
 
-![image-20210721094411728](/images/image-20210721094423226.png)
+![image-20210721094411728](/images/image-20210721-094423.png)
 
-![image-20210721094423226](/images/image-20210721094411728.png)
+![image-20210721094423226](/images/image-20210721-094411.png)
 
 以上

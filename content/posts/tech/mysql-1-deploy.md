@@ -8,7 +8,7 @@ keywords:
   - mysql
 description: "在 centos7 中部署 mysql-5.7 " 
 cover:
-    image: "images/logo-mysql.png" 
+    image: "images/cover-mysql.png" 
 ---
 
 # 0 前言

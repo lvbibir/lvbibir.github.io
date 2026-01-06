@@ -11,7 +11,7 @@ keywords:
   - H3C
 description: "记录一下 H3C 服务器配置 raid 的过程" 
 cover:
-    image: "images/default-cover.webp" 
+    image: "images/cover-default.webp" 
 ---
 
 1. 进入 bios 修改启动模式，将 UEFI 改为 Legacy bios

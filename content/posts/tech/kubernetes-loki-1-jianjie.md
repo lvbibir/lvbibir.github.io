@@ -10,7 +10,7 @@ keywords:
   - loki
 description: "loki 开源日志的优缺点及架构; loki 的四个角色; prometail 简介; 日志告警" 
 cover:
-    image: "images/logo-loki.png"
+    image: "images/cover-loki.png"
 ---
 
 # 0 前言
@@ -49,7 +49,7 @@ Loki 是 Grafana Labs 团队最新的开源项目，是一个水平可扩展，�
 
 ## 3.1 整体架构
 
-![1c8596771859db9599e7f0d92187a4c5.webp](/images/1c8596771859db9599e7f0d92187a4c5.webp)
+![image-20260106-211317.webp](/images/image-20260106-211317.webp)
 
 在 Loki 架构中有以下几个概念：
 
@@ -72,7 +72,7 @@ promtail 是 loki 架构中最常用的采集器, 相当于 EFK 中的 filebeat/
 
 ## 3.3 loki
 
-![img](/images/536ff8e45540a38aceec8b0457b581b0.png)
+![img](/images/image-20260106-211318-4.png)
 
 Loki 采用读写分离架构，关键组件有：
 

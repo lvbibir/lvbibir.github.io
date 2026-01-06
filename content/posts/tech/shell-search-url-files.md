@@ -8,7 +8,7 @@ keywords:
   - shell
 description: "" 
 cover:
-    image: "images/logo-shell.png" 
+    image: "images/cover-shell.png" 
 ---
 
 # 0 前言

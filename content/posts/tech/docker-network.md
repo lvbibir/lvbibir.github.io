@@ -10,7 +10,7 @@ keywords:
   - network
 description: "简单介绍 docker 的网络结构以及同一宿主机的 docker 容器之间是如何通信的" 
 cover:
-    image: "images/logo-docker.png" 
+    image: "images/cover-docker.png" 
 ---
 
 # 1 网络概述
@@ -28,7 +28,7 @@ cover:
 
 安装了 docker 的系统，使用 ifconfig 可以查看到 docker0 设备，docker 守护进程就是通过 docker0 为容器提供网络连接的各种服务
 
-![在这里插入图片描述](/images/20190811124731281.png)
+![在这里插入图片描述](/images/image-20190811-124731.png)
 
 docker0 实际上是 linux 虚拟网桥（交换机)
 
@@ -39,7 +39,7 @@ linux 虚拟网桥的特点：
 1. 可以设置 ip 地址（二层的网桥可以设置三层的 ip 地址）
 2. 相当于拥有一个隐藏的虚拟网卡
 
-![在这里插入图片描述](/images/2019081112483089.png)
+![在这里插入图片描述](/images/image-20260106-211318-1.png)
 
 docker0 的地址划分：
 
@@ -49,7 +49,7 @@ docker0 的地址划分：
 
 每当一个容器启动时，docker 守护进程会创建网络连接的两端，一端在容器内创建 eth0 网卡，另一端在 dokcer0 网桥中开启一个端口 veth*
 
-![在这里插入图片描述](/images/20190811130803531.png)
+![在这里插入图片描述](/images/image-20190811-130803.png)
 
 查看网桥设备需要预先安装 bridge-utils 软件包
 
@@ -71,7 +71,7 @@ bash: ifconfig: command not found
 [root@0ef32e882bcf /]# ifconfig
 ```
 
-![在这里插入图片描述](/images/20190811133220548.png)
+![在这里插入图片描述](/images/image-20190811-133220.png)
 
 再查看一下网桥
 
@@ -79,13 +79,13 @@ bash: ifconfig: command not found
 [root@localhost ~]# brctl show
 ```
 
-![在这里插入图片描述](/images/20190811133457224.png)
+![在这里插入图片描述](/images/image-20190811-133457.png)
 
 ```bash
 [root@localhost ~]# ifconfig
 ```
 
-![在这里插入图片描述](/images/20190811133611993.png)
+![在这里插入图片描述](/images/image-20190811-133611.png)
 
 ## 2.1 自定义 docker0
 
@@ -97,7 +97,7 @@ bash: ifconfig: command not found
 [root@localhost ~]# ifconfig
 ```
 
-![在这里插入图片描述](/images/20190811134011802.png)
+![在这里插入图片描述](/images/image-20190811-134011.png)
 
 ```bash
 [root@localhost ~]# systemctl restart docker
@@ -106,7 +106,7 @@ bash: ifconfig: command not found
 [root@a5c6ebf79340 /]# ifconfig
 ```
 
-![在这里插入图片描述](/images/20190811135908809.png)
+![在这里插入图片描述](/images/image-20190811-135908.png)
 
 ## 2.2 自定义虚拟网桥
 
@@ -118,7 +118,7 @@ bash: ifconfig: command not found
 [root@localhost ~]# ifconfig
 ```
 
-![在这里插入图片描述](/images/20190811140448102.png)
+![在这里插入图片描述](/images/image-20190811-140448.png)
 
 修改 docker 守护进程的配置
 
@@ -141,7 +141,7 @@ root       4263   1558  0 14:06 pts/0    00:00:00 grep --color=auto docker
 [root@d70269c9557e /]# ifconfig
 ```
 
-![在这里插入图片描述](/images/20190811141504468.png)
+![在这里插入图片描述](/images/image-20190811-141504.png)
 
 # 3 同一宿主机间容器的连接
 
@@ -219,7 +219,7 @@ round-trip min/avg/max = 0.148/0.191/0.256 ms
 [root@localhost ~]# docker exec test4 cat /etc/hosts
 ```
 
-![在这里插入图片描述](/images/20190811182505450.png)
+![在这里插入图片描述](/images/image-20190811-182505.png)
 
 删除之前使用的 test1 与 test2 容器，这两个容器占用的 ip 释放，重启 test3 后，使用最新的 ip 地址
 
@@ -246,7 +246,7 @@ eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:02
 [root@localhost ~]# docker exec test4 cat /etc/hosts
 ```
 
-![在这里插入图片描述](/images/20190811183004484.png)
+![在这里插入图片描述](/images/image-20190811-183004.png)
 
 ## 3.2 拒绝容器互联
 

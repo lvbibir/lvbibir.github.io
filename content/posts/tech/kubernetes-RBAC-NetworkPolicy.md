@@ -10,7 +10,7 @@ keywords:
   - networkPolicy
 description: "介绍 kubernetes 中的安全框架、RBAC 鉴权和网络策略（Pod ACL)" 
 cover:
-    image: "images/logo-kubernetes.png"
+    image: "images/cover-kubernetes.png"
 ---
 
 # 0 前言
@@ -28,7 +28,7 @@ K8S 安全控制框架主要由下面 3 个阶段进行控制，每一个阶段�
 2. Authorization（授权）
 3. Admission Control（准入控制）
 
-![image-20221007174309826](/images/image-20221007174309826.png)
+![image-20221007174309826](/images/image-20221007-174309.png)
 
 ## 1.1 鉴权 (Authentication)
 

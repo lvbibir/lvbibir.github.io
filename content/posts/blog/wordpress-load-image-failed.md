@@ -11,7 +11,7 @@ keywords:
   - https
 description: "" 
 cover:
-    image: "images/logo-wordpress.jpg" 
+    image: "images/cover-wordpress.jpg" 
 ---
 
 # 1 现象
@@ -20,17 +20,17 @@ cover:
 - 使用浏览器直接访问图片 url 却是可以成功的
 - 我将之前 csdn 的博客迁移到了 wordpress，图片外链地址就是 csdn 的，都可以正常加载。
 
-![image-20210722140511459](/images/image-20210722140511459.png)
+![image-20210722140511459](/images/image-20210722-140511.png)
 
-![image-20210722140632949](/images/image-20210722140632949.png)
+![image-20210722140632949](/images/image-20210722-140632.png)
 
 使用浏览器直接访问图片 url 却是可以成功的
 
-![image-20210722140852643](/images/image-20210722140852643.png)
+![image-20210722140852643](/images/image-20210722-140852.png)
 
 我将之前 csdn 的博客迁移到了 wordpress，图片外链地址就是 csdn 的，都可以正常加载。
 
-![image-20210722141709373](/images/image-20210722141709373.png)
+![image-20210722141709373](/images/image-20210722-141709.png)
 
 # 2 排查
 
@@ -38,7 +38,7 @@ cover:
 
 查看防盗链配置，并没有开
 
-![image-20210722142153981](/images/image-20210722142153981.png)
+![image-20210722142153981](/images/image-20210722-142153.png)
 
 2、wordpress 可以加载出来 csdn 的外链图片，期间也试了其他图床都是没问题的。
 
@@ -46,11 +46,11 @@ cover:
 
 注意到七牛的图片外链是 http，当时嫌麻烦并没有配置 https，看来问题是出在这了
 
-![image-20210722143457886](/images/image-20210722143457886.png)
+![image-20210722143457886](/images/image-20210722-143457.png)
 
 因为我的网站配置了 ssl 证书，可能由于安全问题浏览器不予加载 http 项目，用 http 访问站点测试下图片是否可以加载
 
-![image-20210722143758890](/images/image-20210722143758890.png)
+![image-20210722143758890](/images/image-20210722-143758.png)
 
 访问成功了！
 

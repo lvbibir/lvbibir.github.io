@@ -11,7 +11,7 @@ keywords:
   - alertmanager
 description: "prometheus 的 recording rule 和 alerting rule 介绍, 以及使用 prometheusrule CRD 资源配置规则" 
 cover:
-    image: "images/logo-prometheus.png"
+    image: "images/cover-prometheus.png"
 ---
 
 # 0 前言
@@ -41,11 +41,11 @@ groups:
 
 原始表达式结果
 
-![image-20230430124726984](/images/image-20230430124726984.png)
+![image-20230430124726984](/images/image-20230430-124726.png)
 
 新表达式结果
 
-![image-20230430124905648](/images/image-20230430124905648.png)
+![image-20230430124905648](/images/image-20230430-124905.png)
 
 ## 1.2 alerting rule
 
@@ -154,7 +154,7 @@ monitoring-prometheus-operator-rules-8688aa7b-a157-4ddc-bd09-21781f8ac567.yaml
 
 prometheus 的配置中定义了 rule_files 路径
 
-![image-20230430161801657](/images/image-20230430161801657.png)
+![image-20230430161801657](/images/image-20230430-161801.png)
 
 # 2 示例
 
@@ -192,7 +192,7 @@ spec:
 
 查看生成的告警规则, 当前状态是 `inactive`
 
-![image-20230430164403171](/images/image-20230430164403171.png)
+![image-20230430164403171](/images/image-20230430-164403.png)
 
 node1 当前状态, `/` 目录总容量 45G, 可用空间为 `82%`
 
@@ -213,14 +213,14 @@ Filesystem                  Type      Size  Used Avail Use% Mounted on
 
 此时告警规则已经进入 `pending` 状态了, 我们设置了 `1m` 的评估等待时间
 
-![image-20230430164934581](/images/image-20230430164934581.png)
+![image-20230430164934581](/images/image-20230430-164934.png)
 
 一分钟过后进入 `firing` 状态, 正式发出告警, 此时我们设置的 `$label` 还没有解析
 
-![image-20230430165047142](/images/image-20230430165047142.png)
+![image-20230430165047142](/images/image-20230430-165047.png)
 
 我们去 alertmanager 看一下, 成功收到了告警, 且 `$labels` 和 `$value` 也已经正常解析了
 
-![image-20230430165209018](/images/image-20230430165209018.png)
+![image-20230430165209018](/images/image-20230430-165209.png)
 
 以上

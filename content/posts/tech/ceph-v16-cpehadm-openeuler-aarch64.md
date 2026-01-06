@@ -137,7 +137,7 @@ yum install ceph-common-16.2.9-0.el8
 cephadm bootstrap --mon-ip 192.168.47.133
 ```
 
-![image-20220718113317700](/images/image-20220718113317700.png)
+![image-20220718113317700](/images/image-20220718-113317.png)
 
 访问: <https://192.168.47.133:8443/>
 

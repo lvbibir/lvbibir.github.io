@@ -10,7 +10,7 @@ keywords:
   - prometheus
 description: "prometheus-operator 中使用 probe CRD 资源和 blackbox 添加黑盒监控项" 
 cover:
-    image: "images/logo-prometheus.png"
+    image: "images/cover-prometheus.png"
 ---
 
 # 0 前言
@@ -58,7 +58,7 @@ Probe 支持 `staticConfig` 和 `ingress` 两种配置方式, 使用 ingress 时
 - 然后，prometheus-operator watch 到 Probe 对象创建，然后生成对应的 prometheus 拉取配置，reload 到 prometheus 中；
 - 最后，prometheus 使用 url=/probe?target={探测目标}&module={探测方式}，拉取 blackbox-exporter ，此时 blackbox-exporter 会对目标进行探测，并以 metrics 格式返回探测结果；
 
-![3526046601-63e4a22006154_fix732](/images/3526046601-63e4a22006154_fix732.png)
+![3526046601-63e4a22006154_fix732](/images/image-20260106-211317.png)
 
 # 2 probe 示例
 
@@ -123,7 +123,7 @@ spec:
 
 查看生成的 target
 
-![image-20230428151921527](/images/image-20230428151921527.png)
+![image-20230428151921527](/images/image-20230428-151921.png)
 
 现在可以通过:
 
@@ -132,7 +132,7 @@ spec:
 
 查看 blackbox exporter 一次 dns 探测生成的 metrics 指标
 
-![image-20230428160521908](/images/image-20230428160521908.png)
+![image-20230428160521908](/images/image-20230428-160521.png)
 
 ### 2.2.1 http
 
@@ -194,11 +194,11 @@ spec:
 
 查看生成的 target
 
-![image-20230428162821972](/images/image-20230428162821972.png)
+![image-20230428162821972](/images/image-20230428-162821.png)
 
 查看一次 http 探测生成的 metrics 指标
 
-![image-20230428163153649](/images/image-20230428163153649.png)
+![image-20230428163153649](/images/image-20230428-163153.png)
 
 ## 2.2 ingress 自动发现
 
@@ -311,11 +311,11 @@ spec:
 
 查看 targets
 
-![image-20230429131759421](/images/image-20230429131759421.png)
+![image-20230429131759421](/images/image-20230429-131759.png)
 
 不过由于 ingress 配置的域名无法解析, 所以监测到的状态是失败的:
 
-![image-20230429141436766](/images/image-20230429141436766.png)
+![image-20230429141436766](/images/image-20230429-141436.png)
 
 ### 2.2.3 配置 coredns
 
@@ -356,7 +356,7 @@ kind: ConfigMap
 
 等待 coredns 的配置生效后, 我们重新再看一下 target 状态
 
-![image-20230429150029851](/images/image-20230429150029851.png)
+![image-20230429150029851](/images/image-20230429-150029.png)
 
 # 3 additionalScrapeConfigs
 
@@ -433,11 +433,11 @@ kubectl apply -f additional-scrape-configs.yaml
 
 查看 target, 可以看到只有 web-1 发现成功, 因为 web-2 没有配置 annotation
 
-![image-20230429142923440](/images/image-20230429142923440.png)
+![image-20230429142923440](/images/image-20230429-142923.png)
 
 查看一下监测状态, 直接使用 `<service-name>.<namespace>` 访问, 在集群内是可以正常解析的, 所以这里 http 状态码为正常的 200
 
-![image-20230429143126584](/images/image-20230429143126584.png)
+![image-20230429143126584](/images/image-20230429-143126.png)
 
 ## 3.1 ingress 自动发现
 
@@ -509,10 +509,10 @@ kubectl apply -f additional-scrape-configs.yaml
 
 查看 target
 
-![image-20230429145138845](/images/image-20230429145138845.png)
+![image-20230429145138845](/images/image-20230429-145138.png)
 
 查看监测状态, 与预期配置一样
 
-![image-20230429150518709](/images/image-20230429150518709.png)
+![image-20230429150518709](/images/image-20230429-150518.png)
 
 以上

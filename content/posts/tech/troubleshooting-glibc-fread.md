@@ -11,14 +11,14 @@ keywords:
   - glibc
 description: "" 
 cover:
-    image: "images/default-cover.webp" 
+    image: "images/cover-default.webp" 
 ---
 
 # 0 前言
 
 有需求需要在 openeuler 的操作系统上测试一个 C 程序，做了一个简化版的程序，程序很简单，循环读取一个文件并打印文件内容，在程序执行过程中使用 echo 手动向文件中追加内容，程序要能读取到，效果如下：
 
-![e2796ca3c4850af67b578be9bb0148d](/images/e2796ca3c4850af67b578be9bb0148d.png)
+![e2796ca3c4850af67b578be9bb0148d](/images/image-20260106-211318-7.png)
 
 测试程序代码如下：
 
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 
 在 Rhel-7.5 上测试一切正常，开始在 openeuler 上进行测试，结果发现后续追加的内容没有输出：
 
-![dfaaeee2427fbc2fb21f825c9350cf9](/images/dfaaeee2427fbc2fb21f825c9350cf9.png)
+![dfaaeee2427fbc2fb21f825c9350cf9](/images/image-20260106-211319-4.png)
 
 # 1 故障排查
 
@@ -110,10 +110,10 @@ int main(int argc, char **argv)
 }
 ```
 
-![1adf1e265c52983b9d4fb3dadd27199](/images/1adf1e265c52983b9d4fb3dadd27199.png)
+![1adf1e265c52983b9d4fb3dadd27199](/images/image-20260106-211318.png)
 
 添加了一块清除标记的片段，在 glibc>=2.28 的系统上程序也可以正常运行了
 
-![image-20210910151213242](/images/image-20210910151213242.png)
+![image-20210910151213242](/images/image-20210910-151213.png)
 
 以上

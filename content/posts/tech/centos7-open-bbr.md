@@ -12,7 +12,7 @@ keywords:
   - kernel
 description: "介绍在 CentOS7 上部署 BBR 的详细过程" 
 cover:
-    image: "images/default-cover.webp" 
+    image: "images/cover-default.webp" 
 ---
 
 # 0 前言

@@ -11,7 +11,7 @@ keywords:
   - dhcp
 description: "" 
 cover:
-    image: "images/default-cover.webp" 
+    image: "images/cover-default.webp" 
 ---
 
 # 1 pxe 环境

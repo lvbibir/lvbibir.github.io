@@ -9,7 +9,7 @@ keywords:
   - docker
 description: "基于 docker-18.03.0-ce 版本，介绍常见的 docker 命令及参数的使用方法" 
 cover:
-    image: "images/logo-docker.png" 
+    image: "images/cover-docker.png" 
 ---
 
 # 1 容器操作
