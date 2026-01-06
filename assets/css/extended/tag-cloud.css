@@ -1,4 +1,4 @@
-/*标签*/
+/* 标签云 */
 .terms-tags {
     text-align: center;
 }
@@ -6,38 +6,16 @@
 .terms-tags a {
     border-radius: 30px;
     background: none;
-    transition: transform 0.5s;
+    transition: transform var(--transition-duration) ease;
 }
 
 .terms-tags a:hover {
     background: none;
-
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    -o-transform: scale(1.2);
-
     transform: scale(1.2);
-
-    transition: box-shadow 0.4s ease, transform 0.4s ease;
-
 }
 
 .dark .terms-tags a {
     background: none;
-}
-
-.dark .terms-tags a:hover {
-    background: none;
-
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    -o-transform: scale(1.2);
-
-    transform: scale(1.2);
-
-    transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
 
 .terms-tags li {

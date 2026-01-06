@@ -1,3 +1,4 @@
+/* TOC 基础样式 */
 .toc {
     margin: 0 2px 40px 2px;
     border: 1.2px solid var(--border);
@@ -48,7 +49,6 @@
 }
 
 .toc details[open] summary {
-    /* font-weight: 600; */
     width: 100%;
     cursor: pointer;
 }
@@ -67,12 +67,10 @@
     border-bottom: 1px solid transparent;
     padding-bottom: 0.1rem;
     border-bottom-color: #42b983;
-    /* font-weight: 600; */
 }
 
 .dark .active {
     color: var(--content);
-    /* font-weight: 600; */
 }
 
 .toc ul {
@@ -83,7 +81,6 @@
     margin: 0 0 0 20px;
     padding: 0;
     font-size: 16px;
-
     max-height: 83vh;
     overflow-y: auto;
     user-select: none;
@@ -103,30 +100,23 @@
 .toc li {
     list-style: none;
     font-size: 0.90rem;
-    /*padding-bottom: 5px;*/
     padding: 5px 0 0 0;
 }
 
-/* .toc li a:hover {
-    font-weight: 600;
-} */
-
 .dark .toc li a:hover {
-    /* font-weight: 600; */
     color: var(--content);
 }
 
 /* ==================== TOC 弹出样式 ==================== */
 
-/* TOC 切换按钮 - 始终可见 */
-/* 样式参考 .top-link 回到顶部按钮 */
+/* TOC 切换按钮 */
 .toc-toggle-btn {
     visibility: visible;
     opacity: 1;
     display: flex;
     position: fixed;
     right: 30px;
-    bottom: 110px; /* 在回到顶部按钮(bottom: 60px + height: 42px)上方 */
+    bottom: 110px;
     z-index: 99;
     width: 42px;
     height: 42px;
@@ -139,24 +129,14 @@
     justify-content: center;
     color: var(--secondary);
     font-size: 12px;
-    
-    -webkit-transition: box-shadow 0.4s ease, transform 0.4s ease;
-    -moz-transition: box-shadow 0.4s ease, transform 0.4s ease;
-    -o-transition: box-shadow 0.4s ease, transform 0.4s ease;
-    transition: box-shadow 0.4s ease, transform 0.4s ease;
-    box-shadow: 0px 2px 4px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
+    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
+    box-shadow: var(--box-shadow-default);
 }
 
 .toc-toggle-btn:hover {
     color: var(--primary);
-    
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
     transform: scale(1.1);
-    
-    box-shadow: 0px 4px 8px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
+    box-shadow: var(--box-shadow-hover);
 }
 
 .toc-toggle-btn:focus {
@@ -169,7 +149,6 @@
     fill: currentColor;
 }
 
-/* 按钮激活状态（TOC 显示时） */
 .toc-toggle-btn.active {
     color: var(--primary);
     background: var(--tertiary);
@@ -240,7 +219,7 @@
     max-height: calc(100vh - 80px);
 }
 
-/* 移动端弹出时的关闭按钮 */
+/* 移动端关闭按钮 */
 .toc-close-btn {
     display: none;
     position: absolute;
@@ -267,7 +246,6 @@
     display: flex;
 }
 
-/* TOC 隐藏状态 */
 .toc-container.collapsed {
     display: none;
 }

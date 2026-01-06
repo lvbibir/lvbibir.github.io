@@ -12,10 +12,13 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     --black: rgb(0, 0, 0);
     --white: rgb(255, 255, 255);
     --tag: rgb(235, 235, 235);
-    /* --nav-width: 1300px; */
-    /* --main-width: 770px; */
     --article-width: 650px;
     --toc-width: 230px;
+    /* 通用动画变量 */
+    --transition-duration: 0.4s;
+    --box-shadow-default: 0px 2px 4px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
+    --box-shadow-hover: 0px 4px 8px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
+    --box-shadow-light: 1px 2px 2px 1px rgb(144 164 174 / 60%);
 }
 
 .first-entry {
@@ -280,4 +283,57 @@ body {
 
 .top-link {
     padding: unset;
+}
+
+/* ==================== 通用动画类 ==================== */
+
+/* 基础过渡效果 */
+.hover-transition {
+    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
+}
+
+/* 带阴影的元素 */
+.hover-shadow {
+    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
+    box-shadow: var(--box-shadow-default);
+}
+
+.hover-shadow:hover {
+    box-shadow: var(--box-shadow-hover);
+}
+
+/* 缩放效果 - 1.02 (文章卡片) */
+.hover-scale-sm {
+    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
+}
+
+.hover-scale-sm:hover {
+    transform: scale(1.02);
+}
+
+/* 缩放效果 - 1.06 (logo) */
+.hover-scale-md {
+    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
+}
+
+.hover-scale-md:hover {
+    transform: scale(1.06);
+}
+
+/* 缩放效果 - 1.1 (按钮) */
+.hover-scale {
+    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.1);
+}
+
+/* 缩放效果 - 1.2 (分页按钮) */
+.hover-scale-lg {
+    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
+}
+
+.hover-scale-lg:hover {
+    transform: scale(1.2);
 }
