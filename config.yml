@@ -63,14 +63,14 @@ languages:
 
     menu:
       main:
+        - identifier: home
+          name: 🏡 主页
+          url: /
+          weight: 01
         - identifier: search
           name: 🔍 搜索
           url: search
           weight: 10
-        # - identifier: home
-        #   name: 🏡 主页
-        #   url: /
-        #   weight: 20
         - identifier: posts
           name: 📚 文章
           url: posts
@@ -199,7 +199,7 @@ params:
 
   # 打赏
   Reward: true 
-  # 可用绝对和相对地址，相对地址的图片需放在static/img下
+  # 可用绝对和相对地址，相对地址的图片需放在static/images下
   WechatPay: /images/blog-wechatpay.png
   Alipay: /images/blog-alipay.png #打赏支付宝图片地址
 
