@@ -8,7 +8,7 @@ keywords:
   - shell
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/shell.png" 
+    image: "images/shell.png" 
 ---
 
 # 0 前言
@@ -92,7 +92,7 @@ hello
 
 如下
 
-![image-20220629145221486](https://image.lvbibir.cn/blog/image-20220629145221486.png)
+![image-20220629145221486](/images/image-20220629145221486.png)
 
 `set -o pipefail` 的作用就是管道中只要有一个命令失败，则整个管道视为失败
 

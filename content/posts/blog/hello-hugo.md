@@ -1,5 +1,5 @@
 ---
-title: "【置顶】Hello, hugo!"
+title: "[置顶] Hello, hugo!"
 date: 2022-07-06
 lastmod: 2025-12-11
 tags:
@@ -13,7 +13,7 @@ keywords:
 description: "记录 wordpress 迁移至 hugo+papermod 的过程, 包含环境搭建、博客美化、功能实现、速度优化等……"
 weight: 1
 cover:
-    image: "https://image.lvbibir.cn/blog/hugo-logo-wide.svg"
+    image: "images/hugo-logo-wide.svg"
     hidden: false
     hiddenInSingle: false
 ---
@@ -41,7 +41,7 @@ cover:
 
 # 1 将博客部署到阿里云
 
-整个步骤最难的地方可能就是 docker-compose 和 nginx 的配置了, 如果之前没有接触过可能会比较吃力, 因此我打包了一份开袋即食的配置文件, 只需要修改一些必要配置, [点此链接下载](https://image.lvbibir.cn/files/blog-docker-compose.zip)
+整个步骤最难的地方可能就是 docker-compose 和 nginx 的配置了, 如果之前没有接触过可能会比较吃力, 因此我打包了一份开袋即食的配置文件, 只需要修改一些必要配置, [点此链接下载](/files/blog-docker-compose.zip)
 
 下载完将压缩包上传到自己的服务器, 解压后重命名为 `blog` (当然你可以用其他名字)
 
@@ -337,7 +337,7 @@ EVAL "redis.call('DEL', KEYS[1]); for i=1,tonumber(ARGV[1]) do redis.call('PFADD
 
 自定义页脚内容
 
-![image-20220911150229930](https://image.lvbibir.cn/blog/image-20220911150229930.png)
+![image-20220911150229930](/images/image-20220911150229930.png)
 
 > 添加完下面的页脚内容后要修改 `assets\css\extended\blank.css` 中的 `--footer-height` 的大小, 具体数字需要考虑到行数和字体大小
 

@@ -12,7 +12,7 @@ keywords:
   - rpm构建
 description: "记录一下 centos7 系统中通过源码构建 openssh rpm 包的过程" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "images/default-cover.webp" 
 ---
 
 # 1 环境
@@ -130,7 +130,7 @@ chmod 755 install_openssl-1.1.1m.sh
 tree rpmbuild/*RPMS
 ```
 
-![image-20220302154139155](https://image.lvbibir.cn/blog/image-20220302154139155.png)
+![image-20220302154139155](/images/image-20220302154139155.png)
 
 # 3 升级
 
@@ -140,6 +140,6 @@ rpm -ivh  openssl-1.1.1m-1.el7.isoft.x86_64.rpm --nodeps
 openssl version
 ```
 
-![image-20220302154321811](https://image.lvbibir.cn/blog/image-20220302154321811.png)
+![image-20220302154321811](/images/image-20220302154321811.png)
 
 以上

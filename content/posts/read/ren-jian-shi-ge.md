@@ -6,7 +6,7 @@ tags:
 keywords:
 description: "《人间失格》（又名《丧失为人的资格》）日本小说家太宰治创作的中篇小说，发表于 1948 年，是一部半自传体的小说。"
 cover:
-    image: "https://image.lvbibir.cn/blog/renjianshige.jpg" 
+    image: "images/renjianshige.jpg" 
 ---
 
 # 0 前言

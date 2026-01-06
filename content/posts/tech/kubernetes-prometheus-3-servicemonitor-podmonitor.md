@@ -10,7 +10,7 @@ keywords:
   - prometheus
 description: "prometheus-operator 中的服务发现 (serviceMonitor) 机制, kubernetes_sd_config 配置, 以及 serviceMonitor 和 podMonitor 自定义资源的使用." 
 cover:
-    image: "https://image.lvbibir.cn/blog/prometheus.png"
+    image: "images/prometheus.png"
 ---
 
 # 0 前言
@@ -53,7 +53,7 @@ endpoints ===> pods ===> pod-ip+port
 
 同样, 在 prometheus 后端看到的 targets 将会是 44 个, 然后按照 `relabel` 规则在这些所有的 target 中选择合适的 target 并进行 `active`
 
-![image-20230425093636652](https://image.lvbibir.cn/blog/image-20230425093636652.png)
+![image-20230425093636652](/images/image-20230425093636652.png)
 
 # 2 serviceMonitor CRD
 
@@ -263,15 +263,15 @@ spec:
 
 endpoints 级别的标签
 
-![image-20230424175715511](https://image.lvbibir.cn/blog/image-20230424175715511.png)
+![image-20230424175715511](/images/image-20230424175715511.png)
 
 service 和 pod 级别的标签
 
-![image-20230424175819756](https://image.lvbibir.cn/blog/image-20230424175819756.png)
+![image-20230424175819756](/images/image-20230424175819756.png)
 
 查看自动注册到 prometheus 的 node-exporter
 
-![image-20230425085217041](https://image.lvbibir.cn/blog/image-20230425085217041.png)
+![image-20230425085217041](/images/image-20230425085217041.png)
 
 可以发现:
 
@@ -284,7 +284,7 @@ service 和 pod 级别的标签
 
 在配置中开启 metric
 
-![image-20230426155759486](https://image.lvbibir.cn/blog/image-20230426155759486.png)
+![image-20230426155759486](/images/image-20230426155759486.png)
 
 访问测试
 
@@ -522,11 +522,11 @@ prometheus 的 configuration 界面自动生成的配置如下
 
 Service Discovery 界面
 
-![image-20230426161824709](https://image.lvbibir.cn/blog/image-20230426161824709.png)
+![image-20230426161824709](/images/image-20230426161824709.png)
 
 Targets 界面
 
-![image-20230426161849710](https://image.lvbibir.cn/blog/image-20230426161849710.png)
+![image-20230426161849710](/images/image-20230426161849710.png)
 
 # 3 podMonitor CRD
 
@@ -609,7 +609,7 @@ spec:
 
 查看 prometheus
 
-![image-20230427100740612](https://image.lvbibir.cn/blog/image-20230427100740612.png)
+![image-20230427100740612](/images/image-20230427100740612.png)
 
 # 4 集群范围的自动发现
 
@@ -721,7 +721,7 @@ spec:
 
 service kube-dns 默认有 `prometheus.io/scrape=true` 这个注解, 已经成功注册:
 
-![image-20230427164311865](https://image.lvbibir.cn/blog/image-20230427164311865.png)
+![image-20230427164311865](/images/image-20230427164311865.png)
 
 创建一个示例应用
 
@@ -782,6 +782,6 @@ spec:
 
 如下, 我们部署的 node-exporter 已经成功注册, 只要 service 设置了 `annotations` 即可
 
-![image-20230427171357838](https://image.lvbibir.cn/blog/image-20230427171357838.png)
+![image-20230427171357838](/images/image-20230427171357838.png)
 
 以上

@@ -9,7 +9,7 @@ keywords:
   - thread
 description: "由于系统 systemd 限制导致 mysql 可创建的线程数达到上限, 出现无法登陆等问题" 
 cover:
-    image: "https://image.lvbibir.cn/blog/mysql.png" 
+    image: "images/mysql.png" 
 ---
 
 # 0 前言
@@ -108,7 +108,7 @@ ps -T -p $(pgrep mysqld) | wc -l
 
 按照这个思路去问各大 AI, 通义/豆包/DS 给出的结果都跟我之前的排查过程相差不多, 没有找到问题点, 最后还是 DS 出世后被大家淡忘的 ChatGPT 给出了解决方案
 
-![](https://image.lvbibir.cn/blog/image-20250422-111334.png)
+![](/images/image-20250422-111334.png)
 
 执行后, 结果是 512, 跟上文在系统上查看到的 Mysql 线程数一致, 那就是这里的问题了
 

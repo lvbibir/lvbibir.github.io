@@ -11,7 +11,7 @@ keywords:
   - ingress
 description: "kubernetes 中 Traefik ingress 的简介、部署及配置。" 
 cover:
-    image: "https://image.lvbibir.cn/blog/traefik.png"
+    image: "images/traefik.png"
 ---
 
 # 0 前言
@@ -30,11 +30,11 @@ Traefik 是一个为了让部署微服务更加便捷而诞生的现代 HTTP 反
 
 它是一个边缘路由器，它会拦截外部的请求并根据逻辑规则选择不同的操作方式，这些规则决定着这些请求到底该如何处理。Traefik 提供自动发现能力，会实时检测服务，并自动更新路由规则。
 
-![traefik-architecture](https://image.lvbibir.cn/blog/traefik-architecture.png)
+![traefik-architecture](/images/traefik-architecture.png)
 
 ## 1.2 Traefik 核心组件
 
-![img](https://image.lvbibir.cn/blog/v2-b67cb6ed0ac457009296459fe974cef4_r.jpg)
+![img](/images/v2-b67cb6ed0ac457009296459fe974cef4_r.jpg)
 
 从上图可知，当请求 Traefik 时，请求首先到 `entrypoints`，然后分析传入的请求，查看他们是否与定义的 `Routers` 匹配。如果匹配，则会通过一系列 `middlewares` 处理，再到 `traefikServices` 上做流量转发，最后请求到 `kubernetes的services上` 。
 
@@ -371,7 +371,7 @@ service/traefik-metrics   ClusterIP   10.98.89.13      <none>        9100/TCP   
 
 可以直接通过 <http://1.1.1.1:9000> 访问到 dashboard
 
-![image-20230426155416528](https://image.lvbibir.cn/blog/image-20230426155416528.png)
+![image-20230426155416528](/images/image-20230426155416528.png)
 
 ## 2.5 其他配置
 

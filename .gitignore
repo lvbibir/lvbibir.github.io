@@ -5,3 +5,4 @@ themes/PaperMod/.git
 .DS_Store
 upload.sh
 .ace-tool/
+static/fonts

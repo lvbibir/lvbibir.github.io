@@ -11,7 +11,7 @@ keywords:
   - arm
 description:  "在 openeuler 2003 aarch64 系统中使用 cephadm 部署 ceph-v16 (pacific) 集群" 
 cover: 
-    image:  "https: //image.lvbibir.cn/blog/ceph.png" 
+    image:  "/images/blog/ceph.png" 
 ---
 
 # 0 前言
@@ -137,7 +137,7 @@ yum install ceph-common-16.2.9-0.el8
 cephadm bootstrap --mon-ip 192.168.47.133
 ```
 
-![image-20220718113317700](https://image.lvbibir.cn/blog/image-20220718113317700.png)
+![image-20220718113317700](/images/image-20220718113317700.png)
 
 访问: <https://192.168.47.133:8443/>
 

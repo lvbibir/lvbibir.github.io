@@ -42,7 +42,7 @@ showbreadcrumbs: false
 
 网址: https://www.lvbibir.cn
 
-图标: https://www.lvbibir.cn/https://image.lvbibir.cn/blog/avatar.webp
+图标: https://www.lvbibir.cn//images/avatar.webp
 
 描述: life is a fucking movie
 

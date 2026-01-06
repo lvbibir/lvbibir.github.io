@@ -10,7 +10,7 @@ keywords:
   - ssh
 description: "记录一下 vscode 使用过程中一些常见的问题, 比如 remote ssh 使用密钥登录, vscode 右键菜单消失等问题"
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp"
+    image: "images/default-cover.webp"
 ---
 
 # 1 remote ssh 使用密钥

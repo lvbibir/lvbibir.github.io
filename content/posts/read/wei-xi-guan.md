@@ -6,7 +6,7 @@ tags:
 keywords:
 description: "简单到不可能失败的自我管理法则"
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "images/default-cover.webp" 
 ---
 
 # 0 前言
@@ -93,7 +93,7 @@ cover:
 
 做事缺乏动力，意志力的消耗猛涨，这种方式很难维持一个行为并将其培养成习惯
 
-![Snipaste_2022-10-01_21-41-04](https://image.lvbibir.cn/blog/Snipaste_2022-10-01_21-41-04.png)
+![Snipaste_2022-10-01_21-41-04](/images/Snipaste_2022-10-01_21-41-04.png)
 
 **“激发动力”策略的诸多问题**
 

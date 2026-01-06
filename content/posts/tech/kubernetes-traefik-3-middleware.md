@@ -11,7 +11,7 @@ keywords:
   - ingressroute
 description: "kubernetes 中使用 Traefik ingress 的 Middleware 实现重定向、白名单、用户认证、限流、熔断、压缩、自定义 error 页等操作" 
 cover:
-    image: "https://image.lvbibir.cn/blog/traefik.png"
+    image: "images/traefik.png"
 ---
 
 # 0 前言
@@ -228,7 +228,7 @@ spec:
 
 访问测试，可以看到弹出界面提示需要输入用户名和密码，输入后回车显示正常页面
 
-![image-20230419163142212](https://image.lvbibir.cn/blog/image-20230419163142212.png)
+![image-20230419163142212](/images/image-20230419163142212.png)
 
 ## 1.5 修改请求/响应头信息 -headers
 
@@ -601,10 +601,10 @@ spec:
 
 html 文件小于 1024 字节，未开启压缩
 
-![image-20230419175108058](https://image.lvbibir.cn/blog/image-20230419175108058.png)
+![image-20230419175108058](/images/image-20230419175108058.png)
 
 图片资源大于 1024 字节，开启了压缩
 
-![image-20230419175324586](https://image.lvbibir.cn/blog/image-20230419175324586.png)
+![image-20230419175324586](/images/image-20230419175324586.png)
 
 以上

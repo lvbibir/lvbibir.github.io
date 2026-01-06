@@ -9,7 +9,7 @@ keywords:
   - rpm
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "images/default-cover.webp" 
 ---
 
 # 0 前言
@@ -86,7 +86,7 @@ mkdir  /data/rpmbuild/SPECS
 
 这里软件包解压后是两个目录
 
-![image-20211206162209187](https://image.lvbibir.cn/blog/image-20211206162209187.png)
+![image-20211206162209187](/images/image-20211206162209187.png)
 
 根据需求替换修改解压后的文件，这里我替换两个文件 `/root/usr/lib64/ceph/mgr/dashboard/static/Ceph_Logo_Standard_RGB_White_120411_fa.png` 和 `/root/usr/lib64/ceph/mgr/dashboard/static/logo-mini.png`，并给原先的文件做一个备份
 
@@ -105,9 +105,9 @@ mkdir  /data/rpmbuild/SPECS
 [root@localhost ~]# vim /data/rpmbuild/SPECS/abc.spec
 ```
 
-![image-20211206164745856](https://image.lvbibir.cn/blog/image-20211206164745856.png)
+![image-20211206164745856](/images/image-20211206164745856.png)
 
-![image-20211206164843805](https://image.lvbibir.cn/blog/image-20211206164843805.png)
+![image-20211206164843805](/images/image-20211206164843805.png)
 
 这里创建的 bbb 目录是临时使用，编译过程肯定会报错，因为路径不对，根据报错修改路径
 
@@ -120,7 +120,7 @@ mkdir  /data/rpmbuild/SPECS
 
 这里可以看到他请求的路径
 
-![image-20211206163921954](https://image.lvbibir.cn/blog/image-20211206163921954.png)
+![image-20211206163921954](/images/image-20211206163921954.png)
 
 修改目录名
 
@@ -136,7 +136,7 @@ mkdir  /data/rpmbuild/SPECS
 
 生成的 rpm 位置在/data/rpmbuild/RPMS/
 
-![image-20211206163618292](https://image.lvbibir.cn/blog/image-20211206163618292.png)
+![image-20211206163618292](/images/image-20211206163618292.png)
 
 查看原 rpm 包的文件
 

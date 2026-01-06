@@ -9,7 +9,7 @@ keywords:
   - centos
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/shell.png" 
+    image: "images/shell.png" 
 ---
 
 脚本内容如下, 替换钉钉 bot 的 token, 将脚本放至 crontab 执行即可

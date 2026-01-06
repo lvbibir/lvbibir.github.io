@@ -9,7 +9,7 @@ keywords:
   - gatewayapi
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    image: "images/kubernetes.png"
 ---
 
 # 1 简介
@@ -18,7 +18,7 @@ Gateway API（之前叫 Service API）是由 SIG-NETWORK 社区管理的开源�
 
 Ingress 资源对象不能很好的满足网络需求，很多场景下 Ingress 控制器都需要通过定义 annotations 或者 crd 来进行功能扩展，这对于使用标准和支持是非常不利的，新推出的 Gateway API 旨在通过可扩展的面向角色的接口来增强服务网络。
 
-![api-model](https://image.lvbibir.cn/blog/api-model.png)
+![api-model](/images/api-model.png)
 
 Gateway API 是 Kubernetes 中的一个 API 资源集合，包括 GatewayClass、Gateway、HTTPRoute、TCPRoute、Service 等，这些资源共同为各种网络用例构建模型。
 

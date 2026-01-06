@@ -12,7 +12,7 @@ keywords:
   - 内网穿透
 description: "介绍如何在 centos6 的环境中部署 openvpn 服务实现内网穿透" 
 cover:
-    image: "https://image.lvbibir.cn/blog/OpenVPN_logo.png" 
+    image: "images/OpenVPN_logo.png" 
 ---
 
 # 0 前言
@@ -72,11 +72,11 @@ setenforce 0
 
 openvpn 版本：2.4.7
 
-![image-20210513152208797](https://image.lvbibir.cn/blog/image-20210513152208797.png)
+![image-20210513152208797](/images/image-20210513152208797.png)
 
 - 下载 easy-rsa [下载地址](https://github.com/OpenVPN/easy-rsa/tree/v3.0.5)
 
-![image-20210513154450075](https://image.lvbibir.cn/blog/image-20210513152355808.png)
+![image-20210513154450075](/images/image-20210513152355808.png)
 
 ## 5.3 创建目录，配置 vars
 
@@ -120,7 +120,7 @@ set_var EASYRSA_REQ_OU          "My OpenVPN"
 [root@vpnserver easyrsa3]# ./easyrsa init-pki
 ```
 
-![image-20210513154251555](https://image.lvbibir.cn/blog/image-20210513154251555.png)
+![image-20210513154251555](/images/image-20210513154251555.png)
 
 创建根证书
 
@@ -128,7 +128,7 @@ set_var EASYRSA_REQ_OU          "My OpenVPN"
 [root@vpnserver easyrsa3]# ./easyrsa build-ca
 ```
 
-![image-20210513152355808](https://image.lvbibir.cn/blog/image-20210513154450075.png)
+![image-20210513152355808](/images/image-20210513154450075.png)
 
 注意：在上述部分需要输入 PEM 密码 PEM pass phrase，输入两次，此密码必须记住，不然以后不能为证书签名。还需要输入 common name 通用名，这个你自己随便设置个独一无二的
 
@@ -138,7 +138,7 @@ set_var EASYRSA_REQ_OU          "My OpenVPN"
 [root@vpnserver easyrsa3]# ./easyrsa gen-req server nopass
 ```
 
-![image-20210513154701536](https://image.lvbibir.cn/blog/image-20210513154701536.png)
+![image-20210513154701536](/images/image-20210513154701536.png)
 
 该过程中需要输入 common name，随意但是不要跟之前的根证书的一样
 
@@ -148,7 +148,7 @@ set_var EASYRSA_REQ_OU          "My OpenVPN"
 [root@vpnserver easyrsa3]# ./easyrsa sign server server
 ```
 
-![image-20210513154839323](https://image.lvbibir.cn/blog/image-20210513154839323.png)
+![image-20210513154839323](/images/image-20210513154839323.png)
 
 需要手动输入 yes 确认，还需要提供创建 ca 证书时的密码
 
@@ -158,7 +158,7 @@ set_var EASYRSA_REQ_OU          "My OpenVPN"
 [root@vpnserver easyrsa3]# ./easyrsa gen-dh
 ```
 
-![image-20210513155046945](https://image.lvbibir.cn/blog/image-20210513155046945.png)
+![image-20210513155046945](/images/image-20210513155046945.png)
 
 ## 5.5 创建客户端证书及 key
 
@@ -172,7 +172,7 @@ set_var EASYRSA_REQ_OU          "My OpenVPN"
 [root@vpnserver easyrsa3]# ./easyrsa init-pki
 ```
 
-![需输入yes确认](https://image.lvbibir.cn/blog/image-20210513155822077.png)
+![需输入yes确认](/images/image-20210513155822077.png)
 
 需输入 yes 确认
 
@@ -182,7 +182,7 @@ set_var EASYRSA_REQ_OU          "My OpenVPN"
 [root@vpnserver easyrsa3]# ./easyrsa gen-req zhijie.liu
 ```
 
-![image-20210513160134188](https://image.lvbibir.cn/blog/image-20210513161517810.png)
+![image-20210513160134188](/images/image-20210513161517810.png)
 
 名字自己自定义，该密码是用户使用该 key 登录时输入的密码，可以加 nopass 参数在客户端登录时无需输入密码
 
@@ -193,7 +193,7 @@ set_var EASYRSA_REQ_OU          "My OpenVPN"
 [root@vpnserver easyrsa3]# ./easyrsa import-req /root/client/easy-rsa/easyrsa3/pki/reqs/zhijie.liu.req zhijie.liu
 ```
 
-![image-20210513161517810](https://image.lvbibir.cn/blog/image-20210513160134188.png)
+![image-20210513161517810](/images/image-20210513160134188.png)
 
 签约证书
 
@@ -201,7 +201,7 @@ set_var EASYRSA_REQ_OU          "My OpenVPN"
 [root@vpnserver easyrsa3]# ./easyrsa sign client zhijie.liu
 ```
 
-![image-20210513162659235](https://image.lvbibir.cn/blog/image-20210513161637077.png)
+![image-20210513162659235](/images/image-20210513161637077.png)
 
 这里生成 client，名字要与之前导入名字一致
 
@@ -236,7 +236,7 @@ set_var EASYRSA_REQ_OU          "My OpenVPN"
 [root@vpnserver ~]# rpm -ql openvpn | grep server.conf
 ```
 
-![image-20210513161637077](https://image.lvbibir.cn/blog/image-20210513162659235.png)
+![image-20210513161637077](/images/image-20210513162659235.png)
 
 ```bash
 [root@vpnserver ~]# cp /usr/share/doc/openvpn-2.4.7/sample/sample-config-files/server.conf /etc/openvpn/
@@ -310,7 +310,7 @@ net.ipv4.ip_forward = 1
 [root@vpnserver ~]# netstat -anput | grep 1194
 ```
 
-![image-20210514103123530](https://image.lvbibir.cn/blog/image-20210513170615121.png)
+![image-20210514103123530](/images/image-20210513170615121.png)
 
 - proxy 开启端口转发/映射
 
@@ -328,7 +328,7 @@ net.ipv4.ip_forward = 1
 [root@proxy ~]# iptables -L -n
 ```
 
-![image-20210513170615121](https://image.lvbibir.cn/blog/image-20210514103246272.png)
+![image-20210513170615121](/images/image-20210514103246272.png)
 
 # 6 客户段连接测试
 
@@ -367,16 +367,16 @@ vpnserver 没装 vmtools 所以先将所有文件放到 proxy 上然后通过 sc
 
 将这四个文件放到 win10 的 `C:\Users\lvbibir\OpenVPN\config` 目录下
 
-![image-20210514103246272](https://image.lvbibir.cn/blog/image-20210514173058861.png)
+![image-20210514103246272](/images/image-20210514173058861.png)
 
 然后点击连接
 
-![image-20210514173058861](https://image.lvbibir.cn/blog/image-20210514173036246.png)
+![image-20210514173058861](/images/image-20210514173036246.png)
 
 ## 6.3 ping 测试
 
 ping client 的内网 ip 1.1.1.1
 
-![image-20210514173131498](https://image.lvbibir.cn/blog/image-20210514173131498.png)
+![image-20210514173131498](/images/image-20210514173131498.png)
 
 以上

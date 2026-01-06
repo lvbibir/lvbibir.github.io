@@ -10,7 +10,7 @@ keywords:
   - mysql
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/logo-suse.png" 
+    image: "images/logo-suse.png" 
 ---
 
 # 0 前言

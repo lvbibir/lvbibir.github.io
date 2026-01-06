@@ -11,12 +11,12 @@ keywords:
   - 备案
 description: "记录wordpress中如何添加icp备案号" 
 cover:
-    image: "https://image.lvbibir.cn/blog/wordpress.jpg" 
+    image: "images/wordpress.jpg" 
 ---
 
 默认主题下在后台设置里修改即可
 
-![image-20210722165156647](https://image.lvbibir.cn/blog/image-20210722165156647.png)
+![image-20210722165156647](/images/image-20210722165156647.png)
 
 dux 主题修改方式：在后台管理→dux 主题编辑器→网站底部信息中添加
 
@@ -24,7 +24,7 @@ dux 主题修改方式：在后台管理→dux 主题编辑器→网站底部信
 <a href="http://beian.miit.gov.cn/" rel="external nofollow" target="_blank">京ICP备2021023168号-1</a>
 ```
 
-![image-20210723092516963](https://image.lvbibir.cn/blog/image-20210723092516963.png)
+![image-20210723092516963](/images/image-20210723092516963.png)
 
 通用修改方式
 

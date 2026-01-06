@@ -12,7 +12,7 @@ keywords:
   - piclist
 description: "介绍如何使用 docker 部署 piclist 实现 obsidian 远程上传图片至阿里云 OSS 图床"
 cover:
-    image: "https://image.lvbibir.cn/blog/docker.png"
+    image: "images/docker.png"
 ---
 
 # 0 前言
@@ -121,7 +121,7 @@ nginx 中添加如下 location 配置
 
 最后修改 obsidian 的 `Image auto upload Plugin` 插件的配置
 
-![](https://image.lvbibir.cn/blog/image-20231229-155939.png)
+![](/images/image-20231229-155939.png)
 
 1. 打开远程服务器模式
 2. 将接口 url 设置为 `https://<你的域名>/piclist/upload?key=<你的key>`, 这里的 key 就是启动容器时配置的环境变量的值, 需注意如果 key 中有特殊字符需要 url 转义一下

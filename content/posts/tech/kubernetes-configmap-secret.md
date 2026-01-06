@@ -10,7 +10,7 @@ keywords:
   - secret
 description: "介绍kubernetes中的configmap和secret应用" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    image: "images/kubernetes.png"
 ---
 
 # 0 前言
@@ -28,7 +28,7 @@ pod 使用 ConfigMap 数据有两种方式：
 - 变量注入
 - 数据卷挂载
 
-![Snipaste_2022-10-07_15-58-31](https://image.lvbibir.cn/blog/Snipaste_2022-10-07_15-58-31.png)
+![Snipaste_2022-10-07_15-58-31](/images/Snipaste_2022-10-07_15-58-31.png)
 
 可以通过读取目录或者文件快速创建 configmap
 

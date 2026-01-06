@@ -13,7 +13,7 @@ keywords:
   - windows
 description: "在 Windows 系统上使用 mihomo 内核独立部署代理服务, 无需依赖 GUI 客户端, 轻量高效"
 cover:
-    image: "https://image.lvbibir.cn/blog/logo-mihomo.png"
+    image: "images/logo-mihomo.png"
 ---
 
 # 0 前言

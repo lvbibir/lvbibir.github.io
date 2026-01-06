@@ -11,7 +11,7 @@ keywords:
   - update
 description: "介绍 kubernetes 中滚动升级的实现机制，如何手动伸缩 pod，以及基于 hpa 实现自动伸缩" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    image: "images/kubernetes.png"
 ---
 
 # 0 前言
@@ -26,7 +26,7 @@ cover:
 
 两个 replicaset 控制器分别控制旧版本的 pod 和新版本 pod，replicaset2 启动一个新版版本 pod，相应的 replicaset1 停止一个旧版本 pod，从而实现滚动升级。在这过程中，无法保证业务流量完全不丢失。
 
-![image-20221003113645777](https://image.lvbibir.cn/blog/image-20221003113645777.png)
+![image-20221003113645777](/images/image-20221003113645777.png)
 
 ## 1.2 简单示例
 

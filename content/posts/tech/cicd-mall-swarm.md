@@ -13,7 +13,7 @@ keywords:
   - docker
 description: "以 mall-swarm 项目为例，部署一套 jenkis + gitlab + docker的一套 CICD 流水线" 
 cover:
-    image: "https://image.lvbibir.cn/blog/cicd.png" 
+    image: "images/cicd.png" 
 ---
 
 # 0 前言
@@ -130,13 +130,13 @@ bd5b64c7c8c8467985a0faa6fbe1848f
 
 启动成功访问 <http://1.1.1.4:8080> ，等出现密码界面后输入密码应该会进入一个离线页面，如下
 
-![image-20230315161553373](https://image.lvbibir.cn/blog/image-20230315161553373.png)
+![image-20230315161553373](/images/image-20230315161553373.png)
 
 ❗ 这个界面不要关，新开一个窗口访问 <http://1.1.1.4:8080/pluginManager/advanced>
 
 将 update site 的 url 修改为 `http://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json`，这步是为了加速插件安装
 
-![image-20230315161635537](https://image.lvbibir.cn/blog/image-20230315161635537.png)
+![image-20230315161635537](/images/image-20230315161635537.png)
 
 接下来跳过 jenkins 的在线验证，在终端再执行
 
@@ -149,7 +149,7 @@ docker exec -it jenkins cat /etc/hosts
 
 之后选择安装推荐的插件，进入插件安装界面，这个过程耗时会比较长，如果有插件安装失败可以重试
 
-![image-20230315162316804](https://image.lvbibir.cn/blog/image-20230315162316804.png)
+![image-20230315162316804](/images/image-20230315162316804.png)
 
 之后创建管理员用户，一路确定后到主页
 
@@ -157,19 +157,19 @@ docker exec -it jenkins cat /etc/hosts
 
 dashboard -> 系统管理 -> 插件管理中安装 `ssh` 插件和 `Role-based Authorization Strategy` 插件，安装完成后重启 jenkins
 
-![image-20230315171029905](https://image.lvbibir.cn/blog/image-20230315171029905.png)
+![image-20230315171029905](/images/image-20230315171029905.png)
 
 新增 ssh 凭据
 
-![image-20230315172425485](https://image.lvbibir.cn/blog/image-20230315172425485.png)
+![image-20230315172425485](/images/image-20230315172425485.png)
 
 新增 ssh 配置，配置好之后右下角测试一下，连接正常后保存
 
-![image-20230315172224961](https://image.lvbibir.cn/blog/image-20230315172224961.png)
+![image-20230315172224961](/images/image-20230315172224961.png)
 
 新增 maven 配置
 
-![image-20230315170741500](https://image.lvbibir.cn/blog/image-20230315170741500.png)
+![image-20230315170741500](/images/image-20230315170741500.png)
 
 ## 3.4 权限配置
 
@@ -177,21 +177,21 @@ dashboard -> 系统管理 -> 插件管理中安装 `ssh` 插件和 `Role-based A
 
 在系统管理 -> 全局安全配置中启用基于角色的权限管理：
 
-![image-20230315172813560](https://image.lvbibir.cn/blog/image-20230315172813560.png)
+![image-20230315172813560](/images/image-20230315172813560.png)
 
 关闭代理，保存
 
-![image-20230315172855436](https://image.lvbibir.cn/blog/image-20230315172855436.png)
+![image-20230315172855436](/images/image-20230315172855436.png)
 
 分配管理员、运维和 other 三个角色，分别配置对应权限
 
-![image-20230315173418268](https://image.lvbibir.cn/blog/image-20230315173418268.png)
+![image-20230315173418268](/images/image-20230315173418268.png)
 
-![image-20230315173251456](https://image.lvbibir.cn/blog/image-20230315173251456.png)
+![image-20230315173251456](/images/image-20230315173251456.png)
 
 将用户和角色绑定
 
-![image-20230315173353689](https://image.lvbibir.cn/blog/image-20230315173353689.png)
+![image-20230315173353689](/images/image-20230315173353689.png)
 
 # 4 gitlab
 
@@ -217,21 +217,21 @@ docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
 
 配置中文，修改完后刷新网页即可
 
-![image-20230315174825623](https://image.lvbibir.cn/blog/image-20230315174825623.png)
+![image-20230315174825623](/images/image-20230315174825623.png)
 
 修改默认密码
 
-![image-20230316102521034](https://image.lvbibir.cn/blog/image-20230316102521034.png)
+![image-20230316102521034](/images/image-20230316102521034.png)
 
 ## 4.3 上传项目
 
 新建空白项目
 
-![image-20230316100124782](https://image.lvbibir.cn/blog/image-20230316100124782.png)
+![image-20230316100124782](/images/image-20230316100124782.png)
 
 新建 mall-swarm 项目
 
-![image-20230316103923131](https://image.lvbibir.cn/blog/image-20230316103923131.png)
+![image-20230316103923131](/images/image-20230316103923131.png)
 
 clone github 上的原项目，我是 windows 系统，所以这里用的是 git-bash
 
@@ -246,11 +246,11 @@ git remote add gitlab http://1.1.1.4:1080/root/mall-swarm.git
 git remote -v
 ```
 
-![image-20230316101527597](https://image.lvbibir.cn/blog/image-20230316101527597.png)
+![image-20230316101527597](/images/image-20230316101527597.png)
 
 修改一下 docker.host 变量
 
-![image-20230316101902285](https://image.lvbibir.cn/blog/image-20230316101902285.png)
+![image-20230316101902285](/images/image-20230316101902285.png)
 
 新建 commit 并提交到 gitlab 仓库，初次提交需要输入 gitlab 的用户名密码
 
@@ -260,7 +260,7 @@ git commit -m "change docker.host -> 1.1.1.4"
 git push gitlab master
 ```
 
-![image-20230316103602343](https://image.lvbibir.cn/blog/image-20230316103602343.png)
+![image-20230316103602343](/images/image-20230316103602343.png)
 
 默认配置不合理，修改 docker-compose-env.yml 中 nginx 的配置文件挂载
 
@@ -268,7 +268,7 @@ git push gitlab master
       - /data/nginx/nginx.conf:/etc/nginx/nginx.conf #配置文件挂载
 ```
 
-![image-20230316123226022](https://image.lvbibir.cn/blog/image-20230316123226022.png)
+![image-20230316123226022](/images/image-20230316123226022.png)
 
 上传到 gitlab
 
@@ -282,7 +282,7 @@ git push gitlab master
 
 需要上传到服务器的配置文件准备，如下图所示，为了方便可以将整个 `document` 目录传到服务器
 
-![image-20230316105111389](https://image.lvbibir.cn/blog/image-20230316105111389.png)
+![image-20230316105111389](/images/image-20230316105111389.png)
 
 ## 5.1 前期配置
 
@@ -328,7 +328,7 @@ docker-compose -f /mydata/document/docker/docker-compose-env.yml up -d
 
 docker-compose 会自动创建一个 `docker_default` 网络，所有容器都在这个网络下
 
-![image-20230316110813031](https://image.lvbibir.cn/blog/image-20230316110813031.png)
+![image-20230316110813031](/images/image-20230316110813031.png)
 
 启动完成后 rabbitmq 由于权限问题未能正常启动，给 log 目录设置权限，再执行 docker-compose 启动异常的容器
 
@@ -412,19 +412,19 @@ rabbitmq
   - 访问管理页面: <http://1.1.1.4:15672/> 默认账户密码: guest / guest
   - 创建管理员用户: mall / mall
 
-  ![image-20230316121205905](https://image.lvbibir.cn/blog/image-20230316121205905.png)
+  ![image-20230316121205905](/images/image-20230316121205905.png)
 
   - 创建一个新的虚拟 host 为 /mall
 
-  ![image-20230316121307706](https://image.lvbibir.cn/blog/image-20230316121307706.png)
+  ![image-20230316121307706](/images/image-20230316121307706.png)
 
   - 点击 mall 用户进入用户配置界面
 
-  ![image-20230316121408922](https://image.lvbibir.cn/blog/image-20230316121408922.png)
+  ![image-20230316121408922](/images/image-20230316121408922.png)
 
   - 给 mall 账户配置虚拟 host /mall 的权限
 
-  ![image-20230316121547316](https://image.lvbibir.cn/blog/image-20230316121547316.png)
+  ![image-20230316121547316](/images/image-20230316121547316.png)
 
 nacos
 
@@ -434,15 +434,15 @@ nacos
 
   - 需要上传的配置
 
-  <img src="https://image.lvbibir.cn/blog/image-20230316124304792.png" alt="image-20230316124304792" />
+  <img src="images/image-20230316124304792.png" alt="image-20230316124304792" />
 
   - 上传配置
 
-  ![image-20230316124618771](https://image.lvbibir.cn/blog/image-20230316124618771.png)
+  ![image-20230316124618771](/images/image-20230316124618771.png)
 
   - 全部上传完成
 
-  ![image-20230316124828650](https://image.lvbibir.cn/blog/image-20230316124828650.png)
+  ![image-20230316124828650](/images/image-20230316124828650.png)
 
 # 6 jenkins 手动发布项目
 
@@ -466,7 +466,7 @@ sed -i '/^docker run/ a\--network docker_default \\' /mydata/document/sh/*.sh
 
 确认修改是否成功
 
-![image-20230316125833420](https://image.lvbibir.cn/blog/image-20230316125833420.png)
+![image-20230316125833420](/images/image-20230316125833420.png)
 
 ## 6.2 jenkins 配置
 
@@ -474,11 +474,11 @@ sed -i '/^docker run/ a\--network docker_default \\' /mydata/document/sh/*.sh
 
 > 由于各个模块执行任务的创建都大同小异，下面将详细讲解 `mall-admin` 模块任务的创建，其他模块将简略讲解。
 
-![image-20230316131035301](https://image.lvbibir.cn/blog/image-20230316131035301.png)
+![image-20230316131035301](/images/image-20230316131035301.png)
 
 源码管理
 
-![image-20230316131241019](https://image.lvbibir.cn/blog/image-20230316131241019.png)
+![image-20230316131241019](/images/image-20230316131241019.png)
 
 创建一个构建，构建 `mall-swarm` 项目中的依赖模块，否则当构建可运行的服务模块时会因为无法找到这些模块而构建失败
 
@@ -494,11 +494,11 @@ clean package
 ${WORKSPACE}/mall-admin/pom.xml
 ```
 
-![image-20230316131838994](https://image.lvbibir.cn/blog/image-20230316131838994.png)
+![image-20230316131838994](/images/image-20230316131838994.png)
 
 再创建一个构建，通过 SSH 去执行 `sh` 脚本，这里执行的是 `mall-admin` 的运行脚本：
 
-![image-20230316132503984](https://image.lvbibir.cn/blog/image-20230316132503984.png)
+![image-20230316132503984](/images/image-20230316132503984.png)
 
 ### 6.2.2 其他模块工程配置
 
@@ -506,17 +506,17 @@ ${WORKSPACE}/mall-admin/pom.xml
 
 输入任务名称，直接复制 mall-admin 工程配置
 
-![image-20230316132845976](https://image.lvbibir.cn/blog/image-20230316132845976.png)
+![image-20230316132845976](/images/image-20230316132845976.png)
 
 修改第二步构建中的 pom 文件位置和第三步构建中的 sh 文件位置
 
-![image-20230316133013058](https://image.lvbibir.cn/blog/image-20230316133013058.png)
+![image-20230316133013058](/images/image-20230316133013058.png)
 
 ## 6.3 开始构建
 
 单击开始构建即可开始构建任务，可以实时看到任务的控制台输出
 
-![image-20230316134827150](https://image.lvbibir.cn/blog/image-20230316134827150.png)
+![image-20230316134827150](/images/image-20230316134827150.png)
 
 > 由于作为注册中心和配置中心的 Nacos 已经启动了，其他模块基本没有启动顺序的限制，但是最好还是按照下面的顺序启动。
 

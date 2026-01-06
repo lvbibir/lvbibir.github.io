@@ -8,7 +8,7 @@ keywords:
   - shell
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/shell.png" 
+    image: "images/shell.png" 
 ---
 
 # 0 前言
@@ -132,7 +132,7 @@ sleep 30
 
 新开一个终端，查看进程
 
-![image-20220630160731914](https://image.lvbibir.cn/blog/image-20220630160731914.png)
+![image-20220630160731914](/images/image-20220630160731914.png)
 
 - 第一个 pid 是在子 shell 中执行监控脚本的进程号
 - 第二个 pid 不太清楚哪里来的，也 grep 不到这个进程号，应该是脚本执行一瞬间就释放掉了

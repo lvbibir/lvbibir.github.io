@@ -10,7 +10,7 @@ keywords:
   - openeuler
 description:  "在 openeuler 2003 系统中使用 cephadm 部署 ceph-v16 (pacific) 集群" 
 cover: 
-    image:  "https: //image.lvbibir.cn/blog/ceph.png" 
+    image:  "/images/blog/ceph.png" 
 ---
 
 # 0 前言

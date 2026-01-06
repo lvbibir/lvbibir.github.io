@@ -11,7 +11,7 @@ keywords:
   - dhcp
 description: "本文主要探讨如何配置dhcp来使pxe可以应对复杂的服务器环境" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "images/default-cover.webp" 
 ---
 
 # 0 前言
@@ -81,7 +81,7 @@ Type   Architecture Name
 
 这里获取到的 arch 代码为 7
 
-![image-20220818170219859](https://image.lvbibir.cn/blog/image-20220818170219859.png)
+![image-20220818170219859](/images/image-20220818170219859.png)
 
 - AMD Ryzen 7 4800U with Radeon Graphics (x86)
 - vmware workstation v16 平台
@@ -89,7 +89,7 @@ Type   Architecture Name
 
 这里获取到的 arch 代码为 0
 
-![image-20220818171359788](https://image.lvbibir.cn/blog/image-20220818171359788.png)
+![image-20220818171359788](/images/image-20220818171359788.png)
 
 - kunpeng 920 (aarch64)
 - kvm 平台
@@ -97,7 +97,7 @@ Type   Architecture Name
 
 这里获取到的 arch 代码为 11
 
-![image-20220818172222043](https://image.lvbibir.cn/blog/image-20220818172222043.png)
+![image-20220818172222043](/images/image-20220818172222043.png)
 
 以上抓包都是在网络引导的环境下进行的，在使用已安装操作系统中的网卡去发送 dhcp 请求时，整个数据包传输过程都没有 `option 60` 和 `option 93` 这两个选项的参与，我猜测这两个选项只有在网络引导的环境下才会去参与
 

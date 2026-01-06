@@ -11,7 +11,7 @@ keywords:
   - npm
 description: "wsl 中安装 nodejs 环境, 以及修改默认源等配置"
 cover:
-    image: "https://image.lvbibir.cn/blog/logo-wsl.png"
+    image: "images/logo-wsl.png"
 ---
 
 # 0 前言

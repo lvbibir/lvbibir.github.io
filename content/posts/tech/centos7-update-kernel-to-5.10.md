@@ -11,7 +11,7 @@ keywords:
   - kernel
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "images/default-cover.webp" 
 ---
 
 # 0 前言

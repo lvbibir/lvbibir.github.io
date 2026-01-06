@@ -10,7 +10,7 @@ keywords:
   - macaddr
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "images/default-cover.webp" 
 ---
 
 # 0 前言
@@ -38,7 +38,7 @@ MACADDR=, 其中 以 AA:BB:CC:DD:EE:FF 形式的以太网设备的硬件地址.�
 3. 可以用 MACADDR 来覆盖 HWADDR，但这两个参数不能同时使用
 4. ifconfig 和 nmcli 等网络命令中显示的物理地址其实是 MACADDR 的值，虽然显示的名称写的是 HWADDR(ether)。
 
-![image-20210729101107333](https://image.lvbibir.cn/blog/image-20210729101107333.png)
+![image-20210729101107333](/images/image-20210729101107333.png)
 
 修改网卡的 mac 地址
 

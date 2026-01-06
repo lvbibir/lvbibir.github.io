@@ -8,7 +8,7 @@ keywords:
   - kubernetes
 description: "介绍一些常见的报错处理、kubectl 命令的一些用法、yaml 编写技巧、小优化等" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    image: "images/kubernetes.png"
 ---
 
 # 1 kubectl 命令的自动补全

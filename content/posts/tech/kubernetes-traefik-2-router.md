@@ -11,7 +11,7 @@ keywords:
   - ingressroute
 description: "kubernetes 中使用 Traefik ingress 的 ingressRoute 代理 http、https、tcp、udp" 
 cover:
-    image: "https://image.lvbibir.cn/blog/traefik.png"
+    image: "images/traefik.png"
 ---
 
 # 0 前言
@@ -297,7 +297,7 @@ ingressroute.traefik.containo.us/myapp1 created
 
 访问测试
 
-![image-20230419131939361](https://image.lvbibir.cn/blog/image-20230419131939361.png)
+![image-20230419131939361](/images/image-20230419131939361.png)
 
 ## 4.2 https 路由
 
@@ -343,7 +343,7 @@ ingressroute.traefik.containo.us/myapp2 created
 
 访问测试，由于是自签名证书，所以会提示不安全
 
-![image-20230419132537993](https://image.lvbibir.cn/blog/image-20230419132537993.png)
+![image-20230419132537993](/images/image-20230419132537993.png)
 
 # 5 ingressRouteTCP
 
@@ -457,9 +457,9 @@ ingressroutetcp.traefik.containo.us/mysql created
 - 添加 hosts (mysql.test.com)
 - 以 root & abc123 访问 9200 端口
 
-![image-20230419134852960](https://image.lvbibir.cn/blog/image-20230419134852960.png)
+![image-20230419134852960](/images/image-20230419134852960.png)
 
-![image-20230419134929324](https://image.lvbibir.cn/blog/image-20230419134929324.png)
+![image-20230419134929324](/images/image-20230419134929324.png)
 
 ## 5.2 带 TLS 证书
 

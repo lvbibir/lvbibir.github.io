@@ -9,7 +9,7 @@ keywords:
   - pip
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/logo-python.png" 
+    image: "images/logo-python.png" 
 ---
 
 ## 1 清单
@@ -38,7 +38,7 @@ EOF
 
 打开 cmd 使用 dos 命令 set 找到 userprofile 路径，在该路径下创建 pip 文件夹，在 pip 文件夹下创建 pip.ini
 
-![image-20211109160017309](https://image.lvbibir.cn/blog/image-20211109160017309.png)
+![image-20211109160017309](/images/image-20211109160017309.png)
 
 pip.ini 具体配置
 

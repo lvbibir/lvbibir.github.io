@@ -10,7 +10,7 @@ keywords:
   - 网络代理
 description: "介绍使用 git 过程中常用的基础使用、参数设置、常见问题、配置优化等。" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "images/default-cover.webp" 
 ---
 
 # 1 git

@@ -9,7 +9,7 @@ keywords:
   - docker
 description: "实现 docker 客户端与另一台主机上的 docker 守护进程进行通信" 
 cover:
-    image: "https://image.lvbibir.cn/blog/docker.png" 
+    image: "images/docker.png" 
 ---
 
 # 1 环境准备
@@ -42,11 +42,11 @@ node1：
 [root@localhost ~]# docker info
 ```
 
-![test](https://image.lvbibir.cn/blog/20190810222537259.png)
+![test](/images/20190810222537259.png)
 
 node2:
 
-![test](https://image.lvbibir.cn/blog/20190810223150493.png)
+![test](/images/20190810223150493.png)
 
 # 3 修改守护进程的通信方式
 
@@ -85,13 +85,13 @@ node2：
 [root@localhost ~]# curl http://192.168.0.111:2375/info
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190810232112308.png)
+![在这里插入图片描述](/images/20190810232112308.png)
 
 ```bash
 [root@localhost ~]# docker -H tcp://192.168.0.111:2375 info
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190810232347323.png)
+![在这里插入图片描述](/images/20190810232347323.png)
 
 如果频繁使用 -H 选项未免太过于麻烦，可以修改 DOCKER_HOST 这个环境变量的值，node2 就可以像使用本地的 docker 一样来远程连接 node1 的守护进程
 
@@ -100,7 +100,7 @@ node2：
 [root@localhost ~]# docker info
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190810232828582.png)
+![在这里插入图片描述](/images/20190810232828582.png)
 
 当无需再远程连接 node1 的守护进程时，将 DOCKER_HOST 环境变量置空即可
 
@@ -109,7 +109,7 @@ node2：
 [root@localhost ~]# docker info
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190810233039709.png)
+![在这里插入图片描述](/images/20190810233039709.png)
 
 node1：
 

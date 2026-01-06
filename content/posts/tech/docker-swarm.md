@@ -10,7 +10,7 @@ keywords:
   - docker swarm
 description: "介绍 docker swarm 集群的概述、使用和集群管理" 
 cover:
-    image: "https://image.lvbibir.cn/blog/docker.png" 
+    image: "images/docker.png" 
 ---
 
 # 0 前言
@@ -54,7 +54,7 @@ cover:
 [root@manager ~]# docker node ls
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190821213137271.png)
+![在这里插入图片描述](/images/20190821213137271.png)
 
 ## 1.3 添加工作节点
 
@@ -64,9 +64,9 @@ cover:
 docker swarm join --token SWMTKN-1-2zhqxsklcroivbpjzzntn5snsim79o5z7xzj4hzexk9phsz68q-d0seaxjgxpjebk8fdqt6d6yz5 192.168.0.101:2377
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190821214343274.png)
+![在这里插入图片描述](/images/20190821214343274.png)
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190821214404237.png)
+![在这里插入图片描述](/images/20190821214404237.png)
 
 在管理节点上，使用 docker node ls 查看集群节点信息
 
@@ -74,7 +74,7 @@ docker swarm join --token SWMTKN-1-2zhqxsklcroivbpjzzntn5snsim79o5z7xzj4hzexk9ph
 [root@manager ~]# docker node ls
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190821214938383.png)
+![在这里插入图片描述](/images/20190821214938383.png)
 
 ## 1.4 部署服务
 
@@ -86,7 +86,7 @@ docker swarm join --token SWMTKN-1-2zhqxsklcroivbpjzzntn5snsim79o5z7xzj4hzexk9ph
 [root@manager ~]# docker service create --replicas 1 --name helloworld alpine ping docker.com
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190821215535816.png)
+![在这里插入图片描述](/images/20190821215535816.png)
 
 ## 1.5 查看服务
 
@@ -96,7 +96,7 @@ docker swarm join --token SWMTKN-1-2zhqxsklcroivbpjzzntn5snsim79o5z7xzj4hzexk9ph
 [root@manager ~]# docker service ls
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190821215734721.png)
+![在这里插入图片描述](/images/20190821215734721.png)
 
 使用 docker service inspect 查看部署的服务具体详情
 
@@ -110,7 +110,7 @@ docker swarm join --token SWMTKN-1-2zhqxsklcroivbpjzzntn5snsim79o5z7xzj4hzexk9ph
 [root@manager ~]# docker service ps helloworld
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/2019082122023695.png)
+![在这里插入图片描述](/images/2019082122023695.png)
 
 ## 1.6 更改副本数量
 
@@ -120,7 +120,7 @@ docker swarm join --token SWMTKN-1-2zhqxsklcroivbpjzzntn5snsim79o5z7xzj4hzexk9ph
 [root@manager ~]# docker service scale helloworld=5
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/2019082122061749.png)
+![在这里插入图片描述](/images/2019082122061749.png)
 
 更改完成后，就可以谈过 docker service ps 查看这五个服务副本在 3 个节点上的具体分布和运行情况
 
@@ -128,7 +128,7 @@ docker swarm join --token SWMTKN-1-2zhqxsklcroivbpjzzntn5snsim79o5z7xzj4hzexk9ph
 [root@manager ~]# docker service ps helloworld
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190821220742171.png)
+![在这里插入图片描述](/images/20190821220742171.png)
 
 ## 1.7 删除服务
 
@@ -146,7 +146,7 @@ docker swarm join --token SWMTKN-1-2zhqxsklcroivbpjzzntn5snsim79o5z7xzj4hzexk9ph
 [root@manager ~]# docker network ls
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190821221031576.png)
+![在这里插入图片描述](/images/20190821221031576.png)
 
 在管理节点上，创建 overlay 网络
 
@@ -160,14 +160,14 @@ docker swarm join --token SWMTKN-1-2zhqxsklcroivbpjzzntn5snsim79o5z7xzj4hzexk9ph
 [root@manager ~]# docker service  create --network ov_net --name my-web --publish 8080:80 --replicas 2 nginx
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190821222655390.png)
+![在这里插入图片描述](/images/20190821222655390.png)
 
 访问 nginx 服务
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190821223028930.png)
+![在这里插入图片描述](/images/20190821223028930.png)
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190821223039274.png)
+![在这里插入图片描述](/images/20190821223039274.png)
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190821223050917.png)
+![在这里插入图片描述](/images/20190821223050917.png)
 
 以上

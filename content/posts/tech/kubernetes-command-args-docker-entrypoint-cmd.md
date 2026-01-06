@@ -11,7 +11,7 @@ keywords:
   - entrypoint
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    image: "images/kubernetes.png"
 ---
 
 # 1 command args
@@ -38,6 +38,6 @@ cover:
 
 真实的情况要远比这三条规律复杂，好在 docker 给出了 [官方的解释](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact)，如下图所示：
 
-![image-20230410160304323](https://image.lvbibir.cn/blog/image-20230410160304323.png)
+![image-20230410160304323](/images/image-20230410160304323.png)
 
 以上

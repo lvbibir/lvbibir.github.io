@@ -11,7 +11,7 @@ keywords:
   - network
 description: "介绍 centos 和 windows 中分别如何配置多网卡时以实现灵活的网络访问" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "images/default-cover.webp" 
 ---
 
 # 0 前言
@@ -28,7 +28,7 @@ cover:
 
 在 linux 系统中网络优先级是通过 `metric` 控制的，值越小，优先级越高，通过 `route -n` 查看路由
 
-![image-20220817140544169](https://image.lvbibir.cn/blog/image-20220817140544169.png)
+![image-20220817140544169](/images/image-20220817140544169.png)
 
 可以通过修改配置文件实现，在网卡配置文件中添加或者修改 `IPV4_ROUTE_METRIC=100` 参数实现，之后重启网络服务
 
@@ -93,23 +93,23 @@ any -net 192.168.45.0  netmask 255.255.255.0 dev enp4s0 metric 3
 route print 0.0.0.0
 ```
 
-![image-20220426100126587](http://image.lvbibir.cn/blog/image-20220426100126587.png)
+![image-20220426100126587](/images/image-20220426100126587.png)
 
 这两个路由分别是内网和外网的默认路由，绝大部分情况网络都是走的默认路由，但这里有两条默认路由，默认路由的优先级是按照跃点数的多少决定的，跃点数越少，优先级越高
 
 将外网无线的跃点数调小
 
-![image-20220427095904443](http://image.lvbibir.cn/blog/image-20220427095904443.png)
+![image-20220427095904443](/images/image-20220427095904443.png)
 
 route print 可以看到跃点数修改成功了，此时外网无线的跃点数更小，优先级更高
 
-![image-20220427100101830](http://image.lvbibir.cn/blog/image-20220427100101830.png)
+![image-20220427100101830](/images/image-20220427100101830.png)
 
 ## 2.2 配置路由
 
 配置路由需要以管理员权限运行 powershell 或者 cmd
 
-![image-20220427100911342](http://image.lvbibir.cn/blog/image-20220427100911342.png)
+![image-20220427100911342](/images/image-20220427100911342.png)
 
 配置路由后，内网访问也没有问题了
 
@@ -125,6 +125,6 @@ route add 172.16.4.0 mask 255.255.255.0 172.30.4.254 metric 3
 route add -p 172.16.2.0 mask 255.255.255.0 172.30.4.254 metric 3
 ```
 
-![image-20220427101256061](http://image.lvbibir.cn/blog/image-20220427101256061.png)
+![image-20220427101256061](/images/image-20220427101256061.png)
 
 以上

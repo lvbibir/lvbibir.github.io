@@ -6,7 +6,7 @@ tags: []
 keywords:
 description: "《谁的青春不迷茫》是刘同 150 万字北漂记录, 跨度十年自我对话, 给都市中焦躁不安困惑迷茫的年轻人"
 cover:
-    image: "https://image.lvbibir.cn/blog/read-shei-de-qing-chun-bu-mi-mang.jpg" 
+    image: "images/read-shei-de-qing-chun-bu-mi-mang.jpg" 
 ---
 
 > 在 20 岁到 30 岁这十年的过程中, 我们都走过一样的路. 你觉得孤独就对了, 那是让你认识自己的机会. 你觉得不被理解就对了, 那是让你认清朋友的机会. 你觉得黑暗就对了, 那样你才分辨得出什么是你的光芒. 你觉得无助就对了, 那样你才能明白谁是你成长中能扶你一把的人. 你觉得迷茫就对了, 谁的青春不迷茫.

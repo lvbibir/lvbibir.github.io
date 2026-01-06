@@ -12,7 +12,7 @@ keywords:
   - miniconda
 description: "wsl 中安装 miniconda python 虚拟环境的步骤, 包含修改 conda 源, pip 源, conda 基础使用, 以及管理 conda 的一些小建议"
 cover:
-    image: "https://image.lvbibir.cn/blog/logo-wsl.png"
+    image: "images/logo-wsl.png"
 ---
 
 # 0 前言

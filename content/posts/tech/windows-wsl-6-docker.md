@@ -12,7 +12,7 @@ keywords:
   - docker-compose
 description: "wsl2 使用原生 linux 方式安装 docker 和 docker-compose, 以及修改 docker 镜像加速地址"
 cover:
-    image: "https://image.lvbibir.cn/blog/logo-wsl.png"
+    image: "images/logo-wsl.png"
 ---
 
 # 0 前言

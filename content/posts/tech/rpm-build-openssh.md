@@ -12,7 +12,7 @@ keywords:
   - rpm构建
 description: "记录一下不同系统环境下通过源码构建 openssh rpm 包的过程" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "images/default-cover.webp" 
 ---
 
 # 0 前言
@@ -74,7 +74,7 @@ vim /opt/openssh-9.5/openssh-rpms-main/el7/SPECS/openssh.spec
 install -m755 contrib/ssh-copy-id $RPM_BUILD_ROOT/usr/bin/ssh-copy-id
 ```
 
-![image-20231114160828131](https://image.lvbibir.cn/blog/image-20231114-160828.png)
+![image-20231114160828131](/images/image-20231114-160828.png)
 
 第二处添加
 
@@ -82,7 +82,7 @@ install -m755 contrib/ssh-copy-id $RPM_BUILD_ROOT/usr/bin/ssh-copy-id
 %attr(0755,root,root) %{_bindir}/ssh-copy-id
 ```
 
-![image-20231114161012601](https://image.lvbibir.cn/blog/image-20231114-161012.png)
+![image-20231114161012601](/images/image-20231114-161012.png)
 
 下载各源码包上传至服务器 `/opt/openssh-9.5/openssh-rpms-main/downloads`
 
@@ -90,7 +90,7 @@ install -m755 contrib/ssh-copy-id $RPM_BUILD_ROOT/usr/bin/ssh-copy-id
 - [openssl](https://www.openssl.org/source/openssl-3.0.11.tar.gz)
 - [x11-ssh-askpass](https://src.fedoraproject.org/repo/pkgs/openssh/x11-ssh-askpass-1.2.4.1.tar.gz/8f2e41f3f7eaa8543a2440454637f3c3/x11-ssh-askpass-1.2.4.1.tar.gz)
 
-![image-20231114161838284](https://image.lvbibir.cn/blog/image-20231114-161838.png)
+![image-20231114161838284](/images/image-20231114-161838.png)
 
 执行编译打包脚本
 
@@ -107,7 +107,7 @@ bash compile.sh
 cd /opt/openssh-9.5/openssh-rpms-main/el7/RPMS/x86_64/; ls
 ```
 
-![image-20231114162423846](https://image.lvbibir.cn/blog/image-20231114-162423.png)
+![image-20231114162423846](/images/image-20231114-162423.png)
 
 ## 1.3 升级脚本
 

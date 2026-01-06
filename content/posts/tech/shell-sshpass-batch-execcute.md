@@ -11,7 +11,7 @@ keywords:
   - harbor
 description: "介绍一下使用 sshpass 通过读取配置文件的方式批量下发文件和执行命令" 
 cover:
-    image: "https://image.lvbibir.cn/blog/shell.png" 
+    image: "images/shell.png" 
 ---
 
 ```shell

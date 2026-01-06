@@ -10,7 +10,7 @@ keywords:
   - sig
 description: ""
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp"
+    image: "images/default-cover.webp"
 ---
 
 # 1 简介

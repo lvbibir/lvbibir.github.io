@@ -12,14 +12,14 @@ keywords:
   - troubleshooting
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "images/default-cover.webp" 
 ---
 
 # 0 前言
 
 在 openEuler20.03 (LTS-SP1) 系统上进行一些测试，发现某个东西会自动修改 ssh 配置文件导致系统无法通过密码登录，最后排查是由于安装了 cloud-init 导致的。
 
-![image-20211217152941463](https://image.lvbibir.cn/blog/image-20211217152941463.png)
+![image-20211217152941463](/images/image-20211217152941463.png)
 
 # 排查思路
 
@@ -40,7 +40,7 @@ yum install -y telnet rsync ntpdate zip unzip libaio dos2unix sos vim vim-enhanc
 
 找到了修改这个参数代码的具体实现
 
-![image-20211217153934057](https://image.lvbibir.cn/blog/image-20211217153934057.png)
+![image-20211217153934057](/images/image-20211217153934057.png)
 
 查看该文件
 
@@ -50,11 +50,11 @@ yum install -y telnet rsync ntpdate zip unzip libaio dos2unix sos vim vim-enhanc
 
 具体的判断操作和修改操作
 
-![image-20211217154333149](https://image.lvbibir.cn/blog/image-20211217154333149.png)
+![image-20211217154333149](/images/image-20211217154333149.png)
 
 修改操作就不去深究了，主要看下判断操作，可以看到判断操作是使用了 util.is_true() ，该 util 模块也在该文件中引用了
 
-![image-20211217154537176](https://image.lvbibir.cn/blog/image-20211217154537176.png)
+![image-20211217154537176](/images/image-20211217154537176.png)
 
 再去找这个 util 模块的具体实现
 
@@ -71,39 +71,39 @@ python 引用的模块路径如下，否则会抛出错误
 
 sys.path 路径不知道可以用 python 终端输出下
 
-![image-20211217155010363](https://image.lvbibir.cn/blog/image-20211217155010363.png)
+![image-20211217155010363](/images/image-20211217155010363.png)
 
 在/usr/lib/python3.7/site-packages 路径下找到了 cloudinit 模块的 util 子模块
 
-![image-20211217155130708](https://image.lvbibir.cn/blog/image-20211217155130708.png)
+![image-20211217155130708](/images/image-20211217155130708.png)
 
 查看 util.is_true 和 util.is_false 具体的函数实现
 
-![image-20211217160135163](https://image.lvbibir.cn/blog/image-20211217160135163.png)
+![image-20211217160135163](/images/image-20211217160135163.png)
 
 逻辑很简单，判断 val 参数是否为 bool 值，否则对 val 参数的值进行处理后再查看是否在 check_set 中
 
-![image-20211217160347727](https://image.lvbibir.cn/blog/image-20211217160347727.png)
+![image-20211217160347727](/images/image-20211217160347727.png)
 
 再回头看之前的 `/usr/lib/python3.7/site-packages/cloudinit/config/cc_set_passwords.py` 文件是怎样对 util.is_true 和 util.is_false 传参的
 
 可以看到是由 handle_ssh_pwauth() 函数传进来的
 
-![image-20211217160810182](https://image.lvbibir.cn/blog/image-20211217160810182.png)
+![image-20211217160810182](/images/image-20211217160810182.png)
 
 再继续找哪个文件调用了这个函数
 
 还是这个文件，第 230 行
 
-![image-20211217160953184](https://image.lvbibir.cn/blog/image-20211217160953184.png)
+![image-20211217160953184](/images/image-20211217160953184.png)
 
 这里参数 pw_auth 传的值是 cfg.get('ssh_pwauth')
 
-![image-20211217161055461](https://image.lvbibir.cn/blog/image-20211217161055461.png)
+![image-20211217161055461](/images/image-20211217161055461.png)
 
 cfg.get() 这个函数 get 的东西是 `/etc/cloud/cloud.cfg` 配置文件下的 `ssh_pwauth` 的值
 
-![image-20211217161359350](https://image.lvbibir.cn/blog/image-20211217161359350.png)
+![image-20211217161359350](/images/image-20211217161359350.png)
 
 到这里，就可以回头再看整个逻辑了
 

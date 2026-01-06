@@ -12,7 +12,7 @@ keywords:
   - grub
 description: "介绍如何在 centos7 的系统中通过配置网络规则命名文件的方式修改网卡的名称" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "images/default-cover.webp" 
 ---
 
 # 0 前言
@@ -29,7 +29,7 @@ cover:
 vim /etc/sysconfig/network-scripts/ifcfg-ens32
 ```
 
-![image-20220217101218208](https://image.lvbibir.cn/blog/image-20220217101218208.png)
+![image-20220217101218208](/images/image-20220217101218208.png)
 
 # 3 配置网络规则命名文件
 
@@ -47,16 +47,16 @@ vim /etc/default/grub
 GRUB_CMDLINE_LINUX="crashkernel=auto rd.lvm.lv=centos/root net.ifnames=0 rd.lvm.lv=centos/swap rhgb quiet"
 ```
 
-![image-20220217101742169](https://image.lvbibir.cn/blog/image-20220217101742169.png)
+![image-20220217101742169](/images/image-20220217101742169.png)
 
 ```bash
 grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
-![image-20220217101827575](https://image.lvbibir.cn/blog/image-20220217101827575.png)
+![image-20220217101827575](/images/image-20220217101827575.png)
 
 之后直接 reboot 重启系统
 
-![image-20220217101942955](https://image.lvbibir.cn/blog/image-20220217101942955.png)
+![image-20220217101942955](/images/image-20220217101942955.png)
 
 以上

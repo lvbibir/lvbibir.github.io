@@ -11,7 +11,7 @@ keywords:
   - pod
 description: "介绍 kubernetes 中 pod 的基础概念、存在意义、pod 中容器的分类、静态 pod、重启策略、健康检查等" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    image: "images/kubernetes.png"
 ---
 
 # 0 前言
@@ -243,7 +243,7 @@ spec:
 
 # 6 lifecycle
 
-![112gasgs81](https://image.lvbibir.cn/blog/112gasgs81.png)
+![112gasgs81](/images/112gasgs81.png)
 
 ## 6.1 postStart 和 preStop
 

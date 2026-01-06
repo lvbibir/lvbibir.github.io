@@ -11,7 +11,7 @@ keywords:
   - alertmanager
 description: "prometheus 架构中的 Alertmanager 介绍, 以及使用 alertmanagerconfig CRD 资源配置 Alertmanager" 
 cover:
-    image: "https://image.lvbibir.cn/blog/prometheus.png"
+    image: "images/prometheus.png"
 ---
 
 # 0 前言
@@ -30,7 +30,7 @@ Alertmanager 收到告警信息后:
 - 通过定义好的路由 `routing` 转发到正确的接收器 `recevier`
 - `recevier` 通过 `email` `dingtalk` `wechat` 等方式通知给定义好的接收人
 
-![img](https://image.lvbibir.cn/blog/1302413-20220630105727154-187545105.png)
+![img](/images/1302413-20220630105727154-187545105.png)
 
 ## 1.2 四大功能
 
@@ -444,7 +444,7 @@ DESCRIPTION:
 
 alertmanager 收到的告警大概长这个样子
 
-![image-20230430212127175](https://image.lvbibir.cn/blog/image-20230430212127175.png)
+![image-20230430212127175](/images/image-20230430212127175.png)
 
 alertmanager CRD 支持 `configMaps` 参数, 会自动挂载到 `/etc/alertmanager/configmaps` 目录, 我们可以将模板文件配置成 configmap
 
@@ -554,14 +554,14 @@ kubectl apply -f alertmanager-main-secret.yaml
 
 查看配置是否生效, 在 webUI 界面查看
 
-![image-20230430222734192](https://image.lvbibir.cn/blog/image-20230430222734192.png)
+![image-20230430222734192](/images/image-20230430222734192.png)
 
 查看新生成的告警邮件
 
 - 告警邮件
-  ![image-20230430223704567](https://image.lvbibir.cn/blog/image-20230430223704567.png)
+  ![image-20230430223704567](/images/image-20230430223704567.png)
 
 - 恢复邮件
-  ![image-20230430223637098](https://image.lvbibir.cn/blog/image-20230430223637098.png)
+  ![image-20230430223637098](/images/image-20230430223637098.png)
 
 以上

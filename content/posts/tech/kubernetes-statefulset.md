@@ -9,7 +9,7 @@ keywords:
   - statefulset
 description: ""
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    image: "images/kubernetes.png"
 ---
 
 ## 1 基础概念

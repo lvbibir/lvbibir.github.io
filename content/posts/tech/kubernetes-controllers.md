@@ -16,7 +16,7 @@ keywords:
   - deployment
 description: "介绍 kubernetes 中几种常用的控制器的使用场景和示例" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    image: "images/kubernetes.png"
 ---
 
 # 0 前言
@@ -29,7 +29,7 @@ controllers 作用：
 - 使用标签与 pod 关联
 - 负责滚动更新、伸缩、副本管理、维持 pod 状态等
 
-![Snipaste_2022-10-03_09-06-24](https://image.lvbibir.cn/blog/Snipaste_2022-10-03_09-06-24.png)
+![Snipaste_2022-10-03_09-06-24](/images/Snipaste_2022-10-03_09-06-24.png)
 
 # 1 daemonset
 
@@ -47,7 +47,7 @@ ReplicaSet：副本集
 
 - Deployment 每次发布都会创建一个 RS 作为记录，用于实现回滚
 
-![image-20221003113534541](https://image.lvbibir.cn/blog/image-20221003113534541.png)
+![image-20221003113534541](/images/image-20221003113534541.png)
 
 # 5 deployment
 
@@ -57,7 +57,7 @@ deployment 用于网站、API、微服务等，功能特性：
 - 具有上线部署、副本设定、滚动升级、回滚等功能
 - 提供声明式更新，例如只更新一个新的 image
 
-![image-20221003092803567](https://image.lvbibir.cn/blog/image-20221003092803567.png)
+![image-20221003092803567](/images/image-20221003092803567.png)
 
 示例
 

@@ -39,7 +39,7 @@ languages:
     #   title: (=^･ω･^=)
     #   subtitle: 👇 欢迎光临小站，联系方式 👇
     #   # subtitle: "🧨学而时习之，不亦说乎？有朋自远方来，不亦乐乎？<br/>👇联系方式"
-    #   imageUrl: "https://image.lvbibir.cn/blog/avatar.webp"
+    #   imageUrl: "/images/avatar.webp"
     #   imageTitle: 
     #   imageWidth: 120
     #   imageHeight: 120
@@ -151,9 +151,9 @@ params:
     # - name: instagram
     #   url: "img/instagram.png"
     - name: QQ
-      url: "https://image.lvbibir.cn/blog/qq.png"
+      url: "/images/qq.png"
     - name: WeChat
-      url: "https://image.lvbibir.cn/blog/wechat.png"
+      url: "/images/wechat.png"
     - name: bilibili
       url: "https://space.bilibili.com/280428279"
     - name: email
@@ -163,7 +163,7 @@ params:
 
   label:
     text: "lvbibir's Blog"
-    icon: "https://image.lvbibir.cn/blog/avatar.webp"
+    icon: "/images/avatar.webp"
     iconHeight: 35
 
   analytics:
@@ -171,11 +171,11 @@ params:
       SiteVerificationTag: ""
 
   assets:
-    favicon: "https://image.lvbibir.cn/blog/avatar.webp"
-    favicon16x16: "https://image.lvbibir.cn/blog/avatar.webp"
-    favicon32x32: "https://image.lvbibir.cn/blog/avatar.webp"
-    apple_touch_icon: "https://image.lvbibir.cn/blog/avatar.webp"
-    safari_pinned_tab: "https://image.lvbibir.cn/blog/avatar.webp"
+    favicon: "/images/avatar.webp"
+    favicon16x16: "/images/avatar.webp"
+    favicon32x32: "/images/avatar.webp"
+    apple_touch_icon: "/images/avatar.webp"
+    safari_pinned_tab: "/images/avatar.webp"
 
   cover:
     hidden: false          # 隐藏cover图片，但是不在格式化数据中隐藏
@@ -200,8 +200,8 @@ params:
   # 打赏
   Reward: true 
   # 可用绝对和相对地址，相对地址的图片需放在static/img下
-  WechatPay: https://image.lvbibir.cn/blog/wechatpay.png
-  Alipay: https://image.lvbibir.cn/blog/alipay.png #打赏支付宝图片地址
+  WechatPay: /images/wechatpay.png
+  Alipay: /images/alipay.png #打赏支付宝图片地址
 
   # twkioo评论
   twikoo:

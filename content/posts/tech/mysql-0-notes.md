@@ -8,7 +8,7 @@ keywords:
   - mysql
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/mysql.png" 
+    image: "images/mysql.png" 
 ---
 
 # 0 下载地址

@@ -10,7 +10,7 @@ keywords:
   - network
 description: "介绍 docker 容器在不同宿主机下实现通信的几种方案" 
 cover:
-    image: "https://image.lvbibir.cn/blog/docker.png" 
+    image: "images/docker.png" 
 ---
 
 # 0 前言
@@ -23,7 +23,7 @@ cover:
 
 # 1 网桥
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190815125207352.png)
+![在这里插入图片描述](/images/20190815125207352.png)
 
 # 2 open vswitch
 
@@ -67,7 +67,7 @@ Macvlan 网络有两种模式：bridge 模式与 802.1q trunk bridge 模式。
 [root@node-1 ~]# docker network ls
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190818182057577.png)
+![在这里插入图片描述](/images/20190818182057577.png)
 
 - node-1
 
@@ -90,7 +90,7 @@ docker run -itd --name bbox-2 --ip 10.0.0.12 --network mac_net1 busybox
 
 可以 ping 通 ip，但是无法 ping 通主机名，因为它没有 dns 解析
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190818182937702.png)
+![在这里插入图片描述](/images/20190818182937702.png)
 
 ```bash
 [root@node-1 ~]# brctl show
@@ -98,7 +98,7 @@ docker run -itd --name bbox-2 --ip 10.0.0.12 --network mac_net1 busybox
 
 因为 macvlan 不依赖于 bridge 网络，所以查看不到新的桥接网络
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190818183048914.png)
+![在这里插入图片描述](/images/20190818183048914.png)
 
 ```bash
 [root@node-1 ~]# docker exec bbox-1  ip link
@@ -106,7 +106,7 @@ docker run -itd --name bbox-2 --ip 10.0.0.12 --network mac_net1 busybox
 
 查看到 eth0 连接到了 if2
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190818183317728.png)
+![在这里插入图片描述](/images/20190818183317728.png)
 
 ```bash
 [root@node-1 ~]# ip link show ens33
@@ -114,7 +114,7 @@ docker run -itd --name bbox-2 --ip 10.0.0.12 --network mac_net1 busybox
 
 可以查看到 ens33 的编号是 2，即 bbox-1 容器的 eth0 网卡连接到了 ens33 物理网卡
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190818183502889.png)
+![在这里插入图片描述](/images/20190818183502889.png)
 
 ```bash
 [root@node-1 ~]# docker network create  -d macvlan -o parent=ens33 mac_net2
@@ -272,7 +272,7 @@ iptables -A FORWARD -i ens32 -o ens32.10 -j ACCEPT
 
 ## 5.1 简介
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190819130602900.png)
+![在这里插入图片描述](/images/20190819130602900.png)
 
 ## 5.2 准备 overlay 环境
 
@@ -296,7 +296,7 @@ iptables -A FORWARD -i ens32 -o ens32.10 -j ACCEPT
 
 容器启动后可以通过 192.168.0.101:8500 访问到 consul
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190819224043952.png)
+![在这里插入图片描述](/images/20190819224043952.png)
 
 1. 修改 docker 配置文件
 
@@ -316,7 +316,7 @@ ExecStart=/usr/bin/dockerd  -H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock
 
 node-2 和 node-3 会自动注册到 consul 数据库中。
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190819225334857.png)
+![在这里插入图片描述](/images/20190819225334857.png)
 
 ## 5.3 创建 overlay 网络
 
@@ -334,7 +334,7 @@ node-2 和 node-3 会自动注册到 consul 数据库中。
 [root@node-2 ~]# docker network ls
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190819225928983.png)
+![在这里插入图片描述](/images/20190819225928983.png)
 
 1. node-3 查看创建的网络
 
@@ -344,7 +344,7 @@ node-2 和 node-3 会自动注册到 consul 数据库中。
 [root@node-3 ~]# docker network ls
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190819230148207.png)
+![在这里插入图片描述](/images/20190819230148207.png)
 
 node-3 上也能看到 ov_net1，只是因为创建 ov_net1 时将 overlay 网络信息存入了 consul，node-3 从 consul 读取到了新网络数据。之后 ov_net1 的任何变化都会同步到 node-2 和 node-3
 
@@ -354,7 +354,7 @@ node-3 上也能看到 ov_net1，只是因为创建 ov_net1 时将 overlay 网�
 [root@node-2 ~]# docker network inspect ov_net1
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190819230439425.png)
+![在这里插入图片描述](/images/20190819230439425.png)
 
 IPAM 是指 IP Address Management，docker 自动为 ov_net1 分配的 IP 空间为 10.0.0.0/24
 
@@ -386,13 +386,13 @@ default via 172.18.0.1 dev eth1
 [root@node-2 ~]# docker network ls
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190819231543466.png)
+![在这里插入图片描述](/images/20190819231543466.png)
 
 ```bash
 [root@node-2 ~]# docker network inspect docker_gwbridge
 ```
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190819232009799.png)
+![在这里插入图片描述](/images/20190819232009799.png)
 
 从 docker network inspect docker_gwbridge 输出可确认 docker_gwbridge 的 IP 地址范围是 172.18.0.0/16，当前连接的容器就是 bbox-1（172.18.0.2）
 
@@ -465,7 +465,7 @@ docker 会为每个 overlay 网络创建一个独立的 network namespace，其�
 
 br0 除了连接所有的 veth pair，还会连接一个 vxlan 设备，用于与其他 host 建立 vxlan tunnel。容器之间的数据就是通过这个 tunnel 通信的。逻辑网络拓扑结构如图所示：
 
-![在这里插入图片描述](https://image.lvbibir.cn/blog/20190819233352547.png)
+![在这里插入图片描述](/images/20190819233352547.png)
 
 ```bash
 [root@node-2 ~]# brctl show

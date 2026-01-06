@@ -10,7 +10,7 @@ keywords:
   - kubernetes
 description: "介绍 kubernetes, 并在 centos 中使用 kubeadm 快速搭建 k8s 集群 v1.22.3、安装cni组件" 
 cover:
-    image: "https://image.lvbibir.cn/blog/kubernetes.png"
+    image: "images/kubernetes.png"
 ---
 
 # 1 Kubernetes 概述
@@ -45,7 +45,7 @@ Kubeadm 概述
 - `Kubeadm` 仅关心如何初始化并启动集群，余下的其他操作，例如安装 `Kubernetes Dashboard`、监控系统、日志系统等必要的附加组件则不在其考虑范围之内，需要管理员自行部署。
 - `Kubeadm` 集成了 `Kubeadm init` 和 `kubeadm join` 等工具程序，其中 `kubeadm init` 用于集群的快速初始化，其核心功能是部署 Master 节点的各个组件，而 `kubeadm join` 则用于将节点快速加入到指定集群中，它们是创建 `Kubernetes` 集群最佳实践的“快速路径”。另外，`kubeadm token` 可于集群构建后管理用于加入集群时使用的认证令牌（`token`)，而 `kubeadm reset` 命令的功能则是删除集群构建过程中生成的文件以重置回初始状态。
 
-![img](https://image.lvbibir.cn/blog/828019-20201006171931291-1034333699.png)
+![img](/images/828019-20201006171931291-1034333699.png)
 
 # 2 环境准备
 
@@ -291,7 +291,7 @@ cadvisor 负责提供数据，已集成到 k8s 中
 
 Metrics-server 负责数据汇总，需额外安装
 
-![Snipaste_2022-10-02_09-04-36](https://image.lvbibir.cn/blog/Snipaste_2022-10-02_09-04-36.png)
+![Snipaste_2022-10-02_09-04-36](/images/Snipaste_2022-10-02_09-04-36.png)
 
 下载 yaml
 

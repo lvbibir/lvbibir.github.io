@@ -12,7 +12,7 @@ keywords:
   - openssl
 description: "以源码编译的方式, 将 suse12sp5 默认的 openssl 从 1.0.2j 升级到 1.1.1i, openssh 从 7.2p2 升级至 9.7p1."
 cover:
-    image: "https://image.lvbibir.cn/blog/logo-suse.png" 
+    image: "images/logo-suse.png" 
 ---
 
 ```bash

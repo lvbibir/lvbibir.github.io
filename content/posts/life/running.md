@@ -6,7 +6,7 @@ tags: []
 keywords:
 description: "记录一下本跑渣的跑步日常，一点一滴见证自己成长~"
 cover:
-    image: "https://image.lvbibir.cn/blog/cover-running.jpg"
+    image: "images/cover-running.jpg"
 ---
 
 > 标题说明: 月份 _ 当月跑步次数 _ 当月跑步距离
@@ -15,166 +15,166 @@ cover:
 
 ## 11_09_105
 
-![](https://image.lvbibir.cn/blog/running-2025-11.png)
+![](/images/running-2025-11.png)
 
 ## 10_09_78
 
-![](https://image.lvbibir.cn/blog/running-2025-10.png)
+![](/images/running-2025-10.png)
 
 ## 09_15_154
 
-![](https://image.lvbibir.cn/blog/running-2025-09.png)
+![](/images/running-2025-09.png)
 
 ## 08_11_111
 
-![](https://image.lvbibir.cn/blog/running-2025-08.png)
+![](/images/running-2025-08.png)
 
 ## 07_15_135
 
-![](https://image.lvbibir.cn/blog/running-2025-07.png)
+![](/images/running-2025-07.png)
 
 ## 06_13_116
 
-![](https://image.lvbibir.cn/blog/running-2025-06.png)
+![](/images/running-2025-06.png)
 
 ## 05_07_48
 
-![](https://image.lvbibir.cn/blog/running-2025-05.png)
+![](/images/running-2025-05.png)
 
 ## 04_07_70
 
-![](https://image.lvbibir.cn/blog/running-2025-04.png)
+![](/images/running-2025-04.png)
 
 ## 03_12_91
 
-![](https://image.lvbibir.cn/blog/running-2025-03.png)
+![](/images/running-2025-03.png)
 
 ## 02_07_47
 
-![](https://image.lvbibir.cn/blog/running-2025-02.png)
+![](/images/running-2025-02.png)
 
 ## 01_08_72
 
-![](https://image.lvbibir.cn/blog/running-2025-01.png)
+![](/images/running-2025-01.png)
 
 # 2024
 
 ## 12_13_117
 
-![](https://image.lvbibir.cn/blog/running-2024-12.png)
+![](/images/running-2024-12.png)
 
 ## 11_12_103
 
-![](https://image.lvbibir.cn/blog/running-2024-11.png)
+![](/images/running-2024-11.png)
 
 ## 10_10_82
 
-![](https://image.lvbibir.cn/blog/running-2024-10.png)
+![](/images/running-2024-10.png)
 
 ## 09_07_66
 
-![](https://image.lvbibir.cn/blog/running-2024-09.png)
+![](/images/running-2024-09.png)
 
 ## 08_09_89
 
-![](https://image.lvbibir.cn/blog/running-2024-08.png)
+![](/images/running-2024-08.png)
 
 ## 07_16_200
 
-![](https://image.lvbibir.cn/blog/running-2024-07.png)
+![](/images/running-2024-07.png)
 
 ## 06_08_73
 
-![](https://image.lvbibir.cn/blog/running-2024-06.png)
+![](/images/running-2024-06.png)
 
 ## 05_10_101
 
-![](https://image.lvbibir.cn/blog/running-2024-05.png)
+![](/images/running-2024-05.png)
 
 ## 04_08_65
 
-![](https://image.lvbibir.cn/blog/running-2024-04.png)
+![](/images/running-2024-04.png)
 
 ## 03_10_55
 
-![](https://image.lvbibir.cn/blog/running-2024-03.png)
+![](/images/running-2024-03.png)
 
 ## 02_04_20
 
-![](https://image.lvbibir.cn/blog/running-2024-02.png)
+![](/images/running-2024-02.png)
 
 ## 01_05_25
 
-![](https://image.lvbibir.cn/blog/running-2024-01.png)
+![](/images/running-2024-01.png)
 
 # 2023
 
 ## 12_05_40
 
-![](https://image.lvbibir.cn/blog/running-2023-12.png)
+![](/images/running-2023-12.png)
 
 ## 11_05_40
 
-![](https://image.lvbibir.cn/blog/running-2023-11.png)
+![](/images/running-2023-11.png)
 
 ## 10_06_62
 
-![](https://image.lvbibir.cn/blog/running-2023-10.png)
+![](/images/running-2023-10.png)
 
 ## 09_18_140
 
-![](https://image.lvbibir.cn/blog/running-2023-09.png)
+![](/images/running-2023-09.png)
 
 ## 08_05_25
 
-![](https://image.lvbibir.cn/blog/running-2023-08.png)
+![](/images/running-2023-08.png)
 
 ## 01-07_15_64
 
-![](https://image.lvbibir.cn/blog/running-2023-01-07.png)
+![](/images/running-2023-01-07.png)
 
 # 2022
 
 ## 12_01_5
 
-![](https://image.lvbibir.cn/blog/running-2022-12.png)
+![](/images/running-2022-12.png)
 
 ## 11_08_51
 
-![](https://image.lvbibir.cn/blog/running-2022-11.png)
+![](/images/running-2022-11.png)
 
 ## 10_16_100
 
-![](https://image.lvbibir.cn/blog/running-2022-10.png)
+![](/images/running-2022-10.png)
 
 ## 09_13_123
 
-![](https://image.lvbibir.cn/blog/running-2022-9.png)
+![](/images/running-2022-9.png)
 
 ### 0917 第一次半马
 
-![](https://image.lvbibir.cn/blog/running-half-marathon-first.jpg)
+![](/images/running-half-marathon-first.jpg)
 
 ## 08_15_124
 
-![](https://image.lvbibir.cn/blog/running-2022-8.jpg)
+![](/images/running-2022-8.jpg)
 
 ### 0827 第一次 15km
 
-![](https://image.lvbibir.cn/blog/running-15km-first.jpg)
+![](/images/running-15km-first.jpg)
 
 ## 07_15_78
 
-![](https://image.lvbibir.cn/blog/running-2022-7.jpg)
+![](/images/running-2022-7.jpg)
 
 ### 0728 第一次 10km
 
-![](https://image.lvbibir.cn/blog/running-10km-first.jpg)
+![](/images/running-10km-first.jpg)
 
 ### 0706 第一次 5km
 
-![](https://image.lvbibir.cn/blog/running-5km-first.jpg)
+![](/images/running-5km-first.jpg)
 
 ## 06_10_26
 
-![](https://image.lvbibir.cn/blog/running-2022-6.jpg)
+![](/images/running-2022-6.jpg)

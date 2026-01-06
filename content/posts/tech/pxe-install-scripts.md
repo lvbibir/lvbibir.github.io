@@ -11,7 +11,7 @@ keywords:
   - dhcp
 description: "自己整理的一些工作中用到的不同系统对应的 pxe 配置方法" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "images/default-cover.webp" 
 ---
 
 # 0 前言
@@ -44,7 +44,7 @@ ip 地址：1.1.1.21
 
 网卡选择 nat 模式，注意关闭一下 workstation 自带的 dhcp，也可使用自定义的 `lan区段`
 
-![](https://image.lvbibir.cn/blog/image-20220712100835390.png)
+![](/images/image-20220712100835390.png)
 
 ## 1.2 关闭防火墙及 selinux
 
@@ -77,7 +77,7 @@ dnf clean all
 dnf makecache
 ```
 
-![image-20220712141522049](https://image.lvbibir.cn/blog/image-20220712141522049.png)
+![image-20220712141522049](/images/image-20220712141522049.png)
 
 cenots8 安装 syslinux 时需要加 --nonlinux 后缀，centos7 则不需要
 
@@ -85,7 +85,7 @@ cenots8 安装 syslinux 时需要加 --nonlinux 后缀，centos7 则不需要
  dnf install  dhcp-server tftp-server httpd syslinux-nonlinux
 ```
 
-![image-20220712141810455](https://image.lvbibir.cn/blog/image-20220712141810455.png)
+![image-20220712141810455](/images/image-20220712141810455.png)
 
 ## 1.4 http 服务配置
 

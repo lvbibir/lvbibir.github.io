@@ -9,7 +9,7 @@ keywords:
   - history
 description: ""
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp"
+    image: "images/default-cover.webp"
 ---
 
 在 `/etc/prifile.d` 目录下新建一个文件，用户登录系统时自动生效
@@ -37,6 +37,6 @@ shopt -s histappend  # 防止会话退出时覆盖其他会话写到HISTFILE的�
 
 效果如下
 
-![image-20221107142133035](https://image.lvbibir.cn/blog/image-20221107142133035.png)
+![image-20221107142133035](/images/image-20221107142133035.png)
 
 以上

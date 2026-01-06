@@ -10,7 +10,7 @@ keywords:
   - docker
 description: "" 
 cover:
-    image: "https://image.lvbibir.cn/blog/ceph.png" 
+    image: "images/ceph.png" 
 ---
 
 # 0 前言
@@ -47,7 +47,7 @@ cover:
 
 如下，注释三行，大约 937 行
 
-![image-20220819162607128](https://image.lvbibir.cn/blog/image-20220819162607128.png)
+![image-20220819162607128](/images/image-20220819162607128.png)
 
 如下，三处修改大约位于 1342 行
 
@@ -55,7 +55,7 @@ cover:
 2. 修改 cepadm 命令的 `pull` 为 `inspect-image`
 3. 获取 container 数据改为直接写死
 
-![image-20220819162743610](https://image.lvbibir.cn/blog/image-20220819162743610.png)
+![image-20220819162743610](/images/image-20220819162743610.png)
 
 至此，已修改完毕，将容器提交为新的镜像
 

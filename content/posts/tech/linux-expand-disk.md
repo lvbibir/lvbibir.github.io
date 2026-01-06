@@ -9,7 +9,7 @@ keywords:
   - free
 description: "介绍一下 Linux 系统中扩容磁盘的几种方式, 涵盖大部分生产环境中需要对服务器进行磁盘扩容的操作" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp"
+    image: "images/default-cover.webp"
 ---
 
 # 0 原盘扩容

@@ -11,7 +11,7 @@ keywords:
   - H3C
 description: "记录一下在 H3C 服务器上系统无法引导的问题的解决" 
 cover:
-    image: "https://image.lvbibir.cn/blog/default-cover.webp" 
+    image: "images/default-cover.webp" 
 ---
 
 前端时间在国家信息中心的一个项目上需要在 H3C 服务器上安装操作系统然后配置一套 spring boot 项目，结果在装操作系统过程中就遇到了问题：安装完操作系统后无法自动引导，只能通过重启服务器按 F7 进入引导选项，选择对应的逻辑盘才能正常引导
