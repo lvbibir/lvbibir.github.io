@@ -3,6 +3,8 @@
 {{ $postss := (where .Site.RegularPages "Section" "==" "posts") }}
 {{ $postCount := len $postss }}
 
+{{- $monthMap := dict "January" "1月" "February" "2月" "March" "3月" "April" "4月" "May" "5月" "June" "6月" "July" "7月" "August" "8月" "September" "9月" "October" "10月" "November" "11月" "December" "12月" }}
+
 <header class="page-header">
   <h1>
     {{ .Title }} <sup class="archive-count-title" style="font-size: 20px; color: var(--secondary);">&nbsp;&nbsp; 文章总数 {{ $postCount }} </sup>
@@ -29,45 +31,8 @@
   {{- range .Pages.GroupByDate "January" }}
   <div class="archive-month">
     <h3 class="archive-month-header">
-      {{- if eq .Key "December" }}
-      {{ "12月" }}
-      {{- end }}
-      {{- if eq .Key "November" }}
-      {{ "11月" }}
-      {{- end }}
-      {{- if eq .Key "October" }}
-      {{ "10月" }}
-      {{- end }}
-      {{- if eq .Key "September" }}
-      {{ "9月" }}
-      {{- end }}
-      {{- if eq .Key "August" }}
-      {{ "8月" }}
-      {{- end }}
-      {{- if eq .Key "July" }}
-      {{ "7月" }}
-      {{- end }}
-      {{- if eq .Key "June" }}
-      {{ "6月" }}
-      {{- end }}
-      {{- if eq .Key "May" }}
-      {{ "5月" }}
-      {{- end }}
-      {{- if eq .Key "April" }}
-      {{ "4月" }}
-      {{- end }}
-      {{- if eq .Key "March" }}
-      {{ "3月" }}
-      {{- end }}
-      {{- if eq .Key "February" }}
-      {{ "2月" }}
-      {{- end }}
-      {{- if eq .Key "January" }}
-      {{ "1月" }}
-      {{- end }}
-      <!-- {{- .Key }} -->
-      <sup class="archive-count">&nbsp;&nbsp;{{ len .Pages }}
-      </sup>
+      {{ index $monthMap .Key }}
+      <sup class="archive-count">&nbsp;&nbsp;{{ len .Pages }}</sup>
     </h3>
     <div class="archive-posts">
       {{- range .Pages }}

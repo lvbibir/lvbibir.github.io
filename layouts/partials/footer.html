@@ -3,23 +3,36 @@
 <footer class="footer">
 
     <a href="https://gohugo.io/" target="_blank">
-        <!-- <img style="display: unset;" src="https://img.shields.io/badge/frame-hugo-blue?style=flat&logo=hugo"> -->
         <img style="display: unset;" src="https://image.lvbibir.cn/blog/frame-hugo-blue.svg">
     </a>
     <a href="https://github.com/adityatelange/hugo-PaperMod" target="_blank">
-        <!-- <img style="display: unset;" src="https://img.shields.io/badge/theme-papermod-lightgrey?style=flat&logo=BookStack"> -->
         <img style="display: unset;" src="https://image.lvbibir.cn/blog/theme-papermod-lightgrey.svg">
     </a>
     <a href="https://cn.aliyun.com/" target="_blank">
-        <!-- <img style="display: unset;" src="https://img.shields.io/badge/图床-阿里云-orange?style=flat&logo=alibabacloud"> -->
         <img style="display: unset;" src="https://image.lvbibir.cn/blog/图床-阿里云-orange.svg">
     </a>
 
     <br>
 
     <span id="runtime_span"></span>
-    <script
-        type="text/javascript">function show_runtime() { window.setTimeout("show_runtime()", 1000); X = new Date("7/13/2021 1:00:00"); Y = new Date(); T = (Y.getTime() - X.getTime()); M = 24 * 60 * 60 * 1000; a = T / M; A = Math.floor(a); b = (a - A) * 24; B = Math.floor(b); c = (b - B) * 60; C = Math.floor((b - B) * 60); D = Math.floor((c - C) * 60); runtime_span.innerHTML = "网站已运行" + A + "天" + B + "小时" + C + "分" + D + "秒" } show_runtime();</script>
+    <script type="text/javascript">
+        function show_runtime() {
+            window.setTimeout("show_runtime()", 1000);
+            var X = new Date("7/13/2021 1:00:00");
+            var Y = new Date();
+            var T = (Y.getTime() - X.getTime());
+            var M = 24 * 60 * 60 * 1000;
+            var a = T / M;
+            var A = Math.floor(a);
+            var b = (a - A) * 24;
+            var B = Math.floor(b);
+            var c = (b - B) * 60;
+            var C = Math.floor(c);
+            var D = Math.floor((c - C) * 60);
+            document.getElementById("runtime_span").innerHTML = "网站已运行" + A + "天" + B + "小时" + C + "分" + D + "秒";
+        }
+        show_runtime();
+    </script>
     |
     <script defer src="https://www.lvbibir.cn/busuanzi/js"></script>
     <span id="busuanzi_container">
@@ -30,29 +43,17 @@
 
     <br>
 
-    <a href="https://beian.miit.gov.cn/" target="_blank" style="border-bottom:1px solid">{{ .Site.Params.FilingNo
-        }}</a>&nbsp;
+    <a href="https://beian.miit.gov.cn/" target="_blank" style="border-bottom:1px solid">{{ .Site.Params.FilingNo }}</a>&nbsp;
     |
     {{- if .Site.Copyright }}
     <span>{{ .Site.Copyright | markdownify }}</span>
     {{- else }}
     <span>
-        Copyright
-        &copy;
-        {{ .Site.Params.StartYear }}-{{ now.Year }}
+        Copyright &copy; {{ .Site.Params.StartYear }}-{{ now.Year }}
         <a href="{{ "" | absLangURL }}" style="border-bottom:1px solid">{{ .Site.Title }}</a>
     </span>
     {{- end }}
 
-    <!--
-    <span>
-        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=null"
-           style="display:inline-block;text-decoration:none;height:20px;color:#939393;">
-            <img src="{{ .Site.Params.PublicSecurityIconLink }}" style="float:left;margin: 0px 5px 0px 0px;"/>
-            {{ .Site.Params.PublicNetworkSecurity }}
-        </a>
-    </span>
-     -->
 </footer>
 {{- end }}
 
@@ -73,7 +74,6 @@
         const scrollHeight = document.documentElement.scrollHeight;
         const clientHeight = document.documentElement.clientHeight;
         const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        // readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0) + '%';
         readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
     })
 </script>
@@ -107,7 +107,6 @@
             }
         });
     });
-
 </script>
 
 {{- if (not .Site.Params.disableScrollToTop) }}
@@ -136,40 +135,8 @@
             localStorage.setItem("pref-theme", 'dark');
         }
     })
-
 </script>
 {{- end }}
-
-<!-- <script>
-    document.body.addEventListener('copy', function (e) {
-        if (window.getSelection().toString() && window.getSelection().toString().length > 50) {
-            let clipboardData = e.clipboardData || window.clipboardData;
-            if (clipboardData) {
-                e.preventDefault();
-                let htmlData = window.getSelection().toString() +
-                    '\r\n\n————————————————\r\n' +
-                    '版权声明：本文为「' + {
-                { .
-                    Site.Title
-                }
-            }
-                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
-                '\r\n原文链接：' + location.href;
-                let textData = window.getSelection().toString() +
-                    '\r\n\n————————————————\r\n' +
-                    '版权声明：本文为「' + {
-                { .
-                    Site.Title
-                }
-            }
-                +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
-                '\r\n原文链接：' + location.href;
-                clipboardData.setData('text/html', htmlData);
-                clipboardData.setData('text/plain', textData);
-            }
-        }
-    });
-</script> -->
 
 {{- if (and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") (.Param "ShowCodeCopyButtons")) }}
 <script>
@@ -188,21 +155,6 @@
         }
 
         copybutton.addEventListener('click', (cb) => {
-            // if ('clipboard' in navigator) {
-            //     let text = codeblock.textContent +
-            //         '\r\n————————————————\r\n' +
-            //         '版权声明：本文为「' + {
-            //     { .
-            //         Site.Title
-            //     }
-            // }
-            //     +'」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。' +
-            //     '\r\n原文链接：' + location.href;
-            //     navigator.clipboard.writeText(text);
-            //     copyingDone();
-            //     return;
-            // }
-
             const range = document.createRange();
             range.selectNodeContents(codeblock);
             const selection = window.getSelection();
@@ -211,9 +163,7 @@
             try {
                 document.execCommand('copy');
                 copyingDone();
-            } catch (e) {
-            }
-            ;
+            } catch (e) {}
             selection.removeRange(range);
         });
 
@@ -240,11 +190,9 @@
         } else if (container.parentNode.firstChild === container) {
             // td containing LineNos
         } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === "TABLE") {
-            // table containing LineNos and code
             codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
             container.appendChild(macTool)
         } else {
-            // code blocks not having highlight as parent class
             codeblock.parentNode.appendChild(copybutton);
             container.appendChild(macTool)
         }
@@ -252,7 +200,6 @@
 </script>
 {{- end }}
 
-<!-- 代码块自动扩展 -->
 {{- if .Site.Params.extendCodeBackground }}
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
