@@ -6,7 +6,7 @@
 </head>
 
 <body class="
-{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`) (eq .Layout `tags`) (eq .Layout `about`) (eq .Layout `links`)) -}}
+{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`) (eq .Layout `tags`) (eq .Layout `about`) (eq .Layout `links`) (eq .File.BaseFileName `talk`)) -}}
 {{- print "list" -}}
 {{- end -}}
 {{- if eq $.Site.Params.defaultTheme `dark` -}}
