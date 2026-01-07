@@ -12,23 +12,21 @@
 }
 
 .toc-container.wide {
-    position: fixed;
-    left: 16px;
-    top: 80px;
+    position: absolute;
+    height: 100%;
+    left: calc((var(--toc-width) + var(--gap)) * -0.85);
+    top: calc(var(--gap) * 1.3);
     width: var(--toc-width);
-    max-height: calc(100vh - 100px);
-    z-index: 50;
 }
 
 .wide .toc {
-    position: relative;
-    top: 0;
-    border: 1.2px solid var(--border);
-    background: var(--entry);
-    border-radius: var(--radius);
+    position: sticky;
+    top: var(--gap);
+    border: unset;
+    background: unset;
+    border-radius: unset;
     width: 100%;
-    margin: 0;
-    padding: 0.4em;
+    margin: 0 2px 40px 2px;
 }
 
 .toc details summary {
