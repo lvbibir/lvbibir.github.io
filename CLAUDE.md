@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-> 📅 最后更新: 2026-01-07 | 📊 项目文件数: ~2162 | 📝 文章数: 134
+> 📅 最后更新: 2026-01-08 | 📊 项目文件数: ~2053 | 📝 文章数: 134
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
@@ -46,11 +46,11 @@ graph TB
         TWIKOO["├─ twikoo/<br/>评论系统"]
         ARTITALK["└─ artitalk/<br/>说说功能"]
         FONTS["fonts/<br/>JetBrains+LXGW"]
-        IMAGES["images/<br/>~1800张图片"]
+        IMAGES["images/<br/>497张图片"]
     end
 
     subgraph Assets["🎯 assets/"]
-        CSS["css/extended/<br/>blank.css 自定义样式"]
+        CSS["css/extended/<br/>9个自定义样式文件"]
     end
 
     subgraph Theme["🎭 themes/"]
@@ -98,10 +98,10 @@ hugo -F --cleanDestinationDir
 - 图片: `/mnt/c/Users/lvbibir/OneDrive/1-lvbibir/obsidian/lvbibir/images/` -> `static/images/`
 
 文章分类目录:
-- `content/posts/tech/` - 技术文章
-- `content/posts/blog/` - 建站相关
-- `content/posts/read/` - 读书笔记
-- `content/posts/life/` - 生活记录
+- `content/posts/tech/` - 技术文章 (118 篇)
+- `content/posts/blog/` - 建站相关 (8 篇)
+- `content/posts/read/` - 读书笔记 (4 篇)
+- `content/posts/life/` - 生活记录 (3 篇)
 
 ## Architecture
 
@@ -125,9 +125,21 @@ hugo -F --cleanDestinationDir
 | 字体 | JetBrains Mono + LXGW 混合字体 | `static/fonts/JetBrainsLxgwNerdMono/` |
 | 访问统计 | 不蒜子 | 外部脚本 |
 
-### 自定义样式 (assets/css/extended/blank.css)
+### 自定义样式 (assets/css/extended/)
 
-关键 CSS 变量:
+| 文件 | 用途 | 行数 |
+|------|------|------|
+| `blank.css` | 主样式文件 (标题/暗色模式/图片/表格) | 338 |
+| `toc.css` | 目录样式 (响应式/高亮/动画) | 249 |
+| `code.css` | 代码块样式 | 100 |
+| `friend-link.css` | 友链卡片样式 | 103 |
+| `transition.css` | 过渡动画效果 | 90 |
+| `pagination.css` | 分页组件样式 | 68 |
+| `reward.css` | 打赏组件样式 | 45 |
+| `comment.css` | 评论区样式 | 30 |
+| `tag-cloud.css` | 标签云样式 | 23 |
+
+关键 CSS 变量 (blank.css):
 ```css
 --article-width: 650px;    /* 文章宽度 */
 --toc-width: 230px;        /* 目录宽度 */
@@ -184,7 +196,7 @@ draft: false
 | 布局 | `layouts/` | 17 | 自定义 HTML 模板 |
 | 静态资源 | `static/` | ~1873 | JS/字体/图片 |
 | 内容 | `content/` | 134+ | Markdown 文章 |
-| 样式 | `assets/css/` | 1 | 自定义 CSS |
+| 样式 | `assets/css/` | 9 | 自定义 CSS (blank, toc, code, friend-link 等) |
 | 主题 | `themes/PaperMod/` | - | 基础主题 (git submodule) |
 
 ## Development Notes
