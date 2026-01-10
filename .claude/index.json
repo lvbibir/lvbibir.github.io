@@ -1,0 +1,166 @@
+{
+  "version": "1.0.0",
+  "timestamp": "2026-01-10T23:06:46+08:00",
+  "project": {
+    "name": "lvbibir's Blog",
+    "type": "hugo-static-site",
+    "framework": "Hugo",
+    "theme": "PaperMod",
+    "domain": "https://www.lvbibir.cn",
+    "language": "zh-cn"
+  },
+  "modules": [
+    {
+      "name": "content",
+      "path": "content/",
+      "type": "markdown-content",
+      "claudeMd": "content/CLAUDE.md",
+      "entries": ["posts/", "about.md", "archives.md", "search.md", "talk.md"],
+      "stats": {
+        "totalFiles": 134,
+        "categories": {
+          "tech": 100,
+          "blog": 7,
+          "life": 2,
+          "read": 3
+        }
+      }
+    },
+    {
+      "name": "layouts",
+      "path": "layouts/",
+      "type": "hugo-templates",
+      "claudeMd": "layouts/CLAUDE.md",
+      "entries": [
+        "_default/baseof.html",
+        "_default/single.html",
+        "_default/list.html"
+      ],
+      "partials": [
+        "partials/header.html",
+        "partials/footer.html",
+        "partials/toc.html",
+        "partials/comments.html",
+        "partials/reward.html",
+        "partials/extend_head.html"
+      ],
+      "shortcodes": ["shortcodes/friend.html"]
+    },
+    {
+      "name": "css-extended",
+      "path": "assets/css/extended/",
+      "type": "css-styles",
+      "claudeMd": "assets/css/extended/CLAUDE.md",
+      "files": [
+        "blank.css",
+        "code.css",
+        "toc.css",
+        "friend-link.css",
+        "reward.css",
+        "pagination.css",
+        "tag-cloud.css",
+        "transition.css",
+        "comment.css"
+      ]
+    }
+  ],
+  "features": [
+    {
+      "name": "toc",
+      "description": "响应式目录, 桌面固定/移动弹出",
+      "files": ["layouts/partials/toc.html", "assets/css/extended/toc.css"]
+    },
+    {
+      "name": "comments",
+      "description": "Twikoo 自托管评论系统",
+      "files": ["layouts/partials/comments.html"],
+      "config": "params.twikoo"
+    },
+    {
+      "name": "lazy-loading",
+      "description": "图片懒加载 (IntersectionObserver)",
+      "files": [
+        "layouts/partials/extend_head.html",
+        "layouts/_default/_markup/render-image.html"
+      ]
+    },
+    {
+      "name": "code-blocks",
+      "description": "Mac 风格代码块, 复制按钮",
+      "files": ["layouts/partials/footer.html", "assets/css/extended/code.css"]
+    },
+    {
+      "name": "reward",
+      "description": "打赏按钮 (微信/支付宝)",
+      "files": ["layouts/partials/reward.html", "assets/css/extended/reward.css"]
+    },
+    {
+      "name": "friend-links",
+      "description": "友链卡片 shortcode",
+      "files": [
+        "layouts/shortcodes/friend.html",
+        "assets/css/extended/friend-link.css"
+      ]
+    }
+  ],
+  "config": {
+    "main": "config.yml",
+    "i18n": "i18n/en.yaml"
+  },
+  "dependencies": {
+    "theme": {
+      "name": "PaperMod",
+      "type": "git-submodule",
+      "path": "themes/PaperMod",
+      "url": "https://github.com/adityatelange/hugo-PaperMod"
+    },
+    "external": [
+      {
+        "name": "Twikoo",
+        "version": "1.6.44",
+        "path": "static/js/twikoo/"
+      },
+      {
+        "name": "JetBrainsLxgwNerdMono",
+        "type": "font",
+        "path": "static/fonts/"
+      },
+      {
+        "name": "Busuanzi",
+        "type": "analytics",
+        "url": "https://www.lvbibir.cn/busuanzi/js"
+      }
+    ]
+  },
+  "coverage": {
+    "estimatedTotalFiles": 200,
+    "scannedFiles": 50,
+    "percentage": 25,
+    "truncated": false,
+    "scannedDirectories": [
+      "config.yml",
+      "layouts/_default/",
+      "layouts/partials/",
+      "layouts/shortcodes/",
+      "assets/css/extended/",
+      "content/ (structure)",
+      "i18n/"
+    ],
+    "skippedDirectories": [
+      {
+        "path": "themes/PaperMod/",
+        "reason": "git-submodule, reference only"
+      },
+      {
+        "path": "static/",
+        "reason": "binary assets, paths cataloged"
+      },
+      {
+        "path": "content/posts/*/",
+        "reason": "individual articles, 134 files"
+      }
+    ]
+  },
+  "gaps": [],
+  "nextSteps": []
+}
