@@ -42,9 +42,9 @@ graph TD
 
     F --> F1["PaperMod (submodule)"]
 
-    click B "./content/CLAUDE.md" "查看 content 模块文档"
-    click C "./layouts/CLAUDE.md" "查看 layouts 模块文档"
-    click D1 "./assets/css/extended/CLAUDE.md" "查看 CSS 模块文档"
+    click B "./.claude/docs/content.md" "查看 content 模块文档"
+    click C "./.claude/docs/layouts.md" "查看 layouts 模块文档"
+    click D1 "./.claude/docs/css-extended.md" "查看 CSS 模块文档"
 ```
 
 ### 目录结构说明
@@ -64,9 +64,9 @@ graph TD
 
 | 模块 | 路径 | 职责 | 文档 |
 |------|------|------|------|
-| 内容 | `content/` | 博客文章和页面内容 | [CLAUDE.md](./content/CLAUDE.md) |
-| 布局 | `layouts/` | 模板覆盖和自定义组件 | [CLAUDE.md](./layouts/CLAUDE.md) |
-| 样式 | `assets/css/extended/` | CSS 自定义样式 | [CLAUDE.md](./assets/css/extended/CLAUDE.md) |
+| 内容 | `content/` | 博客文章和页面内容 | [content.md](./.claude/docs/content.md) |
+| 布局 | `layouts/` | 模板覆盖和自定义组件 | [layouts.md](./.claude/docs/layouts.md) |
+| 样式 | `assets/css/extended/` | CSS 自定义样式 | [css-extended.md](./.claude/docs/css-extended.md) |
 
 ---
 
