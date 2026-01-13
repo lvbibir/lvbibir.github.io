@@ -9,7 +9,7 @@ keywords:
   - set
 description: ""
 cover:
-    image: "images/cover-default.webp"
+    image: "/images/cover-linux.png"
 ---
 
 Bash 有一个内置的 `set` 命令，可以用来查看、设置、取消 shell 选项

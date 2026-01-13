@@ -10,7 +10,7 @@ keywords:
   - macaddr
 description: "" 
 cover:
-    image: "images/cover-default.webp" 
+    image: "/images/cover-linux.png" 
 ---
 
 # 0 前言

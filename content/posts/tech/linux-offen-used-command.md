@@ -8,7 +8,7 @@ keywords:
   - linux
 description: "记录 linux 系统如文本处理, 进程处理, 网络及其他的常用命令"
 cover:
-    image: "images/cover-default.webp"
+    image: "/images/cover-linux.png"
 ---
 
 # 1 文本处理

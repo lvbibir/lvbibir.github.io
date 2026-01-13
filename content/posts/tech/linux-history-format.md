@@ -9,7 +9,7 @@ keywords:
   - history
 description: ""
 cover:
-    image: "images/cover-default.webp"
+    image: "/images/cover-linux.png"
 ---
 
 在 `/etc/prifile.d` 目录下新建一个文件，用户登录系统时自动生效

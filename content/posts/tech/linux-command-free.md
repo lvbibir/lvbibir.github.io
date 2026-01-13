@@ -9,7 +9,7 @@ keywords:
   - free
 description: "centos 中 free 命令详解，以及 centos6 和 centos7 中 free 命令的不同" 
 cover:
-    image: "images/cover-default.webp"
+    image: "/images/cover-linux.png"
 ---
 
 # 0 前言
