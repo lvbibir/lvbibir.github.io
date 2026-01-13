@@ -8,6 +8,15 @@
     <language>zh-cn</language>
     <lastBuildDate>Fri, 29 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Linux cat 和 tee 命令写入文件</title>
+      <link>https://www.lvbibir.cn/posts/tech/linux-cat-tee-file-writing/</link>
+      <pubDate>Tue, 13 Jan 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/linux-cat-tee-file-writing/</guid>
+      <description>详细介绍 Linux 中使用 cat 和 tee 命令写入文件的各种方式, 包括 heredoc 语法、EOF 引号和连字符的作用</description>
+    </item>
+    
+    <item>
       <title>python | 使用 uv 管理你的 python 环境</title>
       <link>https://www.lvbibir.cn/posts/tech/python-uv-manager/</link>
       <pubDate>Tue, 23 Dec 2025 00:00:00 +0000</pubDate>
@@ -17,12 +26,12 @@
     </item>
     
     <item>
-      <title>Claude Code 食用指南</title>
+      <title>Claude Code 完整配置指南</title>
       <link>https://www.lvbibir.cn/posts/tech/claude-code-cli/</link>
       <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/posts/tech/claude-code-cli/</guid>
-      <description>介绍 Claude Code CLI 交互界面的常用功能和操作, 包含斜杠命令、快捷键、命令行参数、多行输入等实用技巧</description>
+      <description>Claude Code CLI 完整配置指南，包含快速配置流程、核心工具详解、扩展生态系统和实用技巧，助你打造高效的 AI 编程环境</description>
     </item>
     
     <item>

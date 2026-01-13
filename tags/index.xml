@@ -6,7 +6,16 @@
     <description>Recent content in 🏷️ 标签 on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 23 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux</title>
+      <link>https://www.lvbibir.cn/tags/linux/</link>
+      <pubDate>Tue, 13 Jan 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/tags/linux/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>python</title>
       <link>https://www.lvbibir.cn/tags/python/</link>
@@ -35,11 +44,11 @@
     </item>
     
     <item>
-      <title>工具</title>
-      <link>https://www.lvbibir.cn/tags/%E5%B7%A5%E5%85%B7/</link>
+      <title>Claude</title>
+      <link>https://www.lvbibir.cn/tags/claude/</link>
       <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/tags/%E5%B7%A5%E5%85%B7/</guid>
+      <guid>https://www.lvbibir.cn/tags/claude/</guid>
       <description></description>
     </item>
     
@@ -67,15 +76,6 @@
       <pubDate>Wed, 10 Dec 2025 00:00:00 +0000</pubDate>
       
       <guid>https://www.lvbibir.cn/tags/windows/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>https://www.lvbibir.cn/tags/linux/</link>
-      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/tags/linux/</guid>
       <description></description>
     </item>
     

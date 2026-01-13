@@ -17,8 +17,17 @@
     <loc>https://www.lvbibir.cn/posts/life/</loc>
     <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://www.lvbibir.cn/tags/linux/</loc>
+    <lastmod>2026-01-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/linux-cat-tee-file-writing/</loc>
+    <lastmod>2026-01-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.lvbibir.cn/</loc>
-    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/</loc>
+    <lastmod>2026-01-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/python/</loc>
     <lastmod>2025-12-23T00:00:00+00:00</lastmod>
@@ -29,17 +38,14 @@
     <loc>https://www.lvbibir.cn/tags/uv/</loc>
     <lastmod>2025-12-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/</loc>
-    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/tags/ai/</loc>
-    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/claude/</loc>
+    <lastmod>2026-01-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/claude-code-cli/</loc>
-    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2025-12-31T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/mihomo/</loc>
     <lastmod>2025-12-15T00:00:00+00:00</lastmod>
@@ -53,14 +59,11 @@
     <loc>https://www.lvbibir.cn/posts/tech/mihomo-core-only-setup/</loc>
     <lastmod>2025-12-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/tags/linux/</loc>
-    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/linux-expand-disk/</loc>
     <lastmod>2025-04-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/wsl/</loc>
-    <lastmod>2025-12-25T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/windows-wsl-7-free-up-disk-space/</loc>
     <lastmod>2025-04-24T00:00:00+00:00</lastmod>
@@ -129,7 +132,7 @@
     <lastmod>2024-01-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/windows-wsl-3-set-proxy/</loc>
-    <lastmod>2025-12-19T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/windows-wsl-2-bashrc/</loc>
     <lastmod>2024-01-28T00:00:00+00:00</lastmod>
