@@ -26,15 +26,6 @@
     </item>
     
     <item>
-      <title>wsl | 安装配置 nodejs 环境</title>
-      <link>https://www.lvbibir.cn/posts/tech/windows-wsl-5-nodejs/</link>
-      <pubDate>Tue, 23 Jan 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/windows-wsl-5-nodejs/</guid>
-      <description>wsl 中安装 nodejs 环境, 以及修改默认源等配置</description>
-    </item>
-    
-    <item>
       <title>wsl | 安装配置 miniconda 虚拟环境</title>
       <link>https://www.lvbibir.cn/posts/tech/windows-wsl-4-miniconda/</link>
       <pubDate>Sat, 13 Jan 2024 00:00:00 +0000</pubDate>

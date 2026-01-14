@@ -24,10 +24,10 @@
     <lastmod>2026-01-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/</loc>
-    <lastmod>2026-01-13T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/</loc>
-    <lastmod>2026-01-13T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/python/</loc>
     <lastmod>2025-12-23T00:00:00+00:00</lastmod>
@@ -125,8 +125,11 @@
     <loc>https://www.lvbibir.cn/posts/tech/windows-wsl-6-docker/</loc>
     <lastmod>2024-02-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.lvbibir.cn/posts/tech/windows-wsl-5-nodejs/</loc>
-    <lastmod>2025-12-18T00:00:00+00:00</lastmod>
+    <loc>https://www.lvbibir.cn/tags/nodejs/</loc>
+    <lastmod>2026-01-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/nodejs-install-guide/</loc>
+    <lastmod>2026-01-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/windows-wsl-4-miniconda/</loc>
     <lastmod>2024-01-28T00:00:00+00:00</lastmod>

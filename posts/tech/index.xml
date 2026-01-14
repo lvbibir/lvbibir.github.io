@@ -143,12 +143,12 @@
     </item>
     
     <item>
-      <title>wsl | 安装配置 nodejs 环境</title>
-      <link>https://www.lvbibir.cn/posts/tech/windows-wsl-5-nodejs/</link>
+      <title>nodejs | fnm &#43; pnpm 开发环境配置</title>
+      <link>https://www.lvbibir.cn/posts/tech/nodejs-install-guide/</link>
       <pubDate>Tue, 23 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://www.lvbibir.cn/posts/tech/windows-wsl-5-nodejs/</guid>
-      <description>wsl 中安装 nodejs 环境, 以及修改默认源等配置</description>
+      <guid>https://www.lvbibir.cn/posts/tech/nodejs-install-guide/</guid>
+      <description>使用 fnm 管理 Node.js 版本, pnpm 管理依赖, 包含网络优化与警告抑制配置</description>
     </item>
     
     <item>
