@@ -1,7 +1,7 @@
 ---
 title: "Claude Code 完整配置指南"
 date: 2025-12-17
-lastmod: 2026-01-12
+lastmod: 2026-01-20
 tags:
   - AI
   - Claude
@@ -234,9 +234,9 @@ project-root/
 
 **安装配置:**
 
+访问 <https://dashboard.exa.ai/> 获取 API Key
+
 ```bash
-# 1. 访问 https://dashboard.exa.ai/ 获取 API Key
-# 2. 安装并配置
 npm install -g exa-mcp-server
 # 或使用 npx (无需全局安装)
 npx exa-mcp-server
@@ -389,53 +389,24 @@ WSL2 会将 Windows 的 PATH 追加到 Linux 的 `$PATH` 中，使 Linux 终端�
 **一键修复脚本:**
 
 ```bash
-# 设置工作目录（可选，默认 ~/tools）
-# export CLAUDE_FIX_DIR=~/tools
-
-(
-TOOL_DIR="${CLAUDE_FIX_DIR:-$HOME/tools}"
-TOOL_PATH="$TOOL_DIR/powershell.exe"
-
-# 创建目录
+TOOL_DIR="$HOME/tools"
 mkdir -p "$TOOL_DIR"
 
-# 创建包装脚本
-cat << 'EOF' > "$TOOL_PATH"
+cat << 'EOF' > "$TOOL_DIR/powershell.exe"
 #!/bin/bash
-if [[ "$1" == "-Command" && "$2" == "\\$env:USERPROFILE" ]]; then
-  echo "C:\\\\Users\\\\Administrator"
+if [[ "$1" == "-Command" && "$2" == "\$env:USERPROFILE" ]]; then 
+    echo "C:\\Users\\Administrator" 
 else
-  /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "$@"
+    /mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe "$@"
 fi
 EOF
 
-chmod +x "$TOOL_PATH"
+chmod +x "$TOOL_DIR/powershell.exe"
 
-# 确定 shell 配置文件
-if [[ "$SHELL" == */zsh ]]; then
-  CONFIG_FILE="$HOME/.zshrc"
-elif [[ "$SHELL" == */bash ]]; then
-  CONFIG_FILE="$HOME/.bashrc"
-else
-  echo "未知的 shell: $SHELL，请手动添加 PATH"
-  exit 1
-fi
+echo '# Claude Code WSL2 fix' >> ~/.bashrc
+echo 'export PATH=$HOME/tools:$PATH' >> ~/.bashrc
 
-# 幂等性检查：仅在未添加时插入
-EXPORT_LINE="export PATH=\\\"$TOOL_DIR:\\$PATH\\\""
-if ! grep -qF "$TOOL_DIR" "$CONFIG_FILE" 2>/dev/null; then
-  echo "" >> "$CONFIG_FILE"
-  echo "# Claude Code WSL2 fix" >> "$CONFIG_FILE"
-  echo "$EXPORT_LINE" >> "$CONFIG_FILE"
-  echo "已添加 PATH 到 $CONFIG_FILE"
-else
-  echo "PATH 已存在于 $CONFIG_FILE，跳过"
-fi
-
-echo ""
-echo "修复完成！请执行以下命令使配置生效："
-echo "  source $CONFIG_FILE"
-)
+source ~/.bashrc
 ```
 
 **验证修复效果:**
@@ -443,7 +414,7 @@ echo "  source $CONFIG_FILE"
 ```bash
 # 重启终端后检查包装脚本是否生效
 which powershell.exe
-# 应该显示: /home/username/bin/powershell.exe
+# 应该显示: /home/username/tools/powershell.exe
 
 # 测试 Claude Code 响应速度
 claude

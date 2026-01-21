@@ -1,7 +1,7 @@
 ---
 title: "nodejs | fnm + pnpm 开发环境配置"
 date: 2024-01-23
-lastmod: 2026-01-14
+lastmod: 2026-01-20
 tags:
   - nodejs
 keywords:
@@ -39,6 +39,8 @@ fnm 和 nvm 二选一即可, 建议使用 fnm
 ## 1.1 fnm
 
 ```bash
+sudo apt update
+sudo apt install -y unzip
 curl -fsSL https://fnm.vercel.app/install | bash
 source ~/.bashrc
 
@@ -49,7 +51,6 @@ fnm default 24 # 设置全局默认的 node 版本为 v24
 修改 `~/.bashrc`, 添加 `--use-on-cd` 参数, 可以在切换目录的时候自动识别 `.nvmrc` 和 `.node-version`, fnm 可以自动切换版本
 
 ```bash
-
 # fnm
 FNM_PATH="${HOME}/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
@@ -117,6 +118,15 @@ pnpm config set --global strict-peer-dependencies false
 pnpm install -g @anthropic-ai/claude-code
 pnpm install -g @google/gemini-cli
 pnpm install -g @openai/codex
+
+# 单次运行, 类似 npx
+pnpm dlx ccg-workflow
+
+# 检查更新
+pnpm outdated -g
+
+# 全局更新
+pnpm update -g --latest
 ```
 
 以上
