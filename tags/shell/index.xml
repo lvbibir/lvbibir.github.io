@@ -6,7 +6,16 @@
     <description>Recent content in shell on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 01 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>shell | 磁盘空间分析脚本</title>
+      <link>https://www.lvbibir.cn/posts/tech/shell-disk-analyze/</link>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/shell-disk-analyze/</guid>
+      <description>一个高性能的 Bash 磁盘分析脚本,用于快速定位磁盘空间占用问题.</description>
+    </item>
+    
     <item>
       <title>shell | sshpass 批量传输文件及执行命令</title>
       <link>https://www.lvbibir.cn/posts/tech/shell-sshpass-batch-execcute/</link>

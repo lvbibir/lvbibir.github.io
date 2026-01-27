@@ -8,6 +8,15 @@
     <language>zh-cn</language>
     <lastBuildDate>Fri, 29 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/posts/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>shell | 磁盘空间分析脚本</title>
+      <link>https://www.lvbibir.cn/posts/tech/shell-disk-analyze/</link>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/shell-disk-analyze/</guid>
+      <description>一个高性能的 Bash 磁盘分析脚本,用于快速定位磁盘空间占用问题.</description>
+    </item>
+    
+    <item>
       <title>Linux cat 和 tee 命令写入文件</title>
       <link>https://www.lvbibir.cn/posts/tech/linux-cat-tee-file-writing/</link>
       <pubDate>Tue, 13 Jan 2026 00:00:00 +0000</pubDate>

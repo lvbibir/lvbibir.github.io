@@ -17,17 +17,23 @@
     <loc>https://www.lvbibir.cn/posts/life/</loc>
     <lastmod>2024-01-10T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://www.lvbibir.cn/</loc>
+    <lastmod>2026-01-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/shell/</loc>
+    <lastmod>2026-01-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/posts/tech/shell-disk-analyze/</loc>
+    <lastmod>2026-01-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.lvbibir.cn/tags/</loc>
+    <lastmod>2026-01-27T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.lvbibir.cn/tags/linux/</loc>
     <lastmod>2026-01-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/linux-cat-tee-file-writing/</loc>
     <lastmod>2026-01-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/</loc>
-    <lastmod>2026-01-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/</loc>
-    <lastmod>2026-01-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/python/</loc>
     <lastmod>2025-12-23T00:00:00+00:00</lastmod>
@@ -39,13 +45,13 @@
     <lastmod>2025-12-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/ai/</loc>
-    <lastmod>2026-01-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/claude/</loc>
-    <lastmod>2026-01-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/claude-code-cli/</loc>
-    <lastmod>2026-01-20T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/mihomo/</loc>
     <lastmod>2025-12-15T00:00:00+00:00</lastmod>
@@ -108,16 +114,13 @@
     <lastmod>2024-02-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/tags/vim/</loc>
-    <lastmod>2024-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/vim/</loc>
-    <lastmod>2024-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2026-01-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/windowns-rime-input-method/</loc>
     <lastmod>2024-02-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.lvbibir.cn/tags/shell/</loc>
-    <lastmod>2024-02-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.lvbibir.cn/posts/tech/shell-sshpass-batch-execcute/</loc>
     <lastmod>2024-02-01T00:00:00+00:00</lastmod>
