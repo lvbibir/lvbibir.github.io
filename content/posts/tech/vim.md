@@ -1,7 +1,7 @@
 ---
 title: "vim | 基础配置和使用" 
 date: 2024-02-04
-lastmod: 2024-02-05
+lastmod: 2026-01-21
 tags:
   - vim
 keywords:
@@ -137,7 +137,7 @@ t         | html 标签块
 ```
 
 ## 2.2 surround
-  
+
 ```plaintext
 cs"'          | 将 `"` 替换为 '
 ds"           | 删除包围的 "
@@ -158,6 +158,7 @@ gd  | 可以切换定义
 # 3 vimrc
 
 vimrc 的位置:
+
 - obsidian: 在插件配置中我将 vimrc 的默认文件名从 `.obsidian.vimrc` 改成了 `.vimrc` 存放到了 obsidian 仓库的根目录
 - wsl: 我的 wsl 是 ubuntu, 为了使用 sudo 时 vimrc 配置生效, vimrc 修改通过修改 `/etc/vim/vimrc` 实现
 - vscode: vscode 直接使用 setting.json 中 vim 的配置
@@ -165,7 +166,81 @@ vimrc 的位置:
 我的 vimrc 配置示例
 
 ```vimrc
-" 插入模式下使用 jj 快速返回到 normal 模式 
+" 显示相关
+set number                    " 显示绝对行号 (配合 rnu 使用)
+set relativenumber            " 相对行号
+set cursorline                " 高亮当前行
+set showcmd                   " 显示命令
+set showmode                  " 显示当前模式
+set ruler                     " 显示光标位置
+set laststatus=2              " 始终显示状态栏
+
+" 搜索相关
+set incsearch                 " 增量搜索 (边输入边搜索)
+set hlsearch                  " 高亮搜索结果
+set ignorecase                " 搜索忽略大小写
+set smartcase                 " 有大写字母时区分大小写
+
+" 编辑体验
+set backspace=indent,eol,start  " 让退格键正常工作
+set whichwrap+=<,>,h,l        " 行首行尾可以跨行移动
+set scrolloff=5               " 光标上下保留 5 行
+set sidescrolloff=5           " 光标左右保留 5 列
+
+" 缩进设置
+set expandtab                 " 用空格代替 tab
+set tabstop=2                 " tab 显示为 2 个空格
+set shiftwidth=2              " 缩进宽度
+set softtabstop=2             " 编辑时 tab 的宽度
+set autoindent                " 自动缩进
+set smartindent               " 智能缩进 (针对 C 语言)
+
+" 显示不可见字符 (可选, 但很有用)
+set list
+set listchars=tab:▸\ ,trail:·,extends:>,precedes:<,nbsp:+
+
+" 文件相关
+set autoread                  " 文件在外部修改时自动重新读取
+set hidden                    " 切换 buffer 时不需要保存
+set encoding=utf-8            " 使用 UTF-8 编码
+set fileencoding=utf-8        " 文件编码
+
+" 补全相关
+set wildmenu                           " 命令行补全增强
+set wildmode=longest:full,full         " 补全模式
+set completeopt=menu,menuone,noselect  " 补全选项
+
+" 备份和撤销
+set nobackup                  " 不创建备份文件
+set nowritebackup             " 写入时不备份
+set noswapfile                " 不创建交换文件
+
+" 鼠标支持
+set mouse=a                   " 启用鼠标 (所有模式)
+
+" ============ 状态栏 ============
+set statusline=
+set statusline+=%f              " 文件名
+set statusline+=%m              " 修改标志
+set statusline+=%r              " 只读标志
+set statusline+=%=              " 右对齐
+set statusline+=%y              " 文件类型
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}  " 编码
+set statusline+=\ [%{&fileformat}]  " 文件格式
+set statusline+=\ %p%%          " 百分比
+set statusline+=\ %l:%c         " 行号:列号
+
+" ============ 分屏设置 ============
+set splitbelow                " 水平分屏在下方
+set splitright                " 垂直分屏在右侧
+
+" 分屏快捷键
+nnoremap <C-h> <C-w>h         " 左窗口
+nnoremap <C-j> <C-w>j         " 下窗口
+nnoremap <C-k> <C-w>k         " 上窗口
+nnoremap <C-l> <C-w>l         " 右窗口
+
+" 插入模式下使用 jj 快速返回到 normal 模式
 inoremap jj <Esc>
 
 " 使上下移动的时候按照视觉的行数移动, 对于多行的段落很有效
@@ -176,12 +251,12 @@ nmap k gk
 " normal 模式使用
 nmap H ^
 nmap L $
-" 操作模式使用, 用于 yL, dH 等操作
-omap H ^
-omap L $
 " visual 模式使用
 vmap H ^
 vmap L $
+" 操作模式使用, 用于 yL, dH 等操作
+omap H ^
+omap L $
 ```
 
 vscode 中的 vim 配置示例

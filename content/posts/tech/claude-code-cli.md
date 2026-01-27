@@ -1,7 +1,7 @@
 ---
 title: "Claude Code 完整配置指南"
 date: 2025-12-17
-lastmod: 2026-01-20
+lastmod: 2026-01-26
 tags:
   - AI
   - Claude
@@ -35,23 +35,22 @@ cover:
 1. 清理旧版本重新安装 (按需执行)
 
     ```bash
-    npm uninstall -g @anthropic-ai/claude-code
+    pnpm add -g @anthropic-ai/claude-code
     rm -rf ~/.claude*
-    npm install -g @anthropic-ai/claude-code
+    pnpm remove -g @anthropic-ai/claude-code
     ```
 
 2. zcf 工作流 (⚠️ 会覆盖全局 CLAUDE.md, 注意备份)
 
     ```bash
-    npm install -g zcf
-    zcf
+    npx -y zcf
     # 选择 2 导入工作流
     ```
 
 3. ccline 状态栏美化
 
     ```bash
-    npm install -g @cometix/ccline
+    pnpm add -g @cometix/ccline
     ccline
     ```
 
@@ -89,11 +88,8 @@ ZCF 是 Claude Code 的强大工作流管理工具，提供完整的开发工作
 **安装与配置:**
 
 ```bash
-# 安装 ZCF
-npm install -g zcf
-
 # 启动配置向导
-zcf
+npx -y zcf 
 # 选择选项:
 # 1. 创建新配置
 # 2. 导入预设工作流 (推荐)
@@ -137,18 +133,17 @@ zcf
 
 ```bash
 # 安装 CCometixLine
-npm install -g @cometix/ccline
+pnpm add -g @cometix/ccline
 
-# 交互式配置主题
-ccline
-
-# 应用到 Claude Code (需要替换为实际的 Node.js 路径)
-ccline --patch ~/.nvm/versions/node/v24.12.0/lib/node_modules/@anthropic-ai/claude-code/cli.js
+# patch
+claude doctor # 查看 Invoked 路径的地址
+ccline --patch /home/lvbibir/.local/share/pnpm/global/5/.pnpm/@anthropic-ai+claude-code@2.1.14/node_modules/@anthropic-ai/claude-code/cli.js
 ```
 
-**cc-switch 集成配置:**
+Claude code 集成, 选择一种方式配置:
 
-在 cc-switch 配置文件的通用配置中添加状态栏设置:
+1. 直接在 `~/.claude/setting.json` 中编辑
+2. 在 cc-switch 配置文件的通用配置中添加设置:
 
 ```json
 {
@@ -223,8 +218,6 @@ project-root/
 
 # 4 MCP 服务器配置
 
-> **WSL2 注意事项**: cc-switch 的 MCP 管理在 WSL 环境下会将 npx 类型转换成 Windows 格式，建议使用全局安装方式。
-
 ## 4.1 Exa 网络搜索
 
 **功能特点:**
@@ -237,14 +230,14 @@ project-root/
 访问 <https://dashboard.exa.ai/> 获取 API Key
 
 ```bash
-npm install -g exa-mcp-server
-# 或使用 npx (无需全局安装)
-npx exa-mcp-server
-
 claude mcp add-json --scope user exa '{
-  "command": "exa-mcp-server",
+  "args": [
+    "-y",
+    "exa-mcp-server"
+  ],
+  "command": "npx",
   "env": {
-    "EXA_API_KEY": "YOUR_EXA_API_KEY"
+    "EXA_API_KEY": "01f367a1-6032-4744-825d-c62ad86578dd"
   }
 }'
 ```
@@ -272,37 +265,36 @@ claude mcp add-json --scope user exa '{
 **方案一: LinuxDo 中转站** ([参考文档](https://linux.do/t/topic/1360514))
 
 ```bash
-npm install -g ace-tool
-# 或使用 npx (无需全局安装)
-npx ace-tool
-
 claude mcp add-json --scope user augment-context-engine '{
-  "command": "ace-tool",
   "args": [
+    "-y",
+    "ace-tool",
     "--base-url",
     "https://acemcp.heroman.wtf/relay/",
     "--token",
-    "YOUR_API_KEY"
-  ]
+    "ace_d84f6fbbec634e841a579599f563da744f2abc42"
+  ],
+  "command": "npx"
 }'
 ```
 
 **方案二: 开源平替方案**
 
 ```bash
-# Ripgrep - 高性能文本搜索
-npm install -g mcp-ripgrep
-# 或使用 npx (无需全局安装)
-npx mcp-ripgrep
-
 claude mcp add-json --scope user ripgrep '{
-  "command": "mcp-ripgrep"
+  "args": [
+    "-y",
+    "mcp-ripgrep"
+  ],
+  "command": "npx"
 }'
 
 # Code Index - 代码索引和分析
 claude mcp add-json --scope user code-index '{
-  "command": "uvx",
-  "args": ["code-index-mcp"]
+  "args": [
+    "code-index-mcp"
+  ],
+  "command": "uvx"
 }'
 ```
 
@@ -337,7 +329,11 @@ npm install -g @upstash/context7-mcp
 npx @upstash/context7-mcp
 
 claude mcp add-json --scope user context7 '{
-  "command": "context7-mcp"
+  "args": [
+    "-y",
+    "@upstash/context7-mcp"
+  ],
+  "command": "npx"
 }'
 ```
 
@@ -370,6 +366,12 @@ claude mcp add-json --scope user context7 '{
 - **自动发现**: Claude 会根据任务需求自动选择合适的 Skills
 - **模块化**: 每个 Plugin 可包含多种组件 (Commands、Agents、Skills、Hooks)
 - **可扩展**: 支持自定义开发和第三方 Plugin
+
+也可以使用其他方式安装:
+
+```bash
+npx skills add https://github.com/anthropics/skills --skill frontend-design
+```
 
 # 6 WSL2 性能优化
 
