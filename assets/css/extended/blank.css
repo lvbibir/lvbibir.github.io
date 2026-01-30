@@ -13,7 +13,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     --white: rgb(255, 255, 255);
     --tag: rgb(235, 235, 235);
     --article-width: 650px;
-    --toc-width: 230px;
+    --toc-width: 300px;
     /* 通用动画变量 */
     --transition-duration: 0.4s;
     --box-shadow-default: 0px 2px 4px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
