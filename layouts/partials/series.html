@@ -1,0 +1,33 @@
+{{- /* Series Sidebar - Display articles from the same tag */}}
+{{- $terms := .GetTerms "tags" -}}
+{{- $seriesTagParam := .Params.seriesTag | default "" -}}
+{{- $termPage := "" -}}
+
+{{- /* Resolve term page: priority to seriesTag param, fallback to first tag */}}
+{{- if $seriesTagParam -}}
+  {{- $termPage = site.GetPage (printf "/tags/%s" ($seriesTagParam | urlize)) -}}
+{{- else if gt (len $terms) 0 -}}
+  {{- $termPage = index $terms 0 -}}
+{{- end -}}
+
+{{- with $termPage -}}
+  {{- $pages := .Pages.ByDate -}}
+  {{- /* Only render if there are at least 2 articles in the series */}}
+  {{- if ge (len $pages) 2 -}}
+    <nav class="series" aria-label="Series">
+      <div class="series-heading">
+        <span class="series-icon">📚</span>
+        <span class="series-title">{{ .LinkTitle }}</span>
+        <span class="series-count">({{ len $pages }})</span>
+      </div>
+      <ol class="series-list">
+        {{- range $pages -}}
+          {{- $isCurrent := eq .RelPermalink $.RelPermalink -}}
+          <li class="series-item{{ if $isCurrent }} series-current{{ end }}">
+            <a href="{{ .RelPermalink }}" title="{{ .Title | plainify }}">{{ .Title }}</a>
+          </li>
+        {{- end -}}
+      </ol>
+    </nav>
+  {{- end -}}
+{{- end -}}

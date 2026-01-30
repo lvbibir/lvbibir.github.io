@@ -1,0 +1,219 @@
+/* ==================== Post Grid Layout ==================== */
+
+/* Base Grid Container */
+.post-grid {
+    display: block;
+    margin: 0 auto;
+    padding: 0 var(--gap);
+    max-width: calc(var(--article-width) + var(--gap) * 2);
+}
+
+/* Grid Areas */
+.post-grid__series { grid-area: series; min-width: 0; }
+.post-grid__content { grid-area: content; min-width: 0; }
+.post-grid__toc { grid-area: toc; min-width: 0; }
+
+/* Small screens (<1024px): Single column, Series visible, TOC popup */
+@media (max-width: 1023px) {
+    .post-grid {
+        display: block;
+        max-width: calc(var(--article-width) + var(--gap) * 2);
+    }
+
+    .post-grid__series {
+        margin-bottom: var(--gap);
+    }
+
+    /* Hide TOC in grid on small screens (use popup instead) */
+    .post-grid__toc {
+        display: none;
+    }
+}
+
+/* Medium screens (1024px - 1440px): 2 columns, TOC under Series */
+@media (min-width: 1024px) and (max-width: 1440px) {
+    .post-grid {
+        display: grid;
+        gap: var(--gap);
+        align-items: start;
+        max-width: calc(var(--series-width) + var(--article-width) + var(--gap) * 4);
+    }
+
+    /* With both series and toc */
+    .post-grid.has-series.has-toc {
+        grid-template-columns: var(--series-width) minmax(0, 1fr);
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "series content"
+            "toc content";
+    }
+
+    /* Series only */
+    .post-grid.has-series:not(.has-toc) {
+        grid-template-columns: var(--series-width) minmax(0, 1fr);
+        grid-template-areas: "series content";
+    }
+
+    /* TOC only */
+    .post-grid.has-toc:not(.has-series) {
+        grid-template-columns: var(--series-width) minmax(0, 1fr);
+        grid-template-areas:
+            ". content"
+            "toc content";
+    }
+
+    /* Neither */
+    .post-grid:not(.has-series):not(.has-toc) {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "content";
+        max-width: calc(var(--article-width) + var(--gap) * 2);
+    }
+
+    .post-grid__toc {
+        display: block;
+    }
+}
+
+/* Wide screens (>1440px): 3 columns */
+@media (min-width: 1441px) {
+    .post-grid {
+        display: grid;
+        gap: var(--gap);
+        align-items: start;
+        max-width: calc(var(--series-width) + var(--article-width) + var(--toc-width) + var(--gap) * 6);
+    }
+
+    /* With both series and toc */
+    .post-grid.has-series.has-toc {
+        grid-template-columns: var(--series-width) minmax(0, var(--article-width)) var(--toc-width);
+        grid-template-areas: "series content toc";
+    }
+
+    /* Series only */
+    .post-grid.has-series:not(.has-toc) {
+        grid-template-columns: var(--series-width) minmax(0, var(--article-width));
+        grid-template-areas: "series content";
+        max-width: calc(var(--series-width) + var(--article-width) + var(--gap) * 4);
+    }
+
+    /* TOC only */
+    .post-grid.has-toc:not(.has-series) {
+        grid-template-columns: minmax(0, var(--article-width)) var(--toc-width);
+        grid-template-areas: "content toc";
+        max-width: calc(var(--article-width) + var(--toc-width) + var(--gap) * 4);
+    }
+
+    /* Neither */
+    .post-grid:not(.has-series):not(.has-toc) {
+        grid-template-columns: minmax(0, var(--article-width));
+        grid-template-areas: "content";
+        max-width: calc(var(--article-width) + var(--gap) * 2);
+    }
+
+    .post-grid__toc {
+        display: block;
+    }
+}
+
+/* ==================== Series Sidebar Styles ==================== */
+
+.series {
+    border: 1px solid var(--border);
+    background: var(--entry);
+    border-radius: var(--radius);
+    padding: 12px;
+    position: sticky;
+    top: var(--gap);
+}
+
+.series-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 10px;
+}
+
+.series-icon {
+    font-size: 1.1em;
+}
+
+.series-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--primary);
+}
+
+.series-count {
+    font-size: 0.85rem;
+    color: var(--secondary);
+}
+
+.series-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.series-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.series-list::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+.series-item {
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--border);
+}
+
+.series-item:last-child {
+    border-bottom: none;
+}
+
+.series-item a {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--secondary);
+    transition: color 0.2s ease;
+}
+
+.series-item a:hover {
+    color: var(--primary);
+}
+
+/* Current article highlight */
+.series-current a {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.series-current {
+    background: rgba(var(--primary-rgb, 66, 185, 131), 0.1);
+    margin: 0 -12px;
+    padding: 6px 12px;
+    border-radius: var(--radius);
+}
+
+/* Dark mode adjustments */
+.dark .series {
+    background: var(--entry);
+}
+
+.dark .series-item a {
+    color: rgba(180, 181, 182, 0.8);
+}
+
+.dark .series-item a:hover,
+.dark .series-current a {
+    color: var(--primary);
+}

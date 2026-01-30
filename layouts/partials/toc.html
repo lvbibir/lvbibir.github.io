@@ -12,7 +12,7 @@
 <!-- 遮罩层 -->
 <div id="toc-overlay" class="toc-overlay"></div>
 
-<aside id="toc-container" class="toc-container wide">
+<aside id="toc-container" class="toc-container">
     <!-- 关闭按钮 (移动端弹出时显示) -->
     <button id="toc-close-btn" class="toc-close-btn" aria-label="Close Table of Contents">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -110,191 +110,196 @@
     </div>
 </aside>
 <script>
-    let activeElement;
-    let elements;
-    const tocContainer = document.getElementById("toc-container");
-    const tocToggleBtn = document.getElementById("toc-toggle-btn");
-    const tocCloseBtn = document.getElementById("toc-close-btn");
-    const tocOverlay = document.getElementById("toc-overlay");
+    (function() {
+        let activeElement;
+        let elements;
+        const tocContainer = document.getElementById("toc-container");
+        const tocToggleBtn = document.getElementById("toc-toggle-btn");
+        const tocCloseBtn = document.getElementById("toc-close-btn");
+        const tocOverlay = document.getElementById("toc-overlay");
 
-    window.addEventListener('DOMContentLoaded', function (event) {
-        checkTocPosition();
+        // Guard: exit if TOC elements don't exist
+        if (!tocContainer || !tocToggleBtn) return;
 
-        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
-        // Make the first header active
-        if (elements.length > 0) {
-            activeElement = elements[0];
-            const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
-            const activeLink = document.querySelector(`.inner ul li a[href="#${id}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
+        // Media queries for responsive breakpoints
+        const mSmall = window.matchMedia('(max-width: 1023px)');
+        const mMedium = window.matchMedia('(min-width: 1024px) and (max-width: 1440px)');
+        const mWide = window.matchMedia('(min-width: 1441px)');
+
+        // Track current mode and visibility state
+        let currentMode = getMode();
+        let isTocVisible = true;
+
+        function getMode() {
+            if (mSmall.matches) return 'small';
+            if (mMedium.matches) return 'medium';
+            return 'wide';
         }
-    }, false);
 
-    window.addEventListener('resize', function(event) {
-        checkTocPosition();
-    }, false);
+        // Apply mode-specific classes
+        function applyMode(mode) {
+            currentMode = mode;
 
-    window.addEventListener('scroll', () => {
-        if (!elements || elements.length === 0) return;
-        
-        // Check if there is an object in the top half of the screen or keep the last item active
-        activeElement = Array.from(elements).find((element) => {
-            if ((getOffsetTop(element) - window.pageYOffset) > 0 &&
-                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
-                return element;
-            }
-        }) || activeElement
+            // Close any open popup first
+            closeTocPopup(true);
 
-        elements.forEach(element => {
-            const id = encodeURI(element.getAttribute('id')).toLowerCase();
-            const link = document.querySelector(`.inner ul li a[href="#${id}"]`);
-            if (link) {
-                if (element === activeElement){
-                    link.classList.add('active');
+            // Reset classes
+            tocContainer.classList.remove('wide', 'mobile-popup', 'collapsed');
+
+            if (mode === 'small') {
+                // Small screen: TOC hidden by default, use popup
+                tocContainer.classList.add('collapsed');
+                tocToggleBtn.classList.remove('active');
+            } else {
+                // Medium/Wide: TOC visible in grid
+                if (isTocVisible) {
+                    tocToggleBtn.classList.add('active');
                 } else {
-                    link.classList.remove('active');
+                    tocContainer.classList.add('collapsed');
+                    tocToggleBtn.classList.remove('active');
                 }
-            }
-        })
-    }, false);
-
-    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
-    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
-    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
-
-    // 记录当前是否为宽屏模式
-    let isWideMode = false;
-    // 记录 TOC 是否显示
-    let isTocVisible = true;
-
-    function checkTocPosition() {
-        const width = document.body.scrollWidth;
-        if (width - main - (toc * 2) - (gap * 4) > 0) {
-            isWideMode = true;
-            // 宽屏模式
-            if (isTocVisible) {
-                tocContainer.classList.add("wide");
-                tocContainer.classList.remove("collapsed");
-                tocContainer.classList.remove("mobile-popup");
-                tocToggleBtn.classList.add("active");
-            } else {
-                tocContainer.classList.remove("wide");
-                tocContainer.classList.add("collapsed");
-                tocContainer.classList.remove("mobile-popup");
-                tocToggleBtn.classList.remove("active");
-            }
-            closeTocPopup();
-        } else {
-            isWideMode = false;
-            // 小屏模式：始终隐藏左侧固定 TOC
-            tocContainer.classList.remove("wide");
-            if (!tocContainer.classList.contains("mobile-popup")) {
-                tocContainer.classList.add("collapsed");
-            }
-            // 更新按钮状态
-            if (tocContainer.classList.contains("active")) {
-                tocToggleBtn.classList.add("active");
-            } else {
-                tocToggleBtn.classList.remove("active");
             }
         }
-    }
 
-    // 打开弹出式 TOC
-    function openTocPopup() {
-        tocContainer.classList.remove("collapsed");
-        tocContainer.classList.add("mobile-popup");
-        tocContainer.classList.add("active");
-        tocOverlay.classList.add("active");
-        tocToggleBtn.classList.add("active");
-        document.body.style.overflow = "hidden"; // 防止背景滚动
-    }
+        // Initialize on DOM ready
+        window.addEventListener('DOMContentLoaded', function() {
+            applyMode(getMode());
 
-    // 关闭弹出式 TOC
-    function closeTocPopup() {
-        tocContainer.classList.remove("active");
-        tocOverlay.classList.remove("active");
-        document.body.style.overflow = ""; // 恢复滚动
-        // 延迟隐藏，等待动画完成
-        setTimeout(() => {
-            if (!tocContainer.classList.contains("active")) {
-                tocContainer.classList.remove("mobile-popup");
-                if (!isWideMode || !isTocVisible) {
-                    tocContainer.classList.add("collapsed");
+            elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+            // Make the first header active
+            if (elements.length > 0) {
+                activeElement = elements[0];
+                const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+                const activeLink = document.querySelector(`.inner ul li a[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
                 }
             }
-        }, 300);
-    }
+        }, false);
 
-    // 切换 TOC 显示/隐藏
-    function toggleToc() {
-        if (isWideMode) {
-            // 宽屏模式：切换左侧固定 TOC 的显示/隐藏
-            isTocVisible = !isTocVisible;
-            if (isTocVisible) {
-                tocContainer.classList.add("wide");
-                tocContainer.classList.remove("collapsed");
-                tocToggleBtn.classList.add("active");
+        // Listen for breakpoint changes
+        [mSmall, mMedium, mWide].forEach(mq => {
+            mq.addEventListener('change', () => applyMode(getMode()));
+        });
+
+        // Scroll spy for active heading highlight
+        window.addEventListener('scroll', () => {
+            if (!elements || elements.length === 0) return;
+
+            activeElement = Array.from(elements).find((element) => {
+                if ((getOffsetTop(element) - window.pageYOffset) > 0 &&
+                    (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                    return element;
+                }
+            }) || activeElement;
+
+            elements.forEach(element => {
+                const id = encodeURI(element.getAttribute('id')).toLowerCase();
+                const link = document.querySelector(`.inner ul li a[href="#${id}"]`);
+                if (link) {
+                    if (element === activeElement) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                }
+            });
+        }, false);
+
+        // Open popup TOC (small screens only)
+        function openTocPopup() {
+            tocContainer.classList.remove("collapsed");
+            tocContainer.classList.add("mobile-popup");
+            tocContainer.classList.add("active");
+            if (tocOverlay) tocOverlay.classList.add("active");
+            tocToggleBtn.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        // Close popup TOC
+        function closeTocPopup(force) {
+            if (!tocContainer.classList.contains("active") && !force) return;
+
+            tocContainer.classList.remove("active");
+            if (tocOverlay) tocOverlay.classList.remove("active");
+            document.body.style.overflow = "";
+
+            setTimeout(() => {
+                if (!tocContainer.classList.contains("active")) {
+                    tocContainer.classList.remove("mobile-popup");
+                    if (currentMode === 'small' || !isTocVisible) {
+                        tocContainer.classList.add("collapsed");
+                    }
+                }
+            }, 300);
+        }
+
+        // Toggle TOC visibility
+        function toggleToc() {
+            if (currentMode === 'small') {
+                // Small screen: toggle popup
+                if (tocContainer.classList.contains("active")) {
+                    closeTocPopup();
+                    tocToggleBtn.classList.remove("active");
+                } else {
+                    openTocPopup();
+                }
             } else {
-                tocContainer.classList.remove("wide");
-                tocContainer.classList.add("collapsed");
-                tocToggleBtn.classList.remove("active");
+                // Medium/Wide: toggle inline visibility
+                isTocVisible = !isTocVisible;
+                if (isTocVisible) {
+                    tocContainer.classList.remove("collapsed");
+                    tocToggleBtn.classList.add("active");
+                } else {
+                    tocContainer.classList.add("collapsed");
+                    tocToggleBtn.classList.remove("active");
+                }
             }
-        } else {
-            // 小屏模式：切换弹出式 TOC
-            if (tocContainer.classList.contains("active")) {
+        }
+
+        // Event listeners
+        tocToggleBtn.addEventListener('click', toggleToc);
+
+        if (tocCloseBtn) {
+            tocCloseBtn.addEventListener('click', function() {
                 closeTocPopup();
                 tocToggleBtn.classList.remove("active");
-            } else {
-                openTocPopup();
-            }
+            });
         }
-    }
 
-    // 切换按钮点击事件
-    tocToggleBtn.addEventListener('click', function() {
-        toggleToc();
-    });
+        if (tocOverlay) {
+            tocOverlay.addEventListener('click', function() {
+                closeTocPopup();
+                tocToggleBtn.classList.remove("active");
+            });
+        }
 
-    // 关闭按钮点击事件
-    tocCloseBtn.addEventListener('click', function() {
-        closeTocPopup();
-        tocToggleBtn.classList.remove("active");
-    });
+        // Close popup when clicking TOC links (small screens)
+        tocContainer.querySelectorAll('.inner a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                if (tocContainer.classList.contains("mobile-popup")) {
+                    closeTocPopup();
+                    tocToggleBtn.classList.remove("active");
+                }
+            });
+        });
 
-    // 遮罩层点击事件
-    tocOverlay.addEventListener('click', function() {
-        closeTocPopup();
-        tocToggleBtn.classList.remove("active");
-    });
-
-    // TOC 内链接点击后关闭弹出层（仅小屏模式）
-    tocContainer.querySelectorAll('.inner a').forEach(function(link) {
-        link.addEventListener('click', function() {
-            if (tocContainer.classList.contains("mobile-popup")) {
+        // ESC key to close popup
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && tocContainer.classList.contains("active")) {
                 closeTocPopup();
                 tocToggleBtn.classList.remove("active");
             }
         });
-    });
 
-    // ESC 键关闭弹出层
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && tocContainer.classList.contains("active")) {
-            closeTocPopup();
-            tocToggleBtn.classList.remove("active");
+        function getOffsetTop(element) {
+            if (!element.getClientRects().length) {
+                return 0;
+            }
+            let rect = element.getBoundingClientRect();
+            let win = element.ownerDocument.defaultView;
+            return rect.top + win.pageYOffset;
         }
-    });
-
-    function getOffsetTop(element) {
-        if (!element.getClientRects().length) {
-            return 0;
-        }
-        let rect = element.getBoundingClientRect();
-        let win = element.ownerDocument.defaultView;
-        return rect.top + win.pageYOffset;
-    }
+    })();
 </script>
 {{- end }}
