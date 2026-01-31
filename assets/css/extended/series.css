@@ -43,11 +43,18 @@ body.post .main {
 }
 
 /* ==================== Two/Three Column Layout ==================== */
-.post-grid.pg--toc-two,
+.post-grid.pg--toc-two {
+    display: grid;
+    column-gap: var(--content-gap);
+    align-items: start;
+    justify-content: start;
+    padding-left: 0;
+}
+
 .post-grid.pg--series-two,
 .post-grid.pg--series-three {
     display: grid;
-    column-gap: var(--content-gap);
+    column-gap: 0;
     align-items: start;
     justify-content: start;
     padding-left: 0;
@@ -63,18 +70,26 @@ body.post .main {
 
 /* With Series: Series + Content (TOC embedded in Series) */
 .post-grid.pg--series-two {
-    grid-template-columns: var(--series-width) minmax(0, var(--article-width));
-    --pg-total: calc(var(--series-width) + var(--article-width) + (var(--content-gap) * 1));
-    --pg-shift: calc((var(--series-width) + var(--content-gap)) / 2);
-    padding-left: clamp(0px, calc((100% - var(--pg-total)) / 2 - var(--pg-shift)), calc(100% - var(--pg-total)));
+    grid-template-columns: var(--series-width) var(--content-gap) minmax(0, 1fr) minmax(0, var(--article-width)) minmax(0, 1fr);
 }
 
 /* With Series: Series + Content + TOC */
 .post-grid.pg--series-three {
-    grid-template-columns: var(--series-width) minmax(0, var(--article-width)) var(--toc-width);
-    --pg-total: calc(var(--series-width) + var(--article-width) + var(--toc-width) + (var(--content-gap) * 2));
-    --pg-shift: calc((var(--series-width) - var(--toc-width)) / 2);
-    padding-left: clamp(0px, calc((100% - var(--pg-total)) / 2 - var(--pg-shift)), calc(100% - var(--pg-total)));
+    grid-template-columns: var(--series-width) var(--content-gap) minmax(0, 1fr) minmax(0, var(--article-width)) var(--content-gap) var(--toc-width) minmax(0, 1fr);
+}
+
+.post-grid.pg--series-two .post-grid__series,
+.post-grid.pg--series-three .post-grid__series {
+    grid-column: 1;
+}
+
+.post-grid.pg--series-two .post-grid__content,
+.post-grid.pg--series-three .post-grid__content {
+    grid-column: 4;
+}
+
+.post-grid.pg--series-three .post-grid__toc {
+    grid-column: 6;
 }
 
 /* Sticky sidebars (non-popup) */
@@ -244,6 +259,10 @@ body.post .main {
     border-left: 2px solid var(--border);
     padding-left: 8px;
     margin-left: 4px;
+}
+
+.series-current .series-toc {
+    margin-left: 0;
 }
 
 .series-toc .inner {

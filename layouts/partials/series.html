@@ -46,17 +46,17 @@
     {{- if ($.Param "ShowToc") -}}
       {{- $tocBody = partial "toc_body.html" $ -}}
     {{- end -}}
-    {{- if $tocBody -}}
-    <div class="series-toc">
-        {{ $tocBody }}
-    </div>
-    {{- end -}}
 
     <ol class="series-list">
         {{- range $pages -}}
           {{- $isCurrent := eq .RelPermalink $.RelPermalink -}}
           <li class="series-item{{ if $isCurrent }} series-current{{ end }}">
             <a href="{{ .RelPermalink }}" title="{{ .Title | plainify }}">{{ .Title }}</a>
+            {{- if and $isCurrent $tocBody -}}
+            <div class="series-toc">
+                {{ $tocBody }}
+            </div>
+            {{- end -}}
           </li>
         {{- end -}}
     </ol>
