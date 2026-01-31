@@ -93,11 +93,17 @@ body.post .main {
 }
 
 /* Sticky sidebars (non-popup) */
-.post-grid.pg--series-two .series,
-.post-grid.pg--series-three .series {
+.post-grid.pg--series-two .post-grid__series,
+.post-grid.pg--series-three .post-grid__series {
     position: sticky;
     top: var(--header-height);
     height: calc(100vh - var(--header-height));
+    align-self: start;
+}
+
+.post-grid.pg--series-two .series,
+.post-grid.pg--series-three .series {
+    height: 100%;
     overflow-y: auto;
     overscroll-behavior: contain;
 }
@@ -167,6 +173,7 @@ body.post .main {
 /* ==================== Series Sidebar Styles ==================== */
 
 .series {
+    box-sizing: border-box;
     border: 1px solid var(--border);
     background: var(--entry);
     border-radius: var(--radius);
