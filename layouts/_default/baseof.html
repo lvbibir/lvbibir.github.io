@@ -9,6 +9,9 @@
 {{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`) (eq .Layout `tags`) (eq .Layout `about`) (eq .Layout `links`) (eq .File.BaseFileName `talk`)) -}}
 {{- print "list" -}}
 {{- end -}}
+{{- if and (eq .Kind `page`) (eq .Section `posts`) -}}
+{{- print " post" -}}
+{{- end -}}
 {{- if eq $.Site.Params.defaultTheme `dark` -}}
 {{- print " dark" }}
 {{- end -}}

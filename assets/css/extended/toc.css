@@ -1,6 +1,6 @@
 /* TOC 基础样式 */
 .toc {
-    margin: 0 2px 40px 2px;
+    margin: 0 0 40px 0;
     border: 1.2px solid var(--border);
     background: var(--entry);
     border-radius: var(--radius);
@@ -10,23 +10,6 @@
 .toc-container {
     margin: 0;
     width: 100%;
-}
-
-/* Grid 内的 TOC 使用 sticky 定位 */
-.post-grid__toc .toc-container {
-    position: sticky;
-    top: var(--gap);
-}
-
-.post-grid__toc .toc {
-    border: unset;
-    background: unset;
-    border-radius: unset;
-    margin: 0;
-}
-
-.post-grid__toc .toc .inner {
-    margin: 0;
 }
 
 .toc details summary {
@@ -55,15 +38,18 @@
     content: "⬇️ ";
 }
 
-.active {
+.toc a.active,
+.series-toc a.active {
     color: #42b983;
     font-size: 100%;
+    font-weight: 600;
     border-bottom: 1px solid transparent;
     padding-bottom: 0.1rem;
     border-bottom-color: #42b983;
 }
 
-.dark .active {
+.dark .toc a.active,
+.dark .series-toc a.active {
     color: var(--content);
 }
 
@@ -101,145 +87,7 @@
     color: var(--content);
 }
 
-/* ==================== TOC 弹出样式 ==================== */
-
-/* TOC 切换按钮 */
-.toc-toggle-btn {
-    visibility: visible;
-    opacity: 1;
-    display: flex;
-    position: fixed;
-    right: 30px;
-    bottom: 110px;
-    z-index: 99;
-    width: 42px;
-    height: 42px;
-    padding: 10px;
-    border-radius: 64px;
-    background: var(--entry);
-    border: none;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    color: var(--secondary);
-    font-size: 12px;
-    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
-    box-shadow: var(--box-shadow-default);
-}
-
-.toc-toggle-btn:hover {
-    color: var(--primary);
-    transform: scale(1.1);
-    box-shadow: var(--box-shadow-hover);
-}
-
-.toc-toggle-btn:focus {
-    outline: 0;
-}
-
-.toc-toggle-btn svg {
-    width: 22px;
-    height: 22px;
-    fill: currentColor;
-}
-
-.toc-toggle-btn.active {
-    color: var(--primary);
-    background: var(--tertiary);
-}
-
-/* 遮罩层 */
-.toc-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 199;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.toc-overlay.active {
-    display: block;
-    opacity: 1;
-}
-
-/* 移动端弹出 TOC 容器 */
-.toc-container.mobile-popup {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 280px;
-    max-width: 80vw;
-    z-index: 200;
-    background: var(--theme);
-    border-right: 1px solid var(--border);
-    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.15);
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    overflow-y: auto;
-    margin: 0;
-    height: 100%;
-}
-
-.toc-container.mobile-popup.active {
-    transform: translateX(0);
-}
-
-.toc-container.mobile-popup .toc {
-    margin: 0;
-    padding: 16px;
-    border: none;
-    background: transparent;
-    border-radius: 0;
-}
-
-.toc-container.mobile-popup .toc details {
-    margin: 0;
-}
-
-.toc-container.mobile-popup .toc details summary {
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 8px;
-}
-
-.toc-container.mobile-popup .toc .inner {
-    margin: 0;
-    max-height: calc(100vh - 80px);
-}
-
-/* 移动端关闭按钮 */
-.toc-close-btn {
-    display: none;
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: var(--entry);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    z-index: 201;
-}
-
-.toc-close-btn svg {
-    width: 16px;
-    height: 16px;
-    fill: var(--primary);
-}
-
-.toc-container.mobile-popup .toc-close-btn {
-    display: flex;
-}
-
-.toc-container.collapsed {
+/* Inline TOC (No Series + Narrow Screen) */
+.post-grid.pg--toc-two .toc--inline {
     display: none;
 }

@@ -2,8 +2,12 @@
 {{- /* Capture series and toc partials for conditional rendering */}}
 {{- $seriesHTML := partial "series.html" . -}}
 {{- $showToc := .Param "ShowToc" -}}
+{{- $tocHTML := "" -}}
+{{- if $showToc -}}
+  {{- $tocHTML = partial "toc.html" . -}}
+{{- end -}}
 
-<div class="post-grid{{ if $seriesHTML }} has-series{{ end }}{{ if $showToc }} has-toc{{ end }}">
+<div class="post-grid{{ if $seriesHTML }} has-series{{ end }}{{ if $tocHTML }} has-toc{{ end }}">
     {{- /* Left Sidebar: Series */}}
     {{- if $seriesHTML }}
     <aside class="post-grid__series">
@@ -58,6 +62,9 @@
 
             {{- if .Content }}
             <div class="post-content">
+                {{- if and $showToc (not $seriesHTML) -}}
+                {{- partial "toc_inline.html" . -}}
+                {{- end -}}
                 {{- if not (.Param "disableAnchoredHeadings") }}
                 {{- partial "anchored_headings.html" .Content -}}
                 {{- else }}{{ .Content }}{{ end }}
@@ -110,11 +117,102 @@
     </article>
 
     {{- /* Right Sidebar: TOC */}}
-    {{- if $showToc }}
+    {{- if $tocHTML }}
     <aside class="post-grid__toc">
-        {{- partial "toc.html" . }}
+        {{ $tocHTML }}
     </aside>
     {{- end }}
 </div>
+
+<script>
+    (function() {
+        const grid = document.querySelector(".post-grid");
+        if (!grid) return;
+
+        const MODES = [
+            "pg--series-popup",
+            "pg--series-two",
+            "pg--series-three",
+            "pg--toc-one",
+            "pg--toc-two",
+        ];
+
+        function toPx(value, fallback) {
+            if (!value) return fallback;
+            const n = Number.parseFloat(String(value).trim());
+            return Number.isFinite(n) ? n : fallback;
+        }
+
+        function readVarPx(style, name, fallback) {
+            return toPx(style.getPropertyValue(name), fallback);
+        }
+
+        function forceCloseSeriesPopup() {
+            const seriesContainer = document.getElementById("series-container");
+            const seriesToggleBtn = document.getElementById("series-toggle-btn");
+            const seriesOverlay = document.getElementById("series-overlay");
+
+            if (!seriesContainer || !seriesContainer.classList.contains("is-open")) return;
+
+            seriesContainer.classList.remove("is-open");
+            if (seriesOverlay) seriesOverlay.classList.remove("is-open");
+            if (seriesToggleBtn) {
+                seriesToggleBtn.classList.remove("is-open");
+                seriesToggleBtn.setAttribute("aria-expanded", "false");
+            }
+            document.body.style.overflow = "";
+        }
+
+        function applyLayout() {
+            const style = getComputedStyle(document.documentElement);
+            const seriesWidth = readVarPx(style, "--series-width", 350);
+            const articleWidth = readVarPx(style, "--article-width", 800);
+            const tocWidth = readVarPx(style, "--toc-width", 250);
+            const contentGap = readVarPx(style, "--content-gap", 20);
+
+            const w = grid.clientWidth;
+            const hasSeries = grid.classList.contains("has-series");
+            const hasToc = grid.classList.contains("has-toc");
+
+            let mode = "pg--toc-one";
+
+            if (hasSeries) {
+                const bp2 = seriesWidth + contentGap + articleWidth;
+                const bp3 = seriesWidth + contentGap + articleWidth + contentGap + tocWidth;
+                if (hasToc && w >= bp3) {
+                    mode = "pg--series-three";
+                } else if (w >= bp2) {
+                    mode = "pg--series-two";
+                } else {
+                    mode = "pg--series-popup";
+                }
+            } else if (hasToc) {
+                const bp = articleWidth + contentGap + tocWidth;
+                mode = w >= bp ? "pg--toc-two" : "pg--toc-one";
+            }
+
+            grid.classList.remove(...MODES);
+            grid.classList.add(mode);
+
+            if (mode !== "pg--series-popup") {
+                forceCloseSeriesPopup();
+            }
+        }
+
+        let raf = 0;
+        function schedule() {
+            if (raf) return;
+            raf = window.requestAnimationFrame(() => {
+                raf = 0;
+                applyLayout();
+            });
+        }
+
+        window.addEventListener("resize", schedule, { passive: true });
+        window.addEventListener("orientationchange", schedule, { passive: true });
+
+        applyLayout();
+    })();
+</script>
 
 {{- end }}{{/* end main */}}

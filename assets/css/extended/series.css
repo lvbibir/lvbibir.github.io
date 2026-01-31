@@ -1,118 +1,152 @@
-/* ==================== Post Grid Layout ==================== */
+/* ==================== Post Single Layout (Series / Content / TOC) ==================== */
+/*
+布局模式由 JS 根据 CSS 变量计算断点后写入 class:
+- pg--series-popup: 1 列, Series 收起为弹出面板(按钮触发), TOC 在面板内
+- pg--series-two: 2 列, Series 固定左侧, TOC 融合进 Series
+- pg--series-three: 3 列, Series 固定左侧 + Content + 右侧 TOC
+- pg--toc-one: 1 列, (无 Series) TOC 使用正文内嵌版本(.toc--inline)
+- pg--toc-two: 2 列, (无 Series) Content + 右侧 TOC
 
-/* Base Grid Container */
+断点使用以下变量实时计算:
+- --series-width
+- --article-width
+- --toc-width
+- --content-gap
+*/
+
+body.post .main {
+    max-width: none;
+}
+
 .post-grid {
-    display: block;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 var(--gap);
-    max-width: calc(var(--article-width) + var(--gap) * 2);
+    box-sizing: border-box;
 }
 
-/* Grid Areas */
-.post-grid__series { grid-area: series; min-width: 0; }
-.post-grid__content { grid-area: content; min-width: 0; }
-.post-grid__toc { grid-area: toc; min-width: 0; }
-
-/* Small screens (<1024px): Single column, Series visible, TOC popup */
-@media (max-width: 1023px) {
-    .post-grid {
-        display: block;
-        max-width: calc(var(--article-width) + var(--gap) * 2);
-    }
-
-    .post-grid__series {
-        margin-bottom: var(--gap);
-    }
-
-    /* Hide TOC in grid on small screens (use popup instead) */
-    .post-grid__toc {
-        display: none;
-    }
+.post-grid__series,
+.post-grid__content,
+.post-grid__toc {
+    min-width: 0;
+    box-sizing: border-box;
 }
 
-/* Medium screens (1024px - 1440px): 2 columns, TOC under Series */
-@media (min-width: 1024px) and (max-width: 1440px) {
-    .post-grid {
-        display: grid;
-        gap: var(--gap);
-        align-items: start;
-        max-width: calc(var(--series-width) + var(--article-width) + var(--gap) * 4);
-    }
-
-    /* With both series and toc */
-    .post-grid.has-series.has-toc {
-        grid-template-columns: var(--series-width) minmax(0, 1fr);
-        grid-template-rows: auto auto;
-        grid-template-areas:
-            "series content"
-            "toc content";
-    }
-
-    /* Series only */
-    .post-grid.has-series:not(.has-toc) {
-        grid-template-columns: var(--series-width) minmax(0, 1fr);
-        grid-template-areas: "series content";
-    }
-
-    /* TOC only */
-    .post-grid.has-toc:not(.has-series) {
-        grid-template-columns: var(--series-width) minmax(0, 1fr);
-        grid-template-areas:
-            ". content"
-            "toc content";
-    }
-
-    /* Neither */
-    .post-grid:not(.has-series):not(.has-toc) {
-        grid-template-columns: minmax(0, 1fr);
-        grid-template-areas: "content";
-        max-width: calc(var(--article-width) + var(--gap) * 2);
-    }
-
-    .post-grid__toc {
-        display: block;
-    }
+/* Base: single column */
+.post-grid__content {
+    width: 100%;
+    max-width: var(--article-width);
+    margin: 0 auto;
 }
 
-/* Wide screens (>1440px): 3 columns */
-@media (min-width: 1441px) {
-    .post-grid {
-        display: grid;
-        gap: var(--gap);
-        align-items: start;
-        max-width: calc(var(--series-width) + var(--article-width) + var(--toc-width) + var(--gap) * 6);
-    }
+.post-grid__toc {
+    display: none;
+}
 
-    /* With both series and toc */
-    .post-grid.has-series.has-toc {
-        grid-template-columns: var(--series-width) minmax(0, var(--article-width)) var(--toc-width);
-        grid-template-areas: "series content toc";
-    }
+/* ==================== Two/Three Column Layout ==================== */
+.post-grid.pg--toc-two,
+.post-grid.pg--series-two,
+.post-grid.pg--series-three {
+    display: grid;
+    column-gap: var(--content-gap);
+    align-items: start;
+    justify-content: start;
+    padding-left: 0;
+}
 
-    /* Series only */
-    .post-grid.has-series:not(.has-toc) {
-        grid-template-columns: var(--series-width) minmax(0, var(--article-width));
-        grid-template-areas: "series content";
-        max-width: calc(var(--series-width) + var(--article-width) + var(--gap) * 4);
-    }
+/* No Series: Content + TOC */
+.post-grid.pg--toc-two {
+    grid-template-columns: minmax(0, var(--article-width)) var(--toc-width);
+    --pg-total: calc(var(--article-width) + var(--toc-width) + (var(--content-gap) * 1));
+    --pg-shift: calc((var(--toc-width) + var(--content-gap)) / 2);
+    padding-left: clamp(0px, calc((100% - var(--pg-total)) / 2 + var(--pg-shift)), calc(100% - var(--pg-total)));
+}
 
-    /* TOC only */
-    .post-grid.has-toc:not(.has-series) {
-        grid-template-columns: minmax(0, var(--article-width)) var(--toc-width);
-        grid-template-areas: "content toc";
-        max-width: calc(var(--article-width) + var(--toc-width) + var(--gap) * 4);
-    }
+/* With Series: Series + Content (TOC embedded in Series) */
+.post-grid.pg--series-two {
+    grid-template-columns: var(--series-width) minmax(0, var(--article-width));
+    --pg-total: calc(var(--series-width) + var(--article-width) + (var(--content-gap) * 1));
+    --pg-shift: calc((var(--series-width) + var(--content-gap)) / 2);
+    padding-left: clamp(0px, calc((100% - var(--pg-total)) / 2 - var(--pg-shift)), calc(100% - var(--pg-total)));
+}
 
-    /* Neither */
-    .post-grid:not(.has-series):not(.has-toc) {
-        grid-template-columns: minmax(0, var(--article-width));
-        grid-template-areas: "content";
-        max-width: calc(var(--article-width) + var(--gap) * 2);
-    }
+/* With Series: Series + Content + TOC */
+.post-grid.pg--series-three {
+    grid-template-columns: var(--series-width) minmax(0, var(--article-width)) var(--toc-width);
+    --pg-total: calc(var(--series-width) + var(--article-width) + var(--toc-width) + (var(--content-gap) * 2));
+    --pg-shift: calc((var(--series-width) - var(--toc-width)) / 2);
+    padding-left: clamp(0px, calc((100% - var(--pg-total)) / 2 - var(--pg-shift)), calc(100% - var(--pg-total)));
+}
 
-    .post-grid__toc {
-        display: block;
-    }
+/* Sticky sidebars (non-popup) */
+.post-grid.pg--series-two .series,
+.post-grid.pg--series-three .series {
+    position: sticky;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.post-grid.pg--toc-two .post-grid__toc,
+.post-grid.pg--series-three .post-grid__toc {
+    display: block;
+    position: sticky;
+    top: var(--header-height);
+    align-self: start;
+}
+
+/* 3 列模式: 隐藏嵌入式 TOC */
+.post-grid.pg--series-three .series-toc {
+    display: none;
+}
+
+/* ==================== With Series: Popup ==================== */
+.post-grid.pg--series-popup .series-toggle-btn {
+    display: flex;
+}
+
+.post-grid.pg--series-popup .series-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 199;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.post-grid.pg--series-popup .series-overlay.is-open {
+    display: block;
+    opacity: 1;
+}
+
+.post-grid.pg--series-popup .series {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: min(var(--series-width), 85vw);
+    z-index: 200;
+    background: var(--theme);
+    border: none;
+    border-right: 1px solid var(--border);
+    border-radius: 0;
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.15);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    height: 100%;
+    margin: 0;
+    padding: 16px;
+    padding-top: 50px;
+}
+
+.post-grid.pg--series-popup .series.is-open {
+    transform: translateX(0);
+}
+
+.post-grid.pg--series-popup .series-close-btn {
+    display: flex;
 }
 
 /* ==================== Series Sidebar Styles ==================== */
@@ -122,8 +156,8 @@
     background: var(--entry);
     border-radius: var(--radius);
     padding: 12px;
-    position: sticky;
-    top: var(--gap);
+    margin: 0;
+    overflow-y: auto;
 }
 
 .series-heading {
@@ -154,15 +188,13 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    max-height: 70vh;
-    overflow-y: auto;
 }
 
-.series-list::-webkit-scrollbar {
+.series::-webkit-scrollbar {
     width: 6px;
 }
 
-.series-list::-webkit-scrollbar-thumb {
+.series::-webkit-scrollbar-thumb {
     background: var(--border);
     border-radius: 3px;
 }
@@ -176,7 +208,7 @@
     border-bottom: none;
 }
 
-.series-item a {
+.series-item > a {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -187,12 +219,12 @@
     transition: color 0.2s ease;
 }
 
-.series-item a:hover {
+.series-item > a:hover {
     color: var(--primary);
 }
 
 /* Current article highlight */
-.series-current a {
+.series-current > a {
     color: var(--primary);
     font-weight: 600;
 }
@@ -204,16 +236,137 @@
     border-radius: var(--radius);
 }
 
-/* Dark mode adjustments */
+/* ==================== Embedded TOC (inside Series) ==================== */
+
+.series-toc {
+    margin-top: 8px;
+    margin-bottom: 10px;
+    border-left: 2px solid var(--border);
+    padding-left: 8px;
+    margin-left: 4px;
+}
+
+.series-toc .inner {
+    margin: 0;
+    padding: 0;
+    max-height: none;
+    overflow: visible;
+}
+
+.series-toc ul {
+    padding-left: 12px;
+    list-style: none;
+    margin: 0;
+}
+
+.series-toc li {
+    padding: 2px 0;
+    font-size: 0.85rem;
+}
+
+.series-toc a {
+    color: var(--secondary);
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.series-toc a:hover {
+    color: var(--primary);
+}
+
+/* ==================== Series Popup UI ==================== */
+
+.series-toggle-btn {
+    display: none;
+    position: fixed;
+    left: 30px;
+    bottom: 110px;
+    z-index: 99;
+    width: 42px;
+    height: 42px;
+    padding: 10px;
+    border-radius: 64px;
+    background: var(--entry);
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+    font-size: 12px;
+    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
+    box-shadow: var(--box-shadow-default);
+}
+
+.series-toggle-btn:hover {
+    color: var(--primary);
+    transform: scale(1.1);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.series-toggle-btn:focus {
+    outline: 0;
+}
+
+.series-toggle-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+}
+
+.series-toggle-btn.is-open {
+    color: var(--primary);
+    background: var(--tertiary);
+}
+
+.series-overlay {
+    display: none;
+}
+
+.series-close-btn {
+    display: none;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    z-index: 201;
+}
+
+.series-close-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--primary);
+}
+
+/* ==================== Dark Mode Adjustments ==================== */
+
 .dark .series {
     background: var(--entry);
 }
 
-.dark .series-item a {
+.dark .series-item > a {
     color: rgba(180, 181, 182, 0.8);
 }
 
-.dark .series-item a:hover,
-.dark .series-current a {
+.dark .series-item > a:hover,
+.dark .series-current > a {
     color: var(--primary);
+}
+
+.dark .series-toc a {
+    color: rgba(180, 181, 182, 0.8);
+}
+
+.dark .series-toc a:hover {
+    color: var(--primary);
+}
+
+.dark .series-toggle-btn {
+    background: var(--entry);
 }

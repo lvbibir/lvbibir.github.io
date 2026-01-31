@@ -1,33 +1,132 @@
-{{- /* Series Sidebar - Display articles from the same tag */}}
-{{- $terms := .GetTerms "tags" -}}
+{{- /* Series Sidebar - Priority: frontmatter series taxonomy, fallback to first tag */}}
+{{- $seriesTerms := .GetTerms "series" -}}
+{{- $tagTerms := .GetTerms "tags" -}}
 {{- $seriesTagParam := .Params.seriesTag | default "" -}}
 {{- $termPage := "" -}}
 
-{{- /* Resolve term page: priority to seriesTag param, fallback to first tag */}}
+{{- /* Resolve term page: priority to seriesTag param, then series taxonomy, then first tag */}}
 {{- if $seriesTagParam -}}
   {{- $termPage = site.GetPage (printf "/tags/%s" ($seriesTagParam | urlize)) -}}
-{{- else if gt (len $terms) 0 -}}
-  {{- $termPage = index $terms 0 -}}
+{{- else if gt (len $seriesTerms) 0 -}}
+  {{- $termPage = index $seriesTerms 0 -}}
+{{- else if gt (len $tagTerms) 0 -}}
+  {{- $termPage = index $tagTerms 0 -}}
 {{- end -}}
 
 {{- with $termPage -}}
   {{- $pages := .Pages.ByDate -}}
   {{- /* Only render if there are at least 2 articles in the series */}}
   {{- if ge (len $pages) 2 -}}
-    <nav class="series" aria-label="Series">
-      <div class="series-heading">
+
+<!-- Series 切换按钮 (窄屏时显示) -->
+<button id="series-toggle-btn" class="series-toggle-btn" aria-label="Toggle Series Navigation" title="Series" aria-expanded="false">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/>
+    </svg>
+</button>
+
+<!-- Series 遮罩层 -->
+<div id="series-overlay" class="series-overlay"></div>
+
+<nav id="series-container" class="series" aria-label="Series">
+    <!-- 关闭按钮 (窄屏弹出时显示) -->
+    <button id="series-close-btn" class="series-close-btn" aria-label="Close Series Navigation">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+    </button>
+    <div class="series-heading">
         <span class="series-icon">📚</span>
         <span class="series-title">{{ .LinkTitle }}</span>
         <span class="series-count">({{ len $pages }})</span>
-      </div>
-      <ol class="series-list">
+    </div>
+
+    {{- /* Embedded TOC (used in 2-col + popup modes; hidden in 3-col by CSS) */ -}}
+    {{- $tocBody := "" -}}
+    {{- if ($.Param "ShowToc") -}}
+      {{- $tocBody = partial "toc_body.html" $ -}}
+    {{- end -}}
+    {{- if $tocBody -}}
+    <div class="series-toc">
+        {{ $tocBody }}
+    </div>
+    {{- end -}}
+
+    <ol class="series-list">
         {{- range $pages -}}
           {{- $isCurrent := eq .RelPermalink $.RelPermalink -}}
           <li class="series-item{{ if $isCurrent }} series-current{{ end }}">
             <a href="{{ .RelPermalink }}" title="{{ .Title | plainify }}">{{ .Title }}</a>
           </li>
         {{- end -}}
-      </ol>
-    </nav>
+    </ol>
+</nav>
+
+<script>
+(function() {
+    const seriesContainer = document.getElementById("series-container");
+    const seriesToggleBtn = document.getElementById("series-toggle-btn");
+    const seriesCloseBtn = document.getElementById("series-close-btn");
+    const seriesOverlay = document.getElementById("series-overlay");
+
+    // Guard: exit if Series elements don't exist
+    if (!seriesContainer || !seriesToggleBtn) return;
+    function isPopupMode() {
+        const grid = document.querySelector(".post-grid");
+        return !!(grid && grid.classList.contains("pg--series-popup"));
+    }
+
+    function openSeries() {
+        if (!isPopupMode()) return;
+        seriesContainer.classList.add("is-open");
+        if (seriesOverlay) seriesOverlay.classList.add("is-open");
+        seriesToggleBtn.classList.add("is-open");
+        seriesToggleBtn.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeSeries() {
+        seriesContainer.classList.remove("is-open");
+        if (seriesOverlay) seriesOverlay.classList.remove("is-open");
+        seriesToggleBtn.classList.remove("is-open");
+        seriesToggleBtn.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+    }
+
+    function toggleSeries() {
+        if (seriesContainer.classList.contains("is-open")) {
+            closeSeries();
+        } else {
+            openSeries();
+        }
+    }
+
+    seriesToggleBtn.addEventListener("click", toggleSeries);
+
+    if (seriesCloseBtn) seriesCloseBtn.addEventListener("click", closeSeries);
+    if (seriesOverlay) seriesOverlay.addEventListener("click", closeSeries);
+
+    // Close popup when clicking Series links (narrow screens)
+    seriesContainer.querySelectorAll(".series-list a").forEach((link) => {
+        link.addEventListener("click", () => {
+            closeSeries();
+        });
+    });
+
+    // Close popup when clicking embedded TOC links (narrow screens)
+    seriesContainer.querySelectorAll(".series-toc a[href^=\"#\"]").forEach((link) => {
+        link.addEventListener("click", () => {
+            closeSeries();
+        });
+    });
+
+    // ESC key to close popup
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeSeries();
+    });
+
+})();
+</script>
+
   {{- end -}}
 {{- end -}}
