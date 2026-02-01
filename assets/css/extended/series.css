@@ -19,8 +19,11 @@ body.post .main {
 }
 
 .post-grid {
-    width: 100%;
-    margin: 0 auto;
+    /* Bleed into `.main` padding so layout math uses full viewport width. */
+    width: calc(100% + (var(--gap) * 2));
+    margin: 0 calc(var(--gap) * -1);
+    padding-left: var(--gap);
+    padding-right: var(--gap);
     box-sizing: border-box;
 }
 
@@ -49,6 +52,7 @@ body.post .main {
     align-items: start;
     justify-content: start;
     padding-left: 0;
+    padding-right: 0;
 }
 
 .post-grid.pg--series-two,
@@ -58,6 +62,7 @@ body.post .main {
     align-items: start;
     justify-content: start;
     padding-left: 0;
+    padding-right: 0;
 }
 
 /* No Series: Content + TOC */
@@ -70,12 +75,16 @@ body.post .main {
 
 /* With Series: Series + Content (TOC embedded in Series) */
 .post-grid.pg--series-two {
-    grid-template-columns: var(--series-width) var(--content-gap) minmax(0, 1fr) minmax(0, var(--article-width)) minmax(0, 1fr);
+    /* Keep Series pinned to viewport left; center Content based on full viewport width. */
+    --pg-left: clamp(0px, calc((100% - var(--article-width)) / 2 - var(--series-width) - var(--content-gap)), 99999px);
+    grid-template-columns: var(--series-width) var(--content-gap) minmax(0, var(--pg-left)) minmax(0, var(--article-width)) minmax(0, 1fr);
 }
 
 /* With Series: Series + Content + TOC */
 .post-grid.pg--series-three {
-    grid-template-columns: var(--series-width) var(--content-gap) minmax(0, 1fr) minmax(0, var(--article-width)) var(--content-gap) var(--toc-width) minmax(0, 1fr);
+    /* Keep Series pinned to viewport left; center Content based on full viewport width. */
+    --pg-left: clamp(0px, calc((100% - var(--article-width)) / 2 - var(--series-width) - var(--content-gap)), 99999px);
+    grid-template-columns: var(--series-width) var(--content-gap) minmax(0, var(--pg-left)) minmax(0, var(--article-width)) var(--content-gap) var(--toc-width) minmax(0, 1fr);
 }
 
 .post-grid.pg--series-two .post-grid__series,
