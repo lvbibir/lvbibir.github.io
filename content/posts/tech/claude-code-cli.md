@@ -1,7 +1,7 @@
 ---
 title: "Claude Code 完整配置指南"
 date: 2025-12-17
-lastmod: 2026-01-26
+lastmod: 2026-02-02
 tags:
   - AI
   - Claude
@@ -237,7 +237,7 @@ claude mcp add-json --scope user exa '{
   ],
   "command": "npx",
   "env": {
-    "EXA_API_KEY": "01f367a1-6032-4744-825d-c62ad86578dd"
+    "EXA_API_KEY": "-------"
   }
 }'
 ```
@@ -352,7 +352,7 @@ claude mcp add-json --scope user context7 '{
 
 # 5 Skills
 
-**推荐 Plugin 安装:**
+## 5.1 plugin 方式
 
 ```bash
 /plugin
@@ -367,10 +367,15 @@ claude mcp add-json --scope user context7 '{
 - **模块化**: 每个 Plugin 可包含多种组件 (Commands、Agents、Skills、Hooks)
 - **可扩展**: 支持自定义开发和第三方 Plugin
 
-也可以使用其他方式安装:
+## 5.2 npx skills 方式
+
+[skill.sh 官网](https://skills.sh/)
+
+这种方式安装 skills 很方便
 
 ```bash
-npx skills add https://github.com/anthropics/skills --skill frontend-design
+npx -y skills add https://github.com/anthropics/skills --skill frontend-design
+npx -y skills add https://github.com/anthropics/skills --skill pptx docx xlsx pdf
 ```
 
 # 6 WSL2 性能优化
