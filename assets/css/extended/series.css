@@ -25,6 +25,8 @@ body.post .main {
     padding-left: var(--gap);
     padding-right: var(--gap);
     box-sizing: border-box;
+    /* Align sidebars with the actual content start (post header has 24px top margin). */
+    --post-grid-top-offset: 24px;
 }
 
 .post-grid__series,
@@ -106,7 +108,8 @@ body.post .main {
 .post-grid.pg--series-three .post-grid__series {
     position: sticky;
     top: var(--header-height);
-    height: calc(100vh - var(--header-height));
+    margin-top: var(--post-grid-top-offset);
+    height: calc(100vh - var(--header-height) - var(--post-grid-top-offset));
     align-self: start;
 }
 
@@ -122,6 +125,7 @@ body.post .main {
     display: block;
     position: sticky;
     top: var(--header-height);
+    margin-top: var(--post-grid-top-offset);
     align-self: start;
 }
 

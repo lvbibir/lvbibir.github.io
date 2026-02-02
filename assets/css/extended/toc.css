@@ -66,6 +66,12 @@
     user-select: none;
 }
 
+/* Sidebar mode: offset for breadcrumbs / post header top spacing. */
+.post-grid.pg--toc-two .toc .inner,
+.post-grid.pg--series-three .toc .inner {
+    max-height: calc(83vh - var(--post-grid-top-offset, 0px));
+}
+
 .toc .inner::-webkit-scrollbar-thumb {
     background: var(--border);
     border: 8px solid var(--theme);
