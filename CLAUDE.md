@@ -6,6 +6,7 @@
 
 | 日期 | 变更 |
 |------|------|
+| 2026-02-02 | CSS 变量系统优化: 新增 14 个变量, 100% 消除硬编码, 新增用户指南文档 |
 | 2026-02-02 | 完整扫描更新: 新增 Series 侧边栏特性, 更新模块文档, 覆盖率提升至 65% |
 | 2026-01-10 | 初始化 CLAUDE.md 项目文档 |
 
@@ -79,11 +80,20 @@ graph TD
 
 ## 模块索引
 
+### 技术文档 (开发者/维护者)
+
 | 模块 | 路径 | 职责 | 文档 |
 |------|------|------|------|
 | 内容 | `content/` | 博客文章和页面内容 | [content.md](./.claude/docs/content.md) |
 | 布局 | `layouts/` | 模板覆盖和自定义组件 | [layouts.md](./.claude/docs/layouts.md) |
 | 样式 | `assets/css/extended/` | CSS 自定义样式 | [css-extended.md](./.claude/docs/css-extended.md) |
+
+### 用户指南 (使用教程)
+
+| 指南 | 内容 | 文档 |
+|------|------|------|
+| CSS 变量快速参考 | 38 个 CSS 变量完整列表, 按类别分组, 使用示例 | [css-variables-reference.md](./.claude/docs/css-variables-reference.md) |
+| 主题定制指南 | 从基础到高级的完整教程, 4 个主题预设, 常见问题解答 | [theme-customization-guide.md](./.claude/docs/theme-customization-guide.md) |
 
 ---
 
@@ -150,22 +160,19 @@ hidemeta: false
 | CSS 文件 | 功能描述, 小写 | `toc.css`, `code.css` |
 | 图片资源 | 描述性名称 | `cover-kubernetes.png` |
 
-### CSS 变量 (定义在 blank.css)
+### CSS 变量系统 (定义在 blank.css)
 
-```css
-:root {
-    --footer-height: 90px;
-    --hljs-bg: rgb(44, 44, 44);
-    --code-bg: rgb(240, 240, 240);
-    --article-width: 800px;
-    --toc-width: 250px;
-    --series-width: 350px;
-    --gap: 24px;
-    --transition-duration: 0.4s;
-    --box-shadow-default: 0px 2px 4px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
-    --box-shadow-hover: 0px 4px 8px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
-}
-```
+**核心变量** (38 个):
+- **布局**: `--footer-height`, `--article-width`, `--toc-width`, `--series-width`, `--gap`
+- **颜色**: `--hljs-bg`, `--code-bg`, `--lv-accent`, `--lv-border-light`, `--lv-text-muted`
+- **圆角**: `--lv-radius-sm/md/lg/media`
+- **缩放**: `--lv-scale-sm/md/lg`
+- **动画**: `--transition-duration`, `--lv-transition-fast/slow/color`
+- **阴影**: `--box-shadow-default/hover/light`
+
+**完整列表**: 查看 [CSS 变量快速参考](./.claude/docs/css-variables-reference.md)
+
+**定制指南**: 查看 [主题定制指南](./.claude/docs/theme-customization-guide.md)
 
 ---
 
@@ -227,15 +234,17 @@ hidemeta: false
 ### 常见任务
 
 1. **添加新文章**: 在 `content/posts/<category>/` 下创建 `.md` 文件, 使用标准 frontmatter
-2. **修改样式**: 编辑 `assets/css/extended/` 下的 CSS 文件
-3. **修改布局**: 编辑 `layouts/` 下的模板文件 (覆盖主题默认)
-4. **添加翻译**: 编辑 `i18n/en.yaml`
-5. **添加系列文章**: 在 frontmatter 中添加 `series: ["系列名"]` 或 `seriesTag: "标签名"`
+2. **修改样式**: 编辑 `assets/css/extended/` 下的 CSS 文件, 参考 [CSS 变量快速参考](./.claude/docs/css-variables-reference.md)
+3. **定制主题**: 查看 [主题定制指南](./.claude/docs/theme-customization-guide.md), 包含 4 个主题预设
+4. **修改布局**: 编辑 `layouts/` 下的模板文件 (覆盖主题默认)
+5. **添加翻译**: 编辑 `i18n/en.yaml`
+6. **添加系列文章**: 在 frontmatter 中添加 `series: ["系列名"]` 或 `seriesTag: "标签名"`
 
 ### 注意事项
 
 - 不要直接修改 `themes/PaperMod/` 目录, 使用 `layouts/` 覆盖
-- CSS 变量定义在 `assets/css/extended/blank.css`
+- CSS 变量定义在 `assets/css/extended/blank.css`, 完整列表见 [CSS 变量快速参考](./.claude/docs/css-variables-reference.md)
+- 主题定制参考 [主题定制指南](./.claude/docs/theme-customization-guide.md)
 - 主题配置在 `config.yml`
 - 图片资源放在 `static/images/`
 - 字体文件在 `static/fonts/JetBrainsLxgwNerdMono/`
@@ -318,6 +327,25 @@ hidemeta: false
 2. **性能优化**: 图片 WebP 转换, CDN 加速
 3. **SEO 优化**: 结构化数据, sitemap 优化
 4. **可访问性**: ARIA 标签完善, 键盘导航优化
+
+---
+
+## 文档索引
+
+### 技术文档 (.claude/docs/)
+
+| 文档 | 说明 | 行数 |
+|------|------|------|
+| [content.md](./.claude/docs/content.md) | 内容模块技术文档 | ~150 |
+| [layouts.md](./.claude/docs/layouts.md) | 布局模块技术文档 | ~600 |
+| [css-extended.md](./.claude/docs/css-extended.md) | CSS 模块技术文档 | ~800 |
+
+### 用户指南 (.claude/docs/)
+
+| 文档 | 说明 | 行数 |
+|------|------|------|
+| [css-variables-reference.md](./.claude/docs/css-variables-reference.md) | CSS 变量快速参考卡片 | 393 |
+| [theme-customization-guide.md](./.claude/docs/theme-customization-guide.md) | 主题定制完整指南 | 761 |
 
 ---
 
