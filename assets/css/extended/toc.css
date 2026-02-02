@@ -40,12 +40,12 @@
 
 .toc a.active,
 .series-toc a.active {
-    color: #42b983;
+    color: var(--lv-accent);
     font-size: 100%;
     font-weight: 600;
     border-bottom: 1px solid transparent;
     padding-bottom: 0.1rem;
-    border-bottom-color: #42b983;
+    border-bottom-color: var(--lv-accent);
 }
 
 .dark .toc a.active,

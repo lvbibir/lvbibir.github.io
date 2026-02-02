@@ -6,12 +6,12 @@
 .terms-tags a {
     border-radius: 30px;
     background: none;
-    transition: transform var(--transition-duration) ease;
+    transition: var(--lv-transition-transform);
 }
 
 .terms-tags a:hover {
     background: none;
-    transform: scale(1.2);
+    transform: scale(var(--lv-scale-lg));
 }
 
 .dark .terms-tags a {

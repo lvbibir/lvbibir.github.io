@@ -38,7 +38,7 @@ a.pageNext,
 a.pageFirst,
 a.pageLast {
     display: inline-block;
-    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
+    transition: var(--lv-transition-shadow-transform);
     box-shadow: var(--box-shadow-default);
 }
 
@@ -48,7 +48,7 @@ a.pagePrev:hover,
 a.pageNext:hover,
 a.pageFirst:hover,
 a.pageLast:hover {
-    transform: scale(1.2);
+    transform: scale(var(--lv-scale-lg));
     box-shadow: var(--box-shadow-hover);
 }
 

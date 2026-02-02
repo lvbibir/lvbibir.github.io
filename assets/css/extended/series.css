@@ -143,10 +143,10 @@ body.post .main {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--lv-overlay-bg);
     z-index: 199;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--lv-transition-fast) ease;
 }
 
 .post-grid.pg--series-popup .series-overlay.is-open {
@@ -165,9 +165,10 @@ body.post .main {
     border: none;
     border-right: 1px solid var(--border);
     border-radius: 0;
-    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 4px 0 16px var(--lv-shadow-dark);
     transform: translateX(-100%);
-    transition: transform 0.3s ease;
+    transition: transform var(--lv-transition-fast) ease;
+    will-change: transform;
     overflow-y: auto;
     height: 100%;
     margin: 0;
@@ -251,7 +252,7 @@ body.post .main {
     text-decoration: none;
     font-size: 0.9rem;
     color: var(--secondary);
-    transition: color 0.2s ease;
+    transition: var(--lv-transition-color);
 }
 
 .series-item > a:hover {
@@ -265,7 +266,7 @@ body.post .main {
 }
 
 .series-current {
-    background: rgba(var(--primary-rgb, 66, 185, 131), 0.1);
+    background: rgba(var(--lv-accent-rgb), 0.1);
     margin: 0 -12px;
     padding: 6px 12px;
     border-radius: var(--radius);
@@ -332,13 +333,13 @@ body.post .main {
     justify-content: center;
     color: var(--secondary);
     font-size: 12px;
-    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
+    transition: var(--lv-transition-shadow-transform);
     box-shadow: var(--box-shadow-default);
 }
 
 .series-toggle-btn:hover {
     color: var(--primary);
-    transform: scale(1.1);
+    transform: scale(var(--lv-scale));
     box-shadow: var(--box-shadow-hover);
 }
 
@@ -390,7 +391,7 @@ body.post .main {
 }
 
 .dark .series-item > a {
-    color: rgba(180, 181, 182, 0.8);
+    color: var(--lv-color-text-muted);
 }
 
 .dark .series-item > a:hover,
@@ -399,7 +400,7 @@ body.post .main {
 }
 
 .dark .series-toc a {
-    color: rgba(180, 181, 182, 0.8);
+    color: var(--lv-color-text-muted);
 }
 
 .dark .series-toc a:hover {

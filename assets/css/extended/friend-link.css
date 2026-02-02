@@ -20,23 +20,27 @@
     height: 100px;
     width: 49%;
     display: inline-block !important;
-    border-radius: 5px;
+    border-radius: var(--lv-radius-sm);
     background: none;
-    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
+    transition: var(--lv-transition-shadow-transform);
 }
 
 .frienddiv:hover {
     background: var(--theme);
-    transform: scale(1.08);
-    transition: box-shadow 1s ease, transform 1s ease;
+    transform: scale(var(--lv-scale-friend));
+    transition: var(--lv-transition-shadow-transform-slow);
 }
 
 .dark .frienddiv:hover {
     background: var(--code-bg);
 }
 
+.frienddivleft img {
+    will-change: transform;
+}
+
 .frienddiv:hover .frienddivleft img {
-    transition: 0.9s !important;
+    transition: var(--lv-transition-rotate) !important;
     transform: rotate(360deg) !important;
 }
 
@@ -66,7 +70,7 @@
 
 .dark .friendname,
 .dark .friendinfo {
-    color: rgba(180, 181, 182, 0.8);
+    color: var(--lv-color-text-muted);
 }
 
 .friend details summary::marker {

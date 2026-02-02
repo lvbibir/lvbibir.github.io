@@ -1,6 +1,6 @@
 .post-content code {
-    font-family: JetBrainsLxgwNerdMono;
-    margin: 0px;
+    font-family: var(--lv-font-mono);
+    margin: 0;
     padding: 2px 5px;
     font-size: 0.92rem;
 }
@@ -9,7 +9,6 @@
     max-height: 40em;
     margin-bottom: 2%;
     font-size: 0.75em;
-    font-family: JetBrainsLxgwNerdMono;
     /*border-radius: unset unset var(--radius) var(--radius) !important;*/
     border-top-left-radius: unset;
     border-top-right-radius: unset;
@@ -21,7 +20,8 @@
     tab-size: 4 !important;
 }
 
-.post-content .highlight:not(table), .post-content pre {
+.post-content .highlight:not(table),
+.post-content pre {
     /*box-shadow: 0px 2px 4px rgb(5 10 15 / 10%), 0px 7px 13px -3px rgb(5 10 15 / 30%);*/
     margin: 50px 0 0 0;
 }
@@ -33,7 +33,7 @@
 /*解决角落显示方块问题*/
 ::-webkit-scrollbar-corner {
     background-color: var(--hljs-bg);
-    border-radius: 10px;
+    border-radius: var(--lv-radius-md);
 }
 
 /*修复代码在ios展示大小不一的问题*/
@@ -47,12 +47,6 @@ code {
 code[class*="language-"], pre[class*="language-"] {
     font-size: 0.75em;
     line-height: 1.6;
-}
-
-/*评论区代码*/
-pre[class*="language-"] > code {
-    border-left: none !important;
-    font-size: 0.6em;
 }
 
 /*复制按钮*/
@@ -72,20 +66,28 @@ pre[class*="language-"] > code {
 
 /*mac风格代码*/
 .mac {
-    width:10px;
-    height:10px;
-    border-radius:5px;
-    float:left;
-    margin:10px 0 0 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: var(--lv-radius-sm);
+    float: left;
+    margin: 10px 0 0 5px;
 }
+
 .bb1 {
     background: #ef4943;
     margin-left: 10px;
 }
-.bb2 { background: #f5b228; }
-.bb3 { background: #20d032; }
+
+.bb2 {
+    background: #f5b228;
+}
+
+.bb3 {
+    background: #20d032;
+}
+
 .language-type {
-    color: rgba(255,255,255,.8);
+    color: rgba(255, 255, 255, 0.8);
     position: absolute;
     right: 80px;
     font-size: 0.9em;

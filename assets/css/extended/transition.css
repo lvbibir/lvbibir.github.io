@@ -1,19 +1,25 @@
-/* 首页笑脸 */
-.profile .profile_inner h1 {
-    transition: transform var(--transition-duration) ease;
+/* Transition primitives */
+.profile .profile_inner h1,
+#theme-toggle svg,
+.logo a,
+.archive-entry {
+    transition: var(--lv-transition-transform);
 }
 
+.top-link,
+.post-entry,
+.button {
+    transition: var(--lv-transition-shadow-transform);
+}
+
+/* 首页笑脸 */
 .profile .profile_inner h1:hover {
-    transform: scale(1.1);
+    transform: scale(var(--lv-scale));
 }
 
 /* 主题切换按钮 */
-#theme-toggle svg {
-    transition: transform var(--transition-duration) ease;
-}
-
 #theme-toggle svg:hover {
-    transform: scale(1.2);
+    transform: scale(var(--lv-scale-lg));
 }
 
 button#theme-toggle {
@@ -21,47 +27,37 @@ button#theme-toggle {
 }
 
 /* 左上角名字 */
-.logo a {
-    transition: transform var(--transition-duration) ease;
-}
-
 .logo a:hover {
-    transform: scale(1.06);
+    transform: scale(var(--lv-scale-md));
 }
 
 .logo a img {
-    border-radius: 25px;
+    border-radius: var(--lv-radius-lg);
 }
 
 /* 回到顶部按钮 */
 .top-link {
     background: var(--entry);
-    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
     box-shadow: var(--box-shadow-default);
 }
 
 .top-link:hover {
-    color: rgb(108, 108, 108);
-    transform: scale(1.1);
+    color: var(--lv-text-hover);
+    transform: scale(var(--lv-scale));
     box-shadow: var(--box-shadow-hover);
 }
 
 .dark .top-link:hover {
-    color: rgba(180, 181, 182, .8);
+    color: var(--lv-color-text-muted);
 }
 
 /* 时间轴 */
-.archive-entry {
-    transition: transform var(--transition-duration) ease;
-}
-
 .archive-entry:hover {
-    transform: scale(1.02);
+    transform: scale(var(--lv-scale-sm));
 }
 
 /* 文章卡片 */
 .post-entry {
-    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
     box-shadow: var(--box-shadow-light);
 }
 
@@ -70,7 +66,7 @@ button#theme-toggle {
 }
 
 .post-entry:hover {
-    transform: scale(1.02);
+    transform: scale(var(--lv-scale-sm));
 }
 
 .dark .post-entry:hover {
@@ -80,11 +76,10 @@ button#theme-toggle {
 /* 首页按钮 */
 .button {
     background: var(--entry);
-    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
     box-shadow: var(--box-shadow-default);
 }
 
 .button:hover {
-    transform: scale(1.1);
+    transform: scale(var(--lv-scale));
     box-shadow: var(--box-shadow-hover);
 }

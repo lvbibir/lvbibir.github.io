@@ -5,31 +5,85 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 */
 
 :root {
+    /* Layout */
     --footer-height: 90px;
+    --article-width: 800px;
+    --toc-width: 250px;
+    --series-width: 350px;
+
+    /* Colors */
     --hljs-bg: rgb(44, 44, 44);
     --code-bg: rgb(240, 240, 240);
     --code-bg-border: rgb(200, 200, 200);
     --black: rgb(0, 0, 0);
     --white: rgb(255, 255, 255);
     --tag: rgb(235, 235, 235);
-    --article-width: 800px;
-    --toc-width: 250px;
-    --series-width: 350px;
+
+    /* Accent */
+    --lv-accent: #42b983;
+    --lv-accent-rgb: 66, 185, 131;
+
+    /* Border Colors */
+    --lv-border-light: #ddd;
+    --lv-border-table: #979da3;
+
+    /* Text Colors */
+    --lv-text-muted: #777;
+    --lv-text-hover: rgb(108, 108, 108);
+
+    /* Overlay & Shadow */
+    --lv-overlay-bg: rgba(0, 0, 0, 0.5);
+    --lv-shadow-dark: rgba(0, 0, 0, 0.15);
+
+    /* Typography */
+    --lv-font-mono: JetBrainsLxgwNerdMono;
+
+    /* Radius */
+    --lv-radius-sm: 5px;
+    --lv-radius-md: 10px;
+    --lv-radius-lg: 25px;
+    --lv-radius-media: 10px;
+
+    /* Scale */
+    --lv-scale-sm: 1.02;
+    --lv-scale-md: 1.06;
+    --lv-scale-friend: 1.08;
+    --lv-scale: 1.1;
+    --lv-scale-lg: 1.2;
+    --lv-scale-media-active: 1.35;
+
+    /* Spacing */
     --gap: 24px;
-    /* 通用动画变量 */
+
+    /* Motion */
     --transition-duration: 0.4s;
+    --lv-transition-fast: 0.3s;
+    --lv-transition-slow: 1s;
+    --lv-transition-rotate: 0.9s;
+    --lv-transition-transform: transform var(--transition-duration) ease;
+    --lv-transition-color: color var(--lv-transition-fast) ease;
+    --lv-transition-shadow-transform: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
+    --lv-transition-shadow-transform-slow: box-shadow var(--lv-transition-slow) ease, transform var(--lv-transition-slow) ease;
     --box-shadow-default: 0px 2px 4px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
     --box-shadow-hover: 0px 4px 8px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
     --box-shadow-light: 1px 2px 2px 1px rgb(144 164 174 / 60%);
 }
 
+.dark {
+    /* Dark Mode Colors */
+    --lv-color-text-muted: rgba(180, 181, 182, 0.8);
+    --lv-border-light: rgba(255, 255, 255, 0.1);
+    --lv-text-muted: rgba(180, 181, 182, 0.6);
+    --lv-text-hover: rgba(180, 181, 182, 0.8);
+}
+
 .first-entry {
     min-height: 100px;
-    margin: 0px;
+    margin: 0;
 }
 
 .social-icons {
-    padding: 0px;
+    padding: 0;
     padding-bottom: 20px;
 }
 
@@ -37,17 +91,17 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 
 .post-content h1 {
     font-size: 30px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--lv-border-light);
 }
 
 .post-content h2 {
     font-size: 28px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--lv-border-light);
 }
 
 .post-content h3 {
     font-size: 26px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--lv-border-light);
 }
 
 .post-content h4 {
@@ -74,7 +128,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 .dark body,
 .dark a,
 .dark .post-title {
-    color: rgba(180, 181, 182, 0.8);
+    color: var(--lv-color-text-muted);
 }
 
 .dark h1,
@@ -84,18 +138,18 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 .dark h5,
 .dark h6,
 .dark p {
-    color: rgba(180, 181, 182, 0.8);
+    color: var(--lv-color-text-muted);
 }
 
 .dark .toc .details {
-    color: rgba(180, 181, 182, 0.8);
+    color: var(--lv-color-text-muted);
 }
 
 /*------------------------------------------------------------*/
 
 /*img*/
 img {
-    border-radius: 10px;
+    border-radius: var(--lv-radius-media);
 }
 
 .dark img {
@@ -105,8 +159,8 @@ img {
 /*-----------点击图片放大------------*/
 img:active {
     /* margin:50px; */
-    border-radius: 10px;
-    transform: scale(1.35, 1.35);
+    border-radius: var(--lv-radius-media);
+    transform: scale(var(--lv-scale-media-active), var(--lv-scale-media-active));
 }
 
 /*代码里的滚动*/
@@ -152,17 +206,17 @@ img:active {
 
 
 .post-content {
-    font-family: JetBrainsLxgwNerdMono;
+    font-family: var(--lv-font-mono);
 }
 
 .dark .post-content {
-    color: rgba(180, 181, 182, 0.8);
+    color: var(--lv-color-text-muted);
 }
 
 body {
     font-size: 18px;
     line-height: 1.6;
-    font-family: JetBrainsLxgwNerdMono;
+    font-family: var(--lv-font-mono);
 }
 
 /* 有序/无序列表缩进修复 */
@@ -193,10 +247,10 @@ body {
 
 /*引言*/
 .post-content blockquote {
-    border-left: 4px solid #42b983;
+    border-left: 4px solid var(--lv-accent);
     padding: 1px 15px;
-    color: #777;
-    background-color: rgba(66, 185, 131, .1);
+    color: var(--lv-text-muted);
+    background-color: rgba(var(--lv-accent-rgb), 0.1);
 }
 
 /* GitHub 样式的表格 */
@@ -206,7 +260,7 @@ body {
 }
 
 .post-content table tr {
-    border: 1px solid #979da3 !important;
+    border: 1px solid var(--lv-border-table) !important;
 }
 
 .post-content table tr:nth-child(2n),
@@ -215,21 +269,16 @@ body {
 }
 
 .post-content table th {
-    border: 1px solid #979da3 !important;
+    border: 1px solid var(--lv-border-table) !important;
     font-size: 18px;
 }
 
 .post-content table td {
-    border: 1px solid #979da3 !important;
+    border: 1px solid var(--lv-border-table) !important;
 }
-
-.post-content table {
-    word-break: normal;
-}
-
 
 .entry-cover1 {
-    border-radius: 10px;
+    border-radius: var(--lv-radius-media);
     display: flex;
     justify-content: center;
 }
@@ -241,7 +290,7 @@ body {
 }
 
 .entry-cover {
-    border-radius: 10px;
+    border-radius: var(--lv-radius-media);
     overflow: hidden;
     width: 40%;
     margin-bottom: unset;
@@ -289,14 +338,19 @@ body {
 
 /* ==================== 通用动画类 ==================== */
 
-/* 基础过渡效果 */
-.hover-transition {
-    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
+/* Shared transition baseline */
+.hover-transition,
+.hover-shadow,
+.hover-scale-sm,
+.hover-scale-md,
+.hover-scale,
+.hover-scale-lg {
+    transition: var(--lv-transition-shadow-transform);
+    will-change: transform;
 }
 
 /* 带阴影的元素 */
 .hover-shadow {
-    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
     box-shadow: var(--box-shadow-default);
 }
 
@@ -305,37 +359,21 @@ body {
 }
 
 /* 缩放效果 - 1.02 (文章卡片) */
-.hover-scale-sm {
-    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
-}
-
 .hover-scale-sm:hover {
-    transform: scale(1.02);
+    transform: scale(var(--lv-scale-sm));
 }
 
 /* 缩放效果 - 1.06 (logo) */
-.hover-scale-md {
-    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
-}
-
 .hover-scale-md:hover {
-    transform: scale(1.06);
+    transform: scale(var(--lv-scale-md));
 }
 
 /* 缩放效果 - 1.1 (按钮) */
-.hover-scale {
-    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
-}
-
 .hover-scale:hover {
-    transform: scale(1.1);
+    transform: scale(var(--lv-scale));
 }
 
 /* 缩放效果 - 1.2 (分页按钮) */
-.hover-scale-lg {
-    transition: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
-}
-
 .hover-scale-lg:hover {
-    transform: scale(1.2);
+    transform: scale(var(--lv-scale-lg));
 }

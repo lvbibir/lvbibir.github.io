@@ -10,6 +10,7 @@
 
 | 日期 | 变更 |
 |------|------|
+| 2026-02-02 | CSS 变量系统优化: 新增 Border/Text/Overlay/Radius 变量, 统一硬编码值, 添加性能优化 (will-change) |
 | 2026-02-02 | 完整扫描更新: 新增 Series 样式详解, 响应式布局 CSS 说明 |
 | 2026-01-10 | 初始化模块文档 |
 
@@ -44,14 +45,13 @@ PaperMod 主题预留的 CSS 扩展目录. 此目录下的所有 `.css` 文件�
 
 ```css
 :root {
-    /* 布局尺寸 */
+    /* Layout */
     --footer-height: 90px;
     --article-width: 800px;
     --toc-width: 250px;
     --series-width: 350px;
-    --gap: 24px;
 
-    /* 颜色 */
+    /* Colors */
     --hljs-bg: rgb(44, 44, 44);           /* 代码块背景 (深色) */
     --code-bg: rgb(240, 240, 240);        /* 代码块背景 (浅色) */
     --code-bg-border: rgb(200, 200, 200); /* 代码块边框 */
@@ -59,11 +59,63 @@ PaperMod 主题预留的 CSS 扩展目录. 此目录下的所有 `.css` 文件�
     --white: rgb(255, 255, 255);
     --tag: rgb(235, 235, 235);
 
-    /* 动画 */
+    /* Accent */
+    --lv-accent: #42b983;
+    --lv-accent-rgb: 66, 185, 131;
+
+    /* Border Colors */
+    --lv-border-light: #ddd;
+    --lv-border-table: #979da3;
+
+    /* Text Colors */
+    --lv-text-muted: #777;
+    --lv-text-hover: rgb(108, 108, 108);
+
+    /* Overlay & Shadow */
+    --lv-overlay-bg: rgba(0, 0, 0, 0.5);
+    --lv-shadow-dark: rgba(0, 0, 0, 0.15);
+
+    /* Typography */
+    --lv-font-mono: JetBrainsLxgwNerdMono;
+
+    /* Radius */
+    --lv-radius-sm: 5px;
+    --lv-radius-md: 10px;
+    --lv-radius-lg: 25px;
+    --lv-radius-media: 10px;
+
+    /* Scale */
+    --lv-scale-sm: 1.02;
+    --lv-scale-md: 1.06;
+    --lv-scale-friend: 1.08;
+    --lv-scale: 1.1;
+    --lv-scale-lg: 1.2;
+    --lv-scale-media-active: 1.35;
+
+    /* Spacing */
+    --gap: 24px;
+
+    /* Motion */
     --transition-duration: 0.4s;
+    --lv-transition-fast: 0.3s;
+    --lv-transition-slow: 1s;
+    --lv-transition-rotate: 0.9s;
+    --lv-transition-transform: transform var(--transition-duration) ease;
+    --lv-transition-color: color var(--lv-transition-fast) ease;
+    --lv-transition-shadow-transform: box-shadow var(--transition-duration) ease, transform var(--transition-duration) ease;
+    --lv-transition-shadow-transform-slow: box-shadow var(--lv-transition-slow) ease, transform var(--lv-transition-slow) ease;
+
     --box-shadow-default: 0px 2px 4px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
     --box-shadow-hover: 0px 4px 8px rgb(5 10 15 / 40%), 0px 7px 13px -3px rgb(5 10 15 / 30%);
     --box-shadow-light: 1px 2px 2px 1px rgb(144 164 174 / 60%);
+}
+
+.dark {
+    /* Dark Mode Colors */
+    --lv-color-text-muted: rgba(180, 181, 182, 0.8);
+    --lv-border-light: rgba(255, 255, 255, 0.1);
+    --lv-text-muted: rgba(180, 181, 182, 0.6);
+    --lv-text-hover: rgba(180, 181, 182, 0.8);
 }
 ```
 
@@ -665,6 +717,7 @@ const bp3 = seriesWidth + contentGap + articleWidth + contentGap + tocWidth;
 2. PaperMod 会自动加载 (按字母顺序)
 3. 使用 CSS 变量保持一致性
 4. 提供深色模式适配
+5. 为动画元素添加性能优化
 
 ### 示例
 
@@ -674,19 +727,22 @@ const bp3 = seriesWidth + contentGap + articleWidth + contentGap + tocWidth;
 /* 使用 CSS 变量 */
 .my-element {
     background: var(--entry);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border: 1px solid var(--lv-border-light);
+    border-radius: var(--lv-radius-md);
     padding: var(--gap);
-    transition: all var(--transition-duration) ease;
+    transition: var(--lv-transition-shadow-transform);
+    will-change: transform;  /* 性能优化 */
 }
 
 .my-element:hover {
     box-shadow: var(--box-shadow-hover);
+    transform: scale(var(--lv-scale));
 }
 
 /* 深色模式适配 */
 .dark .my-element {
     background: var(--code-bg);
+    border-color: var(--lv-border-light);
 }
 ```
 
@@ -706,11 +762,24 @@ const bp3 = seriesWidth + contentGap + articleWidth + contentGap + tocWidth;
 ```css
 /* 使用 transform 和 opacity (GPU 加速) */
 .element {
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: var(--lv-transition-transform);
+    will-change: transform;  /* 提示浏览器优化 */
 }
 
 /* 避免使用 width/height/margin (触发重排) */
 ```
+
+### will-change 使用指南
+
+**已添加 will-change 的元素**:
+- `.hover-scale-*` 系列 (通用缩放工具类)
+- `.series` (Series 侧边栏滑动)
+- `.frienddivleft img` (友链头像旋转)
+
+**注意事项**:
+- `will-change` 会占用内存, 不要滥用
+- 只在真正需要优化的动画元素上使用
+- 动画结束后可以移除 `will-change`
 
 ---
 
