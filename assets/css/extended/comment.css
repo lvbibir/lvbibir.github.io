@@ -3,6 +3,42 @@
     font-size: 15px;
 }
 
+.comment-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 12px 0 24px;
+}
+
+.comment-load-btn {
+    border: 1px solid var(--lv-border-light);
+    border-radius: var(--lv-radius-md);
+    padding: 8px 14px;
+    background: rgba(var(--lv-accent-rgb), 0.1);
+    color: var(--lv-accent);
+    cursor: pointer;
+    transition: var(--lv-transition-shadow-transform);
+    user-select: none;
+}
+
+.comment-load-btn:hover {
+    box-shadow: var(--box-shadow-light);
+    transform: scale(var(--lv-scale-sm));
+}
+
+.comment-load-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.comment-load-status {
+    font-size: 14px;
+    color: var(--lv-text-muted);
+}
+
 .pagination__title {
     margin-bottom: 30px;
 }
