@@ -15,23 +15,26 @@
     <br>
 
     <span id="runtime_span"></span>
-    <script type="text/javascript">
-        function show_runtime() {
-            window.setTimeout("show_runtime()", 1000);
-            var X = new Date("7/13/2021 1:00:00");
-            var Y = new Date();
-            var T = (Y.getTime() - X.getTime());
-            var M = 24 * 60 * 60 * 1000;
-            var a = T / M;
-            var A = Math.floor(a);
-            var b = (a - A) * 24;
-            var B = Math.floor(b);
-            var c = (b - B) * 60;
-            var C = Math.floor(c);
-            var D = Math.floor((c - C) * 60);
-            document.getElementById("runtime_span").innerHTML = "网站已运行" + A + "天" + B + "小时" + C + "分" + D + "秒";
-        }
-        show_runtime();
+    <script>
+        (function () {
+            const runtimeEl = document.getElementById("runtime_span");
+            if (!runtimeEl) return;
+
+            const startTime = new Date("7/13/2021 1:00:00").getTime();
+
+            function updateRuntime() {
+                const diffMs = Date.now() - startTime;
+                const totalSeconds = Math.floor(Math.max(0, diffMs) / 1000);
+                const days = Math.floor(totalSeconds / 86400);
+                const hours = Math.floor((totalSeconds % 86400) / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+                runtimeEl.textContent = `网站已运行${days}天${hours}小时${minutes}分${seconds}秒`;
+            }
+
+            updateRuntime();
+            window.setInterval(updateRuntime, 1000);
+        })();
     </script>
     |
     <script defer src="https://www.lvbibir.cn/busuanzi/js"></script>
@@ -69,13 +72,44 @@
 {{- end }}
 
 <script>
-    document.addEventListener('scroll', function (e) {
+    (function () {
         const readProgress = document.getElementById("read_progress");
-        const scrollHeight = document.documentElement.scrollHeight;
-        const clientHeight = document.documentElement.clientHeight;
-        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        readProgress.innerText = ((scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100).toFixed(0);
-    })
+        const topLink = document.getElementById("top-link");
+
+        if (!readProgress && !topLink) return;
+
+        function update() {
+            const scrollEl = document.documentElement;
+            const scrollTop = scrollEl.scrollTop || document.body.scrollTop || 0;
+            const scrollHeight = scrollEl.scrollHeight || 0;
+            const clientHeight = scrollEl.clientHeight || 0;
+
+            if (readProgress) {
+                const max = Math.max(0, scrollHeight - clientHeight);
+                const percent = max > 0 ? Math.round((scrollTop / max) * 100) : 0;
+                readProgress.textContent = String(percent);
+            }
+
+            if (topLink) {
+                const visible = scrollTop > 400;
+                topLink.style.visibility = visible ? "visible" : "hidden";
+                topLink.style.opacity = visible ? "1" : "0";
+            }
+        }
+
+        let raf = 0;
+        function schedule() {
+            if (raf) return;
+            raf = window.requestAnimationFrame(() => {
+                raf = 0;
+                update();
+            });
+        }
+
+        document.addEventListener("scroll", schedule, { passive: true });
+        window.addEventListener("resize", schedule, { passive: true });
+        schedule();
+    })();
 </script>
 
 {{- partial "extend_footer.html" . }}
@@ -108,21 +142,6 @@
         });
     });
 </script>
-
-{{- if (not .Site.Params.disableScrollToTop) }}
-<script>
-    let mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-</script>
-{{- end }}
 
 {{- if (not .Site.Params.disableThemeToggle) }}
 <script>
