@@ -205,7 +205,7 @@ params:
 
   # twkioo评论
   twikoo:
-    version: 1.6.44
+    version: 1.7.7
 
 taxonomies:
   category: categories
