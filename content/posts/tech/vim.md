@@ -1,7 +1,7 @@
 ---
 title: "vim | 基础配置和使用" 
 date: 2024-02-04
-lastmod: 2026-01-21
+lastmod: 2026-02-04
 tags:
   - vim
 keywords:
@@ -215,9 +215,6 @@ set nobackup                  " 不创建备份文件
 set nowritebackup             " 写入时不备份
 set noswapfile                " 不创建交换文件
 
-" 鼠标支持
-set mouse=a                   " 启用鼠标 (所有模式)
-
 " ============ 状态栏 ============
 set statusline=
 set statusline+=%f              " 文件名
@@ -262,76 +259,40 @@ omap L $
 vscode 中的 vim 配置示例
 
 ```json
-// vim 相关
-"vim.leader": "<space>",
-"vim.incsearch": true,
-"vim.easymotion": true,
-// 使用系统剪贴板作为 vim 寄存器
-"vim.useSystemClipboard": true,
-// 由 vim 接管 ctrl + any 快捷键
-"vim.useCtrlKeys": true,
-// 突出显示与当前搜索匹配的所有文本
-"vim.hlsearch": true,
-// 下列按键由 vscode 接管而不是 vim
-"vim.handleKeys": {
-    "<C-a>": false,
-    "<C-f>": false,
-    "<C-k>": false,
-    "<C-n>": false,
-    "<C-p>": false,
+// ==================== Vim 扩展设置 ====================
+"vim.leader": "<space>",                             // Leader 键设为空格
+"vim.incsearch": true,                               // 增量搜索
+"vim.easymotion": true,                              // 启用 EasyMotion
+"vim.useSystemClipboard": true,                      // 使用系统剪贴板
+"vim.hlsearch": true,                                // 高亮搜索匹配
+"vim.useCtrlKeys": false,                            // 禁用 Vim 接管 Ctrl 键
+"vim.handleKeys": {                                  // 指定由 Vim 处理的按键
+    "<C-v>": true,
+    "<C-u>": true,
+    "<C-d>": true,
+    "<C-r>": true
 },
 "vim.insertModeKeyBindings": [
-    {
-        "before": ["j", "j"],
-        "after": ["<Esc>"]
-    }
+    { "before": ["j", "j"], "after": ["<Esc>"] }     // jj 退出插入模式
 ],
 "vim.normalModeKeyBindingsNonRecursive": [
-    {
-        "before": ["j"],
-        "after": ["g", "j"]
-    },
-    {
-        "before": ["k"],
-        "after": ["g", "k"]
-    },
-    {
-        "before": ["K"],
-        "commands": ["lineBreakInsert"],
-        "silent": true
-    },
-    {
-        "before": ["L"],
-        "after": ["$"]
-    },
-    {
-        "before": ["H"],
-        "after": ["^"]
-    }
+    { "before": ["j"], "after": ["g", "j"] },        // j 按显示行移动
+    { "before": ["k"], "after": ["g", "k"] },        // k 按显示行移动
+    { "before": ["K"], "commands": ["lineBreakInsert"], "silent": true },  // K 插入换行
+    { "before": ["L"], "after": ["$"] },             // L 跳到行尾
+    { "before": ["H"], "after": ["^"] }              // H 跳到行首
 ],
 "vim.operatorPendingModeKeyBindings": [
-    {
-        "before": ["L"],
-        "after": ["$"]
-    },
-    {
-        "before": ["H"],
-        "after": ["^"]
-    }
+    { "before": ["L"], "after": ["$"] },
+    { "before": ["H"], "after": ["^"] }
 ],
 "vim.visualModeKeyBindingsNonRecursive": [
-    {
-        "before": ["L"],
-        "after": ["$"]
-    },
-    {
-        "before": ["H"],
-        "after": ["^"]
-    }
+    { "before": ["L"], "after": ["$"] },
+    { "before": ["H"], "after": ["^"] }
 ],
 "extensions.experimental.affinity": {
-    "vscodevim.vim": 1
-},
+    "vscodevim.vim": 1                               // Vim 扩展独立进程，提升性能
+}
 ```
 
 以上
