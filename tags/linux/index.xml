@@ -6,7 +6,16 @@
     <description>Recent content in linux on lvbibir&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 13 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://www.lvbibir.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>centos7 | 升级内核</title>
+      <link>https://www.lvbibir.cn/posts/tech/centos7-upgrade-kernel/</link>
+      <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.lvbibir.cn/posts/tech/centos7-upgrade-kernel/</guid>
+      <description>0 前言 ⚠️ 注意：CentOS 7 已于 2024-06-30 EOL，ELRepo 已停止提供新内核。以下使用归档版本。 1 可用内核版本 类型 最新版本 发布日期 kernel-lt (长期支持) 5.4.278 2024-06-16 kernel-ml (主线版) 6.9.7 2024-06-27 推荐：生产环境使用 kernel-lt 5.4.278（更稳定） 2 升级步骤 2.1 升级前准备 # 查看当前内核 uname -r # 备份重要数据（建议创建快照） 2.2 下载</description>
+    </item>
+    
     <item>
       <title>Linux cat 和 tee 命令写入文件</title>
       <link>https://www.lvbibir.cn/posts/tech/linux-cat-tee-file-writing/</link>
@@ -140,15 +149,6 @@
       
       <guid>https://www.lvbibir.cn/posts/tech/centos-too-many-password-attempts/</guid>
       <description>介绍 centos 系统中的 pam 模块，以及出现尝试密码次数过多如何处理</description>
-    </item>
-    
-    <item>
-      <title>centos7 | 升级内核至 5.10</title>
-      <link>https://www.lvbibir.cn/posts/tech/centos7-update-kernel-to-5.10/</link>
-      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.lvbibir.cn/posts/tech/centos7-update-kernel-to-5.10/</guid>
-      <description>0 前言 内核版本介绍： lt longterm 的缩写 长期维护版 ml mainline 的缩写 最新稳定版 本文参考以下链接: Linux 离线升级内核 elrepo kernel rpm packge directory 1 升级内核 查看内核版本 [dpl@test1 ~]$ cat /etc/redhat-release Red Hat Enterprise Linux Server release 7.5 (Maipo) 使用 wget 命令下载内核 RPM 包 [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-5.10.81-1.el7.x86_64.rpm [dpl@test1 ~]# wget https://dl.lamp.sh/kernel/el7/kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 安装内核 yum localinstall -y kernel-ml-5.10.81-1.el7.x86_64.rpm kernel-ml-devel-5.10.81-1.el7.x86_64.rpm 查看所有可用内核启动项 [dpl@test1 ~] awk -F\&amp;#39; &amp;#39;$1==&amp;#34;menuentry &amp;#34; {print i++ &amp;#34; : &amp;#34; $2}&amp;#39; /etc/grub2.cfg 0 : CentOS Linux (5.10.81-1.el7.x86_64) 7 (Core) 1 : CentOS Linux (3.10.0-1160.21.1.el7.x86_64) 7 (Core)</description>
     </item>
     
     <item>
