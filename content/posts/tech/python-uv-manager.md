@@ -27,12 +27,7 @@ cover:
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
-```
-
-pip 安装
-
-```bash
-pip install uv
+source $HOME/.local/bin/env bash
 ```
 
 配置 PyPI 镜像源 (加速第三方包下载)

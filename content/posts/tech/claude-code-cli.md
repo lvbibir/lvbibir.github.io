@@ -1,7 +1,7 @@
 ---
 title: "Claude Code 完整配置指南"
 date: 2025-12-17
-lastmod: 2026-02-02
+lastmod: 2026-06-26
 tags:
   - AI
   - Claude
@@ -76,9 +76,11 @@ cover:
 [项目地址](https://github.com/UfoMiao/zcf)
 
 **功能概述:**
+
 ZCF 是 Claude Code 的强大工作流管理工具，提供完整的开发工作流解决方案。
 
 **核心特性:**
+
 - **六阶段开发流程**: 研究 → 构思 → 计划 → 执行 → 优化 → 评审
 - **智能技能包**: 预定义的开发模板和最佳实践
 - **个性化输出**: 多种 AI 输出风格（如猫娘工程师风格）
@@ -125,6 +127,7 @@ npx -y zcf
 ## 2.2 CCLine 状态栏
 
 **功能特点:**
+
 - 多种精美主题可选
 - 自定义颜色和样式配置
 - 实时显示当前状态和配置信息
@@ -170,6 +173,7 @@ CLAUDE.md 是 Claude Code 的核心配置文件，采用层级加载机制。
 | **项目本地** | `./CLAUDE.local.md` | 个人项目偏好 | 最低 |
 
 **配置加载机制:**
+
 - 所有 CLAUDE.md 文件是**叠加的**，冲突时后加载的优先
 - 从当前工作目录开始递归向上查找
 - 子目录中的配置在操作该目录文件时才纳入上下文
@@ -221,6 +225,7 @@ project-root/
 ## 4.1 Exa 网络搜索
 
 **功能特点:**
+
 - 比内置 websearch 更精准的搜索结果
 - 支持代码搜索和技术文档检索
 - 新用户免费 $10 额度
@@ -258,6 +263,7 @@ claude mcp add-json --scope user exa '{
 ## 4.2 ACE 代码理解
 
 **功能特点:**
+
 - 最强的代码语义搜索和理解
 - 支持跨文件的代码关系分析
 - 智能代码补全和重构建议
@@ -317,6 +323,7 @@ claude mcp add-json --scope user code-index '{
 ## 4.3 Context7 文档查询
 
 **功能特点:**
+
 - 实时获取最新的库文档和 API 参考
 - 支持多种编程语言和框架
 - 提供代码示例和最佳实践
@@ -363,6 +370,7 @@ claude mcp add-json --scope user context7 '{
 ```
 
 **Plugin 特点:**
+
 - **自动发现**: Claude 会根据任务需求自动选择合适的 Skills
 - **模块化**: 每个 Plugin 可包含多种组件 (Commands、Agents、Skills、Hooks)
 - **可扩展**: 支持自定义开发和第三方 Plugin
@@ -374,13 +382,19 @@ claude mcp add-json --scope user context7 '{
 这种方式安装 skills 很方便
 
 ```bash
-npx -y skills add https://github.com/anthropics/skills --skill frontend-design
-npx -y skills add https://github.com/anthropics/skills --skill pptx docx xlsx pdf
+
+ln -s ~/.agents/skills ~/.claude/skills
+
+npx skills add -y https://github.com/konbakuyomu/smartsearch --skill smart-search-cli -g -a amp
+npx skills add -y https://github.com/github/awesome-copilot --skill git-commit -g -a amp
+npx skills add -y https://github.com/anthropics/skills --skill frontend-design -g -a amp
+npx skills add -y https://github.com/anthropics/skills --skill pptx docx xlsx pdf -g -a amp
 ```
 
 # 6 WSL2 性能优化
 
 **问题症状:**
+
 - Claude Code 在 WSL2 中响应缓慢
 - 每次按键都有明显延迟
 - 周期性卡顿现象

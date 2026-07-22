@@ -1,7 +1,7 @@
 ---
 title: "nodejs | fnm + pnpm 开发环境配置"
 date: 2024-01-23
-lastmod: 2026-01-20
+lastmod: 2026-07-16
 tags:
   - nodejs
 keywords:
@@ -23,8 +23,6 @@ Node.js 版本管理工具主要有 nvm 和 fnm 两种选择:
 
 两者都支持 `.nvmrc` 和 `.node-version` 文件, 可根据项目自动切换版本.
 
----
-
 Node.js 包管理工具主要有 npm, yarn, pnpm, bun 四种选择:
 
 - **pnpm**: 硬链接 + 符号链接共享依赖, 安装速度快, 磁盘占用最小, 严格的依赖隔离避免幽灵依赖, 推荐优先使用
@@ -33,10 +31,6 @@ Node.js 包管理工具主要有 npm, yarn, pnpm, bun 四种选择:
 - **npm**: Node.js 内置, 零配置开箱即用, 生态最成熟, 但安装速度较慢, node_modules 扁平化导致幽灵依赖问题
 
 # 1 安装 nodejs
-
-fnm 和 nvm 二选一即可, 建议使用 fnm
-
-## 1.1 fnm
 
 ```bash
 sudo apt update
@@ -59,65 +53,32 @@ if [ -d "$FNM_PATH" ]; then
 fi
 ```
 
-## 1.2 nvm
-
-```bash
-# 自动获取最新版本的 nvm 并安装
-curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')/install.sh" | bash
-source ~/.bashrc # 或者重新进一下终端
-nvm -v
-```
-
-安装 nodejs
-
-```bash
-nvm install --lts
-nvm use --lts
-node --version
-```
-
 # 2 安装 pnpm
 
 ```bash
 npm install -g pnpm
 pnpm setup
 source ~/.bashrc
-```
 
-# 3 pnpm 配置优化
+# 设置 pnpm store 到固定位置
+pnpm config set store-dir /root/.pnpm-store
 
-## 3.1 网络配置
+# 设置全局安装目录
+pnpm config set global-dir /root/.pnpm-global
+pnpm config set global-bin-dir /usr/local/bin
 
-```bash
 # 镜像源 (国内推荐 npmmirror, 海外保持官方源)
 pnpm config set --global registry https://registry.npmmirror.com
 pnpm config set --global registry https://registry.npmjs.org
-# 网络超时与重试
-pnpm config set --global fetch-retries 5
-pnpm config set --global fetch-retry-maxtimeout 120000
-pnpm config set --global fetch-timeout 180000
-pnpm config set --global prefer-offline true
 ```
 
-## 3.2 抑制警告
-
-pnpm 安装时常见大量 WARNING, 主要来源于 peer dependencies 和 deprecated 包.
+# 3 安装组件
 
 ```bash
-# 日志级别设为 error, 只显示错误
-# 自动安装 peer dependencies, 减少 missing peer 警告
-# 出现 peer dependencies 问题不阻断安装
-pnpm config set --global loglevel error
-pnpm config set --global auto-install-peers true
-pnpm config set --global strict-peer-dependencies false
-```
-
-# 4 安装组件
-
-```bash
-pnpm install -g @anthropic-ai/claude-code
-pnpm install -g @google/gemini-cli
-pnpm install -g @openai/codex
+pnpm add -g @anthropic-ai/claude-code
+pnpm add -g @openai/codex
+pnpm add -g @cometix/ccline 
+pnpm add -g @konbakuyomu/smart-search
 
 # 单次运行, 类似 npx
 pnpm dlx ccg-workflow

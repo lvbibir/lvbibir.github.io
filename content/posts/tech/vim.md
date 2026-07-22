@@ -1,7 +1,7 @@
 ---
 title: "vim | 基础配置和使用" 
 date: 2024-02-04
-lastmod: 2026-02-04
+lastmod: 2026-05-28
 tags:
   - vim
 keywords:
@@ -160,7 +160,7 @@ gd  | 可以切换定义
 vimrc 的位置:
 
 - obsidian: 在插件配置中我将 vimrc 的默认文件名从 `.obsidian.vimrc` 改成了 `.vimrc` 存放到了 obsidian 仓库的根目录
-- wsl: 我的 wsl 是 ubuntu, 为了使用 sudo 时 vimrc 配置生效, vimrc 修改通过修改 `/etc/vim/vimrc` 实现
+- wsl: 我的 wsl 是 ubuntu, 为了使用 sudo 时 vimrc 配置生效, vimrc 修改通过修改 `/etc/vim/vimrc.local` 实现
 - vscode: vscode 直接使用 setting.json 中 vim 的配置
 
 我的 vimrc 配置示例

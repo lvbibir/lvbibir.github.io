@@ -100,7 +100,7 @@ tee ~/.ssh/config > /dev/null <<- EOF
 # 所有主机通用设置
 Host *
   ProxyCommand nc -v -x ${proxy_ip}:${proxy_port} %h %p
-  IdentityFile "/home/lvbibir/.ssh/id_rsa"
+  IdentityFile "~/.ssh/id_rsa"
   TCPKeepAlive yes
   GSSAPIAuthentication no
   PreferredAuthentications publickey,password
